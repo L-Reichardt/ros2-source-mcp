@@ -1,0 +1,117 @@
+{
+  "name": "yasmin_msgs",
+  "version": "4.2.4",
+  "description": "Msgs of (Yet Another State MachINe)",
+  "license": "GPL-3.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "yasmin",
+    "url": "https://github.com/uleroboticsgroup/yasmin.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": [
+      "yasmin_viewer"
+    ]
+  },
+  "messages": {
+    "State": {
+      "description": "",
+      "raw": "int32 id                                    # state ID inside a state machine\nint32 parent -1                             # ID of the parent of this state\n\nstring name                                 # state name inside the state machine\nyasmin_msgs/Transition[] transitions        # transitions for this state\nstring[] outcomes                           # list of outcomes of this state\n\nbool is_fsm                                 # whether this state is a state machine\nint32 current_state -1                      # ID of the current state of this state if it is a state machine\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "state ID inside a state machine",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "parent",
+          "comment": "ID of the parent of this state",
+          "default": "-1",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "state name inside the state machine",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "yasmin_msgs/Transition[]",
+          "name": "transitions",
+          "comment": "transitions for this state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "outcomes",
+          "comment": "list of outcomes of this state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_fsm",
+          "comment": "whether this state is a state machine",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "current_state",
+          "comment": "ID of the current state of this state if it is a state machine",
+          "default": "-1",
+          "is_constant": false
+        }
+      ]
+    },
+    "StateMachine": {
+      "description": "",
+      "raw": "yasmin_msgs/State[] states      # list of states that compose a state machine\n",
+      "fields": [
+        {
+          "type": "yasmin_msgs/State[]",
+          "name": "states",
+          "comment": "list of states that compose a state machine",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Transition": {
+      "description": "",
+      "raw": "string outcome      # outcome, from a state, of the transition\nstring state        # state (also can be an outcome of a state machine) of the transition\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "outcome",
+          "comment": "outcome, from a state, of the transition",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "state (also can be an outcome of a state machine) of the transition",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

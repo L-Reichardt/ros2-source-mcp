@@ -1,0 +1,628 @@
+{
+  "name": "hebi_msgs",
+  "version": "1.0.0",
+  "description": "HEBI messages",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "hebi_msgs",
+    "url": "https://github.com/HebiRobotics/hebi_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "eigen"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "trajectory_msgs",
+      "action_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "MobileInput": {
+      "description": "",
+      "raw": "int32[] button_states\nfloat64[] axis_states\nint32[] button_diffs",
+      "fields": [
+        {
+          "type": "int32[]",
+          "name": "button_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "axis_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "button_diffs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SE3Jog": {
+      "description": "Used only for time-stamping the message.",
+      "raw": "# Used only for time-stamping the message.\nstd_msgs/Header header\n\n# Linear displacement components in m\nfloat64 dx\nfloat64 dy\nfloat64 dz\n# Angular displacement components in rad\nfloat64 droll\nfloat64 dpitch\nfloat64 dyaw\n\n# Duration to execute the jog command\nfloat64 duration\n\n# Whether to constrain end-effector orientation (default: false for cartesian_jog)\n# If false, only position is controlled and orientation is free\n# If true, orientation will be maintained at current orientation\nbool constrain_orientation",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "dx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "dy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "dz",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "droll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "dpitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "dyaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "constrain_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SE3Trajectory": {
+      "description": "Used only for time-stamping the message.",
+      "raw": "# Used only for time-stamping the message.\nstd_msgs/Header header\n\nhebi_msgs/SE3TrajectoryPoint[] points",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "hebi_msgs/SE3TrajectoryPoint[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SE3TrajectoryPoint": {
+      "description": "Linear components in m",
+      "raw": "# Linear components in m\nfloat64 x\nfloat64 y\nfloat64 z\n# Angular components in rad\nfloat64 roll\nfloat64 pitch\nfloat64 yaw\n# Gripper state (between 0 and 1)\nfloat64 gripper\n\nbuiltin_interfaces/Duration time_from_start",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gripper",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_from_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TreadedBaseState": {
+      "description": "State of the robot",
+      "raw": "string message\n# State of the robot\n# 0: STARTUP\n# 1: HOMING\n# 2: ALIGNING\n# 3: TELEOP\n# 4: EMERGENCY_STOP\n# 5: EXIT\nint8 state\nbool flipper_trajectory_active\nbool base_trajectory_active\nbool stable_mode\nbool mstop_pressed",
+      "fields": [
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "flipper_trajectory_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "base_trajectory_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stable_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mstop_pressed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TreadyFlipperVelocityCommand": {
+      "description": "All values in m/s",
+      "raw": "# All values in m/s\nfloat64 front_left\nfloat64 front_right\nfloat64 back_left\nfloat64 back_right",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "back_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "back_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TreadyTorqueModeCommand": {
+      "description": "Max torque is 25 N-m",
+      "raw": "# Max torque is 25 N-m\nfloat64 torque_max\n# Torque angle should be between 0 and pi/2\nfloat64 torque_angle\n# Adjust values should be between 0 and 1, both included\nfloat64 roll_adjust\nfloat64 pitch_adjust",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "torque_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "torque_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll_adjust",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch_adjust",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetLayoutFile": {
+      "description": "",
+      "raw": "string layout_file_name\nstring layout_package_name\n---\nbool success",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "layout_file_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "layout_package_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLayoutJSON": {
+      "description": "",
+      "raw": "string layout_json\n---\nbool success",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "layout_json",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPluginEnabled": {
+      "description": "",
+      "raw": "string plugin_name\nbool enabled\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "plugin_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ArmJointMotion": {
+      "description": "Goal position:",
+      "raw": "# Goal position:\ntrajectory_msgs/JointTrajectory waypoints\nbool use_wp_times\n\n# Optionally, set a color when doing the move; otherwise, clear the color.\nbool set_color\nuint8 r\nuint8 g\nuint8 b\n---\nbool success\n---\nfloat64 percent_complete\n",
+      "goal_fields": [
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_wp_times",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "r",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "g",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "percent_complete",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ArmSE3Motion": {
+      "description": "Goal position:",
+      "raw": "# Goal position:\nhebi_msgs/SE3Trajectory waypoints\nbool use_wp_times\n\n# Optionally, set a color when doing the move; otherwise, clear the color.\nbool set_color\nuint8 r\nuint8 g\nuint8 b\n---\nbool success\n---\nfloat64 percent_complete\n",
+      "goal_fields": [
+        {
+          "type": "hebi_msgs/SE3Trajectory",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_wp_times",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "r",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "g",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "percent_complete",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BaseMotion": {
+      "description": "Goal position (relative to start)",
+      "raw": "# Goal position (relative to start)\nfloat64 x\nfloat64 y\nfloat64 theta\n\n# Optionally, set a color when doing the move; otherwise, clear the color.\nbool set_color\nuint8 r\nuint8 g\nuint8 b\n---\nbool success\n---\nfloat64 percent_complete\n",
+      "goal_fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "r",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "g",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "percent_complete",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

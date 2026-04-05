@@ -1,0 +1,72 @@
+{
+  "name": "mujoco_ros2_control_msgs",
+  "version": "0.0.1",
+  "description": "msgs for mujoco_ros2_control package",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mujoco_ros2_control",
+    "url": "https://github.com/ros-controls/mujoco_ros2_control.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "mujoco_ros2_control",
+      "mujoco_ros2_control_demos"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "ResetWorld": {
+      "description": "",
+      "raw": "string keyframe\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "keyframe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

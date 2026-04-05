@@ -1,0 +1,59 @@
+{
+  "name": "fadecandy_msgs",
+  "version": "1.0.2",
+  "description": "ROS msgs for fadecandy LED controllers",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "fadecandy_ros",
+    "url": "https://github.com/eurogroep/fadecandy_ros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "fadecandy_driver"
+    ]
+  },
+  "messages": {
+    "LEDArray": {
+      "description": "The fadecandy board supports up to 8 LED strips. Each strip can have up to",
+      "raw": "# The fadecandy board supports up to 8 LED strips. Each strip can have up to\n# 64 LEDs.\nLEDStrip[] strips\n\n",
+      "fields": [
+        {
+          "type": "LEDStrip[]",
+          "name": "strips",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LEDStrip": {
+      "description": "Color of each LED in the strip. Fadecandy firmware only allows up to 64 LEDs per strip.",
+      "raw": "# Color of each LED in the strip. Fadecandy firmware only allows up to 64 LEDs per strip.\n# Only the R, G, and B values get used; the alpha value is ignored.\nstd_msgs/ColorRGBA[] colors\n",
+      "fields": [
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "colors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

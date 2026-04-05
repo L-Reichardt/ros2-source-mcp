@@ -1,0 +1,6012 @@
+{
+  "name": "ds_dbw_msgs",
+  "version": "2.3.11",
+  "description": "Drive-by-wire messages",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://dataspeedinc.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dbw_ros",
+    "url": "https://bitbucket.org/dataspeedinc/dbw_ros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "ds_dbw",
+      "ds_dbw_can",
+      "ds_dbw_joystick_demo"
+    ]
+  },
+  "messages": {
+    "Battery": {
+      "description": "Low voltage battery",
+      "raw": "std_msgs/Header header\n\n# Low voltage battery\nfloat32 state_of_charge # %\nfloat32 voltage # V\nfloat32 current # A\nfloat32 temperature # deg C\n\n# Vehicle ignition\nIgnition ignition\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "state_of_charge",
+          "comment": "%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "voltage",
+          "comment": "V",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "A",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "deg C",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Ignition",
+          "name": "ignition",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BatteryTraction": {
+      "description": "High voltage traction battery",
+      "raw": "std_msgs/Header header\n\n# High voltage traction battery\nfloat32 state_of_charge # %\nfloat32 voltage # V\nfloat32 current # A\nfloat32 temperature # deg C\n\n# Charge status\nuint8 status\nuint8 STATUS_UNKNOWN=0\nuint8 STATUS_NOT_CHARGING=1\nuint8 STATUS_CHARGING=2\nuint8 STATUS_COMPLETE=3\nuint8 STATUS_FAULT=7\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "state_of_charge",
+          "comment": "%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "voltage",
+          "comment": "V",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "A",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "deg C",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_NOT_CHARGING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_CHARGING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_COMPLETE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_FAULT",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        }
+      ]
+    },
+    "BrakeCmd": {
+      "description": "Brake command",
+      "raw": "std_msgs/Header header\n\n# Brake command\nfloat32 cmd      # Command, changes with cmd_type\nfloat32 rate_inc # Rate limit for command increase, 0 for default, INFINITY for no limit, changes with cmd_type\nfloat32 rate_dec # Rate limit for command decrease, 0 for default, INFINITY for no limit, changes with cmd_type\nuint8 cmd_type\n\n# Enable\nbool enable\n\n# Clear latched overrides\nbool clear\n\n# Ignore future overrides\nbool ignore\n\n# Prechage AEB (only for platforms using ACC/AEB for braking)\nuint8 precharge_aeb\nuint8 PRECHARGE_NONE=0\nuint8 PRECHARGE_LEVEL_1=1\nuint8 PRECHARGE_LEVEL_2=2\n\n# Command types\nuint8 CMD_NONE=0        # Command  Rate-limit  Range     Note\nuint8 CMD_PRESSURE=1    # bar      bar/s       0 to max  Pressure in bar\nuint8 CMD_TORQUE=2      # Nm       Nm/s        0 to max  Torque in Nm\nuint8 CMD_ACCEL=8       # m/s^2    m/s^3       -10 to 2  Acceleration in m/s^2 using ACC with fallback to AEB for large magnitude\nuint8 CMD_ACCEL_ACC=9   # m/s^2    m/s^3       -10 to 2  Acceleration in m/s^2 using ACC only\nuint8 CMD_ACCEL_AEB=10  # m/s^2    m/s^3       -10 to 2  Acceleration in m/s^2 using AEB with fallback to ACC for extended duration\nuint8 CMD_PEDAL_RAW=13  # %        %/s         0 to 100  Raw pedal sensor units\nuint8 CMD_PERCENT=14    # %        %/s         0 to 100  Percent of maximum pressure/torque/decel\n\n# Passive brake acceleration value for CMD_ACCEL* command types\nuint8 CMD_ACCEL_PASSIVE=2 # m/s^2\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cmd",
+          "comment": "Command, changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rate_inc",
+          "comment": "Rate limit for command increase, 0 for default, INFINITY for no limit, changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rate_dec",
+          "comment": "Rate limit for command decrease, 0 for default, INFINITY for no limit, changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "precharge_aeb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "PRECHARGE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRECHARGE_LEVEL_1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRECHARGE_LEVEL_2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_NONE",
+          "comment": "Command  Rate-limit  Range     Note",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PRESSURE",
+          "comment": "bar      bar/s       0 to max  Pressure in bar",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_TORQUE",
+          "comment": "Nm       Nm/s        0 to max  Torque in Nm",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ACCEL",
+          "comment": "m/s^2    m/s^3       -10 to 2  Acceleration in m/s^2 using ACC with fallback to AEB for large magnitude",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ACCEL_ACC",
+          "comment": "m/s^2    m/s^3       -10 to 2  Acceleration in m/s^2 using ACC only",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ACCEL_AEB",
+          "comment": "m/s^2    m/s^3       -10 to 2  Acceleration in m/s^2 using AEB with fallback to ACC for extended duration",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PEDAL_RAW",
+          "comment": "%        %/s         0 to 100  Raw pedal sensor units",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PERCENT",
+          "comment": "%        %/s         0 to 100  Percent of maximum pressure/torque/decel",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ACCEL_PASSIVE",
+          "comment": "m/s^2",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "BrakeDiagnostics": {
+      "description": "Degraded",
+      "raw": "std_msgs/Header header\n\n# Degraded\nbool degraded\nbool degraded_cmd_type\nbool degraded_comms\nbool degraded_comms_dbw\nbool degraded_comms_dbw_gateway\nbool degraded_comms_dbw_steer\nbool degraded_comms_dbw_thrtl\nbool degraded_comms_dbw_gear\nbool degraded_comms_vehicle\nbool degraded_comms_actuator\nbool degraded_comms_actuator_1\nbool degraded_comms_actuator_2\nbool degraded_internal\nbool degraded_control_performance\nbool degraded_param_mismatch\nbool degraded_btsi_stuck_low\nbool degraded_btsi_stuck_high\nbool degraded_vehicle\nbool degraded_vehicle_speed\nbool degraded_bped_feedback\nbool degraded_actuator\nbool degraded_actuator_1\nbool degraded_actuator_2\nbool degraded_external_input_mismatch\nbool degraded_hold_duration\nbool degraded_actuator_aeb_deny\nbool degraded_actuator_warm\nbool degraded_calibration\n\n# Faults\nbool fault\nbool fault_power\nbool fault_comms\nbool fault_internal\nbool fault_vehicle\nbool fault_actuator\nbool fault_comms_dbw\nbool fault_comms_dbw_gateway\nbool fault_comms_dbw_steer\nbool fault_comms_dbw_thrtl\nbool fault_comms_dbw_gear\nbool fault_comms_vehicle\nbool fault_comms_actuator\nbool fault_comms_actuator_1\nbool fault_comms_actuator_2\nbool fault_vehicle_speed\nbool fault_actuator_acc_deny\nbool fault_actuator_pedal_sensor\nbool fault_bped_sensor_1\nbool fault_bped_sensor_2\nbool fault_bped_sensor_mismatch\nbool fault_actuator_1\nbool fault_actuator_2\nbool fault_actuator_hold_duration\nbool fault_actuator_hot\nbool fault_control_performance\nbool fault_param_mismatch\nbool fault_param_limits\nbool fault_calibration\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_gateway",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_thrtl",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_actuator_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_actuator_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_internal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_param_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_btsi_stuck_low",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_btsi_stuck_high",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_vehicle_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_bped_feedback",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_external_input_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_hold_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator_aeb_deny",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator_warm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_internal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_gateway",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_thrtl",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_actuator_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_actuator_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_vehicle_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_acc_deny",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_pedal_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_bped_sensor_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_bped_sensor_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_bped_sensor_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_hold_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_hot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_param_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_param_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BrakeInfo": {
+      "description": "Brake Pedal",
+      "raw": "std_msgs/Header header\n\n# Brake Pedal\nfloat32 brake_torque_pedal   # Nm\nfloat32 brake_torque_request # Nm\nfloat32 brake_torque_actual  # Nm\nQuality brake_pedal_qf\n\n# Brake vacuum pressure\nfloat32 brake_vacuum # bar\n\n# Anti-lock Brakes\nbool abs_active\nbool abs_enabled\n\n# Stability Control\nbool esc_active\nbool esc_enabled\n\n# Traction Control\nbool trac_active\nbool trac_enabled\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_torque_pedal",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_torque_request",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_torque_actual",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Quality",
+          "name": "brake_pedal_qf",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_vacuum",
+          "comment": "bar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "abs_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "abs_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "esc_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "esc_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "trac_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "trac_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BrakeReport": {
+      "description": "Status",
+      "raw": "std_msgs/Header header\n\n#\nuint8 cmd_type # Options defined in BrakeCmd message\nfloat32 pressure_input  # Pressure in bar\nfloat32 pressure_cmd    # Pressure in bar\nfloat32 pressure_output # Pressure in bar\nfloat32 torque_input    # Torque in Nm\nfloat32 torque_cmd      # Torque in Nm\nfloat32 torque_output   # Torque in Nm\nfloat32 accel_cmd       # Acceleration in m/s^2\nfloat32 accel_output    # Acceleration in m/s^2\nfloat32 percent_input   # Percent (0-100)\nfloat32 percent_cmd     # Percent (0-100)\nfloat32 percent_output  # Percent (0-100)\n\n#\nbool btsi_cmd\nbool yield_request # Request throttle to yield to brakes\nbool limiting_value\nbool limiting_rate\nbool external_control\n\n# Status\nbool ready    # Ready to be enabled\nbool enabled  # Enabled\nbool override_active  # Active override\nbool override_other   # Override from other system\nbool override_latched # Latched override\nbool timeout  # Command timeout (of valid messages)\nbool fault # Fault of any kind\nbool bad_crc # CRC error on most recent command\nbool bad_rc # Repeated rolling counter on most recent command\n\n##### Start of slower secondary report #####\n\n# Degradation of any kind\nbool degraded\n\n# Control disabled in hardware due to external electrical signal\nbool hardware_disable\n\n# Calculated limit vs vehicle speed\nfloat32 limit_value # percent, bar, or m/s^2\n\n# Brake available duration and actions\nBrakeInfDur brake_available_partial_inf\nfloat32 brake_available_duration\nbool brake_available_full\nbool req_shift_park\nbool req_park_brake\n\n# Other braking sources\nbool external_button\nbool comms_loss_armed\n\n# Command source\nCmdSrc cmd_src\n\n# Diagnostics omitted to ruduce message size and clutter\n# See BrakeDiagnostics.msg\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "Options defined in BrakeCmd message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pressure_input",
+          "comment": "Pressure in bar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pressure_cmd",
+          "comment": "Pressure in bar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pressure_output",
+          "comment": "Pressure in bar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_input",
+          "comment": "Torque in Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_cmd",
+          "comment": "Torque in Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_output",
+          "comment": "Torque in Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accel_cmd",
+          "comment": "Acceleration in m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accel_output",
+          "comment": "Acceleration in m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percent_input",
+          "comment": "Percent (0-100)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percent_cmd",
+          "comment": "Percent (0-100)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percent_output",
+          "comment": "Percent (0-100)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btsi_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "yield_request",
+          "comment": "Request throttle to yield to brakes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "limiting_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "limiting_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "external_control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready",
+          "comment": "Ready to be enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "Enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_active",
+          "comment": "Active override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_other",
+          "comment": "Override from other system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_latched",
+          "comment": "Latched override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout (of valid messages)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "Fault of any kind",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_rc",
+          "comment": "Repeated rolling counter on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hardware_disable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "limit_value",
+          "comment": "percent, bar, or m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BrakeInfDur",
+          "name": "brake_available_partial_inf",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_available_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brake_available_full",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "req_shift_park",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "req_park_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "external_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "comms_loss_armed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CmdSrc",
+          "name": "cmd_src",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriveModeCmd": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nDriveMode drive_mode_cmd\nDriveMode suspension_mode_cmd\nAwdMode awd_mode_cmd\nDiffLock rear_diff_cmd\nDiffLock front_diff_cmd",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DriveMode",
+          "name": "drive_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DriveMode",
+          "name": "suspension_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AwdMode",
+          "name": "awd_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DiffLock",
+          "name": "rear_diff_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DiffLock",
+          "name": "front_diff_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriveModeReport": {
+      "description": "Status",
+      "raw": "std_msgs/Header header\n\n#\nDriveMode drive_mode\nDriveMode drive_mode_cmd\nDriveMode suspension_mode\nDriveMode suspension_mode_cmd\nAwdMode awd_mode\nAwdMode awd_mode_cmd\nDiffLock rear_diff\nDiffLock rear_diff_cmd\nDiffLock front_diff\nDiffLock front_diff_cmd\n\n# Status\nbool ready # Ready to actuate command\nbool override_active # Active override\nbool override_other  # Override from other system\nbool bad_crc # CRC error on most recent command\n\n# Degraded\nbool degraded\nbool degraded_cmd_type\nbool degraded_comms_dbw_steer\nbool degraded_comms_dbw_brake\nbool degraded_comms_dbw_thrtl\nbool degraded_comms_vehicle\nbool degraded_control_performance\n\n# Faults\nbool fault\nbool fault_comms_vehicle\n\n# Supporting flags\nbool support_drive_mode_cmd\nbool support_suspension_mode_cmd\nbool support_awd_mode_cmd\nbool support_rear_diff_cmd\nbool support_front_diff_cmd\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DriveMode",
+          "name": "drive_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DriveMode",
+          "name": "drive_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DriveMode",
+          "name": "suspension_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DriveMode",
+          "name": "suspension_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AwdMode",
+          "name": "awd_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AwdMode",
+          "name": "awd_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DiffLock",
+          "name": "rear_diff",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DiffLock",
+          "name": "rear_diff_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DiffLock",
+          "name": "front_diff",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DiffLock",
+          "name": "front_diff_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready",
+          "comment": "Ready to actuate command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_active",
+          "comment": "Active override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_other",
+          "comment": "Override from other system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_thrtl",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "support_drive_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "support_suspension_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "support_awd_mode_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "support_rear_diff_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "support_front_diff_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriverAssist": {
+      "description": "Brake deceleration",
+      "raw": "std_msgs/Header header\n\n# Brake deceleration\nfloat32 decel # m/s^2\nDecelSrc decel_src\n\n# Forward Collision Warning\nbool fcw_active\nbool fcw_enabled\n\n# Automated Emergency Braking\nbool aeb_active\nbool aeb_precharge\nbool aeb_enabled\n\n# Adaptive Cruise Control\nbool acc_braking\nbool acc_enabled\n\n# Blind Spot Information System\nbool blis_l_alert\nbool blis_l_enabled\nbool blis_r_alert\nbool blis_r_enabled\n\n# Cross Traffic Alert\nbool cta_l_brake\nbool cta_l_alert\nbool cta_l_enabled\nbool cta_r_brake\nbool cta_r_alert\nbool cta_r_enabled\n\n# Reverse Brake Assist\nbool rba_active\nbool rba_enabled\n\n# Auto Brake Hold\nbool hold_active\nbool hold_enabled",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "decel",
+          "comment": "m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DecelSrc",
+          "name": "decel_src",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fcw_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fcw_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "aeb_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "aeb_precharge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "aeb_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "acc_braking",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "acc_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "blis_l_alert",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "blis_l_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "blis_r_alert",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "blis_r_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cta_l_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cta_l_alert",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cta_l_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cta_r_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cta_r_alert",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cta_r_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rba_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rba_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hold_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hold_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EcuInfo": {
+      "description": "Info",
+      "raw": "std_msgs/Header header\n\n# Info\nstring name          # OEM_PLATFORM_MODULE\nstring app_version   # x.y.z\nstring boot_version  # x.y\nstring hw_rev\nstring app_signature # XXXXXXXX\nstring mac_addr      # XX:XX:XX:XX:XX:XX\n\n# Config\nstring config_hash  # XXXXXXXX\nuint8 config_count_modified\nuint8 config_count_configured\nbool config_nvm_blank\nbool config_nvm_write_pending\n\n# License\nstring build_date   # YYYY/MM/DD\nstring license_date # YYYY/MM/DD\nbool control_licensed\n\n# Logging\nstring log_filename # XXXXXX.dbw\nbool log_filesystem_present\nbool log_fault\n\n# Date/time\nbuiltin_interfaces/Time datetime\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "OEM_PLATFORM_MODULE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "app_version",
+          "comment": "x.y.z",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "boot_version",
+          "comment": "x.y",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hw_rev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "app_signature",
+          "comment": "XXXXXXXX",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mac_addr",
+          "comment": "XX:XX:XX:XX:XX:XX",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "config_hash",
+          "comment": "XXXXXXXX",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "config_count_modified",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "config_count_configured",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "config_nvm_blank",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "config_nvm_write_pending",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "build_date",
+          "comment": "YYYY/MM/DD",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "license_date",
+          "comment": "YYYY/MM/DD",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "control_licensed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "log_filename",
+          "comment": "XXXXXX.dbw",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "log_filesystem_present",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "log_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "datetime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EyeTracker": {
+      "description": "Attention report",
+      "raw": "std_msgs/Header header\n\n# Attention report\nfloat32 attention # %\nuint8 gaze\nbool eyes_present\n\n# Gaze types\nuint8 GAZE_OTHER=0\nuint8 GAZE_PASSENGER_WINDSHIELD=1\nuint8 GAZE_DRIVER_WINDSHIELD=2\nuint8 GAZE_INSTRUMENT_PANEL=3\nuint8 GAZE_MEDIA_TABLET=4\nuint8 GAZE_REAR_MIRROR=6\nuint8 GAZE_DRIVER_MIRROR=8\nuint8 GAZE_PASSENGER_MIRROR=9\nuint8 GAZE_BELOW_DASHBOARD=10",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "attention",
+          "comment": "%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gaze",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "eyes_present",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_OTHER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_PASSENGER_WINDSHIELD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_DRIVER_WINDSHIELD",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_INSTRUMENT_PANEL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_MEDIA_TABLET",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_REAR_MIRROR",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_DRIVER_MIRROR",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_PASSENGER_MIRROR",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAZE_BELOW_DASHBOARD",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        }
+      ]
+    },
+    "FuelLevel": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 fuel_level # %\nfloat32 fuel_range # km\nfloat32 odometer   # km\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fuel_level",
+          "comment": "%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fuel_range",
+          "comment": "km",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "odometer",
+          "comment": "km",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearCmd": {
+      "description": "Gear command enumeration",
+      "raw": "std_msgs/Header header\n\n# Gear command enumeration\nGear cmd\n\n# Gear number command (when in manual)\nGearManual cmd_manual\n\n# Return-to-park enable flag\nbool return_to_park\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gear",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GearManual",
+          "name": "cmd_manual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "return_to_park",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearDiagnostics": {
+      "description": "Degraded",
+      "raw": "std_msgs/Header header\n\n# Degraded\nbool degraded\nbool degraded_cmd_type\nbool degraded_comms\nbool degraded_comms_dbw\nbool degraded_comms_dbw_gateway\nbool degraded_comms_dbw_steer\nbool degraded_comms_dbw_brake\nbool degraded_comms_dbw_thrtl\nbool degraded_comms_vehicle\nbool degraded_comms_vehicle_1\nbool degraded_comms_vehicle_2\nbool degraded_comms_actuator\nbool degraded_comms_actuator_1\nbool degraded_comms_actuator_2\nbool degraded_internal\nbool degraded_control_performance\nbool degraded_param_mismatch\nbool degraded_vehicle\nbool degraded_vehicle_speed\nbool degraded_actuator\nbool degraded_actuator_warm\nbool degraded_gear_mismatch\nbool degraded_stuck_in_neutral\nbool degraded_power\nbool degraded_calibration\n\n# Faults\nbool fault\nbool fault_power\nbool fault_comms\nbool fault_comms_dbw\nbool fault_comms_dbw_gateway\nbool fault_comms_dbw_steer\nbool fault_comms_dbw_brake\nbool fault_comms_dbw_thrtl\nbool fault_comms_vehicle\nbool fault_comms_vehicle_1\nbool fault_comms_vehicle_2\nbool fault_comms_actuator\nbool fault_comms_actuator_1\nbool fault_comms_actuator_2\nbool fault_internal\nbool fault_vehicle\nbool fault_vehicle_speed\nbool fault_actuator\nbool fault_actuator_config\nbool fault_actuator_hot\nbool fault_param_mismatch\nbool fault_calibration\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_gateway",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_thrtl",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_vehicle_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_vehicle_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_actuator_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_actuator_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_internal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_param_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_vehicle_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator_warm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_gear_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_stuck_in_neutral",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_gateway",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_thrtl",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_vehicle_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_vehicle_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_actuator_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_actuator_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_internal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_vehicle_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_config",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_hot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_param_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearReport": {
+      "description": "Current gear enumeration",
+      "raw": "std_msgs/Header header\n\n# Current gear enumeration\nGear gear\n\n# Gear command enumeration\nGear cmd\n\n# Gear command enumeration\nGear driver\n\n# Gear reject enumeration\nGearReject reject\n\n# Gear number selection (when in manual)\nGearManual gear_manual\n\n# Gear number command (when in manual)\nGearManual cmd_manual\n\n#\nbool power_latched\nbool external_control\n\n# Faults\nbool ready # Ready to execute commands\nbool override_active  # Active override\nbool override_other # Override from other system\nbool fault # Fault of any kind\nbool bad_crc # CRC error on most recent command\n\n##### Start of slower secondary report #####\n\n# Degradation of any kind\nbool degraded\n\n# Actuator temperature\nfloat32 actuator_temp # degC\n\n# Feature support\nbool support_cmd_manual\n\n# All conditions required for calibration satisfied\nbool ready_to_calibrate\n\n# Request brake apply for gear shift calibration\nbool req_brake_cal\n\n# Command source\nCmdSrc cmd_src\n\n# Diagnostics omitted to ruduce message size and clutter\n# See GearDiagnostics.msg\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gear",
+          "name": "gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gear",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gear",
+          "name": "driver",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GearReject",
+          "name": "reject",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GearManual",
+          "name": "gear_manual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GearManual",
+          "name": "cmd_manual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "power_latched",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "external_control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready",
+          "comment": "Ready to execute commands",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_active",
+          "comment": "Active override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_other",
+          "comment": "Override from other system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "Fault of any kind",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "actuator_temp",
+          "comment": "degC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "support_cmd_manual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready_to_calibrate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "req_brake_cal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CmdSrc",
+          "name": "cmd_src",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GpioCmd": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 CMD_PASSIVE=0\nuint8 CMD_ACTIVE=1\nuint8 CMD_LOW=1\nuint8 gpio1_cmd\nuint8 gpio2_cmd\nuint8 gpio3_cmd\nuint8 gpio4_cmd\nuint8 gpio5_cmd\nuint8 gpio6_cmd\nuint8 ssr1_cmd\nuint8 ssr2_cmd\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PASSIVE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ACTIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_LOW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "gpio1_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio2_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio3_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio4_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio5_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio6_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ssr1_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ssr2_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GpioReport": {
+      "description": "Command",
+      "raw": "std_msgs/Header header\n\n# Command\nuint8 CMD_PASSIVE=0\nuint8 CMD_ACTIVE=1\nuint8 CMD_LOW=1\nuint8 gpio1_cmd\nuint8 gpio2_cmd\nuint8 gpio3_cmd\nuint8 gpio4_cmd\nuint8 gpio5_cmd\nuint8 gpio6_cmd\nuint8 ssr1_cmd\nuint8 ssr2_cmd\n\n# Status\nuint8 GPIO_LOW=0\nuint8 GPIO_HIGH=1\nuint8 gpio1_status\nuint8 gpio2_status\nuint8 gpio3_status\nuint8 gpio4_status\nuint8 gpio5_status\nuint8 gpio6_status\n\n# Supported flags\nbool gpio1_cmd_supported\nbool gpio2_cmd_supported\nbool gpio3_cmd_supported\nbool gpio4_cmd_supported\nbool gpio5_cmd_supported\nbool gpio6_cmd_supported\nbool ssr1_cmd_supported\nbool ssr2_cmd_supported\n\n# Status\nbool timeout  # Command timeout (of valid messages)\nbool bad_crc # CRC error on most recent command\nbool bad_rc # Repeated rolling counter on most recent command\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PASSIVE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ACTIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_LOW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "gpio1_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio2_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio3_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio4_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio5_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio6_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ssr1_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ssr2_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "GPIO_LOW",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GPIO_HIGH",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "gpio1_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio2_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio3_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio4_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio5_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gpio6_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gpio1_cmd_supported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gpio2_cmd_supported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gpio3_cmd_supported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gpio4_cmd_supported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gpio5_cmd_supported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gpio6_cmd_supported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ssr1_cmd_supported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ssr2_cmd_supported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout (of valid messages)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_rc",
+          "comment": "Repeated rolling counter on most recent command",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MiscCmd": {
+      "description": "Parking brake command enumeration",
+      "raw": "std_msgs/Header header\n\n# Parking brake command enumeration\nPrkBrkCmd parking_brake\n\n# Door/trunk open/close\nDoorSelect door_select\nDoorCmd door_cmd\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PrkBrkCmd",
+          "name": "parking_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorSelect",
+          "name": "door_select",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorCmd",
+          "name": "door_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MiscReport": {
+      "description": "Parking brake",
+      "raw": "std_msgs/Header header\n\n# Parking brake\nPrkBrkStat parking_brake\n\n# Passenger seat\nbool passenger_detect\nbool passenger_airbag\n\n# Seat Belts\nbool buckle_driver\nbool buckle_passenger\nbool buckle_row2_driver\nbool buckle_row2_middle\nbool buckle_row2_passenger\nbool buckle_row3_driver\nbool buckle_row3_middle\nbool buckle_row3_passenger\n\n# Doors\nbool door_driver\nbool door_passenger\nbool door_rear_left\nbool door_rear_right\nbool door_hood\nbool door_trunk\n\n# Locks\nbool lock_driver\nbool lock_passenger\nbool lock_rear_left\nbool lock_rear_right\n\n# Buttons\nbool btn_ld_ok        # Left D-Pad OK\nbool btn_ld_up        # Left D-Pad Up\nbool btn_ld_down      # Left D-Pad Down\nbool btn_ld_left      # Left D-Pad Left\nbool btn_ld_right     # Left D-Pad Right\nbool btn_rd_ok        # Right D-Pad OK\nbool btn_rd_up        # Right D-Pad Up\nbool btn_rd_down      # Right D-Pad Down\nbool btn_rd_left      # Right D-Pad Left\nbool btn_rd_right     # Right D-Pad Right\nbool btn_cc_mode      # Cruise Control Mode\nbool btn_cc_on        # Cruise Control On\nbool btn_cc_off       # Cruise Control Off\nbool btn_cc_res       # Cruise Control Resume\nbool btn_cc_cncl      # Cruise Control Cancel\nbool btn_cc_on_off    # Cruise Control On/Off Toggle\nbool btn_cc_res_cncl  # Cruise Control Resume/Cancel\nbool btn_cc_res_inc   # Cruise Control Resume+\nbool btn_cc_res_dec   # Cruise Control Resume-\nbool btn_cc_set_inc   # Cruise Control Set+\nbool btn_cc_set_dec   # Cruise Control Set-\nbool btn_acc_gap_inc  # Adaptive Cruise Control Gap+\nbool btn_acc_gap_dec  # Adaptive Cruise Control Gap-\nbool btn_limit_on_off # Speed Limiter On/Off Toggle\nbool btn_la_on_off    # Lane Assist On/Off Toggle\nbool btn_apa          # Active Park Assist\nbool btn_media        # Media (source)\nbool btn_vol_inc      # Volume increment\nbool btn_vol_dec      # Volume decrement\nbool btn_mute         # Volume mute\nbool btn_speak        # Speak\nbool btn_prev         # Media previous\nbool btn_next         # Media next\nbool btn_call_start   # Call start/answer\nbool btn_call_end     # Call end/disconnect\n\n# Front Windshield Wipers enumeration\nWiper wiper\n\n# Headlight enumerations\nbool headlight_low\nbool headlight_high\nHeadlightCtrlLow headlight_low_control\nHeadlightCtrlHigh headlight_high_control\n\n# Ambient Light Sensor enumeration\nAmbientLight ambient_light\n\n# Temperatures (deg C)\nfloat32 outside_air_temp         # Outside air\nfloat32 engine_coolant_temp      # Engine coolant\nfloat32 engine_oil_temp          # Engine oil\nfloat32 trans_oil_temp           # Transmission oil\nfloat32 trans_clutch_temp        # Transmission clutch\nfloat32 traction_motor_coil_temp # BEV/HEV traction motor winding\nfloat32 traction_motor_elec_temp # BEV/HEV traction motor controller\n\n# Over-temperature warnings\nbool engine_coolant_hot_warn      # Engine coolant\nbool engine_oil_hot_warn          # Engine oil\nbool trans_oil_hot_warn           # Transmission oil\nbool trans_clutch_hot_warn        # Transmission clutch\nbool traction_motor_coil_hot_warn # BEV/HEV traction motor winding\nbool traction_motor_elec_hot_warn # BEV/HEV traction motor controller\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PrkBrkStat",
+          "name": "parking_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "passenger_detect",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "passenger_airbag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "buckle_driver",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "buckle_passenger",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "buckle_row2_driver",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "buckle_row2_middle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "buckle_row2_passenger",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "buckle_row3_driver",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "buckle_row3_middle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "buckle_row3_passenger",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_driver",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_passenger",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_hood",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_trunk",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lock_driver",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lock_passenger",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lock_rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lock_rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_ld_ok",
+          "comment": "Left D-Pad OK",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_ld_up",
+          "comment": "Left D-Pad Up",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_ld_down",
+          "comment": "Left D-Pad Down",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_ld_left",
+          "comment": "Left D-Pad Left",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_ld_right",
+          "comment": "Left D-Pad Right",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_rd_ok",
+          "comment": "Right D-Pad OK",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_rd_up",
+          "comment": "Right D-Pad Up",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_rd_down",
+          "comment": "Right D-Pad Down",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_rd_left",
+          "comment": "Right D-Pad Left",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_rd_right",
+          "comment": "Right D-Pad Right",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_mode",
+          "comment": "Cruise Control Mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_on",
+          "comment": "Cruise Control On",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_off",
+          "comment": "Cruise Control Off",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_res",
+          "comment": "Cruise Control Resume",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_cncl",
+          "comment": "Cruise Control Cancel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_on_off",
+          "comment": "Cruise Control On/Off Toggle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_res_cncl",
+          "comment": "Cruise Control Resume/Cancel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_res_inc",
+          "comment": "Cruise Control Resume+",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_res_dec",
+          "comment": "Cruise Control Resume-",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_set_inc",
+          "comment": "Cruise Control Set+",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_set_dec",
+          "comment": "Cruise Control Set-",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_acc_gap_inc",
+          "comment": "Adaptive Cruise Control Gap+",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_acc_gap_dec",
+          "comment": "Adaptive Cruise Control Gap-",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_limit_on_off",
+          "comment": "Speed Limiter On/Off Toggle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_la_on_off",
+          "comment": "Lane Assist On/Off Toggle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_apa",
+          "comment": "Active Park Assist",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_media",
+          "comment": "Media (source)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_vol_inc",
+          "comment": "Volume increment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_vol_dec",
+          "comment": "Volume decrement",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_mute",
+          "comment": "Volume mute",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_speak",
+          "comment": "Speak",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_prev",
+          "comment": "Media previous",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_next",
+          "comment": "Media next",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_call_start",
+          "comment": "Call start/answer",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_call_end",
+          "comment": "Call end/disconnect",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Wiper",
+          "name": "wiper",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "headlight_low",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "headlight_high",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HeadlightCtrlLow",
+          "name": "headlight_low_control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HeadlightCtrlHigh",
+          "name": "headlight_high_control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AmbientLight",
+          "name": "ambient_light",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "outside_air_temp",
+          "comment": "Outside air",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "engine_coolant_temp",
+          "comment": "Engine coolant",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "engine_oil_temp",
+          "comment": "Engine oil",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "trans_oil_temp",
+          "comment": "Transmission oil",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "trans_clutch_temp",
+          "comment": "Transmission clutch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "traction_motor_coil_temp",
+          "comment": "BEV/HEV traction motor winding",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "traction_motor_elec_temp",
+          "comment": "BEV/HEV traction motor controller",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "engine_coolant_hot_warn",
+          "comment": "Engine coolant",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "engine_oil_hot_warn",
+          "comment": "Engine oil",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "trans_oil_hot_warn",
+          "comment": "Transmission oil",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "trans_clutch_hot_warn",
+          "comment": "Transmission clutch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "traction_motor_coil_hot_warn",
+          "comment": "BEV/HEV traction motor winding",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "traction_motor_elec_hot_warn",
+          "comment": "BEV/HEV traction motor controller",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MonitorCmd": {
+      "description": "User fault command",
+      "raw": "std_msgs/Header header\n\n# User fault command\nuint8 cmd_type\n\n# Command types\nuint8 NONE=0\nuint8 ACTIVATE_TEST_FAULT=1\nuint8 CLEAR_TEST_FAULT=2",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACTIVATE_TEST_FAULT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLEAR_TEST_FAULT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "MonitorReport": {
+      "description": "Status",
+      "raw": "std_msgs/Header header\n\n# Status\nbool fault             # Any fault\nbool shutoff           # Shutoff due to fault action\nbool shutoff_on_motion # Shutoff deferred due to lack of vehicle motion\nbool stationary        # Vehicle is stationary\n\n# Fault enumerations\nuint8 FAULT_UNKNOWN=0\nuint8 FAULT_NONE=1\nuint8 FAULT_FAULT=2\n\n# Test fault to verify shutoff action\nuint8 fault_test\n\n# Aggregate of several faults\nuint8 fault_system # Any fault related to system enable/disable\nuint8 fault_steer  # Any fault related to steer control\nuint8 fault_brake  # Any fault related to brake control\nuint8 fault_thrtl  # Any fault related to throttle control\nuint8 fault_gear   # Any fault related to gear control\nuint8 fault_ulc    # Any fault related to the ULC\n\n# Vehicle velocity measurement mismatch with OEM\nuint8 fault_vehicle_velocity\n\n# Steer faults\nuint8 fault_steer_feedback # Steering wheel angle measurement mismatch with OEM\nuint8 fault_steer_input    # Steering column torque measurement mismatch with OEM\nuint8 fault_steer_param    # Steering parameter mismatch with DBW\nuint8 fault_steer_limit    # Steering limit calculation mismatch with DBW\nuint8 fault_steer_override # Steering override calculation mismatch with DBW\nuint8 fault_steer_cmd      # Steering actuator command mismatch with OEM and DBW\nuint8 fault_steer_cmd_rate # Steering actuator command rate faster than DBW and limit\nuint8 fault_steer_cmd_en   # Steering actuator command without matching command enable\nuint8 fault_steer_cmd_sys  # Steering actuator command with system disabled\nuint8 fault_steer_cmd_ovr  # Steering actuator command with override\n\n# Brake faults\nuint8 fault_brake_feedback # Brake actuator output torque/pressure measurement mismatch with OEM\nuint8 fault_brake_input    # Brake pedal input torque/pressure measurement mismatch with OEM\nuint8 fault_brake_param    # Brake parameter mismatch with DBW\nuint8 fault_brake_limit    # Brake limit calculation mismatch with DBW\nuint8 fault_brake_override # Brake override calculation mismatch with DBW\nuint8 fault_brake_cmd      # Brake actuator command mismatch with OEM and DBW\nuint8 fault_brake_cmd_ulc  # Brake command generated by ULC command without matching ULC command\nuint8 fault_brake_cmd_en   # Brake actuator command without matching command enable\nuint8 fault_brake_cmd_sys  # Brake actuator command with system disabled\nuint8 fault_brake_cmd_ovr  # Brake actuator command with override\n\n# Throttle faults\nuint8 fault_thrtl_feedback # Accelerator pedal output measurement mismatch with OEM\nuint8 fault_thrtl_input    # Accelerator pedal input measurement mismatch with OEM\nuint8 fault_thrtl_param    # Throttle parameter mismatch with DBW\nuint8 fault_thrtl_limit    # Throttle limit calculation mismatch with DBW\nuint8 fault_thrtl_override # Throttle override calculation mismatch with DBW\nuint8 fault_thrtl_cmd      # Throttle actuator command mismatch with OEM and DBW\nuint8 fault_thrtl_cmd_ulc  # Throttle command generated by ULC command without matching ULC command\nuint8 fault_thrtl_cmd_en   # Throttle actuator command without matching command enable\nuint8 fault_thrtl_cmd_sys  # Throttle actuator command with system disabled\nuint8 fault_thrtl_cmd_ovr  # Throttle actuator command with override\n\n# Gear faults\nuint8 fault_gear_feedback  # Transmission gear measurement mismatch with OEM\nuint8 fault_gear_input     # Gear input selection measurement mismatch with OEM\nuint8 fault_gear_param     # Gear parameter mismatch with DBW\nuint8 fault_gear_override  # Gear override calculation mismatch with DBW\nuint8 fault_gear_cmd       # Gear actuator command mismatch with OEM and DBW\nuint8 fault_gear_cmd_ulc   # Gear command generated by ULC command without matching ULC command\n\n# System faults\nuint8 fault_system_param   # System parameter mismatch with DBW\n\n# Debug\nbool steer_cmd_match_oem\nbool steer_cmd_match_dbw\nbool brake_cmd_match_oem\nbool brake_cmd_match_dbw\nbool thrtl_cmd_match_oem\nbool thrtl_cmd_match_dbw\nbool gear_cmd_match_oem\nbool gear_cmd_match_dbw\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "Any fault",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "shutoff",
+          "comment": "Shutoff due to fault action",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "shutoff_on_motion",
+          "comment": "Shutoff deferred due to lack of vehicle motion",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stationary",
+          "comment": "Vehicle is stationary",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_NONE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_FAULT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "fault_test",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_system",
+          "comment": "Any fault related to system enable/disable",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer",
+          "comment": "Any fault related to steer control",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake",
+          "comment": "Any fault related to brake control",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl",
+          "comment": "Any fault related to throttle control",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_gear",
+          "comment": "Any fault related to gear control",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_ulc",
+          "comment": "Any fault related to the ULC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_vehicle_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_feedback",
+          "comment": "Steering wheel angle measurement mismatch with OEM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_input",
+          "comment": "Steering column torque measurement mismatch with OEM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_param",
+          "comment": "Steering parameter mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_limit",
+          "comment": "Steering limit calculation mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_override",
+          "comment": "Steering override calculation mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_cmd",
+          "comment": "Steering actuator command mismatch with OEM and DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_cmd_rate",
+          "comment": "Steering actuator command rate faster than DBW and limit",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_cmd_en",
+          "comment": "Steering actuator command without matching command enable",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_cmd_sys",
+          "comment": "Steering actuator command with system disabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_steer_cmd_ovr",
+          "comment": "Steering actuator command with override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_feedback",
+          "comment": "Brake actuator output torque/pressure measurement mismatch with OEM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_input",
+          "comment": "Brake pedal input torque/pressure measurement mismatch with OEM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_param",
+          "comment": "Brake parameter mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_limit",
+          "comment": "Brake limit calculation mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_override",
+          "comment": "Brake override calculation mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_cmd",
+          "comment": "Brake actuator command mismatch with OEM and DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_cmd_ulc",
+          "comment": "Brake command generated by ULC command without matching ULC command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_cmd_en",
+          "comment": "Brake actuator command without matching command enable",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_cmd_sys",
+          "comment": "Brake actuator command with system disabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_brake_cmd_ovr",
+          "comment": "Brake actuator command with override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_feedback",
+          "comment": "Accelerator pedal output measurement mismatch with OEM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_input",
+          "comment": "Accelerator pedal input measurement mismatch with OEM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_param",
+          "comment": "Throttle parameter mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_limit",
+          "comment": "Throttle limit calculation mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_override",
+          "comment": "Throttle override calculation mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_cmd",
+          "comment": "Throttle actuator command mismatch with OEM and DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_cmd_ulc",
+          "comment": "Throttle command generated by ULC command without matching ULC command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_cmd_en",
+          "comment": "Throttle actuator command without matching command enable",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_cmd_sys",
+          "comment": "Throttle actuator command with system disabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_thrtl_cmd_ovr",
+          "comment": "Throttle actuator command with override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_gear_feedback",
+          "comment": "Transmission gear measurement mismatch with OEM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_gear_input",
+          "comment": "Gear input selection measurement mismatch with OEM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_gear_param",
+          "comment": "Gear parameter mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_gear_override",
+          "comment": "Gear override calculation mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_gear_cmd",
+          "comment": "Gear actuator command mismatch with OEM and DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_gear_cmd_ulc",
+          "comment": "Gear command generated by ULC command without matching ULC command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fault_system_param",
+          "comment": "System parameter mismatch with DBW",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "steer_cmd_match_oem",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "steer_cmd_match_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brake_cmd_match_oem",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brake_cmd_match_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "thrtl_cmd_match_oem",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "thrtl_cmd_match_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gear_cmd_match_oem",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gear_cmd_match_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MonitorSteerRateDebug": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 angle_cmd # deg\nfloat32 angle_cmd_rate_calc  # deg/s\nfloat32 angle_cmd_rate_limit # deg/s\nuint8 stamp_ms\nbool rate_limit_exceeded\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_cmd",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_cmd_rate_calc",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_cmd_rate_limit",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "stamp_ms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rate_limit_exceeded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MonitorThrottle": {
+      "description": "Accelerator Pedal",
+      "raw": "std_msgs/Header header\n\n# Accelerator Pedal\nfloat32 pedal_pc # Accelerator pedal percent, range 0 to 100\nQuality pedal_qf # Non-zero is limp-home\nQuality offset_qf # Quality of applied calibration offset\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_pc",
+          "comment": "Accelerator pedal percent, range 0 to 100",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Quality",
+          "name": "pedal_qf",
+          "comment": "Non-zero is limp-home",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Quality",
+          "name": "offset_qf",
+          "comment": "Quality of applied calibration offset",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PropulsionInfo": {
+      "description": "Ford",
+      "raw": "std_msgs/Header header\n\n# Ford\nfloat32 propulsion_torque_request # Nm\nfloat32 propulsion_torque_actual  # Nm\nGearNum gear_num_target\nGearNum gear_num_actual\n\n# Polaris\nfloat32 engine_torque_request # Nm\nfloat32 engine_torque_actual  # Nm\nfloat32 transmission_ratio\nBool torque_limiting\nBool limp_home\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "propulsion_torque_request",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "propulsion_torque_actual",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GearNum",
+          "name": "gear_num_target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GearNum",
+          "name": "gear_num_actual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "engine_torque_request",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "engine_torque_actual",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "transmission_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Bool",
+          "name": "torque_limiting",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Bool",
+          "name": "limp_home",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RemoteReport": {
+      "description": "Remote control parameter values",
+      "raw": "std_msgs/Header header\n\n# Remote control parameter values\nRemoteMode remote_control_mode # Parameter RemoteControlMode value\n\n# Remote control state\nRemoteState remote_control_state\n\n# Status\nbool timeout # FORT VSC CAN message timeout\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RemoteMode",
+          "name": "remote_control_mode",
+          "comment": "Parameter RemoteControlMode value",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RemoteState",
+          "name": "remote_control_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "FORT VSC CAN message timeout",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringCmd": {
+      "description": "Steering Wheel",
+      "raw": "std_msgs/Header header\n\n# Steering Wheel\nfloat32 cmd       # Command, changes with cmd_type\nfloat32 cmd_rate  # Rate limit, deg/s, range 0 to 1016, 0 = default, INFINITY = unlimited\nfloat32 cmd_accel # Accel limit, deg/s^2, range 0 to 25400, 0 = default, INFINITY = unlimited\nuint8 cmd_type\n\n# Enable\nbool enable\n\n# Clear latched overrides\nbool clear\n\n# Ignore future overrides\nbool ignore\n\n# Command types\nuint8 CMD_NONE=0        # Command  Rate   Accel    Range        Note\nuint8 CMD_TORQUE=1      # Nm       N/A    N/A      <depends>    Torque in Nm\nuint8 CMD_ANGLE=2       # deg      deg/s  deg/s^2  <depends>    Angle in deg\nuint8 CMD_CURVATURE=3   # 1/m      deg/s  deg/s^2  -0.2 to 0.2  Curvature in 1/m\nuint8 CMD_YAW_RATE=4    # rad/s    deg/s  deg/s^2  -8.5 to 8.5  Yaw rate in rad/s\nuint8 CMD_PERCENT=14    # %        deg/s  deg/s^2  -100 to 100  Percent of max steering wheel angle\nuint8 CMD_SET_OFFSET=13 # deg      N/A    N/A      <depends>    Set steering wheel angle calibration offset to value in cmd\nuint8 CMD_CALIBRATE=15  # deg      N/A    N/A      <depends>    Calibrate current steering wheel angle to value in cmd\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cmd",
+          "comment": "Command, changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cmd_rate",
+          "comment": "Rate limit, deg/s, range 0 to 1016, 0 = default, INFINITY = unlimited",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cmd_accel",
+          "comment": "Accel limit, deg/s^2, range 0 to 25400, 0 = default, INFINITY = unlimited",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_NONE",
+          "comment": "Command  Rate   Accel    Range        Note",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_TORQUE",
+          "comment": "Nm       N/A    N/A      <depends>    Torque in Nm",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ANGLE",
+          "comment": "deg      deg/s  deg/s^2  <depends>    Angle in deg",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_CURVATURE",
+          "comment": "1/m      deg/s  deg/s^2  -0.2 to 0.2  Curvature in 1/m",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_YAW_RATE",
+          "comment": "rad/s    deg/s  deg/s^2  -8.5 to 8.5  Yaw rate in rad/s",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PERCENT",
+          "comment": "%        deg/s  deg/s^2  -100 to 100  Percent of max steering wheel angle",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_SET_OFFSET",
+          "comment": "deg      N/A    N/A      <depends>    Set steering wheel angle calibration offset to value in cmd",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_CALIBRATE",
+          "comment": "deg      N/A    N/A      <depends>    Calibrate current steering wheel angle to value in cmd",
+          "default": "15",
+          "is_constant": true
+        }
+      ]
+    },
+    "SteeringDiagnostics": {
+      "description": "Degraded",
+      "raw": "std_msgs/Header header\n\n# Degraded\nbool degraded\nbool degraded_cmd_type\nbool degraded_comms\nbool degraded_comms_dbw\nbool degraded_comms_dbw_gateway\nbool degraded_comms_dbw_brake\nbool degraded_comms_dbw_thrtl\nbool degraded_comms_dbw_gear\nbool degraded_comms_vehicle\nbool degraded_comms_actuator\nbool degraded_internal\nbool degraded_stall\nbool degraded_control_performance\nbool degraded_param_mismatch\nbool degraded_vehicle\nbool degraded_actuator\nbool degraded_actuator_warm\nbool degraded_vehicle_speed\nbool degraded_calibration\n\n# Faults\nbool fault\nbool fault_power\nbool fault_comms\nbool fault_comms_dbw\nbool fault_comms_dbw_gateway\nbool fault_comms_dbw_brake\nbool fault_comms_dbw_thrtl\nbool fault_comms_dbw_gear\nbool fault_comms_vehicle\nbool fault_comms_actuator\nbool fault_internal\nbool fault_vehicle\nbool fault_vehicle_speed\nbool fault_angle_sensor\nbool fault_torque_sensor_1\nbool fault_torque_sensor_2\nbool fault_torque_sensor_mismatch\nbool fault_actuator\nbool fault_actuator_torque_sensor\nbool fault_actuator_config\nbool fault_actuator_assist\nbool fault_actuator_hot\nbool fault_control_performance\nbool fault_param_mismatch\nbool fault_param_limits\nbool fault_calibration\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_gateway",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_thrtl",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_internal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_stall",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_param_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator_warm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_vehicle_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_gateway",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_thrtl",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_internal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_vehicle_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_angle_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_torque_sensor_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_torque_sensor_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_torque_sensor_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_torque_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_config",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_assist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_hot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_param_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_param_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringInfo": {
+      "description": "Override torque",
+      "raw": "std_msgs/Header header\n\n# Override torque\nfloat32 override_torque_filtered  # Nm\nfloat32 override_torque_threshold # Nm\n\n# Angular rates\nfloat32 angle_rate     # deg/s\nfloat32 angle_cmd_rate # deg/s\n\n# Actuator\nfloat32 actuator_current # Amps\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "override_torque_filtered",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "override_torque_threshold",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_rate",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_cmd_rate",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "actuator_current",
+          "comment": "Amps",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringOffset": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 steering_wheel_angle        # deg, raw + offset\nfloat32 steering_wheel_angle_raw    # deg, angle - offset\nfloat32 steering_wheel_angle_offset # deg, angle - raw\nuint8 offset_type\nuint8 OFFSET_UNKNOWN=0\nuint8 OFFSET_RELATAIVE=1\nuint8 OFFSET_ABSOLUTE=2\nuint8 OFFSET_INTERNAL=3\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle",
+          "comment": "deg, raw + offset",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle_raw",
+          "comment": "deg, angle - offset",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle_offset",
+          "comment": "deg, angle - raw",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "offset_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OFFSET_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFFSET_RELATAIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFFSET_ABSOLUTE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFFSET_INTERNAL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "SteeringReport": {
+      "description": "Steering Wheel",
+      "raw": "std_msgs/Header header\n\n# Steering Wheel\nfloat32 steering_wheel_angle  # deg\nfloat32 steering_column_torque # Nm\nfloat32 cmd # Changes with cmd_type\nuint8 cmd_type # Options defined in SteeringCmd message\n\n#\nbool limiting_value\nbool limiting_rate\nbool external_control\n\n# Status\nbool ready    # Ready to be enabled\nbool enabled  # Enabled\nbool override_active  # Active override\nbool override_other   # Override from other system\nbool override_latched # Latched override\nbool timeout  # Command timeout (of valid messages)\nbool fault # Fault of any kind\nbool bad_crc # CRC error on most recent command\nbool bad_rc # Repeated rolling counter on most recent command\n\n##### Start of slower secondary reports #####\n\n# Degradation of any kind\nbool degraded\n\n# Control disabled in hardware due to external electrical signal\nbool hardware_disable\n\n# Actuator temperature\nfloat32 actuator_temp # degC\n\n# Calculated limit vs vehicle speed\nfloat32 limit_rate  # deg/s\nfloat32 limit_value # deg\n\n# Command source\nCmdSrc cmd_src\n\n# Diagnostics omitted to ruduce message size and clutter\n# See SteeringDiagnostics.msg\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_column_torque",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cmd",
+          "comment": "Changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "Options defined in SteeringCmd message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "limiting_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "limiting_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "external_control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready",
+          "comment": "Ready to be enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "Enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_active",
+          "comment": "Active override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_other",
+          "comment": "Override from other system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_latched",
+          "comment": "Latched override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout (of valid messages)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "Fault of any kind",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_rc",
+          "comment": "Repeated rolling counter on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hardware_disable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "actuator_temp",
+          "comment": "degC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "limit_rate",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "limit_value",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CmdSrc",
+          "name": "cmd_src",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SystemReport": {
+      "description": "Inhibit control for steer/brake/throttle/gear",
+      "raw": "std_msgs/Header header\n\n# Inhibit control for steer/brake/throttle/gear\nbool inhibit\n\n# System parameter values\nbool validate_cmd_crc_rc        # Parameter ValidateCmdCrcRc value\nSystemSyncMode system_sync_mode # Parameter SystemSyncMode value\n\n# System state\nSystemState state\n\n# Status enumerations\nuint8 reason_disengage\nuint8 reason_not_ready\nstring reason_disengage_str\nstring reason_not_ready_str\n\n# Buttons\nbool btn_enable\nbool btn_disable\n\n# Status\nbool lockout\nbool override # Any steer/brake/throttle/gear override\nbool ready    # All steer/brake/throttle ready, and gear not faulted\nbool enabled  # All steer/brake/throttle enabled, and gear not faulted (or any steer/brake/throttle enabled for Mode>=AllOrNone)\nbool fault    # Fault in any steer/brake/throttle/gear\nbool bad_crc  # CRC error in most recent system command message\nbool bad_rc   # Repeated rolling counter in most recent system command message\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "inhibit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "validate_cmd_crc_rc",
+          "comment": "Parameter ValidateCmdCrcRc value",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SystemSyncMode",
+          "name": "system_sync_mode",
+          "comment": "Parameter SystemSyncMode value",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SystemState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "reason_disengage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "reason_not_ready",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reason_disengage_str",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reason_not_ready_str",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_disable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lockout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override",
+          "comment": "Any steer/brake/throttle/gear override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready",
+          "comment": "All steer/brake/throttle ready, and gear not faulted",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "All steer/brake/throttle enabled, and gear not faulted (or any steer/brake/throttle enabled for Mode>=AllOrNone)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "Fault in any steer/brake/throttle/gear",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error in most recent system command message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_rc",
+          "comment": "Repeated rolling counter in most recent system command message",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ThrottleCmd": {
+      "description": "Brake command",
+      "raw": "std_msgs/Header header\n\n# Brake command\nfloat32 cmd      # Command, changes with cmd_type\nfloat32 rate_inc # Rate limit for command increase, 0 for default, INFINITY for no limit, changes with cmd_type\nfloat32 rate_dec # Rate limit for command decrease, 0 for default, INFINITY for no limit, changes with cmd_type\nuint8 cmd_type\n\n# Enable\nbool enable\n\n# Clear latched overrides\nbool clear\n\n# Ignore future overrides\nbool ignore\n\n# Command types\nuint8 CMD_NONE=0        # Command  Rate-limit  Range     Note\nuint8 CMD_PEDAL_RAW=13  # %        %/s         0 to 100  Raw pedal sensor units\nuint8 CMD_PERCENT=14    # %        %/s         0 to 100  Percent\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cmd",
+          "comment": "Command, changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rate_inc",
+          "comment": "Rate limit for command increase, 0 for default, INFINITY for no limit, changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rate_dec",
+          "comment": "Rate limit for command decrease, 0 for default, INFINITY for no limit, changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_NONE",
+          "comment": "Command  Rate-limit  Range     Note",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PEDAL_RAW",
+          "comment": "%        %/s         0 to 100  Raw pedal sensor units",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PERCENT",
+          "comment": "%        %/s         0 to 100  Percent",
+          "default": "14",
+          "is_constant": true
+        }
+      ]
+    },
+    "ThrottleDiagnostics": {
+      "description": "Degraded",
+      "raw": "std_msgs/Header header\n\n# Degraded\nbool degraded\nbool degraded_cmd_type\nbool degraded_comms\nbool degraded_comms_dbw\nbool degraded_comms_dbw_gateway\nbool degraded_comms_dbw_steer\nbool degraded_comms_dbw_brake\nbool degraded_comms_dbw_gear\nbool degraded_internal\nbool degraded_control_performance\nbool degraded_param_mismatch\nbool degraded_vehicle\nbool degraded_vehicle_speed\nbool degraded_aped_feedback\nbool degraded_actuator_pedal_sensor\nbool degraded_sensor\nbool degraded_calibration\n\n# Faults\nbool fault\nbool fault_power\nbool fault_comms\nbool fault_comms_dbw\nbool fault_comms_dbw_gateway\nbool fault_comms_dbw_steer\nbool fault_comms_dbw_brake\nbool fault_comms_dbw_gear\nbool fault_internal\nbool fault_vehicle\nbool fault_vehicle_speed\nbool fault_sensor\nbool fault_aped_sensor_1\nbool fault_aped_sensor_2\nbool fault_aped_sensor_mismatch\nbool fault_actuator_pedal_sensor\nbool fault_control_performance\nbool fault_param_mismatch\nbool fault_param_limits\nbool fault_calibration\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_gateway",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_internal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_param_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_vehicle_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_aped_feedback",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_actuator_pedal_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_gateway",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_dbw_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_internal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_vehicle_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_aped_sensor_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_aped_sensor_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_aped_sensor_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_actuator_pedal_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_param_mismatch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_param_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ThrottleInfo": {
+      "description": "Accelerator Pedal",
+      "raw": "std_msgs/Header header\n\n# Accelerator Pedal\nfloat32 accel_pedal_pc # Accelerator pedal percent, range 0 to 100\nQuality accel_pedal_qf # Non-zero is limp-home\nOnePedal one_pedal     # One-pedal-drive mode\n\n# Engine\nfloat32 engine_rpm               # Engine speed (rpm)\nfloat32 engine_throttle_valve_pc # Engine throttle valve percent, range 0 to 100\n\n# Drive Mode\nDriveMode drive_mode\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accel_pedal_pc",
+          "comment": "Accelerator pedal percent, range 0 to 100",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Quality",
+          "name": "accel_pedal_qf",
+          "comment": "Non-zero is limp-home",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "OnePedal",
+          "name": "one_pedal",
+          "comment": "One-pedal-drive mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "engine_rpm",
+          "comment": "Engine speed (rpm)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "engine_throttle_valve_pc",
+          "comment": "Engine throttle valve percent, range 0 to 100",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DriveMode",
+          "name": "drive_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ThrottleOffset": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 offset_raw # Offset applied to raw pedal position before translation to percent\nQuality offset_qf # Quality\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "offset_raw",
+          "comment": "Offset applied to raw pedal position before translation to percent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Quality",
+          "name": "offset_qf",
+          "comment": "Quality",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ThrottleReport": {
+      "description": "Status",
+      "raw": "std_msgs/Header header\n\n#\nuint8 cmd_type # Options defined in BrakeCmd message\nfloat32 percent_input   # Percent (0-100)\nfloat32 percent_cmd     # Percent (0-100)\nfloat32 percent_output  # Percent (0-100)\n\n#\nbool yield_request # Request brakes to yield to throttle\nbool limiting_value\nbool limiting_rate\nbool external_control\n\n# Status\nbool ready    # Ready to be enabled\nbool enabled  # Enabled\nbool override_active  # Active override\nbool override_other   # Override from other system\nbool override_latched # Latched override\nbool timeout  # Command timeout (of valid messages)\nbool fault # Fault of any kind\nbool bad_crc # CRC error on most recent command\nbool bad_rc # Repeated rolling counter on most recent command\n\n##### Start of slower secondary report #####\n\n# Degradation of any kind\nbool degraded\n\n# Control disabled in hardware due to external electrical signal\nbool hardware_disable\n\n# Calculated limit vs vehicle speed\nfloat32 limit_value # percent\n\n# Command source\nCmdSrc cmd_src\n\n# Diagnostics omitted to ruduce message size and clutter\n# See ThrottleDiagnostics.msg\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "Options defined in BrakeCmd message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percent_input",
+          "comment": "Percent (0-100)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percent_cmd",
+          "comment": "Percent (0-100)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percent_output",
+          "comment": "Percent (0-100)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "yield_request",
+          "comment": "Request brakes to yield to throttle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "limiting_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "limiting_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "external_control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready",
+          "comment": "Ready to be enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "Enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_active",
+          "comment": "Active override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_other",
+          "comment": "Override from other system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_latched",
+          "comment": "Latched override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout (of valid messages)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "Fault of any kind",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_rc",
+          "comment": "Repeated rolling counter on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hardware_disable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "limit_value",
+          "comment": "percent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CmdSrc",
+          "name": "cmd_src",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TirePressures": {
+      "description": "Tire pressures (kPa)",
+      "raw": "std_msgs/Header header\n\n# Tire pressures (kPa)\nfloat32 front_left\nfloat32 front_right\nfloat32 rear_left\nfloat32 rear_right\nfloat32 spare\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "spare",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrafficSignInfo": {
+      "description": "Status",
+      "raw": "std_msgs/Header header\n\n# Status\nuint8 STATUS_UNKNOWN=0\nuint8 STATUS_OFF=1\nuint8 STATUS_ACTIVE=2\nuint8 STATUS_ERROR=3\nuint8 status\nbool camera_used\nbool navigation_used\n\n# Speed limit\nuint8 UNIT_UNKNOWN=0\nuint8 UNIT_KPH=1\nuint8 UNIT_MPH=2\nuint8 speed_units\nfloat32 speed_limit\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_ACTIVE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_ERROR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "camera_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "navigation_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNIT_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNIT_KPH",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNIT_MPH",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "speed_units",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TurnSignalCmd": {
+      "description": "Turn signal command enumeration",
+      "raw": "std_msgs/Header header\n\n# Turn signal command enumeration\nTurnSignal cmd\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TurnSignal",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TurnSignalReport": {
+      "description": "Status",
+      "raw": "std_msgs/Header header\n\n#\nTurnSignal input\nTurnSignal cmd\nTurnSignal output\nTurnSignal feedback\n\n# Status\nbool ready # Ready to actuate command\nbool override_active # Active override\nbool override_other  # Override from other system\nbool timeout # Command timeout (of valid messages)\nbool bad_crc # CRC error on most recent command\nbool bad_rc # Repeated rolling counter on most recent command\n\n# Degraded\nbool degraded\nbool degraded_cmd_type\nbool degraded_comms_dbw_steer\nbool degraded_comms_dbw_brake\nbool degraded_comms_dbw_thrtl\nbool degraded_comms_vehicle\nbool degraded_control_performance\n\n# Faults\nbool fault\nbool fault_comms_vehicle\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TurnSignal",
+          "name": "input",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TurnSignal",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TurnSignal",
+          "name": "output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TurnSignal",
+          "name": "feedback",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready",
+          "comment": "Ready to actuate command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_active",
+          "comment": "Active override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_other",
+          "comment": "Override from other system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout (of valid messages)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_rc",
+          "comment": "Repeated rolling counter on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_dbw_thrtl",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "degraded_control_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_comms_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UlcCmd": {
+      "description": "ULC command",
+      "raw": "std_msgs/Header header\n\n# ULC command\nfloat32 cmd # Command, changes with cmd_type\nfloat32 limit_accel # m/s^2, rate limit for velocity command increase, 0 for default, INFINITY for no limit\nfloat32 limit_decel # m/s^2, rate limit for velocity command decrease, 0 for default, INFINITY for no limit\nfloat32 limit_jerk_throttle # m/s^3, rate limit for acceleration command increase, 0 for default, INFINITY for no limit\nfloat32 limit_jerk_brake    # m/s^3, rate limit for acceleration command decrease, 0 for default, INFINITY for no limit\nuint8 cmd_type\n\n# Enable\nbool enable\n\n# Clear latched overrides\nbool clear\n\n# Options\nbool enable_shift\nbool enable_shift_park\nbool coast_decel\n\n# Command types\nuint8 CMD_NONE=0\nuint8 CMD_VELOCITY=1 # m/s\nuint8 CMD_ACCEL=2    # m/s^2\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cmd",
+          "comment": "Command, changes with cmd_type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "limit_accel",
+          "comment": "m/s^2, rate limit for velocity command increase, 0 for default, INFINITY for no limit",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "limit_decel",
+          "comment": "m/s^2, rate limit for velocity command decrease, 0 for default, INFINITY for no limit",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "limit_jerk_throttle",
+          "comment": "m/s^3, rate limit for acceleration command increase, 0 for default, INFINITY for no limit",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "limit_jerk_brake",
+          "comment": "m/s^3, rate limit for acceleration command decrease, 0 for default, INFINITY for no limit",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable_shift",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable_shift_park",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "coast_decel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_VELOCITY",
+          "comment": "m/s",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ACCEL",
+          "comment": "m/s^2",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "UlcReport": {
+      "description": "ULC report",
+      "raw": "std_msgs/Header header\n\n# ULC report\nuint8 cmd_type # Options defined in UlcCmd message\nfloat32 vel_ref  # Reference velocity in m/s\nfloat32 vel_meas # Measured velocity in m/s\nfloat32 accel_ref  # Reference acceleration in m/s^2\nfloat32 accel_meas # Measured acceleration in m/s^2\n\n#\nbool coast_decel # Echo of value in UlcCmd message\n\n# Status\nbool ready    # Ready to be enabled\nbool enabled  # Enabled\nbool override_active  # Active override\nbool override_latched # Latched override\nbool preempted # Preempted by other system\nbool timeout  # Command timeout (of valid messages)\nbool bad_crc # CRC error on most recent command\nbool bad_rc # Repeated rolling counter on most recent command\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "Options defined in UlcCmd message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_ref",
+          "comment": "Reference velocity in m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_meas",
+          "comment": "Measured velocity in m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accel_ref",
+          "comment": "Reference acceleration in m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accel_meas",
+          "comment": "Measured acceleration in m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "coast_decel",
+          "comment": "Echo of value in UlcCmd message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ready",
+          "comment": "Ready to be enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "Enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_active",
+          "comment": "Active override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_latched",
+          "comment": "Latched override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "preempted",
+          "comment": "Preempted by other system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout (of valid messages)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_crc",
+          "comment": "CRC error on most recent command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bad_rc",
+          "comment": "Repeated rolling counter on most recent command",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VehicleVelocity": {
+      "description": "Vehicle velocities",
+      "raw": "std_msgs/Header header\n\n# Vehicle velocities\nfloat32 vehicle_velocity_brake      # m/s, measured by brakes (wheel sensors)\nfloat32 vehicle_velocity_propulsion # m/s, measured by propulsion system\n\n# Source of direction\nuint8 dir_src\nuint8 DIR_NONE=0   # Direction unknown\nuint8 DIR_PRNDL=1  # Transmission reverse gear sets negative direction\nuint8 DIR_SENSOR=2 # Explicit wheel speed/direction sensors\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_velocity_brake",
+          "comment": "m/s, measured by brakes (wheel sensors)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_velocity_propulsion",
+          "comment": "m/s, measured by propulsion system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "dir_src",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "DIR_NONE",
+          "comment": "Direction unknown",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIR_PRNDL",
+          "comment": "Transmission reverse gear sets negative direction",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIR_SENSOR",
+          "comment": "Explicit wheel speed/direction sensors",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "WheelPositions": {
+      "description": "Wheel positions (counts)",
+      "raw": "std_msgs/Header header\n\n# Wheel positions (counts)\nint16 front_left\nint16 front_right\nint16 rear_left\nint16 rear_right\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelSpeeds": {
+      "description": "Wheel speeds (rad/s)",
+      "raw": "std_msgs/Header header\n\n# Wheel speeds (rad/s)\nfloat32 front_left\nfloat32 front_right\nfloat32 rear_left\nfloat32 rear_right\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

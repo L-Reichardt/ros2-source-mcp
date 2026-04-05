@@ -1,0 +1,106 @@
+{
+  "name": "aruco_markers_msgs",
+  "version": "0.0.2",
+  "description": "The aruco_markers_msgs package",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/namo-robotics/aruco_markers",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "aruco_markers",
+    "url": "https://github.com/namo-robotics/aruco_markers.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "aruco_markers"
+    ]
+  },
+  "messages": {
+    "Marker": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 id\ngeometry_msgs/PoseStamped pose\nfloat64 pixel_x 0\nfloat64 pixel_y 0",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pixel_x",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pixel_y",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        }
+      ]
+    },
+    "MarkerArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\naruco_markers_msgs/Marker[] markers\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "aruco_markers_msgs/Marker[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

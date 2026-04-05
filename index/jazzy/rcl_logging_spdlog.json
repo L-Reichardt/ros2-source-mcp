@@ -1,0 +1,43 @@
+{
+  "name": "rcl_logging_spdlog",
+  "version": "3.1.1",
+  "description": "Implementation of rcl_logging API for an spdlog backend.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_logging",
+    "url": "https://github.com/ros2/rcl_logging.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "spdlog_vendor",
+      "spdlog"
+    ],
+    "buildtool": [
+      "ament_cmake_ros"
+    ],
+    "runtime": [
+      "spdlog_vendor",
+      "spdlog"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "performance_test_fixture"
+    ],
+    "build_and_runtime": [
+      "rcl_logging_interface",
+      "rcpputils",
+      "rcutils"
+    ],
+    "depended_on_by": [
+      "rcl"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

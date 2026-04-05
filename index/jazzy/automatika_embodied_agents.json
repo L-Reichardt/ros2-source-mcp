@@ -1,0 +1,406 @@
+{
+  "name": "automatika_embodied_agents",
+  "version": "0.5.1",
+  "description": "agents",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/automatika-robotics/embodied-agents",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "automatika_embodied_agents",
+    "url": "https://github.com/automatika-robotics/ros-agents.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "python3-pytest"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "sensor_msgs",
+      "python3-tqdm",
+      "python3-httpx",
+      "python3-websockets",
+      "python3-platformdirs",
+      "automatika_ros_sugar"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Bbox2D": {
+      "description": "",
+      "raw": "float64 top_left_x\nfloat64 top_left_y\nfloat64 bottom_right_x\nfloat64 bottom_right_y\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "top_left_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "top_left_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "bottom_right_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "bottom_right_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detections2D": {
+      "description": "Either an image or compressed image",
+      "raw": "std_msgs/Header header\n\nfloat64[] scores\nstring[] labels\nBbox2D[]  boxes\n\n# Either an image or compressed image\nsensor_msgs/Image image\nsensor_msgs/CompressedImage compressed_image\n\n# Depth image if available\nsensor_msgs/Image depth\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "scores",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "labels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Bbox2D[]",
+          "name": "boxes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CompressedImage",
+          "name": "compressed_image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detections2DMultiSource": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nDetections2D[] detections\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Detections2D[]",
+          "name": "detections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point2D": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointsOfInterest": {
+      "description": "Either an image or compressed image",
+      "raw": "std_msgs/Header header\n\nPoint2D[] points\n\n# Either an image or compressed image\nsensor_msgs/Image image\nsensor_msgs/CompressedImage compressed_image\n\n# Depth image if available\nsensor_msgs/Image depth\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point2D[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CompressedImage",
+          "name": "compressed_image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StreamingString": {
+      "description": "String with streaming attributes",
+      "raw": "std_msgs/Header header\n\n# String with streaming attributes\nbool stream  # Set to true for streaming responses\nbool done    # Set to false when streaming response is on-going\nstring data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stream",
+          "comment": "Set to true for streaming responses",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "done",
+          "comment": "Set to false when streaming response is on-going",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trackings": {
+      "description": "Either an image or compressed image",
+      "raw": "std_msgs/Header header\n\nPoint2D[] centroids\nstring[] labels\nBbox2D[]  boxes\nint8[] ids\nPoint2D[] estimated_velocities\n\n# Either an image or compressed image\nsensor_msgs/Image image\nsensor_msgs/CompressedImage compressed_image\n\n# Depth image if available\nsensor_msgs/Image depth\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point2D[]",
+          "name": "centroids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "labels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Bbox2D[]",
+          "name": "boxes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point2D[]",
+          "name": "estimated_velocities",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CompressedImage",
+          "name": "compressed_image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackingsMultiSource": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nTrackings[] trackings\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Trackings[]",
+          "name": "trackings",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Video": {
+      "description": "Eithen a list of images or compressed images",
+      "raw": "std_msgs/Header header\n\n# Eithen a list of images or compressed images\nsensor_msgs/Image[] frames\nsensor_msgs/CompressedImage[] compressed_frames\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image[]",
+          "name": "frames",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CompressedImage[]",
+          "name": "compressed_frames",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {
+    "VisionLanguageAction": {
+      "description": "Start vision langauge action",
+      "raw": "# Start vision langauge action\nstring task\n---\n# Result\nbool success\n---\n# Feedback\nint32 timestep\nbool completed\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "task",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "int32",
+          "name": "timestep",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "completed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

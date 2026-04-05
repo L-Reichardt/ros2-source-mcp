@@ -1,0 +1,51 @@
+{
+  "name": "flexbe_testing",
+  "version": "3.0.7",
+  "description": "flexbe_testing provides a framework for unit testing states.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/flexbe_core",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/FlexBE/flexbe_behavior_engine/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "flexbe_behavior_engine",
+    "url": "https://github.com/flexbe/flexbe_behavior_engine.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python"
+    ],
+    "test": [
+      "ament_copyright",
+      "ament_flake8",
+      "ament_pep257",
+      "python3-pytest",
+      "std_msgs",
+      "ament_cmake_pytest",
+      "launch_testing"
+    ],
+    "build_and_runtime": [
+      "rclpy",
+      "flexbe_core",
+      "flexbe_msgs",
+      "launch_ros"
+    ],
+    "depended_on_by": [
+      "flexbe_behavior_engine",
+      "flexbe_states"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

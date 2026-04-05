@@ -1,0 +1,868 @@
+{
+  "name": "autoware_internal_planning_msgs",
+  "version": "1.12.1",
+  "description": "The autoware_internal_planning_msgs package",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_internal_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_internal_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "autoware_common_msgs",
+      "autoware_perception_msgs",
+      "autoware_planning_msgs",
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs",
+      "unique_identifier_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_internal_msgs",
+      "autoware_utils",
+      "autoware_utils_geometry"
+    ]
+  },
+  "messages": {
+    "CandidateTrajectories": {
+      "description": "",
+      "raw": "autoware_internal_planning_msgs/CandidateTrajectory[] candidate_trajectories\nautoware_internal_planning_msgs/GeneratorInfo[] generator_info\n",
+      "fields": [
+        {
+          "type": "autoware_internal_planning_msgs/CandidateTrajectory[]",
+          "name": "candidate_trajectories",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_internal_planning_msgs/GeneratorInfo[]",
+          "name": "generator_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CandidateTrajectory": {
+      "description": "",
+      "raw": "std_msgs/Header header\nunique_identifier_msgs/UUID generator_id\nautoware_planning_msgs/TrajectoryPoint[] points\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "generator_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_planning_msgs/TrajectoryPoint[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControlPoint": {
+      "description": "Pose of the control point in map frame",
+      "raw": "# Pose of the control point in map frame\ngeometry_msgs/Pose pose\n# Velocity at control point [m/s]\nfloat32 velocity\n# Lateral shift length [m]. Positive: left, Negative: right\nfloat32 shift_length\n# Distance from ego vehicle [m]\nfloat32 distance\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "shift_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeneratorInfo": {
+      "description": "",
+      "raw": "unique_identifier_msgs/UUID generator_id\nstd_msgs/String generator_name\n",
+      "fields": [
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "generator_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "generator_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PathPointWithLaneId": {
+      "description": "",
+      "raw": "autoware_planning_msgs/PathPoint point\nint64[] lane_ids\n",
+      "fields": [
+        {
+          "type": "autoware_planning_msgs/PathPoint",
+          "name": "point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64[]",
+          "name": "lane_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PathWithLaneId": {
+      "description": "",
+      "raw": "std_msgs/Header header\nautoware_internal_planning_msgs/PathPointWithLaneId[] points\ngeometry_msgs/Point[] left_bound\ngeometry_msgs/Point[] right_bound\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_internal_planning_msgs/PathPointWithLaneId[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "left_bound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "right_bound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanningFactor": {
+      "description": "constants for behavior",
+      "raw": "# constants for behavior\nuint16 UNKNOWN = 0\nuint16 NONE = 1\nuint16 SLOW_DOWN = 2\nuint16 STOP = 3\nuint16 SHIFT_LEFT = 4\nuint16 SHIFT_RIGHT = 5\nuint16 TURN_LEFT = 6\nuint16 TURN_RIGHT = 7\n\n# Module name that generates this planning factor (e.g., \"obstacle_stop_planner\")\nstring module\n\nbool is_driving_forward\n\nautoware_internal_planning_msgs/ControlPoint[] control_points\n\n# Behavior type (use constants above)\nuint16 behavior\n\n# Detailed description of the planning factor\nstring detail\n\nautoware_internal_planning_msgs/SafetyFactorArray safety_factors\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NONE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SLOW_DOWN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "STOP",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SHIFT_LEFT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SHIFT_RIGHT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TURN_LEFT",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TURN_RIGHT",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_driving_forward",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_internal_planning_msgs/ControlPoint[]",
+          "name": "control_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "behavior",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "detail",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_internal_planning_msgs/SafetyFactorArray",
+          "name": "safety_factors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanningFactorArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nautoware_internal_planning_msgs/PlanningFactor[] factors\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_internal_planning_msgs/PlanningFactor[]",
+          "name": "factors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteState": {
+      "description": "",
+      "raw": "uint8 UNKNOWN = 0\nuint8 INITIALIZING = 1\nuint8 UNSET = 2\nuint8 ROUTING = 3\nuint8 SET = 4\nuint8 REROUTING = 5\nuint8 ARRIVED = 6\nuint8 ABORTED = 7\nuint8 INTERRUPTED = 8\n\nbuiltin_interfaces/Time stamp\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INITIALIZING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNSET",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROUTING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REROUTING",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARRIVED",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ABORTED",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERRUPTED",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SafetyFactor": {
+      "description": "constants for common use",
+      "raw": "# constants for common use\nuint16 UNKNOWN = 0\n\n# constants for factor type\nuint16 POINTCLOUD = 1\nuint16 OBJECT = 2\n\n# variables\nuint16 type\n\n# use only for predicted objects\nunique_identifier_msgs/UUID object_id\n\n# use only for predicted objects\nautoware_perception_msgs/PredictedPath predicted_path\n\n# Time to collision (start) relative to the header time [s]\nfloat32 ttc_begin\n# Time to collision (end) relative to the header time [s]\nfloat32 ttc_end\n\n# type == POINTCLOUD: the position of the each points\n# type == OBJECT: the object position\ngeometry_msgs/Point[] points\n\n# module's primitive judgement of the safety for its decision\nbool is_safe\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "POINTCLOUD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OBJECT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "object_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_perception_msgs/PredictedPath",
+          "name": "predicted_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ttc_begin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ttc_end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_safe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SafetyFactorArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nautoware_internal_planning_msgs/SafetyFactor[] factors\nbool is_safe\nstring detail\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_internal_planning_msgs/SafetyFactor[]",
+          "name": "factors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_safe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "detail",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Scenario": {
+      "description": "",
+      "raw": "string EMPTY=Empty\nstring LANEDRIVING=LaneDriving\nstring PARKING=Parking\n\nstring current_scenario\nstring[] activating_scenarios\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "EMPTY",
+          "comment": "",
+          "default": "Empty",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "LANEDRIVING",
+          "comment": "",
+          "default": "LaneDriving",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PARKING",
+          "comment": "",
+          "default": "Parking",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "current_scenario",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "activating_scenarios",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScoredCandidateTrajectories": {
+      "description": "",
+      "raw": "autoware_internal_planning_msgs/ScoredCandidateTrajectory[] scored_candidate_trajectories\nautoware_internal_planning_msgs/GeneratorInfo[] generator_info\n",
+      "fields": [
+        {
+          "type": "autoware_internal_planning_msgs/ScoredCandidateTrajectory[]",
+          "name": "scored_candidate_trajectories",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_internal_planning_msgs/GeneratorInfo[]",
+          "name": "generator_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScoredCandidateTrajectory": {
+      "description": "",
+      "raw": "autoware_internal_planning_msgs/CandidateTrajectory candidate_trajectory\nfloat32 score # Score should be in [0.0, 1.0]\n",
+      "fields": [
+        {
+          "type": "autoware_internal_planning_msgs/CandidateTrajectory",
+          "name": "candidate_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "score",
+          "comment": "Score should be in [0.0, 1.0]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelocityLimit": {
+      "description": "constants for system-defined sender",
+      "raw": "# constants for system-defined sender\nstring SENDER_API = \"api\"\n\n# fields\nbuiltin_interfaces/Time stamp\n# Maximum velocity [m/s]. Range: >= 0.0\nfloat32 max_velocity\n\n# Whether to use constraints\nbool use_constraints false\n# Velocity limit constraints (only used if use_constraints is true)\nautoware_internal_planning_msgs/VelocityLimitConstraints constraints\n\n# Identifier of the module that set this limit (use SENDER_* constants above or any user-defined sender)\nstring sender\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "SENDER_API",
+          "comment": "",
+          "default": "\"api\"",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_constraints",
+          "comment": "",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "autoware_internal_planning_msgs/VelocityLimitConstraints",
+          "name": "constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sender",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelocityLimitClearCommand": {
+      "description": "Whether to clear the velocity limit",
+      "raw": "builtin_interfaces/Time stamp\n# Whether to clear the velocity limit\nbool command false\n# Identifier of the module that clears the limit (see VelocityLimit.msg for SENDER_* constants)\nstring sender\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "command",
+          "comment": "",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sender",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelocityLimitConstraints": {
+      "description": "Maximum signed acceleration [m/s^2]",
+      "raw": "# Maximum signed acceleration [m/s^2]\nfloat32 max_acceleration\n\n# Minimum signed acceleration [m/s^2]\nfloat32 min_acceleration\n\n# Maximum signed jerk [m/s^3]\nfloat32 max_jerk\n\n# Minimum signed jerk [m/s^3]\nfloat32 min_jerk\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "max_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_jerk",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_jerk",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ClearRoute": {
+      "description": "Clear the current route and stop route following.",
+      "raw": "# Clear the current route and stop route following.\n---\nautoware_common_msgs/ResponseStatus status\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "autoware_common_msgs/ResponseStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadPlugin": {
+      "description": "Fully qualified plugin name to load (e.g., \"package::PluginClass\")",
+      "raw": "# Fully qualified plugin name to load (e.g., \"package::PluginClass\")\nstring plugin_name\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "plugin_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLaneletRoute": {
+      "description": "Goal pose in map frame",
+      "raw": "std_msgs/Header header\n# Goal pose in map frame\ngeometry_msgs/Pose goal_pose\n# Lanelet segments defining the route path\nautoware_planning_msgs/LaneletSegment[] segments\n# Unique identifier for this route request\nunique_identifier_msgs/UUID uuid\n# If true, planner may modify route for optimization\nbool allow_modification\n---\nautoware_common_msgs/ResponseStatus status\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "goal_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_planning_msgs/LaneletSegment[]",
+          "name": "segments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "allow_modification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "autoware_common_msgs/ResponseStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetWaypointRoute": {
+      "description": "Goal pose in map frame",
+      "raw": "std_msgs/Header header\n# Goal pose in map frame\ngeometry_msgs/Pose goal_pose\n# Intermediate waypoints between current position and goal\ngeometry_msgs/Pose[] waypoints\n# Unique identifier for this route request\nunique_identifier_msgs/UUID uuid\n# If true, planner may modify route for optimization\nbool allow_modification\n---\nautoware_common_msgs/ResponseStatus status\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "goal_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "allow_modification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "autoware_common_msgs/ResponseStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UnloadPlugin": {
+      "description": "Fully qualified plugin name to unload",
+      "raw": "# Fully qualified plugin name to unload\nstring plugin_name\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "plugin_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,1970 @@
+{
+  "name": "rmf_traffic_msgs",
+  "version": "3.3.1",
+  "description": "A package containing messages used by the RMF traffic management system.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_demos_bridges",
+      "rmf_dev",
+      "rmf_traffic_ros2",
+      "rmf_visualization_schedule"
+    ]
+  },
+  "messages": {
+    "BlockadeCancel": {
+      "description": "The participant whose reservation is being canceled",
+      "raw": "\n# The participant whose reservation is being canceled\nuint64 participant\n\n# True if all reservations for this participants should be considered cancelled\nbool all_reservations\n\n# If all_reservations is false, then this is the last reservation that should\n# be considered cancelled. If all_reservations is true, then this field is\n# meaningless\nuint64 reservation\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "all_reservations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "reservation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlockadeCheckpoint": {
+      "description": "The position of the checkpoint",
+      "raw": "\n# The position of the checkpoint\nfloat64[2] position\n\n# The name of the map that the checkpoint is on\nstring map_name\n\n# Whether or not the participant can hold at this checkpoint\nbool can_hold\n",
+      "fields": [
+        {
+          "type": "float64[2]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "map_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "can_hold",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlockadeHeartbeat": {
+      "description": "An array of the current blockade statuses which describe the most recent",
+      "raw": "\n# An array of the current blockade statuses which describe the most recent\n# information\nBlockadeStatus[] statuses\n\n# This will be true when the blockade moderator has identified a gridlock that\n# cannot be undone. This should never happen if a system is setup correctly. But\n# it may happen if a robot is given a path whose first or last checkpoint is in\n# conflict with the path of another robot.\nbool has_gridlock\n",
+      "fields": [
+        {
+          "type": "BlockadeStatus[]",
+          "name": "statuses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_gridlock",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlockadeReached": {
+      "description": "The ID of the blockade participant",
+      "raw": "\n# The ID of the blockade participant\nuint64 participant\n\n# The reservation ID that this update refers to\nuint64 reservation\n\n# The checkpoint that has been reached\nuint64 checkpoint\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "reservation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "checkpoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlockadeReady": {
+      "description": "The ID of the blockade participant",
+      "raw": "\n# The ID of the blockade participant\nuint64 participant\n\n# The reservation ID that this update refers to\nuint64 reservation\n\n# The checkpoint that is ready to be left\nuint64 checkpoint\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "reservation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "checkpoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlockadeRelease": {
+      "description": "The ID of the blockade participant",
+      "raw": "\n# The ID of the blockade participant\nuint64 participant\n\n# The reservation ID that this update refers to\nuint64 reservation\n\n# The checkpoint that should be released\nuint64 checkpoint\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "reservation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "checkpoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlockadeSet": {
+      "description": "The ID of the participant that is setting its path",
+      "raw": "\n# The ID of the participant that is setting its path\nuint64 participant\n\n# The ID of the reservation that is being set\nuint64 reservation\n\n# The radius to inflate the path\nfloat64 radius\n\n# The path that is being reserved\nBlockadeCheckpoint[] path\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "reservation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockadeCheckpoint[]",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlockadeStatus": {
+      "description": "The Participant ID that this status is for",
+      "raw": "\n# The Participant ID that this status is for\nuint64 participant\n\n# The latest reservation known for this participant\nuint64 reservation\n\n# This is true if and only if the moderator has ever received a ready notice\n# from the participant\nbool any_ready\n\n# If any_ready is true, then this is the most recent ready checkpoint that the\n# moderator knows about. If any_ready is false, then this field is meaningless.\nuint64 last_ready\n\n# The last checkpoint that the moderator knows of the participant reaching\nuint64 last_reached\n\n# The first checkpoint that's currently blockaded for this participant\nuint64 assignment_begin\n\n# The last checkpoint that's currently blockaded for this participant\nuint64 assignment_end\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "reservation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "any_ready",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "last_ready",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "last_reached",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "assignment_begin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "assignment_end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Circle": {
+      "description": "The radius of the circle. The circle will be centered around the origin of its",
+      "raw": "\n# The radius of the circle. The circle will be centered around the origin of its\n# frame of reference.\nfloat64 radius\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConvexShape": {
+      "description": "A 2D box or circle shape reference.",
+      "raw": "\n# A 2D box or circle shape reference.\n\nuint8 NONE=0\nuint8 BOX=1\nuint8 CIRCLE=2\n\n# Choose between the BOX and CIRCLE types\nuint8 type\n\n# Specify the index of the shape. We support 256 different convex shapes per\n# context.\nuint8 index\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOX",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CIRCLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConvexShapeContext": {
+      "description": "Circle descriptions which can be used by the ConvexShape message",
+      "raw": "\n# Circle descriptions which can be used by the ConvexShape message\nCircle[] circles\n",
+      "fields": [
+        {
+          "type": "Circle[]",
+          "name": "circles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Heartbeat": {
+      "description": "",
+      "raw": "",
+      "fields": []
+    },
+    "Itinerary": {
+      "description": "",
+      "raw": "\nRoute[] routes\n",
+      "fields": [
+        {
+          "type": "Route[]",
+          "name": "routes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ItineraryClear": {
+      "description": "",
+      "raw": "\nuint64 participant\n\nuint64 itinerary_version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "itinerary_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ItineraryDelay": {
+      "description": "",
+      "raw": "\nuint64 participant\n\nint64 delay\n\nuint64 itinerary_version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "delay",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "itinerary_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ItineraryErase": {
+      "description": "",
+      "raw": "\nuint64 participant\n\nuint64[] routes\n\nuint64 itinerary_version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "routes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "itinerary_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ItineraryExtend": {
+      "description": "ID of the schedule participant whose itinerary is being extended",
+      "raw": "\n# ID of the schedule participant whose itinerary is being extended\nuint64 participant\n\n# The new routes that are being added to the itinerary\nRoute[] routes\n\nuint64 itinerary_version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Route[]",
+          "name": "routes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "itinerary_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ItineraryReached": {
+      "description": "",
+      "raw": "\nuint64 participant\nuint64 plan\nuint64[] reached_checkpoints\nuint64 progress_version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "plan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "reached_checkpoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "progress_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ItinerarySet": {
+      "description": "ID of the schedule participant whose itinerary is being set",
+      "raw": "\n# ID of the schedule participant whose itinerary is being set\nuint64 participant\n\n# ID of this plan\nuint64 plan\n\n# The new itinerary for this participant\nRoute[] itinerary\n\n# The storage location for these routes\nuint64 storage_base\n\nuint64 itinerary_version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "plan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Route[]",
+          "name": "itinerary",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "storage_base",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "itinerary_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MirrorUpdate": {
+      "description": "The version of the schedule node that provided this update",
+      "raw": "# The version of the schedule node that provided this update\nScheduleIdentity node_id\n\n# The version of the database this update provides\nuint64 database_version\n\n# The patch for the query\nSchedulePatch patch\n\n# True if this update is meant to remedy a mirror that has fallen\n# out of sync\nbool is_remedial_update\n",
+      "fields": [
+        {
+          "type": "ScheduleIdentity",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "database_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SchedulePatch",
+          "name": "patch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_remedial_update",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationAck": {
+      "description": "The version number of the conflict whose conclusion is being acknowledged",
+      "raw": "\n# The version number of the conflict whose conclusion is being acknowledged\nuint64 conflict_version\n\n# The participants who are acknowledging the conclusion of the conflict\n# negotiation\nNegotiationParticipantAck[] acknowledgments\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationParticipantAck[]",
+          "name": "acknowledgments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationConclusion": {
+      "description": "The version number assigned to this conflict",
+      "raw": "\n# The version number assigned to this conflict\nuint64 conflict_version\n\n# True if the conflict was resolved. False if the negotiation was abandoned.\nbool resolved\n\n# The ID sequence for the negotiation table that was selected\nNegotiationKey[] table\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "resolved",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationKey[]",
+          "name": "table",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationForfeit": {
+      "description": "The conflict ID that this forfeit is targeted at",
+      "raw": "\n# The conflict ID that this forfeit is targeted at\nuint64 conflict_version\n\n# Forfeit this negotiation table\nNegotiationKey[] table\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationKey[]",
+          "name": "table",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationKey": {
+      "description": "The participant ID of the negotiation table",
+      "raw": "\n# The participant ID of the negotiation table\nuint64 participant\n\n# The version of the negotiation table that we care about\nuint64 version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationNotice": {
+      "description": "The version number assigned to this conflict",
+      "raw": "\n# The version number assigned to this conflict\nuint64 conflict_version\n\n# The IDs of the participants that are in conflict.\nuint64[] participants\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "participants",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationParticipantAck": {
+      "description": "The participant that is acknowledging",
+      "raw": "\n# The participant that is acknowledging\nuint64 participant\n\n# Whether this participant will be updating\nbool updating false\n\n# The itinerary version that will provide the update to\n# conform to the negotiation result\nuint64 itinerary_version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "updating",
+          "comment": "",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "itinerary_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationProposal": {
+      "description": "The conflict ID that this proposal is targeted at",
+      "raw": "\n# The conflict ID that this proposal is targeted at\nuint64 conflict_version\n\n# The version number for this proposal within the negotiation\nuint64 proposal_version\n\n# The participant ID that this proposal is coming from\nuint64 for_participant\n\n# The participant IDs that this proposal is trying to accommodate. As each\n# participant proposes their ideal itinerary, the other participants in the\n# conflict will propose itineraries which accommodate it.\n#\n# The order of IDs in this dynamic array have important semantic meaning about\n# which itineraries are being accommodated. For example:\n#\n# [] (empty):  This proposal does not accommodate any other participants. This\n#              is the best possible itinerary for this participant.\n#\n# [3]:         This proposal is the best itinerary that can accommodate the\n#              ideal itinerary of participant 3.\n#\n# [3, 7]:      This proposal is the best itinerary for this participant that can\n#              accommodate both the ideal itinerary of participant 3 and the\n#              best itinerary of participant 7 that accommodates the ideal\n#              itinerary of participant 3.\n#\n# [3, 7, ...]: This proposal is the best itinerary that can accommodate the\n#              ideal itinerary of participant 3 and the best itineraries that\n#              accommodate the best itineraries of the participants that precede\n#              them in the list, recursively.\nNegotiationKey[] to_accommodate\n\n# The unique ID for the plan that is being proposed\nuint64 plan_id\n\n# The itinerary that is being proposed for this participant\nRoute[] itinerary\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "proposal_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "for_participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationKey[]",
+          "name": "to_accommodate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "plan_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Route[]",
+          "name": "itinerary",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationRefusal": {
+      "description": "The ID of the conflict negotiation that is being refused",
+      "raw": "\n# The ID of the conflict negotiation that is being refused\nuint64 conflict_version\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationRejection": {
+      "description": "The conflict ID that this rejection is targeted at",
+      "raw": "\n# The conflict ID that this rejection is targeted at\nuint64 conflict_version\n\n# Reject this negotiation table\nNegotiationKey[] table\n\n# The rejection is by this participant\nuint64 rejected_by\n\nItinerary[] alternatives\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationKey[]",
+          "name": "table",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "rejected_by",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Itinerary[]",
+          "name": "alternatives",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationRepeat": {
+      "description": "Repeat conflict information related to this version",
+      "raw": "\n# Repeat conflict information related to this version\nuint64 conflict_version\n\n# Repeat conflict information related to this table. If this is empty, then\n# only the initial NegotiationNotice will be repeated.\nuint64[] table\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "table",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationState": {
+      "description": "",
+      "raw": "\nNegotiationStatus status\nNegotiationTreeNode[] tree\nNegotiationProposal[] orphan_proposals\nNegotiationRejection[] orphan_rejections\nNegotiationForfeit[] orphan_forfeits\n",
+      "fields": [
+        {
+          "type": "NegotiationStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationTreeNode[]",
+          "name": "tree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationProposal[]",
+          "name": "orphan_proposals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationRejection[]",
+          "name": "orphan_rejections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationForfeit[]",
+          "name": "orphan_forfeits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationStates": {
+      "description": "",
+      "raw": "\nNegotiationState[] negotiations\n",
+      "fields": [
+        {
+          "type": "NegotiationState[]",
+          "name": "negotiations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationStatus": {
+      "description": "Time that this negotiation began",
+      "raw": "\nuint64 conflict_version\nuint64[] participants\n\n# Time that this negotiation began\nbuiltin_interfaces/Time start_time\n\n# Time that the last response from a participant was seen\nbuiltin_interfaces/Time last_response_time\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "conflict_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "participants",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "last_response_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationStatuses": {
+      "description": "",
+      "raw": "\nNegotiationStatus[] negotiations\n",
+      "fields": [
+        {
+          "type": "NegotiationStatus[]",
+          "name": "negotiations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NegotiationTreeNode": {
+      "description": "",
+      "raw": "\nint64 parent\nNegotiationKey key\nbool rejected\nRoute[] itinerary\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "parent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NegotiationKey",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rejected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Route[]",
+          "name": "itinerary",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Participant": {
+      "description": "The unique ID for this participant",
+      "raw": "# The unique ID for this participant\nuint64 id\n\n# Description of this participant (name, shape, etc.)\nParticipantDescription description\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ParticipantDescription",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParticipantDescription": {
+      "description": "Name of the participant",
+      "raw": "\n# Name of the participant\nstring name\n\n# Owner of the participant (e.g. fleet name)\nstring owner\n\nuint8 RX_INVALID = 0\nuint8 RX_UNRESPONSIVE = 1\nuint8 RX_RESPONSIVE = 2\n\n# Whether or not this participant will automatically respond to conflicts\nuint8 responsiveness\n\n# The physical profile of this Participant\nProfile profile\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "owner",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "RX_INVALID",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RX_UNRESPONSIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RX_RESPONSIVE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "responsiveness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Profile",
+          "name": "profile",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Participants": {
+      "description": "The version of the schedule node that provided this update",
+      "raw": "# The version of the schedule node that provided this update\nScheduleIdentity node_id\n\n# A list of participants with their IDs\nParticipant[] participants\n",
+      "fields": [
+        {
+          "type": "ScheduleIdentity",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Participant[]",
+          "name": "participants",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Polygon": {
+      "description": "",
+      "raw": "PolygonVertex[] vertices\n",
+      "fields": [
+        {
+          "type": "PolygonVertex[]",
+          "name": "vertices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PolygonVertex": {
+      "description": "",
+      "raw": "float32 x\nfloat32 y\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Profile": {
+      "description": "The shape that specifies the footprint of a schedule participant",
+      "raw": "\n# The shape that specifies the footprint of a schedule participant\nConvexShape footprint\n\n# The shape that specifies the vicinity around a schedule participant\nConvexShape vicinity\n\n# The buffer that contains the shape descriptions\nConvexShapeContext shape_context\n",
+      "fields": [
+        {
+          "type": "ConvexShape",
+          "name": "footprint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ConvexShape",
+          "name": "vicinity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ConvexShapeContext",
+          "name": "shape_context",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Region": {
+      "description": "",
+      "raw": "\nstring map\n\nSpace[] spaces\n\nTimespan timespan\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Space[]",
+          "name": "spaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Timespan",
+          "name": "timespan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Route": {
+      "description": "",
+      "raw": "\nstring map\n\nTrajectory trajectory\n\nuint64[] checkpoints\n\nTrafficDependency[] dependencies\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Trajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "checkpoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrafficDependency[]",
+          "name": "dependencies",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleChangeAdd": {
+      "description": "The Plan ID for the new routes",
+      "raw": "\n# The Plan ID for the new routes\nuint64 plan_id\n\n# The new route items to add\nScheduleChangeAddItem[] items\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "plan_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleChangeAddItem[]",
+          "name": "items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleChangeAddItem": {
+      "description": "The ID for this route",
+      "raw": "\n# The ID for this route\nuint64 route_id\n\n# The storage location for this route\nuint64 storage_id\n\n# The description of this route\nRoute route\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "route_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "storage_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Route",
+          "name": "route",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleChangeCull": {
+      "description": "",
+      "raw": "\nint64 time\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleChangeDelay": {
+      "description": "",
+      "raw": "\nint64 delay\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "delay",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleChangeProgress": {
+      "description": "Indicate whether any progress has actually been made. If false, then the",
+      "raw": "\n# Indicate whether any progress has actually been made. If false, then the\n# rest of the fields can be ignored\nbool has_progress\n\n# The version of the progress within the plan\nuint64 version\n\n# The checkpoints in the itinerary that have been reached\nuint64[] checkpoints\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "has_progress",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "checkpoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleIdentity": {
+      "description": "The UUID of the new schedule node",
+      "raw": "# The UUID of the new schedule node\n# TODO(MXG): Consider using uuid_msgs here: https://github.com/ros-geographic-info/unique_identifier/blob/master/uuid_msgs/msg/UniqueID.msg\nstring node_uuid\n\n# The time that the new schedule node was started. In the event that multiple\n# schedule nodes have been started, the one with the newest timestamp will be\n# considered the active node, and the rest of the nodes will shut down.\nbuiltin_interfaces/Time timestamp\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "node_uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleInconsistency": {
+      "description": "",
+      "raw": "\nuint64 participant\n\nScheduleInconsistencyRange[] ranges\n\nuint64 last_known_itinerary\n\nuint64 last_known_progress\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleInconsistencyRange[]",
+          "name": "ranges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "last_known_itinerary",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "last_known_progress",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleInconsistencyRange": {
+      "description": "",
+      "raw": "\nuint64 lower\n\nuint64 upper\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "lower",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "upper",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleParticipantPatch": {
+      "description": "",
+      "raw": "\nuint64 participant_id\n\nuint64 itinerary_version\n\nuint64[] erasures\n\nScheduleChangeDelay[] delays\n\nScheduleChangeAdd additions\n\nScheduleChangeProgress progress\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "participant_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "itinerary_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "erasures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleChangeDelay[]",
+          "name": "delays",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleChangeAdd",
+          "name": "additions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleChangeProgress",
+          "name": "progress",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SchedulePatch": {
+      "description": "The changes to the schedule, grouped into the different participants",
+      "raw": "\n# The changes to the schedule, grouped into the different participants\nScheduleParticipantPatch[] participants\n\n# TODO(MXG): The database will only ever report 1 cull per update. Consider\n# making this a single field instead of a dynamic array.\nScheduleChangeCull[] cull\n\nbool has_base_version\nuint64 base_version\nuint64 latest_version\n",
+      "fields": [
+        {
+          "type": "ScheduleParticipantPatch[]",
+          "name": "participants",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleChangeCull[]",
+          "name": "cull",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_base_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "base_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "latest_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleQueries": {
+      "description": "The version of the schedule node that provided this update",
+      "raw": "# The version of the schedule node that provided this update\nScheduleIdentity node_id\n\n# The list of known queries\nScheduleQuery[] queries\n\n# The list of IDs for those queries\nuint64[] query_ids\n",
+      "fields": [
+        {
+          "type": "ScheduleIdentity",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleQuery[]",
+          "name": "queries",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "query_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleQuery": {
+      "description": "",
+      "raw": "\nScheduleQuerySpacetime spacetime\n\nScheduleQueryParticipants participants\n",
+      "fields": [
+        {
+          "type": "ScheduleQuerySpacetime",
+          "name": "spacetime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleQueryParticipants",
+          "name": "participants",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleQueryParticipants": {
+      "description": "",
+      "raw": "\nuint16 ALL=1\nuint16 INCLUDE=2\nuint16 EXCLUDE=3\n\nuint16 type\n\nuint64[] ids\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "ALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "INCLUDE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "EXCLUDE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleQuerySpacetime": {
+      "description": "=====================",
+      "raw": "\nuint16 ALL=1\nuint16 REGIONS=2\nuint16 TIMESPAN=3\n\nuint16 type\n\n# =====================\n# ===== REGIONS =====\n# If REGIONS mode is chosen, this will contain the regions to query\nRegion[] regions\n\nShapeContext shape_context\n\n# =====================\n# ===== TIMESPAN ======\nTimespan timespan\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "ALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "REGIONS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TIMESPAN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Region[]",
+          "name": "regions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ShapeContext",
+          "name": "shape_context",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Timespan",
+          "name": "timespan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Shape": {
+      "description": "A 2D shape reference.",
+      "raw": "\n# A 2D shape reference.\n\nuint8 NONE=0\nuint8 BOX=1\nuint8 CIRCLE=2\n\n# TODO(MXG): Add support for the SimplePolygon class\n# uint8 SIMPLE_POLYGON=3\n\n# Choose between the BOX and CIRCLE types\nuint8 type\n\n# Specify the index of the shape. We support 256 different convex shapes per\n# trajectory. If more shapes are needed than that, then the trajectory must be\n# split into more trajectories.\nuint8 index\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOX",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CIRCLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ShapeContext": {
+      "description": "The convex shape descriptions that are available",
+      "raw": "\n# The convex shape descriptions that are available\nConvexShapeContext convex_shapes\n\n# TODO(MXG): Implement the SimplePolygon message\n# SimplePolygon[] simple_polygons\n",
+      "fields": [
+        {
+          "type": "ConvexShapeContext",
+          "name": "convex_shapes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Space": {
+      "description": "The shape of this space",
+      "raw": "\n# The shape of this space\nShape shape\n\n# The pose of this space\ngeometry_msgs/Pose2D pose\n",
+      "fields": [
+        {
+          "type": "Shape",
+          "name": "shape",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose2D",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Timespan": {
+      "description": "TODO(MXG): Find out if it's more efficient to use a bool+value pair, or to use",
+      "raw": "\nstring[] maps\n\n# TODO(MXG): Find out if it's more efficient to use a bool+value pair, or to use\n# a dynamic array of the value (which will only ever have 1 or 0 entries)\n\nbool has_lower_bound\nint64 lower_bound\n\nbool has_upper_bound\nint64 upper_bound\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "maps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_lower_bound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "lower_bound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_upper_bound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "upper_bound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrafficDependency": {
+      "description": "",
+      "raw": "\nuint64 dependent_checkpoint\n\nuint64 on_participant\nuint64 on_plan\nuint64 on_route\nuint64 on_checkpoint\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "dependent_checkpoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "on_participant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "on_plan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "on_route",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "on_checkpoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trajectory": {
+      "description": "A Trajectory is a container of Waypoints. The standard way to interpret the",
+      "raw": "\n# A Trajectory is a container of Waypoints. The standard way to interpret the\n# motion of a Trajectory is as a piecewise cubic spline connecting the\n# waypoints.\nTrajectoryWaypoint[] waypoints\n",
+      "fields": [
+        {
+          "type": "TrajectoryWaypoint[]",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajectoryWaypoint": {
+      "description": "The time when this Waypoint should be reached",
+      "raw": "\n# The time when this Waypoint should be reached\nint64 time\n\n# This is a 2D homogeneous position which mixes 2 translation coordinates (x, y)\n# with 1 rotation coordinate (yaw).\n#\n# The position of this Waypoint\nfloat64[3] position\n\n# This is a 2D homogeneous screw velocity with 2 translational components (x, y)\n# and 1 rotational component (yaw).\n#\n# The velocity that this vehicle should have when it reaches this Waypoint\nfloat64[3] velocity\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "RegisterParticipant": {
+      "description": "The description of the participant that is being registered",
+      "raw": "\n# The description of the participant that is being registered\nParticipantDescription description\n\n---\n\n# The ID given to the registered participant\nuint64 participant_id\n\n# The last itinerary version that this participant had\nuint64 last_itinerary_version\n\n# The last Route ID that this participant had\nuint64 last_plan_id\n\n# The next storage base for this participant to use\nuint64 next_storage_base\n\n# A string to notify about exceptional issues that came up while trying to\n# fulfill the request\nstring error\n",
+      "request_fields": [
+        {
+          "type": "ParticipantDescription",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint64",
+          "name": "participant_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "last_itinerary_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "last_plan_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "next_storage_base",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RegisterQuery": {
+      "description": "The query to be registered",
+      "raw": "\n# The query to be registered\nScheduleQuery query\n\n---\n\n# The identity of the schedule node that provided this registration\nScheduleIdentity node_id\n\n# The ID given to the registered query. Use this ID when making a query request.\nuint64 query_id\n\n# A string to notify exceptional issues that came up while trying to fulfill the\n# request.\nstring error\n",
+      "request_fields": [
+        {
+          "type": "ScheduleQuery",
+          "name": "query",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "ScheduleIdentity",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "query_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RequestChanges": {
+      "description": "Query ID to request a full participants list for",
+      "raw": "# Query ID to request a full participants list for\nuint64 query_id\n\n# Version to request changes from; ignored if full_update is true\nuint64 version\n\n# Request a full update rather than from a specific version\nbool full_update false\n\n---\n\n# Response to the request\nScheduleIdentity node_id\nuint8 REQUEST_ACCEPTED=1\nuint8 UNKNOWN_QUERY_ID=2\nuint8 ERROR=3\nuint8 result\nstring error\n",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "query_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "full_update",
+          "comment": "",
+          "default": "false",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "ScheduleIdentity",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_ACCEPTED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_QUERY_ID",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UnregisterParticipant": {
+      "description": "Confirmation that the participant was unregistered",
+      "raw": "\nuint64 participant_id\n\n---\n\n# Confirmation that the participant was unregistered\nbool confirmation\n\n\n# A description of any errors that were encountered, such as the participant_id\n# being unknown\nstring error\n",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "participant_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "confirmation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

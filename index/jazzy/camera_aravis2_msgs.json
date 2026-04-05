@@ -1,0 +1,80 @@
+{
+  "name": "camera_aravis2_msgs",
+  "version": "1.1.0",
+  "description": "Messages and service definitions for the camera_aravis2 package.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "camera_aravis2",
+    "url": "https://github.com/FraunhoferIOSB/camera_aravis2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "sensor_msgs",
+      "diagnostic_msgs"
+    ],
+    "depended_on_by": [
+      "camera_aravis2"
+    ]
+  },
+  "messages": {
+    "CameraDiagnostics": {
+      "description": "Camera diagnostics message",
+      "raw": "# Camera diagnostics message\n\nstd_msgs/Header header\n\n# Array of key-value pairs holding the diagnostic data\ndiagnostic_msgs/KeyValue[] data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/KeyValue[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "CalculateWhiteBalance": {
+      "description": "Service definition to calculate white balance on demand",
+      "raw": "# Service definition to calculate white balance on demand\n\n---\n\n# flag indicating if successful\nbool is_successful\n\n# balance ratios\ndiagnostic_msgs/KeyValue[] balance_ratios",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_successful",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/KeyValue[]",
+          "name": "balance_ratios",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

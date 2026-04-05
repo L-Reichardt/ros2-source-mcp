@@ -1,0 +1,195 @@
+{
+  "name": "std_srvs",
+  "version": "5.3.7",
+  "description": "A package containing some standard service definitions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "common_interfaces",
+    "url": "https://github.com/ros2/common_interfaces.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "ackermann_steering_controller",
+      "auto_apms_behavior_tree",
+      "auto_apms_ros2behavior",
+      "axis_camera",
+      "beluga_amcl",
+      "bicycle_steering_controller",
+      "camera_calibration",
+      "canopen_402_driver",
+      "canopen_base_driver",
+      "canopen_inventus_driver",
+      "canopen_proxy_driver",
+      "canopen_ros2_controllers",
+      "catch_ros2",
+      "common_interfaces",
+      "crazyflie",
+      "crazyflie_interfaces",
+      "cx_bringup",
+      "depthai_ros_driver",
+      "dynamixel_hardware_interface",
+      "ffw_robot_manager",
+      "ffw_swerve_drive_controller",
+      "find_object_2d",
+      "find_object_2d",
+      "flexbe_core",
+      "fuse_models",
+      "fuse_models",
+      "fuse_optimizers",
+      "fuse_optimizers",
+      "image_view",
+      "joy_teleop",
+      "leo_filters",
+      "leo_filters",
+      "leo_fw",
+      "libcaer_driver",
+      "magnetometer_pipeline",
+      "mapviz",
+      "mapviz_plugins",
+      "mavros",
+      "mavros_examples",
+      "mavros_extras",
+      "mbf_abstract_nav",
+      "mbf_simple_nav",
+      "mecanum_drive_controller",
+      "metavision_driver",
+      "microstrain_inertial_driver",
+      "nav2_amcl",
+      "nav2_behavior_tree",
+      "nav2_behavior_tree",
+      "nav2_bt_navigator",
+      "nav2_costmap_2d",
+      "nav2_lifecycle_manager",
+      "nav2_lifecycle_manager",
+      "nav2_util",
+      "navmap_ros",
+      "octomap_server",
+      "orbbec_camera",
+      "persist_parameter_server",
+      "phidgets_gyroscope",
+      "phidgets_spatial",
+      "phidgets_stepper",
+      "pid_controller",
+      "plansys2_executor",
+      "py_trees_ros",
+      "pymoveit2",
+      "qml6_ros2_plugin",
+      "qml_ros2_plugin",
+      "raspimouse",
+      "raspimouse",
+      "raspimouse_fake",
+      "raspimouse_ros2_examples",
+      "rclpy_message_converter",
+      "realsense2_camera",
+      "reductstore_agent",
+      "robot_localization",
+      "robotiq_controllers",
+      "rosbridge_library",
+      "rosbridge_server",
+      "rosidl_runtime_py",
+      "rplidar_ros",
+      "rplidar_ros",
+      "rt_usb_9axisimu_driver",
+      "rtabmap_msgs",
+      "rtabmap_slam",
+      "rtabmap_viz",
+      "rviz_common",
+      "sbg_driver",
+      "slam_toolbox",
+      "slam_toolbox",
+      "smach_ros",
+      "so_arm_100_hardware",
+      "soar_ros",
+      "spatio_temporal_voxel_layer",
+      "steering_controllers_library",
+      "swri_roscpp",
+      "synchros2",
+      "tricycle_controller",
+      "tricycle_steering_controller",
+      "trimble_driver",
+      "turtlebot3_node",
+      "turtlebot4_node",
+      "turtlesim",
+      "ur_controllers",
+      "ur_robot_driver",
+      "urg_node",
+      "usb_cam",
+      "webots_ros2_tests",
+      "wiimote"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "Empty": {
+      "description": "",
+      "raw": "---\n",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "SetBool": {
+      "description": "",
+      "raw": "bool data # e.g. for hardware enabling / disabling\n---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "e.g. for hardware enabling / disabling",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trigger": {
+      "description": "",
+      "raw": "---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

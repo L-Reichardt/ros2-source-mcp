@@ -1,0 +1,431 @@
+{
+  "name": "frame_editor",
+  "version": "2.0.2",
+  "description": "The frame_editor package",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ipa.fraunhofer.de/",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "frame_editor",
+    "url": "https://github.com/ipa320/rqt_frame_editor_plugin.git",
+    "branch": "jazzy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime",
+      "qt_gui_py_common"
+    ],
+    "build_and_runtime": [
+      "interactive_markers",
+      "rclpy",
+      "std_msgs",
+      "tf2_ros",
+      "tf_transformations",
+      "visualization_msgs",
+      "geometry_msgs",
+      "rqt_gui",
+      "rqt_gui_py"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "AlignFrame": {
+      "description": "modes ##",
+      "raw": "string name\nstring source_name\n\nint32 mode\n\n## modes ##\n##\nint32 MODE_NONE = 0\nint32 MODE_X = 1\nint32 MODE_Y = 2\nint32 MODE_Z = 4\nint32 MODE_A = 8\nint32 MODE_B = 16\nint32 MODE_C = 32\n\n## common binary combinations\nint32 MODE_POSITION = 7\nint32 MODE_ORIENTATION = 56\nint32 MODE_POSE = 63\n\n---\nint32 error_code",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "MODE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_X",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_Y",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_Z",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_A",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_B",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_C",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_POSITION",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_ORIENTATION",
+          "comment": "",
+          "default": "56",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_POSE",
+          "comment": "",
+          "default": "63",
+          "is_constant": true
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CopyFrame": {
+      "description": "",
+      "raw": "string name\nstring parent\nstring source_name\n---\nint32 error_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "parent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EditFrame": {
+      "description": "",
+      "raw": "string name\n---\nint32 error_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetFrame": {
+      "description": "",
+      "raw": "string name\n---\nint32 error_code\nstring name\nstring parent\ngeometry_msgs/Pose pose\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "parent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetFrameNames": {
+      "description": "",
+      "raw": "---\nint32 error_code\nstring[] names\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadYaml": {
+      "description": "",
+      "raw": "string filename\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RemoveFrame": {
+      "description": "",
+      "raw": "string name\n---\nint32 error_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveYaml": {
+      "description": "",
+      "raw": "string filename\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetFrame": {
+      "description": "",
+      "raw": "string name\nstring parent\ngeometry_msgs/Pose pose\n---\nint32 error_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "parent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetParentFrame": {
+      "description": "",
+      "raw": "string name\nstring parent\nbool keep_absolute\n---\nint32 error_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "parent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "keep_absolute",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

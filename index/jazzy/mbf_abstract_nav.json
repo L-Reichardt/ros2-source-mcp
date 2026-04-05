@@ -1,0 +1,46 @@
+{
+  "name": "mbf_abstract_nav",
+  "version": "1.0.2",
+  "description": "The mbf_abstract_nav package contains the abstract navigation server implementation of Move Base Flex (MBF). The abstract navigation server is not bound to any map representation. It provides the actions for planning, controlling and recovering. MBF loads all defined plugins at the program start. Therefor, it loads all plugins which are defined in the lists *planners*, *controllers* and *recovery_behaviors*. Each list holds a pair of a *name* and a *type*. The *type* defines which kind of plugin to load. The *name* defines under which name the plugin should be callable by the actions.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://github.com/naturerobots/move_base_flex",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "move_base_flex",
+    "url": "https://github.com/naturerobots/move_base_flex.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_cmake_gmock"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "mbf_abstract_core",
+      "mbf_msgs",
+      "mbf_utility",
+      "nav_msgs",
+      "rclcpp_action",
+      "rclcpp",
+      "std_msgs",
+      "std_srvs"
+    ],
+    "depended_on_by": [
+      "mbf_simple_nav",
+      "move_base_flex"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

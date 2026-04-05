@@ -1,0 +1,102 @@
+{
+  "name": "usb_cam",
+  "version": "0.8.1",
+  "description": "A ROS Driver for V4L USB Cameras",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/usb_cam",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/usb_cam/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/usb_cam",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "usb_cam",
+    "url": "https://github.com/ros-drivers/usb_cam.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "roscpp"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_components",
+      "cv_bridge",
+      "std_msgs",
+      "std_srvs",
+      "sensor_msgs",
+      "camera_info_manager",
+      "builtin_interfaces",
+      "image_transport",
+      "image_transport_plugins",
+      "v4l-utils",
+      "ffmpeg"
+    ],
+    "depended_on_by": [
+      "crane_plus_examples",
+      "raspimouse_ros2_examples"
+    ]
+  },
+  "messages": {
+    "Format": {
+      "description": "uint32 type",
+      "raw": "# uint32 type\nstring pixel_format\nuint32 width\nuint32 height\nfloat32 fps\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "pixel_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

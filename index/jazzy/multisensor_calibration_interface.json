@@ -1,0 +1,494 @@
+{
+  "name": "multisensor_calibration_interface",
+  "version": "2.0.4",
+  "description": "Messages and service definitions for the multisensor_calibration package.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "multisensor_calibration",
+    "url": "https://github.com/FraunhoferIOSB/multisensor_calibration.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "sensor_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "multisensor_calibration"
+    ]
+  },
+  "messages": {
+    "CalibrationResult": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n# Flag indicating if calibration was successful\nbool is_successful\n\n# Frame id of source sensor.\nstring src_frame_id\n\n# Frame id of reference sensor.\nstring ref_frame_id\n\n# Base frame id. If empty, the pose is given between the source and the ref frame id\nstring base_frame_id\n\n# Calibrated sensor extrinsics, given as LOCAL_2_REF. This means that the given translation and \n# rotation of the source frame ID is given with respect to the reference frame ID.\ngeometry_msgs/Transform sensor_extrinsics",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "is_successful",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "src_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ref_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "base_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "sensor_extrinsics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MarkerObservations": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n# IDs of markers for which to add the reference points\nuint32[] marker_ids\n\n# Position of the top-left corner. In case of 2D observations (i.e. image points) only \n# x and y coordinates are used.\ngeometry_msgs/Point[] marker_top_left_point",
+      "fields": [
+        {
+          "type": "uint32[]",
+          "name": "marker_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "marker_top_left_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StampedFloat32MultiArray": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\nstd_msgs/Header header\nstd_msgs/Float32MultiArray array",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Float32MultiArray",
+          "name": "array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TargetPose": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\nstd_msgs/Header header\n\n# Flag indicating if pose is an actual detection or just a preview\nbool is_detection\n\n# Pose of the calibration target in REF_2_LOCAL format. Meaning a point in the reference coordinate\n# system is transformed with this pose into the local coordinate system of the calibration target.\ngeometry_msgs/Pose target_pose",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_detection",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "target_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddMarkerObservations": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n# Marker observation to add\nMarkerObservations observation\n---\n# Flag, if is accepted or not\nbool is_accepted\n\n# Response message\nstring msg",
+      "request_fields": [
+        {
+          "type": "MarkerObservations",
+          "name": "observation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AddRegionMarker": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n# Frame ID of sensor to which the region belongs.\nstring sensor_frame_id\n\n# Position of the marker as 3D point\ngeometry_msgs/Point point\n---\n# Flag, if is accepted or not\nbool is_accepted\n\n# Response message\nstring msg",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "sensor_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CalibrationMetaData": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n---\n# integer enumeration indicating the type of calibration\nint32 calib_type\n\n# path to robot workspace\nstring robot_ws_path\n\n# path to calibration workspace\nstring calib_ws_path\n\n# path to config file of calibration target\nstring calib_target_file_path\n\n# Name of source sensor\nstring src_sensor_name\n\n# Topic name of data source sensor\nstring src_topic_name\n\n# Frame ID of data source sensor\nstring src_frame_id\n\n# Name of reference sensor\nstring ref_sensor_name\n\n# Topic name of data reference sensor\nstring ref_topic_name\n\n# Frame ID of data reference sensor\nstring ref_frame_id\n\n# Frame ID of base frame with respect to which the calibration is to be done\nstring base_frame_id\n\n# Flag indicating if list is complete and, thus, if all meta data is available\nbool is_complete",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "calib_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_ws_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "calib_ws_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "calib_target_file_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "src_sensor_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "src_topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "src_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ref_sensor_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ref_topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ref_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "base_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_complete",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraIntrinsics": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n---\n# Intrinsics\nsensor_msgs/CameraInfo intrinsics\n\n# String indicating the state of the input images\nstring image_state\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "intrinsics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "image_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CaptureCalibTarget": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n---\n# Flag, if is accepted or not\nbool is_accepted\n\n# Response message\nstring msg",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DataProcessorState": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n---\n# Flag indicating if data processor is initialized\nbool is_initialized\n\n# Frame id of data it processes\nstring frame_id\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_initialized",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FinalizeCalibration": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n---\n# Flag, if is accepted or not\nbool is_accepted\n\n# Response message\nstring msg",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImportMarkerObservations": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n# Marker observations to add\nMarkerObservations[] observation_list\n---\n# Flag, if is accepted or not\nbool is_accepted\n\n# Response message\nstring msg",
+      "request_fields": [
+        {
+          "type": "MarkerObservations[]",
+          "name": "observation_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RemoveLastObservation": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n---\n# Flag, if is accepted or not\nbool is_accepted\n\n# Response message\nstring msg",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ResetCalibration": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\n---\n# Flag, if is accepted or not\nbool is_accepted\n\n# Response message\nstring msg",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorExtrinsics": {
+      "description": "Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,",
+      "raw": "########################################################################\n#\n#   Copyright (c) 2022 - 2024 Fraunhofer Institute of Optronics,\n#   System Technologies and Image Exploitation IOSB\n#\n########################################################################\n\nuint8 SENSOR_2_SENSOR = 0\nuint8 SENSOR_2_BASE_FRAME = 1\n\n# type of extrinsic to return\n# SENSOR_2_SENSOR: extrinsics between source and reference sensor\n# SENSOR_2_BASE_FRAME: extrinsics between source sensor and base frame. If latter is not available,\n# the SENSOR_2_SENSOR extrinsics is returned.\nuint8 extrinsic_type\n---\n# Extrinsics\ngeometry_msgs/Pose extrinsics\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "SENSOR_2_SENSOR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SENSOR_2_BASE_FRAME",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "extrinsic_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "extrinsics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

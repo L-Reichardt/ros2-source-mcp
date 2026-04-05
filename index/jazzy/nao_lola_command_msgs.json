@@ -1,0 +1,763 @@
+{
+  "name": "nao_lola_command_msgs",
+  "version": "1.3.0",
+  "description": "Package defining command msgs to be sent to NAO robot.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "nao_lola",
+    "url": "https://github.com/ros-sports/nao_lola.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "nao_lola_client",
+      "rcss3d_nao"
+    ]
+  },
+  "messages": {
+    "ChestLed": {
+      "description": "Expect ranges for R, G and B are 0.0 - 1.0.",
+      "raw": "# Expect ranges for R, G and B are 0.0 - 1.0.\n# The alpha value (A) is ignored.\n\nstd_msgs/ColorRGBA color\n",
+      "fields": [
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HeadLeds": {
+      "description": "For locations, refer to https://developer.softbankrobotics.com/nao6/nao-documentation/nao-developer-guide/technical-o...",
+      "raw": "# For locations, refer to https://developer.softbankrobotics.com/nao6/nao-documentation/nao-developer-guide/technical-overview/leds#-head-tactile-sensor-led-locations--sbr-fake-anchor\n\nint32 B0=0\nint32 B1=1\nint32 B2=2\nint32 B3=3\nint32 B4=4\nint32 B5=5\nint32 B6=6\nint32 B7=7\nint32 B8=8\nint32 B9=9\nint32 B10=10\nint32 B11=11\nint32 NUM_LEDS=12\n\nfloat32[12] intensities  # 0.0 - 1.0",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "B0",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B8",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B9",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B10",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "B11",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "NUM_LEDS",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "float32[12]",
+          "name": "intensities",
+          "comment": "0.0 - 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointIndexes": {
+      "description": "",
+      "raw": "uint8 HEADYAW=0\nuint8 HEADPITCH=1\nuint8 LSHOULDERPITCH=2\nuint8 LSHOULDERROLL=3\nuint8 LELBOWYAW=4\nuint8 LELBOWROLL=5\nuint8 LWRISTYAW=6\nuint8 LHIPYAWPITCH=7\nuint8 LHIPROLL=8\nuint8 LHIPPITCH=9\nuint8 LKNEEPITCH=10\nuint8 LANKLEPITCH=11\nuint8 LANKLEROLL=12\nuint8 RHIPROLL=13\nuint8 RHIPPITCH=14\nuint8 RKNEEPITCH=15\nuint8 RANKLEPITCH=16\nuint8 RANKLEROLL=17\nuint8 RSHOULDERPITCH=18\nuint8 RSHOULDERROLL=19\nuint8 RELBOWYAW=20\nuint8 RELBOWROLL=21\nuint8 RWRISTYAW=22\nuint8 LHAND=23\nuint8 RHAND=24\nuint8 NUMJOINTS=25",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "HEADYAW",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEADPITCH",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LSHOULDERPITCH",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LSHOULDERROLL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LELBOWYAW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LELBOWROLL",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LWRISTYAW",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LHIPYAWPITCH",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LHIPROLL",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LHIPPITCH",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LKNEEPITCH",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANKLEPITCH",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANKLEROLL",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RHIPROLL",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RHIPPITCH",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RKNEEPITCH",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RANKLEPITCH",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RANKLEROLL",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RSHOULDERPITCH",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RSHOULDERROLL",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELBOWYAW",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELBOWROLL",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RWRISTYAW",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LHAND",
+          "comment": "",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RHAND",
+          "comment": "",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NUMJOINTS",
+          "comment": "",
+          "default": "25",
+          "is_constant": true
+        }
+      ]
+    },
+    "JointPositions": {
+      "description": "Message to specify positions for the NAO's motor joints.",
+      "raw": "# Message to specify positions for the NAO's motor joints.\n#\n# Each joint is uniquely identified by its index (See JointIndexes.msg)\n#\n# The two arrays in this message should have the same size, where the first item\n# in indexes, corresponds to the first item in positions, etc.\n\nuint8[] indexes  # See JointIndexes.msg (eg. JointIndexes::HEADYAW)\nfloat32[] positions # radians",
+      "fields": [
+        {
+          "type": "uint8[]",
+          "name": "indexes",
+          "comment": "See JointIndexes.msg (eg. JointIndexes::HEADYAW)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "positions",
+          "comment": "radians",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointStiffnesses": {
+      "description": "Message to specify stiffnesses for the NAO's motor joints.",
+      "raw": "# Message to specify stiffnesses for the NAO's motor joints.\n#\n# Each joint is uniquely identified by its index (See JointIndexes.msg)\n#\n# The two arrays in this message should have the same size, where the first item\n# in indexes, corresponds to the first item in stiffnesses, etc.\n\nuint8[] indexes  # See JointIndexes.msg (eg. JointIndexes::HEADYAW)\nfloat32[] stiffnesses  # 0.0 - 1.0",
+      "fields": [
+        {
+          "type": "uint8[]",
+          "name": "indexes",
+          "comment": "See JointIndexes.msg (eg. JointIndexes::HEADYAW)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "stiffnesses",
+          "comment": "0.0 - 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LeftEarLeds": {
+      "description": "For locations, refer to",
+      "raw": "# For locations, refer to \n# https://developer.softbankrobotics.com/nao6/nao-documentation/nao-developer-guide/technical-overview/leds#-left-ear--sbr-fake-anchor\n\nint32 L0=0\nint32 L1=1\nint32 L2=2\nint32 L3=3\nint32 L4=4\nint32 L5=5\nint32 L6=6\nint32 L7=7\nint32 L8=8\nint32 L9=9\nint32 NUM_LEDS=10\n\nfloat32[10] intensities  # 0.0 - 1.0",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "L0",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L8",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L9",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "NUM_LEDS",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "float32[10]",
+          "name": "intensities",
+          "comment": "0.0 - 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LeftEyeLeds": {
+      "description": "Message identifying colors for each RGB LED in the NAO's eyes.",
+      "raw": "# Message identifying colors for each RGB LED in the NAO's eyes.\n# Expect ranges for R, G and B are 0.0 - 1.0.\n# The alpha value (A) is ignored.\n\n# LED locations and their ids are shown below\n#                          _                         #\n#      /                  (_)                 \\      #\n#     /                                        \\     #\n#    /                               L0         \\    #\n#   |         ____              L1  ____  L7     |   #\n#   |        /    \\                /    \\        |   #\n#   |       |  **  |          L2  |  **  |  L6   |   #\n#   |        \\____/                \\____/        |   #\n#   |                           L3        L5     |   #\n#    \\                               L4         /    #\n#     \\                                        /     #\n#      \\                  ___                 /      #\n#       \\__               \\_/             __/        #\n#          \\__                         ___/          #\n#             \\_______________________/              #\n\n# For more details, refer to http://doc.aldebaran.com/2-1/family/robots/leds_robot.html#nao-v5-v4-and-v3-3\n\nint32 L0=0\nint32 L1=1\nint32 L2=2\nint32 L3=3\nint32 L4=4\nint32 L5=5\nint32 L6=6\nint32 L7=7\nint32 NUM_LEDS=8\n\nstd_msgs/ColorRGBA[8] colors",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "L0",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "L7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "NUM_LEDS",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/ColorRGBA[8]",
+          "name": "colors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LeftFootLed": {
+      "description": "Expect ranges for R, G and B are 0.0 - 1.0.",
+      "raw": "# Expect ranges for R, G and B are 0.0 - 1.0.\n# The alpha value (A) is ignored.\n\nstd_msgs/ColorRGBA color ",
+      "fields": [
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RightEarLeds": {
+      "description": "For locations, refer to",
+      "raw": "# For locations, refer to \n# https://developer.softbankrobotics.com/nao6/nao-documentation/nao-developer-guide/technical-overview/leds#-right-ear--sbr-fake-anchor\n\nint32 R0=0\nint32 R1=1\nint32 R2=2\nint32 R3=3\nint32 R4=4\nint32 R5=5\nint32 R6=6\nint32 R7=7\nint32 R8=8\nint32 R9=9\nint32 NUM_LEDS=10\n\nfloat32[10] intensities  # 0.0 - 1.0",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "R0",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R8",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R9",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "NUM_LEDS",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "float32[10]",
+          "name": "intensities",
+          "comment": "0.0 - 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RightEyeLeds": {
+      "description": "Message identifying colors for each RGB LED in the NAO's right eye.",
+      "raw": "# Message identifying colors for each RGB LED in the NAO's right eye.\n# Expect ranges for R, G and B are 0.0 - 1.0.\n# The alpha value (A) is ignored.\n\n# LED locations and their ids are shown below\n#                          _                         #\n#      /                  (_)                 \\      #\n#     /                                        \\     #\n#    /         R0                               \\    #\n#   |     R7  ____  R1              ____         |   #\n#   |        /    \\                /    \\        |   #\n#   |   R6  |  **  |  R2          |  **  |       |   #\n#   |        \\____/                \\____/        |   #\n#   |     R5        R3                           |   #\n#    \\         R4                               /    #\n#     \\                                        /     #\n#      \\                  ___                 /      #\n#       \\__               \\_/             __/        #\n#          \\__                         ___/          #\n#             \\_______________________/              #\n\n# For more details, refer to http://doc.aldebaran.com/2-1/family/robots/leds_robot.html#nao-v5-v4-and-v3-3\n\nint32 R0=0\nint32 R1=1\nint32 R2=2\nint32 R3=3\nint32 R4=4\nint32 R5=5\nint32 R6=6\nint32 R7=7\nint32 NUM_LEDS=8\n\nstd_msgs/ColorRGBA[8] colors",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "R0",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "R7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "NUM_LEDS",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/ColorRGBA[8]",
+          "name": "colors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RightFootLed": {
+      "description": "Expect ranges for R, G and B are 0.0 - 1.0.",
+      "raw": "# Expect ranges for R, G and B are 0.0 - 1.0.\n# The alpha value (A) is ignored.\n\nstd_msgs/ColorRGBA color",
+      "fields": [
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SonarUsage": {
+      "description": "This is used in commanding the robot whether or not to use the left and right sonars.",
+      "raw": "# This is used in commanding the robot whether or not to use the left and right sonars.\nbool left  # Set to true, to use left sonar\nbool right  # Set to true, to use right sonar",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "left",
+          "comment": "Set to true, to use left sonar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right",
+          "comment": "Set to true, to use right sonar",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

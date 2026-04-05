@@ -1,0 +1,41 @@
+{
+  "name": "cloudini_lib",
+  "version": "1.0.1",
+  "description": "Main library of Cloudini, the pointcloud compression library",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "cloudini",
+    "url": "https://github.com/facontidavide/cloudini.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "libpcl-all-dev",
+      "libzstd-dev",
+      "lz4",
+      "mcap_vendor"
+    ],
+    "build_export": [
+      "libpcl-all-dev"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "libpcl-common",
+      "libpcl-io"
+    ],
+    "test": [
+      "ament_cmake_gtest"
+    ],
+    "depended_on_by": [
+      "cloudini_ros"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,64 @@
+{
+  "name": "forward_command_controller",
+  "version": "4.37.0",
+  "description": "Generic controller for forwarding commands.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "ros2_control_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "hardware_interface_testing",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "backward_ros",
+      "controller_interface",
+      "generate_parameter_library",
+      "hardware_interface",
+      "pluginlib",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "realtime_tools",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "canopen_tests",
+      "effort_controllers",
+      "joint_state_topic_hardware_interface",
+      "position_controllers",
+      "ros2_controllers",
+      "synapticon_ros2_control",
+      "velocity_controllers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

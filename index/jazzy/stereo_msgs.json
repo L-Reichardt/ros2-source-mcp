@@ -1,0 +1,117 @@
+{
+  "name": "stereo_msgs",
+  "version": "5.3.7",
+  "description": "A package containing some stereo camera related message definitions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "common_interfaces",
+    "url": "https://github.com/ros2/common_interfaces.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "common_interfaces",
+      "depth_image_proc",
+      "depthai_bridge",
+      "depthai_examples",
+      "image_view",
+      "mapviz_plugins",
+      "mrpt_apps",
+      "mrpt_reactivenav2d",
+      "mrpt_sensor_bumblebee_stereo",
+      "mrpt_sensor_gnss_nmea",
+      "mrpt_sensor_gnss_novatel",
+      "mrpt_sensor_imu_taobotics",
+      "mrpt_sensorlib",
+      "mvsim",
+      "pose_cov_ops",
+      "rc_genicam_driver",
+      "rosbridge_library",
+      "rtabmap_util",
+      "stereo_image_proc"
+    ]
+  },
+  "messages": {
+    "DisparityImage": {
+      "description": "Separate header for compatibility with current TimeSynchronizer.",
+      "raw": "# Separate header for compatibility with current TimeSynchronizer.\n# Likely to be removed in a later release, use image.header instead.\nstd_msgs/Header header\n\n# Floating point disparity image. The disparities are pre-adjusted for any\n# x-offset between the principal points of the two cameras (in the case\n# that they are verged). That is: d = x_l - x_r - (cx_l - cx_r)\nsensor_msgs/Image image\n\n# Stereo geometry. For disparity d, the depth from the camera is Z = fT/d.\nfloat32 f # Focal length, pixels\nfloat32 t # Baseline, world units\n\n# Subwindow of (potentially) valid disparity values.\nsensor_msgs/RegionOfInterest valid_window\n\n# The range of disparities searched.\n# In the disparity image, any disparity less than min_disparity is invalid.\n# The disparity search range defines the horopter, or 3D volume that the\n# stereo algorithm can \"see\". Points with Z outside of:\n#     Z_min = fT / max_disparity\n#     Z_max = fT / min_disparity\n# could not be found.\nfloat32 min_disparity\nfloat32 max_disparity\n\n# Smallest allowed disparity increment. The smallest achievable depth range\n# resolution is delta_Z = (Z^2/fT)*delta_d.\nfloat32 delta_d\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "f",
+          "comment": "Focal length, pixels",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "t",
+          "comment": "Baseline, world units",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/RegionOfInterest",
+          "name": "valid_window",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_disparity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_disparity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "delta_d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

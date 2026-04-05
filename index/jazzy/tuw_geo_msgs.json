@@ -1,0 +1,150 @@
+{
+  "name": "tuw_geo_msgs",
+  "version": "0.2.6",
+  "description": "The tuw_geo_msgs package",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "geographic_msgs"
+    ],
+    "depended_on_by": [
+      "tuw_object_msgs"
+    ]
+  },
+  "messages": {
+    "GeoJSON": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nstring type                     # \"FeatureCollection\"\nGeoJSONFeature[] features       # Features in the collection\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "\"FeatureCollection\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoJSONFeature[]",
+          "name": "features",
+          "comment": "Features in the collection",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoJSONFeature": {
+      "description": "",
+      "raw": "string type                     # \"Feature\"\nGeoJSONGeometry geometry\n\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "\"Feature\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoJSONGeometry",
+          "name": "geometry",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoJSONGeometry": {
+      "description": "",
+      "raw": "string type                     # \"Point\", \"LineString\"\ngeographic_msgs/GeoPoint[] coordinates\nGeoJSONProperties properties",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "\"Point\", \"LineString\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPoint[]",
+          "name": "coordinates",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoJSONProperties",
+          "name": "properties",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoJSONProperties": {
+      "description": "",
+      "raw": "uint32 id\nuint32 type\nfloat64[] enflation_radius\nfloat64[] bondary_radius\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "enflation_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "bondary_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

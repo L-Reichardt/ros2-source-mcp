@@ -1,0 +1,152 @@
+{
+  "name": "autoware_localization_msgs",
+  "version": "1.11.0",
+  "description": "Autoware localization messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "autoware_common_msgs",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_msgs"
+    ]
+  },
+  "messages": {
+    "KinematicState": {
+      "description": "KinematicState represents an estimate of a position, velocity and acceleration in free space.",
+      "raw": "# KinematicState represents an estimate of a position, velocity and acceleration in free space.\n# The pose_with_covariance is in the coordinate frame given by header.frame_id\n# The twist_with_covariance and accel_with_covariance are in the coordinate frame given by the child_frame_id\n\n# Includes the frame id of the pose parent.\nstd_msgs/Header header\n\n# Frame id the pose points to.\nstring child_frame_id\n\n# Estimated pose that is relative to the header.frame_id.\ngeometry_msgs/PoseWithCovariance pose_with_covariance\n\n# Estimated linear and angular velocity relative to child_frame_id.\ngeometry_msgs/TwistWithCovariance twist_with_covariance\n\n# Estimated linear and angular acceleration relative to child_frame_id.\ngeometry_msgs/AccelWithCovariance accel_with_covariance\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "child_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "twist_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/AccelWithCovariance",
+          "name": "accel_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "InitializeLocalization": {
+      "description": "constants for specifying initialization method",
+      "raw": "# constants for specifying initialization method\nuint8 AUTO = 0\nuint8 DIRECT = 1\n\n# input pose for initialization\ngeometry_msgs/PoseWithCovarianceStamped[<=1] pose_with_covariance\n\n# Variable to set initialization method\n# AUTO: The initial position is automatically estimated with localization algorithm.\n#       The input pose will be used as an initial guess if provided.\n# DIRECT: The initial position is set directly by the input pose without going through localization algorithm.\nuint8 method\n---\n# ERROR CODES used in response status in case of failure\nuint16 ERROR_UNSAFE = 1\nuint16 ERROR_GNSS_SUPPORT = 2\nuint16 ERROR_GNSS = 3\nuint16 ERROR_ESTIMATION = 4\n\nautoware_common_msgs/ResponseStatus status\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "AUTO",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIRECT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped[<=1]",
+          "name": "pose_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "method",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint16",
+          "name": "ERROR_UNSAFE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ERROR_GNSS_SUPPORT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ERROR_GNSS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ERROR_ESTIMATION",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "autoware_common_msgs/ResponseStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

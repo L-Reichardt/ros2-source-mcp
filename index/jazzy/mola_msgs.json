@@ -1,0 +1,177 @@
+{
+  "name": "mola_msgs",
+  "version": "2.5.0",
+  "description": "ROS message, services, and actions used in other MOLA packages.",
+  "license": "GPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/MOLAorg/mola/tree/develop/mola_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mola",
+    "url": "https://github.com/MOLAorg/mola.git",
+    "branch": "develop"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "mrpt_msgs",
+      "nav_msgs"
+    ],
+    "depended_on_by": [
+      "mola_bridge_ros2"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "MapLoad": {
+      "description": "This service requests loading a map from a given map file(s).",
+      "raw": "# This service requests loading a map from a given map file(s).\n\n# Request.\n# File relative or absolute path. Do not add any file extension, since maps\n# may be loaded/saved to several files depending on implementation.\nstring map_path\n---\n# Result. False if there was no MOLA map module accepting this request, or\n# there was an error loading the map.\nbool success\n# In case of no success, here is a human-readable error reason.\nstring error_message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "map_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MapSave": {
+      "description": "This service requests saving the current map to a given map file(s).",
+      "raw": "# This service requests saving the current map to a given map file(s).\n\n# Request.\n# File relative or absolute path. Do not add any file extension, since maps\n# may be loaded/saved to several files depending on implementation.\nstring map_path\n---\n# Result. False if there was no MOLA map module accepting this request, or\n# there was an error saving the map.\nbool success\n# In case of no success, here is a human-readable error reason.\nstring error_message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "map_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MolaRuntimeParamGet": {
+      "description": "This service requests all known runtime configurable parameters of running mola::ExecutableBase modules.",
+      "raw": "# This service requests all known runtime configurable parameters of running mola::ExecutableBase modules.\n\n# Request.\n# No data needed.\n---\n# Result: a multiline string in YAML format with all parameters, in this format:\n# ---\n# module1:\n#   var: value\n# module2:\n#   var: value\n# ...\n# ---\nstring parameters\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MolaRuntimeParamSet": {
+      "description": "This service requests changing one or more runtime configurable parameters of running mola::ExecutableBase modules.",
+      "raw": "# This service requests changing one or more runtime configurable parameters of running mola::ExecutableBase modules.\n\n# Request: a multiline string in YAML format with all parameters that need to be changed, in this format:\n# ---\n# module1:\n#   var: value\n# module2:\n#   var: value\n# ...\n# ---\nstring parameters\n---\n# Result. False if there was some problem changing the parameters.\nbool success\n# In case of no success, here is a human-readable error reason.\nstring error_message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RelocalizeFromStateEstimator": {
+      "description": "This service requests re-localization using the output of the MOLA system",
+      "raw": "# This service requests re-localization using the output of the MOLA system\n# state estimator, for example, from GNSS, odometry, and IMU data fusion.\n\n# Request.\n# No data needed.\n---\n# Result. False if there was no MOLA localization module\n# accepting this request.\nbool accepted\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RelocalizeNearPose": {
+      "description": "This service requests re-localization around a given pose.",
+      "raw": "# This service requests re-localization around a given pose.\n\n# Request\ngeometry_msgs/PoseWithCovarianceStamped pose\n---\n# Result. False if there was no MOLA localization module\n# accepting this request.\nbool accepted\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

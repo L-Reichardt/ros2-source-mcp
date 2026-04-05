@@ -1,0 +1,85 @@
+{
+  "name": "numpy_ndarray_msgs",
+  "version": "0.2.0",
+  "description": "A ROS2 package for transmitting NumPy ndarrays between ROS2 nodes.",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/Geson-anko/numpy_ndarray_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/Geson-anko/numpy_ndarray_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "numpy_ndarray_msgs",
+    "url": "https://github.com/Geson-anko/numpy_ndarray_msgs.git",
+    "branch": "stable"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "NDArray": {
+      "description": "NDArray message type for pure numerical data",
+      "raw": "# NDArray message type for pure numerical data\nstd_msgs/Header header # header information\nstring dtype          # numpy dtype name (e.g., 'float32', 'float64', 'int64')\nuint32[] shape        # ndarray dimensions\nuint32 data_size      # total number of elements\nuint8[] data          # serialized ndarray data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "header information",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "dtype",
+          "comment": "numpy dtype name (e.g., 'float32', 'float64', 'int64')",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "shape",
+          "comment": "ndarray dimensions",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "data_size",
+          "comment": "total number of elements",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "serialized ndarray data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

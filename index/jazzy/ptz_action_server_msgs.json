@@ -1,0 +1,272 @@
+{
+  "name": "ptz_action_server_msgs",
+  "version": "2.0.3",
+  "description": "Messages for controlling Pan-Tilt and Pan-Tilt-Zoom devices",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ptz_action_server",
+    "url": "https://github.com/clearpathrobotics/ptz_action_server.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "axis_camera",
+      "clearpath_generator_gz"
+    ]
+  },
+  "messages": {
+    "Ptz": {
+      "description": "",
+      "raw": "float32 pan\nfloat32 tilt\nfloat32 zoom\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "pan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tilt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "zoom",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PtzState": {
+      "description": "The device is not currently moving",
+      "raw": "# The device is not currently moving\nint8 MODE_IDLE=0\n\n# The device is moving under position control\nint8 MODE_POSITION=1\n\n# The device is moving under velocity control\nint8 MODE_VELOCITY=2\n\n# The device's current operating mode\nint8 mode\n\n# The current position or velocity of a PTZ camera or PTU\nfloat32 pan\nfloat32 tilt\nfloat32 zoom\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "MODE_IDLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "MODE_POSITION",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "MODE_VELOCITY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tilt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "zoom",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {
+    "PtzFrame": {
+      "description": "A frame ID we want to point the camera at",
+      "raw": "# A frame ID we want to point the camera at\nstring frame_id\n\n# The zoom level we want\nfloat32 zoom\n---\nbool success\nstring message\n---\nfloat32 pan_remaining\nfloat32 tilt_remaining\nfloat32 zoom_remaining\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "zoom",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "pan_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tilt_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "zoom_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PtzMove": {
+      "description": "",
+      "raw": "Ptz ptz\n---\nbool success\nstring message\n---\nPtz ptz_remaining\n",
+      "goal_fields": [
+        {
+          "type": "Ptz",
+          "name": "ptz",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "Ptz",
+          "name": "ptz_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PtzRelTo": {
+      "description": "A frame ID that we calculate the pan & tilt relative to",
+      "raw": "Ptz ptz\n\n# A frame ID that we calculate the pan & tilt relative to\n# If blank the link ID is ignored and we treat this request as a normal PtzAction\nstring frame_id\n---\nbool success\nstring message\n---\nfloat32 pan_remaining\nfloat32 tilt_remaining\nfloat32 zoom_remaining\n",
+      "goal_fields": [
+        {
+          "type": "Ptz",
+          "name": "ptz",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "pan_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tilt_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "zoom_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

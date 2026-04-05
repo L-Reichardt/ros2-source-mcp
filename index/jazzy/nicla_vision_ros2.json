@@ -1,0 +1,129 @@
+{
+  "name": "nicla_vision_ros2",
+  "version": "1.1.1",
+  "description": "Integration of the Arduino Nicla Vision board in the ROS2 world. \n    Sensors data from the Nicla Vision is collected and trasmited to the relevant ROS2 topics",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/nicla_vision_ros",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ADVRHumanoids/nicla_vision_ros2/",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ADVRHumanoids/nicla_vision_ros2/issues/",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "nicla_vision_ros2",
+    "url": "https://github.com/ADVRHumanoids/nicla_vision_ros2.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "xacro",
+      "ros_gz"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "rclpy",
+      "sensor_msgs",
+      "cv_bridge",
+      "image_transport_plugins"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "AudioData": {
+      "description": "",
+      "raw": "uint8[] data\n",
+      "fields": [
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AudioDataStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nnicla_vision_ros2/AudioData audio\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nicla_vision_ros2/AudioData",
+          "name": "audio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AudioInfo": {
+      "description": "This message contains the audio meta data",
+      "raw": "# This message contains the audio meta data\n\n# Number of channels\nuint8 channels\n# Sampling rate [Hz]\nuint32 sample_rate\n# Audio format (e.g. S16LE)\nstring sample_format\n# Amount of audio data per second [bits/s]\nuint32 bitrate\n# Audio coding format (e.g. WAVE, MP3)\nstring coding_format\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "channels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sample_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sample_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "bitrate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "coding_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

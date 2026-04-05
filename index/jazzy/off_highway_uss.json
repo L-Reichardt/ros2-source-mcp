@@ -1,0 +1,49 @@
+{
+  "name": "off_highway_uss",
+  "version": "1.2.0",
+  "description": "The off_highway_uss package",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "off_highway_sensor_drivers",
+    "url": "https://github.com/bosch-engineering/off_highway_sensor_drivers.git",
+    "branch": "jazzy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "libpcl-all-dev",
+      "pcl_conversions"
+    ],
+    "build_export": [
+      "libpcl-all-dev"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "libpcl-common"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_ros",
+      "pcl_ros"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_components",
+      "sensor_msgs",
+      "can_msgs",
+      "off_highway_can",
+      "off_highway_uss_msgs"
+    ],
+    "depended_on_by": [
+      "off_highway_sensor_drivers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

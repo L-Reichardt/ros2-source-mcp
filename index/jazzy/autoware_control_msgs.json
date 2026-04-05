@@ -1,0 +1,201 @@
+{
+  "name": "autoware_control_msgs",
+  "version": "1.11.0",
+  "description": "Autoware control messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "autoware_msgs"
+    ]
+  },
+  "messages": {
+    "Control": {
+      "description": "Control message with lateral and longitudinal components",
+      "raw": "# Control message with lateral and longitudinal components\n\n# Time this message was created\nbuiltin_interfaces/Time stamp\n\n# Time this configuration state is expected to be achieved in (optional)\nbuiltin_interfaces/Time control_time\n\n# Lateral control command\nLateral lateral\n\n# Longitudinal control command\nLongitudinal longitudinal\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "control_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Lateral",
+          "name": "lateral",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Longitudinal",
+          "name": "longitudinal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControlHorizon": {
+      "description": "Control messages calculated for a future horizon",
+      "raw": "# Control messages calculated for a future horizon\n#\n# Control messages are ordered from near to far future [0 to N) with time_step_ms increments.\n#\n# First element of the array contains the control signals at the control_time of this message.\n#\n# The control_time field in each element of the controls array can be ignored.\n\n# Time this message was created\nbuiltin_interfaces/Time stamp\n\n# Time when controls[0] configuration state is expected to be achieved in\nbuiltin_interfaces/Time control_time\n\n# Time difference between consecutive elements of the controls array in milliseconds\nfloat32 time_step_ms\n\nControl[] controls\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "control_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time_step_ms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Control[]",
+          "name": "controls",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Lateral": {
+      "description": "Lateral control message for Ackermann-style platforms",
+      "raw": "# Lateral control message for Ackermann-style platforms\n#\n# Note regarding tires: If the platform has multiple steering tires, the commands\n# given here are for a virtual tire at the average lateral position of the steering tires.\n#\n# Look up Ackermann Bicycle Model for more details\n#\n# Positive values represents left inclination (if forward)\n# Negative values represents right inclination (if forward)\n\n# Time this message was created\nbuiltin_interfaces/Time stamp\n\n# Time this configuration state is expected to be achieved in (optional)\nbuiltin_interfaces/Time control_time\n\n# Desired angle of the steering tire in rad (radians)\nfloat32 steering_tire_angle\n\n# Desired rate of change of the steering tire angle in rad/s\nfloat32 steering_tire_rotation_rate\n\n# Controller has filled in the steering_tire_rotation_rate value\nbool is_defined_steering_tire_rotation_rate\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "control_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_tire_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_tire_rotation_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_defined_steering_tire_rotation_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Longitudinal": {
+      "description": "Longitudinal control message",
+      "raw": "# Longitudinal control message\n#\n# Values are in the base_link frame in X axis\n#\n# Positive values represent forward motion (+X)\n# Negative values represent backward motion (-X)\n\n# Time this message was created\nbuiltin_interfaces/Time stamp\n\n# Time this configuration state is expected to be achieved in (optional)\nbuiltin_interfaces/Time control_time\n\n# Desired vehicle velocity in in m/s\nfloat32 velocity\n\n# Desired vehicle acceleration in m/s²\nfloat32 acceleration\n\n# Desired vehicle jerk in m/s³\nfloat32 jerk\n\n# Controller has filled in the acceleration value\nbool is_defined_acceleration\n\n# Controller has filled in the jerk value\nbool is_defined_jerk\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "control_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "jerk",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_defined_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_defined_jerk",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

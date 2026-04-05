@@ -1,0 +1,492 @@
+{
+  "name": "autoware_map_msgs",
+  "version": "1.11.0",
+  "description": "Autoware map messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geographic_msgs",
+      "geometry_msgs",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_lanelet2_extension",
+      "autoware_msgs"
+    ]
+  },
+  "messages": {
+    "AreaInfo": {
+      "description": "Area info used as a query in map loading service",
+      "raw": "# Area info used as a query in map loading service\n# Note: this only supports cylindrical area message for now\n\nfloat32 center_x\nfloat32 center_y\nfloat32 radius\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "center_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "center_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneletMapBin": {
+      "description": "Lanelet map message",
+      "raw": "# Lanelet map message\n# This message contains the binary data of a Lanelet map.\n# Also contains the map name, version and format.\n\n# Header with timestamp when the message is published\n# And frame of the Lanelet Map origin (probably just \"map\")\nstd_msgs/Header header\n\n# Version of the map format (optional)\n# Example: \"1.1.1\"\nstring version_map_format\n\n# Version of the map (encouraged, optional)\n# Example: \"1.0.0\"\nstring version_map\n\n# Name of the map (encouraged, optional)\n# Example: \"florence-prato-city-center\"\nstring name_map\n\n# Binary map data\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version_map_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneletMapCellMetaData": {
+      "description": "Metadata of lanelet map cell",
+      "raw": "# Metadata of lanelet map cell\n\nstring cell_id\nfloat64 min_x\nfloat64 max_x\nfloat64 min_y\nfloat64 max_y\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "cell_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneletMapMetaData": {
+      "description": "Header",
+      "raw": "# Header\nstd_msgs/Header header\n\nLaneletMapCellMetaData[] metadata_list\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaneletMapCellMetaData[]",
+          "name": "metadata_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MapProjectorInfo": {
+      "description": "Projector type",
+      "raw": "# Projector type\nstring LOCAL = \"Local\"\nstring LOCAL_CARTESIAN_UTM = \"LocalCartesianUTM\"\nstring LOCAL_CARTESIAN = \"LocalCartesian\"\nstring MGRS = \"MGRS\"\nstring TRANSVERSE_MERCATOR = \"TransverseMercator\"\nstring projector_type\n\n# Vertical datum\nstring WGS84 = \"WGS84\"\nstring EGM2008 = \"EGM2008\"\nstring vertical_datum\n\n# Used for MGRS map\nstring mgrs_grid\n\n# Used for some map projection types\n# Altitude is not used, so there is no need to specify it.\n# Even if altitude is specified, it will be overwritten with 0.0.\ngeographic_msgs/GeoPoint map_origin\n\n# Scale factor of the map\n# Used for TransverseMercator map (default: 0.9996)\n# In the case of LocalCartesianUTM and MGRS, it will be overwritten with 0.9996.\n# In the case of Local and LocalCartesian, it will be overwritten with 1.0.\nfloat32 scale_factor\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "LOCAL",
+          "comment": "",
+          "default": "\"Local\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "LOCAL_CARTESIAN_UTM",
+          "comment": "",
+          "default": "\"LocalCartesianUTM\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "LOCAL_CARTESIAN",
+          "comment": "",
+          "default": "\"LocalCartesian\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MGRS",
+          "comment": "",
+          "default": "\"MGRS\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "TRANSVERSE_MERCATOR",
+          "comment": "",
+          "default": "\"TransverseMercator\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "projector_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "WGS84",
+          "comment": "",
+          "default": "\"WGS84\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "EGM2008",
+          "comment": "",
+          "default": "\"EGM2008\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "vertical_datum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mgrs_grid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPoint",
+          "name": "map_origin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "scale_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointCloudMapCellMetaData": {
+      "description": "Metadata of pointcloud map cell",
+      "raw": "# Metadata of pointcloud map cell\n\nfloat32 min_x\nfloat32 min_y\nfloat32 max_x\nfloat32 max_y\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "min_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointCloudMapCellMetaDataWithID": {
+      "description": "Pointcloud metadata with ID",
+      "raw": "# Pointcloud metadata with ID\n\nstring cell_id\nPointCloudMapCellMetaData metadata\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "cell_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PointCloudMapCellMetaData",
+          "name": "metadata",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointCloudMapCellWithID": {
+      "description": "Pointcloud data with ID",
+      "raw": "# Pointcloud data with ID\n\nstring cell_id\nsensor_msgs/PointCloud2 pointcloud\nPointCloudMapCellMetaData metadata\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "cell_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "pointcloud",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PointCloudMapCellMetaData",
+          "name": "metadata",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointCloudMapMetaData": {
+      "description": "Header",
+      "raw": "# Header\nstd_msgs/Header header\n\nPointCloudMapCellMetaDataWithID[] metadata_list\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PointCloudMapCellMetaDataWithID[]",
+          "name": "metadata_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetDifferentialPointCloudMap": {
+      "description": "Area query for map loading",
+      "raw": "# Area query for map loading\n# (PCD grids that overlaps with the area is going to be loaded)\nAreaInfo area\n\n# The IDs of PCD maps that the node already has\nstring[] cached_ids\n\n---\n# Header\nstd_msgs/Header header\n\n# Newly loaded PCD maps with ID\nPointCloudMapCellWithID[] new_pointcloud_with_ids\n\n# Map IDs that the client side should remove\nstring[] ids_to_remove\n",
+      "request_fields": [
+        {
+          "type": "AreaInfo",
+          "name": "area",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "cached_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PointCloudMapCellWithID[]",
+          "name": "new_pointcloud_with_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "ids_to_remove",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPartialPointCloudMap": {
+      "description": "Area query for map loading",
+      "raw": "# Area query for map loading\n# (PCD grids that overlaps with the area is going to be loaded)\nAreaInfo area\n\n---\n# Header\nstd_msgs/Header header\n\n# Newly loaded PCD maps with ID\nPointCloudMapCellWithID[] new_pointcloud_with_ids\n",
+      "request_fields": [
+        {
+          "type": "AreaInfo",
+          "name": "area",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PointCloudMapCellWithID[]",
+          "name": "new_pointcloud_with_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetSelectedLanelet2Map": {
+      "description": "Osm file ids which are selected to be loaded",
+      "raw": "# Osm file ids which are selected to be loaded\nstring[] cell_ids\n\n---\n# Header\nstd_msgs/Header header\n\n# Newly loaded Lanelet map\nautoware_map_msgs/LaneletMapBin lanelet2_cells\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "cell_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_map_msgs/LaneletMapBin",
+          "name": "lanelet2_cells",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetSelectedPointCloudMap": {
+      "description": "ID query for map loading",
+      "raw": "# ID query for map loading\nstring[] cell_ids\n\n---\n# Header\nstd_msgs/Header header\n\n# Newly loaded PCD maps with ID\nPointCloudMapCellWithID[] new_pointcloud_with_ids\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "cell_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PointCloudMapCellWithID[]",
+          "name": "new_pointcloud_with_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

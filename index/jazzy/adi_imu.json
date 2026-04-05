@@ -1,0 +1,853 @@
+{
+  "name": "adi_imu",
+  "version": "1.0.0",
+  "description": "Publisher for ADI IMUs",
+  "license": "Apache License Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/analogdevicesinc/imu_ros2",
+      "type": "repository"
+    },
+    {
+      "uri": "https://analogdevicesinc.github.io/imu_ros2/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/analogdevicesinc/imu_ros2/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "adi_imu",
+    "url": "https://github.com/analogdevicesinc/imu_ros2.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_cmake_gtest",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_xmllint",
+      "ament_copyright",
+      "ament_pep257"
+    ],
+    "build_and_runtime": [
+      "ament_cmake",
+      "rclcpp",
+      "std_msgs",
+      "sensor_msgs",
+      "geometry_msgs",
+      "libiio-dev"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "AccelGyroTempData": {
+      "description": "@file   AccelGyroTempData.msg",
+      "raw": "################################################################################\n#   @file   AccelGyroTempData.msg\n#   @brief  Definition of AccelGyroTempData message\n#   @author RBolboac (ramona.bolboaca@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# 3-axis acceleration [m/s^2]\ngeometry_msgs/Vector3 linear_acceleration\n\n# 3-axis angular velocity [rad/s]\ngeometry_msgs/Vector3 angular_velocity\n\n# imu internal temperature [°C]\nfloat64 temperature\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "linear_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "angular_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuDiagDataADIS1646X": {
+      "description": "@file   ImuDiagData.msg",
+      "raw": "################################################################################\n#   @file   ImuDiagData.msg\n#   @brief  Definition of ImuDiagData message\n#   @author Ramona Gradinariu (ramona.gradinariu@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# if true, one of the datapaths experienced an overrun condition\nbool diag_data_path_overrun\n\n# if true, the most recent imu memory flash failed\nbool diag_flash_memory_update_error\n\n# if true, the total number of SPI SCLK cycles is not equal to an integer multiple of 16\nbool diag_spi_communication_error\n\n# if true, the imu voltage across VDD and GND < 2.9V, which causes data processing to stop\nbool diag_standby_mode\n\n# if true, the imu self-test routine failed\nbool diag_sensor_self_test_error\n\n# if true, there is a failure in imu flash memory\nbool diag_flash_memory_test_error\n\n# if true, the internal data sampling clock does not synchronize with the external clock (only in scaled sync mode)\nbool diag_clock_error\n\n# if true, the imu flash memory was written more times than the data-sheet specified endurance\nbool diag_flash_memory_write_count_exceeded_error\n\n# the value of the imu flash writes\nuint32 flash_counter\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_data_path_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_update_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_spi_communication_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_standby_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_sensor_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_clock_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_write_count_exceeded_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "flash_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuDiagDataADIS1647X": {
+      "description": "@file   ImuDiagData.msg",
+      "raw": "################################################################################\n#   @file   ImuDiagData.msg\n#   @brief  Definition of ImuDiagData message\n#   @author Ramona Gradinariu (ramona.gradinariu@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# if true, one of the datapaths experienced an overrun condition\nbool diag_data_path_overrun\n\n# if true, the most recent imu memory flash failed\nbool diag_flash_memory_update_error\n\n# if true, the total number of SPI SCLK cycles is not equal to an integer multiple of 16\nbool diag_spi_communication_error\n\n# if true, the imu voltage across VDD and GND < 2.9V, which causes data processing to stop\nbool diag_standby_mode\n\n# if true, the imu self-test routine failed\nbool diag_sensor_self_test_error\n\n# if true, there is a failure in imu flash memory\nbool diag_flash_memory_test_error\n\n# if true, the internal data sampling clock does not synchronize with the external clock (only in scaled sync mode)\nbool diag_clock_error\n\n# if true, the imu flash memory was written more times than the data-sheet specified endurance\nbool diag_flash_memory_write_count_exceeded_error\n\n# the value of the imu flash writes\nuint32 flash_counter\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_data_path_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_update_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_spi_communication_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_standby_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_sensor_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_clock_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_write_count_exceeded_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "flash_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuDiagDataADIS1650X": {
+      "description": "@file   ImuDiagData.msg",
+      "raw": "################################################################################\n#   @file   ImuDiagData.msg\n#   @brief  Definition of ImuDiagData message\n#   @author RBolboac (ramona.bolboaca@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# if true, one of the datapaths experienced an overrun condition\nbool diag_data_path_overrun\n\n# if true, the most recent imu memory flash failed\nbool diag_flash_memory_update_error\n\n# if true, the total number of SPI SCLK cycles is not equal to an integer multiple of 16\nbool diag_spi_communication_error\n\n# if true, the imu voltage across VDD and GND < 2.9V, which causes data processing to stop\nbool diag_standby_mode\n\n# if true, the imu self-test routine failed\nbool diag_sensor_self_test_error\n\n# if true, there is a failure in imu flash memory\nbool diag_flash_memory_test_error\n\n# if true, the internal data sampling clock does not synchronize with the external clock (only in scaled sync mode)\nbool diag_clock_error\n\n# if true, a failure occurred on accelerometer\nbool diag_acceleration_self_test_error\n\n# if true, a failure occurred on gyroscope 1\nbool diag_gyroscope1_self_test_error\n\n# if true, a failure occurred on gyroscope 2\nbool diag_gyroscope2_self_test_error\n\n# if true, the imu flash memory was written more times than the data-sheet specified endurance\nbool diag_flash_memory_write_count_exceeded_error\n\n# the value of the imu flash writes\nuint32 flash_counter\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_data_path_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_update_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_spi_communication_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_standby_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_sensor_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_clock_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_acceleration_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_gyroscope1_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_gyroscope2_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_write_count_exceeded_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "flash_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuDiagDataADIS1654X": {
+      "description": "@file   ImuDiagData.msg",
+      "raw": "################################################################################\n#   @file   ImuDiagData.msg\n#   @brief  Definition of ImuDiagData message\n#   @author Robert Budai (robert.budai@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# if true, one of the datapaths experienced an overrun condition\nbool diag_data_path_overrun\n\n# if true, the most recent imu memory flash failed\nbool diag_flash_memory_update_error\n\n# if true, sensor automatically reset themselves to clear an issue\nbool diag_automatic_reset\n\n# if true, while operating in scaled sync mode, indicates the sampling time is not scaling correctly\nbool diag_clock_error\n\n# if true, the most recent imu memory flash failed\nbool diag_flash_memory_test_error\n\n# if true, indicates the failure of the inertial sensor\nbool diag_sensor_self_test_error\n\n#if true, indicates communication error on SPI interface\nbool diag_spi_communication_error\n\n# if true, indicates failure on CRC calculation\nbool diag_crc_error\n\n# if true, a failure occurred on x axis gyroscope\nbool diag_x_axis_gyroscope_failure\n\n# if true, a failure occurred on y axis gyroscope\nbool diag_y_axis_gyroscope_failure\n\n# if true, a failure occurred on z axis gyroscope\nbool diag_z_axis_gyroscope_failure\n\n# if true, a failure occurred on x axis accelerometer\nbool diag_x_axis_accelerometer_failure\n\n# if true, a failure occurred on y axis accelerometer\nbool diag_y_axis_accelerometer_failure\n\n# if true, a failure occurred on z axis accelerometer\nbool diag_z_axis_accelerometer_failure\n\n# if true, the imu flash memory was written more times than the data-sheet specified endurance\nbool diag_flash_memory_write_count_exceeded_error\n\n# the value of the imu flash writes\nuint32 flash_counter\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_data_path_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_update_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_automatic_reset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_clock_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_sensor_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_spi_communication_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_crc_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_x_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_y_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_z_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_x_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_y_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_z_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_write_count_exceeded_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "flash_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuDiagDataADIS1655X": {
+      "description": "@file   ImuDiagData.msg",
+      "raw": "################################################################################\n#   @file   ImuDiagData.msg\n#   @brief  Definition of ImuDiagData message\n#   @author Robert Budai (robert.budai@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# if true, one of the datapaths experienced an overrun condition\nbool diag_data_path_overrun\n\n# if true, the most recent imu memory flash failed\nbool diag_flash_memory_update_error\n\n# if true, sensor automatically reset themselves to clear an issue\nbool diag_automatic_reset\n\n# if true, while operating in scaled sync mode, indicates the sampling time is not scaling correctly\nbool diag_clock_error\n\n# if true, the most recent imu memory flash failed\nbool diag_flash_memory_test_error\n\n# if true, indicates the failure of the inertial sensor\nbool diag_sensor_self_test_error\n\n#if true, indicates communication error on SPI interface\nbool diag_spi_communication_error\n\n# if true, indicates failure on CRC calculation\nbool diag_crc_error\n\n# if true, a failure occurred on x axis gyroscope\nbool diag_x_axis_gyroscope_failure\n\n# if true, a failure occurred on y axis gyroscope\nbool diag_y_axis_gyroscope_failure\n\n# if true, a failure occurred on z axis gyroscope\nbool diag_z_axis_gyroscope_failure\n\n# if true, a failure occurred on x axis accelerometer\nbool diag_x_axis_accelerometer_failure\n\n# if true, a failure occurred on y axis accelerometer\nbool diag_y_axis_accelerometer_failure\n\n# if true, a failure occurred on z axis accelerometer\nbool diag_z_axis_accelerometer_failure\n\n# if true, the imu flash memory was written more times than the data-sheet specified endurance\nbool diag_flash_memory_write_count_exceeded_error\n\n# the value of the imu flash writes\nuint32 flash_counter\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_data_path_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_update_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_automatic_reset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_clock_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_sensor_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_spi_communication_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_crc_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_x_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_y_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_z_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_x_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_y_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_z_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_write_count_exceeded_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "flash_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuDiagDataADIS1657X": {
+      "description": "@file   ImuDiagData.msg",
+      "raw": "################################################################################\n#   @file   ImuDiagData.msg\n#   @brief  Definition of ImuDiagData message\n#   @author RBolboac (ramona.bolboaca@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# if true, the imu failed to initialize properly\nbool diag_sensor_initialization_failure\n\n# if true, one of the datapaths experienced an overrun condition\nbool diag_data_path_overrun\n\n# if true, the most recent imu memory flash failed\nbool diag_flash_memory_update_error\n\n# if true, the total number of SPI SCLK cycles is not equal to an integer multiple of 16\nbool diag_spi_communication_error\n\n# if true, the imu voltage across VDD and GND < 2.9V, which causes data processing to stop\nbool diag_standby_mode\n\n# if true, the imu self-test routine failed\nbool diag_sensor_self_test_error\n\n# if true, there is a failure in imu flash memory\nbool diag_flash_memory_test_error\n\n# if true, the internal data sampling clock does not synchronize with the external clock (only in scaled sync mode)\nbool diag_clock_error\n\n# if true, a failure occurred on x axis gyroscope\nbool diag_x_axis_gyroscope_failure\n\n# if true, a failure occurred on y axis gyroscope\nbool diag_y_axis_gyroscope_failure\n\n# if true, a failure occurred on z axis gyroscope\nbool diag_z_axis_gyroscope_failure\n\n# if true, a failure occurred on x axis accelerometer\nbool diag_x_axis_accelerometer_failure\n\n# if true, a failure occurred on y axis accelerometer\nbool diag_y_axis_accelerometer_failure\n\n# if true, a failure occurred on z axis accelerometer\nbool diag_z_axis_accelerometer_failure\n\n# if true, a fault occurred in the imu microcontroller\nbool diag_aduc_mcu_fault\n\n# if true, the imu flash memory was written more times than the data-sheet specified endurance\nbool diag_flash_memory_write_count_exceeded_error\n\n# the value of the imu flash writes\nuint32 flash_counter\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_sensor_initialization_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_data_path_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_update_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_spi_communication_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_standby_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_sensor_self_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_test_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_clock_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_x_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_y_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_z_axis_gyroscope_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_x_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_y_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_z_axis_accelerometer_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_aduc_mcu_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diag_flash_memory_write_count_exceeded_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "flash_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuFullMeasuredData": {
+      "description": "@file   ImuFullMeasuredData.msg",
+      "raw": "################################################################################\n#   @file   ImuFullMeasuredData.msg\n#   @brief  Definition of ImuFullMeasuredData message\n#   @author RBolboac (ramona.bolboaca@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# 3-axis acceleration [m/s^2]\ngeometry_msgs/Vector3 linear_acceleration\n\n# 3-axis angular velocity [rad/s]\ngeometry_msgs/Vector3 angular_velocity\n\n# 3-axis delta velocity (delta between two consecutive measurements) [m/s]\ngeometry_msgs/Vector3 delta_velocity\n\n# 3-axis delta angle (delta between two consecutive measurements) [radians]\ngeometry_msgs/Vector3 delta_angle\n\n# imu internal temperature [°C]\nfloat64 temperature\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "linear_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "angular_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "delta_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "delta_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuIdentificationData": {
+      "description": "@file   ImuIdentificationData.msg",
+      "raw": "################################################################################\n#   @file   ImuIdentificationData.msg\n#   @brief  Definition of ImuIdentificationData message\n#   @author RBolboac (ramona.bolboaca@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# firmware revision for the imu internal firmware\nstring firmware_revision\n\n# firmware date for the imu internal firmware\nstring firmware_date\n\n# imu product identification\nuint32 product_id\n\n# imu lot specific serial number\nuint32 serial_number\n\n# imu gyroscope measurement range\nstring gyroscope_measurement_range\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_revision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_date",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "product_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "serial_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "gyroscope_measurement_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelAngTempData": {
+      "description": "@file   VelAngTempData.msg",
+      "raw": "################################################################################\n#   @file   VelAngTempData.msg\n#   @brief  Definition of VelAngTempData message\n#   @author RBolboac (ramona.bolboaca@analog.com)\n################################################################################\n# Copyright 2023(c) Analog Devices, Inc.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n################################################################################\n\n# message header\nstd_msgs/Header header\n\n# 3-axis delta velocity (delta between two consecutive measurements) [m/s]\ngeometry_msgs/Vector3 delta_velocity\n\n# 3-axis delta angle (delta between two consecutive measurements) [radians]\ngeometry_msgs/Vector3 delta_angle\n\n# imu internal temperature [°C]\nfloat64 temperature\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "delta_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "delta_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

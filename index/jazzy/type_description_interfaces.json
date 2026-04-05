@@ -1,0 +1,873 @@
+{
+  "name": "type_description_interfaces",
+  "version": "2.0.3",
+  "description": "A package containing message and service definitions for describing and communicating descriptions of other types.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_core_generators"
+    ],
+    "runtime": [
+      "rosidl_core_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "service_msgs"
+    ],
+    "depended_on_by": [
+      "rcl"
+    ]
+  },
+  "messages": {
+    "Field": {
+      "description": "Represents a single field in a type.",
+      "raw": "# Represents a single field in a type.\n\n# Name of the field.\nstring name\n# Type of the field, including details about the type like length, nested name, etc.\nFieldType type\n# Literal default value of the field as a string, as it appeared in the original\n# message description file, whether that be .msg/.srv/.action or .idl.\nstring default_value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FieldType",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "default_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldType": {
+      "description": "Represents the type of a field and related meta-data.",
+      "raw": "# Represents the type of a field and related meta-data.\n\n# A constant for each type supported according to:\n#   http://design.ros2.org/articles/legacy_interface_definition.html\n# and:\n#   http://design.ros2.org/articles/idl_interface_definition.html\n# Order is loosely coupled to the order of appearance in the IDL 4.2 spec:\n#  https://www.omg.org/spec/IDL/4.2\n\n# Layout of constants across the 0-255 decimal values in the uint8:\n#\n# - 000    : Reserved for \"not set\"\n# - 001-048: Primitive types, strings, and reserved space for future primitive types\n# - 049-096: Fixed sized array of primitive and string types\n# - 097-144: Bounded Sequences of primitive and string types\n# - 145-192: Unbounded Sequences of primitive and string types\n# - 193-255: Reserved space for future array/sequence-like types\n\nuint8 FIELD_TYPE_NOT_SET = 0\n\n# Nested type defined in other .msg/.idl files.\nuint8 FIELD_TYPE_NESTED_TYPE = 1\n\n# Integer Types\nuint8 FIELD_TYPE_INT8 = 2\nuint8 FIELD_TYPE_UINT8 = 3\nuint8 FIELD_TYPE_INT16 = 4\nuint8 FIELD_TYPE_UINT16 = 5\nuint8 FIELD_TYPE_INT32 = 6\nuint8 FIELD_TYPE_UINT32 = 7\nuint8 FIELD_TYPE_INT64 = 8\nuint8 FIELD_TYPE_UINT64 = 9\n\n# Floating-Point Types\nuint8 FIELD_TYPE_FLOAT = 10\nuint8 FIELD_TYPE_DOUBLE = 11\nuint8 FIELD_TYPE_LONG_DOUBLE = 12\n\n# Char and WChar Types\nuint8 FIELD_TYPE_CHAR = 13\nuint8 FIELD_TYPE_WCHAR = 14\n\n# Boolean Type\nuint8 FIELD_TYPE_BOOLEAN = 15\n\n# Byte/Octet Type\nuint8 FIELD_TYPE_BYTE = 16\n\n# String Types\nuint8 FIELD_TYPE_STRING = 17\nuint8 FIELD_TYPE_WSTRING = 18\n\n# Fixed String Types\nuint8 FIELD_TYPE_FIXED_STRING = 19\nuint8 FIELD_TYPE_FIXED_WSTRING = 20\n\n# Bounded String Types\nuint8 FIELD_TYPE_BOUNDED_STRING = 21\nuint8 FIELD_TYPE_BOUNDED_WSTRING = 22\n\n# Fixed Sized Array Types\nuint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49\nuint8 FIELD_TYPE_INT8_ARRAY = 50\nuint8 FIELD_TYPE_UINT8_ARRAY = 51\nuint8 FIELD_TYPE_INT16_ARRAY = 52\nuint8 FIELD_TYPE_UINT16_ARRAY = 53\nuint8 FIELD_TYPE_INT32_ARRAY = 54\nuint8 FIELD_TYPE_UINT32_ARRAY = 55\nuint8 FIELD_TYPE_INT64_ARRAY = 56\nuint8 FIELD_TYPE_UINT64_ARRAY = 57\nuint8 FIELD_TYPE_FLOAT_ARRAY = 58\nuint8 FIELD_TYPE_DOUBLE_ARRAY = 59\nuint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60\nuint8 FIELD_TYPE_CHAR_ARRAY = 61\nuint8 FIELD_TYPE_WCHAR_ARRAY = 62\nuint8 FIELD_TYPE_BOOLEAN_ARRAY = 63\nuint8 FIELD_TYPE_BYTE_ARRAY = 64\nuint8 FIELD_TYPE_STRING_ARRAY = 65\nuint8 FIELD_TYPE_WSTRING_ARRAY = 66\nuint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67\nuint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68\nuint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69\nuint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70\n\n# Bounded Sequence Types\nuint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97\nuint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98\nuint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99\nuint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100\nuint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101\nuint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102\nuint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103\nuint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104\nuint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105\nuint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106\nuint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107\nuint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108\nuint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109\nuint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110\nuint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111\nuint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112\nuint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113\nuint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114\nuint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115\nuint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116\nuint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117\nuint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118\n\n# Unbounded Sequence Types\nuint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145\nuint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146\nuint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147\nuint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148\nuint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149\nuint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150\nuint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151\nuint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152\nuint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153\nuint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154\nuint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155\nuint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156\nuint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157\nuint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158\nuint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159\nuint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160\nuint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161\nuint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162\nuint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163\nuint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164\nuint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165\nuint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166\n\n# Identifying number for the type of the field, using one of the above constants.\nuint8 type_id 0\n\n# Only used when the type is an array or a bounded sequence.\n# In the case of an array, this is the fixed capacity of the array.\n# In the case of a bounded sequence, this is the maximum capacity of the sequence.\n# In all other cases this field is unused.\nuint64 capacity\n\n# Only used when the type is a fixed or bounded string/wstring, or a array/sequence of those.\n# In the case of a fixed string/wstring, it is the fixed length of the string.\n# In the case of a bounded string/wstring, it is the maximum capacity of the string.\n# In the case of an array/sequence of fixed string/wstring, it is the fixed length of the strings.\n# In the case of an array/sequence of bounded string/wstring, it is the maximum capacity of the strings.\n# It is not currently possible to have different string capacities per element in the array/sequence.\nuint64 string_capacity\n\n# Only used when the type is a nested type or array/sequence of nested types.\n# This is limited to 255 characters.\n# TODO(wjwwood): this 255 character limit was chosen due to this being the limit\n#   for DDSI-RTPS based middlewares, which is the most commonly used right now.\n#   We lack a ROS 2 specific limit in our design documents, but we should update\n#   this and/or link to the design doc when that is available.\nstring<=255 nested_type_name\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_NOT_SET",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_NESTED_TYPE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT8",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT8",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT16",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT16",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT32",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT32",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT64",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT64",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FLOAT",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_DOUBLE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_LONG_DOUBLE",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_CHAR",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_WCHAR",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOOLEAN",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BYTE",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_STRING",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_WSTRING",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FIXED_STRING",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FIXED_WSTRING",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOUNDED_STRING",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOUNDED_WSTRING",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_NESTED_TYPE_ARRAY",
+          "comment": "",
+          "default": "49",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT8_ARRAY",
+          "comment": "",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT8_ARRAY",
+          "comment": "",
+          "default": "51",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT16_ARRAY",
+          "comment": "",
+          "default": "52",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT16_ARRAY",
+          "comment": "",
+          "default": "53",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT32_ARRAY",
+          "comment": "",
+          "default": "54",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT32_ARRAY",
+          "comment": "",
+          "default": "55",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT64_ARRAY",
+          "comment": "",
+          "default": "56",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT64_ARRAY",
+          "comment": "",
+          "default": "57",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FLOAT_ARRAY",
+          "comment": "",
+          "default": "58",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_DOUBLE_ARRAY",
+          "comment": "",
+          "default": "59",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_LONG_DOUBLE_ARRAY",
+          "comment": "",
+          "default": "60",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_CHAR_ARRAY",
+          "comment": "",
+          "default": "61",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_WCHAR_ARRAY",
+          "comment": "",
+          "default": "62",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOOLEAN_ARRAY",
+          "comment": "",
+          "default": "63",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BYTE_ARRAY",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_STRING_ARRAY",
+          "comment": "",
+          "default": "65",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_WSTRING_ARRAY",
+          "comment": "",
+          "default": "66",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FIXED_STRING_ARRAY",
+          "comment": "",
+          "default": "67",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FIXED_WSTRING_ARRAY",
+          "comment": "",
+          "default": "68",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOUNDED_STRING_ARRAY",
+          "comment": "",
+          "default": "69",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOUNDED_WSTRING_ARRAY",
+          "comment": "",
+          "default": "70",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "97",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT8_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "98",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT8_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "99",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT16_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT16_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT32_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "102",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT32_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "103",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT64_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "104",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT64_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "105",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "106",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "107",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "108",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_CHAR_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "109",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "110",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "111",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BYTE_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "112",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_STRING_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "113",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "114",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "115",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "116",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "117",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "118",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "145",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "146",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "147",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "148",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "149",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "150",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "151",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "152",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "153",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "154",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "155",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "156",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "157",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "158",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "159",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "160",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "161",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "162",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "163",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "164",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "165",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE",
+          "comment": "",
+          "default": "166",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type_id",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "capacity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "string_capacity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=255",
+          "name": "nested_type_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IndividualTypeDescription": {
+      "description": "Represents a single type, without the types it references, if any.",
+      "raw": "# Represents a single type, without the types it references, if any.\n\n# Name of the type.\n# This is limited to 255 characters.\n# TODO(wjwwood): this 255 character limit was chosen due to this being the limit\n#   for DDSI-RTPS based middlewares, which is the most commonly used right now.\n#   We lack a ROS 2 specific limit in our design documents, but we should update\n#   this and/or link to the design doc when that is available.\nstring<=255 type_name\n# Fields of the type.\nField[] fields\n",
+      "fields": [
+        {
+          "type": "string<=255",
+          "name": "type_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Field[]",
+          "name": "fields",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyValue": {
+      "description": "Represents an arbitrary key-value pair for application-specific information.",
+      "raw": "# Represents an arbitrary key-value pair for application-specific information.\n\nstring key\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TypeDescription": {
+      "description": "Represents a complete type description, including the type itself as well as the types it references.",
+      "raw": "# Represents a complete type description, including the type itself as well as the types it references.\n\n# Description of the type.\nIndividualTypeDescription type_description\n# Descriptions of all referenced types, recursively.\nIndividualTypeDescription[] referenced_type_descriptions\n",
+      "fields": [
+        {
+          "type": "IndividualTypeDescription",
+          "name": "type_description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IndividualTypeDescription[]",
+          "name": "referenced_type_descriptions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TypeSource": {
+      "description": "Represents the original source of a ROS 2 interface definition.",
+      "raw": "# Represents the original source of a ROS 2 interface definition.\n\n# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.\nstring type_name\n\n# The type of the original source file, typically matching the file extension.\n# Well-known encodings: \"idl\", \"msg\", \"srv\", \"action\", \"dynamic\", \"implicit\".\n# \"dynamic\" specifies a type created programmatically by a user, thus having no source.\n# \"implicit\" specifies a type created automatically as a subtype of a\n# complex type (service or action) - such as the request message for a service.\n# Implicit types will have no contents, the full source will be available on the parent srv/action.\nstring encoding\n\n# Dumped contents of the interface definition source file.\n# If `encoding` is \"dynamic\" or \"implicit\", this field will be empty.\nstring raw_file_contents\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "encoding",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "raw_file_contents",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetTypeDescription": {
+      "description": "ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.",
+      "raw": "# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.\nstring type_name\n\n# REP-2011 RIHS hash string.\nstring type_hash\n\n# Whether to return the original idl/msg/etc. source file(s) in the response.\nbool include_type_sources true\n---\n# True if the type description information is available and populated in the response.\n# If false, all other fields except `failure_reason` are considered undefined.\nbool successful\n# If `successful` is false, contains a reason for failure.\n# If `successful` is true, this is left empty.\nstring failure_reason\n\n# The parsed type description which can be used programmatically.\nTypeDescription type_description\n\n# A list containing the interface definition source text of the requested type,\n# plus all types it recursively depends on.\n# Each source text is a copy of the original contents of the\n# .msg, .srv, .action, .idl, or other file if it exists, including comments and whitespace.\n# Sources can be matched with IndividualTypeDescriptions by their `type_name`.\n# The `encoding` field of each entry informs how to interpret its contents.\nTypeSource[] type_sources\n\n# Key-value pairs of extra information.\nKeyValue[] extra_information\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type_hash",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "include_type_sources",
+          "comment": "",
+          "default": "true",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "successful",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "failure_reason",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TypeDescription",
+          "name": "type_description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TypeSource[]",
+          "name": "type_sources",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "extra_information",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

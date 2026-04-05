@@ -1,0 +1,124 @@
+{
+  "name": "tuw_std_msgs",
+  "version": "0.2.6",
+  "description": "The tuw_std_msgs package",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "tuw_msgs",
+      "tuw_object_msgs"
+    ]
+  },
+  "messages": {
+    "Parameter": {
+      "description": "",
+      "raw": "string name \"NA\"\nstring value \"\"",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": "\"NA\"",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": "\"\"",
+          "is_constant": false
+        }
+      ]
+    },
+    "ParameterArray": {
+      "description": "",
+      "raw": "tuw_std_msgs/Parameter[] data           # list of parameters",
+      "fields": [
+        {
+          "type": "tuw_std_msgs/Parameter[]",
+          "name": "data",
+          "comment": "list of parameters",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParameterFloat64": {
+      "description": "",
+      "raw": "std_msgs/String name\nfloat64 data",
+      "fields": [
+        {
+          "type": "std_msgs/String",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetParameterFloat64": {
+      "description": "",
+      "raw": "string name\n---\nstd_msgs/Header header\nfloat64 data",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

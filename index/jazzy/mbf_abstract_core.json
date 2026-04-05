@@ -1,0 +1,37 @@
+{
+  "name": "mbf_abstract_core",
+  "version": "1.0.2",
+  "description": "This package provides common interfaces for navigation specific robot actions. It contains the AbstractPlanner, AbstractController and AbstractRecovery plugin interfaces. This interfaces have to be implemented by the plugins to make the plugin available for Move Base Flex. The abstract classes provides a meaningful interface enabling the planners, controllers and recovery behaviors to return information, e.g. why something went wrong. Derivided interfaces can, for example, provide methods to initialize the planner, controller or recovery with map representations like costmap_2d, grid_map or other representations.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://github.com/naturerobots/move_base_flex",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "move_base_flex",
+    "url": "https://github.com/naturerobots/move_base_flex.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "mbf_abstract_nav",
+      "mbf_simple_core",
+      "mbf_simple_nav",
+      "move_base_flex"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

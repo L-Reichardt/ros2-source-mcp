@@ -1,0 +1,106 @@
+{
+  "name": "off_highway_mm7p10_msgs",
+  "version": "1.2.0",
+  "description": "The off_highway_mm7p10_msgs package",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "off_highway_sensor_drivers",
+    "url": "https://github.com/bosch-engineering/off_highway_sensor_drivers.git",
+    "branch": "jazzy-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "off_highway_mm7p10"
+    ]
+  },
+  "messages": {
+    "Information": {
+      "description": "4-bit status: bit0=IMU not available, bit1=signal failure, bit2=initialization, bit3=reserved",
+      "raw": "std_msgs/Header header\n\n# 4-bit status: bit0=IMU not available, bit1=signal failure, bit2=initialization, bit3=reserved\nuint8 yaw_rate_stat\nuint8 roll_rate_stat\nuint8 pitch_rate_stat\nuint8 ax_stat\nuint8 ay_stat\nuint8 az_stat\n\n# Temperature in raw format: 0x0=-50°C, 0xC8=150°C, 0xFF=invalid/CRC error, 0xC9>150°C\nuint8 temp_rate_z\n\n# Hardware index from sensor\nuint8 hw_index\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "yaw_rate_stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "roll_rate_stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "pitch_rate_stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ax_stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ay_stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "az_stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "temp_rate_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "hw_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

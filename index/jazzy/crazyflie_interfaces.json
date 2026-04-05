@@ -1,0 +1,817 @@
+{
+  "name": "crazyflie_interfaces",
+  "version": "1.0.3",
+  "description": "Interfaces for Crazyswarm2 package.",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "crazyswarm2",
+    "url": "https://github.com/IMRCLab/crazyswarm2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_cppcheck",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_srvs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "crazyflie",
+      "crazyflie_py",
+      "crazyflie_sim"
+    ]
+  },
+  "messages": {
+    "ConnectionStatistics": {
+      "description": "",
+      "raw": "string uri\nuint64 sent_count\nuint64 sent_ping_count\nuint64 receive_count\nuint64 enqueued_count\nuint64 ack_count\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "uri",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "sent_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "sent_ping_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "receive_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "enqueued_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "ack_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConnectionStatisticsArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nConnectionStatistics[] stats\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ConnectionStatistics[]",
+          "name": "stats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FullState": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Pose pose\ngeometry_msgs/Twist twist\ngeometry_msgs/Vector3 acc\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "acc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Hover": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 vx\nfloat32 vy\nfloat32 yaw_rate\nfloat32 z_distance\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LogBlock": {
+      "description": "",
+      "raw": "string topic_name\nint16 frequency\nstring[] variables\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "variables",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LogDataGeneric": {
+      "description": "",
+      "raw": "std_msgs/Header header  # Header including the ROS 2 timestamp when the log data was received\nuint32 timestamp        # on-board timestamp from the STM32 (in ms)\nfloat32[] values        # converted values, in the order as specified for the log block\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header including the ROS 2 timestamp when the log data was received",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "timestamp",
+          "comment": "on-board timestamp from the STM32 (in ms)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "values",
+          "comment": "converted values, in the order as specified for the log block",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Position": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 x\nfloat32 y\nfloat32 z\nfloat32 yaw\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Status": {
+      "description": "Constants",
+      "raw": "\n# Constants\nuint16 SUPERVISOR_INFO_CAN_BE_ARMED = 1\nuint16 SUPERVISOR_INFO_IS_ARMED     = 2\nuint16 SUPERVISOR_INFO_AUTO_ARM     = 4\nuint16 SUPERVISOR_INFO_CAN_FLY      = 8\nuint16 SUPERVISOR_INFO_IS_FLYING    = 16\nuint16 SUPERVISOR_INFO_IS_TUMBLED   = 32\nuint16 SUPERVISOR_INFO_IS_LOCKED    = 64\n\nuint8 PM_STATE_BATTERY   = 0\nuint8 PM_STATE_CHARGING  = 1\nuint8 PM_STATE_CHARGED   = 2\nuint8 PM_STATE_LOW_POWER = 3\nuint8 PM_STATE_SHUTDOWN  = 4\n\nstd_msgs/Header header\n\n# general status\nuint16 supervisor_info # Bitfield, see SUPERVISOR_INFO for individual bits\n\n# battery related\nfloat32 battery_voltage  # internal battery voltage [V]\nuint8 pm_state # See PM_STATE_* for potential values\n\n# radio related\nuint8 rssi      # latest radio signal strength indicator [dBm]\nuint32 num_rx_broadcast  # number of received broadcast packets during the last period\nuint32 num_tx_broadcast  # number of broadcast packets sent during the last period\nuint32 num_rx_unicast    # number of received unicast packets during the last period\nuint32 num_tx_unicast    # number of unicast packets sent during the last period\nuint16 latency_unicast   # latency (in ms) for unicast packets\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "SUPERVISOR_INFO_CAN_BE_ARMED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SUPERVISOR_INFO_IS_ARMED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SUPERVISOR_INFO_AUTO_ARM",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SUPERVISOR_INFO_CAN_FLY",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SUPERVISOR_INFO_IS_FLYING",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SUPERVISOR_INFO_IS_TUMBLED",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SUPERVISOR_INFO_IS_LOCKED",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PM_STATE_BATTERY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PM_STATE_CHARGING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PM_STATE_CHARGED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PM_STATE_LOW_POWER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PM_STATE_SHUTDOWN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "supervisor_info",
+          "comment": "Bitfield, see SUPERVISOR_INFO for individual bits",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "battery_voltage",
+          "comment": "internal battery voltage [V]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "pm_state",
+          "comment": "See PM_STATE_* for potential values",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rssi",
+          "comment": "latest radio signal strength indicator [dBm]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_rx_broadcast",
+          "comment": "number of received broadcast packets during the last period",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_tx_broadcast",
+          "comment": "number of broadcast packets sent during the last period",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_rx_unicast",
+          "comment": "number of received unicast packets during the last period",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_tx_unicast",
+          "comment": "number of unicast packets sent during the last period",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "latency_unicast",
+          "comment": "latency (in ms) for unicast packets",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajectoryPolynomialPiece": {
+      "description": "",
+      "raw": "#\n\nfloat32[] poly_x\nfloat32[] poly_y\nfloat32[] poly_z\nfloat32[] poly_yaw\nbuiltin_interfaces/Duration duration",
+      "fields": [
+        {
+          "type": "float32[]",
+          "name": "poly_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "poly_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "poly_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "poly_yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelocityWorld": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Vector3 vel\nfloat32 yaw_rate",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "vel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddLogging": {
+      "description": "",
+      "raw": "string topic_name\nint32 frequency\nstring[] vars\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "vars",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Arm": {
+      "description": "",
+      "raw": "bool arm\n---\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "arm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "GoTo": {
+      "description": "",
+      "raw": "uint8 group_mask\nbool relative\ngeometry_msgs/Point goal\nfloat32 yaw # deg\nbuiltin_interfaces/Duration duration\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "group_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "relative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "Land": {
+      "description": "",
+      "raw": "uint8 group_mask\nfloat32 height\nbuiltin_interfaces/Duration duration\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "group_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "NotifySetpointsStop": {
+      "description": "",
+      "raw": "uint8 group_mask\nuint32 remain_valid_millisecs\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "group_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "remain_valid_millisecs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "RemoveLogging": {
+      "description": "",
+      "raw": "string topic_name\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetGroupMask": {
+      "description": "",
+      "raw": "uint8 group_mask\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "group_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "StartTrajectory": {
+      "description": "",
+      "raw": "uint8 group_mask\nuint8 trajectory_id\nfloat32 timescale\nbool reversed\nbool relative\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "group_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "trajectory_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "timescale",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reversed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "relative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "Stop": {
+      "description": "",
+      "raw": "uint8 group_mask\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "group_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "Takeoff": {
+      "description": "",
+      "raw": "uint8 group_mask\nfloat32 height\nbuiltin_interfaces/Duration duration\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "group_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "UpdateParams": {
+      "description": "",
+      "raw": "string[] params\n---\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "UploadTrajectory": {
+      "description": "",
+      "raw": "uint8 trajectory_id\nuint32 piece_offset\nTrajectoryPolynomialPiece[] pieces\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "trajectory_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "piece_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrajectoryPolynomialPiece[]",
+          "name": "pieces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

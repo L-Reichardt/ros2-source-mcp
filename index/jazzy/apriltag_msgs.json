@@ -1,0 +1,146 @@
+{
+  "name": "apriltag_msgs",
+  "version": "2.0.1",
+  "description": "AprilTag message definitions",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "apriltag_msgs",
+    "url": "https://github.com/christianrauch/apriltag_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "apriltag_detector",
+      "apriltag_detector_mit",
+      "apriltag_detector_umich",
+      "apriltag_draw",
+      "apriltag_ros",
+      "apriltag_tools",
+      "rtabmap_slam"
+    ]
+  },
+  "messages": {
+    "AprilTagDetection": {
+      "description": "",
+      "raw": "string family\nint32 id\nint32 hamming\nfloat32 goodness\nfloat32 decision_margin\nPoint centre                    # centre in (x,y) pixel coordinates\nPoint[4] corners                # corners of tag ((x1,y1),(x2,y2),...)\nfloat64[9] homography           # 3x3 row-major homography matrix\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "family",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "hamming",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "goodness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "decision_margin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point",
+          "name": "centre",
+          "comment": "centre in (x,y) pixel coordinates",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point[4]",
+          "name": "corners",
+          "comment": "corners of tag ((x1,y1),(x2,y2),...)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "homography",
+          "comment": "3x3 row-major homography matrix",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AprilTagDetectionArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nAprilTagDetection[] detections\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AprilTagDetection[]",
+          "name": "detections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

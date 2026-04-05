@@ -1,0 +1,598 @@
+{
+  "name": "marine_acoustic_msgs",
+  "version": "2.1.0",
+  "description": "The marine_acoustic_msgs package, including messages for common\n  underwater sensors (DVL, multibeam sonar, imaging sonar)",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "marine_msgs",
+    "url": "https://github.com/apl-ocean-engineering/marine_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "DetectionFlag": {
+      "description": "Beam is OK",
+      "raw": "# Beam is OK\nuint8 DETECT_OK = 0\n# Beam is flagged as bad by the sonar.  Think hard before second-guessing\nuint8 DETECT_BAD_SONAR = 1\n# Beam is flagged as bad by some automated filter applied during processing.\nuint8 DETECT_BAD_FILTER = 2\n# Beam is flagged as bad by the user. This is probably not happening in\n# realtime, but is included here so the same message can be used throughout\n# a post-processing pipeline.\nuint8 DETECT_BAD_USER = 4\n\n# These arrays should have the same dimensions, and should match\n# the number of beams for this sonar.\n#\n# Some fields are optional.  Those should have 0 length.\n\n# Flag values for every beam\nuint8 flag\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "DETECT_OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DETECT_BAD_SONAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DETECT_BAD_FILTER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DETECT_BAD_USER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Dvl": {
+      "description": "Message for single ground-track ping from a DVL.",
+      "raw": "# Message for single ground-track ping from a DVL.\n#\n# This message is modeled after WHOI's Dvl.msg from the ds_sensor_msgs\n# repository, which was released under a BSD license.\n# Modifications were made by UW-APL.\n\n# ENUM: Velocity mode\nuint8 DVL_MODE_BOTTOM=1\nuint8 DVL_MODE_WATER=2\n\n# ENUM: DVL Type; used in sound velocity corrections\n\n# Standard (Janus) array with one piston transducer for each beam.\n# If you have 4-5 individual disks on your DVL, use this one.\n# Examples include Sonardyne Syrinx, Nortek DVLs, and RDI Workhorse\nuint8 DVL_TYPE_PISTON=0\n\n# Phased-array DVL.  If you have one giant disk with complicated stuff\n# on it, probably this one.\n# Examples include newer RDI DVLs such as pathfinder, pioneer, and tasman.\nuint8 DVL_TYPE_PHASED_ARRAY=1\n\n# The standard ROS header.\n# Timestamp is neither transmit nor receive time -- it is the time that\n# the velocity should be considered valid at.\n# Frame convention:\n# * z-axis in direction DVL is pointing\n# * x-axis aligned with vehicle forward\nstd_msgs/Header header\n\n# Velocity mode (see above)\nuint8 velocity_mode\n\n# Type of DVL array employed (see above).  Necessary when\n# deciding how to apply sound velocity corrections\nuint8 dvl_type\n\n# Velocities [m/s]\ngeometry_msgs/Vector3 velocity\n\n# row-major, xyz axes.  Set to \"-1\" if not known.\nfloat64[9] velocity_covar\n\n# Average altitude of all good beam returns.\n# For 30-deg sensor, altitude = (sqrt(3) / 2) * sum(range) / num_good_beams\nfloat64 altitude\n# Calculated from xy velocities: course_gnd = atan2(velocity.y, velocity.x)\nfloat64 course_gnd\n# Calculated from xy velocities: speed_gnd = sqrt(velocity.x^2 + velocity.y^2)\nfloat64 speed_gnd\n\nuint8 num_good_beams\n\n# Speed of sound (m/s) used by the DVL\nfloat32 sound_speed\n\n# Beam data\n# Some DVLs/DVL configurations only report the derived velocities.\nbool beam_ranges_valid\nbool beam_velocities_valid\n\n# Geometry of each of the 4 beams\ngeometry_msgs/Vector3[4] beam_unit_vec\n\n# beam_unit_vec[i] * range[i] is the point where the beam hits the seafloor.\n# For a 30-deg sensor, multiply by sqrt(3)/2 to get altitude.\nfloat64[4] range\nfloat32[4] range_covar\n\n# Beam quality flag.\n# The meaning of this flag is DVL-specific (at least for now).\nfloat32[4] beam_quality\n\n# Raw velocities for each beam [m/s].\n# Will be beam 1,2,3,4 velocity in beam coordinates\nfloat32[4] beam_velocity\n# Covariance, as always, should be -1 if unknown\nfloat32[4] beam_velocity_covar\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "DVL_MODE_BOTTOM",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DVL_MODE_WATER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DVL_TYPE_PISTON",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DVL_TYPE_PHASED_ARRAY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "velocity_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "dvl_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "velocity_covar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "course_gnd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed_gnd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_good_beams",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sound_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "beam_ranges_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "beam_velocities_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[4]",
+          "name": "beam_unit_vec",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[4]",
+          "name": "range_covar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[4]",
+          "name": "beam_quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[4]",
+          "name": "beam_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[4]",
+          "name": "beam_velocity_covar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PingInfo": {
+      "description": "Center frequency of sonar in Hz",
+      "raw": "# Center frequency of sonar in Hz\n# Set to 0 if unavailable\nfloat32 frequency\n\n# Speed of sound (m/s) used to calculate ranges;\n# Set to 0 if unavailable\nfloat32 sound_speed\n\n# Sonar reported -3db beamwidths\n# May be empty if not reported\n# reported in radians\nfloat32[] tx_beamwidths\nfloat32[] rx_beamwidths\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sound_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "tx_beamwidths",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "rx_beamwidths",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ProjectedSonarImage": {
+      "description": "Single scan from an imaging sonar",
+      "raw": "# Single scan from an imaging sonar\n#\n# The Z-axis is centered in the plane of the fan (\"forward\"), with X up,\n# in order to be consistent with the NED for traditional multibeam profilers.\n#\n# For sonars with a 1D array, the beams lie on the Y-Z plane, and\n# and each beam has an azimuth (rotation about X) value.  Zero azimuth\n# is in the direction of the Z-axis, typically \"straight out\" from the sonar.\n# Elevation is the orthogonal direction (rotation about Y),\n# often termed the \"vertical aperture\"\n\n# The header time should be the time the ping was transmitted, not\n# the time the message was received.\n# Note that these two could potentially be several seconds apart,\n# especially in deep water.\nstd_msgs/Header header\n\nPingInfo ping_info\n\ngeometry_msgs/Vector3[] beam_directions\n\n# Center of each range bin in meters. Note this these may not be equally\n# spaced, and do not necessarily start at zero range.\nfloat32[] ranges\n\nSonarImageData image\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PingInfo",
+          "name": "ping_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[]",
+          "name": "beam_directions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "ranges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SonarImageData",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RawSonarImage": {
+      "description": "The header time should be the time the ping was transmitted, not",
+      "raw": "\n# The header time should be the time the ping was transmitted, not\n# the time the message was received.\n# Note that these two could potentially be several seconds apart,\n# especially in deep water.\nstd_msgs/Header header\n\nPingInfo ping_info\n\nfloat32 sample_rate   # hz\n\nuint32  samples_per_beam  # the number of samples in each beam\n\n# Many sonars have some kind of upper gate for water column data\n# this represents the sample number of the first non empty sample\n# for beam n\nuint32 sample0\n\n# Multi-sector multibeams can transmit different sectors at different times\n# The Reson doesn't but we include a TX delay for each beam anyway.\n#\n# Overall, therefore, our overall time is:\n#\n# header.stamp: TX cycle starts\n# Each beam's TX time: header.stamp + transmit_delay[i]\n# Each beam's RX time: header.stamp + transmit_delay[i] + sample_rate*image_row\nfloat32[] tx_delays\n# Steering angle applied to tx beam\n# reported in radians\nfloat32[] tx_angles\n\n# Steering angle applied to rx beam\n# reported in radians\nfloat32[] rx_angles\n\nSonarImageData image\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PingInfo",
+          "name": "ping_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sample_rate",
+          "comment": "hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "samples_per_beam",
+          "comment": "the number of samples in each beam",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sample0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "tx_delays",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "tx_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "rx_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SonarImageData",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SonarDetections": {
+      "description": "Single ping from a multibeam sonar.",
+      "raw": "# Single ping from a multibeam sonar.\n#\n# This message is modeled after WHOI's MultibeamRaw.msg, from the\n# ds_multibeam_msgs package (released under a BSD license).\n# Modifications were made by UW-APL.\n\n# The header time should be the time the ping was transmitted, not\n# the time the message was received.\n# Note that these two could potentially be several seconds apart,\n# especially in deep water.\nstd_msgs/Header header\n\nPingInfo ping_info\n\n# Constants declaring whether each beam is good or bad.\n# This is implemented as an 8-bit masked value; it is possible for more\n# than one thing to flag beams as bad. To check if a beam is good, simply\n# check if it is zero.\n\nDetectionFlag[] flags\n\n# Truly raw multibeam data uses travel times rather than ranges.\n# reported in seconds\nfloat32[] two_way_travel_times\n\n# Multi-sector multibeams can transmit different sectors at different times\n# The Reson doesn't but we include a TX delay for each beam anyway.\n#\n# Overall, therefore, our overall time is:\n#\n# header.stamp: TX cycle starts\n# Each beam's TX time: header.stamp + txDelay[i]\n# Each beam's RX time: header.stamp + txDelay[i] + twowayTravelTime[i]\n# reported in seconds\nfloat32[] tx_delays\n\n# Sonar-reported intensity.  Usually uncalibrated and crude\nfloat32[] intensities\n\n# Sonar-reported along-track steering angle (applied to tx beam)\n# + forward, - aft for a downlooking sonar\n# reported in radians\nfloat32[] tx_angles\n\n# Sonar-reported across-track steering angle (applied to rx beam)\n# + to starboard, - to port for a downlooking sonar\n# reported in radians\nfloat32[] rx_angles\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PingInfo",
+          "name": "ping_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DetectionFlag[]",
+          "name": "flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "two_way_travel_times",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "tx_delays",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "intensities",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "tx_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "rx_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SonarImageData": {
+      "description": "the number of beams associated with the image",
+      "raw": "bool    is_bigendian\n\nuint32  DTYPE_UINT8 = 0\nuint32  DTYPE_INT8 = 1\nuint32  DTYPE_UINT16 = 2\nuint32  DTYPE_INT16 = 3\nuint32  DTYPE_UINT32 = 4\nuint32  DTYPE_INT32 = 5\nuint32  DTYPE_UINT64 = 6\nuint32  DTYPE_INT64 = 7\nuint32  DTYPE_FLOAT32 = 8\nuint32  DTYPE_FLOAT64 = 9\n\nuint32  dtype\n\n# the number of beams associated with the image\nuint32 beam_count\n\n# The actually pixel data in row-major (beam_index major) format\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "is_bigendian",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_UINT8",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_INT8",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_UINT16",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_INT16",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_UINT32",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_INT32",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_UINT64",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_INT64",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_FLOAT32",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DTYPE_FLOAT64",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "dtype",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "beam_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SonarRanges": {
+      "description": "Single ping from a profiling sonar.",
+      "raw": "# Single ping from a profiling sonar.\n#\n# This message is modeled after WHOI's MultibeamRaw.msg, from the\n# ds_multibeam_msgs package (released under a BSD license).\n# Modifications were made by UW-APL.\n\n# The header time should be the time the ping was transmitted, not\n# the time the message was received.\n# Note that these two could potentially be several seconds apart,\n# especially in deep water.\nstd_msgs/Header header\n\nPingInfo ping_info\n\n# Constants declaring whether each beam is good or bad.\n# This is implemented as an 8-bit masked value; it is possible for more\n# than one thing to flag beams as bad. To check if a beam is good, simply\n# check if it is zero.\n\nDetectionFlag[] flags\n\n# Multi-sector multibeams can transmit different sectors at different times\n# The Reson doesn't but we include a TX delay for each beam anyway.\n#\n# Overall, therefore, our overall time is:\n#\n# header.stamp: TX cycle starts\n# Each beam's TX time: header.stamp + txDelay[i]\n# Each beam's RX time: header.stamp + txDelay[i] + twowayTravelTime[i]\nfloat32[] transmit_delays\n\n# Sonar-reported intensity.  Usually uncalibrated and crude\nfloat32[] intensities\n\ngeometry_msgs/Vector3[] beam_unit_vec\n\nfloat32[] ranges\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PingInfo",
+          "name": "ping_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DetectionFlag[]",
+          "name": "flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "transmit_delays",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "intensities",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[]",
+          "name": "beam_unit_vec",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "ranges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

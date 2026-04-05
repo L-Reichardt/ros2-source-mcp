@@ -1,0 +1,364 @@
+{
+  "name": "automatika_ros_sugar",
+  "version": "0.5.0",
+  "description": "Syntactic sugar for ROS2 nodes creation and management",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/automatika-robotics/sugarcoat",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "automatika_ros_sugar",
+    "url": "https://github.com/automatika-robotics/ros-sugar.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_pytest",
+      "ament_index_python",
+      "ament_lint_auto",
+      "launch",
+      "launch_testing",
+      "python3-pytest"
+    ],
+    "build_and_runtime": [
+      "rclpy",
+      "rclcpp",
+      "tf2_ros",
+      "lifecycle_msgs",
+      "std_msgs",
+      "nav_msgs",
+      "sensor_msgs",
+      "geometry_msgs",
+      "python3-attrs",
+      "python3-toml",
+      "python3-yaml",
+      "python3-numpy",
+      "python3-opencv",
+      "python3-jinja2",
+      "python3-msgpack",
+      "python3-msgpack-numpy",
+      "python3-setproctitle",
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "automatika_embodied_agents",
+      "kompass"
+    ]
+  },
+  "messages": {
+    "ComponentStatus": {
+      "description": "",
+      "raw": "uint8 STATUS_HEALTHY=0   # COMPONENT IS RUNNING AND HEALTHY\n\nuint8 STATUS_FAILURE_ALGORITHM_LEVEL=1   # ERROR IN EXECUTING THE ALGORITHM/PLUGIN WITHIN THE COMPONENT\n\nuint8 STATUS_FAILURE_COMPONENT_LEVEL=2      # ERROR OR FAILURE IN THE COMPONENT LEVEL\n\nuint8 STATUS_FAILURE_SYSTEM_LEVEL=3     # ERROR IN COMPONENT EXECUTION DUE TO EXTERNAL FACTORS (SYSTEM LEVEL)\n\nuint8 STATUS_GENERAL_FAILURE=4\n\nuint8 status\nstring msg\n\nstring[] src_topics        # Registers names of the input topic provoking failure in case of system level error\n\nstring[] src_components    # Registers names of the component provoking failure in case of system level error and component level error (self)\n\nstring[] src_algorithms       # Registers names of the algorithm provoking failure in case of algorithmic level error\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "STATUS_HEALTHY",
+          "comment": "COMPONENT IS RUNNING AND HEALTHY",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_FAILURE_ALGORITHM_LEVEL",
+          "comment": "ERROR IN EXECUTING THE ALGORITHM/PLUGIN WITHIN THE COMPONENT",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_FAILURE_COMPONENT_LEVEL",
+          "comment": "ERROR OR FAILURE IN THE COMPONENT LEVEL",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_FAILURE_SYSTEM_LEVEL",
+          "comment": "ERROR IN COMPONENT EXECUTION DUE TO EXTERNAL FACTORS (SYSTEM LEVEL)",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_GENERAL_FAILURE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "src_topics",
+          "comment": "Registers names of the input topic provoking failure in case of system level error",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "src_components",
+          "comment": "Registers names of the component provoking failure in case of system level error and component level error (self)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "src_algorithms",
+          "comment": "Registers names of the algorithm provoking failure in case of algorithmic level error",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ChangeParameter": {
+      "description": "",
+      "raw": "string name\nstring value\nbool keep_alive         # True -> keep the component running when chaning the parameter, False -> deactivate, change parameter then activate\n---\nbool success\nstring error_msg\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "keep_alive",
+          "comment": "True -> keep the component running when chaning the parameter, False -> deactivate, change parameter then activate",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ChangeParameters": {
+      "description": "",
+      "raw": "string[] names\nstring[] values\nbool keep_alive         # True -> keep the component running when chaning the parameter, False -> deactivate, change parameter then activate\n---\nbool[] success\nstring[] error_msg\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "keep_alive",
+          "comment": "True -> keep the component running when chaning the parameter, False -> deactivate, change parameter then activate",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool[]",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "error_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConfigureFromFile": {
+      "description": "",
+      "raw": "string path_to_file\nbool keep_alive         # True -> keep the component running when changing the parameter, False -> deactivate, change parameter then activate\n---\nbool success\nstring error_msg\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "path_to_file",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "keep_alive",
+          "comment": "True -> keep the component running when changing the parameter, False -> deactivate, change parameter then activate",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExecuteMethod": {
+      "description": "",
+      "raw": "string name\nstring kwargs_json\n---\nbool success\nstring error_msg\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "kwargs_json",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReplaceTopic": {
+      "description": "",
+      "raw": "uint8 INPUT_TOPIC=0\n\nuint8 OUTPUT_TOPIC=1\n\n\nuint8 direction         # INPUT_TOPIC or OUTPUT_TOPIC\nstring old_name\nstring new_name\nstring new_msg_type\n---\nbool success\nstring error_msg\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "INPUT_TOPIC",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTPUT_TOPIC",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "direction",
+          "comment": "INPUT_TOPIC or OUTPUT_TOPIC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "old_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "new_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "new_msg_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

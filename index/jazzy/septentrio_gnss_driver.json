@@ -1,0 +1,2782 @@
+{
+  "name": "septentrio_gnss_driver",
+  "version": "1.4.6",
+  "description": "ROSaic: C++ driver for Septentrio's GNSS and INS receivers",
+  "license": "BSD 3-Clause License",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/septentrio-gnss/septentrio_gnss_driver",
+      "type": "website"
+    },
+    {
+      "uri": "https://www.ros.org/wiki/septentrio_gnss_driver",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "septentrio_gnss_driver",
+    "url": "https://github.com/septentrio-gnss/septentrio_gnss_driver.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "rosidl_default_generators",
+      "message_generation"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "catkin"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "message_runtime"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_components",
+      "ament_cmake_ros",
+      "gtest_vendor",
+      "roscpp",
+      "diagnostic_msgs",
+      "nmea_msgs",
+      "sensor_msgs",
+      "geometry_msgs",
+      "gps_msgs",
+      "gps_common",
+      "nav_msgs",
+      "boost",
+      "libpcap",
+      "geographiclib",
+      "tf2",
+      "tf2_eigen",
+      "tf2_geometry_msgs",
+      "tf2_ros"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "AIMPlusStatus": {
+      "description": "AIMPlusStatus message",
+      "raw": "# AIMPlusStatus message\n# ROS message header\nstd_msgs/Header header\n\nuint32 tow # ms since week start\nuint16 wnc # weeks since Jan 06, 1980 at 00:00:00 UTC     \n\nuint8 interference\n#-------------------------------\nuint8 SPECTRUM_CLEAN         = 0\nuint8 INTERFERENCE_MITIGATED = 1\nuint8 INTERFERENCE_PRESENT   = 2\n#-------------------------------\n\nuint8 spoofing\n#--------------------------------------------------------\nuint8 NONE_DETECTED                                   = 0\nuint8 SPOOFING_DETECTED_BY_OSNMA                      = 1\nuint8 SPOOFING_DETECTED_BY_AUTHENTCITY_TEST           = 2\nuint8 SPOOFING_DETECTED_BY_OSNMA_AND_AUTHENTCITY_TEST = 3\n#--------------------------------------------------------\n\nbool  osnma_authenticating\nuint8 galileo_authentic\nuint8 galileo_spoofed\nuint8 gps_authentic\nuint8 gps_spoofed",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "tow",
+          "comment": "ms since week start",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "wnc",
+          "comment": "weeks since Jan 06, 1980 at 00:00:00 UTC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "interference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "SPECTRUM_CLEAN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERFERENCE_MITIGATED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERFERENCE_PRESENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "spoofing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE_DETECTED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPOOFING_DETECTED_BY_OSNMA",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPOOFING_DETECTED_BY_AUTHENTCITY_TEST",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPOOFING_DETECTED_BY_OSNMA_AND_AUTHENTCITY_TEST",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "osnma_authenticating",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "galileo_authentic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "galileo_spoofed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gps_authentic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gps_spoofed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AttCovEuler": {
+      "description": "AttCovEuler block",
+      "raw": "# AttCovEuler block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8        error   \nfloat32      cov_headhead   # deg^2\nfloat32      cov_pitchpitch # deg^2\nfloat32      cov_rollroll   # deg^2 \nfloat32      cov_headpitch  # deg^2\nfloat32      cov_headroll   # deg^2\nfloat32      cov_pitchroll  # deg^2\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_headhead",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_pitchpitch",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_rollroll",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_headpitch",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_headroll",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_pitchroll",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AttEuler": {
+      "description": "AttEuler block",
+      "raw": "# AttEuler block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8        nr_sv\nuint8        error        \nuint16       mode\nfloat32      heading     # deg\nfloat32      pitch       # deg\nfloat32      roll        # deg\nfloat32      pitch_dot   # deg/s\nfloat32      roll_dot    # deg/s\nfloat32      heading_dot # deg/s\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "nr_sv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_dot",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll_dot",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_dot",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BaseVectorCart": {
+      "description": "BaseVectorCart block",
+      "raw": "# BaseVectorCart block \n# Block_Number 4043\n\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader block_header\n\nuint8   n\nuint8   sb_length\n\nVectorInfoCart[] vector_info_cart ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sb_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "VectorInfoCart[]",
+          "name": "vector_info_cart",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BaseVectorGeod": {
+      "description": "BaseVectorGeod block",
+      "raw": "# BaseVectorGeod block \n# Block_Number 4028\n\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader block_header\n\nuint8   n\nuint8   sb_length\n\nVectorInfoGeod[] vector_info_geod ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sb_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "VectorInfoGeod[]",
+          "name": "vector_info_geod",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlockHeader": {
+      "description": "Blockheader including time header for all ROS messages that publish SBF blocks",
+      "raw": "# Blockheader including time header for all ROS messages that publish SBF blocks\n# This is the ROS 1 version of the message file. The ROS 2 version is\n# msg_ros2/msg/BlockHeader.msg .\n\nuint8     sync_1\nuint8     sync_2\nuint16    crc\nuint16    id\nuint8     revision\nuint16    length\n\nuint32    tow # ms since week start\nuint16    wnc # weeks since Jan 06, 1980 at 00:00:00 UTC     \n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "sync_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sync_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "crc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "revision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "tow",
+          "comment": "ms since week start",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "wnc",
+          "comment": "weeks since Jan 06, 1980 at 00:00:00 UTC",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExtSensorMeas": {
+      "description": "ExtSensorMeas block",
+      "raw": "# ExtSensorMeas block \n# Block_Number 4050\n\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader block_header\n\nuint8   n\nuint8   sb_length\n\n# ExtSensorMeasSet\nuint8[]   source\nuint8[]   sensor_model\nuint8[]   type\nuint8[]   obs_info\n\n#ExtSensorMeasAcceleration\nfloat64 acceleration_x # m/s^2\nfloat64 acceleration_y # m/s^2\nfloat64 acceleration_z # m/s^2\n\n#ExtSensorMeasAngularRate\nfloat64 angular_rate_x # deg/s\nfloat64 angular_rate_y # deg/s\nfloat64 angular_rate_z # deg/s\n\n#ExtSensorMeasVelocity\nfloat32 velocity_x # m/s\nfloat32 velocity_y # m/s\nfloat32 velocity_z # m/s\nfloat32 std_dev_x # m/s\nfloat32 std_dev_y # m/s\nfloat32 std_dev_z # m/s\n\n#ExtSensorMeasInfo\nfloat32 sensor_temperature # deg C\n\n#ExtSensorMeasZeroVelocityFlag\nfloat64 zero_velocity_flag",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sb_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "sensor_model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "obs_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acceleration_x",
+          "comment": "m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acceleration_y",
+          "comment": "m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acceleration_z",
+          "comment": "m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angular_rate_x",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angular_rate_y",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angular_rate_z",
+          "comment": "deg/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity_x",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity_y",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity_z",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "std_dev_x",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "std_dev_y",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "std_dev_z",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sensor_temperature",
+          "comment": "deg C",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "zero_velocity_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GALAuthStatus": {
+      "description": "GALAuthStatus block",
+      "raw": "# GALAuthStatus block \n# Block_Number 4245\n\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader block_header\n\nuint16  osnma_status\nfloat32 trusted_time_delta # s\nuint64  gal_active_mask\nuint64  gal_authentic_mask\nuint64  gps_active_mask\nuint64  gps_authentic_mask",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "osnma_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "trusted_time_delta",
+          "comment": "s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "gal_active_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "gal_authentic_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "gps_active_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "gps_authentic_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IMUSetup": {
+      "description": "IMUSetup block",
+      "raw": "# IMUSetup block\n# Block_Number 4224\n\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader block_header \n\nuint8   serial_port\nfloat32 ant_lever_arm_x # m\nfloat32 ant_lever_arm_y # m\nfloat32 ant_lever_arm_z # m\nfloat32 theta_x # deg\nfloat32 theta_y # deg\nfloat32 theta_z # deg",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "serial_port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ant_lever_arm_x",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ant_lever_arm_y",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ant_lever_arm_z",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta_x",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta_y",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta_z",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "INSNavCart": {
+      "description": "INSNavCart block",
+      "raw": "# INSNavCart block \n# Block_Number 4225\n\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader block_header\n\nuint8       gnss_mode\nuint8       error\nuint16      info\nuint16      gnss_age # 0.01 s\nfloat64     x        # m\nfloat64     y        # m\nfloat64     z        # m\nuint16      accuracy # 0.01 m\nuint16      latency  # 0.1 ms\nuint8       datum    \n#uint8       reserved\nuint16      sb_list\n\n# INSNavCartPosStdDev sub-block definition:\n# If the Position StdDev field is 1 then this sub block is available:\nfloat32     x_std_dev # m\nfloat32     y_std_dev # m\nfloat32     z_std_dev # m\n\n# INSNavCartPosCov sub-block definition:\n# If the Position Cov field is 1 then this sub block is available:\nfloat32     xy_cov # m^2\nfloat32     xz_cov # m^2\nfloat32     yz_cov # m^2\n\n# INSNavCartAtt sub-block definition:\n# If the Attitude field is 1 then this sub block is available:\nfloat32     heading # deg\nfloat32     pitch   # deg\nfloat32     roll    # deg\n\n# INSNavCartAttStdDev sub-block definition:\n# If the Attitude StdDev field is 1 then this sub block is available:\nfloat32     heading_std_dev # deg\nfloat32     pitch_std_dev   # deg\nfloat32     roll_std_dev    # deg\n\n# INSNavCartAttCov sub-block definition:\n# If the Attitude Cov field is 1 then this sub block is available:\nfloat32     heading_pitch_cov # deg^2\nfloat32     heading_roll_cov  # deg^2\nfloat32     pitch_roll_cov    # deg^2\n\n# INSNavCartVel sub-block definition:\n# If the Velocity field is 1 then this sub block is available:\nfloat32     vx # m/s\nfloat32     vy # m/S\nfloat32     vz # m/s\n\n# INSNavCartVelStdDev sub-block definition:\n# If the Velocity StdDev field is 1 then this sub block is available:\nfloat32     vx_std_dev # m/s\nfloat32     vy_std_dev # m/s\nfloat32     vz_std_dev # m/s\n\n# INSNavCartVelCov sub-block definition:\n# If the Velocity Cov field is 1 then this sub block is available:\nfloat32     vx_vy_cov # m^2/s^2\nfloat32     vx_vz_cov # m^2/s^2\nfloat32     vy_vz_cov # m^2/s^2",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gnss_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "gnss_age",
+          "comment": "0.01 s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "accuracy",
+          "comment": "0.01 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "latency",
+          "comment": "0.1 ms",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "datum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sb_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_std_dev",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_std_dev",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_std_dev",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "xy_cov",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "xz_cov",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yz_cov",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_std_dev",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_std_dev",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll_std_dev",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_pitch_cov",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_roll_cov",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_roll_cov",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vx",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vy",
+          "comment": "m/S",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vz",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vx_std_dev",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vy_std_dev",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vz_std_dev",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vx_vy_cov",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vx_vz_cov",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vy_vz_cov",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "INSNavGeod": {
+      "description": "INSNavGeod block",
+      "raw": "# INSNavGeod block \n# Block_Number 4226\n\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader block_header\n\nuint8       gnss_mode\nuint8       error\nuint16      info\nuint16      gnss_age   # 0.01 s\nfloat64     latitude   # rad\nfloat64     longitude  # rad\nfloat64     height     # m (ellipsoidal)\nfloat32     undulation # m\nuint16      accuracy   # 0.01 m\nuint16      latency    # 0.0001 s\nuint8       datum\n#uint8       reserved\nuint16      sb_list\n\n# INSNavGeodPosStdDev sub-block definition:\n# If the Position StdDev field is 1 then this sub block is available:\nfloat32     latitude_std_dev  # m\nfloat32     longitude_std_dev # m\nfloat32     height_std_dev    # m\n\n# INSNavGeodPosCov sub-block definition:\n# If the Position Cov field is 1 then this sub block is available:\nfloat32     latitude_longitude_cov # m^2\nfloat32     latitude_height_cov    # m^2\nfloat32     longitude_height_cov   # m^2\n\n# INSNavGeodAtt sub-block definition:\n# If the Attitude field is 1 then this sub block is available:\nfloat32     heading # deg\nfloat32     pitch   # deg\nfloat32     roll    # deg\n\n# INSNavGeodAttStdDev sub-block definition:\n# If the Attitude StdDev field is 1 then this sub block is available:\nfloat32     heading_std_dev # deg\nfloat32     pitch_std_dev   # deg\nfloat32     roll_std_dev    # deg\n\n# INSNavGeodAttCov sub-block definition:\n# If the Attitude Cov field is 1 then this sub block is available:\nfloat32     heading_pitch_cov # deg^2\nfloat32     heading_roll_cov  # deg^2\nfloat32     pitch_roll_cov    # deg^2\n\n# INSNavGeodVel sub-block definition:\n# If the Velocity field is 1 then this sub block is available:\nfloat32     ve # m/s\nfloat32     vn # m/s \nfloat32     vu # m/s\n\n# INSNavGeodVelStdDev sub-block definition:\n# If the Velocity StdDev field is 1 then this sub block is available:\nfloat32     ve_std_dev # m/s\nfloat32     vn_std_dev # m/s\nfloat32     vu_std_dev # m/s\n\n# INSNavGeodVelCov sub-block definition:\n# If the Velocity Cov field is 1 then this sub block is available:\nfloat32     ve_vn_cov # m^2/s^2\nfloat32     ve_vu_cov # m^2/s^2\nfloat32     vn_vu_cov # m^2/s^2   \n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gnss_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "gnss_age",
+          "comment": "0.01 s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "rad",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "rad",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height",
+          "comment": "m (ellipsoidal)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "accuracy",
+          "comment": "0.01 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "latency",
+          "comment": "0.0001 s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "datum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sb_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "latitude_std_dev",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitude_std_dev",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height_std_dev",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "latitude_longitude_cov",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "latitude_height_cov",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitude_height_cov",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_std_dev",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_std_dev",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll_std_dev",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_pitch_cov",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_roll_cov",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_roll_cov",
+          "comment": "deg^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ve",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vn",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vu",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ve_std_dev",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vn_std_dev",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vu_std_dev",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ve_vn_cov",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ve_vu_cov",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vn_vu_cov",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MeasEpoch": {
+      "description": "MeasEpoch block",
+      "raw": "# MeasEpoch block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8 n\nuint8 sb1_length\nuint8 sb2_length      \nuint8 common_flags\nuint8 cum_clk_jumps # 0.001 s\n\nMeasEpochChannelType1[] type1",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sb1_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sb2_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "common_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cum_clk_jumps",
+          "comment": "0.001 s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MeasEpochChannelType1[]",
+          "name": "type1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MeasEpochChannelType1": {
+      "description": "MeasEpochChannelType1 block",
+      "raw": "# MeasEpochChannelType1 block\n   \nuint8  rx_channel\nuint8  type\nuint8  sv_id\nuint8  misc        # 4294967.296 m\nuint32 code_lsb    # 0.001 m\nint32  doppler     # 0.0001 Hz\nuint16 carrier_lsb # 0.001 cycles\nint8   carrier_msb # 65.536 cycles\nuint8  cn0         # 0.25 dB-Hz\nuint16 lock_time\nuint8  obs_info\nuint8  n2\n\nMeasEpochChannelType2[] type2",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "rx_channel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sv_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "misc",
+          "comment": "4294967.296 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "code_lsb",
+          "comment": "0.001 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "doppler",
+          "comment": "0.0001 Hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "carrier_lsb",
+          "comment": "0.001 cycles",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "carrier_msb",
+          "comment": "65.536 cycles",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cn0",
+          "comment": "0.25 dB-Hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "lock_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "obs_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MeasEpochChannelType2[]",
+          "name": "type2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MeasEpochChannelType2": {
+      "description": "MeasEpochChannelType2 block",
+      "raw": "# MeasEpochChannelType2 block\n   \nuint8  type\nuint8  lock_time          # s\nuint8  cn0                # 0.25 dB-Hz\nuint8  offsets_msb        # 65.536 m or 65.536 Hz\nint8   carrier_msb        # 65.536 cycles\nuint8  obs_info\nuint16 code_offset_lsb    # 0.001 m\nuint16 carrier_lsb        # 0.001 cycles\nuint16 doppler_offset_lsb # 0.0001 Hz",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "lock_time",
+          "comment": "s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cn0",
+          "comment": "0.25 dB-Hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "offsets_msb",
+          "comment": "65.536 m or 65.536 Hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "carrier_msb",
+          "comment": "65.536 cycles",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "obs_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "code_offset_lsb",
+          "comment": "0.001 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "carrier_lsb",
+          "comment": "0.001 cycles",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "doppler_offset_lsb",
+          "comment": "0.0001 Hz",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PVTCartesian": {
+      "description": "PVTCartesian block",
+      "raw": "# PVTCartesian block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8        mode\nuint8        error        \nfloat64      x             # m    \nfloat64      y             # m             \nfloat64      z             # m      \nfloat32      undulation    # m \nfloat32      vx            # m/s         \nfloat32      vy            # m/s \nfloat32      vz            # m/s\nfloat32      cog           # deg\nfloat64      rx_clk_bias   # ms\nfloat32      rx_clk_drift  # ppm\nuint8        time_system \nuint8        datum\nuint8        nr_sv \nuint8        wa_corr_info\nuint16       reference_id\nuint16       mean_corr_age # 0.01s\nuint32       signal_info\nuint8        alert_flag\nuint8        nr_bases\nuint16       ppp_info      # s\nuint16       latency       # 0.0001 s\nuint16       h_accuracy    # 0.01 m\nuint16       v_accuracy    # 0.01 m\nuint8        misc\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vx",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vy",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vz",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cog",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rx_clk_bias",
+          "comment": "ms",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rx_clk_drift",
+          "comment": "ppm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "time_system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "datum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "nr_sv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "wa_corr_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "reference_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mean_corr_age",
+          "comment": "0.01s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "signal_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "alert_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "nr_bases",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "ppp_info",
+          "comment": "s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "latency",
+          "comment": "0.0001 s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "h_accuracy",
+          "comment": "0.01 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "v_accuracy",
+          "comment": "0.01 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "misc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PVTGeodetic": {
+      "description": "PVTGeodetic block",
+      "raw": "# PVTGeodetic block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8        mode\nuint8        error        \nfloat64      latitude      # rad    \nfloat64      longitude     # rad\nfloat64      height        # m (ellipsoidal)\nfloat32      undulation    # m\nfloat32      vn            # m/s\nfloat32      ve            # m/s\nfloat32      vu            # m/s\nfloat32      cog           # deg\nfloat64      rx_clk_bias   # ms\nfloat32      rx_clk_drift  # ppm\nuint8        time_system \nuint8        datum\nuint8        nr_sv \nuint8        wa_corr_info\nuint16       reference_id\nuint16       mean_corr_age # 0.01s\nuint32       signal_info\nuint8        alert_flag\nuint8        nr_bases\nuint16       ppp_info      # s\nuint16       latency       # 0.0001 s\nuint16       h_accuracy    # 0.01 m\nuint16       v_accuracy    # 0.01 m\nuint8        misc",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "rad",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "rad",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height",
+          "comment": "m (ellipsoidal)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vn",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ve",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vu",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cog",
+          "comment": "deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rx_clk_bias",
+          "comment": "ms",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rx_clk_drift",
+          "comment": "ppm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "time_system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "datum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "nr_sv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "wa_corr_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "reference_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mean_corr_age",
+          "comment": "0.01s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "signal_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "alert_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "nr_bases",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "ppp_info",
+          "comment": "s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "latency",
+          "comment": "0.0001 s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "h_accuracy",
+          "comment": "0.01 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "v_accuracy",
+          "comment": "0.01 m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "misc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PosCovCartesian": {
+      "description": "PVTGeodetic block",
+      "raw": "# PVTGeodetic block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8        mode\nuint8        error        \nfloat32      cov_xx # m^2\nfloat32      cov_yy # m^2\nfloat32      cov_zz # m^2\nfloat32      cov_bb # m^2\nfloat32      cov_xy # m^2\nfloat32      cov_xz # m^2\nfloat32      cov_xb # m^2\nfloat32      cov_yz # m^2\nfloat32      cov_yb # m^2\nfloat32      cov_zb # m^2",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_xx",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_yy",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_zz",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_bb",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_xy",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_xz",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_xb",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_yz",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_yb",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_zb",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PosCovGeodetic": {
+      "description": "PVTGeodetic block",
+      "raw": "# PVTGeodetic block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8        mode\nuint8        error        \nfloat32      cov_latlat # m^2\nfloat32      cov_lonlon # m^2\nfloat32      cov_hgthgt # m^2\nfloat32      cov_bb     # m^2\nfloat32      cov_latlon # m^2\nfloat32      cov_lathgt # m^2\nfloat32      cov_latb   # m^2\nfloat32      cov_lonhgt # m^2\nfloat32      cov_lonb   # m^2\nfloat32      cov_hb     # m^2",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_latlat",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_lonlon",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_hgthgt",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_bb",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_latlon",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_lathgt",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_latb",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_lonhgt",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_lonb",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_hb",
+          "comment": "m^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RFBand": {
+      "description": "RFband block",
+      "raw": "# RFband block\n\nuint32 frequency # Hz\nuint16 bandwidth # kHz\nuint8  info",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "frequency",
+          "comment": "Hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "bandwidth",
+          "comment": "kHz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RFStatus": {
+      "description": "RFStatus block",
+      "raw": "# RFStatus block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header\n\nuint8    n\nuint8    sb_length\nuint8    flags\nRFBand[] rfband\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sb_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RFBand[]",
+          "name": "rfband",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReceiverTime": {
+      "description": "ReceiverTime block",
+      "raw": "# ReceiverTime block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header\n\nint8  utc_year    # year\nint8  utc_month   # month\nint8  utc_day     # day\nint8  utc_hour    # hour\nint8  utc_min     # minute\nint8  utc_second # s\nint8  delta_ls   # s\nuint8 sync_level",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "utc_year",
+          "comment": "year",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "utc_month",
+          "comment": "month",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "utc_day",
+          "comment": "day",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "utc_hour",
+          "comment": "hour",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "utc_min",
+          "comment": "minute",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "utc_second",
+          "comment": "s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "delta_ls",
+          "comment": "s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sync_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VectorInfoCart": {
+      "description": "VectorInfoCart block",
+      "raw": "# VectorInfoCart block\n   \nuint8   nr_sv\nuint8   error\nuint8   mode\nuint8   misc\nfloat64 delta_x      # m\nfloat64 delta_y      # m\nfloat64 delta_z      # m\nfloat32 delta_vx     # m\nfloat32 delta_vy     # m\nfloat32 delta_vz     # m\nuint16  azimuth      # 0.01 deg\nint16   elevation    # 0.01 deg\nuint16  reference_id\nuint16  corr_age     # 0.01 s\nuint32  signal_info",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "nr_sv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "misc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delta_x",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delta_y",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delta_z",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "delta_vx",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "delta_vy",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "delta_vz",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "azimuth",
+          "comment": "0.01 deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "elevation",
+          "comment": "0.01 deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "reference_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "corr_age",
+          "comment": "0.01 s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "signal_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VectorInfoGeod": {
+      "description": "VectorInfoGeod block",
+      "raw": "# VectorInfoGeod block\n   \nuint8   nr_sv\nuint8   error\nuint8   mode\nuint8   misc\nfloat64 delta_east   # m\nfloat64 delta_north  # m\nfloat64 delta_up     # m\nfloat32 delta_ve     # m\nfloat32 delta_vn     # m\nfloat32 delta_vu     # m\nuint16  azimuth      # 0.01 deg\nint16   elevation    # 0.01 deg\nuint16  reference_id\nuint16  corr_age     # 0.01 s\nuint32  signal_info",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "nr_sv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "misc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delta_east",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delta_north",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delta_up",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "delta_ve",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "delta_vn",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "delta_vu",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "azimuth",
+          "comment": "0.01 deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "elevation",
+          "comment": "0.01 deg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "reference_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "corr_age",
+          "comment": "0.01 s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "signal_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelCovCartesian": {
+      "description": "VelCovCartesian block",
+      "raw": "# VelCovCartesian block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8        mode\nuint8        error        \nfloat32      cov_vxvx # m^2/s^2\nfloat32      cov_vyvy # m^2/s^2\nfloat32      cov_vzvz # m^2/s^2\nfloat32      cov_dtdt # m^2/s^2\nfloat32      cov_vxvy # m^2/s^2\nfloat32      cov_vxvz # m^2/s^2\nfloat32      cov_vxdt # m^2/s^2\nfloat32      cov_vyvz # m^2/s^2\nfloat32      cov_vydt # m^2/s^2\nfloat32      cov_vzdt # m^2/s^2",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vxvx",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vyvy",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vzvz",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_dtdt",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vxvy",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vxvz",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vxdt",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vyvz",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vydt",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vzdt",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelCovGeodetic": {
+      "description": "VelCovGeodetic block",
+      "raw": "# VelCovGeodetic block\n# ROS message header\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader  block_header   \n\nuint8        mode\nuint8        error        \nfloat32      cov_vnvn # m^2/s^2\nfloat32      cov_veve # m^2/s^2\nfloat32      cov_vuvu # m^2/s^2\nfloat32      cov_dtdt # m^2/s^2\nfloat32      cov_vnve # m^2/s^2\nfloat32      cov_vnvu # m^2/s^2\nfloat32      cov_vndt # m^2/s^2\nfloat32      cov_vevu # m^2/s^2\nfloat32      cov_vedt # m^2/s^2\nfloat32      cov_vudt # m^2/s^2",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vnvn",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_veve",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vuvu",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_dtdt",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vnve",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vnvu",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vndt",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vevu",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vedt",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cov_vudt",
+          "comment": "m^2/s^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelSensorSetup": {
+      "description": "VelSensorSetup block",
+      "raw": "# VelSensorSetup block\n# Block_Number 4244\n\nstd_msgs/Header header\n\n# SBF block header including time header\nBlockHeader block_header\n\nuint8   port\nfloat32 lever_arm_x # m\nfloat32 lever_arm_y # m\nfloat32 lever_arm_z # m",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BlockHeader",
+          "name": "block_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lever_arm_x",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lever_arm_y",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lever_arm_z",
+          "comment": "m",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

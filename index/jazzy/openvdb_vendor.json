@@ -1,0 +1,40 @@
+{
+  "name": "openvdb_vendor",
+  "version": "2.5.5",
+  "description": "Wrapper around OpenVDB, if not found on the system, will compile from source",
+  "license": "LGPL v2.1",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/AcademySoftwareFoundation/openvdb",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "spatio_temporal_voxel_layer",
+    "url": "https://github.com/SteveMacenski/spatio_temporal_voxel_layer.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_vendor_package",
+      "git"
+    ],
+    "build_and_runtime": [
+      "libblosc-dev",
+      "libboost-iostreams-dev",
+      "libboost-thread-dev",
+      "libopenvdb-dev",
+      "tbb",
+      "zlib"
+    ],
+    "depended_on_by": [
+      "spatio_temporal_voxel_layer"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

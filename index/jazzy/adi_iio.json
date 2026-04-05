@@ -1,0 +1,716 @@
+{
+  "name": "adi_iio",
+  "version": "1.0.1",
+  "description": "ROS package to interface with IIO devices",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/analogdevicesinc/iio_ros2",
+      "type": "repository"
+    },
+    {
+      "uri": "https://analogdevicesinc.github.io/iio_ros2/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/analogdevicesinc/iio_ros2/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "adi_iio",
+    "url": "https://github.com/analogdevicesinc/iio_ros2.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "ros2launch"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_cppcheck",
+      "ament_cmake_cpplint",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_xmllint",
+      "ament_copyright",
+      "ament_pep257",
+      "ament_cmake_ros",
+      "launch",
+      "launch_ros",
+      "launch_testing",
+      "launch_pytest",
+      "launch_testing_ament_cmake",
+      "rclpy",
+      "python3-scipy"
+    ],
+    "build_and_runtime": [
+      "rosidl_typesupport_introspection_cpp",
+      "rclcpp",
+      "std_msgs",
+      "libiio-dev"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "AttrDisableTopic": {
+      "description": "",
+      "raw": "int8 STRING = 0\nint8 INT = 1\nint8 DOUBLE = 2\nint8 BOOL = 3\n\nstring topic_name\nint8 type 0 # String: 0, Int: 1, Double: 2, Bool: 3\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "int8",
+          "name": "STRING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "INT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "DOUBLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BOOL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "type",
+          "comment": "String: 0, Int: 1, Double: 2, Bool: 3",
+          "default": "0",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AttrEnableTopic": {
+      "description": "",
+      "raw": "int8 STRING = 0\nint8 INT = 1\nint8 DOUBLE = 2\nint8 BOOL = 3\n\nstring attr_path\nstring topic_name \"\"\nfloat64 loop_rate 1.0\nint8 type 0 # String: 0, Int: 1, Double: 2, Bool: 3\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "int8",
+          "name": "STRING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "INT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "DOUBLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BOOL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "attr_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": "\"\"",
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "loop_rate",
+          "comment": "",
+          "default": "1.0",
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "type",
+          "comment": "String: 0, Int: 1, Double: 2, Bool: 3",
+          "default": "0",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AttrReadString": {
+      "description": "",
+      "raw": "string attr_path\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "attr_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AttrWriteString": {
+      "description": "",
+      "raw": "string attr_path\nstring value\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "attr_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BufferCreate": {
+      "description": "",
+      "raw": "string device_path\nstring[] channels\nint32 samples_count\n---\nbool success\nstring message\nstd_msgs/MultiArrayLayout layout\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "device_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "channels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "samples_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/MultiArrayLayout",
+          "name": "layout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BufferDestroy": {
+      "description": "",
+      "raw": "string device_path\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "device_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BufferDisableTopic": {
+      "description": "",
+      "raw": "string device_path\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "device_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BufferEnableTopic": {
+      "description": "",
+      "raw": "string device_path\nstring topic_name\nfloat64 loop_rate 1.0\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "device_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "loop_rate",
+          "comment": "",
+          "default": "1.0",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BufferRead": {
+      "description": "",
+      "raw": "string device_path\nstring[] channels\nint32 samples_count\n---\nbool success\nstring message\nstd_msgs/Int32MultiArray buffer\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "device_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "channels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "samples_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int32MultiArray",
+          "name": "buffer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BufferRefill": {
+      "description": "",
+      "raw": "string device_path\n---\nbool success\nstring message\nstd_msgs/Int32MultiArray buffer\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "device_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int32MultiArray",
+          "name": "buffer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BufferWrite": {
+      "description": "",
+      "raw": "string device_path\nstring[] channels\nstd_msgs/Int32MultiArray buffer\nbool cyclic\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "device_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "channels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int32MultiArray",
+          "name": "buffer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cyclic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListAttributes": {
+      "description": "",
+      "raw": "string iio_path # A valid IIO path to a context/device/channel\n---\nbool success\nstring message\nstring[] data\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "iio_path",
+          "comment": "A valid IIO path to a context/device/channel",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListChannels": {
+      "description": "",
+      "raw": "string iio_path # A valid IIO path to a device\n---\nbool success\nstring message\nstring[] data\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "iio_path",
+          "comment": "A valid IIO path to a device",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListDevices": {
+      "description": "",
+      "raw": "---\nbool success\nstring message\nstring[] data\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanContext": {
+      "description": "",
+      "raw": "---\nbool success\nstring message\nstring[] devices\nstring[] channels\nstring[] context_attrs\nstring[] device_attrs\nstring[] channel_attrs\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "devices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "channels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "context_attrs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "device_attrs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "channel_attrs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

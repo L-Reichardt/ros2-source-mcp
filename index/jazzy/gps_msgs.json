@@ -1,0 +1,488 @@
+{
+  "name": "gps_msgs",
+  "version": "2.1.1",
+  "description": "GPS messages for use in GPS drivers",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/gps_common",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/swri-robotics/gms_umd",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "gps_umd",
+    "url": "https://github.com/swri-robotics/gps_umd.git",
+    "branch": "ros2-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "gps_tools",
+      "gps_umd",
+      "gpsd_client",
+      "mapviz_plugins",
+      "novatel_gps_driver",
+      "ros_gz_bridge",
+      "septentrio_gnss_driver",
+      "swri_transform_util"
+    ]
+  },
+  "messages": {
+    "GPSFix": {
+      "description": "A more complete GPS fix to supplement sensor_msgs/NavSatFix.",
+      "raw": "# A more complete GPS fix to supplement sensor_msgs/NavSatFix.\nstd_msgs/Header header\n\nGPSStatus status\n\n# Latitude (degrees). Positive is north of equator; negative is south.\nfloat64 latitude\n\n# Longitude (degrees). Positive is east of prime meridian, negative west.\nfloat64 longitude\n\n# Altitude (meters). Positive is above reference (e.g., sea level).\nfloat64 altitude\n\n# Direction (degrees from north)\nfloat64 track\n\n# Ground speed (meters/second)\nfloat64 speed\n\n# Vertical speed (meters/second)\nfloat64 climb\n\n# Device orientation (units in degrees)\nfloat64 pitch\nfloat64 roll\nfloat64 dip\n\n# GPS time\nfloat64 time\n\n## Dilution of precision; Xdop<=0 means the value is unknown\n\n# Total (positional-temporal) dilution of precision\nfloat64 gdop\n\n# Positional (3D) dilution of precision\nfloat64 pdop\n\n# Horizontal dilution of precision\nfloat64 hdop\n\n# Vertical dilution of precision\nfloat64 vdop\n\n# Temporal dilution of precision\nfloat64 tdop\n\n## Uncertainty of measurement, 95% confidence\n\n# Spherical position uncertainty (meters) [epe]\nfloat64 err\n\n# Horizontal position uncertainty (meters) [eph]\nfloat64 err_horz\n\n# Vertical position uncertainty (meters) [epv]\nfloat64 err_vert\n\n# Track uncertainty (degrees) [epd]\nfloat64 err_track\n\n# Ground speed uncertainty (meters/second) [eps]\nfloat64 err_speed\n\n# Vertical speed uncertainty (meters/second) [epc]\nfloat64 err_climb\n\n# Temporal uncertainty [ept]\nfloat64 err_time\n\n# Orientation uncertainty (degrees)\nfloat64 err_pitch\nfloat64 err_roll\nfloat64 err_dip\n\n# Position covariance [m^2] defined relative to a tangential plane\n# through the reported position. The components are East, North, and\n# Up (ENU), in row-major order.\n\nfloat64[9] position_covariance\n\nuint8 COVARIANCE_TYPE_UNKNOWN = 0\nuint8 COVARIANCE_TYPE_APPROXIMATED = 1\nuint8 COVARIANCE_TYPE_DIAGONAL_KNOWN = 2\nuint8 COVARIANCE_TYPE_KNOWN = 3\n\nuint8 position_covariance_type\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GPSStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "track",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "climb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "dip",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "hdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "vdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "tdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_horz",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_vert",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_track",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_climb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_roll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "err_dip",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "position_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "COVARIANCE_TYPE_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COVARIANCE_TYPE_APPROXIMATED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COVARIANCE_TYPE_DIAGONAL_KNOWN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COVARIANCE_TYPE_KNOWN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "position_covariance_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GPSStatus": {
+      "description": "Satellites used in solution",
+      "raw": "std_msgs/Header header\n\n# Satellites used in solution\nuint16 satellites_used # Number of satellites\nint32[] satellite_used_prn # PRN identifiers\n\n# Satellites visible\nuint16 satellites_visible\nint32[] satellite_visible_prn # PRN identifiers\nint32[] satellite_visible_z # Elevation of satellites\nint32[] satellite_visible_azimuth # Azimuth of satellites\nint32[] satellite_visible_snr # Signal-to-noise ratios (dB)\n\n# Measurement status\nint16 STATUS_NO_FIX=-1    # Unable to fix position\nint16 STATUS_FIX=0        # Normal fix\nint16 STATUS_SBAS_FIX=1   # Fixed using a satellite-based augmentation system\nint16 STATUS_GBAS_FIX=2   #          or a ground-based augmentation system\nint16 STATUS_DGPS_FIX=18  # Fixed with DGPS\nint16 STATUS_RTK_FIX=19   # Real-Time Kinematic, fixed integers\nint16 STATUS_RTK_FLOAT=20 # Real-Time Kinematic, float integers\nint16 STATUS_WAAS_FIX=33  # Fixed with WAAS\nint16 status\n\nuint16 SOURCE_NONE=0 # No information is available\nuint16 SOURCE_GPS=1 # Using standard GPS location [only valid for position_source]\nuint16 SOURCE_POINTS=2 # Motion/orientation fix is derived from successive points\nuint16 SOURCE_DOPPLER=4 # Motion is derived using the Doppler effect\nuint16 SOURCE_ALTIMETER=8 # Using an altimeter\nuint16 SOURCE_MAGNETIC=16 # Using magnetic sensors\nuint16 SOURCE_GYRO=32 # Using gyroscopes\nuint16 SOURCE_ACCEL=64 # Using accelerometers\n\nuint16 motion_source # Source for speed, climb and track\nuint16 orientation_source # Source for device orientation\nuint16 position_source # Source for position\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "satellites_used",
+          "comment": "Number of satellites",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "satellite_used_prn",
+          "comment": "PRN identifiers",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "satellites_visible",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "satellite_visible_prn",
+          "comment": "PRN identifiers",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "satellite_visible_z",
+          "comment": "Elevation of satellites",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "satellite_visible_azimuth",
+          "comment": "Azimuth of satellites",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "satellite_visible_snr",
+          "comment": "Signal-to-noise ratios (dB)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "STATUS_NO_FIX",
+          "comment": "Unable to fix position",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "STATUS_FIX",
+          "comment": "Normal fix",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "STATUS_SBAS_FIX",
+          "comment": "Fixed using a satellite-based augmentation system",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "STATUS_GBAS_FIX",
+          "comment": "or a ground-based augmentation system",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "STATUS_DGPS_FIX",
+          "comment": "Fixed with DGPS",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "STATUS_RTK_FIX",
+          "comment": "Real-Time Kinematic, fixed integers",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "STATUS_RTK_FLOAT",
+          "comment": "Real-Time Kinematic, float integers",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "STATUS_WAAS_FIX",
+          "comment": "Fixed with WAAS",
+          "default": "33",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "SOURCE_NONE",
+          "comment": "No information is available",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SOURCE_GPS",
+          "comment": "Using standard GPS location [only valid for position_source]",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SOURCE_POINTS",
+          "comment": "Motion/orientation fix is derived from successive points",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SOURCE_DOPPLER",
+          "comment": "Motion is derived using the Doppler effect",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SOURCE_ALTIMETER",
+          "comment": "Using an altimeter",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SOURCE_MAGNETIC",
+          "comment": "Using magnetic sensors",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SOURCE_GYRO",
+          "comment": "Using gyroscopes",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SOURCE_ACCEL",
+          "comment": "Using accelerometers",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "motion_source",
+          "comment": "Source for speed, climb and track",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "orientation_source",
+          "comment": "Source for device orientation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "position_source",
+          "comment": "Source for position",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

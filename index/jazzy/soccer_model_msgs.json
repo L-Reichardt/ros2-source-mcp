@@ -1,0 +1,154 @@
+{
+  "name": "soccer_model_msgs",
+  "version": "1.0.0",
+  "description": "A package containing world model related message definitions in the soccer domain.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "soccer_interfaces",
+    "url": "https://github.com/ros-sports/soccer_interfaces.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs",
+      "soccer_geometry_msgs",
+      "soccer_vision_attribute_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Ball": {
+      "description": "Describes a filtered ball from modelling modules, in 3d coordinates, with a header for global reference.",
+      "raw": "# Describes a filtered ball from modelling modules, in 3d coordinates, with a header for global reference.\n# This msg type is used to publish all filtered balls from modelling modules.\n\nstd_msgs/Header header\n\nsoccer_geometry_msgs/PointWithCovariance point\ngeometry_msgs/TwistWithCovariance twist\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_geometry_msgs/PointWithCovariance",
+          "name": "point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Obstacle": {
+      "description": "Describes a filtered obstacle from modelling modules, in 3d coordinates.",
+      "raw": "# Describes a filtered obstacle from modelling modules, in 3d coordinates.\n# An Obstacle is defined as anything on the field that could not be classified as\n# one of the known types (such as Robot or Goalpost).\n\ngeometry_msgs/PoseWithCovariance pose\ngeometry_msgs/TwistWithCovariance twist\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObstacleArray": {
+      "description": "An array of obstacles with a header for global reference.",
+      "raw": "# An array of obstacles with a header for global reference.\n# This msg type is used to publish all filtered obstacles from modelling modules.\n\nstd_msgs/Header header\nsoccer_model_msgs/Obstacle[] obstacles\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_model_msgs/Obstacle[]",
+          "name": "obstacles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Robot": {
+      "description": "Describes a filtered robot from modelling modules, in 3d coordinates.",
+      "raw": "# Describes a filtered robot from modelling modules, in 3d coordinates.\ngeometry_msgs/PoseWithCovariance pose\ngeometry_msgs/TwistWithCovariance twist\nsoccer_vision_attribute_msgs/Robot attributes\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Robot",
+          "name": "attributes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotArray": {
+      "description": "An array of robots with a header for global reference.",
+      "raw": "# An array of robots with a header for global reference.\n# This msg type is used to publish all filtered robots from modelling modules.\n\nstd_msgs/Header header\nsoccer_model_msgs/Robot[]  robots\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_model_msgs/Robot[]",
+          "name": "robots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

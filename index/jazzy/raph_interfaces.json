@@ -1,0 +1,630 @@
+{
+  "name": "raph_interfaces",
+  "version": "1.0.1",
+  "description": "Interface definitions for Raph Rover",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "raph_common",
+    "url": "https://github.com/RaphRover/raph_common.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators",
+      "std_msgs",
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "std_msgs",
+      "builtin_interfaces"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_xmllint"
+    ],
+    "depended_on_by": [
+      "raph",
+      "raph_bringup"
+    ]
+  },
+  "messages": {
+    "BatteryMode": {
+      "description": "Represents the target or actual battery power mode.",
+      "raw": "# Represents the target or actual battery power mode.\n\n# Whether the battery is charging.\nbool charging\n\n# Whether the battery is used as a power source.\nbool draining\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "charging",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "draining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BatteryState": {
+      "description": "Represents the state of a single battery.",
+      "raw": "# Represents the state of a single battery.\n\n# The current voltage in volts.\nfloat64 voltage\n\n# Estimated state of charge in percents.\nfloat64 state_of_charge\n\n# The target battery mode.\nraph_interfaces/BatteryMode target_mode\n\n# The actual battery mode.\nraph_interfaces/BatteryMode current_mode\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "state_of_charge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/BatteryMode",
+          "name": "target_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/BatteryMode",
+          "name": "current_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuDiagnostics": {
+      "description": "Diagnostic information about IMU sensor running on RaphCore.",
+      "raw": "# Diagnostic information about IMU sensor running on RaphCore.\n\nstd_msgs/Header header\n\n# The current temperature of the sensor in degrees Celsius.\nfloat64 temperature\n\n# The current gyroscope biases.\nfloat64 gyro_bias_x\nfloat64 gyro_bias_y\nfloat64 gyro_bias_z\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gyro_bias_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gyro_bias_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gyro_bias_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Led": {
+      "description": "Represents the position and the state of the LED.",
+      "raw": "# Represents the position and the state of the LED.\n\nuint8 PANEL_FRONT=0\nuint8 PANEL_REAR=1\nuint8 PANEL_LEFT=2\nuint8 PANEL_RIGHT=3\n\n# The panel the LED is on.\nuint8 panel\n\n# The id of the LED on the panel.\nuint8 id\n\n# The state of the LED.\nraph_interfaces/LedState state",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PANEL_FRONT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PANEL_REAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PANEL_LEFT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PANEL_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "panel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/LedState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LedColor": {
+      "description": "This message represents the color of an LED.",
+      "raw": "# This message represents the color of an LED.\n\n# The intensivity of each color (255 = 100%).\nuint8 red\nuint8 green\nuint8 blue\nuint8 white",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "red",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "green",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "blue",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "white",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LedPanelState": {
+      "description": "Represents the state of the whole LED panel.",
+      "raw": "# Represents the state of the whole LED panel.\n\nuint8 PANEL_FRONT=0\nuint8 PANEL_REAR=1\nuint8 PANEL_LEFT=2\nuint8 PANEL_RIGHT=3\n\n# Which LED panel does this state applies to.\nuint8 panel\n\n# State of each LED on the panel.\n# The largest panel has 40 LEDs. If the length of the array is smaller than the number of LEDs on\n# the panel, the remaining LEDs are not changed. If the length is greater than the number of LEDs\n# on the panel, the extra states are ignored.\nraph_interfaces/LedState[<=40] state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PANEL_FRONT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PANEL_REAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PANEL_LEFT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PANEL_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "panel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/LedState[<=40]",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LedState": {
+      "description": "This message represents the state of a single LED.",
+      "raw": "# This message represents the state of a single LED.\n\n# The duration (in ms) the state should be active.\n# Setting it to 0 will make the state active indefinitely.\nuint16 duration\n\n# The priority of the state.\n# If the value is equal to 0 or is lower than the priority of the current user LED, the state is ignored.\n# The value of -1 resets the user state of the LED.\nint8 priority\n\n# The color of the LED\nraph_interfaces/LedColor color\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "priority",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/LedColor",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LedStripState": {
+      "description": "This message represents the state of the whole led strip.",
+      "raw": "# This message represents the state of the whole led strip.\n\nuint8 LED_STRIP_SIZE=143\n\nraph_interfaces/LedState[143] state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "LED_STRIP_SIZE",
+          "comment": "",
+          "default": "143",
+          "is_constant": true
+        },
+        {
+          "type": "raph_interfaces/LedState[143]",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotorDiagnostics": {
+      "description": "Diagnostic information about motors controlled by RaphCore.",
+      "raw": "# Diagnostic information about motors controlled by RaphCore.\n#\n# The order of the motors is:\n#   - rear left wheel\n#   - rear right wheel\n#   - right servo\n#   - left servo\n#   - front left wheel\n#   - front right wheel\n\nstd_msgs/Header header\n\n# The current temperature in degrees Celsius.\nuint8[6] temperature\n\n# The current power output in watts.\nfloat64[6] power\n\n# The energy consumed in watt-hours since the robot was powered on.\nfloat64[6] energy\n\nuint8 FAULT_BIT_SENSOR_FAULT=1\nuint8 FAULT_BIT_BUS_OVERCURRENT=2\nuint8 FAULT_BIT_PHASE_OVERCURRENT=4\nuint8 FAULT_BIT_STALL=8\nuint8 FAULT_BIT_OVERHEAT=16\n\n# The current fault mask reported by the motor.\nuint8[6] fault_mask_active\n\n# Mask of all fault that occurred since the robot was powered on.\nuint8[6] fault_mask_occurred\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[6]",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "energy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_BIT_SENSOR_FAULT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_BIT_BUS_OVERCURRENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_BIT_PHASE_OVERCURRENT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_BIT_STALL",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_BIT_OVERHEAT",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8[6]",
+          "name": "fault_mask_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[6]",
+          "name": "fault_mask_occurred",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PowerSystemState": {
+      "description": "Represents the state of the Power System.",
+      "raw": "# Represents the state of the Power System.\n\nstd_msgs/Header header\n\n# Whether the charger is connected.\nbool charger_connected\n\n# Whether the batteries are connected.\nbool bat1_connected\nbool bat2_connected\n\n# The states of the batteries, not valid for unconnected batteries.\nraph_interfaces/BatteryState bat1_state\nraph_interfaces/BatteryState bat2_state\n\n# The current power output in watts.\nfloat64 power\n\n# The energy consumed in watt-hours since the robot was powered on.\nfloat64 energy\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "charger_connected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bat1_connected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bat2_connected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/BatteryState",
+          "name": "bat1_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/BatteryState",
+          "name": "bat2_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "energy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringMode": {
+      "description": "This message represents the steering mode used by the drivetrain controller.",
+      "raw": "# This message represents the steering mode used by the drivetrain controller.\n\nuint8 ACKERMANN=0\nuint8 TURN_IN_PLACE=1\n\nuint8 data\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "ACKERMANN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TURN_IN_PLACE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetOsVersion": {
+      "description": "version string in the format {major}.{minor}.{patch}",
+      "raw": "---\n# version string in the format {major}.{minor}.{patch}\nstring version\n\n# Optional version variant\nstring variant\n\n# Parsed version numbers\nuint8 major\nuint8 minor\nuint8 patch\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "variant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "major",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "minor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "patch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetBatteryModes": {
+      "description": "",
+      "raw": "raph_interfaces/BatteryMode bat1_mode\nraph_interfaces/BatteryMode bat2_mode\n---\nbool success\nstring status_message\n",
+      "request_fields": [
+        {
+          "type": "raph_interfaces/BatteryMode",
+          "name": "bat1_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/BatteryMode",
+          "name": "bat2_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLeds": {
+      "description": "",
+      "raw": "raph_interfaces/Led[<=143] leds\n---\nbool success\nstring status_message\n",
+      "request_fields": [
+        {
+          "type": "raph_interfaces/Led[<=143]",
+          "name": "leds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetSteeringMode": {
+      "description": "",
+      "raw": "raph_interfaces/SteeringMode steering_mode\n---\nbool success\nstring status_message\n",
+      "request_fields": [
+        {
+          "type": "raph_interfaces/SteeringMode",
+          "name": "steering_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

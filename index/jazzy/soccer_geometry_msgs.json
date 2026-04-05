@@ -1,0 +1,59 @@
+{
+  "name": "soccer_geometry_msgs",
+  "version": "1.0.0",
+  "description": "A package containing msgs that extend geometry_msgs for use in soccer-related packages",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "soccer_interfaces",
+    "url": "https://github.com/ros-sports/soccer_interfaces.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "soccer_model_msgs"
+    ]
+  },
+  "messages": {
+    "PointWithCovariance": {
+      "description": "This represents a point in free space with uncertainty.",
+      "raw": "# This represents a point in free space with uncertainty.\ngeometry_msgs/Point point\n\n# Row-major representation of the 3x3 covariance matrix\n# The orientation parameters use a fixed-axis representation.\n# In order, the parameters are:\n# (x, y, z)\nfloat64[9] covariance\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Point",
+          "name": "point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

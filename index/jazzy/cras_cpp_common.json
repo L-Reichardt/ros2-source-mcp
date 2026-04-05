@@ -1,0 +1,77 @@
+{
+  "name": "cras_cpp_common",
+  "version": "3.0.1",
+  "description": "A Czech-army knife for ROS code written in C++.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://wiki.ros.org/cras_cpp_common",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/ros-utils/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/ros-utils",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "cras_ros_utils",
+    "url": "https://github.com/ctu-vras/ros-utils.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "backward_ros",
+      "libboost-dev",
+      "tf2_geometry_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_gen_version_h"
+    ],
+    "runtime": [
+      "backward_ros",
+      "language-pack-en",
+      "libboost-dev",
+      "tf2_geometry_msgs"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_cmake_ros",
+      "cras_lint",
+      "eigen",
+      "geometry_msgs",
+      "std_msgs",
+      "tf2"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "fmt",
+      "libexpected-dev",
+      "rcl",
+      "rclcpp",
+      "rclcpp_components",
+      "rcutils",
+      "rmw",
+      "tf2",
+      "tf2_ros"
+    ],
+    "depended_on_by": [
+      "compass_conversions",
+      "compass_interfaces",
+      "compass_interfaces",
+      "cras_topic_tools",
+      "magnetic_model",
+      "magnetometer_compass",
+      "magnetometer_pipeline"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

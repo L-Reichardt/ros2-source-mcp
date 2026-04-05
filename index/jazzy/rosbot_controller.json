@@ -1,0 +1,62 @@
+{
+  "name": "rosbot_controller",
+  "version": "0.18.6",
+  "description": "Hardware configuration for ROSbot Series",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://husarion.com/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/husarion/rosbot_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/husarion/rosbot_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "rosbot_ros",
+    "url": "https://github.com/husarion/rosbot_ros.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "controller_manager",
+      "diff_drive_controller",
+      "imu_sensor_broadcaster",
+      "joint_state_broadcaster",
+      "launch",
+      "launch_ros",
+      "mecanum_drive_controller",
+      "nav2_common",
+      "position_controllers",
+      "ros2controlcli",
+      "rosbot_description",
+      "rosbot_moveit",
+      "rosbot_utils",
+      "udev",
+      "xacro"
+    ],
+    "test": [
+      "ament_cmake_pytest",
+      "python3-pytest",
+      "rosbot_description",
+      "xacro"
+    ],
+    "depended_on_by": [
+      "rosbot_bringup",
+      "rosbot_gazebo"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

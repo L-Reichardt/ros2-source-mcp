@@ -1,0 +1,1215 @@
+{
+  "name": "ur_msgs",
+  "version": "2.3.0",
+  "description": "Message and service definitions for interacting with Universal Robots robot controllers.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ur_msgs",
+    "url": "https://github.com/ros-industrial/ur_msgs.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "action_msgs",
+      "control_msgs",
+      "trajectory_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "ur_controllers",
+      "ur_robot_driver"
+    ]
+  },
+  "messages": {
+    "Analog": {
+      "description": "",
+      "raw": "uint8 CURRENT=0\nuint8 VOLTAGE=1\n\nuint8 pin\nuint8 domain # can be VOLTAGE or CURRENT\nfloat32 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VOLTAGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "pin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "domain",
+          "comment": "can be VOLTAGE or CURRENT",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Digital": {
+      "description": "",
+      "raw": "uint8 pin\nbool state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "pin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IOStates": {
+      "description": "",
+      "raw": "Digital[] digital_in_states\nDigital[] digital_out_states\nDigital[] flag_states\nAnalog[] analog_in_states\nAnalog[] analog_out_states\n",
+      "fields": [
+        {
+          "type": "Digital[]",
+          "name": "digital_in_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Digital[]",
+          "name": "digital_out_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Digital[]",
+          "name": "flag_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Analog[]",
+          "name": "analog_in_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Analog[]",
+          "name": "analog_out_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MasterboardDataMsg": {
+      "description": "This data structure contains the MasterboardData structure",
+      "raw": "# This data structure contains the MasterboardData structure\n# used by the Universal Robots controller\n#\n# MasterboardData is part of the data structure being send on the\n# secondary client communications interface\n# \n# This data structure is send at 10 Hz on TCP port 30002\n# \n# Documentation can be found on the Universal Robots Support site, article\n# number 16496.\n\nuint32 digital_input_bits\nuint32 digital_output_bits\nint8 analog_input_range0\nint8 analog_input_range1\nfloat64 analog_input0\nfloat64 analog_input1\nint8 analog_output_domain0\nint8 analog_output_domain1\nfloat64 analog_output0\nfloat64 analog_output1\nfloat32 masterboard_temperature\nfloat32 robot_voltage_48v\nfloat32 robot_current\nfloat32 master_io_current\nuint8 master_safety_state\nuint8 master_onoff_state\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "digital_input_bits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "digital_output_bits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "analog_input_range0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "analog_input_range1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "analog_input0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "analog_input1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "analog_output_domain0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "analog_output_domain1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "analog_output0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "analog_output1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "masterboard_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "robot_voltage_48v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "robot_current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "master_io_current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "master_safety_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "master_onoff_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotModeDataMsg": {
+      "description": "This data structure contains the RobotModeData structure",
+      "raw": "# This data structure contains the RobotModeData structure\n# used by the Universal Robots controller\n#\n# This data structure is send at 10 Hz on TCP port 30002\n#\n# Note: this message does not carry all fields from the RobotModeData structure as broadcast by the robot controller, but a subset.\n\nuint64 timestamp\nbool is_robot_connected\nbool is_real_robot_enabled\nbool is_power_on_robot\nbool is_emergency_stopped\nbool is_protective_stopped\nbool is_program_running\nbool is_program_paused\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_robot_connected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_real_robot_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_power_on_robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_emergency_stopped",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_protective_stopped",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_program_running",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_program_paused",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotStateRTMsg": {
+      "description": "Data structure for the realtime communications interface (aka Matlab interface)",
+      "raw": "# Data structure for the realtime communications interface (aka Matlab interface)\n# used by the Universal Robots controller\n# \n# This data structure is send at 125 Hz on TCP port 30003\n# \n# Dokumentation can be found on the Universal Robots Support Wiki\n# (http://wiki03.lynero.net/Technical/RealTimeClientInterface?rev=9)\n\nfloat64 time\nfloat64[] q_target\nfloat64[] qd_target\nfloat64[] qdd_target\nfloat64[] i_target\nfloat64[] m_target\nfloat64[] q_actual\nfloat64[] qd_actual\nfloat64[] i_actual\nfloat64[] tool_acc_values\nfloat64[] tcp_force\nfloat64[] tool_vector\nfloat64[] tcp_speed\nfloat64 digital_input_bits\nfloat64[] motor_temperatures\nfloat64 controller_timer\nfloat64 test_value\nfloat64 robot_mode\nfloat64[] joint_modes\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "q_target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "qd_target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "qdd_target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "i_target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "m_target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "q_actual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "qd_actual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "i_actual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "tool_acc_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "tcp_force",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "tool_vector",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "tcp_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "digital_input_bits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "motor_temperatures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "controller_timer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "test_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "robot_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "joint_modes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToolDataMsg": {
+      "description": "This data structure contains the ToolData structure",
+      "raw": "# This data structure contains the ToolData structure\n# used by the Universal Robots controller\n\nint8 ANALOG_INPUT_RANGE_CURRENT = 0\nint8 ANALOG_INPUT_RANGE_VOLTAGE = 1\n\nint8 analog_input_range2 # one of ANALOG_INPUT_RANGE_*\nint8 analog_input_range3 # one of ANALOG_INPUT_RANGE_*\nfloat64 analog_input2\nfloat64 analog_input3\nfloat32 tool_voltage_48v\nuint8 tool_output_voltage\nfloat32 tool_current\nfloat32 tool_temperature\n\nuint8 TOOL_BOOTLOADER_MODE = 249\nuint8 TOOL_RUNNING_MODE = 253\nuint8 TOOL_IDLE_MODE = 255\n\nuint8 tool_mode # one of TOOL_*\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "ANALOG_INPUT_RANGE_CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ANALOG_INPUT_RANGE_VOLTAGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "analog_input_range2",
+          "comment": "one of ANALOG_INPUT_RANGE_*",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "analog_input_range3",
+          "comment": "one of ANALOG_INPUT_RANGE_*",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "analog_input2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "analog_input3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tool_voltage_48v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "tool_output_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tool_current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tool_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "TOOL_BOOTLOADER_MODE",
+          "comment": "",
+          "default": "249",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TOOL_RUNNING_MODE",
+          "comment": "",
+          "default": "253",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TOOL_IDLE_MODE",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "tool_mode",
+          "comment": "one of TOOL_*",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetRobotSoftwareVersion": {
+      "description": "",
+      "raw": "---\nuint32 major    # Major version number\nuint32 minor    # Minor version number\nuint32 bugfix   # Bugfix version number\nuint32 build    # Build number\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "uint32",
+          "name": "major",
+          "comment": "Major version number",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "minor",
+          "comment": "Minor version number",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "bugfix",
+          "comment": "Bugfix version number",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "build",
+          "comment": "Build number",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetAnalogOutput": {
+      "description": "",
+      "raw": "Analog data\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "Analog",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetForceMode": {
+      "description": "A 6d pose that defines the force frame. Must be static relative to the robot's base frame.",
+      "raw": "# A 6d pose that defines the force frame. Must be static relative to the robot's base frame.\ngeometry_msgs/PoseStamped task_frame\n\n# 1 means that the robot will be compliant in the corresponding axis of the task frame\nbool selection_vector_x 0 \nbool selection_vector_y 0\nbool selection_vector_z 0\nbool selection_vector_rx 0\nbool selection_vector_ry 0\nbool selection_vector_rz 0\n\n# The forces/torques the robot will apply to its environment. For geometric interpretation, please\n# see parameter `type`\ngeometry_msgs/Wrench wrench\n\n# An integer [1;3] specifying how the robot interprets the force frame\n# 1: The force frame is transformed in a way such that its y-axis is aligned with a vector pointing\n#    from the robot tcp towards the origin of the force frame.\n# 2: The force frame is not transformed.\n# 3: The force frame is transformed in a way such that its x-axis is the projection of the robot tcp\n#     velocity vector onto the x-y plane of the force frame.\nuint8 type 2\n# Type constants:\nuint8 TCP_TO_ORIGIN=1\nuint8 NO_TRANSFORM=2\nuint8 TCP_VELOCITY_TO_X_Y=3\n\n# Maximum allowed tcp speed (relative to the task frame).\n# PLEASE NOTE: This is only relevant for axes marked as compliant in the selection_vector\ngeometry_msgs/Twist speed_limits\n\n# For non-compliant axes, these values are the maximum allowed deviation along/about an axis\n# between the actual tcp position and the one set by the program.\nfloat32[6] deviation_limits [0.01, 0.01, 0.01, 0.01, 0.01, 0.01]\n\n# Force mode damping factor. Sets the damping parameter in force mode. In range [0;1], default value is 0.025\n# A value of 1 is full damping, so the robot will decelerate quickly if no force is present. A value of 0\n# is no damping, here the robot will maintain the speed.\nfloat32 damping_factor 0.025\n\n# Force mode gain scaling factor. Scales the gain in force mode. scaling parameter is in range [0;2], default is 0.5. \n# A value larger than 1 can make force mode unstable, e.g. in case of collisions or pushing against hard surfaces.\nfloat32 gain_scaling 0.5\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "task_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "selection_vector_x",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "selection_vector_y",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "selection_vector_z",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "selection_vector_rx",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "selection_vector_ry",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "selection_vector_rz",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench",
+          "name": "wrench",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": "2",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "TCP_TO_ORIGIN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NO_TRANSFORM",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TCP_VELOCITY_TO_X_Y",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "speed_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[6]",
+          "name": "deviation_limits",
+          "comment": "",
+          "default": "[0.01, 0.01, 0.01, 0.01, 0.01, 0.01]",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "damping_factor",
+          "comment": "",
+          "default": "0.025",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gain_scaling",
+          "comment": "",
+          "default": "0.5",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetIO": {
+      "description": "Service allows setting digital (DIO) and analog (AIO) IO, as well as flags",
+      "raw": "# Service allows setting digital (DIO) and analog (AIO) IO, as well as flags\n# and configuring tool voltage.\n#\n# This service has three request fields (see below).\n#\n# When setting DIO or AIO pins to new values:\n#\n#  fun    The function to perform\n#  pin    Numeric ID of the pin to set, see constants definition below\n#  state  Desired pin state (signal level for analog or STATE_(ON|OFF) for DIO and flags)\n#\n# When configuring tool voltage:\n#\n#  fun    Set to FUN_SET_TOOL_VOLTAGE\n#  pin    Ignored\n#  state  Desired tool voltage (use STATE_TOOL_VOLTAGE constants)\n\n# constants\n# pin mapping\n# analog out\nint8 PIN_AOUT0 = 0\nint8 PIN_AOUT1 = 1\n\n# digital out\nint8 PIN_DOUT0 = 0\nint8 PIN_DOUT1 = 1\nint8 PIN_DOUT2 = 2\nint8 PIN_DOUT3 = 3\nint8 PIN_DOUT4 = 4\nint8 PIN_DOUT5 = 5\nint8 PIN_DOUT6 = 6\nint8 PIN_DOUT7 = 7\n\n# configurable out\nint8 PIN_CONF_OUT0 = 8\nint8 PIN_CONF_OUT1 = 9\nint8 PIN_CONF_OUT2 = 10\nint8 PIN_CONF_OUT3 = 11\nint8 PIN_CONF_OUT4 = 12\nint8 PIN_CONF_OUT5 = 13\nint8 PIN_CONF_OUT6 = 14\nint8 PIN_CONF_OUT7 = 15\n\n# digital tool output\nint8 PIN_TOOL_DOUT0 = 16\nint8 PIN_TOOL_DOUT1 = 17\n\n# valid function values\n#\n# Note: 'fun' is short for 'function' (ie: the function the service should perform).\nint8 FUN_SET_DIGITAL_OUT = 1\nint8 FUN_SET_FLAG = 2\nint8 FUN_SET_ANALOG_OUT = 3\nint8 FUN_SET_TOOL_VOLTAGE = 4\n\n# valid values for 'state' when setting digital IO or flags\nint8 STATE_OFF = 0\nint8 STATE_ON = 1\n\n# valid 'state' values when setting tool voltage\nint8 STATE_TOOL_VOLTAGE_0V = 0\nint8 STATE_TOOL_VOLTAGE_12V = 12\nint8 STATE_TOOL_VOLTAGE_24V = 24\n\n# request fields\nint8 fun\nint8 pin\nfloat32 state\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "int8",
+          "name": "PIN_AOUT0",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_AOUT1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_DOUT0",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_DOUT1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_DOUT2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_DOUT3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_DOUT4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_DOUT5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_DOUT6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_DOUT7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_CONF_OUT0",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_CONF_OUT1",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_CONF_OUT2",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_CONF_OUT3",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_CONF_OUT4",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_CONF_OUT5",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_CONF_OUT6",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_CONF_OUT7",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_TOOL_DOUT0",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PIN_TOOL_DOUT1",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FUN_SET_DIGITAL_OUT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FUN_SET_FLAG",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FUN_SET_ANALOG_OUT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FUN_SET_TOOL_VOLTAGE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATE_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATE_ON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATE_TOOL_VOLTAGE_0V",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATE_TOOL_VOLTAGE_12V",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATE_TOOL_VOLTAGE_24V",
+          "comment": "",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "fun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "pin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPayload": {
+      "description": "",
+      "raw": "float32 mass\ngeometry_msgs/Vector3 center_of_gravity\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "mass",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "center_of_gravity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetSpeedSliderFraction": {
+      "description": "Set the speed slider on the teach pendant to the specified value.",
+      "raw": "# Set the speed slider on the teach pendant to the specified value.\n#\n# Values for 'speed_slider_fraction' must be from [0; 1.0]; values outside this\n# valid range will result in an error being returned to the caller.\n\nfloat64 speed_slider_fraction\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "speed_slider_fraction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "FollowJointTrajectoryUntil": {
+      "description": "The joint trajectory to follow",
+      "raw": "# The joint trajectory to follow\ntrajectory_msgs/JointTrajectory trajectory\n\n# The tolerances for the trajectory, while it is executing\ncontrol_msgs/JointTolerance[] path_tolerance\n\n# The tolerances for the goal, when the trajectory is finished.\ncontrol_msgs/JointTolerance[] goal_tolerance\nbuiltin_interfaces/Duration goal_time_tolerance\n\n# The condition until which the trajectory should run.\nuint8 until_type\nuint8 TOOL_CONTACT = 0\n\n---\n# The trajectory will be reported as succesful if either the trajectory finishes, or the until condition is met. \n# The error codes will be used if the trajectory fails and the until condition is not met.\nint32 error_code\nint32 SUCCESSFUL = 0\nint32 INVALID_GOAL = -1\nint32 INVALID_JOINTS = -2\nint32 OLD_HEADER_TIMESTAMP = -3\nint32 PATH_TOLERANCE_VIOLATED = -4\nint32 GOAL_TOLERANCE_VIOLATED = -5\n\nint32 until_condition_result\nint32 TRIGGERED = 0\nint32 NOT_TRIGGERED = 1\n\n# The error string will contain information about the final state of the trajectory execution.\nstring error_string\n\n---\nstd_msgs/Header header\nstring[] joint_names\ntrajectory_msgs/JointTrajectoryPoint desired\ntrajectory_msgs/JointTrajectoryPoint actual\ntrajectory_msgs/JointTrajectoryPoint error\n",
+      "goal_fields": [
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/JointTolerance[]",
+          "name": "path_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/JointTolerance[]",
+          "name": "goal_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "goal_time_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "until_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "TOOL_CONTACT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "SUCCESSFUL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_GOAL",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_JOINTS",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "OLD_HEADER_TIMESTAMP",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "PATH_TOLERANCE_VIOLATED",
+          "comment": "",
+          "default": "-4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "GOAL_TOLERANCE_VIOLATED",
+          "comment": "",
+          "default": "-5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "until_condition_result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "TRIGGERED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "NOT_TRIGGERED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "desired",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "actual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToolContact": {
+      "description": "",
+      "raw": "\n---\n\n---\n",
+      "goal_fields": [],
+      "result_fields": [],
+      "feedback_fields": []
+    }
+  }
+}

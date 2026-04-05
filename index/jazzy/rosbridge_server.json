@@ -1,0 +1,61 @@
+{
+  "name": "rosbridge_server",
+  "version": "2.5.0",
+  "description": "A WebSocket interface to rosbridge.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rosbridge_server",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "rosbridge_suite",
+    "url": "https://github.com/RobotWebTools/rosbridge_suite.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python"
+    ],
+    "runtime": [
+      "python3-tornado",
+      "rclpy",
+      "rosapi",
+      "rosbridge_library",
+      "rosbridge_msgs",
+      "std_msgs"
+    ],
+    "test": [
+      "action_msgs",
+      "ament_cmake_mypy",
+      "example_interfaces",
+      "launch",
+      "launch_ros",
+      "launch_testing_ament_cmake",
+      "python3-autobahn",
+      "python3-twisted",
+      "rcl_interfaces",
+      "std_srvs"
+    ],
+    "depended_on_by": [
+      "leo_bringup",
+      "raph_bringup",
+      "rosbridge_suite"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,59 @@
+{
+  "name": "joint_limits",
+  "version": "4.43.0",
+  "description": "Package with interfaces for handling of joint limits in controllers or in hardware. The package also implements Saturation Joint Limiter for position-velocity-acceleration set and other individual interfaces.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros-controls/ros2_control/wiki",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_control/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_control",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "ros2_control",
+    "url": "https://github.com/ros-controls/ros2_control.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "ros2_control_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_gen_version_h"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "generate_parameter_library",
+      "launch_ros",
+      "launch_testing_ament_cmake"
+    ],
+    "build_and_runtime": [
+      "backward_ros",
+      "pluginlib",
+      "realtime_tools",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "trajectory_msgs",
+      "urdf",
+      "fmt"
+    ],
+    "depended_on_by": [
+      "hardware_interface",
+      "ros2_control"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

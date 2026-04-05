@@ -1,0 +1,226 @@
+{
+  "name": "navmap_ros_interfaces",
+  "version": "0.3.0",
+  "description": "ROS 2 interfaces for NavMap (messages for visualization and layers)",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "NavMap",
+    "url": "https://github.com/EasyNavigation/NavMap.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "rosidl_default_generators",
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "navmap_examples",
+      "navmap_ros",
+      "navmap_rviz_plugin"
+    ]
+  },
+  "messages": {
+    "NavMap": {
+      "description": "Compact NavMap transport.",
+      "raw": "# Compact NavMap transport.\nstd_msgs/Header header\n\n# Vertex positions (SoA)\nfloat32[] positions_x\nfloat32[] positions_y\nfloat32[] positions_z\n\n# Optional per-vertex colors (RGBA). Fill only if has_vertex_rgba=true.\nbool has_vertex_rgba\nuint8[] colors_r\nuint8[] colors_g\nuint8[] colors_b\nuint8[] colors_a\n\n# Global triangle index buffers\nuint32[] navcels_v0\nuint32[] navcels_v1\nuint32[] navcels_v2\n\n# Surfaces (each lists indices into the global triangle arrays)\nnavmap_ros_interfaces/NavMapSurface[] surfaces\n\n# Per-NavCel layers\nnavmap_ros_interfaces/NavMapLayer[] layers\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "positions_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "positions_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "positions_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_vertex_rgba",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "colors_r",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "colors_g",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "colors_b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "colors_a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "navcels_v0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "navcels_v1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "navcels_v2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "navmap_ros_interfaces/NavMapSurface[]",
+          "name": "surfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "navmap_ros_interfaces/NavMapLayer[]",
+          "name": "layers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavMapLayer": {
+      "description": "Per-NavCel layer (one scalar per triangle)",
+      "raw": "# Per-NavCel layer (one scalar per triangle)\nstd_msgs/Header header\n\nuint8 U8 = 0\nuint8 F32 = 1\nuint8 F64 = 2\n\nstring name\nuint8 type         # 0=U8, 1=F32, 2=F64\n\n# Exactly one of the data_* arrays must be non-empty, and its length must be\n# equal to the number of triangles (NavCels) in the NavMap message.\nuint8[]   data_u8\nfloat32[] data_f32\nfloat64[] data_f64\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "U8",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "F32",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "F64",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "0=U8, 1=F32, 2=F64",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data_u8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "data_f32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "data_f64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavMapSurface": {
+      "description": "A surface groups a subset of triangles in a frame.",
+      "raw": "# A surface groups a subset of triangles in a frame.\n\nstring frame_id\nuint32[] navcels",
+      "fields": [
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "navcels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

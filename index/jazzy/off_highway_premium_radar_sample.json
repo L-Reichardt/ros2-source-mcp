@@ -1,0 +1,53 @@
+{
+  "name": "off_highway_premium_radar_sample",
+  "version": "1.2.0",
+  "description": "The off_highway_premium_radar_sample package",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "off_highway_sensor_drivers",
+    "url": "https://github.com/bosch-engineering/off_highway_sensor_drivers.git",
+    "branch": "jazzy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "libpcl-all-dev",
+      "pcl_conversions"
+    ],
+    "build_export": [
+      "libpcl-all-dev"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "asio_cmake_module"
+    ],
+    "runtime": [
+      "libpcl-common"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_ros"
+    ],
+    "build_and_runtime": [
+      "asio",
+      "io_context",
+      "rclcpp",
+      "rclcpp_components",
+      "diagnostic_updater",
+      "off_highway_premium_radar_sample_msgs",
+      "sensor_msgs",
+      "std_msgs",
+      "tf2",
+      "tf2_geometry_msgs"
+    ],
+    "depended_on_by": [
+      "off_highway_sensor_drivers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

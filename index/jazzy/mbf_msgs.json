@@ -1,0 +1,1440 @@
+{
+  "name": "mbf_msgs",
+  "version": "1.0.2",
+  "description": "The move_base_flex messages package providing the action definition files for the action GetPath, ExePath, Recovery and MoveBase. The action servers providing these action are implemented in",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://github.com/naturerobots/move_base_flex",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "move_base_flex",
+    "url": "https://github.com/naturerobots/move_base_flex.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "nav_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "mbf_abstract_nav",
+      "mbf_simple_nav",
+      "mbf_test_utility",
+      "mbf_utility",
+      "move_base_flex",
+      "rviz_mbf_plugins"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "CheckPath": {
+      "description": "will be measured from the padded footprint",
+      "raw": "uint8                      LOCAL_COSTMAP  = 1\nuint8                      GLOBAL_COSTMAP = 2\n\nnav_msgs/Path              path              # the path to be checked after transforming to costmap frame\nfloat32                    safety_dist       # minimum distance allowed to the closest obstacle (footprint padding)\nfloat32                    lethal_cost_mult  # cost multiplier for cells marked as lethal obstacle (zero is ignored)\nfloat32                    inscrib_cost_mult # cost multiplier for cells marked as inscribed obstacle (zero is ignored)\nfloat32                    unknown_cost_mult # cost multiplier for cells marked as unknown space (zero is ignored)\nuint8                      costmap           # costmap in which to check the pose\nuint8                      return_on         # abort check on finding a pose with this state or worse (zero is ignored)\nuint8                      skip_poses        # skip this number of poses between checks, to speedup processing\nbool                       use_padded_fp     # include footprint padding when checking cost; note that safety distance\n                                             # will be measured from the padded footprint\nbool                       path_cells_only   # check only cells directly traversed by the path, ignoring robot footprint\n                                             # (if true, both safety_dist and use_padded_fp are ignored)\n---\nuint8                      FREE      =  0    # path is completely in traversable space\nuint8                      INSCRIBED =  1    # path is partially in inscribed space\nuint8                      LETHAL    =  2    # path is partially in collision\nuint8                      UNKNOWN   =  3    # path is partially in unknown space\nuint8                      OUTSIDE   =  4    # path is partially outside the map\n\nuint32                     last_checked      # index of the first pose along the path with return_on state or worse\nuint8                      state             # path worst state (until last_checked): FREE, INSCRIBED, LETHAL, UNKNOWN...\nuint32                     cost              # cost of all cells traversed by path within footprint padded by safety_dist\n                                             # or just by the path if path_cells_only is true\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "LOCAL_COSTMAP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GLOBAL_COSTMAP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "the path to be checked after transforming to costmap frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "safety_dist",
+          "comment": "minimum distance allowed to the closest obstacle (footprint padding)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lethal_cost_mult",
+          "comment": "cost multiplier for cells marked as lethal obstacle (zero is ignored)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "inscrib_cost_mult",
+          "comment": "cost multiplier for cells marked as inscribed obstacle (zero is ignored)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "unknown_cost_mult",
+          "comment": "cost multiplier for cells marked as unknown space (zero is ignored)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "costmap",
+          "comment": "costmap in which to check the pose",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "return_on",
+          "comment": "abort check on finding a pose with this state or worse (zero is ignored)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "skip_poses",
+          "comment": "skip this number of poses between checks, to speedup processing",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_padded_fp",
+          "comment": "include footprint padding when checking cost; note that safety distance",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "path_cells_only",
+          "comment": "check only cells directly traversed by the path, ignoring robot footprint",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "FREE",
+          "comment": "path is completely in traversable space",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INSCRIBED",
+          "comment": "path is partially in inscribed space",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LETHAL",
+          "comment": "path is partially in collision",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "path is partially in unknown space",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTSIDE",
+          "comment": "path is partially outside the map",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "last_checked",
+          "comment": "index of the first pose along the path with return_on state or worse",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "path worst state (until last_checked): FREE, INSCRIBED, LETHAL, UNKNOWN...",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cost",
+          "comment": "cost of all cells traversed by path within footprint padded by safety_dist",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CheckPoint": {
+      "description": "",
+      "raw": "uint8                      LOCAL_COSTMAP  = 1\nuint8                      GLOBAL_COSTMAP = 2\n\ngeometry_msgs/PointStamped point             # the point to be checked after transforming to costmap frame\nuint8                      costmap           # costmap in which to check the point\n---\nuint8                      FREE      =  0    # point is in traversable space\nuint8                      INSCRIBED =  1    # point is in inscribed space\nuint8                      LETHAL    =  2    # point is in collision\nuint8                      UNKNOWN   =  3    # point is in unknown space\nuint8                      OUTSIDE   =  4    # point is outside the map\n\nuint8                      state             # point state: FREE, INSCRIBED, LETHAL, UNKNOWN or OUTSIDE\nuint32                     cost              # cost of the cell at point\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "LOCAL_COSTMAP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GLOBAL_COSTMAP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/PointStamped",
+          "name": "point",
+          "comment": "the point to be checked after transforming to costmap frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "costmap",
+          "comment": "costmap in which to check the point",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "FREE",
+          "comment": "point is in traversable space",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INSCRIBED",
+          "comment": "point is in inscribed space",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LETHAL",
+          "comment": "point is in collision",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "point is in unknown space",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTSIDE",
+          "comment": "point is outside the map",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "point state: FREE, INSCRIBED, LETHAL, UNKNOWN or OUTSIDE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cost",
+          "comment": "cost of the cell at point",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CheckPose": {
+      "description": "will be measured from the padded footprint",
+      "raw": "uint8                      LOCAL_COSTMAP  = 1\nuint8                      GLOBAL_COSTMAP = 2\n\ngeometry_msgs/PoseStamped  pose              # the pose to be checked after transforming to costmap frame\nfloat32                    safety_dist       # minimum distance allowed to the closest obstacle\nfloat32                    lethal_cost_mult  # cost multiplier for cells marked as lethal obstacle (zero is ignored)\nfloat32                    inscrib_cost_mult # cost multiplier for cells marked as inscribed obstacle (zero is ignored)\nfloat32                    unknown_cost_mult # cost multiplier for cells marked as unknown space (zero is ignored)\nuint8                      costmap           # costmap in which to check the pose\nbool                       current_pose      # check current robot pose instead (ignores pose field)\nbool                       use_padded_fp     # include footprint padding when checking cost; note that safety distance\n                                             # will be measured from the padded footprint\n---\nuint8                      FREE      =  0    # robot is completely in traversable space\nuint8                      INSCRIBED =  1    # robot is partially in inscribed space\nuint8                      LETHAL    =  2    # robot is partially in collision\nuint8                      UNKNOWN   =  3    # robot is partially in unknown space\nuint8                      OUTSIDE   =  4    # robot is partially outside the map\n\nuint8                      state             # pose state: FREE, INSCRIBED, LETHAL, UNKNOWN or OUTSIDE\nuint32                     cost              # total cost of all cells within footprint padded by safety_dist\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "LOCAL_COSTMAP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GLOBAL_COSTMAP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "the pose to be checked after transforming to costmap frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "safety_dist",
+          "comment": "minimum distance allowed to the closest obstacle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lethal_cost_mult",
+          "comment": "cost multiplier for cells marked as lethal obstacle (zero is ignored)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "inscrib_cost_mult",
+          "comment": "cost multiplier for cells marked as inscribed obstacle (zero is ignored)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "unknown_cost_mult",
+          "comment": "cost multiplier for cells marked as unknown space (zero is ignored)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "costmap",
+          "comment": "costmap in which to check the pose",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "current_pose",
+          "comment": "check current robot pose instead (ignores pose field)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_padded_fp",
+          "comment": "include footprint padding when checking cost; note that safety distance",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "FREE",
+          "comment": "robot is completely in traversable space",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INSCRIBED",
+          "comment": "robot is partially in inscribed space",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LETHAL",
+          "comment": "robot is partially in collision",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "robot is partially in unknown space",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTSIDE",
+          "comment": "robot is partially outside the map",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "pose state: FREE, INSCRIBED, LETHAL, UNKNOWN or OUTSIDE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cost",
+          "comment": "total cost of all cells within footprint padded by safety_dist",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FindValidPose": {
+      "description": "Find the closest free pose to the given one, within the given linear and angular tolerances.",
+      "raw": "# Find the closest free pose to the given one, within the given linear and angular tolerances.\n#\n# A pose is considered free if the robot footprint there is entirely inside the map and neither in\n# collision nor unknown space.\n#\n# If no free pose can be found, but we find one partially in unknown space, or partially outside the map,\n# we will return it and set state to the corresponding option (unknown space takes precedence).\n# Otherwise state will be set to LETHAL.\n#\n# You can also instruct this service to use current robot's pose, instead of providing one.\n\nuint8                      LOCAL_COSTMAP  = 1\nuint8                      GLOBAL_COSTMAP = 2\n\ngeometry_msgs/PoseStamped  pose              # the starting pose from which we start the search\nfloat32                    safety_dist       # minimum distance allowed to the closest obstacle\nfloat32                    dist_tolerance    # maximum distance we can deviate from the given pose during the search\nfloat32                    angle_tolerance   # maximum angle we can rotate the given pose during the search\nuint8                      costmap           # costmap in which to check the pose\nbool                       current_pose      # check current robot pose instead (ignores pose field)\nbool                       use_padded_fp     # include footprint padding when checking cost; note that safety distance\n                                             # will be measured from the padded footprint\n---\nuint8                      FREE      =  0    # found pose is completely in traversable space\nuint8                      INSCRIBED =  1    # found pose is partially in inscribed space\nuint8                      LETHAL    =  2    # found pose is partially in collision\nuint8                      UNKNOWN   =  3    # found pose is partially in unknown space\nuint8                      OUTSIDE   =  4    # found pose is partially outside the map\n\nuint8                      state             # found pose's state: FREE, INSCRIBED, LETHAL, UNKNOWN or OUTSIDE\nuint32                     cost              # found pose's cost (sum of costs over all cells covered by the footprint)\ngeometry_msgs/PoseStamped  pose              # the pose found (filled only if state is not set to LETHAL)\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "LOCAL_COSTMAP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GLOBAL_COSTMAP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "the starting pose from which we start the search",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "safety_dist",
+          "comment": "minimum distance allowed to the closest obstacle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_tolerance",
+          "comment": "maximum distance we can deviate from the given pose during the search",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_tolerance",
+          "comment": "maximum angle we can rotate the given pose during the search",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "costmap",
+          "comment": "costmap in which to check the pose",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "current_pose",
+          "comment": "check current robot pose instead (ignores pose field)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_padded_fp",
+          "comment": "include footprint padding when checking cost; note that safety distance",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "FREE",
+          "comment": "found pose is completely in traversable space",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INSCRIBED",
+          "comment": "found pose is partially in inscribed space",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LETHAL",
+          "comment": "found pose is partially in collision",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "found pose is partially in unknown space",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTSIDE",
+          "comment": "found pose is partially outside the map",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "found pose's state: FREE, INSCRIBED, LETHAL, UNKNOWN or OUTSIDE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cost",
+          "comment": "found pose's cost (sum of costs over all cells covered by the footprint)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "the pose found (filled only if state is not set to LETHAL)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetTestRobotState": {
+      "description": "Only used for testing (via mbf_test_utility)",
+      "raw": "# Only used for testing (via mbf_test_utility)\ngeometry_msgs/TransformStamped transform # Set the transform that defines where the robot is located to this\nbool set_velocity # Whether to also set the robot's velocity\ngeometry_msgs/TwistStamped velocity_robot # Only used when set_velocity is true; Velocity needs to be given in the robot's reference frame (e.g. \"base_link\")\n---\nbool success # whether the robot's pose and velocity has been set",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/TransformStamped",
+          "name": "transform",
+          "comment": "Set the transform that defines where the robot is located to this",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_velocity",
+          "comment": "Whether to also set the robot's velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistStamped",
+          "name": "velocity_robot",
+          "comment": "Only used when set_velocity is true; Velocity needs to be given in the robot's reference frame (e.g. \"base_link\")",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the robot's pose and velocity has been set",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ExePath": {
+      "description": "Follow the given path until completion or failure",
+      "raw": "# Follow the given path until completion or failure\n\nnav_msgs/Path path\n\n# Controller to use; defaults to the first one specified on \"controllers\" parameter\nstring controller\n\n# use different slots for concurrency\nuint8 concurrency_slot\n\n# define goal tolerance for the action\nbool tolerance_from_action\nfloat32 dist_tolerance\nfloat32 angle_tolerance\n---\n\n# Predefined success codes:\nuint8 SUCCESS           = 0\n# 1..9 are reserved as plugin specific non-error results\n\n# Predefined error codes:\nuint8 FAILURE           = 100  # Unspecified failure, only used for old, non-mfb_core based plugins\nuint8 CANCELED          = 101\nuint8 NO_VALID_CMD      = 102\nuint8 PAT_EXCEEDED      = 103\nuint8 COLLISION         = 104\nuint8 OSCILLATION       = 105\nuint8 ROBOT_STUCK       = 106  # The robot is not obeying the commanded velocity\nuint8 MISSED_GOAL       = 107  # The robot has overshot the goal and cannot reach it anymore\nuint8 MISSED_PATH       = 108  # The robot has diverged from the path and cannot rejoin it\nuint8 BLOCKED_GOAL      = 109  # There's an obstacle at the goal\nuint8 BLOCKED_PATH      = 110  # There's an obstacle on the path\nuint8 INVALID_PATH      = 111\nuint8 TF_ERROR          = 112\nuint8 NOT_INITIALIZED   = 113\nuint8 INVALID_PLUGIN    = 114\nuint8 INTERNAL_ERROR    = 115\nuint8 OUT_OF_MAP        = 116  # The start and / or the goal are outside the map\nuint8 MAP_ERROR         = 117  # The map is not available or not running properly\nuint8 STOPPED           = 118  # The controller execution has been stopped rigorously\n\nuint8 ERROR_RANGE_START = 100\nuint8 ERROR_RANGE_END   = 149\n\n# 121..149 are reserved as plugin specific errors:\nuint8 PLUGIN_ERROR_RANGE_START = 121\nuint8 PLUGIN_ERROR_RANGE_END   = 149\n\nuint32 outcome\nstring message\n\ngeometry_msgs/PoseStamped  final_pose\nfloat32 dist_to_goal\nfloat32 angle_to_goal\n\n---\n\n# Outcome of most recent controller cycle. Same values as in result\nuint32 outcome\nstring message\n\nfloat32 dist_to_goal\nfloat32 angle_to_goal\ngeometry_msgs/PoseStamped  current_pose\ngeometry_msgs/TwistStamped last_cmd_vel  # last command calculated by the controller\n",
+      "goal_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "controller",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "concurrency_slot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "tolerance_from_action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint8",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILURE",
+          "comment": "Unspecified failure, only used for old, non-mfb_core based plugins",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANCELED",
+          "comment": "",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NO_VALID_CMD",
+          "comment": "",
+          "default": "102",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PAT_EXCEEDED",
+          "comment": "",
+          "default": "103",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COLLISION",
+          "comment": "",
+          "default": "104",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OSCILLATION",
+          "comment": "",
+          "default": "105",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_STUCK",
+          "comment": "The robot is not obeying the commanded velocity",
+          "default": "106",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MISSED_GOAL",
+          "comment": "The robot has overshot the goal and cannot reach it anymore",
+          "default": "107",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MISSED_PATH",
+          "comment": "The robot has diverged from the path and cannot rejoin it",
+          "default": "108",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLOCKED_GOAL",
+          "comment": "There's an obstacle at the goal",
+          "default": "109",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLOCKED_PATH",
+          "comment": "There's an obstacle on the path",
+          "default": "110",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_PATH",
+          "comment": "",
+          "default": "111",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TF_ERROR",
+          "comment": "",
+          "default": "112",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_INITIALIZED",
+          "comment": "",
+          "default": "113",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_PLUGIN",
+          "comment": "",
+          "default": "114",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERNAL_ERROR",
+          "comment": "",
+          "default": "115",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUT_OF_MAP",
+          "comment": "The start and / or the goal are outside the map",
+          "default": "116",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MAP_ERROR",
+          "comment": "The map is not available or not running properly",
+          "default": "117",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOPPED",
+          "comment": "The controller execution has been stopped rigorously",
+          "default": "118",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RANGE_START",
+          "comment": "",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RANGE_END",
+          "comment": "",
+          "default": "149",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLUGIN_ERROR_RANGE_START",
+          "comment": "",
+          "default": "121",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLUGIN_ERROR_RANGE_END",
+          "comment": "",
+          "default": "149",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "final_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "uint32",
+          "name": "outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "current_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistStamped",
+          "name": "last_cmd_vel",
+          "comment": "last command calculated by the controller",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPath": {
+      "description": "Get a path from start_pose or current position to the target pose",
+      "raw": "# Get a path from start_pose or current position to the target pose\n\n# Use start_pose or current position as the beginning of the path\nbool use_start_pose\n\n# The start pose for the path; optional, used if use_start_pose is true\ngeometry_msgs/PoseStamped start_pose\n\n# The pose to achieve with the path\ngeometry_msgs/PoseStamped target_pose\n\n# If the goal is obstructed, how many meters the planner can relax the constraint in x and y before failing\nfloat64 tolerance\n\n# Planner to use; defaults to the first one specified on \"planners\" parameter\nstring planner\n\n# use different slots for concurrency\nuint8 concurrency_slot\n\n---\n\n# Predefined success codes:\nuint8 SUCCESS           = 0\n# 1..9 are reserved as plugin specific non-error results\n\n# Possible error codes:\nuint8 FAILURE           = 50  # Unspecified failure, only used for old, non-mfb_core based plugins\nuint8 CANCELED          = 51  # The action has been canceled by a action client\nuint8 INVALID_START     = 52  # The start pose is inconsistent (e.g. frame is not valid)\nuint8 INVALID_GOAL      = 53  # The goal pose is inconsistent (e.g. frame is not valid)\nuint8 BLOCKED_START     = 54  # The start pose is in collision\nuint8 BLOCKED_GOAL      = 55  # The goal pose is in collision\nuint8 NO_PATH_FOUND     = 56\nuint8 PAT_EXCEEDED      = 57\nuint8 EMPTY_PATH        = 58\nuint8 TF_ERROR          = 59\nuint8 NOT_INITIALIZED   = 60\nuint8 INVALID_PLUGIN    = 61\nuint8 INTERNAL_ERROR    = 62\nuint8 OUT_OF_MAP        = 63  # The start and / or the goal are outside the map\nuint8 MAP_ERROR         = 64  # The map is not available or not running properly\nuint8 STOPPED           = 65  # The planner execution has been stopped rigorously\n\nuint8 ERROR_RANGE_START = 50\nuint8 ERROR_RANGE_END   = 99\n\n# 71..99 are reserved as plugin specific errors:\nuint8 PLUGIN_ERROR_RANGE_START = 71\nuint8 PLUGIN_ERROR_RANGE_END   = 99\n\nuint32 outcome\nstring message\n\nnav_msgs/Path path\n\nfloat64 cost\n\n---\n",
+      "goal_fields": [
+        {
+          "type": "bool",
+          "name": "use_start_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "start_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "target_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "concurrency_slot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint8",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILURE",
+          "comment": "Unspecified failure, only used for old, non-mfb_core based plugins",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANCELED",
+          "comment": "The action has been canceled by a action client",
+          "default": "51",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_START",
+          "comment": "The start pose is inconsistent (e.g. frame is not valid)",
+          "default": "52",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_GOAL",
+          "comment": "The goal pose is inconsistent (e.g. frame is not valid)",
+          "default": "53",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLOCKED_START",
+          "comment": "The start pose is in collision",
+          "default": "54",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLOCKED_GOAL",
+          "comment": "The goal pose is in collision",
+          "default": "55",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NO_PATH_FOUND",
+          "comment": "",
+          "default": "56",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PAT_EXCEEDED",
+          "comment": "",
+          "default": "57",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EMPTY_PATH",
+          "comment": "",
+          "default": "58",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TF_ERROR",
+          "comment": "",
+          "default": "59",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_INITIALIZED",
+          "comment": "",
+          "default": "60",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_PLUGIN",
+          "comment": "",
+          "default": "61",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERNAL_ERROR",
+          "comment": "",
+          "default": "62",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUT_OF_MAP",
+          "comment": "The start and / or the goal are outside the map",
+          "default": "63",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MAP_ERROR",
+          "comment": "The map is not available or not running properly",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOPPED",
+          "comment": "The planner execution has been stopped rigorously",
+          "default": "65",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RANGE_START",
+          "comment": "",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RANGE_END",
+          "comment": "",
+          "default": "99",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLUGIN_ERROR_RANGE_START",
+          "comment": "",
+          "default": "71",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLUGIN_ERROR_RANGE_END",
+          "comment": "",
+          "default": "99",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "cost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "MoveBase": {
+      "description": "Extension of move_base_msgs/MoveBase action, with more detailed result",
+      "raw": "# Extension of move_base_msgs/MoveBase action, with more detailed result\n# and feedback and the possibility to specify lists of applicable plugins\n\ngeometry_msgs/PoseStamped target_pose\n\n# Controller to use; defaults to the first one specified on \"controllers\" parameter\nstring controller\n\n# Planner to use; defaults to the first one specified on \"planners\" parameter\nstring planner\n\n# Recovery behaviors to try on case of failure; defaults to the \"recovery_behaviors\" parameter value\nstring[] recovery_behaviors\n\n---\n\n# Predefined success codes:\nuint8 SUCCESS           = 0\n\n# Predefined general error codes:\nuint8 FAILURE           = 10\nuint8 CANCELED          = 11\nuint8 COLLISION         = 12\nuint8 OSCILLATION       = 13\nuint8 START_BLOCKED     = 14\nuint8 GOAL_BLOCKED      = 15\nuint8 TF_ERROR          = 16\nuint8 INTERNAL_ERROR    = 17\n\nuint8 ERROR_RANGE_START = 10\nuint8 ERROR_RANGE_END   = 49\n# 21..49 are reserved for future general error codes\n\n# Planning/controlling failures:\nuint8 PLAN_FAILURE      = 50\n# 51..99 are reserved as planner specific errors\n\nuint8 CTRL_FAILURE      = 100\n# 101..149 are reserved as controller specific errors\n\nuint32 outcome\nstring message\n\n# Configuration upon action completion\nfloat32 dist_to_goal\nfloat32 angle_to_goal\ngeometry_msgs/PoseStamped final_pose\n\n---\n\n# Outcome of most recent controller cycle. Same values as in MoveBase or ExePath result\nuint32 outcome\nstring message\n\nfloat32 dist_to_goal\nfloat32 angle_to_goal\ngeometry_msgs/PoseStamped current_pose\ngeometry_msgs/TwistStamped last_cmd_vel  # last command calculated by the controller\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "target_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "controller",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "recovery_behaviors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint8",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILURE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANCELED",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COLLISION",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OSCILLATION",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "START_BLOCKED",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GOAL_BLOCKED",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TF_ERROR",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERNAL_ERROR",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RANGE_START",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RANGE_END",
+          "comment": "",
+          "default": "49",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLAN_FAILURE",
+          "comment": "",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CTRL_FAILURE",
+          "comment": "",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "final_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "uint32",
+          "name": "outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "current_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistStamped",
+          "name": "last_cmd_vel",
+          "comment": "last command calculated by the controller",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Recovery": {
+      "description": "Run one of the recovery behavior listed on recovery_behaviors parameter",
+      "raw": "# Run one of the recovery behavior listed on recovery_behaviors parameter\n\nstring behavior\n\n# use different slots for concurrency\nuint8 concurrency_slot\n\n---\n\n# Predefined success codes:\nuint8 SUCCESS           = 0\n\n# Possible server codes:\nuint8 FAILURE           = 150\nuint8 CANCELED          = 151\nuint8 PAT_EXCEEDED      = 152\nuint8 TF_ERROR          = 153\nuint8 NOT_INITIALIZED   = 154\nuint8 INVALID_PLUGIN    = 155\nuint8 INTERNAL_ERROR    = 156\nuint8 STOPPED           = 157  # The recovery behaviour execution has been stopped rigorously\nuint8 IMPASSABLE        = 158  # Further execution would lead to a collision\n\nuint8 ERROR_RANGE_START = 150\nuint8 ERROR_RANGE_END   = 199\n\n# 171..199 are reserved as plugin specific errors:\nuint8 PLUGIN_ERROR_RANGE_START = 171\nuint8 PLUGIN_ERROR_RANGE_END   = 199\n\nuint32 outcome\nstring message\nstring used_plugin\n\n---\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "behavior",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "concurrency_slot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint8",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILURE",
+          "comment": "",
+          "default": "150",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANCELED",
+          "comment": "",
+          "default": "151",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PAT_EXCEEDED",
+          "comment": "",
+          "default": "152",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TF_ERROR",
+          "comment": "",
+          "default": "153",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_INITIALIZED",
+          "comment": "",
+          "default": "154",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_PLUGIN",
+          "comment": "",
+          "default": "155",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERNAL_ERROR",
+          "comment": "",
+          "default": "156",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOPPED",
+          "comment": "The recovery behaviour execution has been stopped rigorously",
+          "default": "157",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "IMPASSABLE",
+          "comment": "Further execution would lead to a collision",
+          "default": "158",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RANGE_START",
+          "comment": "",
+          "default": "150",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RANGE_END",
+          "comment": "",
+          "default": "199",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLUGIN_ERROR_RANGE_START",
+          "comment": "",
+          "default": "171",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLUGIN_ERROR_RANGE_END",
+          "comment": "",
+          "default": "199",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "used_plugin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    }
+  }
+}

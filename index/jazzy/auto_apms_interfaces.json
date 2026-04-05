@@ -1,0 +1,280 @@
+{
+  "name": "auto_apms_interfaces",
+  "version": "1.4.2",
+  "description": "ROS 2 interfaces for AutoAPMS",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://autoapms.github.io/auto-apms-guide/",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "autoapms",
+    "url": "https://github.com/AutoAPMS/auto-apms.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_copyright"
+    ],
+    "depended_on_by": [
+      "auto_apms_behavior_tree",
+      "auto_apms_examples",
+      "auto_apms_ros2behavior",
+      "auto_apms_util"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {
+    "CommandTreeExecutor": {
+      "description": "Request",
+      "raw": "# Request\nuint8 COMMAND_UNDEFINED=0\nuint8 COMMAND_RESUME=1\nuint8 COMMAND_PAUSE=2\nuint8 COMMAND_HALT=3\nuint8 COMMAND_TERMINATE=4\n\nuint8 command 0\n---\n# Result\n---\n# Feedback\n",
+      "goal_fields": [
+        {
+          "type": "uint8",
+          "name": "COMMAND_UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_RESUME",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_PAUSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_HALT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_TERMINATE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "command",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "ExampleSimpleSkill": {
+      "description": "Request",
+      "raw": "# Request\nstring msg\nuint8 n_times 1\n---\n# Result\nfloat64 time_required\n---\n# Feedback",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n_times",
+          "comment": "",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "float64",
+          "name": "time_required",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "StartTreeExecutor": {
+      "description": "Request",
+      "raw": "# Request\nstring build_request # String determining which behavior tree is to be built\nstring build_handler # Fully qualified class name of the behavior tree build handler plugin\nstring entry_point # Single point of entry for behavior execution\nstring node_manifest # Encoded node manifest specifying the behavior tree nodes to load initially\nbool attach true # Flag whether to start execution in attached (true) or detached (false) mode\nbool clear_blackboard true # Flag whether to clear the blackboard before executing the tree\n---\n# Result\nuint8 TREE_RESULT_NOT_SET=0\nuint8 TREE_RESULT_SUCCESS=1\nuint8 TREE_RESULT_FAILURE=2\n\nuint8 tree_result 0\nstring terminated_tree_identity\nstring message\n---\n# Feedback\nstring execution_state_str\nstring running_tree_identity\nstring running_action_name\nfloat64 running_action_timestamp",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "build_request",
+          "comment": "String determining which behavior tree is to be built",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "build_handler",
+          "comment": "Fully qualified class name of the behavior tree build handler plugin",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "entry_point",
+          "comment": "Single point of entry for behavior execution",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_manifest",
+          "comment": "Encoded node manifest specifying the behavior tree nodes to load initially",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "attach",
+          "comment": "Flag whether to start execution in attached (true) or detached (false) mode",
+          "default": "true",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear_blackboard",
+          "comment": "Flag whether to clear the blackboard before executing the tree",
+          "default": "true",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint8",
+          "name": "TREE_RESULT_NOT_SET",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TREE_RESULT_SUCCESS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TREE_RESULT_FAILURE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "tree_result",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "terminated_tree_identity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "execution_state_str",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "running_tree_identity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "running_action_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "running_action_timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestActionWrapper": {
+      "description": "Request",
+      "raw": "# Request\nuint8 request 0\n---\n# Result\nuint8 result 0\nuint8 on_cancel_request 0\n---\n# Feedback\nuint8 feedback 0",
+      "goal_fields": [
+        {
+          "type": "uint8",
+          "name": "request",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint8",
+          "name": "result",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "on_cancel_request",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "uint8",
+          "name": "feedback",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

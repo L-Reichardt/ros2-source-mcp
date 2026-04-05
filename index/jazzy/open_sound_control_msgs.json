@@ -1,0 +1,185 @@
+{
+  "name": "open_sound_control_msgs",
+  "version": "0.0.2",
+  "description": "Open Sound Control messages for ROS 2",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "open_sound_control_ros",
+    "url": "https://github.com/chrisib/open_sound_control_ros.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "open_sound_control",
+      "open_sound_control_bridge"
+    ]
+  },
+  "messages": {
+    "OscBlob": {
+      "description": "OSC blob/byte array message",
+      "raw": "# OSC blob/byte array message\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OscMessage": {
+      "description": "Required OSC 1.1 types:",
+      "raw": "# Required OSC 1.1 types:\nstring FLOAT = \"f\"    # IEEE float32\nstring INTEGER = \"i\"  # signed 32-bit integer (most significant byte first)\nstring BLOB = \"b\"     # byte array of length N, where N is represented as a 32-bit integer in the first 4 bytes\nstring STRING = \"s\"   # null-terminated string of 8-bit chars\nstring TIMETAG = \"t\"  # 64-bit OSC timetag in NTP format\nstring IMPULSE = \"I\"  # impulse/trigger; no bytes allocated in payload\nstring NIL = \"N\"      # null; no bytes allocated in payload\nstring B_TRUE = \"T\"   # boolean True; no bytes allocated in payload\nstring B_FALSE = \"F\"  # boolean False; no bytes allocated in payload\n\n\n# Optional additional types\nstring CHAR = \"c\"     # a single 8-bit character (contained in the least-significant byte of a 32-bit integer)\nstring DOUBLE = \"d\"   # IEEE 754 float64\nstring MIDI = \"m\"     # 4-byte MIDI message\nstring RGBA = \"r\"     # 32-bit RGBA colour\nstring SYMBOLS = \"S\"  # alternative data represented as a string; treated interchangeably with \"s\"\n\n# Optional data arrays\n# Array data is not supported in open_sound_control_ros; OSC messages containing\n# these characters will be ignored\nstring ARR_START = \"[\"\nstring ARR_STOP = \"]\"\n\n\n# The OSC address of the message\nstring address\n\n# The OSC v1.1 compatible list of types in the payload\n# Each character in the string indicates a specific type\n# See type definitions above\nstring[] types\n\n# The payload bytes\n# Each variable in the payload is word-aligned, meaning there\n# may be padding bytes between items\nuint8[] payload\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "FLOAT",
+          "comment": "IEEE float32",
+          "default": "\"f\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INTEGER",
+          "comment": "signed 32-bit integer (most significant byte first)",
+          "default": "\"i\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "BLOB",
+          "comment": "byte array of length N, where N is represented as a 32-bit integer in the first 4 bytes",
+          "default": "\"b\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "STRING",
+          "comment": "null-terminated string of 8-bit chars",
+          "default": "\"s\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "TIMETAG",
+          "comment": "64-bit OSC timetag in NTP format",
+          "default": "\"t\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "IMPULSE",
+          "comment": "impulse/trigger; no bytes allocated in payload",
+          "default": "\"I\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NIL",
+          "comment": "null; no bytes allocated in payload",
+          "default": "\"N\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "B_TRUE",
+          "comment": "boolean True; no bytes allocated in payload",
+          "default": "\"T\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "B_FALSE",
+          "comment": "boolean False; no bytes allocated in payload",
+          "default": "\"F\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CHAR",
+          "comment": "a single 8-bit character (contained in the least-significant byte of a 32-bit integer)",
+          "default": "\"c\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "DOUBLE",
+          "comment": "IEEE 754 float64",
+          "default": "\"d\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MIDI",
+          "comment": "4-byte MIDI message",
+          "default": "\"m\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "RGBA",
+          "comment": "32-bit RGBA colour",
+          "default": "\"r\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SYMBOLS",
+          "comment": "alternative data represented as a string; treated interchangeably with \"s\"",
+          "default": "\"S\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ARR_START",
+          "comment": "",
+          "default": "\"[\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ARR_STOP",
+          "comment": "",
+          "default": "\"]\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "payload",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,53 @@
+{
+  "name": "kinematics_interface",
+  "version": "1.7.0",
+  "description": "Kinematics interface for ROS 2 control",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "kinematics_interface",
+    "url": "https://github.com/ros-controls/kinematics_interface.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "ros2_control_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "pluginlib",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "backward_ros",
+      "eigen",
+      "rclcpp_lifecycle"
+    ],
+    "depended_on_by": [
+      "admittance_controller",
+      "kinematics_interface_kdl",
+      "kinematics_interface_pinocchio"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

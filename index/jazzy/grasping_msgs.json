@@ -1,0 +1,237 @@
+{
+  "name": "grasping_msgs",
+  "version": "0.5.0",
+  "description": "Messages for describing objects and how to grasp them.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/grasping_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "grasping_msgs",
+    "url": "https://github.com/mikeferguson/grasping_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "moveit_msgs",
+      "sensor_msgs",
+      "shape_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "simple_grasping"
+    ]
+  },
+  "messages": {
+    "GraspableObject": {
+      "description": "This message describes an object + grasp data",
+      "raw": "###########################################################\n# This message describes an object + grasp data\nObject object\nmoveit_msgs/Grasp[] grasps\n",
+      "fields": [
+        {
+          "type": "Object",
+          "name": "object",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "moveit_msgs/Grasp[]",
+          "name": "grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Object": {
+      "description": "This message describes an object.",
+      "raw": "###########################################################\n# This message describes an object.\n\n# Many of the geometric items below lack a stamp/frame_id,\n# header stamp/frame_id should be used there\nstd_msgs/Header header\n\n# An object might have a name\nstring name\n\n# An object might have a known (named) support surface\nstring support_surface\n\n# Objects might have properties, such as type/class, or color, etc.\nObjectProperty[] properties\n\n###########################################################\n# Objects have many possible descriptions\n#  The following are the possible description formats\n\n# Perception modules often represent an object as a cluster of points\n#  Is considered valid if number of points > 0\nsensor_msgs/PointCloud2 point_cluster\n\n# MoveIt prefers solid primitives or meshes as a description of objects\nshape_msgs/SolidPrimitive[] primitives\ngeometry_msgs/Pose[] primitive_poses\n\nshape_msgs/Mesh[] meshes\ngeometry_msgs/Pose[] mesh_poses\n\n# An object representing a support surface might be described by a plane\n# Is considered valid if coefficients are not all 0s.\nshape_msgs/Plane surface\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "support_surface",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectProperty[]",
+          "name": "properties",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "point_cluster",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/SolidPrimitive[]",
+          "name": "primitives",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "primitive_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Mesh[]",
+          "name": "meshes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "mesh_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Plane",
+          "name": "surface",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectProperty": {
+      "description": "Other generic properties of an object",
+      "raw": "###########################################################\n# Other generic properties of an object\nstring name\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {
+    "FindGraspableObjects": {
+      "description": "This action is called for integrated object detection and",
+      "raw": "###########################################################\n# This action is called for integrated object detection and\n#  grasp planning, such as in base_grasping_perception\n\n# Set to false to disable grasp planning, returning only the objects found\nbool plan_grasps\n---\n# Graspable objects found\nGraspableObject[] objects\n\n# Additional, non-graspable objects which may be support surfaces\nObject[] support_surfaces\n---\n# Publish objects as they are detected and grasp planned\nGraspableObject object\n",
+      "goal_fields": [
+        {
+          "type": "bool",
+          "name": "plan_grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "GraspableObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Object[]",
+          "name": "support_surfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "GraspableObject",
+          "name": "object",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GraspPlanning": {
+      "description": "This action is used when planning grasps for a single,",
+      "raw": "###########################################################\n# This action is used when planning grasps for a single,\n#  already known object, one object at a time.\n\n# Object for which grasp planning is requested\nObject object\n\n# Name of group to plan with (optional)\nstring group_name\n---\n# All grasps\nmoveit_msgs/Grasp[] grasps\n---\n# Grasps found thus far\nmoveit_msgs/Grasp[] grasps\n",
+      "goal_fields": [
+        {
+          "type": "Object",
+          "name": "object",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "moveit_msgs/Grasp[]",
+          "name": "grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "moveit_msgs/Grasp[]",
+          "name": "grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "name": "kompass_interfaces",
+  "version": "0.4.1",
+  "description": "ROS2 Interfaces for Kompass",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "kompass",
+    "url": "https://github.com/automatika-robotics/kompass.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "nav_msgs",
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "kompass"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {
+    "ControlPath": {
+      "description": "Result",
+      "raw": "int32 path_source\nstring path_name        # ROS topic name or path file url\nstring path_file_location   # path file location\nint32 controller          # select a controller\n---\n# Result\nPathTrackingError destination_error\n---\n# Feedback\nPathTrackingError global_path_deviation\n\nfloat64 prediction_horizon\nfloat64 compute_time\n\ngeometry_msgs/Twist control\nTwistArray control_list\n",
+      "goal_fields": [
+        {
+          "type": "int32",
+          "name": "path_source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "path_name",
+          "comment": "ROS topic name or path file url",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "path_file_location",
+          "comment": "path file location",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "controller",
+          "comment": "select a controller",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "PathTrackingError",
+          "name": "destination_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "PathTrackingError",
+          "name": "global_path_deviation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "prediction_horizon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "compute_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TwistArray",
+          "name": "control_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FollowPath": {
+      "description": "Start path following msg",
+      "raw": "# Start path following msg\nFollowPathRequest request\n---\n# Result\nbool reached_end\n---\n# Feedback\nPathTrackingError tracking_error\n",
+      "goal_fields": [
+        {
+          "type": "FollowPathRequest",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "reached_end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "PathTrackingError",
+          "name": "tracking_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IntelligentRest": {
+      "description": "Result",
+      "raw": "float64 period_secs\n---\n# Result\nPathTrackingError error\n---\n# Feedback\nPathTrackingError error\n",
+      "goal_fields": [
+        {
+          "type": "float64",
+          "name": "period_secs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "PathTrackingError",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "PathTrackingError",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionRecording": {
+      "description": "Result",
+      "raw": "float64 recording_period_secs\nfloat64 recording_time_step_secs\nstring csv_file_location\nstring csv_file_name\n---\n# Result\nbool recording_done\nstring message\n---\n# Feedback\ngeometry_msgs/Vector3 position\nfloat64 heading\ngeometry_msgs/Vector3 cmd\n",
+      "goal_fields": [
+        {
+          "type": "float64",
+          "name": "recording_period_secs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "recording_time_step_secs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "csv_file_location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "csv_file_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "recording_done",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanPath": {
+      "description": "Result",
+      "raw": "geometry_msgs/Pose goal\n\nstring algorithm_name         # Name of the planning algorithm to be used\n\nPathTrackingError end_tolerance     # tolerance for end goal - keep planning until location error is within tolerance\n---\n# Result\nPathTrackingError end_displacement      # Error between end location and goal location\nbool reached_end        # If goal location is reached within given tolerance\n---\n# Feedback\nnav_msgs/Path plan      # Path from current location to goal\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "algorithm_name",
+          "comment": "Name of the planning algorithm to be used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PathTrackingError",
+          "name": "end_tolerance",
+          "comment": "tolerance for end goal - keep planning until location error is within tolerance",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "PathTrackingError",
+          "name": "end_displacement",
+          "comment": "Error between end location and goal location",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reached_end",
+          "comment": "If goal location is reached within given tolerance",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "plan",
+          "comment": "Path from current location to goal",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackPath": {
+      "description": "Start path following msg",
+      "raw": "# Start path following msg\nint32   number_of_cmds\nfloat64 time_step\nFollowPathRequest follow_path\n---\n# Result\nbool reached_end\nPathTrackingError tracking_error\n---\n# Feedback\nTwistArray  cmd_list\nnav_msgs/Path global_path\nPathTrackingErrorArray tracking_errors\n",
+      "goal_fields": [
+        {
+          "type": "int32",
+          "name": "number_of_cmds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "time_step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FollowPathRequest",
+          "name": "follow_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "reached_end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PathTrackingError",
+          "name": "tracking_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "TwistArray",
+          "name": "cmd_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/Path",
+          "name": "global_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PathTrackingErrorArray",
+          "name": "tracking_errors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackVisionTarget": {
+      "description": "Result",
+      "raw": "string label\nfloat64 search_radius\nfloat64 search_timeout\nint32 pose_x\nint32 pose_y\n---\n# Result\nbool success        # False if the target is lost at the end of the action\nfloat64 tracked_duration\n---\n# Feedback\nfloat64 distance_error\nfloat64 orientation_error\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "search_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "search_timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "pose_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "pose_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "False if the target is lost at the end of the action",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "tracked_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "distance_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "orientation_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

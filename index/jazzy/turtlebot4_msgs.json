@@ -1,0 +1,166 @@
+{
+  "name": "turtlebot4_msgs",
+  "version": "2.1.1",
+  "description": "Turtlebot4 Messages",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "turtlebot4",
+    "url": "https://github.com/turtlebot/turtlebot4.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "turtlebot4_base",
+      "turtlebot4_gz_bringup",
+      "turtlebot4_gz_toolbox",
+      "turtlebot4_node",
+      "turtlebot4_tests"
+    ]
+  },
+  "messages": {
+    "UserButton": {
+      "description": "This message relays the state of the user buttons",
+      "raw": "# This message relays the state of the user buttons\n# Each button is represented with a boolean, were True indicates the button is pressed\n\nbool[4] button",
+      "fields": [
+        {
+          "type": "bool[4]",
+          "name": "button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UserDisplay": {
+      "description": "This message represents the header and 5 entries",
+      "raw": "# This message represents the header and 5 entries \n# that are displayed on the Turtlebot4 display\n# selected_entry indicates which menu entry is currently selected\n\nstring ip\nstring battery\nstring[5] entries\nint32 selected_entry",
+      "fields": [
+        {
+          "type": "string",
+          "name": "ip",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "battery",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[5]",
+          "name": "entries",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "selected_entry",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UserLed": {
+      "description": "This message sets the state of the user LEDs",
+      "raw": "# This message sets the state of the user LEDs\n# Blink period is the time in milliseconds during which the ON/OFF cycle occurs\n# The duty cycle represents the percentage of the blink period that the LED is ON\n# A duty cycle of 1.0 would set the LED to always be ON, whereas a duty cycle of 0.0 is always OFF\n# A blink period of 1000ms with a duty cycle of 0.6 will have the LED turn ON for 600ms, \n# then OFF for 400ms\n\n# Available LEDs\nuint8 USER_LED_1 = 0\nuint8 USER_LED_2 = 1\n\n# Available colors\nuint8 COLOR_OFF = 0\nuint8 COLOR_GREEN = 1\nuint8 COLOR_RED = 2\nuint8 COLOR_YELLOW = 3 \n\n\n# Which available LED to use\nuint8 led\n\n# Which color to set the LED to\nuint8 color\n\n# Blink period in ms\nuint32 blink_period\n\n# Duty cycle (0.0 to 1.0)\nfloat64 duty_cycle",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "USER_LED_1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "USER_LED_2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COLOR_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COLOR_GREEN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COLOR_RED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COLOR_YELLOW",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "led",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "blink_period",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "duty_cycle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

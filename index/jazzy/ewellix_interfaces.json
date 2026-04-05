@@ -1,0 +1,871 @@
+{
+  "name": "ewellix_interfaces",
+  "version": "0.2.0",
+  "description": "Ewellix lift ROS 2 driver",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ewellix_lift_common",
+    "url": "https://github.com/clearpathrobotics/ewellix_lift_common.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "ewellix_lift_common",
+      "ewellix_sim"
+    ]
+  },
+  "messages": {
+    "Command": {
+      "description": "Ewellix Command:",
+      "raw": "# Ewellix Command:\n# Through encoder ticks or meters. Encoder ticks take priority.\n\n# Ticks:\n# Encoder ticks range from 0 to 865.\nint32 ticks\n\n# Meters:\n# Range from 0 to max_height defined by the model.\n# Distance will be even divided amongst actuators.\nfloat32 meters\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "meters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Error": {
+      "description": "Ewellix Lift Latest Error",
+      "raw": "# Ewellix Lift Latest Error\n\nint32 code\n\n# CRC error with ROM test. Faulty ROM. Motions are stopped and the control unit carries out a reset.\nbool fault_ram\n\n# Error with RAM test. Faulty RAM. Motions are stopped and the control unit carries out a reset.\nbool fault_rom\n\n# Error with CPU test. Faulty CPU. Motions are stopped and the control unit carries out a reset.\nbool fault_cpu\n\n# STACK overrun detected. Motions are stopped (fast stop) and the control unit carries out a reset.\nbool stack_overrun\n\n# Program sequence error. Watchdog reset. Motions are stopped (fast stop) and the control unit carries out a reset.\nbool sequence_error\n\n# Error with hand switch test. Short detected in hand switch. Only occurs if hand switch is parameterized as 'safe'. Motions are stopped (fast stop).\nbool hand_switch_short\n\n# Error with binary inputs. Short detected between binary inputs. Only occurs if binary inputs are parameterized as safe and no analogue input is parameterized. Motions are stopped (fast stop).\nbool binary_inputs_short\n\n# Error with relay and FET tests. Faulty relay or FET. Test performed at start of motion. Motion not executed.\nbool faulty_relay\n\n# Error with communication with MoveEnable controller. No reply form MoveEnable controller. Motions stopped (fast stop).\nbool move_enable_comms\n\n# Error with MoveEnable output test. The MoveEnable controller output is incorrect. Motions stopped (fast stop).\nbool move_enable_incorrect\n\n# Over-temperature detected at rectifier or FET. Motions stopped (fast stop).\nbool over_temperature\n\n# Switching off due to excessive discharge of battery. Motions stopped (fast stop). Control unit switches itself off.\nbool battery_discharge\n\n# Total current is exceeded. Occurs if motion in process. Motions stopped (fast stop). Bit reset in the next motion.\nbool over_current\n\n# Error with drive. Occurs when peak current reached, short circuit current, sensor monitor, over current or timeout. Drive stopped (fast stop). Bit reset on next motion.\nbool drive_1_error\nbool drive_2_error\nbool drive_3_error\nbool drive_4_error\nbool drive_5_error\nbool drive_6_error\n\n# Position between drives too great. Only if synchronized parallel run is parameterized. Motion not started. If motion ins progress the motion is stopped (fast stop). Bit reset on next motion.\nbool position_difference\n\n# Remote communication timeout. Depends on SafetyMode set at activation.\nbool remote_timeout\n\n# Locking box I2C communication error. Only if locking box parameterized as 'safe'. Motion not performed or stopped\nbool lockbox_comm_error\n\n# RAM copy of EEPROM configuration data indicates incorrect CRC. Motion not performed or stopped.\nbool ram_config_data_crc\n\n# RAM copy of EEPROM user data indicates incorrect CRC. Motion not performed or stopped.\nbool ram_user_data_crc\n\n# EEPROM locking box data indicates incorrect CRC. Motion not performed or stopped.\nbool ram_lockbox_data_crc\n\n# RAM copy of EEPROM dynamic data indicate incorrect CRC. Motion not performed or stopped.\nbool ram_dynamic_data_crc\n\n# RAM copy of EEPROM calibration data indicate incorrect CRC. Motion not performed or stopped.\nbool ram_calib_data_crc\n\n# RAM copy of EEPROM HW settings indicate incorrect CRC. Motion not performed or stopped.\nbool ram_hw_settings_crc\n\n# IO test performed if no motion is active. Motion not performed.\nbool io_test\n\n# IDF operating system error. Motion not performed or stopped.\nbool idf_opsys_error\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_ram",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_rom",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_cpu",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stack_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "sequence_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hand_switch_short",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "binary_inputs_short",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "faulty_relay",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "move_enable_comms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "move_enable_incorrect",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "over_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "battery_discharge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "over_current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drive_1_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drive_2_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drive_3_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drive_4_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drive_5_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drive_6_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "position_difference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "remote_timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lockbox_comm_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ram_config_data_crc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ram_user_data_crc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ram_lockbox_data_crc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ram_dynamic_data_crc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ram_calib_data_crc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ram_hw_settings_crc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "io_test",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "idf_opsys_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "State": {
+      "description": "Ewellix Lift State",
+      "raw": "# Ewellix Lift State\n\n# Actual positions of all six possible actuators\nint32[]     actual_positions\n\n# Commanded positions of all six possible actuators\nint32[]     remote_positions\n\n# Percentage speed of all six possible actuators\nuint16[]    speeds\n\n# Currents of all six possible actuators in 0.1 A\nuint16[]    currents\n\n# Status codes of all six possible actuators\nuint8[]     status\n\n# Error history, last 5 error codes\nuint32[]    errors\n",
+      "fields": [
+        {
+          "type": "int32[]",
+          "name": "actual_positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "remote_positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "speeds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "currents",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "errors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Status": {
+      "description": "Ewellix Actuator Status",
+      "raw": "# Ewellix Actuator Status\n\n# Complete status as byte\nuint8 code\n\n# Drive unavailable/available\nbool available\n\n# Signal limit_in_out inactive/active\nbool limit_in_out\n\n# Signal switch 1 inactive/active\nbool switch1\n\n# Signal switch 2 inactive/active\nbool switch2\n\n# Motion inactive/active\nbool motion\n\n# In position not reached/reached\nbool reached\n\n# Out position\nbool out_position\n\n# Stoke not done/done\nbool stroke\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "limit_in_out",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "switch1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "switch2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "motion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reached",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "out_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stroke",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "Serial": {
+      "description": "Ewellix Serial send message and receive response",
+      "raw": "# Ewellix Serial send message and receive response\n\n# Commands:\nuint8 COMMAND_GET=0x47\nuint8 COMMAND_TRANSER=0x54\nuint8 COMMAND_CYCLIC=0x43\nuint8 COMMAND_EXECUTE=0x45\nuint8 COMMAND_STOP=0x53\nuint8 COMMAND_OPEN=0x4F\nuint8 COMMAND_ABORT=0x41\n\n# Data Fields\nuint16 DF_FIRMWARE=0x0001\nuint16 DF_CONFIGURATION=0x0002\nuint16 DF_ACTUAL_POSITION_ALL=0x0010\nuint16 DF_ACTUAL_POSITION_ACTUATOR=0x0011\nuint16 DF_ACTUAL_STATE_BINARY=0x0020\nuint16 DF_ACTUAL_STATE_ANALOG=0x0030\nuint16 DF_ACTUAL_STATE_KEYS=0x0040\nuint16 DF_NUMBER_CYCLE_IN_ALL=0x0060\nuint16 DF_NUMBER_CYCLE_IN_ACTUATOR=0x0061\nuint16 DF_NUMBER_CYCLE_OUT_ALL=0x0070\nuint16 DF_NUMBER_CYCLE_OUT_ACTUATOR=0x0071\nuint16 DF_NUMBER_ERROR_ALL=0x0080\nuint16 DF_NUMBER_ERROR_ACTUATOR=0x0081\nuint16 DF_NUMBER_TOTAL_OVER_CURRENT=0x008F\nuint16 DF_CUMULATED_STROKE=0x0090\nuint16 DF_CUMULATED_STROKE_ACTUATOR=0x0091\nuint16 DF_CURRENT_ALL=0x00A0\nuint16 DF_CURRENT_ACTUATOR=0x00A1\nuint16 DF_MAX_CURRENT_ALL=0x00B0\nuint16 DF_MAX_CURRENT_ACTUATOR=0x00B1\nuint16 DF_MAX_TOTAL_CURRENT=0x00BF\nuint16 DF_MAX_TEMP_RECTIFIER=0x00C0\nuint16 DF_OVER_TEMP_RECTIFIER=0x00C1\nuint16 DF_ERROR_CODE_HISTORY=0x00D0\nuint16 DF_STATUS_2_ALL=0x00E0\nuint16 DF_STATUS_2_ACTUATOR=0x00E1\nuint16 DF_SPEED_ALL=0x00F0\nuint16 DF_SPEED_ACTUATOR=0x00F1\nuint16 DF_BATTERY_MAINS=0x0100\nuint16 DF_BINARY_OUTPUT_STATUS=0x0110\nuint16 DF_LED_HS=0x0120\nuint16 DF_LED_LB=0x0130\nuint16 DF_BUZZER=0x0140\nuint16 DF_SENSOR_SUPPLY=0x0150\nuint16 DF_LOCK_STATUS=0x0162\nuint16 DF_BATTERY_VOLTAGE=0x0164\nuint16 DF_LOCKING_BOX_DETECTED=0x0165\nuint16 DF_USER=0x0166\nuint16 DF_STATUS_1_ALL=0x0170\nuint16 DF_STATUS_1_ACTUATOR=0x0171\nuint16 DF_CONVERSION_FACTOR_ALL=0x1010\nuint16 DF_CONVERSION_FACTOR_ACTUATOR=0x1011\nuint16 DF_USER_POSITION_ALL=0x2000\nuint16 DF_USER_POSITION_ACTUATOR=0x2001\n\n# Writable Data Fields\nuint16 WDF_CYCLIC_OBJECT=0x3001\nuint16 WDF_REMOTE_SPEED_ALL=0x3010\nuint16 WDF_REMOTE_SPEED_FUNCTION=0x301A\nuint16 WDF_REMOTE_POSITION_ALL=0x3020\nuint16 WDF_REMOTE_POSITION_ACTUATOR=0x3021\n\n# Executable Functions\nuint8 EF_NO_MOTION=0\nuint8 EF_IN=1\nuint8 EF_OUT=2\nuint8 EF_MEM1=3\nuint8 EF_MEM2=4\nuint8 EF_MEM3=5\nuint8 EF_MEM4=6\nuint8 EF_INTERMEDIATE_IN=7\nuint8 EF_INTERMEDIATE_OUT=8\nuint8 EF_REMOTE_POSITION=9\n\n---\nbool success\n\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "COMMAND_GET",
+          "comment": "",
+          "default": "0x47",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_TRANSER",
+          "comment": "",
+          "default": "0x54",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_CYCLIC",
+          "comment": "",
+          "default": "0x43",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_EXECUTE",
+          "comment": "",
+          "default": "0x45",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_STOP",
+          "comment": "",
+          "default": "0x53",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_OPEN",
+          "comment": "",
+          "default": "0x4F",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMMAND_ABORT",
+          "comment": "",
+          "default": "0x41",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_FIRMWARE",
+          "comment": "",
+          "default": "0x0001",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_CONFIGURATION",
+          "comment": "",
+          "default": "0x0002",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_ACTUAL_POSITION_ALL",
+          "comment": "",
+          "default": "0x0010",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_ACTUAL_POSITION_ACTUATOR",
+          "comment": "",
+          "default": "0x0011",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_ACTUAL_STATE_BINARY",
+          "comment": "",
+          "default": "0x0020",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_ACTUAL_STATE_ANALOG",
+          "comment": "",
+          "default": "0x0030",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_ACTUAL_STATE_KEYS",
+          "comment": "",
+          "default": "0x0040",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_NUMBER_CYCLE_IN_ALL",
+          "comment": "",
+          "default": "0x0060",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_NUMBER_CYCLE_IN_ACTUATOR",
+          "comment": "",
+          "default": "0x0061",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_NUMBER_CYCLE_OUT_ALL",
+          "comment": "",
+          "default": "0x0070",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_NUMBER_CYCLE_OUT_ACTUATOR",
+          "comment": "",
+          "default": "0x0071",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_NUMBER_ERROR_ALL",
+          "comment": "",
+          "default": "0x0080",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_NUMBER_ERROR_ACTUATOR",
+          "comment": "",
+          "default": "0x0081",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_NUMBER_TOTAL_OVER_CURRENT",
+          "comment": "",
+          "default": "0x008F",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_CUMULATED_STROKE",
+          "comment": "",
+          "default": "0x0090",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_CUMULATED_STROKE_ACTUATOR",
+          "comment": "",
+          "default": "0x0091",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_CURRENT_ALL",
+          "comment": "",
+          "default": "0x00A0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_CURRENT_ACTUATOR",
+          "comment": "",
+          "default": "0x00A1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_MAX_CURRENT_ALL",
+          "comment": "",
+          "default": "0x00B0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_MAX_CURRENT_ACTUATOR",
+          "comment": "",
+          "default": "0x00B1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_MAX_TOTAL_CURRENT",
+          "comment": "",
+          "default": "0x00BF",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_MAX_TEMP_RECTIFIER",
+          "comment": "",
+          "default": "0x00C0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_OVER_TEMP_RECTIFIER",
+          "comment": "",
+          "default": "0x00C1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_ERROR_CODE_HISTORY",
+          "comment": "",
+          "default": "0x00D0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_STATUS_2_ALL",
+          "comment": "",
+          "default": "0x00E0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_STATUS_2_ACTUATOR",
+          "comment": "",
+          "default": "0x00E1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_SPEED_ALL",
+          "comment": "",
+          "default": "0x00F0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_SPEED_ACTUATOR",
+          "comment": "",
+          "default": "0x00F1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_BATTERY_MAINS",
+          "comment": "",
+          "default": "0x0100",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_BINARY_OUTPUT_STATUS",
+          "comment": "",
+          "default": "0x0110",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_LED_HS",
+          "comment": "",
+          "default": "0x0120",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_LED_LB",
+          "comment": "",
+          "default": "0x0130",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_BUZZER",
+          "comment": "",
+          "default": "0x0140",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_SENSOR_SUPPLY",
+          "comment": "",
+          "default": "0x0150",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_LOCK_STATUS",
+          "comment": "",
+          "default": "0x0162",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_BATTERY_VOLTAGE",
+          "comment": "",
+          "default": "0x0164",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_LOCKING_BOX_DETECTED",
+          "comment": "",
+          "default": "0x0165",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_USER",
+          "comment": "",
+          "default": "0x0166",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_STATUS_1_ALL",
+          "comment": "",
+          "default": "0x0170",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_STATUS_1_ACTUATOR",
+          "comment": "",
+          "default": "0x0171",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_CONVERSION_FACTOR_ALL",
+          "comment": "",
+          "default": "0x1010",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_CONVERSION_FACTOR_ACTUATOR",
+          "comment": "",
+          "default": "0x1011",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_USER_POSITION_ALL",
+          "comment": "",
+          "default": "0x2000",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DF_USER_POSITION_ACTUATOR",
+          "comment": "",
+          "default": "0x2001",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "WDF_CYCLIC_OBJECT",
+          "comment": "",
+          "default": "0x3001",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "WDF_REMOTE_SPEED_ALL",
+          "comment": "",
+          "default": "0x3010",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "WDF_REMOTE_SPEED_FUNCTION",
+          "comment": "",
+          "default": "0x301A",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "WDF_REMOTE_POSITION_ALL",
+          "comment": "",
+          "default": "0x3020",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "WDF_REMOTE_POSITION_ACTUATOR",
+          "comment": "",
+          "default": "0x3021",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_NO_MOTION",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_IN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_OUT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_MEM1",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_MEM2",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_MEM3",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_MEM4",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_INTERMEDIATE_IN",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_INTERMEDIATE_OUT",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EF_REMOTE_POSITION",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

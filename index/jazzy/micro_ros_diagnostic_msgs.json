@@ -1,0 +1,190 @@
+{
+  "name": "micro_ros_diagnostic_msgs",
+  "version": "0.3.0",
+  "description": "Ccontains messages and service definitions for micro-ROS diagnostics.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "micro_ros_diagnostics",
+    "url": "https://github.com/micro-ROS/micro_ros_diagnostics.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "micro_ros_diagnostic_bridge",
+      "micro_ros_diagnostic_bridge"
+    ]
+  },
+  "messages": {
+    "MicroROSDiagnosticStatus": {
+      "description": "This message holds the status of an individual component of the robot.",
+      "raw": "# This message holds the status of an individual component of the robot.\n#\n# This message specification is inspired by\n# common_interfaces/diagnostic_msgs/msg/DiagnosticStatus.msg\n# with the difference that it comprises just one key and value\n# instead of an array of KeyValue messages as well as avoiding\n# any strings.\n\n# Possible levels of operations.\nbyte OK=0\nbyte WARN=1\nbyte ERROR=2\nbyte STALE=3\n\n# Possible value types\nbyte VALUE_BOOL=1\nbyte VALUE_INT=2\nbyte VALUE_DOUBLE=3\nbyte VALUE_LOOKUP=10\n\n# Level of operation enumerated above.\nbyte level\n\n# A description of the test/component reporting.\nuint16 updater_id\n# A hardware unique string.\nuint16 hardware_id\n\n# What key, value is transmitted.\nuint16 key\n\nbyte value_type\nbool bool_value\nint32 int_value\nfloat32 double_value\nuint16 value_id\n",
+      "fields": [
+        {
+          "type": "byte",
+          "name": "OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "WARN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "ERROR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "STALE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "VALUE_BOOL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "VALUE_INT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "VALUE_DOUBLE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "VALUE_LOOKUP",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "updater_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "hardware_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte",
+          "name": "value_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "int_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "double_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "value_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "MicroROSSelfTest": {
+      "description": "Service that triggers a sel-test of a node and publishes",
+      "raw": "# Service that triggers a sel-test of a node and publishes\n# a diagnostic status.\n#\n# This service specification is a copy of\n# common_interfaces/diagnostic_msgs/srv/SelfTest.srv\n# with the difference that it comprises just one\n# MicroROSDiagnosticStatus instead of an array of\n# DiagnosticStatus messages.\n\n---\nstring id\nbyte passed\nMicroROSDiagnosticStatus status\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte",
+          "name": "passed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MicroROSDiagnosticStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

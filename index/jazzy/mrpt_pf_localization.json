@@ -1,0 +1,55 @@
+{
+  "name": "mrpt_pf_localization",
+  "version": "2.3.0",
+  "description": "Package for robot 2D self-localization using dynamic or static (MRPT or ROS) maps.\n\tThe interface is similar to amcl (https://wiki.ros.org/amcl)\n   but supports different particle-filter algorithms, several grid maps at\n   different heights, range-only localization, etc.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/mrpt-ros-pkg/mrpt_navigation/tree/ros2/mrpt_pf_localization",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mrpt_navigation",
+    "url": "https://github.com/mrpt-ros-pkg/mrpt_navigation.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "cmake",
+      "ament_cmake"
+    ],
+    "test": [
+      "mrpt_tutorials"
+    ],
+    "build_and_runtime": [
+      "roscpp",
+      "rclcpp",
+      "mola_relocalization",
+      "mp2p_icp",
+      "mrpt_libgui",
+      "mrpt_libros_bridge",
+      "mrpt_libslam",
+      "mrpt_msgs",
+      "mrpt_msgs_bridge",
+      "nav_msgs",
+      "pose_cov_ops",
+      "sensor_msgs",
+      "std_msgs",
+      "tf2",
+      "tf2_geometry_msgs",
+      "rclcpp_components",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_xmllint",
+      "ament_lint_auto"
+    ],
+    "depended_on_by": [
+      "mrpt_navigation"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

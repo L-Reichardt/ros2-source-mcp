@@ -1,0 +1,387 @@
+{
+  "name": "map_msgs",
+  "version": "2.4.1",
+  "description": "This package defines messages commonly used in mapping packages.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/map_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-planning/navigation_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "navigation_msgs",
+    "url": "https://github.com/ros-planning/navigation_msgs.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "nav_msgs",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "nav_msgs",
+      "rosidl_default_runtime",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "mapviz_plugins",
+      "nav2_costmap_2d",
+      "rviz_default_plugins"
+    ]
+  },
+  "messages": {
+    "OccupancyGridUpdate": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint32 x\nint32 y\nuint32 width\nuint32 height\nint8[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointCloud2Update": {
+      "description": "",
+      "raw": "uint32 ADD=0\nuint32 DELETE=1\nstd_msgs/Header header\nuint32 type          # type of update, one of ADD or DELETE\nsensor_msgs/PointCloud2 points\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "ADD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DELETE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "type of update, one of ADD or DELETE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ProjectedMap": {
+      "description": "",
+      "raw": "nav_msgs/OccupancyGrid map\nfloat64 min_z\nfloat64 max_z",
+      "fields": [
+        {
+          "type": "nav_msgs/OccupancyGrid",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ProjectedMapInfo": {
+      "description": "",
+      "raw": "string frame_id\nfloat64 x\nfloat64 y\nfloat64 width\nfloat64 height\nfloat64 min_z\nfloat64 max_z",
+      "fields": [
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetMapROI": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\nfloat64 l_x\nfloat64 l_y\n---\nnav_msgs/OccupancyGrid sub_map",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "l_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "l_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "nav_msgs/OccupancyGrid",
+          "name": "sub_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPointMap": {
+      "description": "Get the map as a sensor_msgs/PointCloud2",
+      "raw": "# Get the map as a sensor_msgs/PointCloud2\n---\nsensor_msgs/PointCloud2 map\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPointMapROI": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\nfloat64 z\nfloat64 r    # if != 0, circular ROI of radius r\nfloat64 l_x  # if r == 0, length of AABB on x\nfloat64 l_y  # if r == 0, length of AABB on y\nfloat64 l_z  # if r == 0, length of AABB on z\n---\nsensor_msgs/PointCloud2 sub_map",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "r",
+          "comment": "if != 0, circular ROI of radius r",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "l_x",
+          "comment": "if r == 0, length of AABB on x",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "l_y",
+          "comment": "if r == 0, length of AABB on y",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "l_z",
+          "comment": "if r == 0, length of AABB on z",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "sub_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ProjectedMapsInfo": {
+      "description": "",
+      "raw": "map_msgs/ProjectedMapInfo[] projected_maps_info\n---\n",
+      "request_fields": [
+        {
+          "type": "map_msgs/ProjectedMapInfo[]",
+          "name": "projected_maps_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SaveMap": {
+      "description": "Save the map to the filesystem",
+      "raw": "# Save the map to the filesystem\nstd_msgs/String filename\n---\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/String",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetMapProjections": {
+      "description": "",
+      "raw": "---\nmap_msgs/ProjectedMapInfo[] projected_maps_info\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "map_msgs/ProjectedMapInfo[]",
+          "name": "projected_maps_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

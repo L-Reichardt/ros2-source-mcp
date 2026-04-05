@@ -1,0 +1,67 @@
+{
+  "name": "magnetometer_pipeline",
+  "version": "3.0.2",
+  "description": "Calibration and removing of magnetometer bias.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ctu-vras/compass",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/compass/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://index.ros.org/p/magnetometer_pipeline",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "compass",
+    "url": "https://github.com/ctu-vras/compass.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "eigen",
+      "pluginlib",
+      "rclcpp_components",
+      "tf2_eigen"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "ament_cmake_gen_version_h"
+    ],
+    "runtime": [
+      "pluginlib",
+      "python3-numpy",
+      "rclcpp_components",
+      "rclpy",
+      "std_msgs",
+      "std_srvs",
+      "tf2_eigen"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_cmake_ros",
+      "cras_lint"
+    ],
+    "build_and_runtime": [
+      "cras_cpp_common",
+      "message_filters",
+      "rclcpp",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "magnetometer_compass",
+      "magnetometer_compass"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

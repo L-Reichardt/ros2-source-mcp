@@ -1,0 +1,54 @@
+{
+  "name": "cras_topic_tools",
+  "version": "3.0.1",
+  "description": "Nodes and components for safe and efficient manipulation with topics",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://wiki.ros.org/cras_topic_tools",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/ros-utils/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/ros-utils",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "cras_ros_utils",
+    "url": "https://github.com/ctu-vras/ros-utils.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "libcxxopts-dev",
+      "std_msgs",
+      "topic_tools"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_gen_version_h"
+    ],
+    "runtime": [
+      "std_msgs",
+      "topic_tools"
+    ],
+    "test": [
+      "cras_lint"
+    ],
+    "build_and_runtime": [
+      "cras_cpp_common",
+      "rclcpp",
+      "rclcpp_components"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

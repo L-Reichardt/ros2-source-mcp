@@ -1,0 +1,512 @@
+{
+  "name": "marti_common_msgs",
+  "version": "1.6.1",
+  "description": "marti_common_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/marti_messages",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "marti_messages",
+    "url": "https://github.com/swri-robotics/marti_messages.git",
+    "branch": "ros2-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "mapviz_interfaces",
+      "mapviz_plugins",
+      "marti_nav_msgs",
+      "swri_roscpp",
+      "swri_route_util"
+    ]
+  },
+  "messages": {
+    "BoolStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbool   value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ByteArrayStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbyte[] value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte[]",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DurationStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbuiltin_interfaces/Duration value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Float32Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Float64Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header  header\n\nfloat64 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HealthStatus": {
+      "description": "This message is intended for use as a light-weight machine status indicator for robot consumption",
+      "raw": "# This message is intended for use as a light-weight machine status indicator for robot consumption\n# whereas Diagnostics are for human consumption\n\nint8 OK=0    # Initialized with no issues\nint8 WARN=1  # Component is operating but the data may be inaccurate or there may be minor problems\nint8 ERROR=2 # Component has encountered a serious problem and cannot or will not operate\nint8 STALE=3 # Uninitialized or cannot determine status\n\nstd_msgs/Header header\n\nint8   status\nstring message\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "OK",
+          "comment": "Initialized with no issues",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "WARN",
+          "comment": "Component is operating but the data may be inaccurate or there may be minor problems",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ERROR",
+          "comment": "Component has encountered a serious problem and cannot or will not operate",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STALE",
+          "comment": "Uninitialized or cannot determine status",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int16Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint16 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int32Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint32 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int64Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint64 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int8Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint8 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyValue": {
+      "description": "An arbitrary key-value pair",
+      "raw": "# An arbitrary key-value pair\n\nstring key\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyValueArray": {
+      "description": "A generic message for publishing a list of key value pairs directly.",
+      "raw": "# A generic message for publishing a list of key value pairs directly.\n\nstd_msgs/Header header\n\nKeyValue[] items\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Matrix3x3Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat64[9] matrix\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "matrix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServiceHeader": {
+      "description": "This message contains all of the data filled in automatically by the service system",
+      "raw": "# This message contains all of the data filled in automatically by the service system\n# It is required in each request and response message to be named srv_header\nbuiltin_interfaces/Time stamp\nuint32 sequence\nstring sender\nbool result # Used to indicate if the service request was successful or not\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sequence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sender",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "Used to indicate if the service request was successful or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StringArrayStamped": {
+      "description": "A generic message for publishing a list of strings.",
+      "raw": "# A generic message for publishing a list of strings.\n\nstd_msgs/Header header\n\nstring[] strings\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "strings",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StringStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nstring value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TimeStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbuiltin_interfaces/Time value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt16Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint16 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt32Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint32 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt64Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint64 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt8Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

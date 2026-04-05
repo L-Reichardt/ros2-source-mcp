@@ -1,0 +1,45 @@
+{
+  "name": "mrpt_map_server",
+  "version": "2.3.0",
+  "description": "This package provides a ROS 2 node that publishes a static map for other nodes to use it. Unlike classic ROS 1 ``map_server``, this node can publish a range of different metric maps, not only occupancy grids.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/mrpt-ros-pkg/mrpt_navigation/tree/ros2/mrpt_map_server",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mrpt_navigation",
+    "url": "https://github.com/mrpt-ros-pkg/mrpt_navigation.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "mp2p_icp",
+      "mrpt_libobs",
+      "mrpt_libmaps",
+      "mrpt_libros_bridge",
+      "mrpt_msgs",
+      "mrpt_nav_interfaces",
+      "rclcpp_components",
+      "tf2",
+      "tf2_ros",
+      "tf2_geometry_msgs",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_xmllint",
+      "ament_lint_auto"
+    ],
+    "depended_on_by": [
+      "mrpt_navigation"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

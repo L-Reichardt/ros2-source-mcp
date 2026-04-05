@@ -1,0 +1,706 @@
+{
+  "name": "tuw_object_msgs",
+  "version": "0.2.6",
+  "description": "The tuw_object_msgs package. This pkg provides a set of messages used to detect, map and track objects of different types.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck"
+    ],
+    "build_and_runtime": [
+      "tuw_std_msgs",
+      "tuw_geometry_msgs",
+      "tuw_geo_msgs",
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "tuw_msgs"
+    ]
+  },
+  "messages": {
+    "Object": {
+      "description": "This expresses a object in a 3D space",
+      "raw": "# This expresses a object in a 3D space\nint32[] ids                  # possible ids of the detected object (empty if no id could be identified/assigned)\nint32   shape                # shape type (possible types are listed below)\nfloat64[] shape_variables    # variables correspoding to the shape of the object (possible types are listed below)\nfloat64[] ids_confidence     # confidence of the possible ids in [0, 1]\ngeometry_msgs/Pose pose      # pose of the detected object\ngeometry_msgs/Twist twist    # twist of the detected object\n\n# SHAPE_TYPE                      # SHAPE_VARIABLES\n# ====================================================\nint32 SHAPE_UNKOWN           = 0  # []\nint32 SHAPE_POINT            = 1  # []\nint32 SHAPE_CIRCLE           = 2  # [radius]\nint32 SHAPE_ELLIPSE          = 3  # [radius1, radius2]\nint32 SHAPE_SQUARE           = 4  # [width]\nint32 SHAPE_RECTANGLE        = 5  # [length, width]\nint32 SHAPE_HULL             = 6  # [p0, p1, p2, ...]\nint32 SHAPE_LINE             = 7  # [] or [length] \n\nint32 SHAPE_SPHERE           = 102\nint32 SHAPE_ELLIPSOID        = 103\nint32 SHAPE_CUBE             = 104\nint32 SHAPE_BOX              = 105\nint32 SHAPE_MESH             = 106\n\nint32 SHAPE_TRAFFIC_CONE     = 201 # [radius, color(1 = blue, 2 = yellow, 3 = red)] \nint32 SHAPE_DOOR             = 202 # [width, height, opening angle (0=closed), nr of door leafs, clockwise (0) counterclockwise (1)]\nint32 SHAPE_MAP_DOOR         = 212 # for doors already mapped, same parameters as usual door\nint32 SHAPE_PERSON           = 203\nint32 SHAPE_VEHICLE          = 204\nint32 SHAPE_FIDUCIAL         = 205\nint32 SHAPE_CONE             = 206 # [radius, height]\n",
+      "fields": [
+        {
+          "type": "int32[]",
+          "name": "ids",
+          "comment": "possible ids of the detected object (empty if no id could be identified/assigned)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "shape",
+          "comment": "shape type (possible types are listed below)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "shape_variables",
+          "comment": "variables correspoding to the shape of the object (possible types are listed below)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "ids_confidence",
+          "comment": "confidence of the possible ids in [0, 1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "pose of the detected object",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "twist of the detected object",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_UNKOWN",
+          "comment": "[]",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_POINT",
+          "comment": "[]",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_CIRCLE",
+          "comment": "[radius]",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_ELLIPSE",
+          "comment": "[radius1, radius2]",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_SQUARE",
+          "comment": "[width]",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_RECTANGLE",
+          "comment": "[length, width]",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_HULL",
+          "comment": "[p0, p1, p2, ...]",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_LINE",
+          "comment": "[] or [length]",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_SPHERE",
+          "comment": "",
+          "default": "102",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_ELLIPSOID",
+          "comment": "",
+          "default": "103",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_CUBE",
+          "comment": "",
+          "default": "104",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_BOX",
+          "comment": "",
+          "default": "105",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_MESH",
+          "comment": "",
+          "default": "106",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_TRAFFIC_CONE",
+          "comment": "[radius, color(1 = blue, 2 = yellow, 3 = red)]",
+          "default": "201",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_DOOR",
+          "comment": "[width, height, opening angle (0=closed), nr of door leafs, clockwise (0) counterclockwise (1)]",
+          "default": "202",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_MAP_DOOR",
+          "comment": "for doors already mapped, same parameters as usual door",
+          "default": "212",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_PERSON",
+          "comment": "",
+          "default": "203",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_VEHICLE",
+          "comment": "",
+          "default": "204",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_FIDUCIAL",
+          "comment": "",
+          "default": "205",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_CONE",
+          "comment": "[radius, height]",
+          "default": "206",
+          "is_constant": true
+        }
+      ]
+    },
+    "ObjectDetection": {
+      "description": "This expresses a object detection",
+      "raw": "# This expresses a object detection\nstd_msgs/Header header                                 # timestamp in the header is the acquisition time and frame\n\nfloat32 distance_min                          # distance minimum range value [m]\nfloat32 distance_max                          # distance maximum range value [m]\nfloat32 distance_max_id                       # distance maximum range value to detect id [m]\n\ngeometry_msgs/Quaternion view_direction       # view direction\nfloat32 fov_horizontal                        # field of view horizontal [rad]\nfloat32 fov_vertical                          # field of view vertical [rad]\n\nstring   type                                 # object type used (person, obstacle, ...)\n\nObjectWithCovariance[] objects                # detected objects (with covariance)\n\nstring          sensor_type                      # Sensor / detector type, see example constants below.\n\n# object type constants\nstring OBJECT_TYPE_PERSON = person\nstring OBJECT_TYPE_OBSTACLE = obstacle\nstring OBJECT_TYPE_TRAFFIC_CONE = traffic_cone\nstring OBJECT_TYPE_DOOR = door\n\n# sensor type constants\nstring          SENSOR_TYPE_GENERIC_LASER_2D = laser2d\nstring          SENSOR_TYPE_GENERIC_LASER_3D = laser3d\nstring          SENSOR_TYPE_GENERIC_MONOCULAR_VISION = mono\nstring          SENSOR_TYPE_GENERIC_STEREO_VISION = stereo\nstring          SENSOR_TYPE_GENERIC_RGBD = rgbd\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the acquisition time and frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_min",
+          "comment": "distance minimum range value [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_max",
+          "comment": "distance maximum range value [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_max_id",
+          "comment": "distance maximum range value to detect id [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "view_direction",
+          "comment": "view direction",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fov_horizontal",
+          "comment": "field of view horizontal [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fov_vertical",
+          "comment": "field of view vertical [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "object type used (person, obstacle, ...)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectWithCovariance[]",
+          "name": "objects",
+          "comment": "detected objects (with covariance)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sensor_type",
+          "comment": "Sensor / detector type, see example constants below.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "OBJECT_TYPE_PERSON",
+          "comment": "",
+          "default": "person",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "OBJECT_TYPE_OBSTACLE",
+          "comment": "",
+          "default": "obstacle",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "OBJECT_TYPE_TRAFFIC_CONE",
+          "comment": "",
+          "default": "traffic_cone",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "OBJECT_TYPE_DOOR",
+          "comment": "",
+          "default": "door",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SENSOR_TYPE_GENERIC_LASER_2D",
+          "comment": "",
+          "default": "laser2d",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SENSOR_TYPE_GENERIC_LASER_3D",
+          "comment": "",
+          "default": "laser3d",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SENSOR_TYPE_GENERIC_MONOCULAR_VISION",
+          "comment": "",
+          "default": "mono",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SENSOR_TYPE_GENERIC_STEREO_VISION",
+          "comment": "",
+          "default": "stereo",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SENSOR_TYPE_GENERIC_RGBD",
+          "comment": "",
+          "default": "rgbd",
+          "is_constant": true
+        }
+      ]
+    },
+    "ObjectStamped": {
+      "description": "An object with reference coordinate frame and timestamp",
+      "raw": "# An object with reference coordinate frame and timestamp\nstd_msgs/Header header\nObject object",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Object",
+          "name": "object",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectWithCovariance": {
+      "description": "This expresses a object in free space with uncertainty.",
+      "raw": "# This expresses a object in free space with uncertainty.\n\nObject object\n\n# Row-major representation of the 6x6 covariance matrix\n# The orientation parameters use a fixed-axis representation.\n# In order, the parameters are:\n# (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)\n\nfloat64[] covariance_pose   # pose covariance if it exists it will be 3x3 or 6x6\nfloat64[] covariance_twist  # twist covariance if it exists it will be 3x3 or 6x6\nfloat64[] correlation       # correlation between pose and twist if it exists it will be 3x3 or 6x6",
+      "fields": [
+        {
+          "type": "Object",
+          "name": "object",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "covariance_pose",
+          "comment": "pose covariance if it exists it will be 3x3 or 6x6",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "covariance_twist",
+          "comment": "twist covariance if it exists it will be 3x3 or 6x6",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "correlation",
+          "comment": "correlation between pose and twist if it exists it will be 3x3 or 6x6",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectWithCovarianceArray": {
+      "description": "An object with covariance in a reference coordinate frame with timestamp",
+      "raw": "# An object with covariance in a reference coordinate frame with timestamp\nstd_msgs/Header header\nObjectWithCovariance[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectWithCovariance[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectWithCovarianceArrayArray": {
+      "description": "An object with covariance in a reference coordinate frame with timestamp",
+      "raw": "# An object with covariance in a reference coordinate frame with timestamp\nstd_msgs/Header header\nObjectWithCovarianceArray[] objects_array\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectWithCovarianceArray[]",
+          "name": "objects_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectWithCovarianceStamped": {
+      "description": "An object with covariance in a reference coordinate frame with timestamp",
+      "raw": "# An object with covariance in a reference coordinate frame with timestamp\nstd_msgs/Header header\nObjectWithCovariance object",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectWithCovariance",
+          "name": "object",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Shape": {
+      "description": "",
+      "raw": "\nint64 id -1                                  # ID, -1 default\nuint32 shape 0                               # Geometric shape, 0 default\nuint32 type 0                                # Type, 0 default\ngeometry_msgs/Pose[]          poses          # poses describing the shape\ntuw_std_msgs/ParameterArray[] params_poses   # parameters for each poses\ntuw_std_msgs/ParameterArray   params         # parameters for the shape\n\n\nuint32 SHAPE_NA = 0\nuint32 SHAPE_POINT = 1\nuint32 SHAPE_LINE = 2\nuint32 SHAPE_LINE_STRIP = 3\nuint32 SHAPE_CIRCLE = 4\nuint32 SHAPE_POLYGON = 5\nuint32 SHAPE_RECTANGLE = 6\n\nuint32 TYPE_NA = 0\n\nuint32 TYPE_MAP = 100            # map of shape rectangle, used to define a map frame\n\nuint32 TYPE_PLANT = 200\nuint32 TYPE_PLANT_WINE_ROW = 201\n\nuint32 TYPE_OBSTACLE = 300\nuint32 TYPE_OBSTACLE_HOUSE = 301\nuint32 TYPE_OBSTACLE_TREE = 302\n\nuint32 TYPE_TRANSIT = 400\nuint32 TYPE_TRANSIT_STREET = 401\nuint32 TYPE_TRANSIT_GRAVEL = 402\n\nuint32 TYPE_WALL = 500\nuint32 TYPE_WALL_ROOM = 501\nuint32 TYPE_WALL_HALLWAY = 502\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "id",
+          "comment": "ID, -1 default",
+          "default": "-1",
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "shape",
+          "comment": "Geometric shape, 0 default",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "Type, 0 default",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "poses",
+          "comment": "poses describing the shape",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "tuw_std_msgs/ParameterArray[]",
+          "name": "params_poses",
+          "comment": "parameters for each poses",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "tuw_std_msgs/ParameterArray",
+          "name": "params",
+          "comment": "parameters for the shape",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "SHAPE_NA",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "SHAPE_POINT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "SHAPE_LINE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "SHAPE_LINE_STRIP",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "SHAPE_CIRCLE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "SHAPE_POLYGON",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "SHAPE_RECTANGLE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_NA",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_MAP",
+          "comment": "map of shape rectangle, used to define a map frame",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_PLANT",
+          "comment": "",
+          "default": "200",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_PLANT_WINE_ROW",
+          "comment": "",
+          "default": "201",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_OBSTACLE",
+          "comment": "",
+          "default": "300",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_OBSTACLE_HOUSE",
+          "comment": "",
+          "default": "301",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_OBSTACLE_TREE",
+          "comment": "",
+          "default": "302",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_TRANSIT",
+          "comment": "",
+          "default": "400",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_TRANSIT_STREET",
+          "comment": "",
+          "default": "401",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_TRANSIT_GRAVEL",
+          "comment": "",
+          "default": "402",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_WALL",
+          "comment": "",
+          "default": "500",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_WALL_ROOM",
+          "comment": "",
+          "default": "501",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_WALL_HALLWAY",
+          "comment": "",
+          "default": "502",
+          "is_constant": true
+        }
+      ]
+    },
+    "ShapeArray": {
+      "description": "",
+      "raw": "std_msgs/Header header      # Header for Timestamp\nShape[] shapes              # Map Objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header for Timestamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Shape[]",
+          "name": "shapes",
+          "comment": "Map Objects",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetShapeArray": {
+      "description": "Get the shape array",
+      "raw": "# Get the shape array\n---\ntuw_object_msgs/ShapeArray shapes",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "tuw_object_msgs/ShapeArray",
+          "name": "shapes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

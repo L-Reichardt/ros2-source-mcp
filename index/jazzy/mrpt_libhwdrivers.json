@@ -1,0 +1,71 @@
+{
+  "name": "mrpt_libhwdrivers",
+  "version": "2.15.8",
+  "description": "Mobile Robot Programming Toolkit (MRPT) libraries (hwdrivers C++ libraries).\n  This package contains: mrpt-hwdrivers, mrpt-comms",
+  "license": "BSD",
+  "build_type": "cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://www.mrpt.org/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/MRPT/mrpt/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "mrpt_ros",
+    "url": "https://github.com/MRPT/mrpt_ros.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "pkg-config",
+      "zlib",
+      "libjpeg",
+      "glut",
+      "libglfw3-dev",
+      "libxrandr",
+      "libxxf86vm",
+      "opengl",
+      "assimp-dev",
+      "ffmpeg",
+      "libfreenect-dev",
+      "libopenni2-dev",
+      "libopencv-dev",
+      "libpcap",
+      "libudev-dev",
+      "libusb-1.0-dev",
+      "pybind11-dev",
+      "python3-pip",
+      "tinyxml2",
+      "wx-common",
+      "wxwidgets"
+    ],
+    "buildtool": [
+      "cmake"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "build_and_runtime": [
+      "mrpt_libmaps",
+      "mrpt_libgui",
+      "mrpt_libslam"
+    ],
+    "depended_on_by": [
+      "mola_input_video",
+      "mrpt_libapps",
+      "mrpt_sensor_bumblebee_stereo",
+      "mrpt_sensor_gnss_nmea",
+      "mrpt_sensor_gnss_novatel",
+      "mrpt_sensor_imu_taobotics",
+      "mrpt_sensorlib"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

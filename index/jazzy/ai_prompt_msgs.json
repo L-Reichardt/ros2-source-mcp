@@ -1,0 +1,80 @@
+{
+  "name": "ai_prompt_msgs",
+  "version": "0.0.0",
+  "description": "Messages for interaction with AI models",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ai_prompt_msgs",
+    "url": "https://github.com/robosoft-ai/ai_prompt_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "robosoft_openai"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "StringImagePrompt": {
+      "description": "(Optional) input image",
+      "raw": "string prompt\n\n# (Optional) input image\nsensor_msgs/Image image\n---\n# Full string response\nstring string_response\n\n# (Optional) Holds a parsed yes/no response\nbool bool_response\n\n# False indicates an error\nbool is_valid\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "prompt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "string_response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bool_response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

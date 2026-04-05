@@ -1,0 +1,59 @@
+{
+  "name": "depth_obstacle_detect_ros_msgs",
+  "version": "2.0.0",
+  "description": "A message package for depth_obstacle_detect_ros package",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "depth_obstacle_detect_ros",
+    "url": "https://github.com/analogdevicesinc/depth-obstacle-detect-ros.git",
+    "branch": "jazzy-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "depth_obstacle_detect_ros"
+    ]
+  },
+  "messages": {
+    "ObstacleStampedArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nbool[] obstacle_detected\nfloat64[] obstacle_distance\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "obstacle_detected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "obstacle_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

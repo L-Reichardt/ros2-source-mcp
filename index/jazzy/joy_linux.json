@@ -1,0 +1,50 @@
+{
+  "name": "joy_linux",
+  "version": "3.3.0",
+  "description": "ROS2 driver for a generic Linux joystick.\n    Will contain a MacOS and Windows version later.\n    The joy package contains joy_node, a node that interfaces a\n    generic Linux joystick to ROS2. This node publishes a \"Joy\"\n    message, which contains the current state of each one of the\n    joystick's buttons and axes.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros/joystick_drivers",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros/joystick_drivers/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "joystick_drivers",
+    "url": "https://github.com/ros-drivers/joystick_drivers.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "diagnostic_msgs",
+      "diagnostic_updater",
+      "rclcpp",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "clearpath_bt_joy",
+      "clearpath_control",
+      "leo_teleop",
+      "raph_teleop",
+      "raspimouse_ros2_examples",
+      "raspimouse_slam",
+      "turtlebot4_bringup"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

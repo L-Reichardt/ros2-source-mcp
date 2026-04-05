@@ -1,0 +1,78 @@
+{
+  "name": "axis_msgs",
+  "version": "3.0.2",
+  "description": "ROS messages used by the axis_camera package to control Axis PTZ and fixed cameras",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/axis_camera",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/axis_camera",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/axis_camera/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "axis_camera",
+    "url": "https://github.com/ros-drivers/axis_camera.git",
+    "branch": "jazzy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "axis_camera"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "SetInt": {
+      "description": "",
+      "raw": "int32 data     # the desired value to set\n---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "the desired value to set",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

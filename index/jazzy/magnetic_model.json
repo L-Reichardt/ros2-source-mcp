@@ -1,0 +1,58 @@
+{
+  "name": "magnetic_model",
+  "version": "3.0.2",
+  "description": "World Magnetic Model ROS API.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ctu-vras/compass",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/compass/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://index.ros.org/p/magnetic_model",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "compass",
+    "url": "https://github.com/ctu-vras/compass.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "angles",
+      "geographiclib"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_gen_version_h"
+    ],
+    "runtime": [
+      "angles",
+      "geographiclib"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "cras_lint"
+    ],
+    "build_and_runtime": [
+      "cras_cpp_common",
+      "geometry_msgs",
+      "rclcpp",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "compass_conversions",
+      "compass_conversions"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,196 @@
+{
+  "name": "rmf_charger_msgs",
+  "version": "3.3.1",
+  "description": "This package contains messages regarding charging and discharging",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_dev"
+    ]
+  },
+  "messages": {
+    "ChargerCancel": {
+      "description": "A unique ID for each request. It is advised that you prefix this",
+      "raw": "string charger_name  # the charger that should process this message\n\n# A unique ID for each request. It is advised that you prefix this\n# with the sender's node name. This is used for error tracking\n# later on\nstring request_id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "charger_name",
+          "comment": "the charger that should process this message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "request_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ChargerRequest": {
+      "description": "The name of the charger that should process this message",
+      "raw": "# The name of the charger that should process this message\nstring charger_name\n\n# The robot that wishes to charge\nstring fleet_name\nstring robot_name\n\n# The maximum amount of time to wait for the charging to start.\n# If the robot takes longer than this to arrive and start charging,\n# the charge request will be canceled.\nbuiltin_interfaces/Duration start_timeout\n\n# A unique ID for each request. It is advised that you prefix this\n# with the sender's node name. This is used for error tracking\n# later on\nstring request_id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "charger_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "start_timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "request_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ChargerState": {
+      "description": "Time when this state message was created",
+      "raw": "# Time when this state message was created\nbuiltin_interfaces/Time charger_time\n\nuint32 CHARGER_IDLE = 1      # Charger is not occupied\nuint32 CHARGER_ASSIGNED = 2  # Charger has been assigned a robot\nuint32 CHARGER_CHARGING = 3  # Charger is charging\nuint32 CHARGER_RELEASED = 4  # Charger has been disconnected from a robot\nuint32 CHARGER_ERROR = 200   # Error state, see error_message for info\n\nuint32 state  # One of the previously enumerated states\n\n# The charger name should be unique in the RMF system and\n# should match a charger name appearing in the traffic map\nstring charger_name\n\n# The error_message field should be blank unless state is CHARGER_ERROR\nstring error_message\n\n# The request_id field will be populated with the ID that started the\n# charging cycle if state is anything other than CHARGER_IDLE\nstring request_id\n\n# The robot that is currently assigned to this charger (if any)\nstring robot_fleet\nstring robot_name\n\n# This contains the duration till the robot becomes fully charged.\nbuiltin_interfaces/Duration time_to_fully_charged\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "charger_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "CHARGER_IDLE",
+          "comment": "Charger is not occupied",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "CHARGER_ASSIGNED",
+          "comment": "Charger has been assigned a robot",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "CHARGER_CHARGING",
+          "comment": "Charger is charging",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "CHARGER_RELEASED",
+          "comment": "Charger has been disconnected from a robot",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "CHARGER_ERROR",
+          "comment": "Error state, see error_message for info",
+          "default": "200",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "state",
+          "comment": "One of the previously enumerated states",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "charger_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "request_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_fleet",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_to_fully_charged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

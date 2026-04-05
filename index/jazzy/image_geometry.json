@@ -1,0 +1,49 @@
+{
+  "name": "image_geometry",
+  "version": "4.1.0",
+  "description": "`image_geometry` contains C++ and Python libraries for interpreting images\n    geometrically. It interfaces the calibration parameters in sensor_msgs/CameraInfo\n    messages with OpenCV functions such as image rectification, much as cv_bridge\n    interfaces ROS sensor_msgs/Image with OpenCV data types.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/image_geometry",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "vision_opencv",
+    "url": "https://github.com/ros-perception/vision_opencv.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_python",
+      "ament_cmake_ros"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_cmake_pytest"
+    ],
+    "build_and_runtime": [
+      "libopencv-dev",
+      "sensor_msgs",
+      "python3-deprecated"
+    ],
+    "depended_on_by": [
+      "camera_calibration",
+      "crane_plus_examples",
+      "depth_image_proc",
+      "depthimage_to_laserscan",
+      "image_proc",
+      "rtabmap_conversions",
+      "rtabmap_odom",
+      "stereo_image_proc",
+      "swri_image_util",
+      "vision_opencv"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

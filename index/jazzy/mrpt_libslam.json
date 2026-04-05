@@ -1,0 +1,68 @@
+{
+  "name": "mrpt_libslam",
+  "version": "2.15.8",
+  "description": "Mobile Robot Programming Toolkit (MRPT) libraries (slam/vision C++ libraries).\n  This package contains: mrpt-slam, mrpt-vision",
+  "license": "BSD",
+  "build_type": "cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://www.mrpt.org/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/MRPT/mrpt/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "mrpt_ros",
+    "url": "https://github.com/MRPT/mrpt_ros.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "pkg-config",
+      "zlib",
+      "libjpeg",
+      "glut",
+      "libglfw3-dev",
+      "libxrandr",
+      "libxxf86vm",
+      "opengl",
+      "assimp-dev",
+      "ffmpeg",
+      "libfreenect-dev",
+      "libopenni2-dev",
+      "libopencv-dev",
+      "libpcap",
+      "libudev-dev",
+      "libusb-1.0-dev",
+      "pybind11-dev",
+      "python3-pip",
+      "tinyxml2",
+      "wx-common",
+      "wxwidgets"
+    ],
+    "buildtool": [
+      "cmake"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "build_and_runtime": [
+      "mrpt_libmaps",
+      "tbb"
+    ],
+    "depended_on_by": [
+      "mola_relocalization",
+      "mrpt_libapps",
+      "mrpt_libhwdrivers",
+      "mrpt_pf_localization",
+      "python_mrpt"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

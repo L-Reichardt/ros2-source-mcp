@@ -1,0 +1,161 @@
+{
+  "name": "eventdispatch_ros2_interfaces",
+  "version": "0.2.26",
+  "description": "ROSEvent srv / msg",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_eventdispatch",
+    "url": "https://github.com/cyan-at/ros2_eventdispatch.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "eventdispatch_ros2"
+    ]
+  },
+  "messages": {
+    "ROSEvent": {
+      "description": "",
+      "raw": "string[] string_array\nfloat32[] float_array\nint16[] int_array\nstring hash # dedup",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "string_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "float_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "int_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hash",
+          "comment": "dedup",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROSEvents": {
+      "description": "",
+      "raw": "ROSEvent[] events\nstring hash # dedup",
+      "fields": [
+        {
+          "type": "ROSEvent[]",
+          "name": "events",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hash",
+          "comment": "dedup",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ROSEvent": {
+      "description": "",
+      "raw": "string[] string_array\nfloat32[] float_array\nint16[] int_array\nstring hash # dedup\n---\nstring result\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "string_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "float_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "int_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hash",
+          "comment": "dedup",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROSEvents": {
+      "description": "",
+      "raw": "ROSEvent[] events\nstring hash # dedup\n---\nstring result",
+      "request_fields": [
+        {
+          "type": "ROSEvent[]",
+          "name": "events",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hash",
+          "comment": "dedup",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

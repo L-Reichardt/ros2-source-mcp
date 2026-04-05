@@ -1,0 +1,80 @@
+{
+  "name": "lightning_rrt_interfaces",
+  "version": "0.0.2",
+  "description": "Lightning fast RRT path planner interfaces",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "lightning_rrt_interfaces",
+    "url": "https://github.com/david-dorf/lightning_rrt_interfaces.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs",
+      "nav_msgs"
+    ],
+    "depended_on_by": [
+      "lightning_rrt"
+    ]
+  },
+  "messages": {
+    "RRTRequest": {
+      "description": "Maximum number of nodes the RRT will spawn to find the goal",
+      "raw": "# Maximum number of nodes the RRT will spawn to find the goal\nint64 iterations\n\n# Radius that the RRT will search to add a new node if no direct path is found\nfloat64 step_size\n\ngeometry_msgs/Point start\ngeometry_msgs/Point goal\nnav_msgs/OccupancyGrid map\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "iterations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "step_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/OccupancyGrid",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

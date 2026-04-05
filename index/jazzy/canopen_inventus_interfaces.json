@@ -1,0 +1,961 @@
+{
+  "name": "canopen_inventus_interfaces",
+  "version": "0.1.3",
+  "description": "Inventus Battery ROS interfaces for CANOpen implementation",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "canopen_inventus",
+    "url": "https://github.com/clearpathrobotics/canopen_inventus.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "canopen_inventus_driver"
+    ]
+  },
+  "messages": {
+    "Status": {
+      "description": "Inventus Battery Status",
+      "raw": "# Inventus Battery Status\n\n# Header\nstd_msgs/Header header\n\n# Battery Version and Serial Number\nstring hardware_version\nstring software_version\nstring firmware_version\nstring serial_number\n\n# Battery Status Values\nfloat32 current\nfloat32 voltage\nfloat32 temperature\nfloat32 min_cell_temperature\nfloat32 max_cell_temperature\nfloat32 state_of_charge\nfloat32 full_charge_capacity\nfloat32 design_capacity\nfloat32 remaining_capacity\nfloat32[] cell_voltage\n\n# Mode\nuint16 op_mode\n\nuint16 OP_MODE_MODULE_BALANCING = 1\nuint16 OP_MODE_SHIP = 2\nuint16 OP_MODE_PRE_DISCHARGE = 3\nuint16 OP_MODE_STANDBY = 4\nuint16 OP_MODE_DISCHARGE = 5\nuint16 OP_MODE_CHARGE = 6\nuint16 OP_MODE_FAULT = 7\nuint16 OP_MODE_PRE_CHARGE = 8\n\n# Charge Faults\nuint16 charge_fault\n\nuint16 CHARGE_FAULT_HIGH_TEMP = 1\nuint16 CHARGE_FAULT_LOW_TEMP = 2\nuint16 CHARGE_FAULT_OVER_CURRENT = 4\nuint16 CHARGE_FAULT_OVER_VOLTAGE = 8\nuint16 CHARGE_FAULT_SHORT_CIRCUIT = 16\nuint16 CHARGE_FAULT_OTHER = 32\nuint16 CHARGE_FAULT_MOSFET_TEMP = 64\nuint16 CHARGE_FAULT_SEVERE_UNDER_VOLTAGE = 128\nuint16 CHARGE_FAULT_COM_AFE_FAILED = 256\nuint16 CHARGE_FAULT_HW_SECOND_OVP = 512             # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_RESERVED = 1024\nuint16 CHARGE_FAULT_PRECHARGE_FAILED = 2048         # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_PACK_PARALLEL_ERROR = 4096      # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_SIGNAL_ERROR = 8192             # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_PREDISCHARGE_FAILED = 16384     # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_INTERNAL_COMM_FAILURE = 32768\n\n# Discharge Fault\nuint16 discharge_fault\n\nuint16 DISCHARGE_FAULT_HIGH_TEMP = 1\nuint16 DISCHARGE_FAULT_LOW_TEMP = 2\nuint16 DISCHARGE_FAULT_OVER_CURRENT = 4\nuint16 DISCHARGE_FAULT_UNDER_VOLTAGE = 8\nuint16 DISCHARGE_FAULT_SHORT_CIRCUIT = 16\nuint16 DISCHARGE_FAULT_OTHER = 32\nuint16 DISCHARGE_FAULT_MOSFET_TEMP = 64\nuint16 DISCHARGE_FAULT_SEVERE_UNDER_VOLTAGE = 128\nuint16 DISCHARGE_FAULT_COM_AFE_FAILED = 256\nuint16 DISCHARGE_FAULT_HW_SECOND_OVP = 512          # Marked as reserved as of SW guide 1.4\nuint16 DISCHARGE_FAULT_RESERVED = 1024\nuint16 DISCHARGE_FAULT_RESERVED_2 = 2048\nuint16 DISCHARGE_FAULT_PACK_PARALLEL_ERROR = 4096   # Marked as reserved as of SW guide 1.4\nuint16 DISCHARGE_FAULT_SIGNAL_ERROR = 8192          # Marked as reserved as of SW guide 1.4\nuint16 DISCHARGE_FAULT_PREDISCHARGE_FAILED = 16384  # Marked as reserved as of SW guide 1.4\nuint16 DISCHARGE_FAULT_INTERNAL_COMM_FAILURE = 32768\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hardware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "software_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_cell_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_cell_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "state_of_charge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "full_charge_capacity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "design_capacity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "remaining_capacity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "cell_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "op_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_MODULE_BALANCING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_SHIP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_PRE_DISCHARGE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_STANDBY",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_DISCHARGE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_CHARGE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_FAULT",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_PRE_CHARGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "charge_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_HIGH_TEMP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_LOW_TEMP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_OVER_CURRENT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_OVER_VOLTAGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_SHORT_CIRCUIT",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_OTHER",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_MOSFET_TEMP",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_SEVERE_UNDER_VOLTAGE",
+          "comment": "",
+          "default": "128",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_COM_AFE_FAILED",
+          "comment": "",
+          "default": "256",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_HW_SECOND_OVP",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "512",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_RESERVED",
+          "comment": "",
+          "default": "1024",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_PRECHARGE_FAILED",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "2048",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_PACK_PARALLEL_ERROR",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "4096",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_SIGNAL_ERROR",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "8192",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_PREDISCHARGE_FAILED",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "16384",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_INTERNAL_COMM_FAILURE",
+          "comment": "",
+          "default": "32768",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "discharge_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_HIGH_TEMP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_LOW_TEMP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_OVER_CURRENT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_UNDER_VOLTAGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_SHORT_CIRCUIT",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_OTHER",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_MOSFET_TEMP",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_SEVERE_UNDER_VOLTAGE",
+          "comment": "",
+          "default": "128",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_COM_AFE_FAILED",
+          "comment": "",
+          "default": "256",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_HW_SECOND_OVP",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "512",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_RESERVED",
+          "comment": "",
+          "default": "1024",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_RESERVED_2",
+          "comment": "",
+          "default": "2048",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_PACK_PARALLEL_ERROR",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "4096",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_SIGNAL_ERROR",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "8192",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_PREDISCHARGE_FAILED",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "16384",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_INTERNAL_COMM_FAILURE",
+          "comment": "",
+          "default": "32768",
+          "is_constant": true
+        }
+      ]
+    },
+    "VirtualBattery": {
+      "description": "Inventus Virtual Battery",
+      "raw": "# Inventus Virtual Battery\n# All PDO produced by the batteries refer to the multi-battery system.\n# Therefore, this message must only be published by the master node.\n\n# Header\nstd_msgs/Header header\n\n# TPDO1\nuint8 number_of_batteries           # Number of batteries in parallel.\nfloat32 soc                         # Average SOC of all non-faulted batteries.\nfloat32 sum_capacity                # Sum of the remaining capacity of all non-faulted batteries.\nfloat32 remaining_runtime           # Remaining run time of all non-faulted batteries.\nfloat32 remaining_chargetime        # Remaining time to full charge of all non-faulted batteries.\n\n# TPDO2\nfloat32 avg_voltage                 # Average voltage of all non-faulted battery packs.\nfloat32 sum_current                 # Combined current value of all non-faulted battery packs.\n                                    # Charge/regen current (+), Discharge current (-).\nfloat32 discharge_current_limit     # Combined discharge current limit of all non-faulted battery packs.\nfloat32 charge_cutoff_current       # Combined taper current of all non-faulted battery packs when nearing charge cutoff voltage.\nuint8 fully_charged                 # 0 – All non-faulted battery packs not at charge termination voltage.\n                                    # 1 – All non-faulted battery packs at charge termination voltage.\n\n# TPDO3\nfloat32 avg_temp                    # Average temperature of all non-faulted battery packs.\nfloat32 discharge_cutoff_voltage    # Voltage at which a battery pack will open FETs to stop discharging.\nfloat32 charge_current_limit        # Combined charge current limit of all non-faulted battery packs.\nfloat32 max_voltage_allowed         # Maximum allowed charging voltage.\n\n# TPDO4\nfloat32 avg_health                  # Average state of health of all non-faulted battery packs.\nuint8 num_faulted_batteries         # Number of batteries in the system that are faulted.\nuint8 num_active_batteries          # Number of batteries in the system that are not faulted.\nuint8 op_mode                       # Operational mode of all non-faulted battery packs.\n                                    # This value will only show “fault mode” if all battery packs in the system are faulted.\nuint16 charge_fault                 # Combined charge fault of all battery packs.\nuint16 discharge_fault              # Combined discharge fault of all battery packs.\n\n# TPD05\nfloat32 regen_current_limit         # Combined regen current limit of all non-faulted battery packs.\nfloat32 min_cell_voltage            # Min cell voltage of all non-faulted battery packs.\nfloat32 max_cell_voltage            # Max cell voltage of all non-faulted battery packs.\nuint8 cell_balance_status           # Cell balance status of all battery packs.\n                                    # Each bit will represent one battery, nth bit will represent nth battery pack.\n                                        # Bit = 1 means cell balance of this battery pack is enabling.\n                                        # Bit = 0 means cell balance of this battery pack is Idle.\n\n# TPD06\nfloat32 all_avg_voltage             # Average pack voltage of all battery packs\nfloat32 all_soc                     # Average SOC value of all battery packs\nfloat32 all_avg_temp                # Average temperature of all battery packs\nuint8 master_node_id                # The node ID of master pack\n\n# Operational Model Enum\nuint16 OP_MODE_MODULE_BALANCING = 1\nuint16 OP_MODE_SHIP = 2\nuint16 OP_MODE_PRE_DISCHARGE = 3\nuint16 OP_MODE_STANDBY = 4\nuint16 OP_MODE_DISCHARGE = 5\nuint16 OP_MODE_CHARGE = 6\nuint16 OP_MODE_FAULT = 7\nuint16 OP_MODE_PRE_CHARGE = 8\nuint16 avail_op_modes\n\n# Charge Fault Bit Masks\nuint16 CHARGE_FAULT_HIGH_TEMP = 1\nuint16 CHARGE_FAULT_LOW_TEMP = 2\nuint16 CHARGE_FAULT_OVER_CURRENT = 4\nuint16 CHARGE_FAULT_OVER_VOLTAGE = 8\nuint16 CHARGE_FAULT_SHORT_CIRCUIT = 16\nuint16 CHARGE_FAULT_OTHER = 32\nuint16 CHARGE_FAULT_MOSFET_TEMP = 64\nuint16 CHARGE_FAULT_SEVERE_UNDER_VOLTAGE = 128\nuint16 CHARGE_FAULT_COM_AFE_FAILED = 256\nuint16 CHARGE_FAULT_HW_SECOND_OVP = 512             # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_RESERVED = 1024\nuint16 CHARGE_FAULT_PRECHARGE_FAILED = 2048         # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_PACK_PARALLEL_ERROR = 4096      # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_SIGNAL_ERROR = 8192             # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_PREDISCHARGE_FAILED = 16384     # Marked as reserved as of SW guide 1.4\nuint16 CHARGE_FAULT_INTERNAL_COMM_FAILURE = 32768\nuint16 avail_charge_faults\n\n# Discharge Fault Bit Masks\nuint16 DISCHARGE_FAULT_HIGH_TEMP = 1\nuint16 DISCHARGE_FAULT_LOW_TEMP = 2\nuint16 DISCHARGE_FAULT_OVER_CURRENT = 4\nuint16 DISCHARGE_FAULT_UNDER_VOLTAGE = 8\nuint16 DISCHARGE_FAULT_SHORT_CIRCUIT = 16\nuint16 DISCHARGE_FAULT_OTHER = 32\nuint16 DISCHARGE_FAULT_MOSFET_TEMP = 64\nuint16 DISCHARGE_FAULT_SEVERE_UNDER_VOLTAGE = 128\nuint16 DISCHARGE_FAULT_COM_AFE_FAILED = 256\nuint16 DISCHARGE_FAULT_HW_SECOND_OVP = 512          # Marked as reserved as of SW guide 1.4\nuint16 DISCHARGE_FAULT_RESERVED = 1024\nuint16 DISCHARGE_FAULT_RESERVED_2 = 2048\nuint16 DISCHARGE_FAULT_PACK_PARALLEL_ERROR = 4096   # Marked as reserved as of SW guide 1.4\nuint16 DISCHARGE_FAULT_SIGNAL_ERROR = 8192          # Marked as reserved as of SW guide 1.4\nuint16 DISCHARGE_FAULT_PREDISCHARGE_FAILED = 16384  # Marked as reserved as of SW guide 1.4\nuint16 DISCHARGE_FAULT_INTERNAL_COMM_FAILURE = 32768\nuint16 avail_discharge_faults\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "number_of_batteries",
+          "comment": "Number of batteries in parallel.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "soc",
+          "comment": "Average SOC of all non-faulted batteries.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sum_capacity",
+          "comment": "Sum of the remaining capacity of all non-faulted batteries.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "remaining_runtime",
+          "comment": "Remaining run time of all non-faulted batteries.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "remaining_chargetime",
+          "comment": "Remaining time to full charge of all non-faulted batteries.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "avg_voltage",
+          "comment": "Average voltage of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sum_current",
+          "comment": "Combined current value of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "discharge_current_limit",
+          "comment": "Combined discharge current limit of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "charge_cutoff_current",
+          "comment": "Combined taper current of all non-faulted battery packs when nearing charge cutoff voltage.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fully_charged",
+          "comment": "0 – All non-faulted battery packs not at charge termination voltage.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "avg_temp",
+          "comment": "Average temperature of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "discharge_cutoff_voltage",
+          "comment": "Voltage at which a battery pack will open FETs to stop discharging.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "charge_current_limit",
+          "comment": "Combined charge current limit of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_voltage_allowed",
+          "comment": "Maximum allowed charging voltage.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "avg_health",
+          "comment": "Average state of health of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_faulted_batteries",
+          "comment": "Number of batteries in the system that are faulted.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_active_batteries",
+          "comment": "Number of batteries in the system that are not faulted.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "op_mode",
+          "comment": "Operational mode of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "charge_fault",
+          "comment": "Combined charge fault of all battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "discharge_fault",
+          "comment": "Combined discharge fault of all battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "regen_current_limit",
+          "comment": "Combined regen current limit of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_cell_voltage",
+          "comment": "Min cell voltage of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_cell_voltage",
+          "comment": "Max cell voltage of all non-faulted battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cell_balance_status",
+          "comment": "Cell balance status of all battery packs.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "all_avg_voltage",
+          "comment": "Average pack voltage of all battery packs",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "all_soc",
+          "comment": "Average SOC value of all battery packs",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "all_avg_temp",
+          "comment": "Average temperature of all battery packs",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "master_node_id",
+          "comment": "The node ID of master pack",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_MODULE_BALANCING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_SHIP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_PRE_DISCHARGE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_STANDBY",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_DISCHARGE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_CHARGE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_FAULT",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OP_MODE_PRE_CHARGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "avail_op_modes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_HIGH_TEMP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_LOW_TEMP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_OVER_CURRENT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_OVER_VOLTAGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_SHORT_CIRCUIT",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_OTHER",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_MOSFET_TEMP",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_SEVERE_UNDER_VOLTAGE",
+          "comment": "",
+          "default": "128",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_COM_AFE_FAILED",
+          "comment": "",
+          "default": "256",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_HW_SECOND_OVP",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "512",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_RESERVED",
+          "comment": "",
+          "default": "1024",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_PRECHARGE_FAILED",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "2048",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_PACK_PARALLEL_ERROR",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "4096",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_SIGNAL_ERROR",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "8192",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_PREDISCHARGE_FAILED",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "16384",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGE_FAULT_INTERNAL_COMM_FAILURE",
+          "comment": "",
+          "default": "32768",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "avail_charge_faults",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_HIGH_TEMP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_LOW_TEMP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_OVER_CURRENT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_UNDER_VOLTAGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_SHORT_CIRCUIT",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_OTHER",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_MOSFET_TEMP",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_SEVERE_UNDER_VOLTAGE",
+          "comment": "",
+          "default": "128",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_COM_AFE_FAILED",
+          "comment": "",
+          "default": "256",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_HW_SECOND_OVP",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "512",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_RESERVED",
+          "comment": "",
+          "default": "1024",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_RESERVED_2",
+          "comment": "",
+          "default": "2048",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_PACK_PARALLEL_ERROR",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "4096",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_SIGNAL_ERROR",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "8192",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_PREDISCHARGE_FAILED",
+          "comment": "Marked as reserved as of SW guide 1.4",
+          "default": "16384",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISCHARGE_FAULT_INTERNAL_COMM_FAILURE",
+          "comment": "",
+          "default": "32768",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "avail_discharge_faults",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

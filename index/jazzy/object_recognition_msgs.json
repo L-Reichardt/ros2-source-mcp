@@ -1,0 +1,278 @@
+{
+  "name": "object_recognition_msgs",
+  "version": "2.0.0",
+  "description": "Object_recognition_msgs contains the ROS message and the actionlib definition used in object_recognition_core",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/object_recognition",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "object_recognition_msgs",
+    "url": "https://github.com/wg-perception/object_recognition_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators",
+      "action_msgs",
+      "std_msgs",
+      "geometry_msgs",
+      "sensor_msgs",
+      "shape_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "action_msgs",
+      "geometry_msgs",
+      "sensor_msgs",
+      "shape_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "moveit_msgs"
+    ]
+  },
+  "messages": {
+    "ObjectInformation": {
+      "description": "VISUALIZATION INFO ######################################################",
+      "raw": "############################################## VISUALIZATION INFO ######################################################\n################### THIS INFO SHOULD BE OBTAINED INDEPENDENTLY FROM THE CORE, LIKE IN AN RVIZ PLUGIN ###################\n\n# The human readable name of the object\nstring name\n\n# The full mesh of the object: this can be useful for display purposes, augmented reality ... but it can be big\n# Make sure the type is MESH\nshape_msgs/Mesh ground_truth_mesh\n\n# Sometimes, you only have a cloud in the DB\n# Make sure the type is POINTS\nsensor_msgs/PointCloud2 ground_truth_point_cloud\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Mesh",
+          "name": "ground_truth_mesh",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "ground_truth_point_cloud",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectType": {
+      "description": "OBJECT ID #########################################################",
+      "raw": "################################################## OBJECT ID #########################################################\n\n# Contains information about the type of a found object. Those two sets of parameters together uniquely define an\n# object\n\n# The key of the found object: the unique identifier in the given db\nstring key\n\n# The db parameters stored as a JSON/compressed YAML string. An object id does not make sense without the corresponding\n# database. E.g., in object_recognition, it can look like: \"{'type':'CouchDB', 'root':'http://localhost'}\"\n# There is no conventional format for those parameters and it's nice to keep that flexibility.\n# The object_recognition_core as a generic DB type that can read those fields\n# Current examples:\n# For CouchDB:\n#   type: 'CouchDB'\n#   root: 'http://localhost:5984'\n#   collection: 'object_recognition'\n# For SQL household database:\n#   type: 'SqlHousehold'\n#   host: 'wgs36'\n#   port: 5432\n#   user: 'willow'\n#   password: 'willow'\n#   name: 'household_objects'\n#   module: 'tabletop'\nstring db\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "db",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RecognizedObject": {
+      "description": "HEADER ###########################################################",
+      "raw": "##################################################### HEADER ###########################################################\n\n# The header frame corresponds to the pose frame, NOT the point_cloud frame.\nstd_msgs/Header header\n\n################################################## OBJECT INFO #########################################################\n\n# Contains information about the type and the position of a found object\n# Some of those fields might not be filled because the used techniques do not fill them or because the user does not\n# request them\n\n# The type of the found object\nobject_recognition_msgs/ObjectType type\n\n#confidence: how sure you are it is that object and not another one.\n# It is between 0 and 1 and the closer to one it is the better\nfloat32 confidence\n\n################################################ OBJECT CLUSTERS #######################################################\n\n# Sometimes you can extract the 3d points that belong to the object, in the frames of the original sensors\n# (it is an array as you might have several sensors)\nsensor_msgs/PointCloud2[] point_clouds\n\n# Sometimes, you can only provide a bounding box/shape, even in 3d\n# This is in the pose frame\nshape_msgs/Mesh bounding_mesh\n\n# Sometimes, you only have 2d input so you can't really give a pose, you just get a contour, or a box\n# The last point will be linked to the first one automatically\ngeometry_msgs/Point[] bounding_contours\n\n#################################################### POSE INFO #########################################################\n\n# This is the result that everybody expects : the pose in some frame given with the input. The units are radian/meters\n# as usual\ngeometry_msgs/PoseWithCovarianceStamped pose\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "object_recognition_msgs/ObjectType",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2[]",
+          "name": "point_clouds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Mesh",
+          "name": "bounding_mesh",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "bounding_contours",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RecognizedObjectArray": {
+      "description": "HEADER ###########################################################",
+      "raw": "##################################################### HEADER ###########################################################\nstd_msgs/Header header\n\n# This message type describes a potential scene configuration: a set of objects that can explain the scene\nobject_recognition_msgs/RecognizedObject[] objects\n\n##################################################### SEARCH ###########################################################\n\n# The co-occurrence matrix between the recognized objects\nfloat32[] cooccurrence\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "object_recognition_msgs/RecognizedObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "cooccurrence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Table": {
+      "description": "Informs that a planar table has been detected at a given location",
+      "raw": "# Informs that a planar table has been detected at a given location\n\nstd_msgs/Header header\n\n# The pose gives you the transform that take you to the coordinate system\n# of the table, with the origin somewhere in the table plane and the \n# z axis normal to the plane\ngeometry_msgs/Pose pose\n\n# There is no guarantee that the table does NOT extend further than the\n# convex hull; this is just as far as we've observed it.\n# The origin of the table coordinate system is inside the convex hull\n\n# Set of points forming the convex hull of the table\ngeometry_msgs/Point[] convex_hull\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "convex_hull",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TableArray": {
+      "description": "Just an array of tables",
+      "raw": "std_msgs/Header header\n\n# Just an array of tables\nobject_recognition_msgs/Table[] tables\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "object_recognition_msgs/Table[]",
+          "name": "tables",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetObjectInformation": {
+      "description": "Retrieve extra data from the DB for a given object",
+      "raw": "# Retrieve extra data from the DB for a given object\n\n# The type of the object to retrieve info from\nobject_recognition_msgs/ObjectType type\n\n---\n\n# Extra object info \nobject_recognition_msgs/ObjectInformation information\n",
+      "request_fields": [
+        {
+          "type": "object_recognition_msgs/ObjectType",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "object_recognition_msgs/ObjectInformation",
+          "name": "information",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ObjectRecognition": {
+      "description": "Optional ROI to use for the object detection",
+      "raw": "# Optional ROI to use for the object detection\nbool use_roi\nfloat32[] filter_limits\n---\n# Send the found objects, see the msg files for docs\nobject_recognition_msgs/RecognizedObjectArray recognized_objects\n---\n#no feedback\n",
+      "goal_fields": [
+        {
+          "type": "bool",
+          "name": "use_roi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "filter_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "object_recognition_msgs/RecognizedObjectArray",
+          "name": "recognized_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    }
+  }
+}

@@ -1,0 +1,1793 @@
+{
+  "name": "clearpath_platform_msgs",
+  "version": "2.7.0",
+  "description": "Messages for Clearpath Platforms.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "clearpath_msgs",
+    "url": "https://github.com/clearpathrobotics/clearpath_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "clearpath_desktop",
+      "clearpath_diagnostics",
+      "clearpath_msgs",
+      "clearpath_tests"
+    ]
+  },
+  "messages": {
+    "DisplayStatus": {
+      "description": "This message is used to set the two lines of text on the bottom of the e-ink display",
+      "raw": "# This message is used to set the two lines of text on the bottom of the e-ink display\nstring<=49 string1\nstring<=49 string2",
+      "fields": [
+        {
+          "type": "string<=49",
+          "name": "string1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=49",
+          "name": "string2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Drive": {
+      "description": "This message represents a low-level motor command to Jackal.",
+      "raw": "# This message represents a low-level motor command to Jackal.\n\n# Command units dependent on the value of this field\nint8 MODE_VELOCITY=0   # velocity command (rad/s of wheels)\nint8 MODE_PWM=1        # proportion of full voltage command [-1.0..1.0]\nint8 MODE_NONE=-1      # no control, commanded values ignored.\nint8 mode\n\n# Units as above, +ve direction propels chassis forward.\nint8 LEFT=0\nint8 RIGHT=1\nfloat32[2] drivers\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "MODE_VELOCITY",
+          "comment": "velocity command (rad/s of wheels)",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "MODE_PWM",
+          "comment": "proportion of full voltage command [-1.0..1.0]",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "MODE_NONE",
+          "comment": "no control, commanded values ignored.",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "RIGHT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "float32[2]",
+          "name": "drivers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriveFeedback": {
+      "description": "This message represents feedback data from a single drive unit (driver + motor).",
+      "raw": "# This message represents feedback data from a single drive unit (driver + motor).\n\n# Current flowing from battery into the MOSFET bridge.\nfloat32 current\n\n# Instantaneous duty cycle of MOSFET bridge.\nfloat32 duty_cycle\n\n# Temperatures measured in the MOSFET bridge and on the motor casing, in deg C.\nfloat32 bridge_temperature\nfloat32 motor_temperature\n\n# Encoder data\nfloat32 measured_velocity   # rad/s\nfloat32 measured_travel     # rad\n\n# True if the underlying driver chip reports a fault condition.\nbool driver_fault\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "duty_cycle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "bridge_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "motor_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "measured_velocity",
+          "comment": "rad/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "measured_travel",
+          "comment": "rad",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Fans": {
+      "description": "Location of fans.",
+      "raw": "# Location of fans.\n\n# Common Core (CC01)\nuint8 CC01_FAN1=0\nuint8 CC01_FAN2=1\nuint8 CC01_FAN3=2\nuint8 CC01_FAN4=3\nuint8 CC01_FAN5=4\nuint8 CC01_FAN6=5\nuint8 CC01_FAN7=6\nuint8 CC01_FAN8=7\n\n# Ridgeback (R100)\nuint8 R100_EQUIPMENT_BAY_INTAKE=0\nuint8 R100_EQUIPMENT_BAY_EXHAUST=1\nuint8 R100_CHARGER_BAY_INTAKE=2\nuint8 R100_CHARGER_BAY_EXHAUST=3\nuint8 R100_USER_BAY_INTAKE=4\nuint8 R100_USER_BAY_EXHAUST=5\n\n# Possible fan states\nuint8 FAN_OFF=0\nuint8 FAN_ON_HIGH=1\nuint8 FAN_ON_LOW=2\n\n# Control for the fans\nuint8[] fans\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CC01_FAN1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN4",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN5",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN6",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN7",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN8",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_EQUIPMENT_BAY_INTAKE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_EQUIPMENT_BAY_EXHAUST",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_CHARGER_BAY_INTAKE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_CHARGER_BAY_EXHAUST",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_USER_BAY_INTAKE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_USER_BAY_EXHAUST",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAN_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAN_ON_HIGH",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAN_ON_LOW",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8[]",
+          "name": "fans",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Feedback": {
+      "description": "This message represents high-frequency feedback from the MCU,",
+      "raw": "# This message represents high-frequency feedback from the MCU,\n# as necessary to support closed-loop control and thermal monitoring.\n# Default publish frequency is 50Hz.\n\nstd_msgs/Header header\n\nDriveFeedback[2] drivers\n\n# Commanded control mode, use the TYPE_ constants from jackal_msgs/Drive.\nint8 commanded_mode\n\n# Actual control mode. This may differ from the commanded in cases where\n# the motor enable is off, the motors are in over-current, etc.\nint8 actual_mode\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DriveFeedback[2]",
+          "name": "drivers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "commanded_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "actual_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Lights": {
+      "description": "Represents a command for the pairs of RGB body lights on a CPR robot.",
+      "raw": "# Represents a command for the pairs of RGB body lights on a CPR robot.\n\n# Dingo 1.0 (D100)\nuint8 D100_LIGHTS_REAR_LEFT=0\nuint8 D100_LIGHTS_FRONT_LEFT=1\nuint8 D100_LIGHTS_FRONT_RIGHT=2\nuint8 D100_LIGHTS_REAR_RIGHT=3\n\n# Dingo 1.5 (D150)\nuint8 D150_LIGHTS_REAR_LEFT=0\nuint8 D150_LIGHTS_FRONT_LEFT=1\nuint8 D150_LIGHTS_FRONT_RIGHT=2\nuint8 D150_LIGHTS_REAR_RIGHT=3\n\n# Ridgeback (R100)\nuint8 R100_LIGHTS_FRONT_PORT_UPPER=0\nuint8 R100_LIGHTS_FRONT_PORT_LOWER=1\nuint8 R100_LIGHTS_FRONT_STARBOARD_UPPER=2\nuint8 R100_LIGHTS_FRONT_STARBOARD_LOWER=3\nuint8 R100_LIGHTS_REAR_PORT_UPPER=4\nuint8 R100_LIGHTS_REAR_PORT_LOWER=5\nuint8 R100_LIGHTS_REAR_STARBOARD_UPPER=6\nuint8 R100_LIGHTS_REAR_STARBOARD_LOWER=7\n\n# Warthog (W200)\nuint8 W200_LIGHTS_FRONT_LEFT=0\nuint8 W200_LIGHTS_FRONT_RIGHT=1\nuint8 W200_LIGHTS_REAR_LEFT=2\nuint8 W200_LIGHTS_REAR_RIGHT=3\n\n# Husky (A300)\nuint8 A300_LIGHTS_FRONT_RIGHT=0\nuint8 A300_LIGHTS_FRONT_LEFT=1\nuint8 A300_LIGHTS_REAR_LEFT=2\nuint8 A300_LIGHTS_REAR_RIGHT=3\n\nRGB[] lights\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "D100_LIGHTS_REAR_LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_LIGHTS_FRONT_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_LIGHTS_FRONT_RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_LIGHTS_REAR_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_LIGHTS_REAR_LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_LIGHTS_FRONT_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_LIGHTS_FRONT_RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_LIGHTS_REAR_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_LIGHTS_FRONT_PORT_UPPER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_LIGHTS_FRONT_PORT_LOWER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_LIGHTS_FRONT_STARBOARD_UPPER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_LIGHTS_FRONT_STARBOARD_LOWER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_LIGHTS_REAR_PORT_UPPER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_LIGHTS_REAR_PORT_LOWER",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_LIGHTS_REAR_STARBOARD_UPPER",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_LIGHTS_REAR_STARBOARD_LOWER",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_LIGHTS_FRONT_LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_LIGHTS_FRONT_RIGHT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_LIGHTS_REAR_LEFT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_LIGHTS_REAR_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A300_LIGHTS_FRONT_RIGHT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A300_LIGHTS_FRONT_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A300_LIGHTS_REAR_LEFT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A300_LIGHTS_REAR_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "RGB[]",
+          "name": "lights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PinoutCommand": {
+      "description": "Pinout command",
+      "raw": "# Pinout command\n\n# Power rails.\n\n# True enables them, False disables them.\n\n# CC01\nuint8 CC01_USER_PWR_CTRL=0\n\nbool[] rails\n\n# User controlled outputs.\n\n# Bit 1 sets the output to on/off\n# Bit 2-32 represent the toggle period in milliseconds\n# Toggle period of 0 implies no toggling\n# Minimum toggle period is 100ms\n# Toggle period precision is 10ms\n\n# Dingo 1.0 (D100)\nuint8 D100_AUX_OUT1=0\nuint8 D100_AUX_OUT2=1\nuint8 D100_AUX_OUT3=2\n\n# Dingo 1.5 (D150)\nuint8 D150_AUX_OUT1=0\nuint8 D150_AUX_OUT2=1\nuint8 D150_AUX_OUT3=2\n\n# CC01\nuint8 CC01_AUX_OUT1=0\nuint8 CC01_AUX_OUT2=1\nuint8 CC01_AUX_OUT3=2\nuint8 CC01_GPO0=3\nuint8 CC01_GPO1=4\nuint8 CC01_GPO2=5\nuint8 CC01_GPO3=6\n\nuint32[] outputs\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CC01_USER_PWR_CTRL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "bool[]",
+          "name": "rails",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_OUT1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_OUT2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_OUT3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_OUT1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_OUT2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_OUT3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_OUT1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_OUT2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_OUT3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPO0",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPO1",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPO2",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPO3",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint32[]",
+          "name": "outputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PinoutState": {
+      "description": "Pinout state",
+      "raw": "# Pinout state\n\nstd_msgs/Header header\n\n# Current power rail state\n\n# CC01\nuint8 CC01_USER_PWR_CTRL=0\n\nbool[] rails\n\n# Current input state\n\n# Dingo 1.0 (D100)\nuint8 D100_AUX_IN1=0\nuint8 D100_AUX_IN2=1\nuint8 D100_AUX_IN3=2\n\n# Dingo 1.5 (D150)\nuint8 D150_AUX_IN1=0\nuint8 D150_AUX_IN2=1\nuint8 D150_AUX_IN3=2\n\n# CC01\nuint8 CC01_AUX_IN1=0\nuint8 CC01_AUX_IN2=1\nuint8 CC01_AUX_IN3=2\nuint8 CC01_GPI0=3\nuint8 CC01_GPI1=4\nuint8 CC01_GPI2=5\nuint8 CC01_GPI3=6\n\nbool[] inputs\n\n# Current output state\n\n# Dingo 1.0 (D100)\nuint8 D100_AUX_OUT1=0\nuint8 D100_AUX_OUT2=1\nuint8 D100_AUX_OUT3=2\n\n# Dingo 1.5 (D150)\nuint8 D150_AUX_OUT1=0\nuint8 D150_AUX_OUT2=1\nuint8 D150_AUX_OUT3=2\n\n# CC01\nuint8 CC01_AUX_OUT1=0\nuint8 CC01_AUX_OUT2=1\nuint8 CC01_AUX_OUT3=2\nuint8 CC01_GPO0=3\nuint8 CC01_GPO1=4\nuint8 CC01_GPO2=5\nuint8 CC01_GPO3=6\n\nbool[] outputs\n\n# Current output toggle period\n\nuint32[] output_periods\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_USER_PWR_CTRL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "bool[]",
+          "name": "rails",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_IN1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_IN2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_IN3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_IN1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_IN2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_IN3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_IN1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_IN2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_IN3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPI0",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPI1",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPI2",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPI3",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "bool[]",
+          "name": "inputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_OUT1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_OUT2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_AUX_OUT3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_OUT1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_OUT2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_AUX_OUT3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_OUT1",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_OUT2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_OUT3",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPO0",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPO1",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPO2",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_GPO3",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "bool[]",
+          "name": "outputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "output_periods",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Power": {
+      "description": "Robot Power readings",
+      "raw": "# Robot Power readings\n\nstd_msgs/Header header\n\n# AC Power\nint8 NOT_APPLICABLE=-1\n\nint8 shore_power_connected  # Indicates if AC power is connected.\nint8 battery_connected      # Indicates if battery is connected.\nint8 power_12v_user_nominal # Indicates if the 12V user power is good.\nint8 charger_connected      # Indicates if a charger is connected.\nint8 charging_complete      # Indicates if charging is complete.\n\n# Voltage rails, in volts\n# Averaged over the message period\n\n# Jackal (J100)\nuint8 J100_MEASURED_BATTERY=0\nuint8 J100_MEASURED_5V=1\nuint8 J100_MEASURED_12V=2\n\n# Dingo 1.0 (D100)\nuint8 D100_MEASURED_BATTERY=0\nuint8 D100_MEASURED_5V=1\nuint8 D100_MEASURED_12V=2\n\n# Dingo 1.5 (D150)\nuint8 D150_MEASURED_BATTERY=0\nuint8 D150_MEASURED_5V=1\nuint8 D150_MEASURED_12V=2\n\n# Warthog (W200)\nuint8 W200_MEASURED_BATTERY=0\nuint8 W200_MEASURED_12V=1\nuint8 W200_MEASURED_24V=2\nuint8 W200_MEASURED_48V=3\n\n# Ridgeback (R100)\nuint8 R100_MEASURED_BATTERY=0\nuint8 R100_MEASURED_5V=1\nuint8 R100_MEASURED_12V=2\nuint8 R100_MEASURED_INVERTER=3\nuint8 R100_MEASURED_FRONT_AXLE=4\nuint8 R100_MEASURED_REAR_AXLE=5\nuint8 R100_MEASURED_LIGHT=6\n\n# Husky (A200)\nuint8 A200_BATTERY_VOLTAGE=0\nuint8 A200_LEFT_DRIVER_VOLTAGE=1\nuint8 A200_RIGHT_DRIVER_VOLTAGE=2\nuint8 A200_VOLTAGES_SIZE=3\n\n# CC01\nuint8 CC01_BATTERY_VOLTAGE=0\nuint8 CC01_USER_BATTERY_VOLTAGE=1\nuint8 CC01_USER_24V_VOLTAGE=2\nuint8 CC01_USER_12VB_VOLTAGE=3\nuint8 CC01_SYSTEM_12V_VOLTAGE=4\nuint8 CC01_EXPANSION_VOLTAGE=5\nuint8 CC01_BREAKOUT_24V_AUX_VOLTAGE=6\nuint8 CC01_BREAKOUT_12V_AUX_VOLTAGE=7\nuint8 CC01_BREAKOUT_USER_12VA_VOLTAGE=8\nuint8 CC01_BREAKOUT_LYNX1_VOLTAGE=9\nuint8 CC01_BREAKOUT_LYNX2_VOLTAGE=10\nuint8 CC01_BREAKOUT_LYNX3_VOLTAGE=11\nuint8 CC01_BREAKOUT_LYNX4_VOLTAGE=12\n\nfloat32[] measured_voltages\n\n# Current senses available on platform, in amps.\n# Averaged over the message period\n\n# Jackal (J100)\nuint8 J100_TOTAL_CURRENT=0\nuint8 J100_COMPUTER_CURRENT=1\nuint8 J100_DRIVE_CURRENT=2\nuint8 J100_USER_CURRENT=3\n\n# Dingo 1.0 (D100)\nuint8 D100_TOTAL_CURRENT=0\nuint8 D100_COMPUTER_CURRENT=1\n\n# Dingo 1.5 (D150)\nuint8 D150_TOTAL_CURRENT=0\nuint8 D150_COMPUTER_CURRENT=1\n\n# Warthog (W200)\nuint8 W200_TOTAL_CURRENT=0\nuint8 W200_COMPUTER_CURRENT=1\nuint8 W200_12V_CURRENT=2\nuint8 W200_24V_CURRENT=3\n\n# Ridgeback (R100)\nuint8 R100_TOTAL_CURRENT=0\n\n# Husky (A200)\nuint8 A200_MCU_AND_USER_PORT_CURRENT=0\nuint8 A200_LEFT_DRIVER_CURRENT=1\nuint8 A200_RIGHT_DRIVER_CURRENT=2\nuint8 A200_CURRENTS_SIZE=3\n\n# CC01\nuint8 CC01_BATTERY_PACK_CURRENT=0\nuint8 CC01_USER_BATTERY_CURRENT=1\nuint8 CC01_AUX_HES_CURRENT=2\nuint8 CC01_SYSTEM_12V_CURRENT=3\nuint8 CC01_24V_AUX_CURRENT=4\nuint8 CC01_12V_AUX_CURRENT=5\nuint8 CC01_BREAKOUT_USER_24V_CURRENT=6\nuint8 CC01_BREAKOUT_USER_12VA_CURRENT=7\nuint8 CC01_BREAKOUT_USER_12VB_CURRENT=8\nuint8 CC01_BREAKOUT_USER_LYNX1_CURRENT=9\nuint8 CC01_BREAKOUT_USER_LYNX2_CURRENT=10\nuint8 CC01_BREAKOUT_USER_LYNX3_CURRENT=11\nuint8 CC01_BREAKOUT_USER_LYNX4_CURRENT=12\n\nfloat32[] measured_currents\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "NOT_APPLICABLE",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "shore_power_connected",
+          "comment": "Indicates if AC power is connected.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "battery_connected",
+          "comment": "Indicates if battery is connected.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "power_12v_user_nominal",
+          "comment": "Indicates if the 12V user power is good.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "charger_connected",
+          "comment": "Indicates if a charger is connected.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "charging_complete",
+          "comment": "Indicates if charging is complete.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "J100_MEASURED_BATTERY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "J100_MEASURED_5V",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "J100_MEASURED_12V",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_MEASURED_BATTERY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_MEASURED_5V",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_MEASURED_12V",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_MEASURED_BATTERY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_MEASURED_5V",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_MEASURED_12V",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_MEASURED_BATTERY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_MEASURED_12V",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_MEASURED_24V",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_MEASURED_48V",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_MEASURED_BATTERY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_MEASURED_5V",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_MEASURED_12V",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_MEASURED_INVERTER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_MEASURED_FRONT_AXLE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_MEASURED_REAR_AXLE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_MEASURED_LIGHT",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A200_BATTERY_VOLTAGE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A200_LEFT_DRIVER_VOLTAGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A200_RIGHT_DRIVER_VOLTAGE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A200_VOLTAGES_SIZE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BATTERY_VOLTAGE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_USER_BATTERY_VOLTAGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_USER_24V_VOLTAGE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_USER_12VB_VOLTAGE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_SYSTEM_12V_VOLTAGE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_EXPANSION_VOLTAGE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_24V_AUX_VOLTAGE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_12V_AUX_VOLTAGE",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_USER_12VA_VOLTAGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_LYNX1_VOLTAGE",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_LYNX2_VOLTAGE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_LYNX3_VOLTAGE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_LYNX4_VOLTAGE",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "float32[]",
+          "name": "measured_voltages",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "J100_TOTAL_CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "J100_COMPUTER_CURRENT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "J100_DRIVE_CURRENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "J100_USER_CURRENT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_TOTAL_CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_COMPUTER_CURRENT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_TOTAL_CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_COMPUTER_CURRENT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_TOTAL_CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_COMPUTER_CURRENT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_12V_CURRENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_24V_CURRENT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_TOTAL_CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A200_MCU_AND_USER_PORT_CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A200_LEFT_DRIVER_CURRENT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A200_RIGHT_DRIVER_CURRENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A200_CURRENTS_SIZE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BATTERY_PACK_CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_USER_BATTERY_CURRENT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_AUX_HES_CURRENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_SYSTEM_12V_CURRENT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_24V_AUX_CURRENT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_12V_AUX_CURRENT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_USER_24V_CURRENT",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_USER_12VA_CURRENT",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_USER_12VB_CURRENT",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_USER_LYNX1_CURRENT",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_USER_LYNX2_CURRENT",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_USER_LYNX3_CURRENT",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_USER_LYNX4_CURRENT",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "float32[]",
+          "name": "measured_currents",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RGB": {
+      "description": "Represents the intensity of a single RGB LED, either reported or commanded.",
+      "raw": "# Represents the intensity of a single RGB LED, either reported or commanded.\n# Each channel is limited to a range of [0, 255]\n\nuint8 red\nuint8 green\nuint8 blue\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "red",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "green",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "blue",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Status": {
+      "description": "This message represents lower-frequency status updates",
+      "raw": "# This message represents lower-frequency status updates\n# Default publish frequency is 1Hz.\n\nstd_msgs/Header header\n\n# Robot Hardware ID\nstring hardware_id\n\n# Firmware version\nstring firmware_version\n\n# Times since MCU power-on.\nbuiltin_interfaces/Duration mcu_uptime\nbuiltin_interfaces/Duration connection_uptime\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hardware_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "mcu_uptime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "connection_uptime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StopStatus": {
+      "description": "Additional Stop information",
+      "raw": "# Additional Stop information\n\nstd_msgs/Header header\n\nbool stop_power_status  # True indicates the stop loop is operational (ie. it is powered).\nbool external_stop_present  # True indicates a external stop has been plugged in.\nbool needs_reset # True indicates the stop loop needs to be reset",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stop_power_status",
+          "comment": "True indicates the stop loop is operational (ie. it is powered).",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "external_stop_present",
+          "comment": "True indicates a external stop has been plugged in.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "needs_reset",
+          "comment": "True indicates the stop loop needs to be reset",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Temperature": {
+      "description": "Location of temperature sensors.",
+      "raw": "# Location of temperature sensors.\n\nstd_msgs/Header header\n\n# Jackal (J100)\nuint8 J100_MCU=0\nuint8 J100_PCB=1\n\n# Dingo 1.0 (D100)\nuint8 D100_MCU=0\nuint8 D100_PCB=1\n\n# Dingo 1.5 (D150)\nuint8 D150_MCU=0\nuint8 D150_PCB=1\n\n# Warthog (W200)\nuint8 W200_MCU=0\n\n# Ridgeback (R100)\nuint8 R100_MCU=0\nuint8 R100_PCB=1\n\n# Common Core (CC01)\nuint8 CC01_MCU=0\nuint8 CC01_FAN1=1\nuint8 CC01_FAN2=2\nuint8 CC01_FAN3=3\nuint8 CC01_FAN4=4\nuint8 CC01_FAN5=5\nuint8 CC01_FAN6=6\nuint8 CC01_FAN7=7\nuint8 CC01_FAN8=8\nuint8 CC01_5V_INDUCTOR=9\nuint8 CC01_MAIN_GND_LUG=10\nuint8 CC01_24V_DCDC=11\nuint8 CC01_12V_DCDC=12\nuint8 CC01_EXT_1=13\nuint8 CC01_EXT_2=14\nuint8 CC01_EXT_3=15\nuint8 CC01_EXT_4=16\nuint8 CC01_BREAKOUT_1=17\nuint8 CC01_BREAKOUT_2=18\n\n# Array of temperature readings in Celsius\nfloat32[] temperatures\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "J100_MCU",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "J100_PCB",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_MCU",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D100_PCB",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_MCU",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "D150_PCB",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "W200_MCU",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_MCU",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "R100_PCB",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_MCU",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_FAN8",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_5V_INDUCTOR",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_MAIN_GND_LUG",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_24V_DCDC",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_12V_DCDC",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_EXT_1",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_EXT_2",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_EXT_3",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_EXT_4",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_1",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CC01_BREAKOUT_2",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "float32[]",
+          "name": "temperatures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ConfigureMcu": {
+      "description": "",
+      "raw": "uint8 domain_id # ROS_DOMAIN_ID\nstring robot_namespace # Robot namespace\n---\nbool success   # Indicate successful update\nstring message # Error/Success message",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "domain_id",
+          "comment": "ROS_DOMAIN_ID",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_namespace",
+          "comment": "Robot namespace",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Indicate successful update",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "Error/Success message",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPinout": {
+      "description": "",
+      "raw": "bool state  # On/Off initial state\nuint32 toggle_period # Toggle period in ms. Minimum 100ms. A period of 0 implies no toggling.\n---\nbool success # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "state",
+          "comment": "On/Off initial state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "toggle_period",
+          "comment": "Toggle period in ms. Minimum 100ms. A period of 0 implies no toggling.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

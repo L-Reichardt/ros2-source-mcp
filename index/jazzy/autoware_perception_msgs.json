@@ -1,0 +1,1053 @@
+{
+  "name": "autoware_perception_msgs",
+  "version": "1.11.0",
+  "description": "Autoware perception messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs",
+      "unique_identifier_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_internal_perception_msgs",
+      "autoware_internal_planning_msgs",
+      "autoware_msgs",
+      "autoware_utils"
+    ]
+  },
+  "messages": {
+    "DetectedObject": {
+      "description": "",
+      "raw": "float32 existence_probability\nObjectClassification[] classification\nDetectedObjectKinematics kinematics\nShape shape\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "existence_probability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectClassification[]",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DetectedObjectKinematics",
+          "name": "kinematics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Shape",
+          "name": "shape",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DetectedObjectKinematics": {
+      "description": "Only position is available, orientation is empty. Note that the shape can be an oriented",
+      "raw": "# Only position is available, orientation is empty. Note that the shape can be an oriented\n# bounding box but the direction the object is facing is unknown, in which case\n# orientation should be empty.\nuint8 UNAVAILABLE=0\n\n# The orientation is determined only up to a sign flip. For instance, assume that cars are\n# longer than they are wide, and the perception pipeline can accurately estimate the\n# dimensions of a car. It should set the orientation to coincide with the major axis, with\n# the sign chosen arbitrarily, and use this tag to signify that the orientation could\n# point to the front or the back.\nuint8 SIGN_UNKNOWN=1\n\n# The full orientation is available. Use e.g. for machine-learning models that can\n# differentiate between the front and back of a vehicle.\nuint8 AVAILABLE=2\n\ngeometry_msgs/PoseWithCovariance pose_with_covariance\n\nbool has_position_covariance\nuint8 orientation_availability\n\ngeometry_msgs/TwistWithCovariance twist_with_covariance\n\nbool has_twist\nbool has_twist_covariance\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNAVAILABLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_UNKNOWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AVAILABLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_position_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "orientation_availability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "twist_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_twist_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DetectedObjects": {
+      "description": "",
+      "raw": "std_msgs/Header header\nDetectedObject[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DetectedObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectClassification": {
+      "description": "",
+      "raw": "uint8 UNKNOWN = 0\nuint8 CAR = 1\nuint8 TRUCK = 2\nuint8 BUS = 3\nuint8 TRAILER = 4\nuint8 MOTORCYCLE = 5\nuint8 BICYCLE = 6\nuint8 PEDESTRIAN = 7\nuint8 ANIMAL = 8\nuint8 HAZARD = 9 # Defined as an object that can cause danger to autonomous driving\nuint8 OVER_DRIVABLE = 10 # Defined as an object that can be safely driven over (e.g., leaf)\nuint8 UNDER_DRIVABLE = 11 # Defined as an object that can be safely driven under (e.g., overpass)\n\nuint8 label\nfloat32 probability\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRUCK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRAILER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOTORCYCLE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BICYCLE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEDESTRIAN",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ANIMAL",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HAZARD",
+          "comment": "Defined as an object that can cause danger to autonomous driving",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVER_DRIVABLE",
+          "comment": "Defined as an object that can be safely driven over (e.g., leaf)",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNDER_DRIVABLE",
+          "comment": "Defined as an object that can be safely driven under (e.g., overpass)",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "probability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PredictedObject": {
+      "description": "",
+      "raw": "unique_identifier_msgs/UUID object_id\nfloat32 existence_probability\nObjectClassification[] classification\nPredictedObjectKinematics kinematics\nShape shape\n",
+      "fields": [
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "object_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "existence_probability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectClassification[]",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PredictedObjectKinematics",
+          "name": "kinematics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Shape",
+          "name": "shape",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PredictedObjectKinematics": {
+      "description": "",
+      "raw": "geometry_msgs/PoseWithCovariance initial_pose_with_covariance\ngeometry_msgs/TwistWithCovariance initial_twist_with_covariance\ngeometry_msgs/AccelWithCovariance initial_acceleration_with_covariance\nPredictedPath[] predicted_paths\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "initial_pose_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "initial_twist_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/AccelWithCovariance",
+          "name": "initial_acceleration_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PredictedPath[]",
+          "name": "predicted_paths",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PredictedObjects": {
+      "description": "",
+      "raw": "std_msgs/Header header\nPredictedObject[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PredictedObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PredictedPath": {
+      "description": "",
+      "raw": "geometry_msgs/Pose[] path\nbuiltin_interfaces/Duration time_step\nfloat32 confidence\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PredictedTrafficLightState": {
+      "description": "Information source values (string constants):",
+      "raw": "# Information source values (string constants):\n# - V2N: Signal data sent from a server (Internet)\n# - V2I: Direct from RSU (Roadside Unit)\n# - V2V: Signal data from another vehicle\n# - LOCAL_PERCEPTION: Information detected by onboard sensors\n# - MANUAL_OVERRIDE: Manually set signal data (for testing/debugging)\n# - SIMULATION: Signal data from a simulated environment\n# - INTERNAL_ESTIMATION: Information that was predicted by an onboard model\n\nstring INFORMATION_SOURCE_V2N=\"V2N\"\nstring INFORMATION_SOURCE_V2I=\"V2I\"\nstring INFORMATION_SOURCE_V2V=\"V2V\"\nstring INFORMATION_SOURCE_LOCAL_PERCEPTION=\"LOCAL_PERCEPTION\"\nstring INFORMATION_SOURCE_MANUAL_OVERRIDE=\"MANUAL_OVERRIDE\"\nstring INFORMATION_SOURCE_SIMULATION=\"SIMULATION\"\nstring INFORMATION_SOURCE_INTERNAL_ESTIMATION=\"INTERNAL_ESTIMATION\"\n\n# Absolute time this state is expected\nbuiltin_interfaces/Time predicted_stamp\n\n# Valid signals at this time\nautoware_perception_msgs/TrafficLightElement[] simultaneous_elements\n\n# Confidence level [0.0–1.0]\nfloat32 reliability\n\n# Source of information, using predefined string constants\nstring information_source\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "INFORMATION_SOURCE_V2N",
+          "comment": "",
+          "default": "\"V2N\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INFORMATION_SOURCE_V2I",
+          "comment": "",
+          "default": "\"V2I\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INFORMATION_SOURCE_V2V",
+          "comment": "",
+          "default": "\"V2V\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INFORMATION_SOURCE_LOCAL_PERCEPTION",
+          "comment": "",
+          "default": "\"LOCAL_PERCEPTION\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INFORMATION_SOURCE_MANUAL_OVERRIDE",
+          "comment": "",
+          "default": "\"MANUAL_OVERRIDE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INFORMATION_SOURCE_SIMULATION",
+          "comment": "",
+          "default": "\"SIMULATION\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INFORMATION_SOURCE_INTERNAL_ESTIMATION",
+          "comment": "",
+          "default": "\"INTERNAL_ESTIMATION\"",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "predicted_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_perception_msgs/TrafficLightElement[]",
+          "name": "simultaneous_elements",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "reliability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "information_source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Shape": {
+      "description": "",
+      "raw": "uint8 BOUNDING_BOX=0\nuint8 CYLINDER=1\nuint8 POLYGON=2\n\nuint8 type\ngeometry_msgs/Polygon footprint\ngeometry_msgs/Vector3 dimensions\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "BOUNDING_BOX",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CYLINDER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POLYGON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Polygon",
+          "name": "footprint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackedObject": {
+      "description": "",
+      "raw": "unique_identifier_msgs/UUID object_id\nfloat32 existence_probability\nObjectClassification[] classification\nTrackedObjectKinematics kinematics\nShape shape\n",
+      "fields": [
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "object_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "existence_probability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectClassification[]",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrackedObjectKinematics",
+          "name": "kinematics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Shape",
+          "name": "shape",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackedObjectKinematics": {
+      "description": "Only position is available, orientation is empty. Note that the shape can be an oriented",
+      "raw": "# Only position is available, orientation is empty. Note that the shape can be an oriented\n# bounding box but the direction the object is facing is unknown, in which case\n# orientation should be empty.\nuint8 UNAVAILABLE=0\n\n# The orientation is determined only up to a sign flip. For instance, assume that cars are\n# longer than they are wide, and the perception pipeline can accurately estimate the\n# dimensions of a car. It should set the orientation to coincide with the major axis, with\n# the sign chosen arbitrarily, and use this tag to signify that the orientation could\n# point to the front or the back.\nuint8 SIGN_UNKNOWN=1\n\n# The full orientation is available. Use e.g. for machine-learning models that can\n# differentiate between the front and back of a vehicle.\nuint8 AVAILABLE=2\n\ngeometry_msgs/PoseWithCovariance pose_with_covariance\ngeometry_msgs/TwistWithCovariance twist_with_covariance\ngeometry_msgs/AccelWithCovariance acceleration_with_covariance\n\nuint8 orientation_availability\nbool is_stationary\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNAVAILABLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_UNKNOWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AVAILABLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "twist_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/AccelWithCovariance",
+          "name": "acceleration_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "orientation_availability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_stationary",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackedObjects": {
+      "description": "",
+      "raw": "std_msgs/Header header\nTrackedObject[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrackedObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrafficLightElement": {
+      "description": "constants for common use",
+      "raw": "# constants for common use\nuint8 UNKNOWN = 0\n\n# constants for color\nuint8 RED = 1\nuint8 AMBER = 2\nuint8 GREEN = 3\nuint8 WHITE = 4\n\n# constants for shape\nuint8 CIRCLE = 1\nuint8 LEFT_ARROW = 2\nuint8 RIGHT_ARROW = 3\nuint8 UP_ARROW = 4\nuint8 UP_LEFT_ARROW=5\nuint8 UP_RIGHT_ARROW=6\nuint8 DOWN_ARROW = 7\nuint8 DOWN_LEFT_ARROW = 8\nuint8 DOWN_RIGHT_ARROW = 9\nuint8 CROSS = 10\n\n# constants for status\nuint8 SOLID_OFF = 1\nuint8 SOLID_ON = 2\nuint8 FLASHING = 3\n\n# variables\nuint8 color\nuint8 shape\nuint8 status\nfloat32 confidence\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AMBER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GREEN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WHITE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CIRCLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_ARROW",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_ARROW",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UP_ARROW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UP_LEFT_ARROW",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UP_RIGHT_ARROW",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOWN_ARROW",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOWN_LEFT_ARROW",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOWN_RIGHT_ARROW",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CROSS",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOLID_OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOLID_ON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FLASHING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "shape",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrafficLightGroup": {
+      "description": "",
+      "raw": "int64 traffic_light_group_id\nautoware_perception_msgs/TrafficLightElement[] elements\nautoware_perception_msgs/PredictedTrafficLightState[] predictions\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "traffic_light_group_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_perception_msgs/TrafficLightElement[]",
+          "name": "elements",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_perception_msgs/PredictedTrafficLightState[]",
+          "name": "predictions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrafficLightGroupArray": {
+      "description": "",
+      "raw": "builtin_interfaces/Time stamp\nautoware_perception_msgs/TrafficLightGroup[] traffic_light_groups\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_perception_msgs/TrafficLightGroup[]",
+          "name": "traffic_light_groups",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrafficSignal": {
+      "description": "TODO(youtalk): Remove this after migration to TrafficLight",
+      "raw": "# TODO(youtalk): Remove this after migration to TrafficLight\nint64 traffic_signal_id\nautoware_perception_msgs/TrafficSignalElement[] elements\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "traffic_signal_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_perception_msgs/TrafficSignalElement[]",
+          "name": "elements",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrafficSignalArray": {
+      "description": "TODO(youtalk): Remove this after migration to TrafficLight",
+      "raw": "# TODO(youtalk): Remove this after migration to TrafficLight\nbuiltin_interfaces/Time stamp\nautoware_perception_msgs/TrafficSignal[] signals\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_perception_msgs/TrafficSignal[]",
+          "name": "signals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrafficSignalElement": {
+      "description": "TODO(youtalk): Remove this after migration to TrafficLight",
+      "raw": "# TODO(youtalk): Remove this after migration to TrafficLight\n# constants for common use\nuint8 UNKNOWN = 0\n\n# constants for color\nuint8 RED = 1\nuint8 AMBER = 2\nuint8 GREEN = 3\nuint8 WHITE = 4\n\n# constants for shape\nuint8 CIRCLE = 1\nuint8 LEFT_ARROW = 2\nuint8 RIGHT_ARROW = 3\nuint8 UP_ARROW = 4\nuint8 UP_LEFT_ARROW=5\nuint8 UP_RIGHT_ARROW=6\nuint8 DOWN_ARROW = 7\nuint8 DOWN_LEFT_ARROW = 8\nuint8 DOWN_RIGHT_ARROW = 9\nuint8 CROSS = 10\n\n# constants for status\nuint8 SOLID_OFF = 1\nuint8 SOLID_ON = 2\nuint8 FLASHING = 3\n\n# variables\nuint8 color\nuint8 shape\nuint8 status\nfloat32 confidence\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AMBER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GREEN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WHITE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CIRCLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_ARROW",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_ARROW",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UP_ARROW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UP_LEFT_ARROW",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UP_RIGHT_ARROW",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOWN_ARROW",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOWN_LEFT_ARROW",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOWN_RIGHT_ARROW",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CROSS",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOLID_OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOLID_ON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FLASHING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "shape",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

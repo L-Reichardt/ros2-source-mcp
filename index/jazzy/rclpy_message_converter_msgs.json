@@ -1,0 +1,118 @@
+{
+  "name": "rclpy_message_converter_msgs",
+  "version": "2.0.1",
+  "description": "Messages for rclpy_message_converter",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rospy_message_converter",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/uos/rospy_message_converter",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/uos/rospy_message_converter/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "rospy_message_converter",
+    "url": "https://github.com/DFKI-NI/rospy_message_converter.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "depended_on_by": [
+      "rclpy_message_converter"
+    ]
+  },
+  "messages": {
+    "NestedUint8ArrayTestMessage": {
+      "description": "array of arrays for testing purposes",
+      "raw": "# array of arrays for testing purposes\nUint8ArrayTestMessage[] arrays\n",
+      "fields": [
+        {
+          "type": "Uint8ArrayTestMessage[]",
+          "name": "arrays",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestArray": {
+      "description": "",
+      "raw": "float64[] data\n",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Uint8Array3TestMessage": {
+      "description": "Fixed size uint8 array for testing purposes",
+      "raw": "# Fixed size uint8 array for testing purposes\nuint8[3] data\n",
+      "fields": [
+        {
+          "type": "uint8[3]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Uint8ArrayTestMessage": {
+      "description": "Size-agnostic uint8 array for testing purposes",
+      "raw": "# Size-agnostic uint8 array for testing purposes\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "NestedUint8ArrayTestService": {
+      "description": "service with nested types for testing purposes",
+      "raw": "# service with nested types for testing purposes\nNestedUint8ArrayTestMessage input\n\n---\n\nNestedUint8ArrayTestMessage output\n",
+      "request_fields": [
+        {
+          "type": "NestedUint8ArrayTestMessage",
+          "name": "input",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "NestedUint8ArrayTestMessage",
+          "name": "output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

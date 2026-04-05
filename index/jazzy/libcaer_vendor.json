@@ -1,0 +1,41 @@
+{
+  "name": "libcaer_vendor",
+  "version": "2.0.0",
+  "description": "Wrapper around libcaer library",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://gitlab.com/inivation/dv/libcaer",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "libcaer_vendor",
+    "url": "https://github.com/ros-event-camera/libcaer_vendor.git",
+    "branch": "release"
+  },
+  "dependencies": {
+    "build": [
+      "pkg-config",
+      "cmake"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_vendor_package"
+    ],
+    "test": [
+      "gtest"
+    ],
+    "build_and_runtime": [
+      "libusb-1.0-dev"
+    ],
+    "depended_on_by": [
+      "libcaer_driver"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

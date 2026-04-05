@@ -1,0 +1,59 @@
+{
+  "name": "mola_state_estimation_smoother",
+  "version": "2.1.0",
+  "description": "SE(3) pose and twist path data fusion estimator",
+  "license": "GPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/MOLAorg/mola_state_estimation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mola_state_estimation",
+    "url": "https://github.com/MOLAorg/mola_state_estimation.git",
+    "branch": "develop"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "ament_cmake_xmllint",
+      "libboost-serialization-dev",
+      "libboost-system-dev",
+      "libboost-filesystem-dev",
+      "libboost-thread-dev",
+      "libboost-program-options-dev",
+      "libboost-date-time-dev",
+      "libboost-timer-dev",
+      "libboost-chrono-dev",
+      "libboost-regex-dev"
+    ],
+    "buildtool": [
+      "cmake",
+      "ament_cmake_gtest",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "mola_launcher"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "build_and_runtime": [
+      "mola_common",
+      "mola_kernel",
+      "mola_imu_preintegration",
+      "mola_gtsam_factors",
+      "mrpt_libobs",
+      "gtsam"
+    ],
+    "depended_on_by": [
+      "mola_state_estimation"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

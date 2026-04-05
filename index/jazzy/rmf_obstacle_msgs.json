@@ -1,0 +1,179 @@
+{
+  "name": "rmf_obstacle_msgs",
+  "version": "3.3.1",
+  "description": "A package containing messages for describing obstacles in the environment",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_dev",
+      "rmf_visualization_obstacles"
+    ]
+  },
+  "messages": {
+    "BoundingBox3D": {
+      "description": "A 3D bounding box",
+      "raw": "# A 3D bounding box\n\n# The 3D position and orientation of the bounding box center\ngeometry_msgs/Pose center\n\n# The total size of the bounding box, in meters, surrounding the object's center\ngeometry_msgs/Vector3 size\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Obstacle": {
+      "description": "All measurements should be w.r.t. header.frame_id",
+      "raw": "# All measurements should be w.r.t. header.frame_id\n\n# Standard header\nstd_msgs/Header header\n\n# An id for this specific message. This will be used for deletion.\nint32 id\n\n# Unique identifier of the publisher of this message.\nstring source\n\n# The level on which this obstacle exists\nstring level_name\n\n# A classification label for the detected obstacle. (human, chair, etc)\nstring classification\n\n# Bounding box of the obstacle\nBoundingBox3D bbox\n\n# 3D obstacle data that can be deserialized into an octree.\n# Resolution (in m) of the smallest octree node.\nfloat64 data_resolution\n\n# Binary serialization of the obstacle octree\nint8[] data\n\n# The expected lifetime of the obstacle\nbuiltin_interfaces/Duration lifetime\n\n# Whether to add or delete the obstacle of the id provided\nint32 action\nint32 ACTION_ADD=1 # or modify\nint32 ACTION_DELETE=2\nint32 ACTION_DELETEALL=3\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "level_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox3D",
+          "name": "bbox",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "data_resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "lifetime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ACTION_ADD",
+          "comment": "or modify",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "ACTION_DELETE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "ACTION_DELETEALL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "Obstacles": {
+      "description": "Standard header",
+      "raw": "# Standard header\nstd_msgs/Header header\nObstacle[] obstacles\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Obstacle[]",
+          "name": "obstacles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,83 @@
+{
+  "name": "data_tamer_tools",
+  "version": "0.3.0",
+  "description": "Set of tools for using Foxglove with data tamer",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "data_tamer_tools",
+    "url": "https://gitlab.com/jlack/data_tamer_tools.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "test": [
+      "ament_index_cpp",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck",
+      "ament_lint",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_clang_format"
+    ],
+    "build_and_runtime": [
+      "data_tamer_cpp",
+      "data_tamer_msgs",
+      "nlohmann-json-dev",
+      "rclcpp",
+      "mcap_vendor",
+      "rclcpp_components",
+      "rcl_interfaces",
+      "protobuf-dev",
+      "backward_ros",
+      "foxglove_sdk_vendor",
+      "geographic_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "LogDir": {
+      "description": "",
+      "raw": "string directory\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "directory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "Rotate": {
+      "description": "",
+      "raw": "string directory\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "directory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

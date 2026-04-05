@@ -1,0 +1,66 @@
+{
+  "name": "sdformat_urdf",
+  "version": "1.0.2",
+  "description": "URDF plugin to parse SDFormat XML into URDF C++ DOM objects.",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros/sdformat_urdf",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros/sdformat_urdf/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "sdformat_urdf",
+    "url": "https://github.com/ros/sdformat_urdf.git",
+    "branch": "jazzy"
+  },
+  "dependencies": {
+    "build": [
+      "liburdfdom-headers-dev",
+      "pluginlib",
+      "rcutils",
+      "tinyxml2_vendor",
+      "urdf_parser_plugin"
+    ],
+    "build_export": [
+      "liburdfdom-headers-dev",
+      "pluginlib",
+      "rcutils",
+      "tinyxml2_vendor",
+      "urdf_parser_plugin"
+    ],
+    "buildtool": [
+      "ament_cmake_ros"
+    ],
+    "buildtool_export": [
+      "ament_cmake_ros"
+    ],
+    "runtime": [
+      "tinyxml2_vendor",
+      "urdf_parser_plugin"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "sdformat_test_files"
+    ],
+    "build_and_runtime": [
+      "sdformat_vendor",
+      "urdf"
+    ],
+    "depended_on_by": [
+      "hardware_interface",
+      "ros_gz_sim_demos"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,74 @@
+{
+  "name": "mrpt_libposes",
+  "version": "2.15.8",
+  "description": "Mobile Robot Programming Toolkit (MRPT) libraries (poses C++ libraries).\n  This package contains: mrpt-poses, mrpt-tfest, mrpt-bayes",
+  "license": "BSD",
+  "build_type": "cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://www.mrpt.org/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/MRPT/mrpt/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "mrpt_ros",
+    "url": "https://github.com/MRPT/mrpt_ros.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "pkg-config",
+      "zlib",
+      "libjpeg",
+      "glut",
+      "libglfw3-dev",
+      "libxrandr",
+      "libxxf86vm",
+      "opengl",
+      "assimp-dev",
+      "ffmpeg",
+      "libfreenect-dev",
+      "libopenni2-dev",
+      "libopencv-dev",
+      "libpcap",
+      "libudev-dev",
+      "libusb-1.0-dev",
+      "pybind11-dev",
+      "python3-pip",
+      "tinyxml2",
+      "wx-common",
+      "wxwidgets"
+    ],
+    "buildtool": [
+      "cmake"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "build_and_runtime": [
+      "mrpt_libbase",
+      "mrpt_libmath"
+    ],
+    "depended_on_by": [
+      "gtsam2mrpt_serial",
+      "kitti_metrics_eval",
+      "mola_gtsam_factors",
+      "mola_input_mulran_dataset",
+      "mola_pose_list",
+      "mola_traj_tools",
+      "mp2p_icp",
+      "mrpt_libobs",
+      "mrpt_libopengl",
+      "mvsim",
+      "pose_cov_ops"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

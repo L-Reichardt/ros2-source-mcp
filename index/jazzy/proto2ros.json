@@ -1,0 +1,251 @@
+{
+  "name": "proto2ros",
+  "version": "1.0.1",
+  "description": "Protobuf to ROS 2 interoperability interfaces",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "proto2ros",
+    "url": "https://github.com/bdaiinstitute/proto2ros.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "clang-tidy"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "rosidl_default_generators"
+    ],
+    "buildtool_export": [
+      "rosidl_default_generators",
+      "ament_cmake_mypy"
+    ],
+    "runtime": [
+      "rclpy",
+      "rosidl_adapter",
+      "rosidl_default_runtime",
+      "python3-inflection",
+      "python3-jinja2",
+      "python3-multipledispatch",
+      "python3-numpy",
+      "python3-networkx",
+      "python3-protobuf",
+      "python3-yaml"
+    ],
+    "test": [
+      "ament_cmake_pytest"
+    ],
+    "build_and_runtime": [
+      "protobuf",
+      "protobuf-dev",
+      "rclcpp",
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Any": {
+      "description": "Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.",
+      "raw": "# Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.\n\n# A dynamically typed ROS 2 message.\n\nstring  type_name  # ROS 2 message type name\nuint8[] value      # Serialized ROS 2 message instance\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type_name",
+          "comment": "ROS 2 message type name",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "value",
+          "comment": "Serialized ROS 2 message instance",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AnyProto": {
+      "description": "Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.",
+      "raw": "# Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.\n\n# A dynamically typed Protobuf message. Equivalent to the google.protobuf.Any message.\n# See https://protobuf.dev/reference/protobuf/google.protobuf/#any for further reference.\n\nstring  type_url    # Protobuf message type URL.\nuint8[] value       # Packed Protobuf message instance.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type_url",
+          "comment": "Protobuf message type URL.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "value",
+          "comment": "Packed Protobuf message instance.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Bytes": {
+      "description": "Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.",
+      "raw": "# Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.\n\n# A binary blob. Equivalent to the google.protobuf.BytesValue message, also used to map repeated bytes fields to\n# the ROS 2 domain. See https://protobuf.dev/reference/protobuf/google.protobuf/#bytes-value for further reference.\n\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "List": {
+      "description": "Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.",
+      "raw": "# Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.\n\n# A list of dynamically typed values. Equivalent to the google.protobuf.ListValue message.\n# See https://protobuf.dev/reference/protobuf/google.protobuf/#list-value for further reference.\n\nproto2ros/Value[] values\n",
+      "fields": [
+        {
+          "type": "proto2ros/Value[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Struct": {
+      "description": "Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.",
+      "raw": "# Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.\n\n# A structured data value with dynamically typed fields. Equivalent to the google.protobuf.Struct message.\n# See https://protobuf.dev/reference/protobuf/google.protobuf/#struct for further reference.\n\nproto2ros/StructEntry[] fields\n",
+      "fields": [
+        {
+          "type": "proto2ros/StructEntry[]",
+          "name": "fields",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StructEntry": {
+      "description": "Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.",
+      "raw": "# Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.\n\n# Key-value entries in the proto2ros/Struct ROS 2 message. Equivalent to\n# the auxiliary Protobuf message used over-the-wire representation of the\n# google.protobuf.Struct message.\n\nstring key\nproto2ros/Value value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "proto2ros/Value",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Value": {
+      "description": "Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.",
+      "raw": "# Copyright (c) 2023 Robotics and AI Institute LLC dba RAI Institute. All rights reserved.\n\n# A dynamically typed (scalar or composite) value. Equivalent to the google.protobuf.Value message.\n# See https://protobuf.dev/reference/protobuf/google.protobuf/#value for further reference.\n\nint8 NO_VALUE_SET=0\nint8 NULL_VALUE_SET=1\nint8 NUMBER_VALUE_SET=2\nint8 STRING_VALUE_SET=3\nint8 BOOL_VALUE_SET=4\nint8 STRUCT_VALUE_SET=5\nint8 LIST_VALUE_SET=6\n\nint8 kind 0\n\nfloat64 number_value\nstring string_value\nbool bool_value\nproto2ros/Any struct_value  # is proto2ros/Struct\nproto2ros/Any list_value  # is proto2ros/List\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "NO_VALUE_SET",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "NULL_VALUE_SET",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "NUMBER_VALUE_SET",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STRING_VALUE_SET",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BOOL_VALUE_SET",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STRUCT_VALUE_SET",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LIST_VALUE_SET",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "kind",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "number_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "string_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "proto2ros/Any",
+          "name": "struct_value",
+          "comment": "is proto2ros/Struct",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "proto2ros/Any",
+          "name": "list_value",
+          "comment": "is proto2ros/List",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

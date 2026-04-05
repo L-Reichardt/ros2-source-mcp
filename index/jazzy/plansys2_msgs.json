@@ -1,0 +1,1699 @@
+{
+  "name": "plansys2_msgs",
+  "version": "2.0.18",
+  "description": "Messages and service files for the ROS2 Planning System",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_planning_system",
+    "url": "https://github.com/PlanSys2/ros2_planning_system.git",
+    "branch": "jazzy-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "std_msgs",
+      "action_msgs",
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": [
+      "plansys2_bt_actions",
+      "plansys2_core",
+      "plansys2_domain_expert",
+      "plansys2_executor",
+      "plansys2_pddl_parser",
+      "plansys2_planner",
+      "plansys2_problem_expert",
+      "plansys2_support_py",
+      "plansys2_terminal",
+      "plansys2_tests",
+      "plansys2_tools"
+    ]
+  },
+  "messages": {
+    "Action": {
+      "description": "",
+      "raw": "string name\nplansys2_msgs/Param[] parameters\n\nplansys2_msgs/Tree preconditions\nplansys2_msgs/Tree effects\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Param[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "preconditions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "effects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActionExecution": {
+      "description": "",
+      "raw": "int16 REQUEST=1\nint16 RESPONSE=2\nint16 CONFIRM=3\nint16 REJECT=4\nint16 FEEDBACK=5\nint16 FINISH=6\nint16 CANCEL=7\n\nint16 type\nstring node_id\n\nstring action\nstring[] arguments\n\nbool success\nfloat32 completion\nstring status\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "REQUEST",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "RESPONSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "CONFIRM",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "REJECT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "FEEDBACK",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "FINISH",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "CANCEL",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "arguments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "completion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActionExecutionInfo": {
+      "description": "predicted duration of the action from the planner",
+      "raw": "int8 NOT_EXECUTED=1\nint8 EXECUTING=2\nint8 FAILED=3\nint8 SUCCEEDED=4\nint8 CANCELLED=5\n\nint8 status\n\nbuiltin_interfaces/Time start_stamp\nbuiltin_interfaces/Time status_stamp\n\nstring action_full_name\n\nstring action\nstring[] arguments\n\n# predicted duration of the action from the planner\nbuiltin_interfaces/Duration duration\n\nfloat32 completion\nstring message_status\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "NOT_EXECUTED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "EXECUTING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FAILED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SUCCEEDED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CANCELLED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "status_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_full_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "arguments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "completion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActionPerformerStatus": {
+      "description": "",
+      "raw": "int8 NOT_READY=0\nint8 READY=1\nint8 RUNNING=2\nint8 FAILURE=4\n\nbuiltin_interfaces/Time status_stamp\n\nint8 state\nstring action\nstring[] specialized_arguments\nstring node_name\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "NOT_READY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "READY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "RUNNING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FAILURE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "status_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "specialized_arguments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Derived": {
+      "description": "",
+      "raw": "plansys2_msgs/Node predicate\nplansys2_msgs/Tree preconditions\n",
+      "fields": [
+        {
+          "type": "plansys2_msgs/Node",
+          "name": "predicate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "preconditions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DurativeAction": {
+      "description": "",
+      "raw": "string name\nplansys2_msgs/Param[] parameters\n\nplansys2_msgs/Tree at_start_requirements\nplansys2_msgs/Tree over_all_requirements\nplansys2_msgs/Tree at_end_requirements\nplansys2_msgs/Tree at_start_effects\nplansys2_msgs/Tree at_end_effects\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Param[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "at_start_requirements",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "over_all_requirements",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "at_end_requirements",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "at_start_effects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "at_end_effects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Knowledge": {
+      "description": "",
+      "raw": "string[] instances\nstring[] predicates\nstring[] functions\nstring goal\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "instances",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "predicates",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "functions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Node": {
+      "description": "Unknown type",
+      "raw": "# Unknown type\nuint8 UNKNOWN = 0\n\n# Node types\nuint8 AND = 1\nuint8 OR = 2\nuint8 NOT = 3\nuint8 ACTION = 4\nuint8 PREDICATE = 5\nuint8 FUNCTION = 6\nuint8 EXPRESSION = 7\nuint8 FUNCTION_MODIFIER = 8\nuint8 NUMBER = 9\nuint8 CONSTANT = 10\nuint8 PARAMETER = 11\nuint8 EXISTS = 12\n\n# Expression types\nuint8 COMP_EQ = 13\nuint8 COMP_GE = 14\nuint8 COMP_GT = 15\nuint8 COMP_LE = 16\nuint8 COMP_LT = 17\nuint8 ARITH_MULT = 18\nuint8 ARITH_DIV = 19\nuint8 ARITH_ADD = 20\nuint8 ARITH_SUB = 21\n\n# Function modifier types\nuint8 ASSIGN = 22\nuint8 INCREASE = 23\nuint8 DECREASE = 24\nuint8 SCALE_UP = 25\nuint8 SCALE_DOWN = 26\n\nuint8 node_type\nuint8 expression_type\nuint8 modifier_type\n\nuint32 node_id\nuint32[] children\n\nstring name\nplansys2_msgs/Param[] parameters\nfloat64 value\nbool negate\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AND",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACTION",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PREDICATE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FUNCTION",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EXPRESSION",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FUNCTION_MODIFIER",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NUMBER",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONSTANT",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EXISTS",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMP_EQ",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMP_GE",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMP_GT",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMP_LE",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMP_LT",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARITH_MULT",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARITH_DIV",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARITH_ADD",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARITH_SUB",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ASSIGN",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INCREASE",
+          "comment": "",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DECREASE",
+          "comment": "",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCALE_UP",
+          "comment": "",
+          "default": "25",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCALE_DOWN",
+          "comment": "",
+          "default": "26",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "node_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "expression_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "modifier_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "children",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Param[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "negate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Param": {
+      "description": "",
+      "raw": "string name\nstring type\nstring[] sub_types\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "sub_types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Plan": {
+      "description": "",
+      "raw": "plansys2_msgs/PlanItem[] items\n",
+      "fields": [
+        {
+          "type": "plansys2_msgs/PlanItem[]",
+          "name": "items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanItem": {
+      "description": "",
+      "raw": "float32 time\nstring action\nfloat32 duration\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Tree": {
+      "description": "A tree used to represent a PDDL construct in PlanSys2",
+      "raw": "# A tree used to represent a PDDL construct in PlanSys2\n\nplansys2_msgs/Node[] nodes\n",
+      "fields": [
+        {
+          "type": "plansys2_msgs/Node[]",
+          "name": "nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddProblem": {
+      "description": "",
+      "raw": "string problem\n---\nbool success\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "problem",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AddProblemGoal": {
+      "description": "",
+      "raw": "plansys2_msgs/Tree tree\n---\nbool success\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "tree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AffectNode": {
+      "description": "",
+      "raw": "plansys2_msgs/Node node\n---\nbool success\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "plansys2_msgs/Node",
+          "name": "node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AffectParam": {
+      "description": "",
+      "raw": "plansys2_msgs/Param param\n---\nbool success\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "plansys2_msgs/Param",
+          "name": "param",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClearProblemKnowledge": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nstring error_info",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExistNode": {
+      "description": "",
+      "raw": "plansys2_msgs/Node node\n---\nbool exist\n",
+      "request_fields": [
+        {
+          "type": "plansys2_msgs/Node",
+          "name": "node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "exist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDomain": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nstring domain\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "domain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDomainActionDetails": {
+      "description": "",
+      "raw": "string action\nstring[] parameters\n---\nplansys2_msgs/Action action\nbool success\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "plansys2_msgs/Action",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDomainActions": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nstring[] actions\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "actions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDomainConstants": {
+      "description": "",
+      "raw": "string type\n---\nbool success\nstring[] constants\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "constants",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDomainDerivedPredicateDetails": {
+      "description": "",
+      "raw": "string predicate\n---\nplansys2_msgs/Derived[] predicates\nbool success\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "predicate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "plansys2_msgs/Derived[]",
+          "name": "predicates",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDomainDurativeActionDetails": {
+      "description": "",
+      "raw": "string durative_action\nstring[] parameters\n---\nbool success\nplansys2_msgs/DurativeAction durative_action\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "durative_action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/DurativeAction",
+          "name": "durative_action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDomainName": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nstring name\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDomainTypes": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nstring[] types\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetNodeDetails": {
+      "description": "",
+      "raw": "string expression\n---\nbool success\nplansys2_msgs/Node node\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "expression",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Node",
+          "name": "node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetOrderedSubGoals": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nplansys2_msgs/Tree[] sub_goals\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree[]",
+          "name": "sub_goals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPlan": {
+      "description": "",
+      "raw": "string domain\nstring problem\n---\nbool success\nplansys2_msgs/Plan plan\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "domain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "problem",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Plan",
+          "name": "plan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetProblem": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nstring problem\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "problem",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetProblemGoal": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nplansys2_msgs/Tree tree\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "tree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetProblemInstanceDetails": {
+      "description": "",
+      "raw": "string instance\n---\nbool success\nplansys2_msgs/Param instance\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "instance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Param",
+          "name": "instance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetProblemInstances": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nplansys2_msgs/Param[] instances\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Param[]",
+          "name": "instances",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetStates": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nplansys2_msgs/Node[] states\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/Node[]",
+          "name": "states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsProblemGoalSatisfied": {
+      "description": "",
+      "raw": "plansys2_msgs/Tree tree\n---\nbool success\nbool satisfied\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "plansys2_msgs/Tree",
+          "name": "tree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "satisfied",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RemoveProblemGoal": {
+      "description": "",
+      "raw": "std_msgs/Empty request\n---\nbool success\nstring error_info",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ValidateDomain": {
+      "description": "",
+      "raw": "string domain\n---\nbool success\nstring error_info\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "domain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ExecutePlan": {
+      "description": "",
+      "raw": "plansys2_msgs/Plan plan\n---\nbool success\nplansys2_msgs/ActionExecutionInfo[] action_execution_status\n---\nplansys2_msgs/ActionExecutionInfo[] action_execution_status\n",
+      "goal_fields": [
+        {
+          "type": "plansys2_msgs/Plan",
+          "name": "plan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plansys2_msgs/ActionExecutionInfo[]",
+          "name": "action_execution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "plansys2_msgs/ActionExecutionInfo[]",
+          "name": "action_execution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}
