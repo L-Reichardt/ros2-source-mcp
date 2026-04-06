@@ -1,0 +1,37 @@
+%YAML 1.1
+---
+repositories:
+  common_interfaces:
+    release:
+      packages:
+        - sensor_msgs
+        - std_msgs
+        - geometry_msgs
+      url: https://github.com/ros2/common_interfaces-release.git
+      version: 5.3.5-1
+    source:
+      type: git
+      url: https://github.com/ros2/common_interfaces.git
+      version: jazzy
+  single_pkg:
+    source:
+      type: git
+      url: https://github.com/test/single_pkg.git
+      version: jazzy
+  versioned_rolling:
+    release:
+      url: https://github.com/example/versioned_rolling-release.git
+      version: 0.2.1-5
+    source:
+      type: git
+      url: https://github.com/example/versioned_rolling.git
+      version: rolling
+  no_release_version:
+    release:
+      packages:
+        - no_release_version
+      url: https://github.com/example/no_release-release.git
+    source:
+      type: git
+      url: https://github.com/example/no_release.git
+      version: main
