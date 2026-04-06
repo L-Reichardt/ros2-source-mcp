@@ -7,11 +7,15 @@
 
 An MCP server that gives LLMs structured references to the ROS2 package ecosystem. Code source, metadata, dependencies, and message/service/action definitions for every package in a distribution.
 
-Implemented with Claude Code.
-
 **Why**
 
 ROS2 distributions contain thousands of packages from different repositories, releases and branches. This makes finding the source difficult. Where we would refer to the official documentation index, it is not fit for agent use. This MCP provides ROS2 package information in a structured manner for LLMs.
+
+**Note**
+
+Implemented with Claude Code.
+
+This is a very niche use and does not aid with general ROS2 development. It is however usefull-for limited use cases, such as spawning a subagent that checks a query package, finds other packages that use it and gathering information on  how these use certain code from it. Future development might include combining this with a ROS2 SKILL.md / subagent instructions.
 
 **Indexed**
 
