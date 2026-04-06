@@ -47,7 +47,7 @@ Requires [uv](https://docs.astral.sh/uv/) and Python 3.10+.
 git clone https://github.com/L-Reichardt/ros2-source-mcp.git
 ```
 
-Add to your `.claude/settings.json`:
+Add to your project's `.claude/settings.json`:
 
 ```json
 {
@@ -62,7 +62,7 @@ Add to your `.claude/settings.json`:
 
 Replace `/path/to` with your clone location. The server fetches the index from [GitHub Pages](https://l-reichardt.github.io/ros2-source-mcp/index/) automatically — no local build needed.
 
-**Verify** — start a Claude Code session and ask:
+**Verify** — restart Claude Code and ask:
 
 > *I'm on ROS2 jazzy. What fields does sensor_msgs/Image have?*
 
