@@ -11,11 +11,11 @@ An MCP server that gives LLMs structured references to the ROS2 package ecosyste
 
 ROS2 distributions contain thousands of packages from different repositories, releases and branches. This makes finding the source difficult. Where we would refer to the official documentation index, it is not fit for agent use. This MCP provides ROS2 package information in a structured manner for LLMs.
 
-**Note**
+🚧 **Note: Work in Progress**
+
+This MCP fills a very niche use case and does not aid with general ROS2 development. It is however usefull for limited use cases, such as subagents exploring a package, and how other packages use its code. Future development will include a ROS2 plugin with SKILL.md and subagent instructions.
 
 Implemented with Claude Code.
-
-This is a very niche use and does not aid with general ROS2 development. It is however usefull-for limited use cases, such as spawning a subagent that checks a query package, finds other packages that use it and gathering information on  how these use certain code from it. Future development might include combining this with a ROS2 SKILL.md / subagent instructions.
 
 **Indexed**
 
@@ -60,7 +60,7 @@ Add to your `.claude/settings.json`:
 }
 ```
 
-Replace `/path/to` with your clone location. The server fetches the index from GitHub Pages automatically — no local index needed.
+Replace `/path/to` with your clone location. The server fetches the index from [GitHub Pages](https://l-reichardt.github.io/ros2-source-mcp/index/) automatically — no local build needed.
 
 **Verify** — start a Claude Code session and ask:
 
@@ -172,7 +172,7 @@ Raw `.msg` file content is stripped by default. Pass `include_raw=true` to inclu
 
 ## Development: Building the Index
 
-The indexer pipeline builds the JSON index from ROS2's `distribution.yaml`. This section is only relevant if you want to rebuild or extend the index.
+The indexer pipeline builds the JSON index from ROS2's `distribution.yaml`. The index is not committed to `main` — it is built locally and deployed to the [`gh-pages`](https://github.com/L-Reichardt/ros2-source-mcp/tree/gh-pages) branch, which serves [GitHub Pages](https://l-reichardt.github.io/ros2-source-mcp/index/).
 
 ### Setup
 
@@ -181,7 +181,7 @@ cd ros2_parser
 uv sync --extra dev
 ```
 
-To use a local index during development, set `ROSINDEX_LOCAL_PATH` in your `.claude/settings.json`:
+To test the MCP server against a local index instead of GitHub Pages, set `ROSINDEX_LOCAL_PATH`:
 
 ```json
 "env": { "ROSINDEX_LOCAL_PATH": "/path/to/ros2-source-mcp/ros2_parser/index" }
@@ -204,13 +204,13 @@ uv run ros2-indexer build --distro jazzy --package sensor_msgs --keep-scratch
 
 ### Deploy
 
-The index is not committed to `main`. After building locally, deploy to GitHub Pages:
+After building locally, deploy to GitHub Pages:
 
 ```bash
 bash scripts/deploy-index.sh
 ```
 
-This pushes the contents of `ros2_parser/index/` to the `gh-pages` branch.
+This pushes `ros2_parser/index/` to the `gh-pages` branch. The MCP server fetches from GitHub Pages by default.
 
 ### Tests
 
