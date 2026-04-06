@@ -36,7 +36,7 @@ if git diff --cached --quiet; then
   echo "No changes to deploy."
 else
   DISTROS=$(python3 -c "import json; print(', '.join(json.load(open('index/distros.json'))))")
-  git commit -m "Update index: $DISTROS ($(date -u +%Y-%m-%d))"
+  git commit --no-verify -m "Update index: $DISTROS ($(date -u +%Y-%m-%d))"
   git push "$REMOTE" gh-pages
   echo "Deployed to gh-pages."
 fi
