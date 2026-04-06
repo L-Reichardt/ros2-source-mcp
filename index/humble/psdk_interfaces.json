@@ -1,0 +1,2770 @@
+{
+  "name": "psdk_interfaces",
+  "version": "1.3.2",
+  "description": "Provides custom message, srv and action types for psdk ros2 wrapper",
+  "license": "MPL",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "psdk_ros2",
+    "url": "https://github.com/umdlife/psdk_ros2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs",
+      "std_srvs",
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "as2_platform_dji_psdk",
+      "psdk_wrapper"
+    ]
+  },
+  "messages": {
+    "ControlMode": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint8 control_mode      # The modes in which the aircraft is being controlled (control loops being applied on horizontal, vertical and yaw axes of the aircraft)\nuint8 device_mode       # 0->RC  1->MSDK  4->PSDK\nuint8 control_auth      # 1->Has control authority 0->No control authority",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "control_mode",
+          "comment": "The modes in which the aircraft is being controlled (control loops being applied on horizontal, vertical and yaw axes of the aircraft)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "device_mode",
+          "comment": "0->RC  1->MSDK  4->PSDK",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "control_auth",
+          "comment": "1->Has control authority 0->No control authority",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DisplayMode": {
+      "description": "",
+      "raw": "uint8 DISPLAY_MODE_MANUAL_CTRL = 0\nuint8 DISPLAY_MODE_ATTITUDE = 1\nuint8 DISPLAY_MODE_RESERVED_2 = 2\nuint8 DISPLAY_MODE_RESERVED_3 = 3\nuint8 DISPLAY_MODE_RESERVED_4 = 4\nuint8 DISPLAY_MODE_RESERVED_5 = 5\nuint8 DISPLAY_MODE_P_GPS = 6\nuint8 DISPLAY_MODE_RESERVED_7 = 7\nuint8 DISPLAY_MODE_RESERVED_8 = 8\nuint8 DISPLAY_MODE_HOTPOINT_MODE = 9\nuint8 DISPLAY_MODE_ASSISTED_TAKEOFF = 10\nuint8 DISPLAY_MODE_AUTO_TAKEOFF = 11\nuint8 DISPLAY_MODE_AUTO_LANDING = 12\nuint8 DISPLAY_MODE_RESERVED_13 = 13\nuint8 DISPLAY_MODE_RESERVED_14 = 14\nuint8 DISPLAY_MODE_NAVI_GO_HOME = 15\nuint8 DISPLAY_MODE_RESERVED_16 = 16\nuint8 DISPLAY_MODE_NAVI_SDK_CTRL = 17\nuint8 DISPLAY_MODE_RESERVED_18 = 18\nuint8 DISPLAY_MODE_RESERVED_19 = 19\nuint8 DISPLAY_MODE_RESERVED_20 = 20\nuint8 DISPLAY_MODE_RESERVED_21 = 21\nuint8 DISPLAY_MODE_RESERVED_22 = 22\nuint8 DISPLAY_MODE_RESERVED_23 = 23\nuint8 DISPLAY_MODE_RESERVED_24 = 24\nuint8 DISPLAY_MODE_RESERVED_25 = 25\nuint8 DISPLAY_MODE_RESERVED_26 = 26\nuint8 DISPLAY_MODE_RESERVED_27 = 27\nuint8 DISPLAY_MODE_RESERVED_28 = 28\nuint8 DISPLAY_MODE_RESERVED_29 = 29\nuint8 DISPLAY_MODE_RESERVED_30 = 30\nuint8 DISPLAY_MODE_RESERVED_31 = 31\nuint8 DISPLAY_MODE_RESERVED_32 = 32\nuint8 DISPLAY_MODE_FORCE_AUTO_LANDING = 33\nuint8 DISPLAY_MODE_RESERVED_34 = 34\nuint8 DISPLAY_MODE_RESERVED_35 = 35\nuint8 DISPLAY_MODE_RESERVED_36 = 36\nuint8 DISPLAY_MODE_RESERVED_37 = 37\nuint8 DISPLAY_MODE_RESERVED_38 = 38\nuint8 DISPLAY_MODE_RESERVED_39 = 39\nuint8 DISPLAY_MODE_SEARCH_MODE = 40\nuint8 DISPLAY_MODE_ENGINE_START = 41\nuint8 DISPLAY_MODE_RESERVED_42 = 42\nuint8 DISPLAY_MODE_RESERVED_43 = 42\n\n\n\nstd_msgs/Header header  \nuint8 display_mode",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_MANUAL_CTRL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_ATTITUDE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_P_GPS",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_8",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_HOTPOINT_MODE",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_ASSISTED_TAKEOFF",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_AUTO_TAKEOFF",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_AUTO_LANDING",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_13",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_14",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_NAVI_GO_HOME",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_16",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_NAVI_SDK_CTRL",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_18",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_19",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_20",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_21",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_22",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_23",
+          "comment": "",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_24",
+          "comment": "",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_25",
+          "comment": "",
+          "default": "25",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_26",
+          "comment": "",
+          "default": "26",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_27",
+          "comment": "",
+          "default": "27",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_28",
+          "comment": "",
+          "default": "28",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_29",
+          "comment": "",
+          "default": "29",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_30",
+          "comment": "",
+          "default": "30",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_31",
+          "comment": "",
+          "default": "31",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_32",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_FORCE_AUTO_LANDING",
+          "comment": "",
+          "default": "33",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_34",
+          "comment": "",
+          "default": "34",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_35",
+          "comment": "",
+          "default": "35",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_36",
+          "comment": "",
+          "default": "36",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_37",
+          "comment": "",
+          "default": "37",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_38",
+          "comment": "",
+          "default": "38",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_39",
+          "comment": "",
+          "default": "39",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_SEARCH_MODE",
+          "comment": "",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_ENGINE_START",
+          "comment": "",
+          "default": "41",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_42",
+          "comment": "",
+          "default": "42",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISPLAY_MODE_RESERVED_43",
+          "comment": "",
+          "default": "42",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "display_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EscData": {
+      "description": "",
+      "raw": "\n\nstd_msgs/Header header  \n\nEscStatusIndividual[] esc   # Array of ESC status",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EscStatusIndividual[]",
+          "name": "esc",
+          "comment": "Array of ESC status",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EscStatusIndividual": {
+      "description": "",
+      "raw": "int16 current            # ESC current, unit: mA\nint16 speed              # ESC speed, unit: rpm\nuint16 voltage           # Input power from battery to ESC, unit: mV\nint16 temperature        # ESC temperature, unit: degree C\nint16 stall              # Motor is stall\nint16 empty              # Motor has no load\nint16 unbalanced         # Motor speed is unbalanced\nint16 esc_disconnected   # ESC is disconnected\nint16 temperature_high   # Temperature is high",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "current",
+          "comment": "ESC current, unit: mA",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "speed",
+          "comment": "ESC speed, unit: rpm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "voltage",
+          "comment": "Input power from battery to ESC, unit: mV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "temperature",
+          "comment": "ESC temperature, unit: degree C",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "stall",
+          "comment": "Motor is stall",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "empty",
+          "comment": "Motor has no load",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "unbalanced",
+          "comment": "Motor speed is unbalanced",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "esc_disconnected",
+          "comment": "ESC is disconnected",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "temperature_high",
+          "comment": "Temperature is high",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FileAttributes": {
+      "description": "",
+      "raw": "uint32 photo_ratio\nuint32 photo_rotation\nuint32 video_duration\nuint32 video_frame_rate\nuint32 video_rotation\nuint32 video_resolution\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "photo_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "photo_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "video_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "video_frame_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "video_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "video_resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FileInfo": {
+      "description": "",
+      "raw": "string name\nuint8  type\nuint32 size\nuint32 index\nint64 create_time_unix\nFileAttributes attributes\nuint8 number_sub_files\nSubFileInfo[] sub_files\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "create_time_unix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FileAttributes",
+          "name": "attributes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "number_sub_files",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SubFileInfo[]",
+          "name": "sub_files",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FlightAnomaly": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 impact_in_air                     # 0: No impact,                      1: _impact happens in Air \nuint32 random_fly                       # 0: Normal,                         1: Randomly fly in GPS mode without stick input\nuint32 height_ctrl_fail                  # 0: Height control normal,          1: Height control failed \nuint32 roll_pitch_ctrl_fail               # 0: Tilt control normal,            1: Tilt control failed \nuint32 yaw_ctrl_fail                     # 0: Yaw control normal,             1: Yaw control failed \nuint32 aircraft_is_falling              # 0: Aircraft is not falling,        1: Aircraft is falling \nuint32 strong_wind_level1               # 0: wind is under big wind level 1, 1: wind is stronger than  big wind level 1\nuint32 strong_wind_level2               # 0: wind is under big wind level 2, 1: wind is stronger than  big wind level 2\nuint32 compass_installation_error       # 0: Compass install right,          1: Compass install error \nuint32 imu_installation_error           # 0: IMU install right,              1: IMU install error \nuint32 esc_temperature_high             # 0: ESC temperature is normal,      1: ESC temperature is high \nuint32 at_least_one_esc_disconnected     # 0: No ESC disconnected,            1: At least one ESC is disconnected \nuint32 gps_yaw_error                    # 0: No GPS yaw error,               1: GPS yaw error \nuint32 reserved",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "impact_in_air",
+          "comment": "0: No impact,                      1: _impact happens in Air",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "random_fly",
+          "comment": "0: Normal,                         1: Randomly fly in GPS mode without stick input",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height_ctrl_fail",
+          "comment": "0: Height control normal,          1: Height control failed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "roll_pitch_ctrl_fail",
+          "comment": "0: Tilt control normal,            1: Tilt control failed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "yaw_ctrl_fail",
+          "comment": "0: Yaw control normal,             1: Yaw control failed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "aircraft_is_falling",
+          "comment": "0: Aircraft is not falling,        1: Aircraft is falling",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "strong_wind_level1",
+          "comment": "0: wind is under big wind level 1, 1: wind is stronger than  big wind level 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "strong_wind_level2",
+          "comment": "0: wind is under big wind level 2, 1: wind is stronger than  big wind level 2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "compass_installation_error",
+          "comment": "0: Compass install right,          1: Compass install error",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "imu_installation_error",
+          "comment": "0: IMU install right,              1: IMU install error",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "esc_temperature_high",
+          "comment": "0: ESC temperature is normal,      1: ESC temperature is high",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "at_least_one_esc_disconnected",
+          "comment": "0: No ESC disconnected,            1: At least one ESC is disconnected",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gps_yaw_error",
+          "comment": "0: No GPS yaw error,               1: GPS yaw error",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "reserved",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FlightStatus": {
+      "description": "",
+      "raw": "uint8 FLIGHT_STATUS_STOPED = 0\nuint8 FLIGHT_STATUS_ON_GROUND = 1\nuint8 FLIGHT_STATUS_ON_AIR = 2\n\nstd_msgs/Header header  \nuint8 flight_status",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "FLIGHT_STATUS_STOPED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FLIGHT_STATUS_ON_GROUND",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FLIGHT_STATUS_ON_AIR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "flight_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GPSDetails": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 horizontal_dop                             # Horizontal dilution of precision, unit: 0.01, eg: 100 = 1.00, <1: ideal, 1-2: excellent, 2-5: good, 5-10: moderate, 10-20: fair, >20: poor.\nfloat32 position_dop                               # Position dilution of precision, unit: 0.01, eg: 100 = 1.00, <1: ideal, 1-2: excellent, 2-5: good, 5-10: moderate, 10-20: fair, >20: poor.\n\nuint16 GPS_FIX_STATE_NO_FIX = 0                    # GPS position has not been fixed. \nuint16 GPS_FIX_STATE_DEAD_RECKONING_ONLY = 1       # GPS position is dead reckoned only. \nuint16 GPS_FIX_STATE_2D_FIX = 2                    # The horizontal position with latitude/longitude (or northing/easting or X/Y) is fixed. \nuint16 GPS_FIX_STATE_3D_FIX = 3                    # The horizontal and vertical position with latitude/longitude/altitude (northing/easting/altitude or X/Y/Z) is fixed. \nuint16 GPS_FIX_STATE_GPS_PLUS_DEAD_RECKONING = 4   # Position is calculated by GPS and combined with dead reckoning. \nuint16 GPS_FIX_STATE_TIME_ONLY_FIX = 5             # Only time is fixed. \nfloat32 fix_state   \n\nfloat32 vertical_accuracy                           # Vertical position accuracy (mm), the smaller, the better.\nfloat32 horizontal_accuracy                         # Horizontal position accuracy (mm), the smaller, the better.\nfloat32 speed_accuracy                              # Speed accuracy (cm/s), the smaller, the better.\nuint32 num_gps_satellites_used                      # Number of GPS satellites used for fixing position.\nuint32 num_glonass_satellites_used                  # Number of GLONASS satellites used for fixing position.\nuint16 num_total_satellites_used                    # Total number of satellites used for fixing position.\nuint16 gps_counter                                  # Accumulated times of sending GPS data.",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "horizontal_dop",
+          "comment": "Horizontal dilution of precision, unit: 0.01, eg: 100 = 1.00, <1: ideal, 1-2: excellent, 2-5: good, 5-10: moderate, 10-20: fair, >20: poor.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "position_dop",
+          "comment": "Position dilution of precision, unit: 0.01, eg: 100 = 1.00, <1: ideal, 1-2: excellent, 2-5: good, 5-10: moderate, 10-20: fair, >20: poor.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "GPS_FIX_STATE_NO_FIX",
+          "comment": "GPS position has not been fixed.",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "GPS_FIX_STATE_DEAD_RECKONING_ONLY",
+          "comment": "GPS position is dead reckoned only.",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "GPS_FIX_STATE_2D_FIX",
+          "comment": "The horizontal position with latitude/longitude (or northing/easting or X/Y) is fixed.",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "GPS_FIX_STATE_3D_FIX",
+          "comment": "The horizontal and vertical position with latitude/longitude/altitude (northing/easting/altitude or X/Y/Z) is fixed.",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "GPS_FIX_STATE_GPS_PLUS_DEAD_RECKONING",
+          "comment": "Position is calculated by GPS and combined with dead reckoning.",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "GPS_FIX_STATE_TIME_ONLY_FIX",
+          "comment": "Only time is fixed.",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "fix_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vertical_accuracy",
+          "comment": "Vertical position accuracy (mm), the smaller, the better.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "horizontal_accuracy",
+          "comment": "Horizontal position accuracy (mm), the smaller, the better.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed_accuracy",
+          "comment": "Speed accuracy (cm/s), the smaller, the better.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_gps_satellites_used",
+          "comment": "Number of GPS satellites used for fixing position.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_glonass_satellites_used",
+          "comment": "Number of GLONASS satellites used for fixing position.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_total_satellites_used",
+          "comment": "Total number of satellites used for fixing position.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "gps_counter",
+          "comment": "Accumulated times of sending GPS data.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GimbalRotation": {
+      "description": "1, /*!< Absolute angle rotation mode, represents rotating gimbal to specified angles in the ground coordinate. */",
+      "raw": "uint8 payload_index 1 # see enum E_DjiMountPosition in dji_typedef.h\nuint8 rotation_mode # see E_DjiGimbalRotationMode in dji_gimbal_manager.h 0 /*!< Incremental angle rotation mode, represents rotating gimbal specified angles based on current angles. */\n                                                                        # 1, /*!< Absolute angle rotation mode, represents rotating gimbal to specified angles in the ground coordinate. */\n                                                                        # 2  /*!< Speed rotation mode, specifies rotation speed of gimbal in the ground coordinate. */\nfloat32 pitch # unit: radians\nfloat32 roll  # unit: radians\nfloat32 yaw   # unit: radians\nfloat32 time  # /*!< Expect execution time of gimbal rotation, unit: second. */\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rotation_mode",
+          "comment": "see E_DjiGimbalRotationMode in dji_gimbal_manager.h 0 /*!< Incremental angle rotation mode, represents rotating gimbal specified angles based on current angles. */",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "unit: radians",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll",
+          "comment": "unit: radians",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw",
+          "comment": "unit: radians",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time",
+          "comment": "/*!< Expect execution time of gimbal rotation, unit: second. */",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GimbalStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 mount_status            # 1 - gimbal mounted, 0 - gimbal not mounted\nuint32 is_busy\nuint32 pitch_limited           # 1 - axis reached limit, 0 - no \nuint32 roll_limited            # 1 - axis reached limit, 0 - no \nuint32 yaw_limited             # 1 - axis reached limit, 0 - no \nuint32 calibrating            # 1 - calibrating, 0 - no \nuint32 prev_calibration_result # 1 - success, 0 - fail \nuint32 installed_direction     # 1 - reversed for OSMO, 0 - normal \nuint32 disabled_mvo\nuint32 gear_show_unable\nuint32 gyro_falut              # 1 - fault, 0 - normal \nuint32 esc_pitch_status         # 1 - Pitch data is normal, 0 - fault \nuint32 esc_roll_status          # 1 - Roll data is normal, 0 - fault \nuint32 esc_yaw_status           # 1 - Yaw data is normal , 0 - fault \nuint32 drone_data_recv          # 1 - normal , 0 - at fault \nuint32 init_unfinished         # 1 - init complete, 0 - not complete \nuint32 fw_updating             # 1 - updating, 0 - not updating ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "mount_status",
+          "comment": "1 - gimbal mounted, 0 - gimbal not mounted",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "is_busy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "pitch_limited",
+          "comment": "1 - axis reached limit, 0 - no",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "roll_limited",
+          "comment": "1 - axis reached limit, 0 - no",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "yaw_limited",
+          "comment": "1 - axis reached limit, 0 - no",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "calibrating",
+          "comment": "1 - calibrating, 0 - no",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "prev_calibration_result",
+          "comment": "1 - success, 0 - fail",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "installed_direction",
+          "comment": "1 - reversed for OSMO, 0 - normal",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "disabled_mvo",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gear_show_unable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gyro_falut",
+          "comment": "1 - fault, 0 - normal",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "esc_pitch_status",
+          "comment": "1 - Pitch data is normal, 0 - fault",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "esc_roll_status",
+          "comment": "1 - Roll data is normal, 0 - fault",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "esc_yaw_status",
+          "comment": "1 - Yaw data is normal , 0 - fault",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "drone_data_recv",
+          "comment": "1 - normal , 0 - at fault",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "init_unfinished",
+          "comment": "1 - init complete, 0 - not complete",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "fw_updating",
+          "comment": "1 - updating, 0 - not updating",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HmsInfoMsg": {
+      "description": "",
+      "raw": "uint32 error_code           # Error code associated to HMS message\nuint8 component_index       # Related to \"payloadId\" in the camera module\nuint8 error_level\nstring ground_info          # Description of the error code if/when the drone is on the ground\nstring fly_info             # Description of the error code if/when the drone is in the air\n\nuint8 MIN_HMS_ERROR_LEVEL = 0\nuint8 MID_HMS_ERROR_LEVEL = 3\nuint8 MAX_HMS_ERROR_LEVEL = 6\n\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "error_code",
+          "comment": "Error code associated to HMS message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "component_index",
+          "comment": "Related to \"payloadId\" in the camera module",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ground_info",
+          "comment": "Description of the error code if/when the drone is on the ground",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "fly_info",
+          "comment": "Description of the error code if/when the drone is in the air",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "MIN_HMS_ERROR_LEVEL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MID_HMS_ERROR_LEVEL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MAX_HMS_ERROR_LEVEL",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        }
+      ]
+    },
+    "HmsInfoTable": {
+      "description": "",
+      "raw": "uint32 num_msg          # Length of 'table' array\nHmsInfoMsg[] table      # Array of HmsInfoMsg\n\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "num_msg",
+          "comment": "Length of 'table' array",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HmsInfoMsg[]",
+          "name": "table",
+          "comment": "Array of HmsInfoMsg",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HomePosition": {
+      "description": "",
+      "raw": "uint8 HOME_POSITION_STATUS_FAILED = 0\nuint8 HOME_POSITION_STATUS_SUCCESS = 1\n\nstd_msgs/Header header\nuint8 home_position_status \nfloat64 latitude\nfloat64 longitude",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "HOME_POSITION_STATUS_FAILED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HOME_POSITION_STATUS_SUCCESS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "home_position_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PerceptionCameraParameters": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint8 stereo_cameras_direction\nfloat64[9] left_intrinsics\nfloat64[9] right_intrinsics\nfloat64[9] rotation_left_in_right\nfloat64[3] translation_left_in_right",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "stereo_cameras_direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "left_intrinsics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "right_intrinsics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "rotation_left_in_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "translation_left_in_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PositionFused": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Point position\nuint8 x_health\nuint8 y_health\nuint8 z_health",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "x_health",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "y_health",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "z_health",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RCConnectionStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint8 air_connection                    # Sky side is connected, i.e., receiver is connected to FC\nuint8 ground_connection                 # Ground side is connected, i.e., RC is on and connected to FC\nuint8 app_connection                    # Mobile App is connected to RC\nuint8 air_or_ground_disconnected        # 0 if sky or ground side is disconnected for 3 seconds",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "air_connection",
+          "comment": "Sky side is connected, i.e., receiver is connected to FC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ground_connection",
+          "comment": "Ground side is connected, i.e., RC is on and connected to FC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "app_connection",
+          "comment": "Mobile App is connected to RC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "air_or_ground_disconnected",
+          "comment": "0 if sky or ground side is disconnected for 3 seconds",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RTKYaw": {
+      "description": "means that the value of RTK yaw will be 90deg offset from the yaw of the aircraft.",
+      "raw": "std_msgs/Header header\nuint16 yaw                  # unit: deg. The RTK yaw will provide the vector from ANT1 to ANT2 as configured in DJI Assistant 2. This\n                            # means that the value of RTK yaw will be 90deg offset from the yaw of the aircraft.",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "yaw",
+          "comment": "unit: deg. The RTK yaw will provide the vector from ANT1 to ANT2 as configured in DJI Assistant 2. This",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RelativeObstacleInfo": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 down               # distance from obstacle (m) \nfloat32 front              # distance from obstacle (m) \nfloat32 right              # distance from obstacle (m) \nfloat32 back               # distance from obstacle (m) \nfloat32 left               # distance from obstacle (m) \nfloat32 up                 # distance from obstacle (m) \nuint8 down_health          # Down sensor flag: 0 - not working, 1 - working \nuint8 front_health         # Front sensor flag: 0 - not working, 1 - working \nuint8 right_health         # Right sensor flag: 0 - not working, 1 - working \nuint8 back_health          # Back sensor flag: 0 - not working, 1 - working \nuint8 left_health          # Left sensor flag: 0 - not working, 1 - working \nuint8 up_health            # Up sensor health flag: 0 - not working, 1 - working \nuint8 reserved              # Reserved sensor health flag",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "down",
+          "comment": "distance from obstacle (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front",
+          "comment": "distance from obstacle (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "right",
+          "comment": "distance from obstacle (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "back",
+          "comment": "distance from obstacle (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "left",
+          "comment": "distance from obstacle (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "up",
+          "comment": "distance from obstacle (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "down_health",
+          "comment": "Down sensor flag: 0 - not working, 1 - working",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "front_health",
+          "comment": "Front sensor flag: 0 - not working, 1 - working",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "right_health",
+          "comment": "Right sensor flag: 0 - not working, 1 - working",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "back_health",
+          "comment": "Back sensor flag: 0 - not working, 1 - working",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "left_health",
+          "comment": "Left sensor flag: 0 - not working, 1 - working",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "up_health",
+          "comment": "Up sensor health flag: 0 - not working, 1 - working",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "reserved",
+          "comment": "Reserved sensor health flag",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SDKCtrlInfo": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint8 control_mode         # see CtlrMode in dji_status.hpp\nuint8 device_status        # 0->rc  1->app  4->serial \nuint8 flight_status        # 1->opensd  0->close \nuint8 vrc_status\nuint8 reserved",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "control_mode",
+          "comment": "see CtlrMode in dji_status.hpp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "device_status",
+          "comment": "0->rc  1->app  4->serial",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "flight_status",
+          "comment": "1->opensd  0->close",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vrc_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "reserved",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SingleBatteryInfo": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 battery_index\nfloat32 voltage\nfloat32 current\nfloat32 full_capacity\nfloat32 capacity_remain\nfloat32 capacity_percentage\nfloat32 temperature\nuint8 cell_count\nuint32 self_check_error\nuint32 closed_reason\nuint16 abnormal_comm\nuint16 is_embed\n\n ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "battery_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "full_capacity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "capacity_remain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "capacity_percentage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cell_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "self_check_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "closed_reason",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "abnormal_comm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "is_embed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SubFileInfo": {
+      "description": "",
+      "raw": "string name\nuint8  type\nuint32 size\nuint32 index\nint64 create_time_unix\nFileAttributes attributes\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "create_time_unix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FileAttributes",
+          "name": "attributes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "CameraFormatSdCard": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1   # see enum E_DjiMountPosition in dji_typedef.h\n\n---\n#response\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetAperture": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n---\n#response\nbool success\nuint16 aperture              # see enum E_DjiCameraManagerAperture in dji_camera_manager.h",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "aperture",
+          "comment": "see enum E_DjiCameraManagerAperture in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetExposureModeEV": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n---\n#response\nbool success  \nuint8 exposure_mode         # see enum  E_DjiCameraManagerExposureMode in dji_camera_manager.h\nuint8 ev_factor             # ev_factor see enum E_DjiCameraManagerExposureCompensation in dji_camera_manager.h",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "exposure_mode",
+          "comment": "see enum  E_DjiCameraManagerExposureMode in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ev_factor",
+          "comment": "ev_factor see enum E_DjiCameraManagerExposureCompensation in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetFileListInfo": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1   # see enum E_DjiMountPosition in dji_typedef.h\n---\n#response\nbool success\nFileInfo[] file_list\nint16 count\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FileInfo[]",
+          "name": "file_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetFocusMode": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n---\n#response\nbool success\nuint8 focus_mode            # see enum E_DjiCameraManagerFocusMode in dji_camera_manager.h",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "focus_mode",
+          "comment": "see enum E_DjiCameraManagerFocusMode in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetFocusTarget": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n\n\n---\n#response\nbool success\nfloat32 x_target            # see enum T_DjiCameraPointInScreen in dji_typedef.h # *!< Specifies horizontal zone coordinate. This parameter is between 0 and 1.\n                            # The point [0.0, 0.0] represents the top-left angle of the screen.*/\nfloat32 y_target            # see enum T_DjiCameraPointInScreen in dji_typedef.h /*!< Specifies vertical zone coordinate. This parameter is between 0 and 1. */",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_target",
+          "comment": "see enum T_DjiCameraPointInScreen in dji_typedef.h # *!< Specifies horizontal zone coordinate. This parameter is between 0 and 1.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_target",
+          "comment": "see enum T_DjiCameraPointInScreen in dji_typedef.h /*!< Specifies vertical zone coordinate. This parameter is between 0 and 1. */",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetISO": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h \n---\n#response\nbool success\nint8 iso_factor             # see enum E_DjiCameraManagerISO in dji_camera_manager.h",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "iso_factor",
+          "comment": "see enum E_DjiCameraManagerISO in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetLaserRangingInfo": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n\n---\n#response\nbool success\nfloat64 longitude\nfloat64 latitude\nint32 altitude\nint32 distance\nint16 screen_x\nint16 screen_y\nbool enable_lidar\nuint8 exception\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "screen_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "screen_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable_lidar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "exception",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetOpticalZoom": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n\n---\n#response\nbool success\nfloat32 zoom_factor         # Returns the current optical zoom factor\nfloat32 max_zoom_factor     # Returns the maximum optical zoom factor",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "zoom_factor",
+          "comment": "Returns the current optical zoom factor",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_zoom_factor",
+          "comment": "Returns the maximum optical zoom factor",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetSDStorageInfo": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1   # see enum E_DjiMountPosition in dji_typedef.h\n---\n#response\nbool success\nuint32 total_capacity\nuint32 remain_capacity",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "total_capacity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "remain_capacity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetShutterSpeed": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n---\n#response\nbool success\nint8 shutter_speed          # see enum E_DjiCameraManagerShutterSpeed in dji_camera_manager.h \n                            # potential inputs from 0 to 66 and 0xFF for unkown",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "shutter_speed",
+          "comment": "see enum E_DjiCameraManagerShutterSpeed in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraGetType": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n---\n#response\nbool success \nstring camera_type          # Return camera type according to enum E_DjiCameraType in dji_typedef.h",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "camera_type",
+          "comment": "Return camera type according to enum E_DjiCameraType in dji_typedef.h",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraRecordVideo": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1           # see enum E_DjiMountPosition in dji_typedef.h\nbool start_stop                 # 0 for stop and 1 for start\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "start_stop",
+          "comment": "0 for stop and 1 for start",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetAperture": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nuint16 aperture             # see enum E_DjiCameraManagerAperture in dji_camera_manager.h\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "aperture",
+          "comment": "see enum E_DjiCameraManagerAperture in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetExposureModeEV": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1           # see enum E_DjiMountPosition in dji_typedef.h\nuint8 exposure_mode             # see E_DjiCameraManagerExposureMode in dji_camera_manager.h\nuint8 ev_factor  255            # see enum E_DjiCameraManagerExposureCompensation in dji_camera_manager.h \n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "exposure_mode",
+          "comment": "see E_DjiCameraManagerExposureMode in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ev_factor",
+          "comment": "see enum E_DjiCameraManagerExposureCompensation in dji_camera_manager.h",
+          "default": "255",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetFocusMode": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nuint8 focus_mode            # see enum E_DjiCameraManagerFocusMode in dji_camera_manager.h\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "focus_mode",
+          "comment": "see enum E_DjiCameraManagerFocusMode in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetFocusTarget": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nfloat32 x_target            # see enum T_DjiCameraPointInScreen in dji_typedef.h # *!< Specifies horizontal zone coordinate. This parameter is between 0 and 1.\n                            # The point [0.0, 0.0] represents the top-left angle of the screen.*/\nfloat32 y_target            # see enum T_DjiCameraPointInScreen in dji_typedef.h /*!< Specifies vertical zone coordinate. This parameter is between 0 and 1. */\n\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_target",
+          "comment": "see enum T_DjiCameraPointInScreen in dji_typedef.h # *!< Specifies horizontal zone coordinate. This parameter is between 0 and 1.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_target",
+          "comment": "see enum T_DjiCameraPointInScreen in dji_typedef.h /*!< Specifies vertical zone coordinate. This parameter is between 0 and 1. */",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetISO": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nuint8 iso_factor            # see enum E_DjiCameraManagerISO in dji_camera_manager.h\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "iso_factor",
+          "comment": "see enum E_DjiCameraManagerISO in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetInfraredZoom": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1           # see enum E_DjiMountPosition in dji_typedef.h\nfloat32 zoom_factor\n\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "zoom_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetOpticalZoom": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nfloat32 zoom_factor\n\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "zoom_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetShutterSpeed": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1            # see enum E_DjiMountPosition in dji_typedef.h\nuint8 shutter_speed_factor       # see enum E_DjiCameraManagerShutterSpeed in dji_camera_manager.h \n                                 # potential inputs from 0 to 66 and 0xFF for unkown\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "shutter_speed_factor",
+          "comment": "see enum E_DjiCameraManagerShutterSpeed in dji_camera_manager.h",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraSetupStreaming": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # please refer to enum E_DjiLiveViewCameraPosition in dji_liveview.h\nuint8 camera_source 0       # please refer to enum E_DjiLiveViewCameraSource in dji_liveview.h\nbool start_stop             # 0 for stop and 1 for start\nbool decoded_output 1       # 0 for encoded output and 1 for decoded output\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "please refer to enum E_DjiLiveViewCameraPosition in dji_liveview.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "camera_source",
+          "comment": "please refer to enum E_DjiLiveViewCameraSource in dji_liveview.h",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "start_stop",
+          "comment": "0 for stop and 1 for start",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "decoded_output",
+          "comment": "0 for encoded output and 1 for decoded output",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraShootBurstPhoto": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nuint8 photo_burst_count     #see enum E_DjiCameraBurstCount in dji_typedef.h\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "photo_burst_count",
+          "comment": "see enum E_DjiCameraBurstCount in dji_typedef.h",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraShootIntervalPhoto": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1           # see enum E_DjiMountPosition in dji_typedef.h\nuint8 num_photos_to_capture     # 0:reserve 1~254:number 255:keep capturing till stop\nint16 time_interval             # time interval between two captures (second)\n\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_photos_to_capture",
+          "comment": "0:reserve 1~254:number 255:keep capturing till stop",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "time_interval",
+          "comment": "time interval between two captures (second)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraShootSinglePhoto": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraStopShootPhoto": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\n\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetGoHomeAltitude": {
+      "description": "request",
+      "raw": "#request\n---\n#response\nuint16 altitude     # unit m\nbool success",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "uint16",
+          "name": "altitude",
+          "comment": "unit m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetObstacleAvoidance": {
+      "description": "response",
+      "raw": "---\n#response\nbool obstacle_avoidance_on\nbool success",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "obstacle_avoidance_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GimbalReset": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nuint8 reset_mode    1       # see enum E_DjiGimbalResetMode in dji_gimbal.h\n---\n#response\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "reset_mode",
+          "comment": "see enum E_DjiGimbalResetMode in dji_gimbal.h",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GimbalSetMode": {
+      "description": "request",
+      "raw": "#request\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nuint8 gimbal_mode           # see enum E_DjiGimbalMode in dji_typedef.h\n\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "gimbal_mode",
+          "comment": "see enum E_DjiGimbalMode in dji_typedef.h",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PerceptionStereoVisionSetup": {
+      "description": "request",
+      "raw": "#request\nstring stereo_cameras_direction        # DOWN, FRONT, REAR, UP, LEFT, RIGHT\nbool start_stop             # 0 for stop and 1 for start\n---\n#response\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "stereo_cameras_direction",
+          "comment": "DOWN, FRONT, REAR, UP, LEFT, RIGHT",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "start_stop",
+          "comment": "0 for stop and 1 for start",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetGoHomeAltitude": {
+      "description": "request",
+      "raw": "#request\nuint16 altitude     # unit: m  range 20~500 m \n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "altitude",
+          "comment": "unit: m  range 20~500 m",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetHomeFromGPS": {
+      "description": "request",
+      "raw": "#request\nfloat64 latitude        #/*!< unit: rad */\nfloat64 longitude       #/*!< unit: rad */\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "/*!< unit: rad */",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "/*!< unit: rad */",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetObstacleAvoidance": {
+      "description": "request",
+      "raw": "#request\nbool obstacle_avoidance_on      # True: obstacle avoidance on, False, obstacle avoidance off\n---\n#response\nbool success",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "obstacle_avoidance_on",
+          "comment": "True: obstacle avoidance on, False, obstacle avoidance off",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "CameraDeleteFileByIndex": {
+      "description": "goal",
+      "raw": "# goal\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nuint32 file_index\n---\n# result\nbool success\n---\n# feedback\n",
+      "goal_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "file_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "CameraDownloadFileByIndex": {
+      "description": "goal",
+      "raw": "# goal\nuint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h\nuint32 file_index\nstring file_name\nstring file_path \n\n---\n# result\nbool success\n---\n# feedback\n",
+      "goal_fields": [
+        {
+          "type": "uint8",
+          "name": "payload_index",
+          "comment": "see enum E_DjiMountPosition in dji_typedef.h",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "file_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "file_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "file_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    }
+  }
+}

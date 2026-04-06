@@ -1,0 +1,67 @@
+{
+  "name": "grid_map_ros",
+  "version": "2.0.1",
+  "description": "ROS interface for the grid map library to manage two-dimensional grid maps with multiple data layers.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://github.com/anybotics/grid_map",
+      "type": "website"
+    },
+    {
+      "uri": "http://github.com/anybotics/grid_map/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "grid_map",
+    "url": "https://github.com/ANYbotics/grid_map.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "grid_map_cmake_helpers"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "rosbag2_storage_default_plugins"
+    ],
+    "build_and_runtime": [
+      "cv_bridge",
+      "geometry_msgs",
+      "grid_map_core",
+      "grid_map_cv",
+      "grid_map_msgs",
+      "nav2_msgs",
+      "nav_msgs",
+      "rclcpp",
+      "rcutils",
+      "rosbag2_cpp",
+      "sensor_msgs",
+      "std_msgs",
+      "tf2",
+      "visualization_msgs"
+    ],
+    "depended_on_by": [
+      "grid_map",
+      "grid_map_demos",
+      "grid_map_filters",
+      "grid_map_geo",
+      "grid_map_loader",
+      "grid_map_pcl",
+      "grid_map_rviz_plugin",
+      "grid_map_visualization",
+      "rtabmap_util"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

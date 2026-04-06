@@ -1,0 +1,636 @@
+{
+  "name": "example_interfaces",
+  "version": "0.9.3",
+  "description": "Contains message and service definitions used by the examples.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "example_interfaces",
+    "url": "https://github.com/ros2/example_interfaces.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "bno055",
+      "composition",
+      "composition",
+      "demo_nodes_cpp",
+      "demo_nodes_cpp",
+      "demo_nodes_py",
+      "domain_bridge",
+      "joy_teleop",
+      "picknik_reset_fault_controller",
+      "picknik_twist_controller",
+      "qml6_ros2_plugin",
+      "qml_ros2_plugin",
+      "rclc",
+      "rclc_examples",
+      "rclc_examples",
+      "rclc_parameter",
+      "ros2launch_security_examples",
+      "ros_babel_fish",
+      "rosbridge_library",
+      "rosbridge_server",
+      "simple_actions",
+      "soar_ros",
+      "synchros2",
+      "yasmin_demos",
+      "yasmin_ros"
+    ]
+  },
+  "messages": {
+    "Bool": {
+      "description": "This is an example message of using a primitive datatype, bool.",
+      "raw": "# This is an example message of using a primitive datatype, bool.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nbool data\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Byte": {
+      "description": "This is an example message of using a primitive datatype, byte.",
+      "raw": "# This is an example message of using a primitive datatype, byte.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nbyte data\n",
+      "fields": [
+        {
+          "type": "byte",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ByteMultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nbyte[]            data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Char": {
+      "description": "This is an example message of using a primitive datatype, char.",
+      "raw": "# This is an example message of using a primitive datatype, char.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nchar data\n",
+      "fields": [
+        {
+          "type": "char",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Empty": {
+      "description": "If you want to test with this that's fine, but if you are deploying",
+      "raw": "# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n",
+      "fields": []
+    },
+    "Float32": {
+      "description": "This is an example message of using a primitive datatype, float32.",
+      "raw": "# This is an example message of using a primitive datatype, float32.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nfloat32 data\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Float32MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nfloat32[]         data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Float64": {
+      "description": "This is an example message of using a primitive datatype, float64.",
+      "raw": "# This is an example message of using a primitive datatype, float64.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nfloat64 data\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Float64MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nfloat64[]         data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int16": {
+      "description": "This is an example message of using a primitive datatype, int16.",
+      "raw": "# This is an example message of using a primitive datatype, int16.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nint16 data\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int16MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nint16[]           data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int32": {
+      "description": "This is an example message of using a primitive datatype, int32.",
+      "raw": "# This is an example message of using a primitive datatype, int32.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nint32 data\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int32MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nint32[]           data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int64": {
+      "description": "This is an example message of using a primitive datatype, int64.",
+      "raw": "# This is an example message of using a primitive datatype, int64.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nint64 data\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int64MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nint64[]           data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int8": {
+      "description": "This is an example message of using a primitive datatype, in8.",
+      "raw": "# This is an example message of using a primitive datatype, in8.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nint8 data\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Int8MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nint8[]            data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MultiArrayDimension": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\nstring label   # label of given dimension\nuint32 size    # size of given dimension (in type units)\nuint32 stride  # stride of given dimension\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "label of given dimension",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "size",
+          "comment": "size of given dimension (in type units)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "stride",
+          "comment": "stride of given dimension",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MultiArrayLayout": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# The multiarray declares a generic multi-dimensional array of a\n# particular data type.  Dimensions are ordered from outer most\n# to inner most.\n#\n# Accessors should ALWAYS be written in terms of dimension stride\n# and specified outer-most dimension first.\n#\n# multiarray(i,j,k) = data[data_offset + dim_stride[1]*i + dim_stride[2]*j + k]\n#\n# A standard, 3-channel 640x480 image with interleaved color channels\n# would be specified as:\n#\n# dim[0].label  = \"height\"\n# dim[0].size   = 480\n# dim[0].stride = 3*640*480 = 921600  (note dim[0] stride is just size of image)\n# dim[1].label  = \"width\"\n# dim[1].size   = 640\n# dim[1].stride = 3*640 = 1920\n# dim[2].label  = \"channel\"\n# dim[2].size   = 3\n# dim[2].stride = 3\n#\n# multiarray(i,j,k) refers to the ith row, jth column, and kth channel.\n\nMultiArrayDimension[] dim # Array of dimension properties\nuint32 data_offset        # padding bytes at front of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayDimension[]",
+          "name": "dim",
+          "comment": "Array of dimension properties",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "data_offset",
+          "comment": "padding bytes at front of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "String": {
+      "description": "This is an example message of using a primitive datatype, string.",
+      "raw": "# This is an example message of using a primitive datatype, string.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nstring data\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt16": {
+      "description": "This is an example message of using a primitive datatype, uint16.",
+      "raw": "# This is an example message of using a primitive datatype, uint16.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nuint16 data\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt16MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nuint16[]            data        # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt32": {
+      "description": "This is an example message of using a primitive datatype, uint32.",
+      "raw": "# This is an example message of using a primitive datatype, uint32.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nuint32 data\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt32MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nuint32[]          data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt64": {
+      "description": "This is an example message of using a primitive datatype, unint64.",
+      "raw": "# This is an example message of using a primitive datatype, unint64.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nuint64 data\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt64MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nuint64[]          data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt8": {
+      "description": "This is an example message of using a primitive datatype, uint8.",
+      "raw": "# This is an example message of using a primitive datatype, uint8.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nuint8 data\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt8MultiArray": {
+      "description": "This is an example of using complex datatypes.",
+      "raw": "# This is an example of using complex datatypes.\n# It is not recommended to use directly.\n# To use a similar datastruct please define a custom message with appropriate semantic meaning.\n\n# Please look at the MultiArrayLayout message definition for\n# documentation on all multiarrays.\n\nMultiArrayLayout  layout        # specification of data layout\nuint8[]           data          # array of data\n",
+      "fields": [
+        {
+          "type": "MultiArrayLayout",
+          "name": "layout",
+          "comment": "specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WString": {
+      "description": "This is an example message of using a primitive datatype, wstring.",
+      "raw": "# This is an example message of using a primitive datatype, wstring.\n# If you want to test with this that's fine, but if you are deploying\n# it into a system you should create a semantically meaningful message type.\n# If you want to embed it in another message, use the primitive data type instead.\nwstring data\n",
+      "fields": [
+        {
+          "type": "wstring",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddTwoInts": {
+      "description": "",
+      "raw": "int64 a\nint64 b\n---\nint64 sum\n",
+      "request_fields": [
+        {
+          "type": "int64",
+          "name": "a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "sum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetBool": {
+      "description": "This is an example of a service to set a boolean value.",
+      "raw": "# This is an example of a service to set a boolean value.\n# This can be used for testing but a semantically meaningful\n# one should be created to be built upon.\n\nbool data # e.g. for hardware enabling / disabling\n---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "e.g. for hardware enabling / disabling",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trigger": {
+      "description": "An example of a trigger service.",
+      "raw": "# An example of a trigger service.\n# This can be used for testing but a semantically meaningful\n# one should be created to be built upon.\n\n---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages.\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "Fibonacci": {
+      "description": "Goal",
+      "raw": "# Goal\nint32 order\n---\n# Result\nint32[] sequence\n---\n# Feedback\nint32[] sequence\n",
+      "goal_fields": [
+        {
+          "type": "int32",
+          "name": "order",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "int32[]",
+          "name": "sequence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "int32[]",
+          "name": "sequence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

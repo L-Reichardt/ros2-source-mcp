@@ -1,0 +1,836 @@
+{
+  "name": "rcl_interfaces",
+  "version": "1.6.0",
+  "description": "The ROS client library common interfaces.\n    This package contains the messages and services which ROS client libraries will use under the hood to\n    communicate higher level concepts such as parameters.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "composition_interfaces",
+      "demo_nodes_cpp",
+      "demo_nodes_cpp",
+      "demo_nodes_py",
+      "diagnostic_aggregator",
+      "fmi_adapter",
+      "fmi_adapter",
+      "fuse_core",
+      "fuse_core",
+      "image_publisher",
+      "image_rotate",
+      "kobuki_velocity_smoother",
+      "kobuki_velocity_smoother",
+      "log_view",
+      "mavros_msgs",
+      "nav2_util",
+      "py_trees_ros",
+      "rcl",
+      "rclc_parameter",
+      "rclcpp",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "rclcpp_lifecycle",
+      "rclpy",
+      "robot_state_publisher",
+      "ros2component",
+      "ros2controlcli",
+      "ros2param",
+      "ros_gz_interfaces",
+      "ros_gz_interfaces",
+      "rosapi",
+      "rosapi_msgs",
+      "rosbag2_py",
+      "rqt_console",
+      "sick_scan_xd",
+      "swri_cli_tools",
+      "swri_console",
+      "swri_transform_util",
+      "system_fingerprint",
+      "tf2_ros",
+      "ublox_gps"
+    ]
+  },
+  "messages": {
+    "FloatingPointRange": {
+      "description": "Represents bounds and a step value for a floating point typed parameter.",
+      "raw": "# Represents bounds and a step value for a floating point typed parameter.\n\n# Start value for valid values, inclusive.\nfloat64 from_value\n\n# End value for valid values, inclusive.\nfloat64 to_value\n\n# Size of valid steps between the from and to bound.\n# \n# Step is considered to be a magnitude, therefore negative values are treated\n# the same as positive values, and a step value of zero implies a continuous\n# range of values.\n#\n# Ideally, the step would be less than or equal to the distance between the\n# bounds, as well as an even multiple of the distance between the bounds, but\n# neither are required.\n#\n# If the absolute value of the step is larger than or equal to the distance\n# between the two bounds, then the bounds will be the only valid values. e.g. if\n# the range is defined as {from_value: 1.0, to_value: 2.0, step: 5.0} then the\n# valid values will be 1.0 and 2.0.\n#\n# If the step is less than the distance between the bounds, but the distance is\n# not a multiple of the step, then the \"to\" bound will always be a valid value,\n# e.g. if the range is defined as {from_value: 2.0, to_value: 5.0, step: 2.0}\n# then the valid values will be 2.0, 4.0, and 5.0.\nfloat64 step\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "from_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "to_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IntegerRange": {
+      "description": "Represents bounds and a step value for an integer typed parameter.",
+      "raw": "# Represents bounds and a step value for an integer typed parameter.\n\n# Start value for valid values, inclusive.\nint64 from_value\n\n# End value for valid values, inclusive.\nint64 to_value\n\n# Size of valid steps between the from and to bound.\n#\n# A step value of zero implies a continuous range of values. Ideally, the step\n# would be less than or equal to the distance between the bounds, as well as an\n# even multiple of the distance between the bounds, but neither are required.\n#\n# If the absolute value of the step is larger than or equal to the distance\n# between the two bounds, then the bounds will be the only valid values. e.g. if\n# the range is defined as {from_value: 1, to_value: 2, step: 5} then the valid\n# values will be 1 and 2.\n# \n# If the step is less than the distance between the bounds, but the distance is\n# not a multiple of the step, then the \"to\" bound will always be a valid value,\n# e.g. if the range is defined as {from_value: 2, to_value: 5, step: 2} then\n# the valid values will be 2, 4, and 5.\nuint64 step\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "from_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "to_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListParametersResult": {
+      "description": "The resulting parameters under the given prefixes.",
+      "raw": "# The resulting parameters under the given prefixes.\nstring[] names\n\n# The resulting prefixes under the given prefixes.\n# TODO(wjwwood): link to prefix definition and rules.\nstring[] prefixes\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "prefixes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Log": {
+      "description": "Severity level constants",
+      "raw": "##\n## Severity level constants\n## \n## These logging levels follow the Python Standard\n## https://docs.python.org/3/library/logging.html#logging-levels\n## And are implemented in rcutils as well\n## https://github.com/ros2/rcutils/blob/35f29850064e0c33a4063cbc947ebbfeada11dba/include/rcutils/logging.h#L164-L172\n## This leaves space for other standard logging levels to be inserted in the middle in the future,\n## as well as custom user defined levels.\n## Since there are several other logging enumeration standard for different implementations,\n## other logging implementations may need to provide level mappings to match their internal implementations.\n##\n\n# Debug is for pedantic information, which is useful when debugging issues.\nbyte DEBUG=10\n\n# Info is the standard informational level and is used to report expected\n# information.\nbyte INFO=20\n\n# Warning is for information that may potentially cause issues or possibly unexpected\n# behavior.\nbyte WARN=30\n\n# Error is for information that this node cannot resolve.\nbyte ERROR=40\n\n# Information about a impending node shutdown.\nbyte FATAL=50\n\n##\n## Fields\n##\n\n# Timestamp when this message was generated by the node.\nbuiltin_interfaces/Time stamp\n\n# Corresponding log level, see above definitions.\nuint8 level\n\n# The name representing the logger this message came from.\nstring name\n\n# The full log message.\nstring msg\n\n# The file the message came from.\nstring file\n\n# The function the message came from.\nstring function\n\n# The line in the file the message came from.\nuint32 line\n",
+      "fields": [
+        {
+          "type": "byte",
+          "name": "DEBUG",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "INFO",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "WARN",
+          "comment": "",
+          "default": "30",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "ERROR",
+          "comment": "",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "FATAL",
+          "comment": "",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "file",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "function",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "line",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoggerLevel": {
+      "description": "All available logger levels; these correspond to the enum in rcutils/logger.h",
+      "raw": "# All available logger levels; these correspond to the enum in rcutils/logger.h\n\nuint8 LOG_LEVEL_UNKNOWN = 0\nuint8 LOG_LEVEL_DEBUG = 10\nuint8 LOG_LEVEL_INFO = 20\nuint8 LOG_LEVEL_WARN = 30\nuint8 LOG_LEVEL_ERROR = 40\nuint8 LOG_LEVEL_FATAL = 50\n\n# The logger name.\nstring name\n\n# The logger level\nuint32 level\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "LOG_LEVEL_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOG_LEVEL_DEBUG",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOG_LEVEL_INFO",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOG_LEVEL_WARN",
+          "comment": "",
+          "default": "30",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOG_LEVEL_ERROR",
+          "comment": "",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOG_LEVEL_FATAL",
+          "comment": "",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Parameter": {
+      "description": "This is the message to communicate a parameter. It is an open struct with an enum in",
+      "raw": "# This is the message to communicate a parameter. It is an open struct with an enum in\n# the descriptor to select which value is active.\n\n# The full name of the parameter.\nstring name\n\n# The parameter's value which can be one of several types, see\n# `ParameterValue.msg` and `ParameterType.msg`.\nParameterValue value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ParameterValue",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParameterDescriptor": {
+      "description": "This is the message to communicate a parameter's descriptor.",
+      "raw": "# This is the message to communicate a parameter's descriptor.\n\n# The name of the parameter.\nstring name\n\n# Enum values are defined in the `ParameterType.msg` message.\nuint8 type\n\n# Description of the parameter, visible from introspection tools.\nstring description\n\n# Parameter constraints\n\n# Plain English description of additional constraints which cannot be expressed\n# with the available constraints, e.g. \"only prime numbers\".\n#\n# By convention, this should only be used to clarify constraints which cannot\n# be completely expressed with the parameter constraints below.\nstring additional_constraints\n\n# If 'true' then the value cannot change after it has been initialized.\nbool read_only false\n\n# If true, the parameter is allowed to change type.\nbool dynamic_typing false\n\n# If any of the following sequences are not empty, then the constraint inside of\n# them apply to this parameter.\n#\n# FloatingPointRange and IntegerRange are mutually exclusive.\n\n# FloatingPointRange consists of a from_value, a to_value, and a step.\nFloatingPointRange[<=1] floating_point_range\n\n# IntegerRange consists of a from_value, a to_value, and a step.\nIntegerRange[<=1] integer_range\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "additional_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "read_only",
+          "comment": "",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dynamic_typing",
+          "comment": "",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "FloatingPointRange[<=1]",
+          "name": "floating_point_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IntegerRange[<=1]",
+          "name": "integer_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParameterEvent": {
+      "description": "This message contains a parameter event.",
+      "raw": "# This message contains a parameter event.\n# Because the parameter event was an atomic update, a specific parameter name\n# can only be in one of the three sets.\n\n# The time stamp when this parameter event occurred.\nbuiltin_interfaces/Time stamp\n\n# Fully qualified ROS path to node.\nstring node\n\n# New parameters that have been set for this node.\nParameter[] new_parameters\n\n# Parameters that have been changed during this event.\nParameter[] changed_parameters\n\n# Parameters that have been deleted during this event.\nParameter[] deleted_parameters\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Parameter[]",
+          "name": "new_parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Parameter[]",
+          "name": "changed_parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Parameter[]",
+          "name": "deleted_parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParameterEventDescriptors": {
+      "description": "This message contains descriptors of a parameter event.",
+      "raw": "# This message contains descriptors of a parameter event.\n# It was an atomic update.\n# A specific parameter name can only be in one of the three sets.\n\nParameterDescriptor[] new_parameters\nParameterDescriptor[] changed_parameters\nParameterDescriptor[] deleted_parameters\n",
+      "fields": [
+        {
+          "type": "ParameterDescriptor[]",
+          "name": "new_parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ParameterDescriptor[]",
+          "name": "changed_parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ParameterDescriptor[]",
+          "name": "deleted_parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParameterType": {
+      "description": "These types correspond to the value that is set in the ParameterValue message.",
+      "raw": "# These types correspond to the value that is set in the ParameterValue message.\n\n# Default value, which implies this is not a valid parameter.\nuint8 PARAMETER_NOT_SET=0\n\nuint8 PARAMETER_BOOL=1\nuint8 PARAMETER_INTEGER=2\nuint8 PARAMETER_DOUBLE=3\nuint8 PARAMETER_STRING=4\nuint8 PARAMETER_BYTE_ARRAY=5\nuint8 PARAMETER_BOOL_ARRAY=6\nuint8 PARAMETER_INTEGER_ARRAY=7\nuint8 PARAMETER_DOUBLE_ARRAY=8\nuint8 PARAMETER_STRING_ARRAY=9\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PARAMETER_NOT_SET",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_BOOL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_INTEGER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_DOUBLE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_STRING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_BYTE_ARRAY",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_BOOL_ARRAY",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_INTEGER_ARRAY",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_DOUBLE_ARRAY",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARAMETER_STRING_ARRAY",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        }
+      ]
+    },
+    "ParameterValue": {
+      "description": "Used to determine which of the next *_value fields are set.",
+      "raw": "# Used to determine which of the next *_value fields are set.\n# ParameterType.PARAMETER_NOT_SET indicates that the parameter was not set\n# (if gotten) or is uninitialized.\n# Values are enumerated in `ParameterType.msg`.\n\n# The type of this parameter, which corresponds to the appropriate field below.\nuint8 type\n\n# \"Variant\" style storage of the parameter value. Only the value corresponding\n# the type field will have valid information.\n\n# Boolean value, can be either true or false.\nbool bool_value\n\n# Integer value ranging from -9,223,372,036,854,775,808 to\n# 9,223,372,036,854,775,807.\nint64 integer_value\n\n# A double precision floating point value following IEEE 754.\nfloat64 double_value\n\n# A textual value with no practical length limit.\nstring string_value\n\n# An array of bytes, used for non-textual information.\nbyte[] byte_array_value\n\n# An array of boolean values.\nbool[] bool_array_value\n\n# An array of 64-bit integer values.\nint64[] integer_array_value\n\n# An array of 64-bit floating point values.\nfloat64[] double_array_value\n\n# An array of string values.\nstring[] string_array_value\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "integer_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "double_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "string_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte[]",
+          "name": "byte_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "bool_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64[]",
+          "name": "integer_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "double_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "string_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLoggerLevelsResult": {
+      "description": "True when succeed, false when failed.",
+      "raw": "# True when succeed, false when failed.\nbool successful\n\n# Reason why the setting was either successful or a failure.\nstring reason\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "successful",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetParametersResult": {
+      "description": "A true value of the same index indicates that the parameter was set",
+      "raw": "# A true value of the same index indicates that the parameter was set\n# successfully. A false value indicates the change was rejected.\nbool successful\n\n# Reason why the setting was either successful or a failure. This should only be\n# used for logging and user interfaces.\nstring reason\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "successful",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "DescribeParameters": {
+      "description": "A list of parameters of which to get the descriptor.",
+      "raw": "# A list of parameters of which to get the descriptor.\nstring[] names\n\n---\n# A list of the descriptors of all parameters requested in the same order\n# as they were requested. This list has the same length as the list of\n# parameters requested.\nParameterDescriptor[] descriptors\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "ParameterDescriptor[]",
+          "name": "descriptors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetLoggerLevels": {
+      "description": "A list of logger names to get.",
+      "raw": "# A list of logger names to get.\nstring[] names\n\n---\n# List of logger levels which is the same order as the provided names. If a\n# logger was not yet set, the value will have 'unknown' as the value.\nLoggerLevel[] levels\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "LoggerLevel[]",
+          "name": "levels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetParameterTypes": {
+      "description": "A list of parameter names.",
+      "raw": "# A list of parameter names.\n# TODO(wjwwood): link to parameter naming rules.\nstring[] names\n\n---\n# List of types which is the same length and order as the provided names.\n#\n# The type enum is defined in ParameterType.msg. ParameterType.PARAMETER_NOT_SET\n# indicates that the parameter is not currently set.\nuint8[] types\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8[]",
+          "name": "types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetParameters": {
+      "description": "TODO(wjwwood): Decide on the rules for grouping, nodes, and parameter \"names\"",
+      "raw": "# TODO(wjwwood): Decide on the rules for grouping, nodes, and parameter \"names\"\n# in general, then link to that.\n#\n# For more information about parameters and naming rules, see:\n# https://design.ros2.org/articles/ros_parameters.html\n# https://github.com/ros2/design/pull/241\n\n# A list of parameter names to get.\nstring[] names\n\n---\n# List of values which is the same length and order as the provided names. If a\n# parameter was not yet set, the value will have PARAMETER_NOT_SET as the\n# type.\nParameterValue[] values\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "ParameterValue[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListParameters": {
+      "description": "Recursively get parameters with unlimited depth.",
+      "raw": "# Recursively get parameters with unlimited depth.\nuint64 DEPTH_RECURSIVE=0\n\n# The list of parameter prefixes to query.\nstring[] prefixes\n\n# Relative depth from given prefixes to return.\n#\n# Use DEPTH_RECURSIVE to get the recursive parameters and prefixes for each prefix.\nuint64 depth\n\n---\n# The list of parameter names and their prefixes.\nListParametersResult result\n",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "DEPTH_RECURSIVE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "string[]",
+          "name": "prefixes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "ListParametersResult",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLoggerLevels": {
+      "description": "A list of loggers to set.",
+      "raw": "# A list of loggers to set.\nLoggerLevel[] levels\n\n---\n# Indicates whether setting each logger succeeded or not and why.\nSetLoggerLevelsResult[] results\n",
+      "request_fields": [
+        {
+          "type": "LoggerLevel[]",
+          "name": "levels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "SetLoggerLevelsResult[]",
+          "name": "results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetParameters": {
+      "description": "A list of parameters to set.",
+      "raw": "# A list of parameters to set.\nParameter[] parameters\n\n---\n# Indicates whether setting each parameter succeeded or not and why.\nSetParametersResult[] results\n",
+      "request_fields": [
+        {
+          "type": "Parameter[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "SetParametersResult[]",
+          "name": "results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetParametersAtomically": {
+      "description": "A list of parameters to set atomically.",
+      "raw": "# A list of parameters to set atomically.\n#\n# This call will either set all values, or none of the values.\nParameter[] parameters\n\n---\n# Indicates whether setting all of the parameters succeeded or not and why.\nSetParametersResult result\n",
+      "request_fields": [
+        {
+          "type": "Parameter[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "SetParametersResult",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

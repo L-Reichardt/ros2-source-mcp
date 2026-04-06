@@ -1,0 +1,44 @@
+{
+  "name": "forward_command_controller",
+  "version": "0.9.0",
+  "description": "Generic controller for forwarding commands.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "pluginlib"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "controller_interface",
+      "hardware_interface",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "realtime_tools",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "effort_controllers",
+      "position_controllers",
+      "ros2_controllers",
+      "velocity_controllers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,432 @@
+{
+  "name": "nmea_msgs",
+  "version": "2.0.0",
+  "description": "The nmea_msgs package contains messages related to data in the NMEA format.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/nmea_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "nmea_msgs",
+    "url": "https://github.com/ros-drivers/nmea_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "std_msgs",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "microstrain_inertial_driver",
+      "nmea_hardware_interface",
+      "ntrip_client",
+      "septentrio_gnss_driver"
+    ]
+  },
+  "messages": {
+    "Gpgga": {
+      "description": "Message from GPGGA NMEA String",
+      "raw": "# Message from GPGGA NMEA String\nstd_msgs/Header header\n\nstring message_id\n\n# UTC seconds from midnight\nfloat64 utc_seconds\n\nfloat64 lat\nfloat64 lon\n\nstring lat_dir\nstring lon_dir\n\nuint32 gps_qual\n\nuint32 num_sats\nfloat32 hdop \nfloat32 alt\nstring altitude_units\n\nfloat32 undulation\nstring undulation_units\nuint32 diff_age\nstring station_id\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "utc_seconds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lat_dir",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lon_dir",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gps_qual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_sats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "hdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "alt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "altitude_units",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "undulation_units",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "diff_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gpgsa": {
+      "description": "Message from GPGSA NMEA String",
+      "raw": "# Message from GPGSA NMEA String\nstd_msgs/Header header\n\nstring message_id\n\nstring auto_manual_mode\nuint8 fix_mode\n\nuint8[] sv_ids\n\nfloat32 pdop\nfloat32 hdop\nfloat32 vdop\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "auto_manual_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fix_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "sv_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "hdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gpgsv": {
+      "description": "Total number of satellites in view and data about satellites",
+      "raw": "# Total number of satellites in view and data about satellites\n# Because the NMEA sentence is limited to 4 satellites per message, several\n# of these messages may need to be synthesized to get data about all visible\n# satellites.\n\nstd_msgs/Header header\n\nstring message_id\n\n# Number of messages in this sequence\nuint8 n_msgs\n# This messages number in its sequence. The first message is number 1.\nuint8 msg_number\n\n# Number of satellites currently visible\nuint8 n_satellites\n\n# Up to 4 satellites are described in each message\nGpgsvSatellite[] satellites\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n_msgs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "msg_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n_satellites",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GpgsvSatellite[]",
+          "name": "satellites",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GpgsvSatellite": {
+      "description": "Satellite data structure used in GPGSV messages",
+      "raw": "# Satellite data structure used in GPGSV messages\n\n# PRN number of the satellite\n# GPS = 1..32\n# SBAS = 33..64\n# GLO = 65..96\nuint8 prn\n\n# Elevation, degrees. Maximum 90\nuint8 elevation\n\n# Azimuth, True North degrees. [0, 359]\nuint16 azimuth\n\n# Signal to noise ratio, 0-99 dB. -1 when null in NMEA sentence (not tracking)\nint8 snr\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "prn",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "elevation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "snr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gprmc": {
+      "description": "Message from GPRMC NMEA String",
+      "raw": "# Message from GPRMC NMEA String\nstd_msgs/Header header\n\nstring message_id\n\nfloat64 utc_seconds\nstring position_status\n\nfloat64 lat\nfloat64 lon\n\nstring lat_dir\nstring lon_dir\n\nfloat32 speed\nfloat32 track\nstring date\nfloat32 mag_var\nstring mag_var_direction\nstring mode_indicator\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "utc_seconds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lat_dir",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lon_dir",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "track",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "date",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "mag_var",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mag_var_direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mode_indicator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Sentence": {
+      "description": "A message representing a single NMEA0183 sentence.",
+      "raw": "# A message representing a single NMEA0183 sentence.\n\n# header.stamp is the ROS Time when the sentence was read.\n# header.frame_id is the frame of reference reported by the satellite\n#        receiver, usually the location of the antenna.  This is a\n#        Euclidean frame relative to the vehicle, not a reference\n#        ellipsoid.\nstd_msgs/Header header\n\n# This should only contain ASCII characters in order to be a valid NMEA0183 sentence.\nstring sentence\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sentence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

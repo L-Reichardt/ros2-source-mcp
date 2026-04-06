@@ -1,0 +1,531 @@
+{
+  "name": "situational_graphs_msgs",
+  "version": "0.0.1",
+  "description": "Custom messages for s_graphs",
+  "license": "GPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "situational_graphs_msgs",
+    "url": "https://github.com/snt-arg/situational_graphs_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rosidl_default_generators",
+      "builtin_interfaces",
+      "rosidl_default_runtime",
+      "std_msgs",
+      "geometry_msgs",
+      "sensor_msgs",
+      "visualization_msgs"
+    ],
+    "depended_on_by": [
+      "lidar_situational_graphs",
+      "situational_graphs_reasoning"
+    ]
+  },
+  "messages": {
+    "FloorCoeffs": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32[] coeffs\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "coeffs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FloorData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint32 id\ngeometry_msgs/Pose floor_center\nint32[] keyframe_ids\n\nuint8 state\nuint8 ON_FLOOR=0\nuint8 ON_STAIRS=1",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "floor_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "keyframe_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ON_FLOOR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON_STAIRS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "PlaneData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint32 id\nfloat32 nx\nfloat32 ny\nfloat32 nz\nfloat32 d \ngeometry_msgs/Vector3 plane_orientation\ngeometry_msgs/Vector3[] plane_points\nstring data_source",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "nx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ny",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "nz",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "plane_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[]",
+          "name": "plane_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data_source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanesData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nPlaneData[] x_planes\nPlaneData[] y_planes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaneData[]",
+          "name": "x_planes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaneData[]",
+          "name": "y_planes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointClouds": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nsensor_msgs/PointCloud2[] pointclouds\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2[]",
+          "name": "pointclouds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoomData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint32 id\nint32[] neighbour_ids\ngeometry_msgs/Point room_length\ngeometry_msgs/Pose room_center\ngeometry_msgs/Point cluster_center\nPlaneData[] x_planes\nPlaneData[] y_planes\nPlaneData[] planes\nvisualization_msgs/MarkerArray cluster_array ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "neighbour_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "room_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "room_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "cluster_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaneData[]",
+          "name": "x_planes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaneData[]",
+          "name": "y_planes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaneData[]",
+          "name": "planes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "visualization_msgs/MarkerArray",
+          "name": "cluster_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoomsData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nRoomData[] rooms\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RoomData[]",
+          "name": "rooms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanMatchingStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbool has_converged\nfloat32 matching_error\nfloat32 inlier_fraction\ngeometry_msgs/Pose relative_pose\n\nstd_msgs/String[] prediction_labels\ngeometry_msgs/Pose[] prediction_errors",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_converged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "matching_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "inlier_fraction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "relative_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String[]",
+          "name": "prediction_labels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "prediction_errors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WallData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint32 id\ngeometry_msgs/Pose wall_center\ngeometry_msgs/Point wall_point\nPlaneData[] x_planes\nPlaneData[] y_planes",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "wall_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "wall_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaneData[]",
+          "name": "x_planes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaneData[]",
+          "name": "y_planes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WallsData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nWallData[] walls\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WallData[]",
+          "name": "walls",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "DumpGraph": {
+      "description": "",
+      "raw": "string destination\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "destination",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadGraph": {
+      "description": "",
+      "raw": "string destination\n---\nbool success",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "destination",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveMap": {
+      "description": "",
+      "raw": "bool utm\nfloat32 resolution\nstring destination\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "utm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "destination",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

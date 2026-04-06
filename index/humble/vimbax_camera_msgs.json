@@ -1,0 +1,1411 @@
+{
+  "name": "vimbax_camera_msgs",
+  "version": "1.0.2",
+  "description": "Topic and Service definitions used by the vimbax_camera_node",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "vimbax_ros2_driver",
+    "url": "https://github.com/alliedvision/vimbax_ros2_driver.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "vimbax_camera",
+      "vimbax_camera_events",
+      "vimbax_camera_examples"
+    ]
+  },
+  "messages": {
+    "Dummy": {
+      "description": "TODO: Delete and replace with actual service definitions",
+      "raw": "#TODO: Delete and replace with actual service definitions",
+      "fields": []
+    },
+    "Error": {
+      "description": "",
+      "raw": "int32 code\nstring text",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EventData": {
+      "description": "",
+      "raw": "EventDataEntry[] entries",
+      "fields": [
+        {
+          "type": "EventDataEntry[]",
+          "name": "entries",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EventDataEntry": {
+      "description": "",
+      "raw": "string name\nstring value",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureFlags": {
+      "description": "",
+      "raw": "bool flag_none\nbool flag_read\nbool flag_write\nbool flag_volatile\nbool flag_modify_write",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "flag_none",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "flag_read",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "flag_write",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "flag_volatile",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "flag_modify_write",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureInfo": {
+      "description": "",
+      "raw": "string name\nstring category\nstring display_name\nstring sfnc_namespace\nstring unit\nuint32 data_type\nFeatureFlags flags\nuint32 polling_time",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "category",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "display_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sfnc_namespace",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "unit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "data_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureFlags",
+          "name": "flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "polling_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureModule": {
+      "description": "",
+      "raw": "uint8 MODULE_REMOTE_DEVICE=0\nuint8 MODULE_SYSTEM=1\nuint8 MODULE_INTERFACE=2\nuint8 MODULE_LOCAL_DEVICE=3\nuint8 MODULE_STREAM=4\n\nuint8 id",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "MODULE_REMOTE_DEVICE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODULE_SYSTEM",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODULE_INTERFACE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODULE_LOCAL_DEVICE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODULE_STREAM",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TriggerInfo": {
+      "description": "",
+      "raw": "string selector\nstring mode\nstring source",
+      "fields": [
+        {
+          "type": "string",
+          "name": "selector",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ConnectionStatus": {
+      "description": "",
+      "raw": "---\nbool connected",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "connected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Dummy": {
+      "description": "TODO: Delete and replace with actual service definitions",
+      "raw": "#TODO: Delete and replace with actual service definitions\n\n---",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "FeatureAccessModeGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nbool is_readable\nbool is_writeable\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_readable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_writeable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureBoolGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nbool value\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureBoolSet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\nbool value\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureCommandIsDone": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nbool is_done\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_done",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureCommandRun": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureEnumAsIntGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\nstring option\n---\nint64 value\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "option",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureEnumAsStringGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\nint64 value\n---\nstring option\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "option",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureEnumGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nstring value\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureEnumInfoGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nstring[] possible_values\nstring[] available_values\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "possible_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "available_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureEnumSet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\nstring value\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureFloatGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nfloat64 value\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureFloatInfoGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nfloat64 min\nfloat64 max\nfloat64 inc\nbool inc_available\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "float64",
+          "name": "min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "inc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "inc_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureFloatSet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\nfloat64 value\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureInfoQuery": {
+      "description": "",
+      "raw": "string[] feature_names\nFeatureModule feature_module\n---\nFeatureInfo[] feature_info\nError error",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "feature_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "FeatureInfo[]",
+          "name": "feature_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureIntGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nint64 value\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureIntInfoGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nint64 min\nint64 max\nint64 inc\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "inc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureIntSet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\nint64 value\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureRawGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nbyte[] buffer\nuint32 buffer_size\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "byte[]",
+          "name": "buffer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "buffer_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureRawInfoGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nint64 max_length\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "max_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureRawSet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\nbyte[] buffer\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte[]",
+          "name": "buffer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureStringGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nstring value\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureStringInfoGet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\n---\nint64 max_length\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "max_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeatureStringSet": {
+      "description": "",
+      "raw": "string feature_name\nFeatureModule feature_module\nstring value\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FeaturesListGet": {
+      "description": "",
+      "raw": "FeatureModule feature_module\n---\nstring[] feature_list\nError error",
+      "request_fields": [
+        {
+          "type": "FeatureModule",
+          "name": "feature_module",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "feature_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SettingsLoadSave": {
+      "description": "",
+      "raw": "string filename\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Status": {
+      "description": "",
+      "raw": "---\nError error\nstring display_name\nstring model_name\nstring device_firmware_version\nstring device_id\nstring device_user_id\nstring device_serial_number\nstring interface_id\nstring transport_layer_id\nbool streaming\nuint32 width\nuint32 height\nfloat64 frame_rate\nstring pixel_format\nTriggerInfo[] trigger_info\nstring ip_address\nstring mac_address",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "display_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_firmware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_user_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_serial_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "interface_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "transport_layer_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "streaming",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "frame_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pixel_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TriggerInfo[]",
+          "name": "trigger_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ip_address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mac_address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StreamStartStop": {
+      "description": "",
+      "raw": "---\nError error",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SubscribeEvent": {
+      "description": "",
+      "raw": "string name\n---\nError error",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UnsubscribeEvent": {
+      "description": "",
+      "raw": "string name\n---",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

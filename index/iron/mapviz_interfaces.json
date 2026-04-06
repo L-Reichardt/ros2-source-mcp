@@ -1,0 +1,95 @@
+{
+  "name": "mapviz_interfaces",
+  "version": "2.4.3",
+  "description": "ROS interfaces used by Mapviz",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/mapviz",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mapviz",
+    "url": "https://github.com/swri-robotics/mapviz.git",
+    "branch": "ros2-devel"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "marti_common_msgs"
+    ],
+    "buildtool": [
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "mapviz"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "AddMapvizDisplay": {
+      "description": "Add or updates a mapviz display.",
+      "raw": "# Add or updates a mapviz display.\n\nstring                        name         # The name of the display.\nstring                        type         # The plugin type.\n\nint32                         draw_order   # The display order. 1 corresponds\n                                           # to the first displayed, 2 to the \n                                           # second, -1 to last, and -2 to the\n                                           # second to last, etc.  0 will keep\n                                           # the current display order of an \n                                           # existing display and give a new\n                                           # display the last display order.\n\nbool                          visible      # If the display should be visible.\n\nmarti_common_msgs/KeyValue[]  properties   # Configuration properties.\n\n---\n\nbool   success   # indicate successful run of triggered service\nstring message   # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "The name of the display.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "The plugin type.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "draw_order",
+          "comment": "The display order. 1 corresponds",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "visible",
+          "comment": "If the display should be visible.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "marti_common_msgs/KeyValue[]",
+          "name": "properties",
+          "comment": "Configuration properties.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

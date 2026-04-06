@@ -1,0 +1,146 @@
+{
+  "name": "qb_softhand_industry_msgs",
+  "version": "2.1.2",
+  "description": "This package contains the ROS messages for qbrobotics® SoftHand Industry.",
+  "license": "BSD 3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://bitbucket.org/qbrobotics/qbshin-ros",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "qb_softhand_industry",
+    "url": "https://bitbucket.org/qbrobotics/qbshin-ros.git",
+    "branch": "production-humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "qb_softhand_industry_ros2_control",
+      "qb_softhand_industry_srvs"
+    ]
+  },
+  "messages": {
+    "ConnectionState": {
+      "description": "qb SoftHand Industry connection state message",
+      "raw": "# qb SoftHand Industry connection state message\n\nqb_softhand_industry_msgs/DeviceConnectionInfo device",
+      "fields": [
+        {
+          "type": "qb_softhand_industry_msgs/DeviceConnectionInfo",
+          "name": "device",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeviceConnectionInfo": {
+      "description": "qb SoftHand Industry message that constains:",
+      "raw": "# qb SoftHand Industry message that constains: \n\nbool is_active     # motor activation status;\nstring ip          # serial port",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "is_active",
+          "comment": "motor activation status;",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ip",
+          "comment": "serial port",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ResourceData": {
+      "description": "qb SoftHand Industry resource data message",
+      "raw": "# qb SoftHand Industry resource data message\n\nstring name\nfloat64 position\nfloat64 velocity\nfloat64 effort\nfloat64 command",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "effort",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "State": {
+      "description": "State message valid for qb SoftHand Industry",
+      "raw": "# State message valid for qb SoftHand Industry\n\n#  - motors: position, command in [ticks], velocity in [ticks/s], effort in [mA]\nqb_softhand_industry_msgs/ResourceData actuator\n\n",
+      "fields": [
+        {
+          "type": "qb_softhand_industry_msgs/ResourceData",
+          "name": "actuator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StateStamped": {
+      "description": "State message with stamped info valid for qb SoftHand Industry",
+      "raw": "# State message with stamped info valid for qb SoftHand Industry\n\nstd_msgs/Header header\n\nqb_softhand_industry_msgs/State device_data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "qb_softhand_industry_msgs/State",
+          "name": "device_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

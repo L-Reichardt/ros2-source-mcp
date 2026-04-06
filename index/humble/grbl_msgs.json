@@ -1,0 +1,191 @@
+{
+  "name": "grbl_msgs",
+  "version": "0.0.2",
+  "description": "ROS2 Messages package for GRBL devices",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "grbl_msgs",
+    "url": "https://github.com/flynneva/grbl_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "grbl_ros"
+    ]
+  },
+  "messages": {
+    "State": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring state_name\nuint8 state\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "state_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "Stop": {
+      "description": "",
+      "raw": "string machine_id\nstring command\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "machine_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "SendGcodeCmd": {
+      "description": "",
+      "raw": "string command\n---\nbool success\n---\nstring status\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SendGcodeFile": {
+      "description": "",
+      "raw": "string file_path\n---\nbool success\n---\nstring status\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "file_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SendPose": {
+      "description": "",
+      "raw": "string command\n---\nbool success\n---\nstring status\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

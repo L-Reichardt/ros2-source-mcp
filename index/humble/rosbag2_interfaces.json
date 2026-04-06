@@ -1,0 +1,219 @@
+{
+  "name": "rosbag2_interfaces",
+  "version": "0.15.16",
+  "description": "Interface definitions for controlling rosbag2",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rosbag2",
+    "url": "https://github.com/ros2/rosbag2.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rosbag2_transport"
+    ]
+  },
+  "messages": {
+    "ReadSplitEvent": {
+      "description": "The full path of the file that was finished and closed",
+      "raw": "# The full path of the file that was finished and closed\nstring closed_file\n# The full path of the new file that was opened to continue playback\nstring opened_file\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "closed_file",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "opened_file",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WriteSplitEvent": {
+      "description": "The full path of the file that was finished and closed",
+      "raw": "# The full path of the file that was finished and closed\nstring closed_file\n# The full path of the new file that was created to continue recording\nstring opened_file\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "closed_file",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "opened_file",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "Burst": {
+      "description": "",
+      "raw": "uint64 num_messages  # Number of messages to burst\n---\nuint64 actually_burst  # Number of messages actually burst\n",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "num_messages",
+          "comment": "Number of messages to burst",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint64",
+          "name": "actually_burst",
+          "comment": "Number of messages actually burst",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRate": {
+      "description": "",
+      "raw": "---\nfloat64 rate\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "float64",
+          "name": "rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsPaused": {
+      "description": "",
+      "raw": "---\nbool paused\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "paused",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Pause": {
+      "description": "",
+      "raw": "---\n",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "PlayNext": {
+      "description": "",
+      "raw": "---\nbool success  # can only play-next while playback is paused\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "can only play-next while playback is paused",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Resume": {
+      "description": "",
+      "raw": "---\n",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "Seek": {
+      "description": "",
+      "raw": "builtin_interfaces/Time time\n---\nbool success  # return true if valid time in bag duration, and successful seek\n",
+      "request_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if valid time in bag duration, and successful seek",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetRate": {
+      "description": "",
+      "raw": "float64 rate\n---\nbool success  # true if valid rate (> 0) was set\n",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true if valid rate (> 0) was set",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Snapshot": {
+      "description": "",
+      "raw": "---\nbool success\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TogglePaused": {
+      "description": "",
+      "raw": "---\n",
+      "request_fields": [],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

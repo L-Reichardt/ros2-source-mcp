@@ -1,0 +1,191 @@
+{
+  "name": "husky_msgs",
+  "version": "1.0.9",
+  "description": "Messages for Clearpath Husky",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "husky",
+    "url": "https://github.com/husky/husky.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "husky_base",
+      "husky_desktop"
+    ]
+  },
+  "messages": {
+    "HuskyStatus": {
+      "description": "MCU Uptime, in ms",
+      "raw": "std_msgs/Header header\n\n# MCU Uptime, in ms\nuint32 uptime\n\n# ROS Control loop frequency (PC-side)\nfloat64 ros_control_loop_freq\n\n# Current draw of platform components, in amps\nfloat64 mcu_and_user_port_current\nfloat64 left_driver_current\nfloat64 right_driver_current\n\n# Voltage of platform components, in volts\nfloat64 battery_voltage\nfloat64 left_driver_voltage\nfloat64 right_driver_voltage\n\n# Component temperatures, in C\nfloat64 left_driver_temp\nfloat64 right_driver_temp\nfloat64 left_motor_temp\nfloat64 right_motor_temp\n\n# Battery capacity (Wh) and charge (%) estimate\nuint16 capacity_estimate\nfloat64 charge_estimate\n\n# Husky error/stop conditions\nbool timeout\nbool lockout\nbool e_stop\nbool ros_pause\nbool no_battery\nbool current_limit\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "uptime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ros_control_loop_freq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "mcu_and_user_port_current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "left_driver_current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "right_driver_current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "battery_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "left_driver_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "right_driver_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "left_driver_temp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "right_driver_temp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "left_motor_temp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "right_motor_temp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "capacity_estimate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "charge_estimate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lockout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "e_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ros_pause",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "no_battery",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "current_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

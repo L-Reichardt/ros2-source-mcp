@@ -1,0 +1,292 @@
+{
+  "name": "cras_msgs",
+  "version": "2.0.1",
+  "description": "Common messages used by CRAS",
+  "license": "BSD",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://index.ros.org/p/cras_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/cras_msgs/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/cras_msgs",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "cras_msgs",
+    "url": "https://github.com/ctu-vras/cras_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "message_generation",
+      "rosidl_default_generators"
+    ],
+    "build_export": [
+      "message_runtime"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "doc": [
+      "rosdoc_lite"
+    ],
+    "test": [
+      "libboost-dev",
+      "python-catkin-lint",
+      "python3-catkin-lint",
+      "roslint",
+      "sensor_msgs",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Brightness": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Brightness of e.g. a dimmable light (LED, OLED, ...).\n \nfloat64 brightness  # Ratio of the brightness to the maximum brightness (0.0 - 1.0).\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "brightness",
+          "comment": "Ratio of the brightness to the maximum brightness (0.0 - 1.0).",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BrightnessStamped": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Brightness of e.g. a dimmable light (LED, OLED, ...).\n\nstd_msgs/Header header  # stamp is the time the brightness was measured.\n                        # frame_id is the location of the measurement (does not need to be TF frame, but it is recommended).\nBrightness value  # Brightness.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp is the time the brightness was measured.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Brightness",
+          "name": "value",
+          "comment": "Brightness.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ColorRGBAStamped": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# The color e.g. of an object or of a light like RGB LED, OLED, ...\n\nstd_msgs/Header header  # stamp is the time the color was measured.\n                        # frame_id is the location of the measurement (does not need to be TF frame, but it is recommended).\nstd_msgs/ColorRGBA value  # The color.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp is the time the color was measured.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "value",
+          "comment": "The color.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ElectricCurrent": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n \n# Single electric current value.\n \nfloat64 current  # Current value (in Amperes).\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "current",
+          "comment": "Current value (in Amperes).",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ElectricCurrentStamped": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Single stamped electric current measurement.\n\nstd_msgs/Header header  # stamp is the time the current was measured.\n                        # frame_id is the location of the current measurement (does not need to be a TF frame).\nElectricCurrentMeasurement measurement  # The measured current.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp is the time the current was measured.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ElectricCurrentMeasurement",
+          "name": "measurement",
+          "comment": "The measured current.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Heartbeat": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Heartbeat messages can be sent by sensor drivers to allow easy diagnostics of publishing rate without the need to\n# subscribe their possibly very large sensor messages.\n# The following naming convention should be used. If the sensor topic is TOPIC, the corresponding heartbeat messages\n# should be published to TOPIC/heartbeat . If this convention is followed, diagnostic tools can automatically assign\n# the heartbeats to the correct base topics.\n \nstd_msgs/Header header  # Header of a (possibly much larger) message to which the heartbeat belongs",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header of a (possibly much larger) message to which the heartbeat belongs",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Power": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Mechanical or electrical power value.\n \nfloat64 power  # Power value (in Watts).\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "power",
+          "comment": "Power value (in Watts).",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PowerStamped": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Single power measurement.\n\nstd_msgs/Header header  # stamp is the time the power was measured.\n                        # frame_id is the location of the power measurement (does not need to be a TF frame).\nPowerMeasurement measurement  # The measured power.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp is the time the power was measured.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PowerMeasurement",
+          "name": "measurement",
+          "comment": "The measured power.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PowerSwitchState": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# State of a power switch (a relay, a transistor, FET...).\n \nbool on  # If true, the power switch is on, i.e. the electric path is connected.\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "on",
+          "comment": "If true, the power switch is on, i.e. the electric path is connected.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PowerSwitchStateStamped": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# State of a power switch (a relay, a transistor, FET...).\n\nstd_msgs/Header header  # stamp is the time the power switch state was measured.\n                        # frame_id is the location of the power switch (does not need to be TF frame).\nPowerSwitchState state  # State of the power switch light.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp is the time the power switch state was measured.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PowerSwitchState",
+          "name": "state",
+          "comment": "State of the power switch light.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Voltage": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Single voltage value.\n \nfloat64 voltage  # Voltage value (in Volts).\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "voltage",
+          "comment": "Voltage value (in Volts).",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VoltageStamped": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Single voltage measurement.\n\nstd_msgs/Header header  # stamp is the time the voltage was measured.\n                        # frame_id is the location of the voltage measurement (does not need to be a TF frame).\nVoltageMeasurement measurement  # The measured voltage.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp is the time the voltage was measured.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "VoltageMeasurement",
+          "name": "measurement",
+          "comment": "The measured voltage.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetBrightness": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Set the brightness of e.g. a dimmable light.\n\nBrightness value  # The requested brightness.\n---\n# If a failure occurs, the service server should throw an exception.\n",
+      "request_fields": [
+        {
+          "type": "Brightness",
+          "name": "value",
+          "comment": "The requested brightness.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetColor": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\n# Set color of e.g. a color light (RGB LED, OLED...).\n\nstd_msgs/ColorRGBA color  # The requested color. All channels values 0.0 - 1.0.\n                          # If this denotes the color of a (LED) light, black means either no light or actual\n                          # black if the device can produce it.\n                          # Some devices may use alpha e.g. as backlight intensity or as visual preview alpha,\n                          # so rather set it to 1.0 if you don't know.\n---\n# If a failure occurs, the service server should throw an exception.\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "color",
+          "comment": "The requested color. All channels values 0.0 - 1.0.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

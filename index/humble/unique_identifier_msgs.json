@@ -1,0 +1,64 @@
+{
+  "name": "unique_identifier_msgs",
+  "version": "2.2.1",
+  "description": "ROS messages for universally unique identifiers.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/unique_identifier_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "unique_identifier_msgs",
+    "url": "https://github.com/ros2/unique_identifier_msgs.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "action_msgs",
+      "autoware_adapi_v1_msgs",
+      "autoware_internal_planning_msgs",
+      "autoware_perception_msgs",
+      "autoware_planning_msgs",
+      "autoware_system_msgs",
+      "autoware_utils_uuid",
+      "geodesy",
+      "geographic_msgs",
+      "py_trees_ros",
+      "py_trees_ros_interfaces",
+      "py_trees_ros_viewer",
+      "rclpy"
+    ]
+  },
+  "messages": {
+    "UUID": {
+      "description": "A universally unique identifier (UUID).",
+      "raw": "# A universally unique identifier (UUID).\n#\n#  http://en.wikipedia.org/wiki/Universally_unique_identifier\n#  http://tools.ietf.org/html/rfc4122.html\n\nuint8[16] uuid\n",
+      "fields": [
+        {
+          "type": "uint8[16]",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

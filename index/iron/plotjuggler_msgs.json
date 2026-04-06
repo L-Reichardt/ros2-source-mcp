@@ -1,0 +1,157 @@
+{
+  "name": "plotjuggler_msgs",
+  "version": "0.2.3",
+  "description": "Special Messages for PlotJuggler",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "plotjuggler_msgs",
+    "url": "https://github.com/facontidavide/plotjuggler_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "DataPoint": {
+      "description": "",
+      "raw": "uint16 name_index\nfloat64 stamp\nfloat64 value\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "name_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DataPoints": {
+      "description": "",
+      "raw": "uint32 dictionary_uuid\nplotjuggler_msgs/DataPoint[] samples\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "dictionary_uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "plotjuggler_msgs/DataPoint[]",
+          "name": "samples",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Dictionary": {
+      "description": "",
+      "raw": "uint32 dictionary_uuid\nstring[] names\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "dictionary_uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatisticsNames": {
+      "description": "header",
+      "raw": "# header\nstd_msgs/Header header\n\n# Statistics names\nstring[] names\nuint32 names_version #This is increased each time names change\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "names_version",
+          "comment": "This is increased each time names change",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatisticsValues": {
+      "description": "header",
+      "raw": "# header\nstd_msgs/Header header\n\n# Statistics\nfloat64[] values\nuint32 names_version # The values vector corresponds to the name vector with the same name\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "names_version",
+          "comment": "The values vector corresponds to the name vector with the same name",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

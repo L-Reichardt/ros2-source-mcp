@@ -1,0 +1,257 @@
+{
+  "name": "clearpath_motor_msgs",
+  "version": "1.0.1",
+  "description": "Messages for Clearpath Motor Drivers.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "clearpath_msgs",
+    "url": "https://github.com/clearpathrobotics/clearpath_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "std_msgs",
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "clearpath_msgs"
+    ]
+  },
+  "messages": {
+    "PumaFeedback": {
+      "description": "Number on the bus (CAN ID).",
+      "raw": "# Number on the bus (CAN ID).\nuint8 device_number\n\n# Name of joint controlled, or other identifier.\nstring device_name\n\n# Duty cycle of the h-bridge driver (-1..1).\nfloat32 duty_cycle\n\n# Current consumed (amps).\nfloat32 current\n\n# Travel as measured by the encoder (rad).\nfloat64 travel\n\n# Angular velocity as measured by the encoder (rad/s).\nfloat64 speed\n\n# The reported setpoint value of the on-board controller for the given mode.\n# In voltage control, duty cycle of the h-bridge driver (-1..1).\n# In speed control, angular velocity setpoint of the on-board controller (rad/s).\n# In position control, travel as measured by the encoder (rad).\n# In current control, the current consumed (amps).\nfloat64 setpoint\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "device_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "duty_cycle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "travel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "setpoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PumaMultiFeedback": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nclearpath_motor_msgs/PumaFeedback[] drivers_feedback\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "clearpath_motor_msgs/PumaFeedback[]",
+          "name": "drivers_feedback",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PumaMultiStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nclearpath_motor_msgs/PumaStatus[] drivers\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "clearpath_motor_msgs/PumaStatus[]",
+          "name": "drivers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PumaStatus": {
+      "description": "Number on the bus (CAN ID).",
+      "raw": "# Number on the bus (CAN ID).\nuint8 device_number\n\n# Name of joint controlled, or other identifier.\nstring device_name\n\n# Input terminal voltage (volts).\nfloat32 bus_voltage\n\n# Internal driver temperature (degC).\nfloat32 temperature\n\n# Voltage as output to the motor (volts).\nfloat32 output_voltage\n\n# Value of the auxiliary ADC (volts).\nfloat32 analog_input\n\n# Available control modes, not all of which are broken out to\n# this ROS driver.\nuint8 MODE_VOLTAGE=0\nuint8 MODE_CURRENT=1\nuint8 MODE_SPEED=2\nuint8 MODE_POSITION=3\nuint8 MODE_VCOMP=4\nuint8 mode\n\n# Fault states which could cause the driver to be immobilized.\nuint8 FAULT_CURRENT=1\nuint8 FAULT_TEMPERATURE=2\nuint8 FAULT_BUS_VOLTAGE=4\nuint8 FAULT_BRIDGE_DRIVER=8\nuint8 fault\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "device_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "bus_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "output_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "analog_input",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_VOLTAGE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_CURRENT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_SPEED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_POSITION",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_VCOMP",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_CURRENT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_TEMPERATURE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_BUS_VOLTAGE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT_BRIDGE_DRIVER",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

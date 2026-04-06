@@ -1,0 +1,1909 @@
+{
+  "name": "ublox_ubx_msgs",
+  "version": "0.2.3",
+  "description": "UBLOX UBX ROS2 Msgs",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/aussierobots/ublox_dgnss",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "ublox_dgnss",
+    "url": "https://github.com/aussierobots/ublox_dgnss.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": [
+      "ublox_dgnss",
+      "ublox_dgnss_node"
+    ]
+  },
+  "messages": {
+    "CarrSoln": {
+      "description": "",
+      "raw": "uint8 CARRIER_SOLUTION_NO_CARRIER_RANGE_SOLUTION = 0\nuint8 CARRIER_SOLUTION_PHASE_WITH_FLOATING_AMBIGUITIES = 1\nuint8 CARRIER_SOLUTION_PHASE_WITH_FIXED_AMBIGUITIES = 2\nuint8 status         # Carrier phase solution status",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CARRIER_SOLUTION_NO_CARRIER_RANGE_SOLUTION",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CARRIER_SOLUTION_PHASE_WITH_FLOATING_AMBIGUITIES",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CARRIER_SOLUTION_PHASE_WITH_FIXED_AMBIGUITIES",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "Carrier phase solution status",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GpsFix": {
+      "description": "",
+      "raw": "uint8 GPS_NO_FIX = 0\nuint8 GPS_DEAD_RECKONING_ONLY = 1\nuint8 GPS_FIX_2D = 2\nuint8 GPS_FIX_3D = 3\nuint8 GPS_PLUS_DEAD_RECKONING = 4 \nuint8 GPS_TIME_ONLY = 5\nuint8 fix_type         # gps fix type",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "GPS_NO_FIX",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GPS_DEAD_RECKONING_ONLY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GPS_FIX_2D",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GPS_FIX_3D",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GPS_PLUS_DEAD_RECKONING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GPS_TIME_ONLY",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "fix_type",
+          "comment": "gps fix type",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MapMatching": {
+      "description": "",
+      "raw": "uint8 MAP_MATCHING_NONE = 0\nuint8 MAP_MATCHING_VALID_NOT_USED = 1\nuint8 MAP_MATCHING_VALID_AND_USED = 2\nuint8 MAP_MATCHING_VALID_DEAD_RECKONING = 3\nuint8 status    # map matching status",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "MAP_MATCHING_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MAP_MATCHING_VALID_NOT_USED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MAP_MATCHING_VALID_AND_USED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MAP_MATCHING_VALID_DEAD_RECKONING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "map matching status",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PSMPVT": {
+      "description": "Power Save Mode for PVT",
+      "raw": "# Power Save Mode for PVT\nuint8 PSM_STATE_NOT_ACTIVE = 0\nuint8 PSM_STATE_ENABLED = 1\nuint8 PSM_STATE_ACQUISITION = 2\nuint8 PSM_STATE_TRACKING = 3\nuint8 PSM_STATE_POWER_OPTIMIZED_TRACKING = 4\nuint8 PSM_STATE_INACTIVE = 5\nuint8 state       # power save mode state",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_NOT_ACTIVE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_ENABLED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_ACQUISITION",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_TRACKING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_POWER_OPTIMIZED_TRACKING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_INACTIVE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "power save mode state",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PSMStatus": {
+      "description": "Power Save Mode for Status",
+      "raw": "# Power Save Mode for Status\nuint8 PSM_STATE_ACQUISITION = 0\nuint8 PSM_STATE_TRACKING = 1\nuint8 PSM_STATE_POWER_OPTIMIZED_TRACKING = 2\nuint8 PSM_STATE_INACTIVE = 3\nuint8 state       # power save mode state",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_ACQUISITION",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_TRACKING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_POWER_OPTIMIZED_TRACKING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PSM_STATE_INACTIVE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "power save mode state",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpoofDet": {
+      "description": "",
+      "raw": "uint8 SPOOF_DET_UNKNOWN = 0\nuint8 SPOOF_DET_NO_SPOOFING = 1\nuint8 SPOOF_DET_SPOOFING = 2\nuint8 SPOOF_DET_MULTIPLE_SPOOFING = 3\nuint8 state   # spoofing det state",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "SPOOF_DET_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPOOF_DET_NO_SPOOFING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPOOF_DET_SPOOFING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPOOF_DET_MULTIPLE_SPOOFING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "spoofing det state",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavClock": {
+      "description": "this message contains a UBX-NAV-CLOCK (0x01 0x22) record clock solution",
+      "raw": "# this message contains a UBX-NAV-CLOCK (0x01 0x22) record clock solution\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           #  ms - GPS Time of week of the navigation epoch\nint32 clk_b           # ns - Clock bias\nint32 clk_d           # ns/s - Clock drift\nuint32 t_acc          # ns - Time accuracy estimate\nuint32 f_acc          # ps/s - Frequency accuracy estimate",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "clk_b",
+          "comment": "ns - Clock bias",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "clk_d",
+          "comment": "ns/s - Clock drift",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "t_acc",
+          "comment": "ns - Time accuracy estimate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "f_acc",
+          "comment": "ps/s - Frequency accuracy estimate",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavCov": {
+      "description": "This message contains a UBX-NAV-COV (0x01 0x36) record clock solution",
+      "raw": "# This message contains a UBX-NAV-COV (0x01 0x36) record clock solution\n#\n# It outputs the covariance matrices for the position and velocity\n# solutions in the topocentric coordinate system defined as the local-level North\n# (N), East (E), Down (D) frame. As the covariance matrices are symmetric, only\n# the upper triangular part is output.\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           #  ms - GPS Time of week of the navigation epoch\nuint8 version         # message version (0x00 for this version)\nbool pos_cor_valid    # position covariance matrix validity flag\nbool vel_cor_valid    # velocity covariance matrix validity flag\nfloat32 pos_cov_nn    # m^2 - Position covariance matric value p_NN\nfloat32 pos_cov_ne    # m^2 - Position covariance matric value p_NE\nfloat32 pos_cov_nd    # m^2 - Position covariance matric value p_ND\nfloat32 pos_cov_ee    # m^2 - Position covariance matric value p_EE\nfloat32 pos_cov_ed    # m^2 - Position covariance matric value p_ED\nfloat32 pos_cov_dd    # m^2 - Position covariance matric value p_DD\nfloat32 vel_cov_nn    # m^2/s^2 - Velocity covariance matric value v_NN\nfloat32 vel_cov_ne    # m^2/s^2 - Velocity covariance matric value v_NE\nfloat32 vel_cov_nd    # m^2/s^2 - Velocity covariance matric value v_ND\nfloat32 vel_cov_ee    # m^2/s^2 - Velocity covariance matric value v_EE\nfloat32 vel_cov_ed    # m^2/s^2 - Velocity covariance matric value v_ED\nfloat32 vel_cov_dd    # m^2/s^2 - Velocity covariance matric value v_DD",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version",
+          "comment": "message version (0x00 for this version)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "pos_cor_valid",
+          "comment": "position covariance matrix validity flag",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "vel_cor_valid",
+          "comment": "velocity covariance matrix validity flag",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pos_cov_nn",
+          "comment": "m^2 - Position covariance matric value p_NN",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pos_cov_ne",
+          "comment": "m^2 - Position covariance matric value p_NE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pos_cov_nd",
+          "comment": "m^2 - Position covariance matric value p_ND",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pos_cov_ee",
+          "comment": "m^2 - Position covariance matric value p_EE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pos_cov_ed",
+          "comment": "m^2 - Position covariance matric value p_ED",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pos_cov_dd",
+          "comment": "m^2 - Position covariance matric value p_DD",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_cov_nn",
+          "comment": "m^2/s^2 - Velocity covariance matric value v_NN",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_cov_ne",
+          "comment": "m^2/s^2 - Velocity covariance matric value v_NE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_cov_nd",
+          "comment": "m^2/s^2 - Velocity covariance matric value v_ND",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_cov_ee",
+          "comment": "m^2/s^2 - Velocity covariance matric value v_EE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_cov_ed",
+          "comment": "m^2/s^2 - Velocity covariance matric value v_ED",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_cov_dd",
+          "comment": "m^2/s^2 - Velocity covariance matric value v_DD",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavDOP": {
+      "description": "this message contains a UBX-NAV-DOP (0x01 0x04) record dilution of precision",
+      "raw": "# this message contains a UBX-NAV-DOP (0x01 0x04) record dilution of precision\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           # ms - GPS Time of week of the navigation epoch\nuint32 g_dop          # 0.01 - Geometric DOP \nuint32 p_dop          # 0.01 - Position DOP \nuint32 t_dop          # 0.01 - Time DOP \nuint32 v_dop          # 0.01 - Vertical DOP \nuint32 h_dop          # 0.01 - Horizontal DOP \nuint32 n_dop          # 0.01 - Northing DOP \nuint32 e_dop          # 0.01 - Easting DOP ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "g_dop",
+          "comment": "0.01 - Geometric DOP",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "p_dop",
+          "comment": "0.01 - Position DOP",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "t_dop",
+          "comment": "0.01 - Time DOP",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "v_dop",
+          "comment": "0.01 - Vertical DOP",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "h_dop",
+          "comment": "0.01 - Horizontal DOP",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "n_dop",
+          "comment": "0.01 - Northing DOP",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "e_dop",
+          "comment": "0.01 - Easting DOP",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavEOE": {
+      "description": "this message contains a UBX-NAV-EOE (0x01 0x61) record End of Epoch",
+      "raw": "# this message contains a UBX-NAV-EOE (0x01 0x61) record End of Epoch\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           #  ms - GPS Time of week of the navigation epoch",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavHPPosECEF": {
+      "description": "this message contains a UBX-NAV-HPPOSECEF (0x01 0x13) record",
+      "raw": "# this message contains a UBX-NAV-HPPOSECEF (0x01 0x13) record \nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint8 version         # message version\nuint32 itow           # ms - GPS Time of week of the navigation epoch\nint32 ecef_x          # cm - ECEF X coordinate\nint32 ecef_y          # cm - ECEF Y coordinate\nint32 ecef_z          # cm - ECEF Z coordinate\n# HPs must be in the range of -99..+99. Precise coordinate in cm = ecef_? + (ecef_?_hp * 1e-2)\nint8 ecef_x_hp        # mm scale 0.1 - high precision ECEF X coordinate\nint8 ecef_y_hp        # mm scale 0.1 - high precision ECEF Y coordinate\nint8 ecef_z_hp        # mm scale 0.1 - high precision ECEF Z coordinate\nbool invalid_ecef_x\nbool invalid_ecef_y\nbool invalid_ecef_z\nbool invalid_ecef_x_hp\nbool invalid_ecef_y_hp\nbool invalid_ecef_z_hp\nuint32 p_acc          # mm scale 0.1 - position accuracy estimate ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version",
+          "comment": "message version",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_x",
+          "comment": "cm - ECEF X coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_y",
+          "comment": "cm - ECEF Y coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_z",
+          "comment": "cm - ECEF Z coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "ecef_x_hp",
+          "comment": "mm scale 0.1 - high precision ECEF X coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "ecef_y_hp",
+          "comment": "mm scale 0.1 - high precision ECEF Y coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "ecef_z_hp",
+          "comment": "mm scale 0.1 - high precision ECEF Z coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_ecef_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_ecef_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_ecef_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_ecef_x_hp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_ecef_y_hp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_ecef_z_hp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "p_acc",
+          "comment": "mm scale 0.1 - position accuracy estimate",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavHPPosLLH": {
+      "description": "this message contains a UBX-NAV-HPPOSLLH (0x01 0x14) record",
+      "raw": "# this message contains a UBX-NAV-HPPOSLLH (0x01 0x14) record \nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint8 version         # message version\nbool invalid_lon        \nbool invalid_lat\nbool invalid_height\nbool invalid_hmsl     # invalid height above mean sea level\nbool invalid_lon_hp\nbool invalid_lat_hp\nbool invalid_height_hp\nbool invalid_hmsl_hp  # invalid height above mean sea level\nuint32 itow           # ms - GPS Time of week of the navigation epoch\nint32 lon             # deg scale 1e-7 - longitude\nint32 lat             # deg scale 1e-7 - latitude\nint32 height          # mm - height above ellipsoid\nint32 hmsl            # mm - height above mean sea level\nint8 lon_hp           # deg scale 1e-9 - Precision longitude in deg * 1e-7 = lon +(lonHp * 1e-2)\nint8 lat_hp           # deg scale 1e-9 - Precise latitude in deg  *  1e-7  =  lat  +(latHp * 1e-2) \nint8 height_hp        # mm scale 0.1 - Precise height in mm = height + (heightHp * 0.1)\nint8 hmsl_hp          # mm scale 0.1 - Precise height in mm =hMSL + (hMSLHp * 0.1)\nuint32 h_acc          # mm scale 0.1 - horizontal accuracy estimate\nuint32 v_acc          # mm scale 0.1 - vertical accuracy estimate",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version",
+          "comment": "message version",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_lon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_lat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_hmsl",
+          "comment": "invalid height above mean sea level",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_lon_hp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_lat_hp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_height_hp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_hmsl_hp",
+          "comment": "invalid height above mean sea level",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "lon",
+          "comment": "deg scale 1e-7 - longitude",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "lat",
+          "comment": "deg scale 1e-7 - latitude",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "height",
+          "comment": "mm - height above ellipsoid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "hmsl",
+          "comment": "mm - height above mean sea level",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "lon_hp",
+          "comment": "deg scale 1e-9 - Precision longitude in deg * 1e-7 = lon +(lonHp * 1e-2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "lat_hp",
+          "comment": "deg scale 1e-9 - Precise latitude in deg  *  1e-7  =  lat  +(latHp * 1e-2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "height_hp",
+          "comment": "mm scale 0.1 - Precise height in mm = height + (heightHp * 0.1)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "hmsl_hp",
+          "comment": "mm scale 0.1 - Precise height in mm =hMSL + (hMSLHp * 0.1)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "h_acc",
+          "comment": "mm scale 0.1 - horizontal accuracy estimate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "v_acc",
+          "comment": "mm scale 0.1 - vertical accuracy estimate",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavOdo": {
+      "description": "this message contains a UBX-NAV-ODO (0x01 0x09) record Odometer solution",
+      "raw": "# this message contains a UBX-NAV-ODO (0x01 0x09) record Odometer solution\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint8 version         # message version\nuint32 itow           # ms - GPS Time of week of the navigation epoch\nuint32 distance       # m - ground distance since last reset\nuint32 total_distance # m - total comulative ground distance (since last cold start)\nuint32 distance_std   # m - ground distance accuracy (1-sigma)",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version",
+          "comment": "message version",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "distance",
+          "comment": "m - ground distance since last reset",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "total_distance",
+          "comment": "m - total comulative ground distance (since last cold start)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "distance_std",
+          "comment": "m - ground distance accuracy (1-sigma)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavPVT": {
+      "description": "this message contains a UBX-NAV-PVT (0x01 0x07) record",
+      "raw": "# this message contains a UBX-NAV-PVT (0x01 0x07) record\n# Navigation position velocity time solution\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           # ms - GPS Time of week of the navigation epoch\nuint16 year           # y - year utc\nuint8 month           # month - month utc\nuint8 day             # d -day utc\nuint8 hour            # h - hour utc\nuint8 min             # min - min utc\nuint8 sec             # s - sec utc\nbool valid_date       # valid UTC date\nbool valid_time       # valid UTC time of day\nbool fully_resolved   # UTC Time of day has been fully resolved (no seconds uncertainty)\nbool valid_mag        # valid magnetic declination\nuint32 t_acc          # ns - time accuracy estimate (utc)\nint32 nano            # ns - fraction of second, range -1e9 to 1e9 (utc)\nGpsFix gps_fix        # GNSSFix type\nbool gnss_fix_ok      # valid fix (ie within DOP & accruacy masks)\nbool diff_soln        # differential corrections were applied\nPSMPVT psm            # power save mode state\nbool head_veh_valid   # heading of vehicle is valid, only set if the receiver is in sensor fusion mode\nCarrSoln carr_soln    # carrier phase rnage solution status\nbool confirmed_avail  # information about UTC date and time of day validity confirmation is available \nbool confirmed_date   # UTC Date validity could be confirmed\nbool confirmed_time   # UTC Time of Day validity could be confirmed\nuint8 num_sv          # Number of satellites used in Nav Solution\nint32 lon             # deg scale ie-7 - longitude\nint32 lat             # deg scale ie-7 - latitude\nint32 height          # mm - Height above ellipsoid\nint32 hmsl            # mm - Height above mean sea level\nuint32 h_acc          # mm - Horizontal accuracy estimate \nuint32 v_acc          # mm - Vertical accuracy estimate \nint32 vel_n           # mm/s - NED north velocity\nint32 vel_e           # mm/s - NED east velocity\nint32 vel_d           # mm/s - NED down velocity\nint32 g_speed         # mm/s - ground speed (2-D)\nint32 head_mot        # deg scale ie-5 - heading of motion (2-D) \nuint32 s_acc          # mm/s - speed accuracy estimate\nuint32 head_acc       # deg scale ie-5 - heading accruracy estime (both motion and vehicle)\nuint16 p_dop          # scale 0.01 - Position DOP\nbool invalid_llh      # invalid lon, lat, height, hmsl\nint32 head_veh        # deg scale 1e-5 - Heading of vehicle (2-D), this is only valid when head_veh_valid is set, \n                      # otherwise the output is set to the heading of motion\nint16 mag_dec         # deg scale 1e-2 - Magnetic declination. Only supported in ADR 4.10 and later\nuint16 mag_acc        # deg scale ie-2 - Mangetic declination accuracy. Only supported in ADR 4.10 and later",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "year",
+          "comment": "y - year utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "month",
+          "comment": "month - month utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "day",
+          "comment": "d -day utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "hour",
+          "comment": "h - hour utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "min",
+          "comment": "min - min utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sec",
+          "comment": "s - sec utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid_date",
+          "comment": "valid UTC date",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid_time",
+          "comment": "valid UTC time of day",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fully_resolved",
+          "comment": "UTC Time of day has been fully resolved (no seconds uncertainty)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid_mag",
+          "comment": "valid magnetic declination",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "t_acc",
+          "comment": "ns - time accuracy estimate (utc)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "nano",
+          "comment": "ns - fraction of second, range -1e9 to 1e9 (utc)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GpsFix",
+          "name": "gps_fix",
+          "comment": "GNSSFix type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gnss_fix_ok",
+          "comment": "valid fix (ie within DOP & accruacy masks)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diff_soln",
+          "comment": "differential corrections were applied",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PSMPVT",
+          "name": "psm",
+          "comment": "power save mode state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "head_veh_valid",
+          "comment": "heading of vehicle is valid, only set if the receiver is in sensor fusion mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CarrSoln",
+          "name": "carr_soln",
+          "comment": "carrier phase rnage solution status",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "confirmed_avail",
+          "comment": "information about UTC date and time of day validity confirmation is available",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "confirmed_date",
+          "comment": "UTC Date validity could be confirmed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "confirmed_time",
+          "comment": "UTC Time of Day validity could be confirmed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_sv",
+          "comment": "Number of satellites used in Nav Solution",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "lon",
+          "comment": "deg scale ie-7 - longitude",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "lat",
+          "comment": "deg scale ie-7 - latitude",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "height",
+          "comment": "mm - Height above ellipsoid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "hmsl",
+          "comment": "mm - Height above mean sea level",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "h_acc",
+          "comment": "mm - Horizontal accuracy estimate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "v_acc",
+          "comment": "mm - Vertical accuracy estimate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "vel_n",
+          "comment": "mm/s - NED north velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "vel_e",
+          "comment": "mm/s - NED east velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "vel_d",
+          "comment": "mm/s - NED down velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "g_speed",
+          "comment": "mm/s - ground speed (2-D)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "head_mot",
+          "comment": "deg scale ie-5 - heading of motion (2-D)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "s_acc",
+          "comment": "mm/s - speed accuracy estimate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "head_acc",
+          "comment": "deg scale ie-5 - heading accruracy estime (both motion and vehicle)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "p_dop",
+          "comment": "scale 0.01 - Position DOP",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "invalid_llh",
+          "comment": "invalid lon, lat, height, hmsl",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "head_veh",
+          "comment": "deg scale 1e-5 - Heading of vehicle (2-D), this is only valid when head_veh_valid is set,",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mag_dec",
+          "comment": "deg scale 1e-2 - Magnetic declination. Only supported in ADR 4.10 and later",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mag_acc",
+          "comment": "deg scale ie-2 - Mangetic declination accuracy. Only supported in ADR 4.10 and later",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavPosECEF": {
+      "description": "this message contains a UBX-NAV-POSECEF (0x01 0x01) record",
+      "raw": "# this message contains a UBX-NAV-POSECEF (0x01 0x01) record \nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           # ms - GPS Time of week of the navigation epoch\nint32 ecef_x          # cm - ECEF X coordinate\nint32 ecef_y          # cm - ECEF Y coordinate\nint32 ecef_z          # cm - ECEF Z coordinate\nuint32 p_acc          # cm - position accuracy estimate ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_x",
+          "comment": "cm - ECEF X coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_y",
+          "comment": "cm - ECEF Y coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_z",
+          "comment": "cm - ECEF Z coordinate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "p_acc",
+          "comment": "cm - position accuracy estimate",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavPosLLH": {
+      "description": "this message contains a UBX-NAV-POSLLH (0x01 0x02) record",
+      "raw": "# this message contains a UBX-NAV-POSLLH (0x01 0x02) record \nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           # ms - GPS Time of week of the navigation epoch\nint32 lon             # deg scale 1e-7 - longitude\nint32 lat             # deg scale 1e-7 - latitude\nint32 height          # mm - height above ellipsoid\nint32 hmsl            # mm - height above mean sea level\nuint32 h_acc          # mm - horizontal accuracy estimate\nuint32 v_acc          # mm - vertical accuracy estimate",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "lon",
+          "comment": "deg scale 1e-7 - longitude",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "lat",
+          "comment": "deg scale 1e-7 - latitude",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "height",
+          "comment": "mm - height above ellipsoid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "hmsl",
+          "comment": "mm - height above mean sea level",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "h_acc",
+          "comment": "mm - horizontal accuracy estimate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "v_acc",
+          "comment": "mm - vertical accuracy estimate",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavRelPosNED": {
+      "description": "this message contains a UBX-NAV-ODO (0x01 0x3c) record",
+      "raw": "# this message contains a UBX-NAV-ODO (0x01 0x3c) record \n# Relative position information in NED frame\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint8 version             # message version\nuint16 ref_station_id     # reference station ID. Must be in the range 0..4096\nuint32 itow               # ms - GPS Time of week of the navigation epoch\nint32 rel_pos_n           # cm - North component of relative position vector \nint32 rel_pos_e           # cm - East component of relative position vector \nint32 rel_pos_d           # cm - Down component of relative position vector \nint32 rel_pos_length      # cm - Length of the relative position vector\nint32 rel_pos_heading     # deg scale 1e-5 - Heading of the relative position vector\nint8 rel_pos_hp_n         # mm scale 0.1 - full HP North is given by relPosN + (relPosHPN * 1e-2) \nint8 rel_pos_hp_e         # mm scale 0.1 - full HP East is given by relPosE + (relPosHPE * 1e-2) \nint8 rel_pos_hp_d         # mm scale 0.1 - full HP Down is given by relPosD + (relPosHPD * 1e-2) \nint8 rel_pos_hp_length    # mm scale 0.1 - full HP length is given by relPosLength + (relPosHPLength * 1e-2) \nuint32 acc_n              # mm scale 0.1 - Accuracy of relative position North Component\nuint32 acc_e              # mm scale 0.1 - Accuracy of relative position East Component\nuint32 acc_d              # mm scale 0.1 - Accuracy of relative position Down Component\nuint32 acc_length         # mm scale 0.1 - Accuracy of length of the relative position vector\nuint32 acc_heading        # deg scale 1e-5 - Accuracy of heading of the relative position vector\nbool gnss_fix_ok          # A valid fix (i.e within DOP & accuracy masks) \nbool diff_soln            # differential corrections were applied\nbool rel_pos_valid        # relative position components and accuracies are valid and, in moving base mode only, if baseline is valid\nCarrSoln carr_soln        # carrier phase range solution\nbool is_moving            # if the received is operating in moving base mode\nbool ref_pos_miss         # if extrapolated reference position was used to compute moving base solution this epoch. \nbool ref_obs_miss         # if extrapolated reference observations were used to compute moving base solution this epoch. \nbool rel_pos_heading_valid # relPosHeading is valid\nbool rel_pos_normalized   # components of the relative position vector (including the high-precision parts) are normalized\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version",
+          "comment": "message version",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "ref_station_id",
+          "comment": "reference station ID. Must be in the range 0..4096",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "rel_pos_n",
+          "comment": "cm - North component of relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "rel_pos_e",
+          "comment": "cm - East component of relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "rel_pos_d",
+          "comment": "cm - Down component of relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "rel_pos_length",
+          "comment": "cm - Length of the relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "rel_pos_heading",
+          "comment": "deg scale 1e-5 - Heading of the relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "rel_pos_hp_n",
+          "comment": "mm scale 0.1 - full HP North is given by relPosN + (relPosHPN * 1e-2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "rel_pos_hp_e",
+          "comment": "mm scale 0.1 - full HP East is given by relPosE + (relPosHPE * 1e-2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "rel_pos_hp_d",
+          "comment": "mm scale 0.1 - full HP Down is given by relPosD + (relPosHPD * 1e-2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "rel_pos_hp_length",
+          "comment": "mm scale 0.1 - full HP length is given by relPosLength + (relPosHPLength * 1e-2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "acc_n",
+          "comment": "mm scale 0.1 - Accuracy of relative position North Component",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "acc_e",
+          "comment": "mm scale 0.1 - Accuracy of relative position East Component",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "acc_d",
+          "comment": "mm scale 0.1 - Accuracy of relative position Down Component",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "acc_length",
+          "comment": "mm scale 0.1 - Accuracy of length of the relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "acc_heading",
+          "comment": "deg scale 1e-5 - Accuracy of heading of the relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gnss_fix_ok",
+          "comment": "A valid fix (i.e within DOP & accuracy masks)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diff_soln",
+          "comment": "differential corrections were applied",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rel_pos_valid",
+          "comment": "relative position components and accuracies are valid and, in moving base mode only, if baseline is valid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CarrSoln",
+          "name": "carr_soln",
+          "comment": "carrier phase range solution",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_moving",
+          "comment": "if the received is operating in moving base mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ref_pos_miss",
+          "comment": "if extrapolated reference position was used to compute moving base solution this epoch.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ref_obs_miss",
+          "comment": "if extrapolated reference observations were used to compute moving base solution this epoch.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rel_pos_heading_valid",
+          "comment": "relPosHeading is valid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rel_pos_normalized",
+          "comment": "components of the relative position vector (including the high-precision parts) are normalized",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavStatus": {
+      "description": "this message contains a UBX-NAV-STATUS (0x01 0x03) record",
+      "raw": "# this message contains a UBX-NAV-STATUS (0x01 0x03) record\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           #  ms - GPS Time of week of the navigation epoch\n\nGpsFix gps_fix         # gps fix\n\n# navigation status flags\nbool gps_fix_ok       # position and velocity valid and within DOP and ACCMasks\nbool diff_soln        # differential corrections were applied\nbool wkn_set          # week number valid\nbool tow_set          # time of week valid\n\n# navigation fix status information \nbool diff_corr        # differential corrections available \nbool carr_soln_valid  # valid carrSoln\n\nMapMatching map_matching    # map matching status\n\n# further information about navigation output\nPSMStatus psm       # power save mode state\nSpoofDet spoof_det\nCarrSoln carr_soln         # Carrier phase solution status \n\nuint32 ttff             # time to first fix (milliseond time tag)\nuint32 msss             # milliseconds since Startup/Reset\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GpsFix",
+          "name": "gps_fix",
+          "comment": "gps fix",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps_fix_ok",
+          "comment": "position and velocity valid and within DOP and ACCMasks",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diff_soln",
+          "comment": "differential corrections were applied",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wkn_set",
+          "comment": "week number valid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "tow_set",
+          "comment": "time of week valid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "diff_corr",
+          "comment": "differential corrections available",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "carr_soln_valid",
+          "comment": "valid carrSoln",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MapMatching",
+          "name": "map_matching",
+          "comment": "map matching status",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PSMStatus",
+          "name": "psm",
+          "comment": "power save mode state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SpoofDet",
+          "name": "spoof_det",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CarrSoln",
+          "name": "carr_soln",
+          "comment": "Carrier phase solution status",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "ttff",
+          "comment": "time to first fix (milliseond time tag)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "msss",
+          "comment": "milliseconds since Startup/Reset",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavTimeUTC": {
+      "description": "this message contains a UBX-NAV-EOE (0x01 0x21) record UTC Time Solution",
+      "raw": "# this message contains a UBX-NAV-EOE (0x01 0x21) record UTC Time Solution\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow           #  ms - GPS Time of week of the navigation epoch\nuint32 t_acc          # ns - time accuracy estimate (utc)\nint32 nano            # ns - fraction of second, range -1e9 to 1e9 (utc)\nint16 year            # y - year utc\nint8 month            # month - month utc\nint8 day              # d -day utc\nint8 hour             # h - hour utc\nint8 min              # min - min utc\nint8 sec              # s - sec utc\nbool valid_tow        # valid Time of Week\nbool valid_wkn        # valid Week Number\nbool valid_utc        # valid UTC time\nUtcStd utc_std        # UTC standard identifier",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "t_acc",
+          "comment": "ns - time accuracy estimate (utc)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "nano",
+          "comment": "ns - fraction of second, range -1e9 to 1e9 (utc)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "year",
+          "comment": "y - year utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "month",
+          "comment": "month - month utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "day",
+          "comment": "d -day utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "hour",
+          "comment": "h - hour utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "min",
+          "comment": "min - min utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "sec",
+          "comment": "s - sec utc",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid_tow",
+          "comment": "valid Time of Week",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid_wkn",
+          "comment": "valid Week Number",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid_utc",
+          "comment": "valid UTC time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "UtcStd",
+          "name": "utc_std",
+          "comment": "UTC standard identifier",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavVelECEF": {
+      "description": "this message contains a UBX-NAV-VELECEF (0x01 0x11) record",
+      "raw": "# this message contains a UBX-NAV-VELECEF (0x01 0x11) record\n# Velocity solution in ECEF\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow            # ms - GPS Time of week of the navigation epoch\nint32 ecef_vx          # cm/s - ECEF X velocity\nint32 ecef_vy          # cm/s - ECEF Y velocity\nint32 ecef_vz          # cm/s - ECEF Z velocity\nuint32 s_acc           # cm/s - velocity accuracy estimate",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_vx",
+          "comment": "cm/s - ECEF X velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_vy",
+          "comment": "cm/s - ECEF Y velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ecef_vz",
+          "comment": "cm/s - ECEF Z velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "s_acc",
+          "comment": "cm/s - velocity accuracy estimate",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UBXNavVelNED": {
+      "description": "this message contains a UBX-NAV-VELNED (0x01 0x12) record",
+      "raw": "# this message contains a UBX-NAV-VELNED (0x01 0x12) record\n# Velocity solution in NED frame\nstd_msgs/Header header # Header timestamp should be acquisition time\n\nuint32 itow            # ms - GPS Time of week of the navigation epoch\nint32 vel_n            # cm/s - NED north velocity\nint32 vel_e            # cm/s - NED east velocity\nint32 vel_d            # cm/s - NED down velocity\nuint32 speed           # cm/s - speed (3-D)\nuint32 g_speed         # cm/s - ground speed (2-D)\nint32 heading          # deg scale ie-5 - heading of motion (2-D) \nuint32 s_acc           # cm/s - speed accuracy estimate\nuint32 c_acc           # deg scale ie-5 - course/heading accruracy estime (both motion and vehicle)\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "itow",
+          "comment": "ms - GPS Time of week of the navigation epoch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "vel_n",
+          "comment": "cm/s - NED north velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "vel_e",
+          "comment": "cm/s - NED east velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "vel_d",
+          "comment": "cm/s - NED down velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "speed",
+          "comment": "cm/s - speed (3-D)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "g_speed",
+          "comment": "cm/s - ground speed (2-D)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "heading",
+          "comment": "deg scale ie-5 - heading of motion (2-D)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "s_acc",
+          "comment": "cm/s - speed accuracy estimate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "c_acc",
+          "comment": "deg scale ie-5 - course/heading accruracy estime (both motion and vehicle)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UtcStd": {
+      "description": "",
+      "raw": "uint8 NOT_AVAILABLE = 0\nuint8 CRL = 1            # Communications Research Labratory (CRL),Tokyo, Japan\nuint8 NIST = 2           # National Institute of Standards andTechnology (NIST)\nuint8 USNO = 3           # U.S. Naval Observatory (USNO)\nuint8 BIPM = 4           # International Bureau of Weights andMeasures (BIPM)\nuint8 EURO = 5           # European laboratories\nuint8 SU = 6             # Former Soviet Union\nuint8 NTSC = 7           # National Time Service Center (NTSC) China\nuint8 UTC_UNKNOWN = 15   # Unknown time source\nuint8 id                 # uc standard id",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NOT_AVAILABLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CRL",
+          "comment": "Communications Research Labratory (CRL),Tokyo, Japan",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NIST",
+          "comment": "National Institute of Standards andTechnology (NIST)",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "USNO",
+          "comment": "U.S. Naval Observatory (USNO)",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BIPM",
+          "comment": "International Bureau of Weights andMeasures (BIPM)",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EURO",
+          "comment": "European laboratories",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SU",
+          "comment": "Former Soviet Union",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NTSC",
+          "comment": "National Time Service Center (NTSC) China",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UTC_UNKNOWN",
+          "comment": "Unknown time source",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "uc standard id",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

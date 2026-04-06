@@ -1,0 +1,1089 @@
+{
+  "name": "franka_msgs",
+  "version": "1.0.0",
+  "description": "franka_msgs provides messages and actions specific to Franka Robotics research robots",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "franka_ros2",
+    "url": "https://github.com/frankaemika/franka_ros2.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "action_msgs",
+      "sensor_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "franka_example_controllers",
+      "franka_gripper",
+      "franka_hardware",
+      "franka_robot_state_broadcaster",
+      "franka_ros2",
+      "franka_semantic_components"
+    ]
+  },
+  "messages": {
+    "CollisionIndicators": {
+      "description": "Indicates which dimensions have an active contact/collision flag raised",
+      "raw": "### Indicates which dimensions have an active contact/collision flag raised\ngeometry_msgs/Vector3 is_cartesian_linear_collision\ngeometry_msgs/Vector3 is_cartesian_angular_collision\ngeometry_msgs/Vector3 is_cartesian_linear_contact\ngeometry_msgs/Vector3 is_cartesian_angular_contact\n\nfloat64[7] is_joint_collision\nfloat64[7] is_joint_contact\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "is_cartesian_linear_collision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "is_cartesian_angular_collision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "is_cartesian_linear_contact",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "is_cartesian_angular_contact",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[7]",
+          "name": "is_joint_collision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[7]",
+          "name": "is_joint_contact",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Elbow": {
+      "description": "The state of the elbow",
+      "raw": "### The state of the elbow\nfloat64[2] position\nfloat64[2] desired_position\nfloat64[2] commanded_position\nfloat64[2] commanded_velocity\nfloat64[2] commanded_acceleration\n",
+      "fields": [
+        {
+          "type": "float64[2]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[2]",
+          "name": "desired_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[2]",
+          "name": "commanded_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[2]",
+          "name": "commanded_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[2]",
+          "name": "commanded_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Errors": {
+      "description": "",
+      "raw": "bool joint_position_limits_violation\nbool cartesian_position_limits_violation\nbool self_collision_avoidance_violation\nbool joint_velocity_violation\nbool cartesian_velocity_violation\nbool force_control_safety_violation\nbool joint_reflex\nbool cartesian_reflex\nbool max_goal_pose_deviation_violation\nbool max_path_pose_deviation_violation\nbool cartesian_velocity_profile_safety_violation\nbool joint_position_motion_generator_start_pose_invalid\nbool joint_motion_generator_position_limits_violation\nbool joint_motion_generator_velocity_limits_violation\nbool joint_motion_generator_velocity_discontinuity\nbool joint_motion_generator_acceleration_discontinuity\nbool cartesian_position_motion_generator_start_pose_invalid\nbool cartesian_motion_generator_elbow_limit_violation\nbool cartesian_motion_generator_velocity_limits_violation\nbool cartesian_motion_generator_velocity_discontinuity\nbool cartesian_motion_generator_acceleration_discontinuity\nbool cartesian_motion_generator_elbow_sign_inconsistent\nbool cartesian_motion_generator_start_elbow_invalid\nbool cartesian_motion_generator_joint_position_limits_violation\nbool cartesian_motion_generator_joint_velocity_limits_violation\nbool cartesian_motion_generator_joint_velocity_discontinuity\nbool cartesian_motion_generator_joint_acceleration_discontinuity\nbool cartesian_position_motion_generator_invalid_frame\nbool force_controller_desired_force_tolerance_violation\nbool controller_torque_discontinuity\nbool start_elbow_sign_inconsistent\nbool communication_constraints_violation\nbool power_limit_violation\nbool joint_p2p_insufficient_torque_for_planning\nbool tau_j_range_violation\nbool instability_detected",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "joint_position_limits_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_position_limits_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "self_collision_avoidance_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "joint_velocity_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_velocity_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "force_control_safety_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "joint_reflex",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_reflex",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "max_goal_pose_deviation_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "max_path_pose_deviation_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_velocity_profile_safety_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "joint_position_motion_generator_start_pose_invalid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "joint_motion_generator_position_limits_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "joint_motion_generator_velocity_limits_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "joint_motion_generator_velocity_discontinuity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "joint_motion_generator_acceleration_discontinuity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_position_motion_generator_start_pose_invalid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_elbow_limit_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_velocity_limits_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_velocity_discontinuity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_acceleration_discontinuity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_elbow_sign_inconsistent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_start_elbow_invalid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_joint_position_limits_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_joint_velocity_limits_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_joint_velocity_discontinuity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_motion_generator_joint_acceleration_discontinuity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cartesian_position_motion_generator_invalid_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "force_controller_desired_force_tolerance_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "controller_torque_discontinuity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "start_elbow_sign_inconsistent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "communication_constraints_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "power_limit_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "joint_p2p_insufficient_torque_for_planning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "tau_j_range_violation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "instability_detected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FrankaRobotState": {
+      "description": "Default parts of the message",
+      "raw": "### Default parts of the message\nstd_msgs/Header header\n\n### Indicates which dimensions have an active contact/collision flag raised\nCollisionIndicators collision_indicators\n\n### The state of the arm in joint space\n# The joint state consisting out of position (q), velocity (dq) and effort (tau_J)\nsensor_msgs/JointState measured_joint_state\n\n# The desired joint state consisting out of position (q_d), velocity (dq_d) and effort (tau_J_d)\nsensor_msgs/JointState desired_joint_state\n\n# The measured motor state of the joints consisting out of position (theta) and velocity (dtheta)\nsensor_msgs/JointState measured_joint_motor_state\n\n# The desired joint acceleration\nfloat64[7] ddq_d\n# The derivative of the measured torque signal\nfloat64[7] dtau_j\n# Filtered external torque. The JointState consists out of effort (tau_ext_hat_filtered)\nsensor_msgs/JointState tau_ext_hat_filtered\n\n### The state of the elbow\nElbow elbow\n\n### The active wrenches acting on the stiffness frame expressed relative to\n# stiffness frame\ngeometry_msgs/WrenchStamped k_f_ext_hat_k\n# base frame\ngeometry_msgs/WrenchStamped o_f_ext_hat_k\n\n### The different inertias of the arm\n# The end-effector inertia\ngeometry_msgs/InertiaStamped inertia_ee\n# The load inertia\ngeometry_msgs/InertiaStamped inertia_load\n# The total (end-effector + load) inertia\ngeometry_msgs/InertiaStamped inertia_total\n\n### The poses describing the transformations between different frames of the arm\n# Measured end-effector pose in base frame\ngeometry_msgs/PoseStamped o_t_ee\n# Last desired end-effector pose of motion generation in base frame\ngeometry_msgs/PoseStamped o_t_ee_d\n# Last commanded end-effector pose of motion generation in base frame\ngeometry_msgs/PoseStamped o_t_ee_c\n# Flange to end-effector frame\ngeometry_msgs/PoseStamped f_t_ee\n# End-effector to stiffness frame\ngeometry_msgs/PoseStamped ee_t_k\n\n# Desired end effector twist in base frame\ngeometry_msgs/TwistStamped o_dp_ee_d\n# Last commanded end effector twist in base frame\ngeometry_msgs/TwistStamped o_dp_ee_c\n# Last commanded end effector acceleration in base frame\ngeometry_msgs/AccelStamped o_ddp_ee_c\n\n### Additional information\nfloat64 time\nfloat64 control_command_success_rate\n\nuint8 ROBOT_MODE_OTHER=0\nuint8 ROBOT_MODE_IDLE=1\nuint8 ROBOT_MODE_MOVE=2\nuint8 ROBOT_MODE_GUIDING=3\nuint8 ROBOT_MODE_REFLEX=4\nuint8 ROBOT_MODE_USER_STOPPED=5\nuint8 ROBOT_MODE_AUTOMATIC_ERROR_RECOVERY=6\nuint8 robot_mode\n\nErrors current_errors\nErrors last_motion_errors\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CollisionIndicators",
+          "name": "collision_indicators",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "measured_joint_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "desired_joint_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "measured_joint_motor_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[7]",
+          "name": "ddq_d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[7]",
+          "name": "dtau_j",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "tau_ext_hat_filtered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Elbow",
+          "name": "elbow",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/WrenchStamped",
+          "name": "k_f_ext_hat_k",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/WrenchStamped",
+          "name": "o_f_ext_hat_k",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/InertiaStamped",
+          "name": "inertia_ee",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/InertiaStamped",
+          "name": "inertia_load",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/InertiaStamped",
+          "name": "inertia_total",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "o_t_ee",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "o_t_ee_d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "o_t_ee_c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "f_t_ee",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "ee_t_k",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistStamped",
+          "name": "o_dp_ee_d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistStamped",
+          "name": "o_dp_ee_c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/AccelStamped",
+          "name": "o_ddp_ee_c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "control_command_success_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_MODE_OTHER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_MODE_IDLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_MODE_MOVE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_MODE_GUIDING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_MODE_REFLEX",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_MODE_USER_STOPPED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_MODE_AUTOMATIC_ERROR_RECOVERY",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "robot_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Errors",
+          "name": "current_errors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Errors",
+          "name": "last_motion_errors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GraspEpsilon": {
+      "description": "Maximum tolerated deviation when the actual grasped width",
+      "raw": "# Maximum tolerated deviation when the actual grasped width\n# is smaller than the commanded grasp width. Unit: [m]\nfloat64 inner 0.005\n\n# Maximum tolerated deviation when the actual grasped width\n# is larger than the commanded grasp width. Unit: [m]\nfloat64 outer 0.005",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "inner",
+          "comment": "",
+          "default": "0.005",
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "outer",
+          "comment": "",
+          "default": "0.005",
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetCartesianStiffness": {
+      "description": "Cartesian stiffness represented as (x, y, z, roll, pitch, yaw).",
+      "raw": "# Cartesian stiffness represented as (x, y, z, roll, pitch, yaw).\n# The values are used in the direction of the stiffness frame.\nfloat64[6] cartesian_stiffness\n---\nbool success\nstring error\n",
+      "request_fields": [
+        {
+          "type": "float64[6]",
+          "name": "cartesian_stiffness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetForceTorqueCollisionBehavior": {
+      "description": "",
+      "raw": "float64[7] lower_torque_thresholds_nominal\nfloat64[7] upper_torque_thresholds_nominal\nfloat64[6] lower_force_thresholds_nominal\nfloat64[6] upper_force_thresholds_nominal\n---\nbool success\nstring error\n\n",
+      "request_fields": [
+        {
+          "type": "float64[7]",
+          "name": "lower_torque_thresholds_nominal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[7]",
+          "name": "upper_torque_thresholds_nominal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "lower_force_thresholds_nominal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "upper_force_thresholds_nominal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetFullCollisionBehavior": {
+      "description": "",
+      "raw": "float64[7] lower_torque_thresholds_acceleration\nfloat64[7] upper_torque_thresholds_acceleration\nfloat64[7] lower_torque_thresholds_nominal\nfloat64[7] upper_torque_thresholds_nominal\nfloat64[6] lower_force_thresholds_acceleration\nfloat64[6] upper_force_thresholds_acceleration\nfloat64[6] lower_force_thresholds_nominal\nfloat64[6] upper_force_thresholds_nominal\n---\nbool success\nstring error\n\n",
+      "request_fields": [
+        {
+          "type": "float64[7]",
+          "name": "lower_torque_thresholds_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[7]",
+          "name": "upper_torque_thresholds_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[7]",
+          "name": "lower_torque_thresholds_nominal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[7]",
+          "name": "upper_torque_thresholds_nominal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "lower_force_thresholds_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "upper_force_thresholds_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "lower_force_thresholds_nominal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "upper_force_thresholds_nominal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetJointStiffness": {
+      "description": "Impedance for each joint in the internal controller",
+      "raw": "# Impedance for each joint in the internal controller\nfloat64[7] joint_stiffness\n---\nbool success\nstring error\n\n",
+      "request_fields": [
+        {
+          "type": "float64[7]",
+          "name": "joint_stiffness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLoad": {
+      "description": "The mass of the object",
+      "raw": "# The mass of the object\nfloat64 mass\n# Position of the center of mass\nfloat64[3] center_of_mass\n# Inertia of the object - the provided 3x3 matrix is in column major form.\nfloat64[9] load_inertia\n---\nbool success\nstring error\n\n",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "mass",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "center_of_mass",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "load_inertia",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetStiffnessFrame": {
+      "description": "Sets the transformation matrix describing the stiffness frame relative to the TCP frame.",
+      "raw": "# Sets the transformation matrix describing the stiffness frame relative to the TCP frame.\n# A 4x4 column-major transformation matrix representing the position and orientation.\nfloat64[16] transformation\n---\nbool success\nstring error\n",
+      "request_fields": [
+        {
+          "type": "float64[16]",
+          "name": "transformation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetTCPFrame": {
+      "description": "Sets the transformation matrix describing the tcp frame to the end-effector frame.",
+      "raw": "# Sets the transformation matrix describing the tcp frame to the end-effector frame.\n# A 4x4 column-major transformation matrix representing the position and orientation.\nfloat64[16] transformation\n---\nbool success\nstring error\n",
+      "request_fields": [
+        {
+          "type": "float64[16]",
+          "name": "transformation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ErrorRecovery": {
+      "description": "",
+      "raw": "---\n---\n",
+      "goal_fields": [],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "Grasp": {
+      "description": "",
+      "raw": "float64 width # [m]\nGraspEpsilon epsilon\nfloat64 speed # [m/s]\nfloat64 force # [N]\n---\nbool success\nstring error\n---\nfloat64 current_width # [m]\n",
+      "goal_fields": [
+        {
+          "type": "float64",
+          "name": "width",
+          "comment": "[m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GraspEpsilon",
+          "name": "epsilon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed",
+          "comment": "[m/s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "force",
+          "comment": "[N]",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "current_width",
+          "comment": "[m]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Homing": {
+      "description": "",
+      "raw": "---\nbool success\nstring error\n---\nfloat64 current_width # [m]\n",
+      "goal_fields": [],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "current_width",
+          "comment": "[m]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Move": {
+      "description": "",
+      "raw": "float64 width  # [m]\nfloat64 speed  # [m/s]\n---\nbool success\nstring error\n---\nfloat64 current_width # [m]\n",
+      "goal_fields": [
+        {
+          "type": "float64",
+          "name": "width",
+          "comment": "[m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed",
+          "comment": "[m/s]",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "current_width",
+          "comment": "[m]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

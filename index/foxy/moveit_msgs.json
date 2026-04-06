@@ -1,0 +1,3412 @@
+{
+  "name": "moveit_msgs",
+  "version": "2.1.0",
+  "description": "Messages, services and actions used by MoveIt",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://moveit.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-planning/moveit_msgs/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-planning/moveit_msgs",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "moveit_msgs",
+    "url": "https://github.com/ros-planning/moveit_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_cmake"
+    ],
+    "build_and_runtime": [
+      "octomap_msgs",
+      "action_msgs",
+      "sensor_msgs",
+      "geometry_msgs",
+      "trajectory_msgs",
+      "shape_msgs",
+      "object_recognition_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "grasping_msgs",
+      "moveit_core",
+      "moveit_kinematics"
+    ]
+  },
+  "messages": {
+    "AllowedCollisionEntry": {
+      "description": "whether or not collision checking is enabled",
+      "raw": "# whether or not collision checking is enabled\nbool[] enabled\n",
+      "fields": [
+        {
+          "type": "bool[]",
+          "name": "enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AllowedCollisionMatrix": {
+      "description": "The list of entry names in the matrix",
+      "raw": "# The list of entry names in the matrix\nstring[] entry_names\n\n# The individual entries in the allowed collision matrix\n# square, symmetric, with same order as entry_names\nAllowedCollisionEntry[] entry_values\n\n# In addition to the collision matrix itself, we also have \n# the default entry value for each entry name.\n\n# If the allowed collision flag is queried for a pair of names (n1, n2)\n# that is not found in the collision matrix itself, the value of\n# the collision flag is considered to be that of the entry (n1 or n2)\n# specified in the list below. If both n1 and n2 are found in the list \n# of defaults, the result is computed with an AND operation\n\nstring[] default_entry_names\nbool[] default_entry_values\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "entry_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AllowedCollisionEntry[]",
+          "name": "entry_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "default_entry_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "default_entry_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AttachedCollisionObject": {
+      "description": "The CollisionObject will be attached with a fixed joint to this link",
+      "raw": "# The CollisionObject will be attached with a fixed joint to this link\nstring link_name\n\n#This contains the actual shapes and poses for the CollisionObject\n#to be attached to the link\n#If action is remove and no object.id is set, all objects\n#attached to the link indicated by link_name will be removed\nCollisionObject object\n\n# The set of links that the attached objects are allowed to touch\n# by default - the link_name is already considered by default\nstring[] touch_links\n\n# If certain links were placed in a particular posture for this object to remain attached \n# (e.g., an end effector closing around an object), the posture necessary for releasing\n# the object is stored here\ntrajectory_msgs/JointTrajectory detach_posture\n\n# The weight of the attached object, if known\nfloat64 weight\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CollisionObject",
+          "name": "object",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "touch_links",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "detach_posture",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoundingVolume": {
+      "description": "Define a volume in 3D",
+      "raw": "# Define a volume in 3D\n\n# A set of solid geometric primitives that make up the volume to define (as a union)\nshape_msgs/SolidPrimitive[] primitives\n\n# The poses at which the primitives are located\ngeometry_msgs/Pose[] primitive_poses\n\n# In addition to primitives, meshes can be specified to add to the bounding volume (again, as union)\nshape_msgs/Mesh[] meshes\n\n# The poses at which the meshes are located\ngeometry_msgs/Pose[] mesh_poses\n",
+      "fields": [
+        {
+          "type": "shape_msgs/SolidPrimitive[]",
+          "name": "primitives",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "primitive_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Mesh[]",
+          "name": "meshes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "mesh_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CartesianPoint": {
+      "description": "This message defines a point in a cartesian trajectory",
+      "raw": "# This message defines a point in a cartesian trajectory\ngeometry_msgs/Pose pose\ngeometry_msgs/Twist velocity\ngeometry_msgs/Accel acceleration\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Accel",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CartesianTrajectory": {
+      "description": "This message describes the trajectory of a tracked frame in task-space",
+      "raw": "# This message describes the trajectory of a tracked frame in task-space\nstd_msgs/Header header\n\n# The name of the Cartesian frame being tracked with respect to the base frame provided in header.frame_id\nstring tracked_frame\n\nCartesianTrajectoryPoint[] points\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "tracked_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CartesianTrajectoryPoint[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CartesianTrajectoryPoint": {
+      "description": "The definition of a cartesian point in a trajectory. Defines the cartesian state of the point and it's time,",
+      "raw": "# The definition of a cartesian point in a trajectory. Defines the cartesian state of the point and it's time,\n# following the pattern of the JointTrajectory message\nCartesianPoint point\n\nbuiltin_interfaces/Duration time_from_start\n",
+      "fields": [
+        {
+          "type": "CartesianPoint",
+          "name": "point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_from_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CollisionObject": {
+      "description": "a header, used for interpreting the poses",
+      "raw": "# a header, used for interpreting the poses\nstd_msgs/Header header\n\n# DISCLAIMER: This field is not in use yet and all other poses\n# are still interpreted in the header frame.\n# https://github.com/ros-planning/moveit/pull/2037\n# implements the actual logic for this field.\n# ---\n# The object's pose relative to the header frame.\n# The shapes and subframe poses are defined relative to this pose.\ngeometry_msgs/Pose pose\n\n# The id of the object (name used in MoveIt)\nstring id\n\n# The object type in a database of known objects\nobject_recognition_msgs/ObjectType type\n\n# The collision geometries associated with the object.\n# Their poses are with respect to the object's pose\n\n# Solid geometric primitives\nshape_msgs/SolidPrimitive[] primitives\ngeometry_msgs/Pose[] primitive_poses\n\n# Meshes\nshape_msgs/Mesh[] meshes\ngeometry_msgs/Pose[] mesh_poses\n\n# Bounding planes (equation is specified, but the plane can be oriented using an additional pose)\nshape_msgs/Plane[] planes\ngeometry_msgs/Pose[] plane_poses\n\n# Named subframes on the object. Use these to define points of interest on the object that you want\n# to plan with (e.g. \"tip\", \"spout\", \"handle\"). The id of the object will be prepended to the subframe.\n# If an object with the id \"screwdriver\" and a subframe \"tip\" is in the scene, you can use the frame\n# \"screwdriver/tip\" for planning.\n# The length of the subframe_names and subframe_poses has to be identical.\nstring[] subframe_names\ngeometry_msgs/Pose[] subframe_poses\n\n# Adds the object to the planning scene. If the object previously existed, it is replaced.\nbyte ADD=0\n\n# Removes the object from the environment entirely (everything that matches the specified id)\nbyte REMOVE=1\n\n# Append to an object that already exists in the planning scene. If the object does not exist, it is added.\nbyte APPEND=2\n\n# If an object already exists in the scene, new poses can be sent (the geometry arrays must be left empty)\n# if solely moving the object is desired\nbyte MOVE=3\n\n# Operation to be performed\nbyte operation\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "object_recognition_msgs/ObjectType",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/SolidPrimitive[]",
+          "name": "primitives",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "primitive_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Mesh[]",
+          "name": "meshes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "mesh_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Plane[]",
+          "name": "planes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "plane_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "subframe_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "subframe_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte",
+          "name": "ADD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "REMOVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "APPEND",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "MOVE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "operation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConstraintEvalResult": {
+      "description": "This message contains result from constraint evaluation",
+      "raw": "# This message contains result from constraint evaluation\n# result specifies the result of constraint evaluation \n# (true indicates state satisfies constraint, false indicates state violates constraint)\n# if false, distance specifies a measure of the distance of the state from the constraint\n# if true, distance is set to zero\nbool result\nfloat64 distance\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Constraints": {
+      "description": "This message contains a list of motion planning constraints.",
+      "raw": "# This message contains a list of motion planning constraints.\n# All constraints must be satisfied for a goal to be considered valid\n\nstring name\n\nJointConstraint[] joint_constraints\n\nPositionConstraint[] position_constraints\n\nOrientationConstraint[] orientation_constraints\n\nVisibilityConstraint[] visibility_constraints\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointConstraint[]",
+          "name": "joint_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PositionConstraint[]",
+          "name": "position_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "OrientationConstraint[]",
+          "name": "orientation_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "VisibilityConstraint[]",
+          "name": "visibility_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ContactInformation": {
+      "description": "Standard ROS header contains information",
+      "raw": "# Standard ROS header contains information \n# about the frame in which this \n# contact is specified\nstd_msgs/Header header\n\n# Position of the contact point\ngeometry_msgs/Point position\n\n# Normal corresponding to the contact point\ngeometry_msgs/Vector3 normal \n\n# Depth of contact point\nfloat64 depth\n\n# Name of the first body that is in contact\n# This could be a link or a namespace that represents a body\nstring contact_body_1\nuint32 body_type_1\n\n# Name of the second body that is in contact\n# This could be a link or a namespace that represents a body\nstring contact_body_2\nuint32 body_type_2\n\nuint32 ROBOT_LINK=0\nuint32 WORLD_OBJECT=1\nuint32 ROBOT_ATTACHED=2\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "normal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "contact_body_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "body_type_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "contact_body_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "body_type_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "ROBOT_LINK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "WORLD_OBJECT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "ROBOT_ATTACHED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "CostSource": {
+      "description": "The density of the cost source",
+      "raw": "# The density of the cost source\nfloat64 cost_density\n\n# The volume of the cost source is represented as an\n# axis-aligned bounding box (AABB)\n# The AABB is specified by two of its opposite corners\n\ngeometry_msgs/Vector3 aabb_min\n\ngeometry_msgs/Vector3 aabb_max\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "cost_density",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "aabb_min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "aabb_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DisplayRobotState": {
+      "description": "The robot state to display",
+      "raw": "# The robot state to display\nRobotState state\n\n# Optionally, various links can be highlighted\nObjectColor[] highlight_links\n\n# If true, suppress the display in visualizations (like rviz)\nbool hide\n",
+      "fields": [
+        {
+          "type": "RobotState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectColor[]",
+          "name": "highlight_links",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hide",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DisplayTrajectory": {
+      "description": "The model id for which this path has been generated",
+      "raw": "# The model id for which this path has been generated\nstring model_id\n\n# The representation of the path contains position values for all the joints that are moving along the path; a sequence of trajectories may be specified\nRobotTrajectory[] trajectory\n\n# The robot state is used to obtain positions for all/some of the joints of the robot. \n# It is used by the path display node to determine the positions of the joints that are not specified in the joint path message above. \n# If the robot state message contains joint position information for joints that are also mentioned in the joint path message, the positions in the joint path message will overwrite the positions specified in the robot state message. \nRobotState trajectory_start\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "model_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotTrajectory[]",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState",
+          "name": "trajectory_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GenericTrajectory": {
+      "description": "A generic trajectory message that may either encode a joint- or cartesian-space trajectory, or both",
+      "raw": "# A generic trajectory message that may either encode a joint- or cartesian-space trajectory, or both\n# Trajectories encoded in this message are considered semantically equivalent\nstd_msgs/Header header\ntrajectory_msgs/JointTrajectory[] joint_trajectory\nmoveit_msgs/CartesianTrajectory[] cartesian_trajectory\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectory[]",
+          "name": "joint_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "moveit_msgs/CartesianTrajectory[]",
+          "name": "cartesian_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Grasp": {
+      "description": "This message contains a description of a grasp that would be used",
+      "raw": "# This message contains a description of a grasp that would be used\n# with a particular end-effector to grasp an object, including how to\n# approach it, grip it, etc.  This message does not contain any\n# information about a \"grasp point\" (a position ON the object).\n# Whatever generates this message should have already combined\n# information about grasp points with information about the geometry\n# of the end-effector to compute the grasp_pose in this message.\n\n# A name for this grasp\nstring id\n\n# The internal posture of the hand for the pre-grasp\n# only positions are used\ntrajectory_msgs/JointTrajectory pre_grasp_posture\n\n# The internal posture of the hand for the grasp\n# positions and efforts are used\ntrajectory_msgs/JointTrajectory grasp_posture\n\n# The position of the end-effector for the grasp.  This is the pose of\n# the \"parent_link\" of the end-effector, not actually the pose of any\n# link *in* the end-effector.  Typically this would be the pose of the\n# most distal wrist link before the hand (end-effector) links began.\ngeometry_msgs/PoseStamped grasp_pose\n\n# The estimated probability of success for this grasp, or some other\n# measure of how \"good\" it is.\nfloat64 grasp_quality\n\n# The approach direction to take before picking an object\nGripperTranslation pre_grasp_approach\n\n# The retreat direction to take after a grasp has been completed (object is attached)\nGripperTranslation post_grasp_retreat\n\n# The retreat motion to perform when releasing the object; this information\n# is not necessary for the grasp itself, but when releasing the object,\n# the information will be necessary. The grasp used to perform a pickup\n# is returned as part of the result, so this information is available for \n# later use.\nGripperTranslation post_place_retreat\n\n# the maximum contact force to use while grasping (<=0 to disable)\nfloat32 max_contact_force\n\n# an optional list of obstacles that we have semantic information about\n# and that can be touched/pushed/moved in the course of grasping\nstring[] allowed_touch_objects\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "pre_grasp_posture",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "grasp_posture",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "grasp_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "grasp_quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GripperTranslation",
+          "name": "pre_grasp_approach",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GripperTranslation",
+          "name": "post_grasp_retreat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GripperTranslation",
+          "name": "post_place_retreat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_contact_force",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "allowed_touch_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GripperTranslation": {
+      "description": "defines a translation for the gripper, used in pickup or place tasks",
+      "raw": "# defines a translation for the gripper, used in pickup or place tasks\n# for example for lifting an object off a table or approaching the table for placing\n\n# the direction of the translation\ngeometry_msgs/Vector3Stamped direction\n\n# the desired translation distance\nfloat32 desired_distance\n\n# the min distance that must be considered feasible before the\n# grasp is even attempted\nfloat32 min_distance\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Vector3Stamped",
+          "name": "direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "desired_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointConstraint": {
+      "description": "Constrain the position of a joint to be within a certain bound",
+      "raw": "# Constrain the position of a joint to be within a certain bound\nstring joint_name\n\n# the bound to be achieved is [position - tolerance_below, position + tolerance_above]\nfloat64 position\nfloat64 tolerance_above\nfloat64 tolerance_below\n\n# A weighting factor for this constraint (denotes relative importance to other constraints. Closer to zero means less important)\nfloat64 weight\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "tolerance_above",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "tolerance_below",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointLimits": {
+      "description": "This message contains information about limits of a particular joint (or control dimension)",
+      "raw": "# This message contains information about limits of a particular joint (or control dimension)\nstring joint_name\n\n# true if the joint has position limits\nbool has_position_limits\n\n# min and max position limits\nfloat64 min_position\nfloat64 max_position\n\n# true if joint has velocity limits\nbool has_velocity_limits\n\n# max velocity limit\nfloat64 max_velocity\n# min_velocity is assumed to be -max_velocity\n\n# true if joint has acceleration limits\nbool has_acceleration_limits\n# max acceleration limit\nfloat64 max_acceleration\n# min_acceleration is assumed to be -max_acceleration\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_position_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_velocity_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_acceleration_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KinematicSolverInfo": {
+      "description": "A list of joints in the kinematic tree",
+      "raw": "# A list of joints in the kinematic tree\nstring[] joint_names\n# A list of joint limits corresponding to the joint names\nmoveit_msgs/JointLimits[] limits\n# A list of links that the kinematics node provides solutions for\nstring[] link_names\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "moveit_msgs/JointLimits[]",
+          "name": "limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "link_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LinkPadding": {
+      "description": "name for the link",
+      "raw": "#name for the link\nstring link_name\n\n# padding to apply to the link\nfloat64 padding\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "padding",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LinkScale": {
+      "description": "name for the link",
+      "raw": "#name for the link\nstring link_name\n\n# scaling to apply to the link\nfloat64 scale\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "scale",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionPlanDetailedResponse": {
+      "description": "The representation of a solution to a planning problem, including intermediate data",
+      "raw": "# The representation of a solution to a planning problem, including intermediate data\n\n# The starting state considered for the robot solution path\nRobotState trajectory_start\n\n# The group used for planning (usually the same as in the request)\nstring group_name\n\n# Multiple solution paths are reported, each reflecting intermediate steps in the trajectory processing\n\n# The list of reported trajectories\nRobotTrajectory[] trajectory\n\n# Description of the reported trajectories (name of processing step)\nstring[] description\n\n# The amount of time spent computing a particular step in motion plan computation \nfloat64[] processing_time\n\n# Status at the end of this plan\nMoveItErrorCodes error_code\n",
+      "fields": [
+        {
+          "type": "RobotState",
+          "name": "trajectory_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotTrajectory[]",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "processing_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionPlanRequest": {
+      "description": "This service contains the definition for a request to the motion",
+      "raw": "# This service contains the definition for a request to the motion\n# planner and the output it provides\n\n# Parameters for the workspace that the planner should work inside\nWorkspaceParameters workspace_parameters\n\n# Starting state updates. If certain joints should be considered\n# at positions other than the current ones, these positions should\n# be set here\nRobotState start_state\n\n# The possible goal states for the model to plan for. Each element of\n# the array defines a goal region. The goal is achieved\n# if the constraints for a particular region are satisfied\nConstraints[] goal_constraints\n\n# No state at any point along the path in the produced motion plan will violate these constraints (this applies to all points, not just waypoints)\nConstraints path_constraints\n\n# The constraints the resulting trajectory must satisfy\nTrajectoryConstraints trajectory_constraints\n\n# A set of trajectories that may be used as reference or initial trajectories for (typically optimization-based) planners\n# These trajectories do not override start_state or goal_constraints\nGenericTrajectory[] reference_trajectories\n\n# The name of the planning pipeline to use. If no name is specified,\n# the configured planning pipeline will be used\nstring pipeline_id\n\n# The name of the planning algorithm to use. If no name is specified,\n# the default planner of the planning pipeline will be used\nstring planner_id\n\n# The name of the group of joints on which this planner is operating\nstring group_name\n\n# The number of times this plan is to be computed. Shortest solution\n# will be reported.\nint32 num_planning_attempts\n\n# The maximum amount of time the motion planner is allowed to plan for (in seconds)\nfloat64 allowed_planning_time\n\n# Scaling factors for optionally reducing the maximum joint velocities and\n# accelerations.  Allowed values are in (0,1].  The maximum joint velocity and\n# acceleration specified in the robot model are multiplied by thier respective\n# factors.  If either are outside their valid ranges (importantly, this\n# includes being set to 0.0), the factor is set to the default value of 1.0\n# internally (i.e., maximum joint velocity or maximum joint acceleration).\nfloat64 max_velocity_scaling_factor\nfloat64 max_acceleration_scaling_factor\n\n# Maximum cartesian speed for the given end effector.\n# If max_cartesian_speed <= 0 the trajectory is not modified.\n# These fields require the following planning request adapter: default_planner_request_adapters/SetMaxCartesianEndEffectorSpeed\nstring cartesian_speed_end_effector_link\nfloat64 max_cartesian_speed # m/s\n",
+      "fields": [
+        {
+          "type": "WorkspaceParameters",
+          "name": "workspace_parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState",
+          "name": "start_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Constraints[]",
+          "name": "goal_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Constraints",
+          "name": "path_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrajectoryConstraints",
+          "name": "trajectory_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GenericTrajectory[]",
+          "name": "reference_trajectories",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pipeline_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "num_planning_attempts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "allowed_planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_velocity_scaling_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_acceleration_scaling_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "cartesian_speed_end_effector_link",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_cartesian_speed",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionPlanResponse": {
+      "description": "The representation of a solution to a planning problem",
+      "raw": "# The representation of a solution to a planning problem\n\n# The corresponding robot state\nRobotState trajectory_start\n\n# The group used for planning (usually the same as in the request)\nstring group_name\n\n# A solution trajectory, if found\nRobotTrajectory trajectory\n\n# Planning time (seconds)\nfloat64 planning_time\n\n# Error code - encodes the overall reason for failure\nMoveItErrorCodes error_code\n",
+      "fields": [
+        {
+          "type": "RobotState",
+          "name": "trajectory_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotTrajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionSequenceItem": {
+      "description": "The plan request for this item.",
+      "raw": "# The plan request for this item.\n# It is the planning request for this segment of the sequence, as if it were a solitary motion.\nMotionPlanRequest req\n\n# To blend between sequence items, the motion may be smoothed using a circular motion.\n# The blend radius of the circle between this and the next command, where 0 means no blending.\nfloat64 blend_radius\n",
+      "fields": [
+        {
+          "type": "MotionPlanRequest",
+          "name": "req",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "blend_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionSequenceRequest": {
+      "description": "List of motion planning request with a blend_radius for each.",
+      "raw": "# List of motion planning request with a blend_radius for each.\n# In the response of the planner all of these will be executable as one sequence.\nMotionSequenceItem[] items\n",
+      "fields": [
+        {
+          "type": "MotionSequenceItem[]",
+          "name": "items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionSequenceResponse": {
+      "description": "An error code reflecting what went wrong",
+      "raw": "# An error code reflecting what went wrong\nMoveItErrorCodes error_code\n\n# The full starting state of the robot at the start of the sequence\nRobotState sequence_start\n\n# The trajectories that the planner produced for execution\nRobotTrajectory[] planned_trajectories\n\n# The amount of time it took to complete the motion plan\nfloat64 planning_time\n",
+      "fields": [
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState",
+          "name": "sequence_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotTrajectory[]",
+          "name": "planned_trajectories",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MoveItErrorCodes": {
+      "description": "overall behavior",
+      "raw": "int32 val\n\n# overall behavior\nint32 SUCCESS=1\nint32 FAILURE=99999\n\nint32 PLANNING_FAILED=-1\nint32 INVALID_MOTION_PLAN=-2\nint32 MOTION_PLAN_INVALIDATED_BY_ENVIRONMENT_CHANGE=-3\nint32 CONTROL_FAILED=-4\nint32 UNABLE_TO_AQUIRE_SENSOR_DATA=-5\nint32 TIMED_OUT=-6\nint32 PREEMPTED=-7\n\n# planning & kinematics request errors\nint32 START_STATE_IN_COLLISION=-10\nint32 START_STATE_VIOLATES_PATH_CONSTRAINTS=-11\n\nint32 GOAL_IN_COLLISION=-12\nint32 GOAL_VIOLATES_PATH_CONSTRAINTS=-13\nint32 GOAL_CONSTRAINTS_VIOLATED=-14\n\nint32 INVALID_GROUP_NAME=-15\nint32 INVALID_GOAL_CONSTRAINTS=-16\nint32 INVALID_ROBOT_STATE=-17\nint32 INVALID_LINK_NAME=-18\nint32 INVALID_OBJECT_NAME=-19\n\n# system errors\nint32 FRAME_TRANSFORM_FAILURE=-21\nint32 COLLISION_CHECKING_UNAVAILABLE=-22\nint32 ROBOT_STATE_STALE=-23\nint32 SENSOR_INFO_STALE=-24\nint32 COMMUNICATION_FAILURE=-25\n\n# kinematics errors\nint32 NO_IK_SOLUTION=-31\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "val",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FAILURE",
+          "comment": "",
+          "default": "99999",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "PLANNING_FAILED",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_MOTION_PLAN",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MOTION_PLAN_INVALIDATED_BY_ENVIRONMENT_CHANGE",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CONTROL_FAILED",
+          "comment": "",
+          "default": "-4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "UNABLE_TO_AQUIRE_SENSOR_DATA",
+          "comment": "",
+          "default": "-5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "TIMED_OUT",
+          "comment": "",
+          "default": "-6",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "PREEMPTED",
+          "comment": "",
+          "default": "-7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "START_STATE_IN_COLLISION",
+          "comment": "",
+          "default": "-10",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "START_STATE_VIOLATES_PATH_CONSTRAINTS",
+          "comment": "",
+          "default": "-11",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "GOAL_IN_COLLISION",
+          "comment": "",
+          "default": "-12",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "GOAL_VIOLATES_PATH_CONSTRAINTS",
+          "comment": "",
+          "default": "-13",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "GOAL_CONSTRAINTS_VIOLATED",
+          "comment": "",
+          "default": "-14",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_GROUP_NAME",
+          "comment": "",
+          "default": "-15",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_GOAL_CONSTRAINTS",
+          "comment": "",
+          "default": "-16",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_ROBOT_STATE",
+          "comment": "",
+          "default": "-17",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_LINK_NAME",
+          "comment": "",
+          "default": "-18",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_OBJECT_NAME",
+          "comment": "",
+          "default": "-19",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FRAME_TRANSFORM_FAILURE",
+          "comment": "",
+          "default": "-21",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COLLISION_CHECKING_UNAVAILABLE",
+          "comment": "",
+          "default": "-22",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "ROBOT_STATE_STALE",
+          "comment": "",
+          "default": "-23",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SENSOR_INFO_STALE",
+          "comment": "",
+          "default": "-24",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMMUNICATION_FAILURE",
+          "comment": "",
+          "default": "-25",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "NO_IK_SOLUTION",
+          "comment": "",
+          "default": "-31",
+          "is_constant": true
+        }
+      ]
+    },
+    "ObjectColor": {
+      "description": "The object id for which we specify color",
+      "raw": "# The object id for which we specify color\nstring id\n\n# The value of the color\nstd_msgs/ColorRGBA color\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OrientationConstraint": {
+      "description": "This message contains the definition of an orientation constraint.",
+      "raw": "# This message contains the definition of an orientation constraint.\n\nstd_msgs/Header header\n\n# The desired orientation of the robot link specified as a quaternion\ngeometry_msgs/Quaternion orientation\n\n# The robot link this constraint refers to\nstring link_name\n\n# Tolerance on the three vector components of the orientation error (optional)\nfloat64 absolute_x_axis_tolerance\nfloat64 absolute_y_axis_tolerance\nfloat64 absolute_z_axis_tolerance\n\n# Defines how the orientation error is calculated\n# The error is compared to the tolerance defined above\nuint8 parameterization\n\n# The different options for the orientation error parameterization\n# - Intrinsic xyz Euler angles (default value)\nuint8 XYZ_EULER_ANGLES=0\n# - A rotation vector. This is similar to the angle-axis representation,\n# but the magnitude of the vector represents the rotation angle.\nuint8 ROTATION_VECTOR=1\n\n# A weighting factor for this constraint (denotes relative importance to other constraints. Closer to zero means less important)\nfloat64 weight\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "absolute_x_axis_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "absolute_y_axis_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "absolute_z_axis_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "parameterization",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "XYZ_EULER_ANGLES",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROTATION_VECTOR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OrientedBoundingBox": {
+      "description": "the pose of the box",
+      "raw": "# the pose of the box\ngeometry_msgs/Pose pose\n\n# the extents of the box, assuming the center is at the origin\ngeometry_msgs/Point32 extents\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point32",
+          "name": "extents",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlaceLocation": {
+      "description": "A name for this grasp",
+      "raw": "# A name for this grasp\nstring id\n\n# The internal posture of the hand for the grasp\n# positions and efforts are used\ntrajectory_msgs/JointTrajectory post_place_posture\n\n# The position of the end-effector for the grasp relative to a reference frame \n# (that is always specified elsewhere, not in this message)\ngeometry_msgs/PoseStamped place_pose\n\n# The estimated probability of success for this place, or some other\n# measure of how \"good\" it is.\nfloat64 quality\n\n# The approach motion\nGripperTranslation pre_place_approach\n\n# The retreat motion\nGripperTranslation post_place_retreat\n\n# an optional list of obstacles that we have semantic information about\n# and that can be touched/pushed/moved in the course of grasping\nstring[] allowed_touch_objects\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "post_place_posture",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "place_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GripperTranslation",
+          "name": "pre_place_approach",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GripperTranslation",
+          "name": "post_place_retreat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "allowed_touch_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlannerInterfaceDescription": {
+      "description": "The name of the planner interface",
+      "raw": "# The name of the planner interface\nstring name\n\n# The name of the planning pipeline\nstring pipeline_id\n\n# The names of the planner ids within the interface\nstring[] planner_ids\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pipeline_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "planner_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlannerParams": {
+      "description": "parameter names (same size as values)",
+      "raw": "# parameter names (same size as values)\nstring[] keys\n\n# parameter values (same size as keys)\nstring[] values\n\n# parameter description (can be empty)\nstring[] descriptions\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "descriptions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanningOptions": {
+      "description": "The diff to consider for the planning scene (optional)",
+      "raw": "\n# The diff to consider for the planning scene (optional)\nPlanningScene planning_scene_diff\n\n# If this flag is set to true, the action\n# returns an executable plan in the response but does not attempt execution  \nbool plan_only\n\n# If this flag is set to true, the action of planning &\n# executing is allowed to look around  (move sensors) if\n# it seems that not enough information is available about\n# the environment\nbool look_around\n\n# If this value is positive, the action of planning & executing\n# is allowed to look around for a maximum number of attempts;\n# If the value is left as 0, the default value is used, as set\n# with dynamic_reconfigure\nint32 look_around_attempts\n\n# If set and if look_around is true, this value is used as\n# the maximum cost allowed for a path to be considered executable.\n# If the cost of a path is higher than this value, more sensing or \n# a new plan needed. If left as 0.0 but look_around is true, then \n# the default value set via dynamic_reconfigure is used\nfloat64 max_safe_execution_cost\n\n# If the plan becomes invalidated during execution, it is possible to have\n# that plan recomputed and execution restarted. This flag enables this\n# functionality \nbool replan\n\n# The maximum number of replanning attempts \nint32 replan_attempts\n\n# The amount of time to wait in between replanning attempts (in seconds)\nfloat64 replan_delay\n",
+      "fields": [
+        {
+          "type": "PlanningScene",
+          "name": "planning_scene_diff",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "plan_only",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "look_around",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "look_around_attempts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_safe_execution_cost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "replan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "replan_attempts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "replan_delay",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanningScene": {
+      "description": "name of planning scene",
+      "raw": "# name of planning scene\nstring name\n\n# full robot state\nRobotState robot_state\n\n# The name of the robot model this scene is for\nstring robot_model_name\n\n#additional frames for duplicating tf (with respect to the planning frame)\ngeometry_msgs/TransformStamped[] fixed_frame_transforms\n\n#full allowed collision matrix\nAllowedCollisionMatrix allowed_collision_matrix\n\n# all link paddings\nLinkPadding[] link_padding\n\n# all link scales\nLinkScale[] link_scale\n\n# Attached objects, collision objects, even the octomap or collision map can have \n# colors associated to them. This array specifies them.\nObjectColor[] object_colors\n\n# the collision map\nPlanningSceneWorld world\n\n# Flag indicating whether this scene is to be interpreted as a diff with respect to some other scene\nbool is_diff\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState",
+          "name": "robot_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_model_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TransformStamped[]",
+          "name": "fixed_frame_transforms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AllowedCollisionMatrix",
+          "name": "allowed_collision_matrix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LinkPadding[]",
+          "name": "link_padding",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LinkScale[]",
+          "name": "link_scale",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectColor[]",
+          "name": "object_colors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlanningSceneWorld",
+          "name": "world",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_diff",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanningSceneComponents": {
+      "description": "This message defines the components that make up the PlanningScene message.",
+      "raw": "# This message defines the components that make up the PlanningScene message.\n# The values can be used as a bitfield to specify which parts of the PlanningScene message\n# are of interest\n\n# Scene name, model name, model root\nuint32 SCENE_SETTINGS=1\n\n# Joint values of the robot state\nuint32 ROBOT_STATE=2\n\n# Attached objects (including geometry) for the robot state\nuint32 ROBOT_STATE_ATTACHED_OBJECTS=4\n\n# The names of the world objects\nuint32 WORLD_OBJECT_NAMES=8\n\n# The geometry of the world objects\nuint32 WORLD_OBJECT_GEOMETRY=16\n\n# The maintained octomap \nuint32 OCTOMAP=32\n\n# The maintained list of transforms\nuint32 TRANSFORMS=64\n\n# The allowed collision matrix\nuint32 ALLOWED_COLLISION_MATRIX=128\n\n# The default link padding and link scaling\nuint32 LINK_PADDING_AND_SCALING=256\n\n# The stored object colors\nuint32 OBJECT_COLORS=512\n\n# Bitfield combining options indicated above\nuint32 components\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "SCENE_SETTINGS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "ROBOT_STATE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "ROBOT_STATE_ATTACHED_OBJECTS",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "WORLD_OBJECT_NAMES",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "WORLD_OBJECT_GEOMETRY",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "OCTOMAP",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TRANSFORMS",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "ALLOWED_COLLISION_MATRIX",
+          "comment": "",
+          "default": "128",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "LINK_PADDING_AND_SCALING",
+          "comment": "",
+          "default": "256",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "OBJECT_COLORS",
+          "comment": "",
+          "default": "512",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "components",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanningSceneWorld": {
+      "description": "collision objects",
+      "raw": "# collision objects\nCollisionObject[] collision_objects\n\n# The octomap that represents additional collision data\noctomap_msgs/OctomapWithPose octomap\n",
+      "fields": [
+        {
+          "type": "CollisionObject[]",
+          "name": "collision_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "octomap_msgs/OctomapWithPose",
+          "name": "octomap",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PositionConstraint": {
+      "description": "This message contains the definition of a position constraint.",
+      "raw": "# This message contains the definition of a position constraint.\n\nstd_msgs/Header header\n\n# The robot link this constraint refers to\nstring link_name\n\n# The offset (in the link frame) for the target point on the link we are planning for\ngeometry_msgs/Vector3 target_point_offset\n\n# The volume this constraint refers to \nBoundingVolume constraint_region\n\n# A weighting factor for this constraint (denotes relative importance to other constraints. Closer to zero means less important)\nfloat64 weight\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "target_point_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingVolume",
+          "name": "constraint_region",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PositionIKRequest": {
+      "description": "A Position IK request message",
+      "raw": "# A Position IK request message\n\n# The name of the group which will be used to compute IK\n# e.g. \"right_arm\", or \"arms\" - see IK specification for multiple-groups below\n# Information from the SRDF will be used to automatically determine which link \n# to solve IK for, unless ik_link_name is also specified\nstring group_name\n\n# A RobotState consisting of hint/seed positions for the IK computation and positions \n# for all the other joints in the robot. Additional state information provided here is \n# used to specify starting positions for other joints/links on the robot.  \n# This state MUST contain state for all joints to be used by the IK solver\n# to compute IK. The list of joints that the IK solver deals with can be \n# found using the SRDF for the corresponding group\nmoveit_msgs/RobotState robot_state\n\n# A set of constraints that the IK must obey; by default, this set of constraints is empty\nConstraints constraints\n\n# Find an IK solution that avoids collisions. By default, this is false\nbool avoid_collisions\n\n# (OPTIONAL) The name of the link for which we are computing IK\n# If not specified, the link name will be inferred from a combination \n# of the group name and the SRDF. If any values are specified for ik_link_names,\n# this value is ignored\nstring ik_link_name\n\n# The stamped pose of the link, when the IK solver computes the joint values\n# for all the joints in a group. This value is ignored if pose_stamped_vector\n# has any elements specified.\ngeometry_msgs/PoseStamped pose_stamped\n\n# Multi-group parameters\n\n# (OPTIONAL) The names of the links for which we are computing IK\n# If not specified, the link name will be inferred from a combination \n# of the group name and the SRDF\nstring[] ik_link_names\n\n# (OPTIONAL) The (stamped) poses of the links we are computing IK for (when a group has more than one end effector)\n# e.g. The \"arms\" group might consist of both the \"right_arm\" and the \"left_arm\"\n# The order of the groups referred to is the same as the order setup in the SRDF\ngeometry_msgs/PoseStamped[] pose_stamped_vector\n\n# Maximum allowed time for IK calculation\nbuiltin_interfaces/Duration timeout\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "moveit_msgs/RobotState",
+          "name": "robot_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Constraints",
+          "name": "constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "avoid_collisions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ik_link_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose_stamped",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "ik_link_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "pose_stamped_vector",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotState": {
+      "description": "This message contains information about the robot state, i.e. the positions of its joints and links",
+      "raw": "# This message contains information about the robot state, i.e. the positions of its joints and links\nsensor_msgs/JointState joint_state\n\n# Joints that may have multiple DOF are specified here\nsensor_msgs/MultiDOFJointState multi_dof_joint_state\n\n# Attached collision objects (attached to some link on the robot)\nAttachedCollisionObject[] attached_collision_objects\n\n# Flag indicating whether this scene is to be interpreted as a diff with respect to some other scene\n# This is mostly important for handling the attached bodies (whether or not to clear the attached bodies\n# of a moveit::core::RobotState before updating it with this message)\nbool is_diff\n",
+      "fields": [
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "joint_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/MultiDOFJointState",
+          "name": "multi_dof_joint_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AttachedCollisionObject[]",
+          "name": "attached_collision_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_diff",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotTrajectory": {
+      "description": "",
+      "raw": "trajectory_msgs/JointTrajectory joint_trajectory\ntrajectory_msgs/MultiDOFJointTrajectory multi_dof_joint_trajectory\n",
+      "fields": [
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "joint_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectory",
+          "name": "multi_dof_joint_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajectoryConstraints": {
+      "description": "The array of constraints to consider along the trajectory",
+      "raw": "# The array of constraints to consider along the trajectory\nConstraints[] constraints\n",
+      "fields": [
+        {
+          "type": "Constraints[]",
+          "name": "constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VisibilityConstraint": {
+      "description": "The constraint is useful to maintain visibility to a disc (the target) in a particular frame.",
+      "raw": "# The constraint is useful to maintain visibility to a disc (the target) in a particular frame.\n# This disc forms the base of a visibiliy cone whose tip is at the origin of the sensor.\n# Maintaining visibility is done by ensuring the robot does not obstruct the visibility cone.\n# Note:\n# This constraint does NOT enforce minimum or maximum distances between the sensor\n# and the target, nor does it enforce the target to be in the field of view of\n# the sensor. A PositionConstraint can (and probably should) be used for such purposes.\n\n# The radius of the disc that should be maintained visible \nfloat64 target_radius\n\n# The pose of the disc; as the robot moves, the pose of the disc may change as well\n# This can be in the frame of a particular robot link, for example\ngeometry_msgs/PoseStamped target_pose\n\n# From the sensor origin towards the target, the disc forms a visibility cone\n# This cone is approximated using many sides. For example, when using 4 sides, \n# that in fact makes the visibility region be a pyramid.\n# This value should always be 3 or more.\nint32 cone_sides\n\n# The pose in which visibility is to be maintained.\n# The frame id should represent the robot link to which the sensor is attached.\n# It is assumed the sensor can look directly at the target, in any direction.\n# This assumption is usually not true, but additional PositionConstraints\n# can resolve this issue.\ngeometry_msgs/PoseStamped sensor_pose\n\n# Even though the disc is maintained visible, the visibility cone can be very small\n# because of the orientation of the disc with respect to the sensor. It is possible\n# for example to view the disk almost from a side, in which case the visibility cone \n# can end up having close to 0 volume. The view angle is defined to be the angle between\n# the normal to the visibility disc and the direction vector from the sensor origin.\n# The value below represents the minimum desired view angle. For a perfect view,\n# this value will be 0 (the two vectors are exact opposites). For a completely obstructed view\n# this value will be Pi/2 (the vectors are perpendicular). This value defined below \n# is the maximum view angle to be maintained. This should be a value in the open interval\n# (0, Pi/2). If 0 is set, the view angle is NOT enforced.\nfloat64 max_view_angle\n\n# This angle is used similarly to max_view_angle but limits the maximum angle\n# between the sensor origin direction vector and the axis that connects the\n# sensor origin to the target frame origin. The value is again in the range (0, Pi/2)\n# and is NOT enforced if set to 0.\nfloat64 max_range_angle\n\n# The axis that is assumed to indicate the direction of view for the sensor\n# X = 2, Y = 1, Z = 0\nuint8 SENSOR_Z=0\nuint8 SENSOR_Y=1\nuint8 SENSOR_X=2\nuint8 sensor_view_direction\n\n# A weighting factor for this constraint (denotes relative importance to other constraints. Closer to zero means less important)\nfloat64 weight\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "target_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "target_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "cone_sides",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "sensor_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_view_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_range_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "SENSOR_Z",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SENSOR_Y",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SENSOR_X",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "sensor_view_direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WorkspaceParameters": {
+      "description": "This message contains a set of parameters useful in",
+      "raw": "# This message contains a set of parameters useful in\n# setting up the volume (a box) in which the robot is allowed to move.\n# This is useful only when planning for mobile parts of \n# the robot as well.\n\n# Define the frame of reference for the box corners\nstd_msgs/Header header\n\n# The minumum corner of the box, with respect to the robot starting pose\ngeometry_msgs/Vector3 min_corner\n\n# The maximum corner of the box, with respect to the robot starting pose\ngeometry_msgs/Vector3 max_corner\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "min_corner",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "max_corner",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ApplyPlanningScene": {
+      "description": "",
+      "raw": "PlanningScene scene\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "PlanningScene",
+          "name": "scene",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ChangeControlDimensions": {
+      "description": "For use with moveit_jog_arm Cartesian planner",
+      "raw": "# For use with moveit_jog_arm Cartesian planner\n#\n# Turn on/off jogging along these dimensions.\n# Give 'true' to enable jogging in the direction, 'false' to disable\nbool control_x_translation\nbool control_y_translation\nbool control_z_translation\nbool control_x_rotation\nbool control_y_rotation\nbool control_z_rotation\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "control_x_translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "control_y_translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "control_z_translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "control_x_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "control_y_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "control_z_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ChangeDriftDimensions": {
+      "description": "For use with moveit_jog_arm Cartesian planner",
+      "raw": "# For use with moveit_jog_arm Cartesian planner\n#\n# Allow the robot to drift along these dimensions in a smooth but unregulated way.\n# Give 'true' to enable drift in the direction, 'false' to disable.\n# For example, may allow wrist rotation by drift_x_rotation == true.\nbool drift_x_translation\nbool drift_y_translation\nbool drift_z_translation\nbool drift_x_rotation\nbool drift_y_rotation\nbool drift_z_rotation\n\n# Not implemented as of Jan 2020 (for now assumed to be the identity matrix). In the future it will allow us to transform\n# from the jog control frame to a unique drift frame, so the robot can drift along off-principal axes\ngeometry_msgs/Transform transform_jog_frame_to_drift_frame\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "drift_x_translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drift_y_translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drift_z_translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drift_x_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drift_y_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drift_z_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "transform_jog_frame_to_drift_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CheckIfRobotStateExistsInWarehouse": {
+      "description": "",
+      "raw": "string name\nstring robot\n\n---\n\nbool exists\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "exists",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteRobotStateFromWarehouse": {
+      "description": "",
+      "raw": "string name\nstring robot\n\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ExecuteKnownTrajectory": {
+      "description": "This service is deprecated and will go away at some point. For new development use the ExecuteTrajectory action.",
+      "raw": "# This service is deprecated and will go away at some point. For new development use the ExecuteTrajectory action.\n# Effective since: Indigo 0.7.4, Jade and Kinetic 0.8.3\n\n# The trajectory to execute \nRobotTrajectory trajectory\n\n# Set this to true if the service should block until the execution is complete\nbool wait_for_execution\n\n---\n\n# Error code - encodes the overall reason for failure\nMoveItErrorCodes error_code\n",
+      "request_fields": [
+        {
+          "type": "RobotTrajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wait_for_execution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetCartesianPath": {
+      "description": "Define the frame for the specified waypoints",
+      "raw": "# Define the frame for the specified waypoints\nstd_msgs/Header header\n\n# The start at which to start the Cartesian path\nRobotState start_state\n\n# Mandatory name of group to compute the path for\nstring group_name\n\n# Optional name of IK link for which waypoints are specified.\n# If not specified, the tip of the group (which is assumed to be a chain)\n# is assumed to be the link\nstring link_name\n\n# A sequence of waypoints to be followed by the specified link,\n# while moving the specified group, such that the group moves only\n# in a straight line between waypoints\ngeometry_msgs/Pose[] waypoints\n\n# The maximum distance (in Cartesian space) between consecutive points\n# in the returned path. This must always be specified and > 0\nfloat64 max_step\n\n# If jump_threshold is set > 0, it acts as a scaling factor that is used to\n# filter out large relative joint-space jumps in the generated Cartesian path.\n# To this end, the average joint-space distance between consecutive waypoints\n# is computed. If any joint-space distance is larger than this average distance\n# by a factor of jump_threshold_factor, this step is considered a jump\n# and the returned path is truncated before the step.\nfloat64 jump_threshold\n\n# If prismatic_jump_threshold or revolute_jump_threshold are set > 0, then for\n# all active prismatic or revolute joints, the joint-space difference between\n# consecutive waypoints is compared to the respective absolute threshold.\n# If any threshold is exceeded, this step is considered a jump and the returned path\n# is truncated before the step.\nfloat64 prismatic_jump_threshold\nfloat64 revolute_jump_threshold\n\n# Set to true if collisions should be avoided when possible\nbool avoid_collisions\n\n# Specify additional constraints to be met by the Cartesian path\nConstraints path_constraints\n\n---\n\n# The state at which the computed path starts\nRobotState start_state\n\n# The computed solution trajectory, for the desired group, in configuration space\nRobotTrajectory solution\n\n# If the computation was incomplete, this value indicates the fraction of the path\n# that was in fact computed (number of waypoints traveled through)\nfloat64 fraction\n\n# The error code of the computation\nMoveItErrorCodes error_code\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState",
+          "name": "start_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "jump_threshold",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "prismatic_jump_threshold",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "revolute_jump_threshold",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "avoid_collisions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Constraints",
+          "name": "path_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "RobotState",
+          "name": "start_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotTrajectory",
+          "name": "solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "fraction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetMotionPlan": {
+      "description": "This service contains the definition for a request to the motion",
+      "raw": "# This service contains the definition for a request to the motion\n# planner and the output it provides\n\nMotionPlanRequest motion_plan_request\n\n---\n\nMotionPlanResponse motion_plan_response\n",
+      "request_fields": [
+        {
+          "type": "MotionPlanRequest",
+          "name": "motion_plan_request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "MotionPlanResponse",
+          "name": "motion_plan_response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetMotionSequence": {
+      "description": "Planning request with a list of motion commands",
+      "raw": "# Planning request with a list of motion commands\nMotionSequenceRequest request\n\n---\n# Response to the planning request\nMotionSequenceResponse response\n",
+      "request_fields": [
+        {
+          "type": "MotionSequenceRequest",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "MotionSequenceResponse",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPlannerParams": {
+      "description": "Name of the planning pipeline, uses default if empty",
+      "raw": "# Name of the planning pipeline, uses default if empty\nstring pipeline_id\n\n# Name of planning config\nstring planner_config\n\n# Optional name of planning group (return global defaults if empty)\nstring group\n\n---\n\n# parameters as key-value pairs\nPlannerParams params\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "pipeline_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner_config",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "PlannerParams",
+          "name": "params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPlanningScene": {
+      "description": "Get parts of the planning scene that are of interest",
+      "raw": "# Get parts of the planning scene that are of interest\n# All scene components are returned if none are specified\nPlanningSceneComponents components\n---\nPlanningScene scene\n",
+      "request_fields": [
+        {
+          "type": "PlanningSceneComponents",
+          "name": "components",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "PlanningScene",
+          "name": "scene",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPositionFK": {
+      "description": "A service definition for a standard forward kinematics service",
+      "raw": "# A service definition for a standard forward kinematics service\n# The frame_id in the header message is the frame in which \n# the forward kinematics poses will be returned\nstd_msgs/Header header\n\n# A vector of link name for which forward kinematics must be computed\nstring[] fk_link_names\n\n# A robot state consisting of joint names and joint positions to be used for forward kinematics\nRobotState robot_state\n---\n# The resultant vector of PoseStamped messages that contains the (stamped) poses of the requested links\ngeometry_msgs/PoseStamped[] pose_stamped\n\n# The list of link names corresponding to the poses\nstring[] fk_link_names\n\nMoveItErrorCodes error_code\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "fk_link_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState",
+          "name": "robot_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "pose_stamped",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "fk_link_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPositionIK": {
+      "description": "A service call to carry out an inverse kinematics computation",
+      "raw": "# A service call to carry out an inverse kinematics computation\n# The inverse kinematics request\nPositionIKRequest ik_request\n\n---\n\n# The returned solution \n# (in the same order as the list of joints specified in the IKRequest message)\nRobotState solution\n\nMoveItErrorCodes error_code\n",
+      "request_fields": [
+        {
+          "type": "PositionIKRequest",
+          "name": "ik_request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "RobotState",
+          "name": "solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRobotStateFromWarehouse": {
+      "description": "",
+      "raw": "string name\nstring robot\n\n---\n\nmoveit_msgs/RobotState state\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "moveit_msgs/RobotState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetStateValidity": {
+      "description": "",
+      "raw": "RobotState robot_state\nstring group_name\nConstraints constraints\n\n---\n\nbool valid\nContactInformation[] contacts\nCostSource[] cost_sources\nConstraintEvalResult[] constraint_result\n",
+      "request_fields": [
+        {
+          "type": "RobotState",
+          "name": "robot_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Constraints",
+          "name": "constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ContactInformation[]",
+          "name": "contacts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CostSource[]",
+          "name": "cost_sources",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ConstraintEvalResult[]",
+          "name": "constraint_result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GraspPlanning": {
+      "description": "Requests that grasp planning be performed for the target object",
+      "raw": "# Requests that grasp planning be performed for the target object\n# returns a list of candidate grasps to be tested and executed\n\n# the planning group used\nstring group_name\n\n# the object to be grasped\nCollisionObject target\n\n# the names of the relevant support surfaces (e.g. tables) in the collision map\n# can be left empty if no names are available\nstring[] support_surfaces\n\n# an optional list of grasps to be evaluated by the planner\nGrasp[] candidate_grasps\n\n# an optional list of obstacles that we have semantic information about\n# and that can be moved in the course of grasping\nCollisionObject[] movable_obstacles\n\n---\n\n# the list of planned grasps\nGrasp[] grasps\n\n# whether an error occurred\nMoveItErrorCodes error_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CollisionObject",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "support_surfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Grasp[]",
+          "name": "candidate_grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CollisionObject[]",
+          "name": "movable_obstacles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Grasp[]",
+          "name": "grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListRobotStatesInWarehouse": {
+      "description": "",
+      "raw": "string regex\nstring robot\n\n---\n\nstring[] states\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "regex",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadMap": {
+      "description": "",
+      "raw": "string filename\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "QueryPlannerInterfaces": {
+      "description": "The planning instances that could be used in the benchmark",
+      "raw": "\n---\n\n# The planning instances that could be used in the benchmark\nPlannerInterfaceDescription[] planner_interfaces\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "PlannerInterfaceDescription[]",
+          "name": "planner_interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RenameRobotStateInWarehouse": {
+      "description": "",
+      "raw": "string old_name\nstring new_name\nstring robot\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "old_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "new_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SaveMap": {
+      "description": "",
+      "raw": "string filename\n\n---\n\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveRobotStateToWarehouse": {
+      "description": "",
+      "raw": "string name\nstring robot\nmoveit_msgs/RobotState state\n\n---\n\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "moveit_msgs/RobotState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPlannerParams": {
+      "description": "Name of the planning pipeline, uses default if empty",
+      "raw": "# Name of the planning pipeline, uses default if empty\nstring pipeline_id\n\n# Name of planning config\nstring planner_config\n\n# Optional name of planning group (set global defaults if empty)\nstring group\n\n# parameters as key-value pairs\nPlannerParams params\n\n# replace params or augment existing ones?\nbool replace\n\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "pipeline_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner_config",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlannerParams",
+          "name": "params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "replace",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "UpdatePointcloudOctomap": {
+      "description": "",
+      "raw": "sensor_msgs/PointCloud2 cloud\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "cloud",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ExecuteTrajectory": {
+      "description": "The trajectory to execute",
+      "raw": "# The trajectory to execute\nRobotTrajectory trajectory\n\n---\n\n# Error code - encodes the overall reason for failure\nMoveItErrorCodes error_code\n\n---\n\n# The internal state that the move group action currently is in\nstring state\n",
+      "goal_fields": [
+        {
+          "type": "RobotTrajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MoveGroup": {
+      "description": "Motion planning request to pass to planner",
+      "raw": "# Motion planning request to pass to planner\nMotionPlanRequest request\n\n# Planning options\nPlanningOptions planning_options\n\n---\n\n# An error code reflecting what went wrong\nMoveItErrorCodes error_code\n\n# The full starting state of the robot at the start of the trajectory\nmoveit_msgs/RobotState trajectory_start\n\n# The trajectory that moved group produced for execution\nmoveit_msgs/RobotTrajectory planned_trajectory\n\n# The trace of the trajectory recorded during execution\nmoveit_msgs/RobotTrajectory executed_trajectory\n\n# The amount of time it took to complete the motion plan\nfloat64 planning_time\n\n---\n\n# The internal state that the move group action currently is in\nstring state\n",
+      "goal_fields": [
+        {
+          "type": "MotionPlanRequest",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlanningOptions",
+          "name": "planning_options",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "moveit_msgs/RobotState",
+          "name": "trajectory_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "moveit_msgs/RobotTrajectory",
+          "name": "planned_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "moveit_msgs/RobotTrajectory",
+          "name": "executed_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MoveGroupSequence": {
+      "description": "A list of motion commands - one for each section of the sequence",
+      "raw": "# A list of motion commands - one for each section of the sequence\nMotionSequenceRequest request\n\n# Planning options\nPlanningOptions planning_options\n---\n\n# Response comprising information on all sections of the sequence\nMotionSequenceResponse response\n\n---\n\n# The internal state that the move group action currently is in\nstring state\n",
+      "goal_fields": [
+        {
+          "type": "MotionSequenceRequest",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlanningOptions",
+          "name": "planning_options",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "MotionSequenceResponse",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Pickup": {
+      "description": "An action for picking up an object",
+      "raw": "# An action for picking up an object\n\n# The name of the object to pick up (as known in the planning scene)\nstring target_name\n\n# which group should be used to plan for pickup\nstring group_name\n\n# which end-effector to be used for pickup (ideally descending from the group above)\nstring end_effector\n\n# a list of possible grasps to be used. At least one grasp must be filled in\nGrasp[] possible_grasps\n\n# the name that the support surface (e.g. table) has in the collision map\n# can be left empty if no name is available\nstring support_surface_name\n\n# whether collisions between the gripper and the support surface should be acceptable\n# during move from pre-grasp to grasp and during lift. Collisions when moving to the\n# pre-grasp location are still not allowed even if this is set to true.\nbool allow_gripper_support_collision\n\n# The names of the links the object to be attached is allowed to touch;\n# If this is left empty, it defaults to the links in the used end-effector\nstring[] attached_object_touch_links\n\n# Optionally notify the pick action that it should approach the object further,\n# as much as possible (this minimizing the distance to the object before the grasp)\n# along the approach direction; Note: this option changes the grasping poses\n# supplied in possible_grasps[] such that they are closer to the object when possible.\nbool minimize_object_distance\n\n# Optional constraints to be imposed on every point in the motion plan\nConstraints path_constraints\n\n# The name of the motion planner to use. If no name is specified,\n# a default motion planner will be used\nstring planner_id\n\n# an optional list of obstacles that we have semantic information about\n# and that can be touched/pushed/moved in the course of grasping\nstring[] allowed_touch_objects\n\n# The maximum amount of time the motion planner is allowed to plan for\nfloat64 allowed_planning_time\n\n# Planning options\nPlanningOptions planning_options\n\n---\n\n# The overall result of the pickup attempt\nMoveItErrorCodes error_code\n\n# The full starting state of the robot at the start of the trajectory\nRobotState trajectory_start\n\n# The trajectory that moved group produced for execution\nRobotTrajectory[] trajectory_stages\n\nstring[] trajectory_descriptions\n\n# The performed grasp, if attempt was successful\nGrasp grasp\n\n# The amount of time in seconds it took to complete the plan\nfloat64 planning_time\n---\n\n# The internal state that the pickup action currently is in\nstring state\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "target_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "end_effector",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Grasp[]",
+          "name": "possible_grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "support_surface_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "allow_gripper_support_collision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "attached_object_touch_links",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "minimize_object_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Constraints",
+          "name": "path_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "allowed_touch_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "allowed_planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlanningOptions",
+          "name": "planning_options",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState",
+          "name": "trajectory_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotTrajectory[]",
+          "name": "trajectory_stages",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "trajectory_descriptions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Grasp",
+          "name": "grasp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Place": {
+      "description": "An action for placing an object",
+      "raw": "# An action for placing an object\n\n# which group to be used to plan for grasping\nstring group_name\n\n# the name of the attached object to place\nstring attached_object_name\n\n# a list of possible transformations for placing the object\nPlaceLocation[] place_locations\n\n# if the user prefers setting the eef pose (same as in pick) rather than \n# the location of the object, this flag should be set to true\nbool place_eef\n\n# the name that the support surface (e.g. table) has in the collision world\n# can be left empty if no name is available\nstring support_surface_name\n\n# whether collisions between the gripper and the support surface should be acceptable\n# during move from pre-place to place and during retreat. Collisions when moving to the\n# pre-place location are still not allowed even if this is set to true.\nbool allow_gripper_support_collision\n\n# Optional constraints to be imposed on every point in the motion plan\nConstraints path_constraints\n\n# The name of the motion planner to use. If no name is specified,\n# a default motion planner will be used\nstring planner_id\n\n# an optional list of obstacles that we have semantic information about\n# and that can be touched/pushed/moved in the course of placing\nstring[] allowed_touch_objects\n\n# The maximum amount of time the motion planner is allowed to plan for\nfloat64 allowed_planning_time\n\n# Planning options\nPlanningOptions planning_options\n\n---\n\n# The result of the place attempt\nMoveItErrorCodes error_code\n\n# The full starting state of the robot at the start of the trajectory\nRobotState trajectory_start\n\n# The trajectory that moved group produced for execution\nRobotTrajectory[] trajectory_stages\n\nstring[] trajectory_descriptions\n\n# The successful place location, if any\nPlaceLocation place_location\n\n# The amount of time in seconds it took to complete the plan\nfloat64 planning_time\n---\n\n# The internal state that the place action currently is in\nstring state\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "group_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "attached_object_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaceLocation[]",
+          "name": "place_locations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "place_eef",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "support_surface_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "allow_gripper_support_collision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Constraints",
+          "name": "path_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "allowed_touch_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "allowed_planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlanningOptions",
+          "name": "planning_options",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "MoveItErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState",
+          "name": "trajectory_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotTrajectory[]",
+          "name": "trajectory_stages",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "trajectory_descriptions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PlaceLocation",
+          "name": "place_location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

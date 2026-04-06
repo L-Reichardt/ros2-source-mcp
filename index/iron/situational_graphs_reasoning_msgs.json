@@ -1,0 +1,378 @@
+{
+  "name": "situational_graphs_reasoning_msgs",
+  "version": "0.0.1",
+  "description": "Custom reasoning msgs",
+  "license": "GPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "situational_graphs_reasoning_msgs",
+    "url": "https://github.com/snt-arg/situational_graphs_reasoning_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "lidar_situational_graphs",
+      "situational_graphs_reasoning"
+    ]
+  },
+  "messages": {
+    "Attribute": {
+      "description": "",
+      "raw": "string name\nstring str_value\nfloat64[] fl_value",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "str_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "fl_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Edge": {
+      "description": "",
+      "raw": "int64 origin_node\nint64 target_node\nint64 edge_id\nfloat64[4] plane_coefficients\nfloat64[9] plane_information_matrix\nstd_msgs/Float64MultiArray information_matrix\ngeometry_msgs/Transform measurement_transform\nAttribute[] attributes",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "origin_node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "target_node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "edge_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "plane_coefficients",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "plane_information_matrix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Float64MultiArray",
+          "name": "information_matrix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "measurement_transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Attribute[]",
+          "name": "attributes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Graph": {
+      "description": "",
+      "raw": "string name\nNode[] nodes\nEdge[] edges\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Node[]",
+          "name": "nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Edge[]",
+          "name": "edges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GraphKeyframes": {
+      "description": "",
+      "raw": "string type\nstring robot\nKeyframe[] keyframes\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Keyframe[]",
+          "name": "keyframes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Keyframe": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint32 id\nstring type\nsensor_msgs/PointCloud2 pointcloud\ngeometry_msgs/Pose pose\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "pointcloud",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Match": {
+      "description": "",
+      "raw": "string name\nNode[] basis_nodes\nNode[] target_nodes\nEdge[] edges",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Node[]",
+          "name": "basis_nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Node[]",
+          "name": "target_nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Edge[]",
+          "name": "edges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Node": {
+      "description": "",
+      "raw": "int32 id\nstring type\nAttribute[] attributes",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Attribute[]",
+          "name": "attributes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoomKeyframe": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint32 id\nsensor_msgs/PointCloud2 pointcloud\ngeometry_msgs/Pose pose\nint32[] keyframes_ids\nint32[] planes_ids\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "pointcloud",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "keyframes_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "planes_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SubgraphMatch": {
+      "description": "success: 0 unique, 1 many candidates, 2 failure, 3 no graphs",
+      "raw": "string base_graph\nstring target_graph\n---\n#success: 0 unique, 1 many candidates, 2 failure, 3 no graphs\nint32 success\nGraph[] matches\nfloat32[] score",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "base_graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "target_graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Graph[]",
+          "name": "matches",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "score",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

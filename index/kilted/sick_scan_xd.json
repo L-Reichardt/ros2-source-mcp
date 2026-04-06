@@ -1,0 +1,1388 @@
+{
+  "name": "sick_scan_xd",
+  "version": "3.9.0",
+  "description": "ROS 1 and 2 driver for SICK scanner",
+  "license": "Apache-2.0",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/SICKAG/sick_scan_xd",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "sick_scan_xd",
+    "url": "https://github.com/SICKAG/sick_scan_xd.git",
+    "branch": "develop"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "message_generation",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rospy",
+      "rviz",
+      "xacro",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "dynamic_reconfigure",
+      "libsick_ldmrs",
+      "roscpp",
+      "roslib",
+      "tf",
+      "rclcpp",
+      "diagnostic_msgs",
+      "diagnostic_updater",
+      "geometry_msgs",
+      "nav_msgs",
+      "sensor_msgs",
+      "std_msgs",
+      "tf2",
+      "tf2_ros",
+      "visualization_msgs",
+      "rcl_interfaces"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Encoder": {
+      "description": "This message contains the counter reading of the encoder at the datagram time (timestamp in header).",
+      "raw": "#This message contains the counter reading of the encoder at the datagram time (timestamp in header).\n\n# ROS-1: \n#Header header           # same information as in laserscan and Pointcloud2 message\n# ROS-2: \nstd_msgs/Header header           # same information as in laserscan and Pointcloud2 message\n\nint32 enc_position     # number of ticks\nint16 enc_speed         # number of ticks per millimeter\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "same information as in laserscan and Pointcloud2 message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "enc_position",
+          "comment": "number of ticks",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "enc_speed",
+          "comment": "number of ticks per millimeter",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuExtended": {
+      "description": "This message contains the IMU data of a Sick laser scanner as an IMU message.",
+      "raw": "# This message contains the IMU data of a Sick laser scanner as an IMU message.\n# The ticks correspond to the internal time stamps of the laser scanner and increase linearly with time, the tickcounter overflows.\n# The quaternion_accuracy has the unit rad.\n# The accuracy measures for Lienar acceleration and angular velocity are abitre values, where higher values are better.\n# \n#\n\n# ROS-1: \n#Header header\n# ROS-2: \nstd_msgs/Header header\n\n#sensor_msgs/Imu Imu # ROS1\nsensor_msgs/Imu imu  # ROS2\n#IMU Message\n\nuint32 ticks\n# timestamp Ticks from laser scanner\n\nfloat32 quaternion_accuracy\n#quaternion accuracy in rad\n\nuint8 angular_velocity_reliability\n#angular velocity reliability 0 low 255 high, value should be over 3\n\nuint8 linear_acceleration_reliability\n#linear acceleration reliability 0 low 255 high, value should be over 3\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Imu",
+          "name": "imu",
+          "comment": "ROS2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "quaternion_accuracy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "angular_velocity_reliability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "linear_acceleration_reliability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LFErecFieldMsg": {
+      "description": "This message contains a single field of a \"sSN LFErec\" message of a Sick laser scanner as an ros message.",
+      "raw": "# This message contains a single field of a \"sSN LFErec\" message of a Sick laser scanner as an ros message.\n# See https://github.com/SICKAG/libsick_ldmrs/blob/master/src/sopas/LdmrsSopasLayer.cpp lines 1414 ff.\n# Field result field_result_mrs is 0 (invalid/incorrect), 1 (free/clear) or 2 (infringed)\n# Note: field indices are sorted in reverse order, i.e. with 2 configured fields, we typically have\n# output_msg.fields[0].field_index = 1, output_msg.fields[0].field_result_mrs = 0 (invalid)\n# output_msg.fields[1].field_index = 2, output_msg.fields[1].field_result_mrs = 1 or 2 (clear=1 or infringed=2)\n# output_msg.fields[2].field_index = 3, output_msg.fields[2].field_result_mrs = 1 or 2 (clear=1 or infringed=2)\n\nuint16 version_number\nuint8 field_index\nuint32 sys_count\nfloat32 dist_scale_factor\nfloat32 dist_scale_offset\nuint32 angle_scale_factor\nint32 angle_scale_offset\nuint8 field_result_mrs # field result is 0 (invalid/incorrect), 1 (free/clear) or 2 (infringed)\n# Time block\nuint16 time_state  # No time data: 0, Time data: 1\nuint16 year        # f.e. 2021\nuint8 month        # 1 ... 12\nuint8 day          # 1 ... 31\nuint8 hour         # 0 ... 23\nuint8 minute       # 0 ... 59\nuint8 second       # 0 ... 59\nuint32 microsecond # 0 ... 999999\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "version_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "field_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sys_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_scale_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_scale_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "angle_scale_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "angle_scale_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "field_result_mrs",
+          "comment": "field result is 0 (invalid/incorrect), 1 (free/clear) or 2 (infringed)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_state",
+          "comment": "No time data: 0, Time data: 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "year",
+          "comment": "f.e. 2021",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "month",
+          "comment": "1 ... 12",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "day",
+          "comment": "1 ... 31",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "hour",
+          "comment": "0 ... 23",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "minute",
+          "comment": "0 ... 59",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "second",
+          "comment": "0 ... 59",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "microsecond",
+          "comment": "0 ... 999999",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LFErecMsg": {
+      "description": "This message contains a single field of a \"sSN LFErec\" message of a Sick laser scanner as an ros message.",
+      "raw": "# This message contains a single field of a \"sSN LFErec\" message of a Sick laser scanner as an ros message.\n# See https://github.com/SICKAG/libsick_ldmrs/blob/master/src/sopas/LdmrsSopasLayer.cpp lines 1414 ff.\n# Field result field_result_mrs is 0 (invalid/incorrect), 1 (free/clear) or 2 (infringed)\n# Note: field indices are sorted in reverse order, i.e. with 2 configured fields, we typically have\n# output_msg.fields[0].field_index = 1, output_msg.fields[0].field_result_mrs = 0 (invalid)\n# output_msg.fields[1].field_index = 2, output_msg.fields[1].field_result_mrs = 1 or 2 (clear=1 or infringed=2)\n# output_msg.fields[2].field_index = 3, output_msg.fields[2].field_result_mrs = 1 or 2 (clear=1 or infringed=2)\n\nstd_msgs/Header header\n\nuint16 fields_number # number of fields\nsick_scan_xd/LFErecFieldMsg[] fields # 3 fields for TiM871S\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "fields_number",
+          "comment": "number of fields",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sick_scan_xd/LFErecFieldMsg[]",
+          "name": "fields",
+          "comment": "3 fields for TiM871S",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LIDinputstateMsg": {
+      "description": "This message contains the \"sSN LIDinputstate\" message of a Sick laser scanner as an ros message.",
+      "raw": "# This message contains the \"sSN LIDinputstate\" message of a Sick laser scanner as an ros message.\n#\n\nstd_msgs/Header header\n\n# Status code\nuint16 version_number # Status code version number\nuint32 system_counter # Status code system counter (time in microsec since power up, max. 71 min then starting from 0 again)\n\n# Array of input states\nuint8[] input_state   # input states, each state with value 0 (not active), 1 (active) or 2 (not used)\nint32 active_fieldset # active fieldset\n\n# Time block (sensortime from the last change of min. one of the outputs)\nuint16 time_state   # No time data: 0, Time data: 1\nuint16 year         # f.e. 2021\nuint8 month         # 1 ... 12\nuint8 day           # 1 ... 31\nuint8 hour          # 0 ... 23\nuint8 minute        # 0 ... 59\nuint8 second        # 0 ... 59\nuint32 microsecond  # 0 ... 999999\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "version_number",
+          "comment": "Status code version number",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "system_counter",
+          "comment": "Status code system counter (time in microsec since power up, max. 71 min then starting from 0 again)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "input_state",
+          "comment": "input states, each state with value 0 (not active), 1 (active) or 2 (not used)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "active_fieldset",
+          "comment": "active fieldset",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_state",
+          "comment": "No time data: 0, Time data: 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "year",
+          "comment": "f.e. 2021",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "month",
+          "comment": "1 ... 12",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "day",
+          "comment": "1 ... 31",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "hour",
+          "comment": "0 ... 23",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "minute",
+          "comment": "0 ... 59",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "second",
+          "comment": "0 ... 59",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "microsecond",
+          "comment": "0 ... 999999",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LIDoutputstateMsg": {
+      "description": "This message contains the \"sSN LIDoutputstate\" message of a Sick laser scanner as an ros message.",
+      "raw": "# This message contains the \"sSN LIDoutputstate\" message of a Sick laser scanner as an ros message.\n#\n\n# ROS-1: \n#Header header\n# ROS-2: \nstd_msgs/Header header\n\n# Status code\nuint16 version_number # Status code version number\nuint32 system_counter # Status code system counter (time in microsec since power up, max. 71 min then starting from 0 again)\n\n# Array of output states (state and count)\nuint8[] output_state  # output states, each state with value 0 (not active), 1 (active) or 2 (not used)\nuint32[] output_count # output counter\n\n# Time block (sensortime from the last change of min. one of the outputs)\nuint16 time_state   # No time data: 0, Time data: 1\nuint16 year        # f.e. 2021\nuint8 month        # 1 ... 12\nuint8 day          # 1 ... 31\nuint8 hour         # 0 ... 23\nuint8 minute       # 0 ... 59\nuint8 second       # 0 ... 59\nuint32 microsecond # 0 ... 999999\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "version_number",
+          "comment": "Status code version number",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "system_counter",
+          "comment": "Status code system counter (time in microsec since power up, max. 71 min then starting from 0 again)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "output_state",
+          "comment": "output states, each state with value 0 (not active), 1 (active) or 2 (not used)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "output_count",
+          "comment": "output counter",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_state",
+          "comment": "No time data: 0, Time data: 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "year",
+          "comment": "f.e. 2021",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "month",
+          "comment": "1 ... 12",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "day",
+          "comment": "1 ... 31",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "hour",
+          "comment": "0 ... 23",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "minute",
+          "comment": "0 ... 59",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "second",
+          "comment": "0 ... 59",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "microsecond",
+          "comment": "0 ... 999999",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NAVLandmarkData": {
+      "description": "ROS message of NAV350LandmarkData, see sick_nav_scandata_parser.h and NAV-350 telegram listing for details.",
+      "raw": "# ROS message of NAV350LandmarkData, see sick_nav_scandata_parser.h and NAV-350 telegram listing for details.\nstd_msgs/Header header\n\nuint8 landmark_filter\nuint16 num_reflectors\nsick_scan_xd/NAVReflectorData[] reflectors\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "landmark_filter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_reflectors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sick_scan_xd/NAVReflectorData[]",
+          "name": "reflectors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NAVOdomVelocity": {
+      "description": "ROS message for NAV350 velocity/odometry data, see sick_nav_scandata_parser.h and NAV-350 telegram listing for detail...",
+      "raw": "# ROS message for NAV350 velocity/odometry data, see sick_nav_scandata_parser.h and NAV-350 telegram listing for details (\"sMN mNPOSSetSpeed\").\n\nfloat32 vel_x # x-component of velocity in the coordinate system defined by coordbase (i.e. in lidar coordinate for coordbase=0) in m/s, -32.0 ... +32.0 m/s\nfloat32 vel_y # y-component of velocity in the coordinate system defined by coordbase (i.e. in lidar coordinate for coordbase=0) in m/s, -32.0 ... +32.0 m/s\nfloat32 omega # angular velocity of the NAV350 in radians/s, -2*PI ... +2*PI rad/s\nuint32 timestamp # Timestamp of the Velocity vector related to the NAV350 clock\nuint8 coordbase # Coordinate system of the velocity vector (local or global), 0 = local coordinate system of the NAV350, 1 = absolute coordinate system\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "vel_x",
+          "comment": "x-component of velocity in the coordinate system defined by coordbase (i.e. in lidar coordinate for coordbase=0) in m/s, -32.0 ... +32.0 m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel_y",
+          "comment": "y-component of velocity in the coordinate system defined by coordbase (i.e. in lidar coordinate for coordbase=0) in m/s, -32.0 ... +32.0 m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "omega",
+          "comment": "angular velocity of the NAV350 in radians/s, -2*PI ... +2*PI rad/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "timestamp",
+          "comment": "Timestamp of the Velocity vector related to the NAV350 clock",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "coordbase",
+          "comment": "Coordinate system of the velocity vector (local or global), 0 = local coordinate system of the NAV350, 1 = absolute coordinate system",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NAVPoseData": {
+      "description": "ROS message of NAV350PoseData, see sick_nav_scandata_parser.h and NAV-350 telegram listing for details.",
+      "raw": "# ROS message of NAV350PoseData, see sick_nav_scandata_parser.h and NAV-350 telegram listing for details.\nstd_msgs/Header header\n\n# pose in lidar coordinates in mm and mdeg\nint32 x\nint32 y\nuint32 phi\n# optional pose data\nuint16 opt_pose_data_valid\nuint8 output_mode\nuint32 timestamp\nint32 mean_dev\nuint8 nav_mode\nuint32 info_state\nuint8 quant_used_reflectors\n\n# pose in ros units\nint8 pose_valid   # pose_x, pose_y and pose_yaw are valid if pose_valid > 0\nfloat32 pose_x    # x position in ros units in m\nfloat32 pose_y    # y position in ros units in m\nfloat32 pose_yaw  # yaw angle in radians\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "phi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "opt_pose_data_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "output_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "mean_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "nav_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "info_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "quant_used_reflectors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "pose_valid",
+          "comment": "pose_x, pose_y and pose_yaw are valid if pose_valid > 0",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pose_x",
+          "comment": "x position in ros units in m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pose_y",
+          "comment": "y position in ros units in m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pose_yaw",
+          "comment": "yaw angle in radians",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NAVReflectorData": {
+      "description": "ROS message of NAV350ReflectorData, see sick_nav_scandata_parser.h and NAV-350 telegram listing for details.",
+      "raw": "# ROS message of NAV350ReflectorData, see sick_nav_scandata_parser.h and NAV-350 telegram listing for details.\n\n# cartesian data in lidar coordinates in mm\nuint16 cartesian_data_valid\nint32 x\nint32 y\n\n# polar data in lidar coordinates in mm and mdeg\nuint16 polar_data_valid\nuint32 dist\nuint32 phi\n\n# optional reflector data\nuint16 opt_reflector_data_valid\nuint16 local_id\nuint16 global_id\nuint8 type \nuint16 sub_type\nuint16 quality\nuint32 timestamp\nuint16 size\nuint16 hit_count\nuint16 mean_echo\nuint16 start_index\nuint16 end_index\n\n# reflector position in ros coordinates\nint8 pos_valid   # pose_x, pose_y and pose_yaw are valid if pose_valid > 0\nfloat32 pos_x    # x position in ros coordinates in m\nfloat32 pos_y    # y position in ros coordinates in m\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "cartesian_data_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "polar_data_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "dist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "phi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "opt_reflector_data_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "local_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "global_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sub_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "hit_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mean_echo",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "start_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "end_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "pos_valid",
+          "comment": "pose_x, pose_y and pose_yaw are valid if pose_valid > 0",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pos_x",
+          "comment": "x position in ros coordinates in m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pos_y",
+          "comment": "y position in ros coordinates in m",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarObject": {
+      "description": "ROS-1:",
+      "raw": "int32 id\n\n# ROS-1:\ntime tracking_time\ntime last_seen # not set\n\n# ROS-2:\n#builtin_interfaces/Time tracking_time        # since when the object is tracked\n#builtin_interfaces/Time last_seen\n\ngeometry_msgs/TwistWithCovariance velocity\n\ngeometry_msgs/Pose bounding_box_center\ngeometry_msgs/Vector3 bounding_box_size\n\ngeometry_msgs/PoseWithCovariance object_box_center\ngeometry_msgs/Vector3 object_box_size\n\ngeometry_msgs/Point[] contour_points\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "time",
+          "name": "tracking_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "time",
+          "name": "last_seen",
+          "comment": "not set",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "bounding_box_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "bounding_box_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "object_box_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "object_box_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "contour_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarPreHeader": {
+      "description": "Version information for this whole structure (MeasurementData)",
+      "raw": "# Version information for this whole structure (MeasurementData)\n\nuint16 uiversionno\nsick_scan_xd/RadarPreHeaderDeviceBlock radarpreheaderdeviceblock\nsick_scan_xd/RadarPreHeaderStatusBlock radarpreheaderstatusblock\nsick_scan_xd/RadarPreHeaderMeasurementParam1Block radarpreheadermeasurementparam1block\nsick_scan_xd/RadarPreHeaderEncoderBlock[] radarpreheaderarrayencoderblock\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "uiversionno",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sick_scan_xd/RadarPreHeaderDeviceBlock",
+          "name": "radarpreheaderdeviceblock",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sick_scan_xd/RadarPreHeaderStatusBlock",
+          "name": "radarpreheaderstatusblock",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sick_scan_xd/RadarPreHeaderMeasurementParam1Block",
+          "name": "radarpreheadermeasurementparam1block",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sick_scan_xd/RadarPreHeaderEncoderBlock[]",
+          "name": "radarpreheaderarrayencoderblock",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarPreHeaderDeviceBlock": {
+      "description": "ROS-1:",
+      "raw": "#\n#\n#\n#\n\n# ROS-1:\n#uint32 uiIdent             # Logical number of the device\"\n#uint32 udiSerialNo         # Serial number of the device\n#bool bDeviceError          # State of the device\n#bool bContaminationWarning # Contamination Warning\n#bool bContaminationError   # Contamination Error\n\n# ROS-2:\nuint32 uiident             # Logical number of the device\"\nuint32 udiserialno         # Serial number of the device\nbool bdeviceerror          # State of the device\nbool bcontaminationwarning # Contamination Warning\nbool bcontaminationerror   # Contamination Error\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "uiident",
+          "comment": "Logical number of the device\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "udiserialno",
+          "comment": "Serial number of the device",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bdeviceerror",
+          "comment": "State of the device",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bcontaminationwarning",
+          "comment": "Contamination Warning",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bcontaminationerror",
+          "comment": "Contamination Error",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarPreHeaderEncoderBlock": {
+      "description": "Array with connected encoder sensors",
+      "raw": "# Array with connected encoder sensors\n# ROS-1:\n#uint32 udiEncoderPos  # encoder position [inc]\n#int16 iEncoderSpeed   # encoder speed [inc/mm]\n# ROS-2:\nuint32 udiencoderpos  # encoder position [inc]\nint16 iencoderspeed   # encoder speed [inc/mm]\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "udiencoderpos",
+          "comment": "encoder position [inc]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "iencoderspeed",
+          "comment": "encoder speed [inc/mm]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarPreHeaderMeasurementParam1Block": {
+      "description": "ROS-1:",
+      "raw": "# ROS-1:\n#uint32 uiCycleDuration # Time in microseconds to detect this items\n#uint32 uiNoiseLevel # [1/100dB]\n# ROS-2:\nuint32 uicycleduration # Time in microseconds to detect this items\nuint32 uinoiselevel # [1/100dB]\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "uicycleduration",
+          "comment": "Time in microseconds to detect this items",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "uinoiselevel",
+          "comment": "[1/100dB]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarPreHeaderStatusBlock": {
+      "description": "ROS-1:",
+      "raw": "#\n#\n#\n# ROS-1:\n#uint32 uiTelegramCount # telegram number\n#uint32 uiCycleCount # \"scan number\"\n#uint32 udiSystemCountScan # system time since power on of scan gen. [us]\n#uint32 udiSystemCountTransmit # system time since power on of scan transmission [us]\n#uint16 uiInputs # state of digital inputs\n#uint16 uiOutputs # state of digital outputs\n\n# ROS-2:\nuint32 uitelegramcount # telegram number\nuint32 uicyclecount # \"scan number\"\nuint32 udisystemcountscan # system time since power on of scan gen. [us]\nuint32 udisystemcounttransmit # system time since power on of scan transmission [us]\nuint16 uiinputs # state of digital inputs\nuint16 uioutputs # state of digital outputs\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "uitelegramcount",
+          "comment": "telegram number",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "uicyclecount",
+          "comment": "\"scan number\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "udisystemcountscan",
+          "comment": "system time since power on of scan gen. [us]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "udisystemcounttransmit",
+          "comment": "system time since power on of scan transmission [us]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "uiinputs",
+          "comment": "state of digital inputs",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "uioutputs",
+          "comment": "state of digital outputs",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarScan": {
+      "description": "The message is divided into three parts:",
+      "raw": "#\n# The message is divided into three parts:\n# 1. Header: containing information about general radar parameters\n# 2. RawTargets: List of targets containing maximum values in the range-doppler-matrix - used for tracking\n# 3. Objects: List of objects generated by the internal tracking algorithm - based on raw targets\n# ROS-1:\n#Header header\n#RadarPreHeader radarPreHeader\n# ROS-2:\nstd_msgs/Header header\nRadarPreHeader radarpreheader\nsensor_msgs/PointCloud2 targets\nsick_scan_xd/RadarObject[] objects",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RadarPreHeader",
+          "name": "radarpreheader",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "targets",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sick_scan_xd/RadarObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SickImu": {
+      "description": "This message contains the IMU data of a Sick laser scanner as an IMU message.",
+      "raw": "# This message contains the IMU data of a Sick laser scanner as an IMU message.\n# The ticks correspond to the internal time stamps of the laser scanner and increase linearly with time, the tickcounter overflows.\n# The quaternion_accuracy has the unit rad.\n# The accuracy measures for Lienar acceleration and angular velocity are abitre values, where higher values are better.\n# \n#\n#Header header  # ROS1\nstd_msgs/Header header  # ROS2\n\n#sensor_msgs/Imu Imu # ROS1\nsensor_msgs/Imu imu  # ROS2\n#IMU Message\n\nuint32 ticks\n# timestamp Ticks from laser scanner\n\nfloat32 quaternion_accuracy\n#quaternion accuracy in rad\n\nuint8 angular_velocity_reliability\n#angular velocity reliability 0 low 255 high, value should be over 3\n\nuint8 linear_acceleration_reliability\n#linear acceleration reliability 0 low 255 high, value should be over 3\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "ROS2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Imu",
+          "name": "imu",
+          "comment": "ROS2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "quaternion_accuracy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "angular_velocity_reliability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "linear_acceleration_reliability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ColaMsgSrv": {
+      "description": "Definition of ROS service ColaMsg for sick_scan_xd",
+      "raw": "# Definition of ROS service ColaMsg for sick_scan_xd\n# Send a cola message to the Lidar\n# Example call (ROS1):\n# rosservice call /sick_tim_7xx/ColaMsg \"{request: 'sEN LIDoutputstate 1'}\"\n# \n\n# \n# Request (input)\n# \n\nstring request\n\n---\n\n# \n# Response (output)\n# \n\nstring response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ECRChangeArrSrv": {
+      "description": "Definition of ROS service ECRChangeArr for sick_scan_xd",
+      "raw": "# Definition of ROS service ECRChangeArr for sick_scan_xd\n# Request status change of monitoring fields on event\n# Example call (ROS1):\n# rosservice call /sick_tim_7xx/ECRChangeArr \"{active: 1}\"\n# \n\n# \n# Request (input)\n# \n\nbool active # start/stop monitoring for status change events\n\n---\n\n# \n# Response (output)\n# \n\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "active",
+          "comment": "start/stop monitoring for status change events",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldSetReadSrv": {
+      "description": "Definition of ROS service FieldSetRead for TiM7xx and TiM7xxS devices:",
+      "raw": "# Definition of ROS service FieldSetRead for TiM7xx and TiM7xxS devices:\n# Read FieldSetSelectionMethod and ActiveFieldSet\n#\n# Example call (ROS1):\n# rosservice call /sick_tim_7xx/FieldSetRead \"{}\"\n#\n# Example call (ROS2):\n# ros2 service call /FieldSetRead sick_scan_xd/srv/FieldSetReadSrv \"{}\"\n#\n# field_set_selection_method < 0: do not set (default), field_set_selection_method = 0: active field selection by digital inputs, field_set_selection_method = 1: active field selection by telegram (see operation manual for details about FieldSetSelectionMethod telegram)\n# active_field_set < 0: do not set (default), active_field_set > 0: index of active field otherwise (see operation manual for details about ActiveFieldSet telegram)\n# \n\n# \n# Request (input)\n# \n\n---\n\n# \n# Response (output)\n# \n\nint32 field_set_selection_method # value of field_set_selection_method after read from lidar\nint32 active_field_set           # value of active_field_set after read from lidar\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "field_set_selection_method",
+          "comment": "value of field_set_selection_method after read from lidar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "active_field_set",
+          "comment": "value of active_field_set after read from lidar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldSetWriteSrv": {
+      "description": "Definition of ROS service FieldSetWrite for TiM7xx and TiM7xxS devices:",
+      "raw": "# Definition of ROS service FieldSetWrite for TiM7xx and TiM7xxS devices:\n# Write FieldSetSelectionMethod and ActiveFieldSet\n#\n# Example call (ROS1):\n# rosservice call /sick_tim_7xx/FieldSetWrite \"{field_set_selection_method_in: -1, active_field_set_in: 1}\"\n#\n# Example call (ROS2):\n# ros2 service call /FieldSetWrite sick_scan_xd/srv/FieldSetWriteSrv \"{field_set_selection_method_in: -1, active_field_set_in: 1}\"\n#\n# Parameter field_set_selection_method < 0: do not set (default), field_set_selection_method = 0: active field selection by digital inputs, field_set_selection_method = 1: active field selection by telegram (see operation manual for details about FieldSetSelectionMethod telegram)\n# Note that FieldSetSelectionMethod (parameter field_set_selection_method) requires a higher authorization level and should be configured in the launch file. It is recommended to set field_set_selection_method_in: -1 when using ros service FieldSetWrite.\n# Parameter active_field_set < 0: do not set (default), active_field_set > 0: index of active field otherwise (see operation manual for details about ActiveFieldSet telegram)\n# \n\n# \n# Request (input)\n# \n\nint32 field_set_selection_method_in # value of field_set_selection_method to write to lidar\nint32 active_field_set_in           # value of active_field_set to write to lidar\n\n---\n\n# \n# Response (output)\n# \n\nint32 field_set_selection_method # value of field_set_selection_method after write to and re-read from lidar\nint32 active_field_set           # value of active_field_set after write to and re-read from lidar\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "field_set_selection_method_in",
+          "comment": "value of field_set_selection_method to write to lidar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "active_field_set_in",
+          "comment": "value of active_field_set to write to lidar",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "field_set_selection_method",
+          "comment": "value of field_set_selection_method after write to and re-read from lidar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "active_field_set",
+          "comment": "value of active_field_set after write to and re-read from lidar",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetContaminationDataSrv": {
+      "description": "Definition of ROS service GetContaminationData for LRS-4xxx devices",
+      "raw": "# Definition of ROS service GetContaminationData for LRS-4xxx devices\n# Read contamination indication data (LRS-4xxx only)\n# Example call (ROS1):\n# rosservice call /sick_lrs_4xxx/GetContaminationData \"{}\"\n# \n\n# \n# Request (input)\n# \n\n---\n\n# \n# Response (output)\n# \n\nuint8[] data # Status of contamination in order of the different channels. One entry (byte) for each of 12 channels. Order of 12 channels: (1/2/3/4/5/6/7/8/9/10/11/12). Status 0 = CM NONE, 1 = CM WARN, 2 = CM ERROR.\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "Status of contamination in order of the different channels. One entry (byte) for each of 12 channels. Order of 12 channels: (1/2/3/4/5/6/7/8/9/10/11/12). Status 0 = CM NONE, 1 = CM WARN, 2 = CM ERROR.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetContaminationResultSrv": {
+      "description": "Definition of ROS service GetContaminationResult for sick_scan",
+      "raw": "# Definition of ROS service GetContaminationResult for sick_scan\n# Read contamination indication result\n# Example call (ROS1):\n# rosservice call /sick_mrs_1xxx/GetContaminationResult \"{}\"\n# \n\n# \n# Request (input)\n# \n\n---\n\n# \n# Response (output)\n# \n\nuint8 warning # Result of contamination indication: warning is 0 (false) or 1 (true)\nuint8 error   # Result of contamination indication: error is 0 (false) or 1 (true)\nbool success  # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "warning",
+          "comment": "Result of contamination indication: warning is 0 (false) or 1 (true)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "Result of contamination indication: error is 0 (false) or 1 (true)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LIDoutputstateSrv": {
+      "description": "Definition of ROS service LIDoutputstate for sick_scan_xd",
+      "raw": "# Definition of ROS service LIDoutputstate for sick_scan_xd\n# Start or stop Send outputstate by event\n# Example call (ROS1):\n# rosservice call /sick_tim_7xx/LIDoutputstate \"{active: 1}\"\n# \n\n# \n# Request (input)\n# \n\nbool active # start/stop send outputstate by event\n\n---\n\n# \n# Response (output)\n# \n\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "active",
+          "comment": "start/stop send outputstate by event",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SCdevicestateSrv": {
+      "description": "Definition of ROS service SCdevicestate for sick_scan_xd",
+      "raw": "# Definition of ROS service SCdevicestate for sick_scan_xd\n# Example call (ROS1):\n# rosservice call /sick_tim_7xx/SCdevicestate \"{}\"\n# \n\n# \n# Request (input)\n# \n\n---\n\n# \n# Response (output)\n# \n\nint32 state # device state: busy:0, ready:1, error:2\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "state",
+          "comment": "device state: busy:0, ready:1, error:2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SCrebootSrv": {
+      "description": "Definition of ROS service SCreboot for sick_scan_xd",
+      "raw": "# Definition of ROS service SCreboot for sick_scan_xd\n# Example call (ROS1):\n# rosservice call /sick_tim_7xx/SCreboot \"{}\"\n# \n\n# \n# Request (input)\n# \n\n---\n\n# \n# Response (output)\n# \n\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SCsoftresetSrv": {
+      "description": "Definition of ROS service SCsoftreset for sick_scan_xd",
+      "raw": "# Definition of ROS service SCsoftreset for sick_scan_xd\n# Example call (ROS1):\n# rosservice call /sick_tim_7xx/SCsoftreset \"{}\"\n# \n\n# \n# Request (input)\n# \n\n---\n\n# \n# Response (output)\n# \n\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SickScanExitSrv": {
+      "description": "Definition of ROS service SickScanExit for sick_scan_xd.",
+      "raw": "# Definition of ROS service SickScanExit for sick_scan_xd.\n# SickScanExit stops the scanner and exits sick_generic_caller.\n# Example call (ROS1):\n# rosservice call /sick_nav_3xx/SickScanExit \"{}\"\n# \n\n# \n# Request (input)\n# \n\n---\n\n# \n# Response (output)\n# \n\nbool success # true: success response received from lidar, false: service failed (timeout or error status from controller)\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true: success response received from lidar, false: service failed (timeout or error status from controller)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

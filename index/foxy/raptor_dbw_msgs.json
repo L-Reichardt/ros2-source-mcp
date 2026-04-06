@@ -1,0 +1,2718 @@
+{
+  "name": "raptor_dbw_msgs",
+  "version": "1.2.0",
+  "description": "Messages for the New Eagle Raptor DBW kit interface",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "raptor_dbw_ros2",
+    "url": "https://github.com/NewEagleRaptor/raptor-dbw-ros2.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "raptor_dbw_can",
+      "raptor_dbw_joystick"
+    ]
+  },
+  "messages": {
+    "AcceleratorPedalCmd": {
+      "description": "Accelerator pedal (%)",
+      "raw": "# Accelerator pedal (%)\nfloat32 pedal_cmd\n\nfloat32 torque_cmd # %-torque\n\nfloat32 speed_cmd # m/s\n\n# Enable\nbool enable\n\n# Ignore driver overrides\nbool ignore\n\n# Watchdog counter (optional)\nuint8 rolling_counter\n\nfloat32 road_slope # degrees - used with speed mode\n\nActuatorControlMode control_type\n\nfloat32 accel_limit # m/s^2\n\nfloat32 accel_positive_jerk_limit # m/s^3\n\n# TODO(NERaptor): add checksum support\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "pedal_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_cmd",
+          "comment": "%-torque",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed_cmd",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "road_slope",
+          "comment": "degrees - used with speed mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorControlMode",
+          "name": "control_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accel_limit",
+          "comment": "m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accel_positive_jerk_limit",
+          "comment": "m/s^3",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AcceleratorPedalReport": {
+      "description": "Accelerator pedal",
+      "raw": "std_msgs/Header header\n\n# Accelerator pedal\n# 0 to 100%\nfloat32 pedal_input\nfloat32 pedal_output\n\n# Status\nbool enabled\nbool ignore_driver\nbool driver_activity   # Driver activity\n\nbool fault_accel_pedal_system\n\n# Faults\nbool fault_ch1\nbool fault_ch2\n\nuint8 rolling_counter\n\nfloat32 torque_actual # 0 to 100%\n\nActuatorControlMode control_type\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_input",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore_driver",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver_activity",
+          "comment": "Driver activity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_accel_pedal_system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_ch1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_ch2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_actual",
+          "comment": "0 to 100%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorControlMode",
+          "name": "control_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActuatorControlMode": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 OPEN_LOOP = 0\nuint8 CLOSED_LOOP_ACTUATOR = 1\nuint8 CLOSED_LOOP_VEHICLE = 2\nuint8 NONE = 255\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OPEN_LOOP",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLOSED_LOOP_ACTUATOR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLOSED_LOOP_VEHICLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        }
+      ]
+    },
+    "Brake2Report": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 brake_pressure # units are bars, gauge pressure\n\nfloat32 estimated_road_slope # degrees\n\nfloat32 speed_set_point # m/s\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_pressure",
+          "comment": "units are bars, gauge pressure",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "estimated_road_slope",
+          "comment": "degrees",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed_set_point",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BrakeCmd": {
+      "description": "Brake pedal (%)",
+      "raw": "# Brake pedal (%)\nfloat32 pedal_cmd\n\n# Enable\nbool enable\n\n# Watchdog counter (optional)\nuint8 rolling_counter\n\nfloat32 torque_cmd # %-torque \nfloat32 decel_limit # m/s^2\n\nActuatorControlMode control_type\n\nfloat32 decel_negative_jerk_limit # m/s^3\n\nParkingBrake park_brake_cmd\n\n# TODO(NERaptor): add checksum support\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "pedal_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_cmd",
+          "comment": "%-torque",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "decel_limit",
+          "comment": "m/s^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorControlMode",
+          "name": "control_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "decel_negative_jerk_limit",
+          "comment": "m/s^3",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ParkingBrake",
+          "name": "park_brake_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BrakeReport": {
+      "description": "Brake pedal (%)",
+      "raw": "std_msgs/Header header\n\n# Brake pedal (%)\nfloat32 pedal_position\nfloat32 pedal_output\n\n# Status\nbool enabled  # Enabled\nbool driver_activity   # Driver activity\n\nbool fault_brake_system\n\nuint8 rolling_counter\n\nfloat32 brake_torque_actual # 0 to 100%\n\n# Anti-lock Brakes and  Stability Control\nbool intervention_active\nbool intervention_ready\n\n# Parking Brake\nParkingBrake parking_brake\n\nActuatorControlMode control_type\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "Enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver_activity",
+          "comment": "Driver activity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_brake_system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_torque_actual",
+          "comment": "0 to 100%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "intervention_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "intervention_ready",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ParkingBrake",
+          "name": "parking_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorControlMode",
+          "name": "control_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ButtonState": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 NOT_PRESSED = 0\nuint8 PRESSED = 1\nuint8 SNA = 3\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_PRESSED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRESSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNA",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "DoorLock": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 NO_REQUEST=0\nuint8 UNLOCK=1\nuint8 LOCK=2\nuint8 FAULT=3\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NO_REQUEST",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNLOCK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOCK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "DoorRequest": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 NO_REQUEST=0\nuint8 CLOSE=1\nuint8 OPEN=2\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NO_REQUEST",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLOSE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OPEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "DoorState": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 UNDEFINED = 0\nuint8 CLOSED = 1\nuint8 OPEN = 2\nuint8 SNA = 3\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLOSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OPEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNA",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "DriverInputReport": {
+      "description": "Turn Signal enumeration",
+      "raw": "std_msgs/Header header\n\n# Turn Signal enumeration\nTurnSignal turn_signal\n\n# High beams\nHighBeam high_beam_headlights\n\n# Front Windshield Wipers enumeration\nWiperFront wiper\n\n# Buttons\nbool cruise_resume_button\nbool cruise_cancel_button\nbool cruise_accel_button\nbool cruise_decel_button\nbool cruise_on_off_button\nbool adaptive_cruise_on_off_button\nbool adaptive_cruise_increase_distance_button\nbool adaptive_cruise_decrease_distance_button\nbool steer_wheel_button_a\nbool steer_wheel_button_b\nbool steer_wheel_button_c\nbool steer_wheel_button_d\nbool steer_wheel_button_e\n\n# Door status\nbool driver_door_ajar\nbool passenger_door_ajar\nbool rear_left_door_ajar\nbool rear_right_door_ajar\nbool liftgate_ajar\nbool any_seatbelt_unbuckled\nbool airbag_deployed\nbool door_or_hood_ajar\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TurnSignal",
+          "name": "turn_signal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HighBeam",
+          "name": "high_beam_headlights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WiperFront",
+          "name": "wiper",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cruise_resume_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cruise_cancel_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cruise_accel_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cruise_decel_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cruise_on_off_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "adaptive_cruise_on_off_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "adaptive_cruise_increase_distance_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "adaptive_cruise_decrease_distance_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "steer_wheel_button_a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "steer_wheel_button_b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "steer_wheel_button_c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "steer_wheel_button_d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "steer_wheel_button_e",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver_door_ajar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "passenger_door_ajar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rear_left_door_ajar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rear_right_door_ajar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "liftgate_ajar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "any_seatbelt_unbuckled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "airbag_deployed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_or_hood_ajar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExitReport": {
+      "description": "This message catches values of several messages",
+      "raw": "std_msgs/Header header\n\n# This message catches values of several messages\n# when DBW kit disables\n\nbool akit_disable\nbool driver_in_control\nuint16 idx_auton_disable_no_brakes\nuint16 idx_auton_disable_apply_brakes\nuint8 auton_counter",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "akit_disable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver_in_control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "idx_auton_disable_no_brakes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "idx_auton_disable_apply_brakes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "auton_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FaultActionsReport": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbool autonomous_disabled_no_brakes \nbool autonomous_disabled_apply_brakes \nbool can_gateway_disabled \nbool inverter_contactor_disabled \nbool prevent_enter_autonomous_mode \nbool warn_driver_only \nbool chime_fcw_beeps\nuint16 last_active_fault_idx\nbool estop_btn_pressed\nButtonState remote_estop_btn_pressed\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "autonomous_disabled_no_brakes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "autonomous_disabled_apply_brakes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "can_gateway_disabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "inverter_contactor_disabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "prevent_enter_autonomous_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "warn_driver_only",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "chime_fcw_beeps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "last_active_fault_idx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "estop_btn_pressed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ButtonState",
+          "name": "remote_estop_btn_pressed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gear": {
+      "description": "",
+      "raw": "uint8 gear\n\nuint8 NONE=0\nuint8 PARK=1\nuint8 REVERSE=2\nuint8 NEUTRAL=3\nuint8 DRIVE=4\nuint8 LOW=5\nuint8 AUTO_HOLD=6\nuint8 AUTO_SHIFT_UP=7\nuint8 AUTO_SHIFT_DOWN=8\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REVERSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEUTRAL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOW",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTO_HOLD",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTO_SHIFT_UP",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTO_SHIFT_DOWN",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        }
+      ]
+    },
+    "GearCmd": {
+      "description": "Gear command enumeration",
+      "raw": "# Gear command enumeration\nGear cmd\n\nbool enable\n\n# Watchdog counter\nuint8 rolling_counter\n\n# TODO(NERaptor): add checksum support\n",
+      "fields": [
+        {
+          "type": "Gear",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearReport": {
+      "description": "Current gear enumeration",
+      "raw": "std_msgs/Header header\n\n# Current gear enumeration\nGear state\n\n# Gear reject flag\nbool reject\n\n# Status\nbool driver_activity\nbool enabled\nuint8 trans_curr_gear\n\n# Faults\nbool gear_select_system_fault\nbool gear_mismatch_flash\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gear",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reject",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver_activity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "trans_curr_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gear_select_system_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gear_mismatch_flash",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GlobalEnableCmd": {
+      "description": "TODO(NERaptor): add checksum support",
+      "raw": "bool global_enable\n\nbool enable_joystick_limits\n\nuint16 ecu_build_number\n\nuint8 rolling_counter\n\n# TODO(NERaptor): add checksum support\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "global_enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable_joystick_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "ecu_build_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GpsReferenceReport": {
+      "description": "Low-res GPS reference point in degrees",
+      "raw": "std_msgs/Header header\n\n# Low-res GPS reference point in degrees\n# Use w/GPS Remainder Report for more precision\n# 0.005 deg ~= 555 meters\nfloat32 ref_latitude\nfloat32 ref_longitude\nfloat32 ref_heading\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ref_latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ref_longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ref_heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GpsRemainderReport": {
+      "description": "High-res remainder from GPS reference point in meters",
+      "raw": "std_msgs/Header header\n\n# High-res remainder from GPS reference point in meters\n# Converted using basic Haversine formula\n# Use w/GPS Reference Report\nfloat32 rem_latitude\nfloat32 rem_longitude\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rem_latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rem_longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HighBeam": {
+      "description": "",
+      "raw": "uint8 status\n\nuint8 OFF = 0\nuint8 ON = 1\nuint8 FORCE_ON = 2\nuint8 FORCE_OFF = 3\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FORCE_ON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FORCE_OFF",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "HighBeamState": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 OFF = 0\nuint8 RESERVED = 1\nuint8 ON = 2\nuint8 SNA = 3\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESERVED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNA",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "HmiGlobalEnableReport": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbool enable_request\n\nbool disable_request\n\nuint8 checksum\n\nuint16 ecu_build_number\n\nuint8 rolling_counter\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable_request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "disable_request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "checksum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "ecu_build_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HornState": {
+      "description": "",
+      "raw": "uint8 status\n\nuint8 OFF = 0\nuint8 ON = 1\nuint8 SNA = 2\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNA",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "Ignition": {
+      "description": "",
+      "raw": "uint8 status\n\nuint8 NO_REQUEST = 0\nuint8 FORCE_OFF = 1\nuint8 ACCESSORY = 2\nuint8 RUN = 3\nuint8 CRANK = 4\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NO_REQUEST",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FORCE_OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACCESSORY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RUN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CRANK",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "LowBeam": {
+      "description": "",
+      "raw": "uint8 status\n\nuint8 OFF = 0\nuint8 RESERVED = 1\nuint8 FORCE_ON = 2\nuint8 FORCE_OFF = 3\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESERVED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FORCE_ON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FORCE_OFF",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "LowBeamState": {
+      "description": "",
+      "raw": "uint8 status\n\nuint8 OFF = 0\nuint8 RESERVED = 1\nuint8 ON = 2\nuint8 SNA = 3\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESERVED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNA",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "LowVoltageSystemReport": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 dbw_battery_volts # Volts\nfloat32 vehicle_battery_volts # Volts \nfloat32 vehicle_battery_current # Amps\nfloat32 vehicle_alternator_current #Amps\n\nfloat32 dcdc_current # Amps\nfloat32 alternator_current # Amps\n\nbool aux_inverter_contactor # On/Off\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dbw_battery_volts",
+          "comment": "Volts",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_battery_volts",
+          "comment": "Volts",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_battery_current",
+          "comment": "Amps",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_alternator_current",
+          "comment": "Amps",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dcdc_current",
+          "comment": "Amps",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "alternator_current",
+          "comment": "Amps",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "aux_inverter_contactor",
+          "comment": "On/Off",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MiscCmd": {
+      "description": "Turn signal command enumeration",
+      "raw": "# Turn signal command enumeration\nTurnSignal cmd\n\nDoorRequest door_request_right_rear\n\nuint8 rolling_counter\n\nHighBeam high_beam_cmd\n\nWiperFront front_wiper_cmd\n\nWiperRear rear_wiper_cmd\n\nIgnition ignition_cmd\nDoorRequest door_request_left_rear\nDoorRequest door_request_lift_gate\nDoorLock door_lock_cmd\n\nbool block_standard_cruise_buttons\nbool block_adaptive_cruise_buttons\nbool block_turn_signal_stalk\n\nbool horn_cmd\n\nLowBeam low_beam_cmd\n\n# TODO(NERaptor): add checksum support\n",
+      "fields": [
+        {
+          "type": "TurnSignal",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorRequest",
+          "name": "door_request_right_rear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HighBeam",
+          "name": "high_beam_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WiperFront",
+          "name": "front_wiper_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WiperRear",
+          "name": "rear_wiper_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Ignition",
+          "name": "ignition_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorRequest",
+          "name": "door_request_left_rear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorRequest",
+          "name": "door_request_lift_gate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorLock",
+          "name": "door_lock_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "block_standard_cruise_buttons",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "block_adaptive_cruise_buttons",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "block_turn_signal_stalk",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "horn_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LowBeam",
+          "name": "low_beam_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MiscReport": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 fuel_level          # %\nbool drive_by_wire_enabled\nfloat32 vehicle_speed       # km/h\nuint16 software_build_number\nbool general_actuator_fault\nbool by_wire_ready\nbool general_driver_activity\nbool comms_fault\nfloat32 ambient_temp # degrees-C\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fuel_level",
+          "comment": "%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drive_by_wire_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_speed",
+          "comment": "km/h",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "software_build_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "general_actuator_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "by_wire_ready",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "general_driver_activity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "comms_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ambient_temp",
+          "comment": "degrees-C",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OtherActuatorsReport": {
+      "description": "Lights",
+      "raw": "std_msgs/Header header\n\nIgnition ignition_state \nHornState horn_state \n\n# Lights\nTurnSignal turn_signal_state \nbool turn_signal_sync\nHighBeamState high_beam_state \nLowBeamState low_beam_state \n\n# Wipers\nWiperFront front_wiper_state \nWiperRear rear_wiper_state \n\n# Doors\nDoorState right_rear_door_state \nDoorState left_rear_door_state \nDoorState liftgate_door_state \nDoorLock door_lock_state\n\nuint8 rolling_counter\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Ignition",
+          "name": "ignition_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HornState",
+          "name": "horn_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TurnSignal",
+          "name": "turn_signal_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "turn_signal_sync",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HighBeamState",
+          "name": "high_beam_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LowBeamState",
+          "name": "low_beam_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WiperFront",
+          "name": "front_wiper_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WiperRear",
+          "name": "rear_wiper_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorState",
+          "name": "right_rear_door_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorState",
+          "name": "left_rear_door_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorState",
+          "name": "liftgate_door_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorLock",
+          "name": "door_lock_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParkingBrake": {
+      "description": "",
+      "raw": "uint8 status\n\nuint8 NO_REQUEST=0\nuint8 OFF=1\nuint8 ON=2\nuint8 FAULT=3\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NO_REQUEST",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "SonarArcNum": {
+      "description": "Unitless - based on bars on display",
+      "raw": "uint8 status\n\n# Unitless - based on bars on display\nuint8 NO_DISTANCE = 0\nuint8 ARC1 = 1\nuint8 ARC2 = 2\nuint8 ARC3 = 3\nuint8 ARC4 = 4\nuint8 ARC5 = 5\nuint8 ARC6 = 6\nuint8 ARC7 = 7\nuint8 ARC8 = 8\nuint8 NO_ARC = 15\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NO_DISTANCE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARC1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARC2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARC3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARC4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARC5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARC6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARC7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARC8",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NO_ARC",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        }
+      ]
+    },
+    "Steering2Report": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 vehicle_curvature_actual # units are 1/m\n\nfloat32 max_torque_driver # %-Torque\n\nfloat32 max_torque_motor # %-Torque\n\nfloat32 expect_torque_driver # %-Torque\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_curvature_actual",
+          "comment": "units are 1/m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_torque_driver",
+          "comment": "%-Torque",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_torque_motor",
+          "comment": "%-Torque",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "expect_torque_driver",
+          "comment": "%-Torque",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringCmd": {
+      "description": "Steering Wheel",
+      "raw": "# Steering Wheel\nfloat32 angle_cmd        # degrees, range -500 to 500\nfloat32 angle_velocity   # degrees/s, range 0 to 498, 0 = maximum\n\n# Enable\nbool enable\n\n# Ignore driver overrides\nbool ignore\n\n# Watchdog counter (optional)\nuint8 rolling_counter\n\nfloat32 torque_cmd # %-torque\n\nfloat32 vehicle_curvature_cmd # 1/m\n\nActuatorControlMode control_type\n\n# TODO(NERaptor): add checksum support\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "angle_cmd",
+          "comment": "degrees, range -500 to 500",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_velocity",
+          "comment": "degrees/s, range 0 to 498, 0 = maximum",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_cmd",
+          "comment": "%-torque",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_curvature_cmd",
+          "comment": "1/m",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorControlMode",
+          "name": "control_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringReport": {
+      "description": "Steering Wheel",
+      "raw": "std_msgs/Header header\n\n# Steering Wheel\nfloat32 steering_wheel_angle      # degrees\nfloat32 steering_wheel_angle_cmd  # degrees\nfloat32 steering_wheel_torque     # 0 to 100%\n\n# Status\nbool enabled  \nbool driver_activity\n\nbool fault_steering_system\n\nbool overheat_prevention_mode\n\nuint8 rolling_counter\n\nActuatorControlMode control_type\n\nbool steering_overheat_warning\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle",
+          "comment": "degrees",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle_cmd",
+          "comment": "degrees",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_torque",
+          "comment": "0 to 100%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver_activity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_steering_system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "overheat_prevention_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "rolling_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorControlMode",
+          "name": "control_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "steering_overheat_warning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SurroundReport": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 front_radar_object_distance # meters\nfloat32 rear_radar_object_distance # meters\n\nSonarArcNum rear_right\nSonarArcNum rear_left\nSonarArcNum rear_center\nSonarArcNum front_right\nSonarArcNum front_left\nSonarArcNum front_center\n\nbool front_radar_distance_valid\nbool parking_sonar_data_valid\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_radar_object_distance",
+          "comment": "meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_radar_object_distance",
+          "comment": "meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SonarArcNum",
+          "name": "rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SonarArcNum",
+          "name": "rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SonarArcNum",
+          "name": "rear_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SonarArcNum",
+          "name": "front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SonarArcNum",
+          "name": "front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SonarArcNum",
+          "name": "front_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "front_radar_distance_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "parking_sonar_data_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TirePressureReport": {
+      "description": "Tire pressures (kPa)",
+      "raw": "std_msgs/Header header\n\n# Tire pressures (kPa)\nfloat32 front_left\nfloat32 front_right\nfloat32 rear_left\nfloat32 rear_right\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TurnSignal": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 NONE = 0\nuint8 LEFT = 1\nuint8 RIGHT = 2\nuint8 HAZARDS = 3\nuint8 SNA = 7\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HAZARDS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNA",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        }
+      ]
+    },
+    "TwistCmd": {
+      "description": "",
+      "raw": "geometry_msgs/Twist twist\nfloat32 accel_limit # m/s^2, zero = no limit\nfloat32 decel_limit # m/s^2, zero = no limit\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accel_limit",
+          "comment": "m/s^2, zero = no limit",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "decel_limit",
+          "comment": "m/s^2, zero = no limit",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WatchdogStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 source\n\nuint8 NONE=0                        # No source for watchdog counter fault\nuint8 OTHER_BRAKE=1                 # Fault determined by brake controller\nuint8 OTHER_ACCELERATOR_PEDAL=2     # Fault determined by accelerator pedal controller\nuint8 OTHER_STEERING=3              # Fault determined by steering controller\nuint8 BRAKE_COUNTER=4               # Brake command counter failed to increment\nuint8 BRAKE_DISABLED=5              # Brake transition to disabled while in gear or moving\nuint8 BRAKE_COMMAND=6               # Brake command timeout after 100ms\nuint8 BRAKE_REPORT=7                # Brake report timeout after 100ms\nuint8 ACCELERATOR_PEDAL_COUNTER=8   # Accelerator pedal command counter failed to increment\nuint8 ACCELERATOR_PEDAL_DISABLED=9  # Accelerator pedal transition to disabled while in gear or moving\nuint8 ACCELERATOR_PEDAL_COMMAND=10  # Accelerator pedal command timeout after 100ms\nuint8 ACCELERATOR_PEDAL_REPORT=11   # Accelerator pedal report timeout after 100ms\nuint8 STEERING_COUNTER=12           # Steering command counter failed to increment\nuint8 STEERING_DISABLED=13          # Steering transition to disabled while in gear or moving\nuint8 STEERING_COMMAND=14           # Steering command timeout after 100ms\nuint8 STEERING_REPORT=15            # Steering report timeout after 100ms\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "No source for watchdog counter fault",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER_BRAKE",
+          "comment": "Fault determined by brake controller",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER_ACCELERATOR_PEDAL",
+          "comment": "Fault determined by accelerator pedal controller",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER_STEERING",
+          "comment": "Fault determined by steering controller",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BRAKE_COUNTER",
+          "comment": "Brake command counter failed to increment",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BRAKE_DISABLED",
+          "comment": "Brake transition to disabled while in gear or moving",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BRAKE_COMMAND",
+          "comment": "Brake command timeout after 100ms",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BRAKE_REPORT",
+          "comment": "Brake report timeout after 100ms",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACCELERATOR_PEDAL_COUNTER",
+          "comment": "Accelerator pedal command counter failed to increment",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACCELERATOR_PEDAL_DISABLED",
+          "comment": "Accelerator pedal transition to disabled while in gear or moving",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACCELERATOR_PEDAL_COMMAND",
+          "comment": "Accelerator pedal command timeout after 100ms",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACCELERATOR_PEDAL_REPORT",
+          "comment": "Accelerator pedal report timeout after 100ms",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEERING_COUNTER",
+          "comment": "Steering command counter failed to increment",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEERING_DISABLED",
+          "comment": "Steering transition to disabled while in gear or moving",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEERING_COMMAND",
+          "comment": "Steering command timeout after 100ms",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEERING_REPORT",
+          "comment": "Steering report timeout after 100ms",
+          "default": "15",
+          "is_constant": true
+        }
+      ]
+    },
+    "WheelPositionReport": {
+      "description": "Wheel positions (counts)",
+      "raw": "std_msgs/Header header\n\n# Wheel positions (counts)\nint16 front_left\nint16 front_right\nint16 rear_left\nint16 rear_right\n\n# Conversion factor\nfloat32 wheel_pulses_per_rev\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "wheel_pulses_per_rev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelSpeedReport": {
+      "description": "Wheel speeds (rad/sec)",
+      "raw": "std_msgs/Header header\n\n# Wheel speeds (rad/sec)\nfloat32 front_left\nfloat32 front_right\nfloat32 rear_left\nfloat32 rear_right\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelSpeedType": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 ANGULAR = 0\nuint8 LINEAR = 1\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ANGULAR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LINEAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "WiperFront": {
+      "description": "",
+      "raw": "uint8 status\n\nuint8 OFF = 0\nuint8 INTERVAL_1 = 1\nuint8 INTERVAL_2 = 2\nuint8 INTERVAL_3 = 3\nuint8 INTERVAL_4 = 4\nuint8 INTERVAL_5 = 5\nuint8 INTERVAL_6 = 6\nuint8 CONSTANT_LOW = 11\nuint8 CONSTANT_HIGH = 12\nuint8 WASH_BRIEF = 13\nuint8 WASH_CONTINUOUS = 14\nuint8 SNA = 15\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERVAL_1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERVAL_2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERVAL_3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERVAL_4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERVAL_5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERVAL_6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONSTANT_LOW",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONSTANT_HIGH",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WASH_BRIEF",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WASH_CONTINUOUS",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNA",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        }
+      ]
+    },
+    "WiperRear": {
+      "description": "",
+      "raw": "uint8 status\n\nuint8 OFF = 0\nuint8 INTERVAL_1 = 1\nuint8 CONSTANT_LOW = 11\nuint8 CONSTANT_HIGH = 12\nuint8 WASH_BRIEF = 13\nuint8 WASH_CONTINUOUS = 14\nuint8 SNA = 15\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERVAL_1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONSTANT_LOW",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONSTANT_HIGH",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WASH_BRIEF",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WASH_CONTINUOUS",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNA",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

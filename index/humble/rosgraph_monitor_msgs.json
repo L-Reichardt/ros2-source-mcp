@@ -1,0 +1,397 @@
+{
+  "name": "rosgraph_monitor_msgs",
+  "version": "0.2.3",
+  "description": "Interfaces for reporting observations about the ROS 2 communication graph",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "graph_monitor",
+    "url": "https://github.com/ros-tooling/graph-monitor.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "rcl_interfaces"
+    ],
+    "depended_on_by": [
+      "rmw_stats_shim",
+      "rosgraph_monitor"
+    ]
+  },
+  "messages": {
+    "Graph": {
+      "description": "Graph structure representing the ROS graph state. Published on graph change updates.",
+      "raw": "# Graph structure representing the ROS graph state. Published on graph change updates.\n# TODO:\n# - Include service info\n# - Include action info\n# - Include parameter info\n\nbuiltin_interfaces/Time timestamp\nNodeInfo[] nodes\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NodeInfo[]",
+          "name": "nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NodeInfo": {
+      "description": "Fully qualified node name",
+      "raw": "# Fully qualified node name\nstring name\n\nTopic[] publishers\nTopic[] subscriptions\n\n# Observed parameter descriptions and current values for this node\n# parameter_values[] must be the same size as parameters[], or empty\n# Empty on either array means no values have yet been successfully queried\n# When set, parameter_values[] match up 1:1 with the same index in parameters[]\nrcl_interfaces/ParameterDescriptor[] parameters\nrcl_interfaces/ParameterValue[] parameter_values\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Topic[]",
+          "name": "publishers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Topic[]",
+          "name": "subscriptions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rcl_interfaces/ParameterDescriptor[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rcl_interfaces/ParameterValue[]",
+          "name": "parameter_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "QosProfile": {
+      "description": "Message-based representation of ROS 2 Quality of Service settings",
+      "raw": "# Message-based representation of ROS 2 Quality of Service settings\n\n# Depth of the message queue (only meaningful when history==KEEP_LAST)\nuint32 depth\n\n# Deadline between messages (0 for no deadline)\nbuiltin_interfaces/Duration deadline\n\n# Lifespan of each message (0 for infinite)\nbuiltin_interfaces/Duration lifespan\n\n# History policy\nuint8 HISTORY_SYSTEM_DEFAULT=0\nuint8 HISTORY_KEEP_LAST=1\nuint8 HISTORY_KEEP_ALL=2\nuint8 HISTORY_UNKNOWN=3\nuint8 history\n\n# Reliability policy\nuint8 RELIABILITY_SYSTEM_DEFAULT=0\nuint8 RELIABILITY_RELIABLE=1\nuint8 RELIABILITY_BEST_EFFORT=2\nuint8 RELIABILITY_UNKNOWN=3\nuint8 reliability\n\n# Durability policy\nuint8 DURABILITY_SYSTEM_DEFAULT=0\nuint8 DURABILITY_TRANSIENT_LOCAL=1\nuint8 DURABILITY_VOLATILE=2\nuint8 DURABILITY_UNKNOWN=3\nuint8 durability\n\n# Liveliness policy\nuint8 LIVELINESS_SYSTEM_DEFAULT=0\nuint8 LIVELINESS_AUTOMATIC=1\nuint8 LIVELINESS_MANUAL_BY_TOPIC=3\nuint8 LIVELINESS_UNKNOWN=4\nuint8 liveliness\n\n# Lease duration for liveliness (0 for infinite)\nbuiltin_interfaces/Duration liveliness_lease_duration\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "deadline",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "lifespan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "HISTORY_SYSTEM_DEFAULT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HISTORY_KEEP_LAST",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HISTORY_KEEP_ALL",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HISTORY_UNKNOWN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "history",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "RELIABILITY_SYSTEM_DEFAULT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELIABILITY_RELIABLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELIABILITY_BEST_EFFORT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELIABILITY_UNKNOWN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "reliability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "DURABILITY_SYSTEM_DEFAULT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DURABILITY_TRANSIENT_LOCAL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DURABILITY_VOLATILE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DURABILITY_UNKNOWN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "durability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "LIVELINESS_SYSTEM_DEFAULT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIVELINESS_AUTOMATIC",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIVELINESS_MANUAL_BY_TOPIC",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIVELINESS_UNKNOWN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "liveliness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "liveliness_lease_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Topic": {
+      "description": "",
+      "raw": "string name\nQosProfile qos\nstring type\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "QosProfile",
+          "name": "qos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TopicStatistic": {
+      "description": "Statistics about one measurement for a single endpoint of a topic",
+      "raw": "# Statistics about one measurement for a single endpoint of a topic\n\nuint8 PUBLISHED_PERIOD=0\nuint8 RECEIVED_PERIOD=1  # inverse of frequency\nuint8 TAKE_AGE=2  # the system time difference between DDS publish and rmw_take\nuint8 statistic_type  # one of above constants\n\nstring node_name  # name of the node holding the endpoint (publisher or subscription)\nstring topic_name  # topic being measured\nint32 window_count  # how many messages were in the calculation\n\nbuiltin_interfaces/Duration mean\nbuiltin_interfaces/Duration min\nbuiltin_interfaces/Duration max\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PUBLISHED_PERIOD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RECEIVED_PERIOD",
+          "comment": "inverse of frequency",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TAKE_AGE",
+          "comment": "the system time difference between DDS publish and rmw_take",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "statistic_type",
+          "comment": "one of above constants",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_name",
+          "comment": "name of the node holding the endpoint (publisher or subscription)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "topic being measured",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "window_count",
+          "comment": "how many messages were in the calculation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "mean",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TopicStatistics": {
+      "description": "",
+      "raw": "builtin_interfaces/Time timestamp\nTopicStatistic[] statistics\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TopicStatistic[]",
+          "name": "statistics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

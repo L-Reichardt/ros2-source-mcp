@@ -1,0 +1,92 @@
+{
+  "name": "rviz_common",
+  "version": "8.2.8",
+  "description": "Common rviz API, used by rviz plugins and applications.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros2/rviz/blob/ros2/README.md",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros2/rviz",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros2/rviz/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "rviz",
+    "url": "https://github.com/ros2/rviz.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "qtbase5-dev",
+      "rviz_assimp_vendor"
+    ],
+    "build_export": [
+      "qtbase5-dev",
+      "rviz_assimp_vendor"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "libqt5-core",
+      "libqt5-gui",
+      "libqt5-opengl",
+      "libqt5-widgets"
+    ],
+    "test": [
+      "ament_cmake_cppcheck",
+      "ament_cmake_cpplint",
+      "ament_cmake_gmock",
+      "ament_cmake_gtest",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_uncrustify"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "pluginlib",
+      "rclcpp",
+      "resource_retriever",
+      "rviz_ogre_vendor",
+      "rviz_rendering",
+      "sensor_msgs",
+      "std_msgs",
+      "tf2",
+      "tf2_geometry_msgs",
+      "tf2_ros",
+      "message_filters",
+      "tinyxml_vendor",
+      "urdf",
+      "yaml_cpp_vendor"
+    ],
+    "depended_on_by": [
+      "nav2_rviz_plugins",
+      "octomap_rviz_plugins",
+      "polygon_demos",
+      "polygon_rviz_plugins",
+      "rmf_visualization_rviz2_plugins",
+      "rtabmap_rviz_plugins",
+      "rviz2",
+      "rviz_default_plugins",
+      "rviz_ground_image",
+      "rviz_imu_plugin",
+      "rviz_visual_testing_framework",
+      "rviz_visual_tools",
+      "slam_toolbox",
+      "snowbot_operating_system",
+      "turtlebot3_manipulation_moveit_config",
+      "urdf_launch"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

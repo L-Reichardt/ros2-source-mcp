@@ -1,0 +1,49 @@
+{
+  "name": "omni_base_laser_sensors",
+  "version": "2.22.0",
+  "description": "omni_base-specific laser sensors launch and config files.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "omni_base_navigation",
+    "url": "https://github.com/pal-robotics/omni_base_navigation.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake",
+      "pal_configuration_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "ament_index_python",
+      "diagnostic_aggregator",
+      "dlo_ros",
+      "ira_laser_tools",
+      "nav2_lifecycle_manager",
+      "pal_laser_filters",
+      "rclcpp_components",
+      "sick_laser_cfg",
+      "hokuyo_laser_cfg",
+      "sick_tim",
+      "urg_node"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "omni_base_gazebo",
+      "omni_base_navigation",
+      "tiago_laser_sensors",
+      "tiago_pro_laser_sensors"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

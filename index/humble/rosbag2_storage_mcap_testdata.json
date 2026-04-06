@@ -1,0 +1,128 @@
+{
+  "name": "rosbag2_storage_mcap_testdata",
+  "version": "0.15.16",
+  "description": "message definition test fixtures for MCAP schema recording",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rosbag2",
+    "url": "https://github.com/ros2/rosbag2.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "rosbag2_storage_mcap"
+    ]
+  },
+  "messages": {
+    "BasicMsg": {
+      "description": "",
+      "raw": "float32 c\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComplexMsg": {
+      "description": "",
+      "raw": "rosbag2_storage_mcap_testdata/BasicMsg b\n",
+      "fields": [
+        {
+          "type": "rosbag2_storage_mcap_testdata/BasicMsg",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComplexMsgDependsOnIdl": {
+      "description": "",
+      "raw": "rosbag2_storage_mcap_testdata/BasicIdl a\n",
+      "fields": [
+        {
+          "type": "rosbag2_storage_mcap_testdata/BasicIdl",
+          "name": "a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "BasicSrv": {
+      "description": "",
+      "raw": "string req\n---\nstring resp\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "req",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "resp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "BasicAction": {
+      "description": "",
+      "raw": "string goal\n---\nstring result\n---\nstring feedback\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "string",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "feedback",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "name": "graph_msgs",
+  "version": "0.2.0",
+  "description": "ROS messages for publishing graphs of different data types",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/davetcoleman/graph_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/davetcoleman/graph_msgs/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/davetcoleman/graph_msgs/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "graph_msgs",
+    "url": "https://github.com/PickNikRobotics/graph_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_cmake"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "moveit_visual_tools"
+    ]
+  },
+  "messages": {
+    "Edges": {
+      "description": "base-zero index of all the verticies this particular vertice connects to (edges)",
+      "raw": "#base-zero index of all the verticies this particular vertice connects to (edges)\nuint32[] node_ids\n\n# optional cost/weight of each edge. if vector is empty assume all weights are equal (1)\nfloat64[] weights\n",
+      "fields": [
+        {
+          "type": "uint32[]",
+          "name": "node_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "weights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeometryGraph": {
+      "description": "A reference coordinate frame and timestamp",
+      "raw": "# A reference coordinate frame and timestamp\nstd_msgs/Header header\n\n# 3D spacial graph\ngeometry_msgs/Point[] nodes\n\n# This vector should be the same length as nodes, above, and represents all the connecting nodes\nEdges[] edges\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Edges[]",
+          "name": "edges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,70 @@
+{
+  "name": "geometric_shapes",
+  "version": "2.1.3",
+  "description": "This package contains generic definitions of geometric shapes and bodies.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/geometric_shapes",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "geometric_shapes",
+    "url": "https://github.com/ros-planning/geometric_shapes.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "eigen",
+      "assimp-dev",
+      "pkg-config",
+      "libboost-dev",
+      "libboost-filesystem-dev"
+    ],
+    "build_export": [
+      "eigen",
+      "libboost-dev"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators",
+      "eigen3_cmake_module"
+    ],
+    "buildtool_export": [
+      "eigen3_cmake_module"
+    ],
+    "runtime": [
+      "assimp",
+      "libboost-filesystem",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_cmake",
+      "ament_cmake_copyright"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "eigen_stl_containers",
+      "console_bridge_vendor",
+      "libqhull",
+      "octomap",
+      "random_numbers",
+      "resource_retriever",
+      "shape_msgs",
+      "geometry_msgs",
+      "visualization_msgs"
+    ],
+    "depended_on_by": [
+      "moveit_core",
+      "robot_calibration"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,911 @@
+{
+  "name": "derived_object_msgs",
+  "version": "4.0.0",
+  "description": "Abstracted Messages from Perception Modalities",
+  "license": "MIT",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/derived_object_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/astuff/astuff_sensor_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/astuff/astuff_sensor_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "astuff_sensor_msgs",
+    "url": "https://github.com/astuff/astuff_sensor_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "message_generation",
+      "rosidl_default_generators",
+      "ros_environment"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "shape_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Lane": {
+      "description": "Lane Definition Message",
+      "raw": "# Lane Definition Message\n# Contains information on a single lane marker\n\nuint8 quality                 # Visual quality of lane marker\nuint8 LANE_QUALITY_INVALID = 0\nuint8 LANE_QUALITY_UNKNOWN = 1\nuint8 LANE_QUALITY_NOT_AVAILABLE = 2\nuint8 LANE_QUALITY_0 = 3\nuint8 LANE_QUALITY_1 = 4\nuint8 LANE_QUALITY_2 = 5\nuint8 LANE_QUALITY_3 = 6\nuint8 LANE_QUALITY_4 = 7\nuint8 LANE_QUALITY_5 = 8\nuint8 LANE_QUALITY_6 = 9\nuint8 LANE_QUALITY_7 = 10\nuint8 LANE_QUALITY_8 = 11\nuint8 LANE_QUALITY_9 = 12\nuint8 LANE_QUALITY_KIND_COUNT = 13\n\nuint8 marker_kind             # Solid, dashed, ...\nuint8 LANE_MARKER_INVALID = 0\nuint8 LANE_MARKER_UNKNOWN = 1\nuint8 LANE_MARKER_NOT_AVAILABLE = 2\nuint8 LANE_MARKER_NONE = 3\nuint8 LANE_MARKER_SOLID = 4\nuint8 LANE_MARKER_DASHED = 5\nuint8 LANE_MARKER_VIRTUAL = 6\nuint8 LANE_MARKER_DOTS = 7\nuint8 LANE_MARKER_ROAD_EDGE = 8\nuint8 LANE_MARKER_DOUBLE_LINE = 9\nuint8 LANE_MARKER_KIND_COUNT = 10\n\nuint8 curve_model_kind        # Order of equation\nuint8 LANE_CURVE_MODEL_INVALID = 0\nuint8 LANE_CURVE_MODEL_UNKNOWN = 1\nuint8 LANE_CURVE_MODEL_NOT_AVAILABLE = 2\nuint8 LANE_CURVE_MODEL_LINEAR = 3\nuint8 LANE_CURVE_MODEL_PARABOLIC = 4\nuint8 LANE_CURVE_MODEL_3D = 5\nuint8 LANE_CURVE_MODEL_KIND_COUNT = 6\n\nfloat64 marker_offset         # Lateral distance from sensor to marker (m)\nfloat64 heading_angle         # Angle of marker relative to sensor (rad)\nfloat64 curvature             # Curvature of the lane marker at the camera (1/m)\nfloat64 curvature_derivative  # Amount curvature changes as you move away from the camera (1/m^2)\nfloat64 marker_width          # Width of the painted marker (not distance between lane markers) (m)\nfloat64 view_range            # Physical view range of the lane mark (m)\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "quality",
+          "comment": "Visual quality of lane marker",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_INVALID",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_UNKNOWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_NOT_AVAILABLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_0",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_1",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_2",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_3",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_4",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_5",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_6",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_7",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_8",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_9",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_QUALITY_KIND_COUNT",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "marker_kind",
+          "comment": "Solid, dashed, ...",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_INVALID",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_UNKNOWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_NOT_AVAILABLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_NONE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_SOLID",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_DASHED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_VIRTUAL",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_DOTS",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_ROAD_EDGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_DOUBLE_LINE",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_MARKER_KIND_COUNT",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "curve_model_kind",
+          "comment": "Order of equation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CURVE_MODEL_INVALID",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CURVE_MODEL_UNKNOWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CURVE_MODEL_NOT_AVAILABLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CURVE_MODEL_LINEAR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CURVE_MODEL_PARABOLIC",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CURVE_MODEL_3D",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CURVE_MODEL_KIND_COUNT",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "float64",
+          "name": "marker_offset",
+          "comment": "Lateral distance from sensor to marker (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "heading_angle",
+          "comment": "Angle of marker relative to sensor (rad)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "curvature",
+          "comment": "Curvature of the lane marker at the camera (1/m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "curvature_derivative",
+          "comment": "Amount curvature changes as you move away from the camera (1/m^2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "marker_width",
+          "comment": "Width of the painted marker (not distance between lane markers) (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "view_range",
+          "comment": "Physical view range of the lane mark (m)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneModels": {
+      "description": "Lane Models Message",
+      "raw": "# Lane Models Message\n# Contains multiple lanes detected by the sensor\n\nstd_msgs/Header header\n\nderived_object_msgs/Lane left_lane\nderived_object_msgs/Lane right_lane\n\nderived_object_msgs/Lane[] additional_lanes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "derived_object_msgs/Lane",
+          "name": "left_lane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "derived_object_msgs/Lane",
+          "name": "right_lane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "derived_object_msgs/Lane[]",
+          "name": "additional_lanes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Object": {
+      "description": "This represents a detected or tracked object with reference coordinate frame and timestamp.",
+      "raw": "# This represents a detected or tracked object with reference coordinate frame and timestamp.\n\nstd_msgs/Header header\n\n# The id of the object (presumably from the detecting sensor).\nuint32 id\n\n# A Detected object is one which has been seen in at least one scan/frame of a sensor.\n# A Tracked object is one which has been correlated over multiple scans/frames of a sensor.\n# An object which is detected can only be assumed to have valid pose and shape properties.\n# An object which is tracked should also be assumed to have valid twist and accel properties.\nuint8 detection_level\nuint8 OBJECT_DETECTED=0\nuint8 OBJECT_TRACKED=1\n\n# A Classified object is one which has been identified as a certain object type.\n# Classified objects should have valid classification, classification_certainty, and classification_age properties.\nbool object_classified\n\n# The detected position and orientation of the object.\ngeometry_msgs/Pose pose\n\n# The detected linear and angular velocities of the object.\ngeometry_msgs/Twist twist\n\n# The detected linear and angular accelerations of the object.\ngeometry_msgs/Accel accel\n\n# (OPTIONAL) The polygon defining the detection points at the outer edges of the object.\ngeometry_msgs/Polygon polygon\n\n# A shape conforming to the outer bounding edges of the object.\nshape_msgs/SolidPrimitive shape\n\n# The type of classification given to this object.\nuint8 classification\nuint8 CLASSIFICATION_UNKNOWN=0\nuint8 CLASSIFICATION_UNKNOWN_SMALL=1\nuint8 CLASSIFICATION_UNKNOWN_MEDIUM=2\nuint8 CLASSIFICATION_UNKNOWN_BIG=3\nuint8 CLASSIFICATION_PEDESTRIAN=4\nuint8 CLASSIFICATION_BIKE=5\nuint8 CLASSIFICATION_CAR=6\nuint8 CLASSIFICATION_TRUCK=7\nuint8 CLASSIFICATION_MOTORCYCLE=8\nuint8 CLASSIFICATION_OTHER_VEHICLE=9\nuint8 CLASSIFICATION_BARRIER=10\nuint8 CLASSIFICATION_SIGN=11\n\n# The certainty of the classification from the originating sensor.\n# Higher value indicates greater certainty (MAX=255).\n# It is recommended that a native sensor value be scaled to 0-255 for interoperability.\nuint8 classification_certainty\n\n# The number of scans/frames from the sensor that this object has been classified as the current classification.\nuint32 classification_age\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "detection_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OBJECT_DETECTED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBJECT_TRACKED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "object_classified",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Accel",
+          "name": "accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Polygon",
+          "name": "polygon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/SolidPrimitive",
+          "name": "shape",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_UNKNOWN_SMALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_UNKNOWN_MEDIUM",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_UNKNOWN_BIG",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_PEDESTRIAN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_BIKE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_CAR",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_TRUCK",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_MOTORCYCLE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_OTHER_VEHICLE",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_BARRIER",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_SIGN",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "classification_certainty",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "classification_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nderived_object_msgs/Object[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "derived_object_msgs/Object[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectWithCovariance": {
+      "description": "This represents an estimated object with reference coordinate frame and timestamp.",
+      "raw": "# This represents an estimated object with reference coordinate frame and timestamp.\nstd_msgs/Header header\n\n# The id of the object (presumably from the detecting sensor).\nuint32 id\n\n# A Detected object is one which has been seen in at least one scan/frame of a sensor.\n# A Tracked object is one which has been correlated over multiple scans/frames of a sensor.\n# An object which is detected can only be assumed to have valid pose and shape properties.\n# An object which is tracked should also be assumed to have valid twist and accel properties.\n# The validity of the individual components of each object property are defined by the property's covariance matrix.\nuint8 detection_level\nuint8 OBJECT_DETECTED=0\nuint8 OBJECT_TRACKED=1\n\n# A Classified object is one which has been identified as a certain object type.\n# Classified objects should have valid classification, classification_certainty, and classification_age properties.\nbool object_classified\n\n# The detected position and orientation of the object.\ngeometry_msgs/PoseWithCovariance pose\n\n# The detected linear and angular velocities of the object.\ngeometry_msgs/TwistWithCovariance twist\n\n# The detected linear and angular accelerations of the object.\ngeometry_msgs/AccelWithCovariance accel\n\n# (OPTIONAL) The polygon defining the detection points at the outer edges of the object.\ngeometry_msgs/Polygon polygon\n\n# A shape conforming to the outer bounding edges of the object.\nderived_object_msgs/SolidPrimitiveWithCovariance shape\n\n# The type of classification given to this object.\nuint8 classification\nuint8 CLASSIFICATION_UNKNOWN=0\nuint8 CLASSIFICATION_UNKNOWN_SMALL=1\nuint8 CLASSIFICATION_UNKNOWN_MEDIUM=2\nuint8 CLASSIFICATION_UNKNOWN_BIG=3\nuint8 CLASSIFICATION_PEDESTRIAN=4\nuint8 CLASSIFICATION_BIKE=5\nuint8 CLASSIFICATION_CAR=6\nuint8 CLASSIFICATION_TRUCK=7\nuint8 CLASSIFICATION_MOTORCYCLE=8\nuint8 CLASSIFICATION_OTHER_VEHICLE=9\nuint8 CLASSIFICATION_BARRIER=10\nuint8 CLASSIFICATION_SIGN=11\n\n# The certainty of the classification from the originating sensor.\n# Higher value indicates greater certainty (MAX=255).\n# It is recommended that a native sensor value be scaled to 0-255 for interoperability.\nuint8 classification_certainty\n\n# The number of scans/frames from the sensor that this object has been classified as the current classification.\nuint32 classification_age\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "detection_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OBJECT_DETECTED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBJECT_TRACKED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "object_classified",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/AccelWithCovariance",
+          "name": "accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Polygon",
+          "name": "polygon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "derived_object_msgs/SolidPrimitiveWithCovariance",
+          "name": "shape",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_UNKNOWN_SMALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_UNKNOWN_MEDIUM",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_UNKNOWN_BIG",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_PEDESTRIAN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_BIKE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_CAR",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_TRUCK",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_MOTORCYCLE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_OTHER_VEHICLE",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_BARRIER",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLASSIFICATION_SIGN",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "classification_certainty",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "classification_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectWithCovarianceArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nderived_object_msgs/ObjectWithCovariance[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "derived_object_msgs/ObjectWithCovariance[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SolidPrimitiveWithCovariance": {
+      "description": "Define box, sphere, cylinder, cone",
+      "raw": "# Define box, sphere, cylinder, cone \n# All shapes are defined to have their bounding boxes centered around 0,0,0.\n# This message based on shape_msgs/SolidPrimitive\n\n# The type of the shape\nuint8 type\nuint8 BOX=1\nuint8 SPHERE=2\nuint8 CYLINDER=3\nuint8 CONE=4\n\n# The dimensions of the shape\nfloat64[] dimensions\n\n# The meaning of the shape dimensions: each constant defines the index in the 'dimensions' array\n# For the BOX type, the X, Y, and Z dimensions are the length of the corresponding\n# sides of the box.\nuint8 BOX_X=0\nuint8 BOX_Y=1\nuint8 BOX_Z=2\n\n# For the SPHERE type, only one component is used, and it gives the radius of\n# the sphere.\nuint8 SPHERE_RADIUS=0\n\n# For the CYLINDER and CONE types, the center line is oriented along\n# the Z axis.  Therefore the CYLINDER_HEIGHT (CONE_HEIGHT) component\n# of dimensions gives the height of the cylinder (cone).  The\n# CYLINDER_RADIUS (CONE_RADIUS) component of dimensions gives the\n# radius of the base of the cylinder (cone).  Cone and cylinder\n# primitives are defined to be circular. The tip of the cone is\n# pointing up, along +Z axis.\nuint8 CYLINDER_HEIGHT=0\nuint8 CYLINDER_RADIUS=1\n\nuint8 CONE_HEIGHT=0\nuint8 CONE_RADIUS=1\n\n# Row-major representation of the covariance matrix associated with the shape.\n# For the BOX type, this should be a 3x3 matrix defining the uncertainty of the X, Y, and Z measurements.\n# For the SPHERE type, this should contain only one value for the radius.\n# For the CYLINDER and CONE types, this will be a 2x2 matrix defining the uncertainty of the HEIGHT and RADIUS measurements.\nfloat64[] covariance\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "BOX",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPHERE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CYLINDER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "float64[]",
+          "name": "dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "BOX_X",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOX_Y",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOX_Z",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPHERE_RADIUS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CYLINDER_HEIGHT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CYLINDER_RADIUS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONE_HEIGHT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONE_RADIUS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "float64[]",
+          "name": "covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

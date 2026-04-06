@@ -1,0 +1,97 @@
+{
+  "name": "mqtt_client_interfaces",
+  "version": "2.3.0",
+  "description": "Message and service definitions for mqtt_client",
+  "license": "MIT",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/mqtt_client",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ika-rwth-aachen/mqtt_client",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "mqtt_client",
+    "url": "https://github.com/ika-rwth-aachen/mqtt_client.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "catkin"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "message_runtime"
+    ],
+    "build_and_runtime": [
+      "ros_environment",
+      "std_msgs",
+      "message_generation"
+    ],
+    "depended_on_by": [
+      "mqtt_client"
+    ]
+  },
+  "messages": {
+    "RosMsgType": {
+      "description": "This message contains information about a ROS Message Type.",
+      "raw": "# This message contains information about a ROS Message Type.\n\nstring md5          # MD5 sum of ROS message type\nstring name         # ROS message type name (e.g. 'std_msgs/Float32')\nstring definition   # ROS message type definition (e.g. 'float data')\nbool stamped        # whether timestamp is prepended for latency computation",
+      "fields": [
+        {
+          "type": "string",
+          "name": "md5",
+          "comment": "MD5 sum of ROS message type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "ROS message type name (e.g. 'std_msgs/Float32')",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "definition",
+          "comment": "ROS message type definition (e.g. 'float data')",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stamped",
+          "comment": "whether timestamp is prepended for latency computation",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "IsConnected": {
+      "description": "",
+      "raw": "---\nbool connected",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "connected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

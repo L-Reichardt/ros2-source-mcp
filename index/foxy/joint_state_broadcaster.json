@@ -1,0 +1,55 @@
+{
+  "name": "joint_state_broadcaster",
+  "version": "0.9.0",
+  "description": "Broadcaster to publish joint state",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "pluginlib",
+      "rcutils"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "pluginlib",
+      "rcutils"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "rclcpp",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "control_msgs",
+      "controller_interface",
+      "hardware_interface",
+      "rclcpp_lifecycle",
+      "sensor_msgs",
+      "realtime_tools"
+    ],
+    "depended_on_by": [
+      "husky_control",
+      "jackal_control",
+      "joint_state_controller",
+      "ros2_controllers",
+      "ur_bringup",
+      "webots_ros2_epuck",
+      "webots_ros2_tiago",
+      "webots_ros2_turtlebot",
+      "webots_ros2_universal_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

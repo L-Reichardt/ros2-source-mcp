@@ -1,0 +1,95 @@
+{
+  "name": "rmf_site_map_msgs",
+  "version": "3.5.0",
+  "description": "Messages that contain GeoPackage maps",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_building_map_tools",
+      "rmf_demos_bridges",
+      "rmf_dev",
+      "rmf_traffic_ros2"
+    ]
+  },
+  "messages": {
+    "SiteMap": {
+      "description": "",
+      "raw": "uint32 MAP_DATA_UNDEFINED=0\nuint32 MAP_DATA_GPKG=1\nuint32 MAP_DATA_GPKG_GZ=2\nuint32 MAP_DATA_GEOJSON=3\nuint32 MAP_DATA_GEOJSON_GZ=4\n\nuint32 encoding\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "MAP_DATA_UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MAP_DATA_GPKG",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MAP_DATA_GPKG_GZ",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MAP_DATA_GEOJSON",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MAP_DATA_GEOJSON_GZ",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "encoding",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

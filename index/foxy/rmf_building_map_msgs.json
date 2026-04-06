@@ -1,0 +1,626 @@
+{
+  "name": "rmf_building_map_msgs",
+  "version": "1.2.0",
+  "description": "Messages used to send building maps",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_building_map_msgs",
+    "url": "https://github.com/open-rmf/rmf_building_map_msgs.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_building_map_tools",
+      "rmf_building_map_tools",
+      "rmf_building_sim_common",
+      "rmf_robot_sim_common",
+      "rmf_robot_sim_gazebo_plugins",
+      "rmf_robot_sim_ignition_plugins",
+      "rmf_visualization_building_systems",
+      "rmf_visualization_fleet_states",
+      "rmf_visualization_schedule"
+    ]
+  },
+  "messages": {
+    "AffineImage": {
+      "description": "",
+      "raw": "string name\nfloat32 x_offset\nfloat32 y_offset\nfloat32 yaw\nfloat32 scale\nstring encoding\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "scale",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "encoding",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BuildingMap": {
+      "description": "",
+      "raw": "string name\nLevel[] levels\nLift[] lifts\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Level[]",
+          "name": "levels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Lift[]",
+          "name": "lifts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Door": {
+      "description": "CONVENTIONS",
+      "raw": "string name\n\n# CONVENTIONS\n# ===========\n# single hinge doors:\n#   * hinge is located at (v1_x, v1_y)\n#   * door extends till (v2_x, v2_y)\n#   * motion_range = door swing range in DEGREES\n#   * there are two possible motions: clockwise and anti-clockwise\n#     selected by the motion_direction parameter, which is +1 or -1\n#\n# double hinge doors:\n#   * hinges are located at both (v1_x, v1_y) and (v2_x, v2_y)\n#   * motion range = door swing ranges in DEGREES (assume symmetric)\n#   * same motion-direction selection as single hinge\n#\n# single sliding doors:\n#   * the door slides from (v2_x, v2_y) towards (v1_x, v1_y)\n#   * range of motion is entire distance from v2->v1. No need to specify.\n#\n# double sliding doors:\n#   * door panels slide from the centerpoint of v1<->v2 towards v1 and v2\n#\n# single/double telescoping doors:\n#   * common in elevators; same parameters as sliding doors; they just\n#     open/close faster and take up less space inside the wall.\n\nfloat32 v1_x\nfloat32 v1_y\n\nfloat32 v2_x\nfloat32 v2_y\n\nuint8 door_type\nuint8 DOOR_TYPE_UNDEFINED=0\nuint8 DOOR_TYPE_SINGLE_SLIDING=1\nuint8 DOOR_TYPE_DOUBLE_SLIDING=2\nuint8 DOOR_TYPE_SINGLE_TELESCOPE=3\nuint8 DOOR_TYPE_DOUBLE_TELESCOPE=4\nuint8 DOOR_TYPE_SINGLE_SWING=5\nuint8 DOOR_TYPE_DOUBLE_SWING=6\n\nfloat32 motion_range\nint32 motion_direction\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "v1_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "v1_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "v2_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "v2_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "door_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_TYPE_UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_TYPE_SINGLE_SLIDING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_TYPE_DOUBLE_SLIDING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_TYPE_SINGLE_TELESCOPE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_TYPE_DOUBLE_TELESCOPE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_TYPE_SINGLE_SWING",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_TYPE_DOUBLE_SWING",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "motion_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "motion_direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Graph": {
+      "description": "",
+      "raw": "string name\nGraphNode[] vertices\nGraphEdge[] edges\nParam[] params\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GraphNode[]",
+          "name": "vertices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GraphEdge[]",
+          "name": "edges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Param[]",
+          "name": "params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GraphEdge": {
+      "description": "when edge_type is UNIDIRECTIONAL, it means v1 -> v2",
+      "raw": "uint32 v1_idx\nuint32 v2_idx\nParam[] params\n\n# when edge_type is UNIDIRECTIONAL, it means v1 -> v2\n# when edge_type is BIDIRECTIONAL, it means v1 <-> v2\nuint8 edge_type\nuint8 EDGE_TYPE_BIDIRECTIONAL=0\nuint8 EDGE_TYPE_UNIDIRECTIONAL=1\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "v1_idx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "v2_idx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Param[]",
+          "name": "params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "edge_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "EDGE_TYPE_BIDIRECTIONAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EDGE_TYPE_UNIDIRECTIONAL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "GraphNode": {
+      "description": "",
+      "raw": "float32 x\nfloat32 y\nstring name\nParam[] params\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Param[]",
+          "name": "params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Level": {
+      "description": "",
+      "raw": "string name\nfloat32 elevation\nAffineImage[] images\nPlace[] places\nDoor[] doors\nGraph[] nav_graphs\nGraph wall_graph\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "elevation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AffineImage[]",
+          "name": "images",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Place[]",
+          "name": "places",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Door[]",
+          "name": "doors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Graph[]",
+          "name": "nav_graphs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Graph",
+          "name": "wall_graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Lift": {
+      "description": "(ref_x, ref_y, ref_yaw) is a \"reference orientation\" of the lift cabin",
+      "raw": "string name\nstring[] levels\nDoor[] doors\nGraph wall_graph\n\n# (ref_x, ref_y, ref_yaw) is a \"reference orientation\" of the lift cabin\n# which can be used to align floors.\nfloat32 ref_x\nfloat32 ref_y\nfloat32 ref_yaw\n\n# width and depth of the cabin\nfloat32 width\nfloat32 depth",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "levels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Door[]",
+          "name": "doors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Graph",
+          "name": "wall_graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ref_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ref_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ref_yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Param": {
+      "description": "",
+      "raw": "string name\n\nuint32 type\nuint32 TYPE_UNDEFINED=0\nuint32 TYPE_STRING=1\nuint32 TYPE_INT=2\nuint32 TYPE_DOUBLE=3\nuint32 TYPE_BOOL=4\n\nint32 value_int\nfloat32 value_float\nstring value_string\nbool value_bool\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_STRING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_INT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_DOUBLE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_BOOL",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "value_int",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "value_float",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "value_bool",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Place": {
+      "description": "",
+      "raw": "string name\nfloat32 x\nfloat32 y\nfloat32 yaw\nfloat32 position_tolerance\nfloat32 yaw_tolerance\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "position_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetBuildingMap": {
+      "description": "",
+      "raw": "---\nBuildingMap building_map\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "BuildingMap",
+          "name": "building_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

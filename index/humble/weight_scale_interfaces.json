@@ -1,0 +1,163 @@
+{
+  "name": "weight_scale_interfaces",
+  "version": "0.0.3",
+  "description": "Definition of the interface for weight scale devices",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "weight_scale_interfaces",
+    "url": "https://github.com/TechMagicKK/weight_scale_interfaces.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "aandd_ekew_driver_py"
+    ]
+  },
+  "messages": {
+    "Weight": {
+      "description": "",
+      "raw": "builtin_interfaces/Time stamp\nbool stable    # State of the scale (for example measurement is stable or fluctuating)\nbool overload  # overload\nfloat64 weight # weight\nstring unit    # kg, g, oz, ...\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stable",
+          "comment": "State of the scale (for example measurement is stable or fluctuating)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "overload",
+          "comment": "overload",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "weight",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "unit",
+          "comment": "kg, g, oz, ...",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {
+    "GetWeight": {
+      "description": "Goal",
+      "raw": "# Goal\nfloat64 timeout # sec\n---\n# Result\nweight_scale_interfaces/Weight weight\nbool success\nstring message\n---\n# Feedback\nweight_scale_interfaces/Weight weight\n",
+      "goal_fields": [
+        {
+          "type": "float64",
+          "name": "timeout",
+          "comment": "sec",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "weight_scale_interfaces/Weight",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "weight_scale_interfaces/Weight",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetZero": {
+      "description": "Goal",
+      "raw": "# Goal\nfloat64 timeout # sec\n---\n# Result\nbool success\nstring message\n---\n# Feedback\nweight_scale_interfaces/Weight weight\n",
+      "goal_fields": [
+        {
+          "type": "float64",
+          "name": "timeout",
+          "comment": "sec",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "weight_scale_interfaces/Weight",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

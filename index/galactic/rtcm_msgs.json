@@ -1,0 +1,61 @@
+{
+  "name": "rtcm_msgs",
+  "version": "1.1.6",
+  "description": "The rtcm_msgs package contains messages related to data in the RTCM format.",
+  "license": "BSD",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rtcm_msgs",
+    "url": "https://github.com/tilk/rtcm_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "message_generation",
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Message": {
+      "description": "A message representing a single RTCM message.",
+      "raw": "# A message representing a single RTCM message.\nstd_msgs/Header header\n\nuint8[] message\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

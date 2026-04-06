@@ -1,0 +1,2631 @@
+{
+  "name": "vda5050_msgs",
+  "version": "1.1.1",
+  "description": "The vda5050_msgs package contains the datatypes (json objects) specified by the VDA\n    \"Arbeitskreis Schlüsseltechnologien\" in their recommondation \"VDA 5050 - Schnittstelle zur Kommunikation zwischen\n    Fahrerlosen Transportfahrzeugen (FTF) und einer Leitsteuerung.\n    This package provides the message files which can be used to be (de-)serialized with an implementation of mqtt\n    (e.g mqtt_bridge) or to plain json (rospy_message_converter) or similar.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://www.vda.de/dam/vda/publications/2019/Logistik/VDA5050.pdf",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "ros_amr_interop",
+    "url": "https://github.com/inorbit-ai/ros_amr_interop.git",
+    "branch": "galactic-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "vda5050_connector"
+    ]
+  },
+  "messages": {
+    "AGVAction": {
+      "description": "Enums for action scopes",
+      "raw": "string action_type                              # Unique actionType corresponding to action.actionType\nstring action_description\nstring[] action_scopes                          # Allowed scopes for using this action-type\nActionParameterDefinition[] action_parameters   # List of parameters defined for the action\nstring result_description\n\n# Enums for action scopes\nstring INSTANT = \"INSTANT\"\nstring NODE = \"NODE\"\nstring EDGE = \"EDGE\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "action_type",
+          "comment": "Unique actionType corresponding to action.actionType",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "action_scopes",
+          "comment": "Allowed scopes for using this action-type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActionParameterDefinition[]",
+          "name": "action_parameters",
+          "comment": "List of parameters defined for the action",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "result_description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "INSTANT",
+          "comment": "",
+          "default": "\"INSTANT\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NODE",
+          "comment": "",
+          "default": "\"NODE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "EDGE",
+          "comment": "",
+          "default": "\"EDGE\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "AGVGeometry": {
+      "description": "",
+      "raw": "WheelDefinition[] wheel_definitions # List of wheels, containing wheel-arrangement and geometry\nEnvelope2D[] envelopes2d\nEnvelope3D[] envelopes3d            # List of AGV-envelope curves in 3D\n",
+      "fields": [
+        {
+          "type": "WheelDefinition[]",
+          "name": "wheel_definitions",
+          "comment": "List of wheels, containing wheel-arrangement and geometry",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Envelope2D[]",
+          "name": "envelopes2d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Envelope3D[]",
+          "name": "envelopes3d",
+          "comment": "List of AGV-envelope curves in 3D",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AGVPosition": {
+      "description": "Defines the position on a map in world coordinates. Each floor has its own map.",
+      "raw": "# Defines the position on a map in world coordinates. Each floor has its own map.\n\nbool position_initialized      # False: position is not initialized True: position is initialized\n\nfloat64 localization_score       # Range: [0.0 … 1.0] Describes the quality of the localization and therefore, can be used\n                              # e. g. by SLAMAGVs to describe how accurate the current position information is.\n                              # 0.0: position unknown 1.0: position known\nfloat64 deviation_range          # Value for the deviation range of the position in meters.\nfloat64 x                     # [m] X-position on the map in reference to the map coordinate system. Precision is up to\n                              # the specific implementation\n\nfloat64 y                     # [m] Y-position on the map in reference to the map coordinate system. Precision is up to\n                              # the specific implementation.\n\nfloat64 theta                 # [rad] Range: [-Pi … Pi] Orientation of the AGV.\n\nstring map_id                 # Unique identification of the map in which the position is referenced. Each map has the\n                              # same origin of coordinates. When an AGV uses an elevator, e. g. leading from a departure\n                              # floor to a target floor, it will disappear off the map of the departure floor and spawn\n                              # in the related lift node on the map of the target floor.\n\nstring map_description        # Additional information on the map.\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "position_initialized",
+          "comment": "False: position is not initialized True: position is initialized",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "localization_score",
+          "comment": "Range: [0.0 … 1.0] Describes the quality of the localization and therefore, can be used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "deviation_range",
+          "comment": "Value for the deviation range of the position in meters.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "[m] X-position on the map in reference to the map coordinate system. Precision is up to",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "[m] Y-position on the map in reference to the map coordinate system. Precision is up to",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "theta",
+          "comment": "[rad] Range: [-Pi … Pi] Orientation of the AGV.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "map_id",
+          "comment": "Unique identification of the map in which the position is referenced. Each map has the",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "map_description",
+          "comment": "Additional information on the map.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Action": {
+      "description": "Action the AGV can perform.",
+      "raw": "# Action the AGV can perform.\n\nstring action_type                                              # Name of action as described in the first column\n                                                                # of \"Actions and Parameters\".\n                                                                # Identifies the function of the action.\n\nstring action_id                                                # Unique ID to identify the action and map them to\n                                                                # the actionState in the state.\n                                                                # Suggestion: Use UUIDs.\n\nstring action_description                                       # Additional information on the action\n\nstring blocking_type                                            # Enum {NONE, SOFT, HARD}\n                                                                # “NONE” – allows driving and other actions\n                                                                # “SOFT” - allows other actions, but not driving\n                                                                # “HARD” - is the only allowd action at that time\n\n\nvda5050_msgs/ActionParameter[] action_parameters                # Array of actionParameter objects for the indicated\n                                                                # action e. g. deviceId, loadId, external Triggers.\n                                                                # See “Actions and Parameters”.\n                                                                #\n                                                                # Note on Porting to ROS:\n                                                                # Since those parameter vary in type but their\n                                                                # serialization is always a json dictionary with \"key\"\n                                                                # and \"value\" we decided to serialize the value as\n                                                                # string. This way the (de-)serialization has to be done by\n                                                                # the user depending on the key, but the protocol is met\n\n\n# Enums for blockingType\nstring NONE = \"NONE\"\nstring SOFT = \"SOFT\"\nstring HARD = \"HARD\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "action_type",
+          "comment": "Name of action as described in the first column",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_id",
+          "comment": "Unique ID to identify the action and map them to",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_description",
+          "comment": "Additional information on the action",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "blocking_type",
+          "comment": "Enum {NONE, SOFT, HARD}",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/ActionParameter[]",
+          "name": "action_parameters",
+          "comment": "Array of actionParameter objects for the indicated",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "NONE",
+          "comment": "",
+          "default": "\"NONE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SOFT",
+          "comment": "",
+          "default": "\"SOFT\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "HARD",
+          "comment": "",
+          "default": "\"HARD\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "ActionParameter": {
+      "description": "",
+      "raw": "string key\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActionParameterDefinition": {
+      "description": "Enums for valueDataType",
+      "raw": "string key\nstring value_data_type\nstring description\nbool is_optional\n\n# Enums for valueDataType\nstring BOOL = \"BOOL\"\nstring NUMBER = \"NUMBER\"\nstring INTEGER = \"INTEGER\"\nstring FLOAT = \"FLOAT\"\nstring STRING = \"STRING\"\nstring OBJECT = \"OBJECT\"\nstring ARRAY = \"ARRAY\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value_data_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_optional",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "BOOL",
+          "comment": "",
+          "default": "\"BOOL\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NUMBER",
+          "comment": "",
+          "default": "\"NUMBER\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INTEGER",
+          "comment": "",
+          "default": "\"INTEGER\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FLOAT",
+          "comment": "",
+          "default": "\"FLOAT\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "STRING",
+          "comment": "",
+          "default": "\"STRING\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "OBJECT",
+          "comment": "",
+          "default": "\"OBJECT\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ARRAY",
+          "comment": "",
+          "default": "\"ARRAY\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "BatteryState": {
+      "description": "be indicated as 20% (bad) and 80% (good).",
+      "raw": "float64 battery_charge     # [%] State of Charge: if AGV only provides values for good or bad battery levels, these will\n                           # be indicated as 20% (bad) and 80% (good).\nfloat64 battery_voltage    # [V] Battery Voltage\nint8 battery_health        # [%] State of Health\nbool charging              # True: charging in progress False: AGV is currently not charging\nuint32 reach               # Estimated reach with current SoC\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "battery_charge",
+          "comment": "[%] State of Charge: if AGV only provides values for good or bad battery levels, these will",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "battery_voltage",
+          "comment": "[V] Battery Voltage",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "battery_health",
+          "comment": "[%] State of Health",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "charging",
+          "comment": "True: charging in progress False: AGV is currently not charging",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "reach",
+          "comment": "Estimated reach with current SoC",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoundingBoxReference": {
+      "description": "Point of reference for the location of the bounding box. The point of reference is always the center of the bounding",
+      "raw": "# Point of reference for the location of the bounding box. The point of reference is always the center of the bounding\n# box’s bottom surface (at height = 0) and is described in coordinates of the AGV’s coordinate system.\n\nfloat64 x     # x-coordinate of the point of reference.\nfloat64 y     # y-coordinate of the point of reference.\nfloat64 z     # z-coordinate of the point of reference.\nfloat64 theta # Orientation of the loads bounding box. Important for tugger trains etc\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "x-coordinate of the point of reference.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "y-coordinate of the point of reference.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "z-coordinate of the point of reference.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "theta",
+          "comment": "Orientation of the loads bounding box. Important for tugger trains etc",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Connection": {
+      "description": "HEADER",
+      "raw": "# HEADER\nuint32 header_id         # header ID of the message. The headerId is defined per topic and incremented by 1 with each sent\n                        # (but not necessarily received) message.\n\nstring timestamp        # Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)\n\nstring version          # Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)\n\nstring manufacturer     # Manufacturer of the AGV\n\nstring serial_number    # Serial Number of the AGV\n\n# CONTENTS\nstring connection_state # Enum{ONLINE, OFFLINE, CONNECTIONBROKEN}\n                        # ONLINE: connection between AGV and broker is active.\n                        # OFFLINE: connection between AGV and broker has gone offline in a coordinated way.\n                        # CONNECTIONBROKEN: The connection between  AGV and  broker  has unexpectedly ended.\n\n\nstring ONLINE=\"ONLINE\"\nstring OFFLINE=\"OFFLINE\"\nstring CONNECTIONBROKEN=\"CONNECTIONBROKEN\"\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "header_id",
+          "comment": "header ID of the message. The headerId is defined per topic and incremented by 1 with each sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "timestamp",
+          "comment": "Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version",
+          "comment": "Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "comment": "Manufacturer of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "Serial Number of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "connection_state",
+          "comment": "Enum{ONLINE, OFFLINE, CONNECTIONBROKEN}",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ONLINE",
+          "comment": "",
+          "default": "\"ONLINE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "OFFLINE",
+          "comment": "",
+          "default": "\"OFFLINE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CONNECTIONBROKEN",
+          "comment": "",
+          "default": "\"CONNECTIONBROKEN\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "ControlPoint": {
+      "description": "The orientation is in world coordinates.",
+      "raw": "float64 x           # X coordinate described in the world coordinate system.\n\nfloat64 y           # Y coordinate described in the world coordinate system.\n\nfloat64 orientation # [rad] Range [-pi...pi] Orientation of the AGV on this position of the curve.\n                    # The orientation is in world coordinates.\n                    # When not defined the orientation of the AGV will be tangential to the curve.\n\nfloat64 weight      # Range [0..infinity) The weight with which this control point pulls on the curve.\n                    # When not defined, the default will be 1.0\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "X coordinate described in the world coordinate system.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "Y coordinate described in the world coordinate system.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "orientation",
+          "comment": "[rad] Range [-pi...pi] Orientation of the AGV on this position of the curve.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "Range [0..infinity) The weight with which this control point pulls on the curve.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CurrentAction": {
+      "description": "failed: action could not be performed.",
+      "raw": "string action_id           # action_name_ID\nstring action_description  # Additional information on the current action\nstring action_status       # Enum {waiting; initializing; running; finished; failed} waiting: waiting for trigger\n                          # failed: action could not be performed.\nstring result_description  # Description of the result, e.g. the result of a RFID-read. Errors will be transmitted in\n                          # errors. Examples for results are given in 5.2\n\n# Enums for actionStatus\nstring WAITING=\"WAITING\"\nstring INITIALIZING=\"INITIALIZING\"\nstring RUNNING=\"RUNNING\"\nstring PAUSED=\"PAUSED\"\nstring FINISHED=\"FINISHED\"\nstring FAILED=\"FAILED\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "action_id",
+          "comment": "action_name_ID",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_description",
+          "comment": "Additional information on the current action",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_status",
+          "comment": "Enum {waiting; initializing; running; finished; failed} waiting: waiting for trigger",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "result_description",
+          "comment": "Description of the result, e.g. the result of a RFID-read. Errors will be transmitted in",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "WAITING",
+          "comment": "",
+          "default": "\"WAITING\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INITIALIZING",
+          "comment": "",
+          "default": "\"INITIALIZING\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "RUNNING",
+          "comment": "",
+          "default": "\"RUNNING\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PAUSED",
+          "comment": "",
+          "default": "\"PAUSED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FINISHED",
+          "comment": "",
+          "default": "\"FINISHED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FAILED",
+          "comment": "",
+          "default": "\"FAILED\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "Edge": {
+      "description": "Directional connection between two nodes",
+      "raw": "# Directional connection between two nodes\n\nstring edge_id                      # Unique edge identification\n\nuint32 sequence_id                  # Id to track the sequence of nodes and edges in an order and to simplify order\n                                    # updates. The variable sequence_id runs across all nodes and edges of the same order\n                                    # and is reset when a new order_id is issued.\n\nstring edge_description             # Additional information on the edge\n\nbool released                       # True indicates that the edge is part of the base. False indicates that the edge is\n                                    # part of the horizon.\n\nstring start_node_id                # nodeID of startNode\nstring end_node_id                  # nodeID of endNode\nfloat64 max_speed                   # [m/s] Permitted maximum speed on the edge. Speed is defined by the fastest point of the\n                                    # vehicle.\n\nfloat64 max_height                  # [m] Permitted maximum height of the vehicle, including the load, on edge\nfloat64 min_height                  # [m] Permitted minimal height of the edge measured at the bottom of the load\nfloat64 orientation                 # [rad] Orientation of the AGV on the edge relative to the global project specific\n                                    # map coordinate origin (for holonomic vehicles with more than one driving\n                                    # direction).\n                                    # Example: orientation Pi/2 rad will lead to a rotation of 90 degrees.\n                                    # If AGVstarts in different orientation, rotate the vehicle on the edge to the\n                                    # desired orientation if rotationAllowed is set to “true”. If rotationAllowed\n                                    # is “false\", rotate before entering the edge. If that is not possible, reject\n                                    # the order.\n                                    # If a trajectory with orientation is defined, follow the trajectories orientation.\n                                    # If a trajectory without orientation and the orientation field here is defined,\n                                    # apply the orientation to the tangent of the trajectory.\n\nstring direction                    # Sets direction at junctions for line-guided vehicles, to be defined initially\n                                    # (vehicle individual) Example: left, right, straight, 433MHz\n\nbool rotation_allowed               # “true”: rotation is allowed on the edge. “false”: rotation is not allowed on the edge.\n                                    # Optional: Default to “false”. If this value is set, rotation is allowed on the edge.\nfloat64 max_rotation_speed          # [rad/s] Maximum rotation speed Optional: No limit if not set\nvda5050_msgs/Trajectory trajectory  # Trajectory JSON-object for this edge as a NURBS. Defines the curve on which the\n                                    # AGV should move between start_node and end_node. Optional: Can be omitted if AGV\n                                    # cannot process trajectories or if AGV plans its own trajectory.\nfloat64 length                      # [m] Length of the path from startNode to endNode. Optional: This value is used\n                                    # by lineguided AGVs to decrease their speed before reaching a stop position.\n\nvda5050_msgs/Action[] actions       # Array of action_ids to be executed on the edge. An action triggered by an edge will\n                                    # only be active for the time that the AGV is traversing the edge which triggered\n                                    # the action. When the AGV leaves the edge, the action will stop and the state\n                                    # before entering the edge will be restored.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "edge_id",
+          "comment": "Unique edge identification",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sequence_id",
+          "comment": "Id to track the sequence of nodes and edges in an order and to simplify order",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "edge_description",
+          "comment": "Additional information on the edge",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "released",
+          "comment": "True indicates that the edge is part of the base. False indicates that the edge is",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "start_node_id",
+          "comment": "nodeID of startNode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "end_node_id",
+          "comment": "nodeID of endNode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_speed",
+          "comment": "[m/s] Permitted maximum speed on the edge. Speed is defined by the fastest point of the",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_height",
+          "comment": "[m] Permitted maximum height of the vehicle, including the load, on edge",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_height",
+          "comment": "[m] Permitted minimal height of the edge measured at the bottom of the load",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "orientation",
+          "comment": "[rad] Orientation of the AGV on the edge relative to the global project specific",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "direction",
+          "comment": "Sets direction at junctions for line-guided vehicles, to be defined initially",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rotation_allowed",
+          "comment": "“true”: rotation is allowed on the edge. “false”: rotation is not allowed on the edge.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_rotation_speed",
+          "comment": "[rad/s] Maximum rotation speed Optional: No limit if not set",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Trajectory",
+          "name": "trajectory",
+          "comment": "Trajectory JSON-object for this edge as a NURBS. Defines the curve on which the",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "length",
+          "comment": "[m] Length of the path from startNode to endNode. Optional: This value is used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Action[]",
+          "name": "actions",
+          "comment": "Array of action_ids to be executed on the edge. An action triggered by an edge will",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EdgeState": {
+      "description": "part of the horizon.",
+      "raw": "string edge_id                       # Unique edge identification\n\nuint32 sequence_id                   # sequenceId to differentiate between multiple edges with\n\nstring edge_description              # Additional information on the edge\n\nbool released                        # True indicates that the edge is part of the base. False indicates that the edge is\n                                     # part of the horizon.\nvda5050_msgs/Trajectory trajectory   # The trajectory is to be communicated as a NURBS and is defined in chapter6.4\n                                     # Trajectory segments are from the point where the AGV starts to enter the edge\n                                     # until the point where it reports that the next node was traversed.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "edge_id",
+          "comment": "Unique edge identification",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sequence_id",
+          "comment": "sequenceId to differentiate between multiple edges with",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "edge_description",
+          "comment": "Additional information on the edge",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "released",
+          "comment": "True indicates that the edge is part of the base. False indicates that the edge is",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Trajectory",
+          "name": "trajectory",
+          "comment": "The trajectory is to be communicated as a NURBS and is defined in chapter6.4",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Envelope2D": {
+      "description": "",
+      "raw": "string set                      # Name of the envelope curve set\nPolygonPoint[] polygon_points   # Envelope curve as a x/y-polygon\nstring description\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "set",
+          "comment": "Name of the envelope curve set",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PolygonPoint[]",
+          "name": "polygon_points",
+          "comment": "Envelope curve as a x/y-polygon",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Envelope3D": {
+      "description": "",
+      "raw": "string set          # Name of the envelope curve set\nstring format\nstring data\nstring url          # Protocol and url-definition for downloading the 3D-envelope curve data\nstring description\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "set",
+          "comment": "Name of the envelope curve set",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "url",
+          "comment": "Protocol and url-definition for downloading the 3D-envelope curve data",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Error": {
+      "description": "order_id, action_id, …). For additional information see best practice",
+      "raw": "string error_type                              # Type / name of error\nvda5050_msgs/ErrorReference[] error_references   # Array of references to identify the source of the error (e. g. header_id,\n                                              # order_id, action_id, …). For additional information see best practice\n                                              # chapter 6.3\nstring error_description                       # Error description\nstring error_level                             # Enum {warning, fatal} warning: AGV is ready to start (e.g. maintenance\n                                              # cycle expiration warning) fatal: AGV is not in running condition, user\n                                              # intervention required (e.g. laser scanner is contaminated)\n\n# Enums for error_level\nstring WARNING=\"WARNING\"\nstring FATAL=\"FATAL\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "error_type",
+          "comment": "Type / name of error",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/ErrorReference[]",
+          "name": "error_references",
+          "comment": "Array of references to identify the source of the error (e. g. header_id,",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_description",
+          "comment": "Error description",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_level",
+          "comment": "Enum {warning, fatal} warning: AGV is ready to start (e.g. maintenance",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "WARNING",
+          "comment": "",
+          "default": "\"WARNING\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FATAL",
+          "comment": "",
+          "default": "\"FATAL\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "ErrorReference": {
+      "description": "",
+      "raw": "string reference_key       # References the type of reference (e. g. header_id, order_id, action_id, …).\nstring reference_value     # References the value the reference key.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "reference_key",
+          "comment": "References the type of reference (e. g. header_id, order_id, action_id, …).",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_value",
+          "comment": "References the value the reference key.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Factsheet": {
+      "description": "HEADER",
+      "raw": "# HEADER\nuint32 header_id                        # header ID of the message. The headerId is defined per topic and incremented by 1 with each sent\n                                        # (but not necessarily received) message.\n\nstring timestamp                        # Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)\n\nstring version                          # Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)\n\nstring manufacturer                     # Manufacturer of the AGV\n\nstring serial_number                    # Serial Number of the AGV\n\n# CONTENTS\nTypeSpecification type_specification    # Class and capabilities of the AGV\n\nPhysicalParameters physical_parameters  # Physical properties of the AGV\n\nProtocolLimits protocol_limits          # Protocol limitations of the AGV\n\nProtocolFeatures protocol_features      # Supported and/or required optional parameters\n\nAGVGeometry agv_geometry                # Detailed definition of AGV geometry\n\nLoadSpecification load_specification    # Load positions / load handling devices\n\nint32 localization_parameters           # Detailed specification of localization\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "header_id",
+          "comment": "header ID of the message. The headerId is defined per topic and incremented by 1 with each sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "timestamp",
+          "comment": "Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version",
+          "comment": "Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "comment": "Manufacturer of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "Serial Number of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TypeSpecification",
+          "name": "type_specification",
+          "comment": "Class and capabilities of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PhysicalParameters",
+          "name": "physical_parameters",
+          "comment": "Physical properties of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ProtocolLimits",
+          "name": "protocol_limits",
+          "comment": "Protocol limitations of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ProtocolFeatures",
+          "name": "protocol_features",
+          "comment": "Supported and/or required optional parameters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AGVGeometry",
+          "name": "agv_geometry",
+          "comment": "Detailed definition of AGV geometry",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadSpecification",
+          "name": "load_specification",
+          "comment": "Load positions / load handling devices",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "localization_parameters",
+          "comment": "Detailed specification of localization",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Header": {
+      "description": "(but not necessarily received) message.",
+      "raw": "int32 header_id      # header ID of the message. The header_id is defined per topic and incremented by 1 with each sent\n                    # (but not necessarily received) message.\n\nstring timestamp    # Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)\n\nstring version      # Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)\n\nstring manufacturer # Manufacturer of the AGV\n\nstring serial_number # Serial Number of the AGV\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "header_id",
+          "comment": "header ID of the message. The header_id is defined per topic and incremented by 1 with each sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "timestamp",
+          "comment": "Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version",
+          "comment": "Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "comment": "Manufacturer of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "Serial Number of the AGV",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Info": {
+      "description": "",
+      "raw": "string info_type                             # Type / name of information\nvda5050_msgs/InfoReference[] info_references # array of references\nstring info_description                      # Info description\nstring info_level                            # Enum {DEBUG, INFO} DEBUG: used for debugging, INFO: used for visualization\n\n\nstring DEBUG=\"DEBUG\"\nstring INFO=\"INFO\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "info_type",
+          "comment": "Type / name of information",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/InfoReference[]",
+          "name": "info_references",
+          "comment": "array of references",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "info_description",
+          "comment": "Info description",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "info_level",
+          "comment": "Enum {DEBUG, INFO} DEBUG: used for debugging, INFO: used for visualization",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "DEBUG",
+          "comment": "",
+          "default": "\"DEBUG\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INFO",
+          "comment": "",
+          "default": "\"INFO\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "InfoReference": {
+      "description": "",
+      "raw": "string reference_key       # References the type of reference (e. g. headerId, orderId, actionId, …).\nstring reference_value     # References the value the reference key.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "reference_key",
+          "comment": "References the type of reference (e. g. headerId, orderId, actionId, …).",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_value",
+          "comment": "References the value the reference key.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "InstantActions": {
+      "description": "(but not necessarily received) message.",
+      "raw": "uint32 header_id    # header ID of the message. The headerId is defined per topic and incremented by 1 with each sent\n                    # (but not necessarily received) message.\n\nstring timestamp    # Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)\n\nstring version      # Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)\n\nstring manufacturer # Manufacturer of the AGV\n\nstring serial_number # Serial Number of the AGV\n\nAction[] actions    # List of actions to execute\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "header_id",
+          "comment": "header ID of the message. The headerId is defined per topic and incremented by 1 with each sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "timestamp",
+          "comment": "Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version",
+          "comment": "Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "comment": "Manufacturer of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "Serial Number of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Action[]",
+          "name": "actions",
+          "comment": "List of actions to execute",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Load": {
+      "description": "RFID)",
+      "raw": "string load_id                                           # Unique identification number of the load (e. g. barcode or\n                                                        # RFID)\n\nstring load_type                                         # Type of load\n\nstring load_position                                     # Indicates which load handling/carrying unit of the AGV is\n                                                        # used, e. g. in case the AGV has multiple spots/positions to\n                                                        # carry loads. For example: “front”, “back”, “positionC1”, etc.\n\nvda5050_msgs/BoundingBoxReference bounding_box_reference  # Point of reference for the location of the bounding box. The\n                                                        # point of reference is always the center of the bounding box’s\n                                                        # bottom surface (at height = 0) and is described in coordinates\n                                                        # of the AGV’s coordinate system.\n\nvda5050_msgs/LoadDimensions load_dimensions              # Dimensions of the load’s bounding box in meters.\n\nfloat64 weight                                           # Absolute weight of the load measured in kg.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "load_id",
+          "comment": "Unique identification number of the load (e. g. barcode or",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "load_type",
+          "comment": "Type of load",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "load_position",
+          "comment": "Indicates which load handling/carrying unit of the AGV is",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/BoundingBoxReference",
+          "name": "bounding_box_reference",
+          "comment": "Point of reference for the location of the bounding box. The",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/LoadDimensions",
+          "name": "load_dimensions",
+          "comment": "Dimensions of the load’s bounding box in meters.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "Absolute weight of the load measured in kg.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadDimensions": {
+      "description": "Dimensions of the load’s bounding box in meters.",
+      "raw": "# Dimensions of the load’s bounding box in meters.\n\nfloat64 length  # Absolute length of the load’s bounding box.\nfloat64 width  # Absolute width of the load’s bounding box.\nfloat64 height  # Absolute height of the load’s bounding box. Optional: Set value only if known.\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "length",
+          "comment": "Absolute length of the load’s bounding box.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "width",
+          "comment": "Absolute width of the load’s bounding box.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height",
+          "comment": "Absolute height of the load’s bounding box. Optional: Set value only if known.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadSet": {
+      "description": "",
+      "raw": "string set_name\n\nstring load_type\n\nstring[] load_positions                     # List of load positions / load handling devices\n\nBoundingBoxReference bounding_box_reference # Bounding box reference as defined in parameter loads[] in state-message\n\nLoadDimensions load_dimensions\n\nfloat64 max_weight                          # Maximum weight of load type [kg]\n\nfloat64 min_loadhandling_height             # Minimum allowed height for handling of this load-type and weight [m]\n\nfloat64 max_loadhandling_height             # Maximum allowed height for handling of this load-type and weight [m]\n\nfloat64 min_loadhandling_depth              # Minimum allowed depth for this load-type and weight [m]\n\nfloat64 max_loadhandling_depth              # Maximum allowed depth for this load-type and weight [m]\n\nfloat64 min_loadhandling_tilt               # Minimum allowed tilt for this load-type and weight [rad]\n\nfloat64 max_loadhandling_tilt               # Maximum allowed tilt for this load-type and weight [rad]\n\nfloat64 agv_speed_limit                     # Maximum allowed speed for this load-type and weight [m/s^2]\n\nfloat64 agv_acceleration_limit              # Maximum allowed acceleration for this load-type and weight [m/s^2]\n\nfloat64 agv_deceleration_limit              # Maximum allowed deceleration for this load-type and weight [m/s^2]\n\nfloat64 pick_time                           # Approx. time for picking up the load [s]\n\nfloat64 drop_time                           # Approx. time for dropping the load [s]\n\nstring description                          # Free description of the load handling set\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "set_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "load_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "load_positions",
+          "comment": "List of load positions / load handling devices",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBoxReference",
+          "name": "bounding_box_reference",
+          "comment": "Bounding box reference as defined in parameter loads[] in state-message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadDimensions",
+          "name": "load_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_weight",
+          "comment": "Maximum weight of load type [kg]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_loadhandling_height",
+          "comment": "Minimum allowed height for handling of this load-type and weight [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_loadhandling_height",
+          "comment": "Maximum allowed height for handling of this load-type and weight [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_loadhandling_depth",
+          "comment": "Minimum allowed depth for this load-type and weight [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_loadhandling_depth",
+          "comment": "Maximum allowed depth for this load-type and weight [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_loadhandling_tilt",
+          "comment": "Minimum allowed tilt for this load-type and weight [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_loadhandling_tilt",
+          "comment": "Maximum allowed tilt for this load-type and weight [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "agv_speed_limit",
+          "comment": "Maximum allowed speed for this load-type and weight [m/s^2]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "agv_acceleration_limit",
+          "comment": "Maximum allowed acceleration for this load-type and weight [m/s^2]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "agv_deceleration_limit",
+          "comment": "Maximum allowed deceleration for this load-type and weight [m/s^2]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pick_time",
+          "comment": "Approx. time for picking up the load [s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "drop_time",
+          "comment": "Approx. time for dropping the load [s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "Free description of the load handling set",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadSpecification": {
+      "description": "",
+      "raw": "string[] load_positions   # List of load positions / load handling devices\nLoadSet[] load_sets       # List of load-sets that can be handled by the AGV\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "load_positions",
+          "comment": "List of load positions / load handling devices",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadSet[]",
+          "name": "load_sets",
+          "comment": "List of load-sets that can be handled by the AGV",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MaxArrayLens": {
+      "description": "",
+      "raw": "uint32 order_nodes                  # Maximum number of nodes per order processable by the AGV\n\nuint32 order_edges                  # Maximum number of edges per order processable by the AGV\n\nuint32 node_actions                 # Maximum number of action per node processable by the AGV\n\nuint32 edge_actions                 # Maximum number of action per edge processable by the AGV\n\nuint32 actions_parameters           # Maximum number of parameters per action processable by the AGV\n\nuint32 instant_actions              # Maximum number of instant actions per message processable by the AGV\n\nuint32 trajectory_knot_vector       # Maximum number of knots per trajectory processable by the AGV\n\nuint32 trajectory_control_points    # Maximum number of control points per trajectory processable by the AGV\n\nuint32 state_node_states            # Maximum number of nodeStates sent by the AGV, maximum number of nodes in base of AGV\n\nuint32 state_edge_states            # Maximum number of edgeStates sent by the AGV, maximum number of edges in base of AGV\n\nuint32 state_loads                  # Maximum number of load-objects sent by the AGV\n\nuint32 state_action_states          # Maximum number of actionStates sent by the AGV\n\nuint32 state_errors                 # Maximum number of errors sent by the AGV in one state-message\n\nuint32 state_information            # Maximum number of information objects sent by the AGV in one state-message\n\nuint32 error_references             # Maximum number of error references sent by the AGV for each error\n\nuint32 info_references              # Maximum number of info references sent by the AGV for each information\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "order_nodes",
+          "comment": "Maximum number of nodes per order processable by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "order_edges",
+          "comment": "Maximum number of edges per order processable by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "node_actions",
+          "comment": "Maximum number of action per node processable by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "edge_actions",
+          "comment": "Maximum number of action per edge processable by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "actions_parameters",
+          "comment": "Maximum number of parameters per action processable by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "instant_actions",
+          "comment": "Maximum number of instant actions per message processable by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "trajectory_knot_vector",
+          "comment": "Maximum number of knots per trajectory processable by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "trajectory_control_points",
+          "comment": "Maximum number of control points per trajectory processable by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "state_node_states",
+          "comment": "Maximum number of nodeStates sent by the AGV, maximum number of nodes in base of AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "state_edge_states",
+          "comment": "Maximum number of edgeStates sent by the AGV, maximum number of edges in base of AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "state_loads",
+          "comment": "Maximum number of load-objects sent by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "state_action_states",
+          "comment": "Maximum number of actionStates sent by the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "state_errors",
+          "comment": "Maximum number of errors sent by the AGV in one state-message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "state_information",
+          "comment": "Maximum number of information objects sent by the AGV in one state-message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "error_references",
+          "comment": "Maximum number of error references sent by the AGV for each error",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "info_references",
+          "comment": "Maximum number of info references sent by the AGV for each information",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MaxStringLens": {
+      "description": "",
+      "raw": "uint32 msg_len          # Maximum MQTT Message length\n\nuint32 topic_serial_len # Maximum length of serial-number part in MQTT-topics\n\nuint32 topic_elem_len   # Maximum length of all other parts in MQTT-topics (timestamp, versions, manufacturer)\n\nuint32 id_len           # Maximum length of ID-Strings\n\nbool id_numerical_only  # If true ID-strings need to contain numerical values only\n\nuint32 enum_len         # Maximum length of ENUM- and Key-Strings\n\nuint32 load_id_len      # Maximum length of loadId Strings\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "msg_len",
+          "comment": "Maximum MQTT Message length",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "topic_serial_len",
+          "comment": "Maximum length of serial-number part in MQTT-topics",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "topic_elem_len",
+          "comment": "Maximum length of all other parts in MQTT-topics (timestamp, versions, manufacturer)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id_len",
+          "comment": "Maximum length of ID-Strings",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "id_numerical_only",
+          "comment": "If true ID-strings need to contain numerical values only",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "enum_len",
+          "comment": "Maximum length of ENUM- and Key-Strings",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "load_id_len",
+          "comment": "Maximum length of loadId Strings",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Node": {
+      "description": "Array of nodes to be traversed for fulfilling the order",
+      "raw": "# Array of nodes to be traversed for fulfilling the order\n\nstring node_id                                     # Unique node identification.\n\nuint32 sequence_id                                # Id to track the sequence of nodes and edges in an order and to\n                                                  # simplify order updates. The variable sequence_id runs across all\n                                                  # nodes and edges of the same order and is reset when a new order_id is\n                                                  # issued.\n\nstring node_description                           # Additional information on the node\n\nbool released                                     # True indicates that the node is part of the base. False indicates\n                                                  # that the node is part of the horizon.\n\nvda5050_msgs/NodePosition node_position           # Node position\n\n\nvda5050_msgs/Action[] actions                     # Array of actions to be executed in node. Empty array if no actions\n                                                  # required. An action triggered by a node will persist until changed\n                                                  # in another node unless restricted by duration_type/duration_value.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "node_id",
+          "comment": "Unique node identification.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sequence_id",
+          "comment": "Id to track the sequence of nodes and edges in an order and to",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_description",
+          "comment": "Additional information on the node",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "released",
+          "comment": "True indicates that the node is part of the base. False indicates",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/NodePosition",
+          "name": "node_position",
+          "comment": "Node position",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Action[]",
+          "name": "actions",
+          "comment": "Array of actions to be executed in node. Empty array if no actions",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NodePosition": {
+      "description": "Defines the position on a map in world coordinates. Each floor has its own map.",
+      "raw": "# Defines the position on a map in world coordinates. Each floor has its own map.\n\nfloat64 x                                         # [m] X-position on the map in reference to the world coordinate system\nfloat64 y                                         # [m] Y-position on the map in reference to the world coordinate system\n\nfloat64 theta                                     # [rad] The angular dimension\n\n\nfloat32 allowed_deviation_x_y                     # Indicates how exact an AGV has to drive over a node in order for it\n                                                  # to count as traversed.\n                                                  #\n                                                  # If = 0: no deviation is allowed (no deviation means within the\n                                                  # normal tolerance of the AGV manufacturer).\n                                                  #\n                                                  # If > 0: allowed deviationradius in meters. If the AGV passes a node\n                                                  # within the deviation-radius, the node is considered to have been\n                                                  # traversed.\n\nfloat32 allowed_deviation_theta                   # Range: [0 ... Pi]\n                                                  # Indicates how big the deviation of theta angle can be.\n                                                  # The lowest acceptable angle  is theta -allowedDevaitionTheta and\n                                                  # the  highest acceptable angle is theta + allowedDeviationTheta\n\nstring map_id                                     # Unique identification of the map in which the position is referenced. Each map has the same\n                                                  # origin of coordinates. When an AGV uses an elevator, e. g. leading from a departure floor to a\n                                                  # target floor, it will disappear off the map of the departure floor and spawn in the related\n                                                  # lift node on the map of the target floor.\n\nstring map_description                            # Additional information on the map\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "[m] X-position on the map in reference to the world coordinate system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "[m] Y-position on the map in reference to the world coordinate system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "theta",
+          "comment": "[rad] The angular dimension",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "allowed_deviation_x_y",
+          "comment": "Indicates how exact an AGV has to drive over a node in order for it",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "allowed_deviation_theta",
+          "comment": "Range: [0 ... Pi]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "map_id",
+          "comment": "Unique identification of the map in which the position is referenced. Each map has the same",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "map_description",
+          "comment": "Additional information on the map",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NodeState": {
+      "description": "Array of nodes to be traversed for fulfilling the order",
+      "raw": "# Array of nodes to be traversed for fulfilling the order\n\nstring node_id                                      # Unique node identification\nuint32 sequence_id                                  # sequenceId to discern multiple nodes with same nodeId.\nstring node_description                             # Additional information on the node\nvda5050_msgs/NodePosition position                  # Node position (see Topic: Order)\nbool released                                       # true indicates that the node is part of the base.\n                                                    # false indicates that the node is part of the horizon.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "node_id",
+          "comment": "Unique node identification",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sequence_id",
+          "comment": "sequenceId to discern multiple nodes with same nodeId.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_description",
+          "comment": "Additional information on the node",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/NodePosition",
+          "name": "position",
+          "comment": "Node position (see Topic: Order)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "released",
+          "comment": "true indicates that the node is part of the base.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OptionalParameter": {
+      "description": "Enums for support",
+      "raw": "string parameter    # Full name of optional parameter\nstring support      # Type of support for the optional parameter\nstring description  # Description of optional parameter\n\n# Enums for support\nstring SUPPORTED = \"SUPPORTED\"\nstring REQUIRED = \"REQUIRED\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "parameter",
+          "comment": "Full name of optional parameter",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "support",
+          "comment": "Type of support for the optional parameter",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "Description of optional parameter",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "SUPPORTED",
+          "comment": "",
+          "default": "\"SUPPORTED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "REQUIRED",
+          "comment": "",
+          "default": "\"REQUIRED\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "Order": {
+      "description": "HEADER",
+      "raw": "# HEADER\nuint32 header_id                             # header ID of the message. The header_id is defined per topic and incremented by 1 with each sent\n                                             # (but not necessarily received) message.\n\nstring timestamp                             # Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)\n\nstring version                               # Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)\n\nstring manufacturer                          # Manufacturer of the AGV\n\nstring serial_number                         # Serial Number of the AGV\n\n# CONTENTS\n\nstring order_id                              # Unique order identification\n\nuint32 order_update_id                       # order_update identification. Is unique per order_id. If an order update is\n                                             # rejected, this field is to be passed in the rejection message\n\nstring zone_set_id                           # Unique identifier of the zone set that the AGV has to use for navigation or that was used by master controlfor planning\n                                             # Optional: Some master controlsystems do not use zones. Some AGVs do not understand zones. Do not add to message if no zones are used\n\nvda5050_msgs/Node[] nodes                    # Array of nodes to be traversed for fulfilling the order. The nodes come\n                                             # in the sequence of the fulfilling.\n\nvda5050_msgs/Edge[] edges                    # Array of edges to be traversed for fulfilling the order\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "header_id",
+          "comment": "header ID of the message. The header_id is defined per topic and incremented by 1 with each sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "timestamp",
+          "comment": "Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version",
+          "comment": "Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "comment": "Manufacturer of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "Serial Number of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "order_id",
+          "comment": "Unique order identification",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "order_update_id",
+          "comment": "order_update identification. Is unique per order_id. If an order update is",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "zone_set_id",
+          "comment": "Unique identifier of the zone set that the AGV has to use for navigation or that was used by master controlfor planning",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Node[]",
+          "name": "nodes",
+          "comment": "Array of nodes to be traversed for fulfilling the order. The nodes come",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Edge[]",
+          "name": "edges",
+          "comment": "Array of edges to be traversed for fulfilling the order",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OrderState": {
+      "description": "HEADER",
+      "raw": "# HEADER\nuint32 header_id                                      # header ID of the message. The header_id is defined per topic and incremented by 1 with each sent\n                                                     # (but not necessarily received) message.\n\nstring timestamp                                     # Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)\n\nstring version                                       # Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)\n\nstring manufacturer                                  # Manufacturer of the AGV\n\nstring serial_number                                 # Serial Number of the AGV\n\n# CONTENTS\nstring order_id                                      # Unique order identification “none” if vehicle is idle and has no order\n\nuint32 order_update_id                               # order_update identification. Is unique per order_id. If an order update is rejected, this field is to be passed in the rejection message.\n\nstring zone_set_id                                   # Unique ID of the zone set that the AGV currently uses for path planning. Must be the same as the one used in the order,\n                                                     # otherwise the AGV hasto reject the order. Optional: If the AGV does not use zones, this field can be omitted.\n\nstring last_node_id                                  # nodeId of last reached node or, if AGV is currently on a node, current node (e.g. „node7”).\n                                                     # Empty string (\"\") if no lastNodeId is available.\n\nuint32 last_node_sequence_id                         # sequence_id of the last reached node or, if the AGV is currently on a node, sequence_id of current node.\n                                                     # “0” if no last_node_sequence_id is available.\n\nvda5050_msgs/NodeState[] node_states                 # Array of node_state_objects (empty list if idle)\n\nvda5050_msgs/EdgeState[] edge_states                 # Array of edge_state_objects (empty list if idle)\n\nvda5050_msgs/AGVPosition agv_position                # Current position of the AGV. Optional: Can only be omitted for\n                                                     # AGVs without the capability to localize themselves, e.g. line\n                                                     # guided AGVs.\n\nvda5050_msgs/Velocity velocity                       # AGV's velocity in vehicle coordinates\n\nvda5050_msgs/Load[] loads                            # Loads that are currently handled by the AGV.\n                                                     # Optional: If AGV cannot determine load state, leave the array out of the state.\n                                                     # If the  AGV  can determine the  load  state,  but  the  array  is  empty,  the  AGV  is considered unloaded.\n\nbool driving                                         # True: indicates that the AGV is driving and/or rotating. Other\n                                                     # movements of the AGV (e.g. lift movements) are not included here.\n                                                     # False: indicates that the AGV is neither driving nor rotating\n\nbool paused                                          # True: AGV is currently in a paused state, either because of the push of a physical button on the AGV or\n                                                     # because of an instantAction. The AGV can resume the order.\n                                                     # False: The AGV is currently not in a paused state\n\nbool new_base_requested                              # True: AGV is almost at the end of the base and will reduce speed if no new base is transmitted. Trigger for MC to send ne base\n                                                     # False: no base update required\n\nfloat64 distance_since_last_node                     # Used by line guided vehicles to indicate the distance it has been driving past the last_node_id. Distance is in meters\n\nvda5050_msgs/CurrentAction[] action_states           # Contains a list of the current actions and the actions which are\n                                                     # yet to be finished. This may include actions from previous nodes\n                                                     # that are still in progress. When an action is completed, an\n                                                     # updated state message is published with action_status set to\n                                                     # finished and if applicable with the corresponding\n                                                     # result_description. Completed actions are omitted from the array\n\nvda5050_msgs/BatteryState battery_state              # Contains all batteryrelated information.\n\nstring operating_mode                                # Enum {AUTOMATIC, SEMIAUTOMATIC, MANUAL, SERVICE, TEACHIN}\n                                                     # For additional information see chapter 6.2\n\nvda5050_msgs/Error[] errors                          # Array of errorobjects. Empty array if there are no errors.\n\nvda5050_msgs/Info[] informations                     # Array of info-objects. An empty array indicates that the AGV has no information.\n                                                     # This should only be used for visualization or debugging – it must not be used for logic in master control\n\nvda5050_msgs/SafetyState safety_state                # Contains all safetyrelated information.\n\n\n\n                                                     # Enums for operatingMode\nstring AUTOMATIC=\"AUTOMATIC\"\n\n                                                     # AGV is under full control of the supervisor. AGV drives and executes actions based on orders from the supervisor\nstring SEMIAUTOMATIC=\"SEMIAUTOMATIC\"\n\n                                                     # AGV is under control of the supervisor. AGV drives and executes actions based on orders from the supervisor. The driving speeds is controlled by the HMI. (speed can’t exceed the speed of automatic mode) The steering is under automatic control. (non-safe HMI possible)\nstring MANUAL=\"MANUAL\"\n\n                                                     # Supervisor is not in control of the AGV. Supervisor doesn’t send driving order or actions to the AGV. HMI can be used the control the steering and velocity and handling device of the AGV. Location of the AGV is send to the supervisor. When AGV enters or leaves this mode, it immediately clears all the orders. (safe HMI required)\n                                                     # Supervisor is not in control of the AGV. Supervisor doesn’t send driving order or actions to the AGV. Authorized personal can reconfigure the AGV.\nstring SERVICE=\"SERVICE\"\n\n                                                     # Supervisor is not in control of the AGV. Supervisor doesn’t send driving order or actions to the AGV. The AGV is being taught, e.g. mapping is done by a supervisor\nstring TEACHIN=\"TEACHIN\"\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "header_id",
+          "comment": "header ID of the message. The header_id is defined per topic and incremented by 1 with each sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "timestamp",
+          "comment": "Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version",
+          "comment": "Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "comment": "Manufacturer of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "Serial Number of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "order_id",
+          "comment": "Unique order identification “none” if vehicle is idle and has no order",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "order_update_id",
+          "comment": "order_update identification. Is unique per order_id. If an order update is rejected, this field is to be passed in the rejection message.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "zone_set_id",
+          "comment": "Unique ID of the zone set that the AGV currently uses for path planning. Must be the same as the one used in the order,",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "last_node_id",
+          "comment": "nodeId of last reached node or, if AGV is currently on a node, current node (e.g. „node7”).",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "last_node_sequence_id",
+          "comment": "sequence_id of the last reached node or, if the AGV is currently on a node, sequence_id of current node.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/NodeState[]",
+          "name": "node_states",
+          "comment": "Array of node_state_objects (empty list if idle)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/EdgeState[]",
+          "name": "edge_states",
+          "comment": "Array of edge_state_objects (empty list if idle)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/AGVPosition",
+          "name": "agv_position",
+          "comment": "Current position of the AGV. Optional: Can only be omitted for",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Velocity",
+          "name": "velocity",
+          "comment": "AGV's velocity in vehicle coordinates",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Load[]",
+          "name": "loads",
+          "comment": "Loads that are currently handled by the AGV.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driving",
+          "comment": "True: indicates that the AGV is driving and/or rotating. Other",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "paused",
+          "comment": "True: AGV is currently in a paused state, either because of the push of a physical button on the AGV or",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "new_base_requested",
+          "comment": "True: AGV is almost at the end of the base and will reduce speed if no new base is transmitted. Trigger for MC to send ne base",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "distance_since_last_node",
+          "comment": "Used by line guided vehicles to indicate the distance it has been driving past the last_node_id. Distance is in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/CurrentAction[]",
+          "name": "action_states",
+          "comment": "Contains a list of the current actions and the actions which are",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/BatteryState",
+          "name": "battery_state",
+          "comment": "Contains all batteryrelated information.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "operating_mode",
+          "comment": "Enum {AUTOMATIC, SEMIAUTOMATIC, MANUAL, SERVICE, TEACHIN}",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Error[]",
+          "name": "errors",
+          "comment": "Array of errorobjects. Empty array if there are no errors.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Info[]",
+          "name": "informations",
+          "comment": "Array of info-objects. An empty array indicates that the AGV has no information.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/SafetyState",
+          "name": "safety_state",
+          "comment": "Contains all safetyrelated information.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "AUTOMATIC",
+          "comment": "",
+          "default": "\"AUTOMATIC\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SEMIAUTOMATIC",
+          "comment": "",
+          "default": "\"SEMIAUTOMATIC\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MANUAL",
+          "comment": "",
+          "default": "\"MANUAL\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SERVICE",
+          "comment": "",
+          "default": "\"SERVICE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "TEACHIN",
+          "comment": "",
+          "default": "\"TEACHIN\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "PhysicalParameters": {
+      "description": "",
+      "raw": "float64 speed_min           # Minimal controlled continuous speed of the AGV [m/s]\n\nfloat64 speed_max           # Maximum speed of the AGV [m/s]\n\nfloat64 acceleration_max    # Maximum acceleration with maximum load [m/s^2]\n\nfloat64 deceleration_max    # Maximum deceleration with maximum load [m/s^2]\n\nfloat64 height_min          # Minimum height of the AGV [m]\n\nfloat64 height_max          # Maximum height of the AGV [m]\n\nfloat64 width               # Width of the AGV [m]\n\nfloat64 length              # Length of the AGV [m]\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "speed_min",
+          "comment": "Minimal controlled continuous speed of the AGV [m/s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed_max",
+          "comment": "Maximum speed of the AGV [m/s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acceleration_max",
+          "comment": "Maximum acceleration with maximum load [m/s^2]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "deceleration_max",
+          "comment": "Maximum deceleration with maximum load [m/s^2]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height_min",
+          "comment": "Minimum height of the AGV [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height_max",
+          "comment": "Maximum height of the AGV [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "width",
+          "comment": "Width of the AGV [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "length",
+          "comment": "Length of the AGV [m]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PolygonPoint": {
+      "description": "",
+      "raw": "float64 x   # x-position [m] of polygon-point\nfloat64 y   # y-position [m] of polygon-point\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "x-position [m] of polygon-point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "y-position [m] of polygon-point",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Position": {
+      "description": "",
+      "raw": "float64 x       # x-position [m] in AGV-coordinate system\nfloat64 y       # y-position [m] in AGV-coordinate system\nfloat64 theta   # orientation of wheel [rad] in AGV-coordinate system - necessary for fixed wheels\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "x-position [m] in AGV-coordinate system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "y-position [m] in AGV-coordinate system",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "theta",
+          "comment": "orientation of wheel [rad] in AGV-coordinate system - necessary for fixed wheels",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ProtocolFeatures": {
+      "description": "",
+      "raw": "OptionalParameter[] optional_parameters # List of supported and/or required optional parameters\nAGVAction[] agv_actions                 # List of all actions with parameters supported by this AGV\n",
+      "fields": [
+        {
+          "type": "OptionalParameter[]",
+          "name": "optional_parameters",
+          "comment": "List of supported and/or required optional parameters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AGVAction[]",
+          "name": "agv_actions",
+          "comment": "List of all actions with parameters supported by this AGV",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ProtocolLimits": {
+      "description": "",
+      "raw": "MaxStringLens max_string_lens   # Maximum lengths of strings\nMaxArrayLens max_array_lens     # Maximum lengths of arrays\nTiming timing                   # Timing information\n",
+      "fields": [
+        {
+          "type": "MaxStringLens",
+          "name": "max_string_lens",
+          "comment": "Maximum lengths of strings",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MaxArrayLens",
+          "name": "max_array_lens",
+          "comment": "Maximum lengths of arrays",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Timing",
+          "name": "timing",
+          "comment": "Timing information",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SafetyState": {
+      "description": "autoAck: autoacknowledgeable e-stop is activated e.g. by bumper or protective field",
+      "raw": "string e_stop           # Enum {autoAck, manual, remote, none} Acknowledge-Type of eStop:\n                        # autoAck: autoacknowledgeable e-stop is activated e.g. by bumper or protective field\n                        # manual: e-stop has to be acknowledged manually at the vehicle\n                        # remote: facility estop has to be acknowledged remotely\n                        # none: no e-stop activated\nbool field_violation    # Protective field violation. True: field is violated False: field is not violated\n\n# Enums for eStop\nstring AUTO_ACK=\"AUTOACK\"\nstring MANUAL=\"MANUAL\"\nstring REMOTE=\"REMOTE\"\nstring NONE=\"NONE\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "e_stop",
+          "comment": "Enum {autoAck, manual, remote, none} Acknowledge-Type of eStop:",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "field_violation",
+          "comment": "Protective field violation. True: field is violated False: field is not violated",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "AUTO_ACK",
+          "comment": "",
+          "default": "\"AUTOACK\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MANUAL",
+          "comment": "",
+          "default": "\"MANUAL\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "REMOTE",
+          "comment": "",
+          "default": "\"REMOTE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NONE",
+          "comment": "",
+          "default": "\"NONE\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "Timing": {
+      "description": "",
+      "raw": "float32 min_order_interval      # Minimum interval for sending order messages to the AGV [s]\n\nfloat32 min_state_interval      # Minimum interval for sending state messages to the AGV [s]\n\nfloat32 default_state_interval  # Default interval for sending state messages if not defined [s]\n\nfloat32 visualization_interval  # Default interval for sending on visualization topic [s]\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "min_order_interval",
+          "comment": "Minimum interval for sending order messages to the AGV [s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_state_interval",
+          "comment": "Minimum interval for sending state messages to the AGV [s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "default_state_interval",
+          "comment": "Default interval for sending state messages if not defined [s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "visualization_interval",
+          "comment": "Default interval for sending on visualization topic [s]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trajectory": {
+      "description": "Points defining a spline. Theta allows holonomic vehicles to rotate along the trajecotry.",
+      "raw": "# Points defining a spline. Theta allows holonomic vehicles to rotate along the trajecotry.\n\nfloat64 degree                            # Range: [1 … infinity) Defines the number of control points that influence\n                                          # any given point on the curve. Increasing the degree increases continuity.\n                                          # If not defined, the default value is 1.\n\nfloat64[] knot_vector                     # Range: [0.0 … 1.0] Sequence of parameter values that determines where and\n                                          # how the control points affect the NURBS curve. knot_vector has size of number\n                                          # of control points + degree + 1.\n\nvda5050_msgs/ControlPoint[] control_points # List of JSON control_point objects defining the control points of the nurbs,\n                                          # which includes the beginning and end point.\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "degree",
+          "comment": "Range: [1 … infinity) Defines the number of control points that influence",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "knot_vector",
+          "comment": "Range: [0.0 … 1.0] Sequence of parameter values that determines where and",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/ControlPoint[]",
+          "name": "control_points",
+          "comment": "List of JSON control_point objects defining the control points of the nurbs,",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TypeSpecification": {
+      "description": "Enums for agv_kinematic",
+      "raw": "string series_name                  # Generalized series name as specified by manufacturer\n\nstring series_description           # Human readable description of the AGV type series\n\nstring agv_kinematic                # Simplified description of AGV kinematics-type\n\nstring agv_class                    # Simplified description of AGV class\n\nfloat64 max_load_mass               # Maximum loadable mass [Kg]\n\nstring[] localization_types         # Simplified description of localization type\n\nstring[] navigation_types           # Path planning types supported by the AGV, sorted by priority\n\n# Enums for agv_kinematic\nstring DIFF = \"DIFF\"\nstring OMNI = \"OMNI\"\nstring THREEWHEEL = \"THREEWHEEL\"\n\n# Enums for agv_class\nstring FORKLIFT = \"FORKLIFT\"\nstring CONVEYOR = \"CONVEYOR\"\nstring TUGGER = \"TUGGER\"\nstring CARRIER = \"CARRIER\"\n\n# Enums for localization_types\nstring NATURAL = \"NATURAL\"\nstring REFLECTOR = \"REFLECTOR\"\nstring RFID = \"RFID\"\nstring DMC = \"DMC\"\nstring SPOT = \"SPOT\"\nstring GRID = \"GRID\"\n\n# Enums for navigation_types\nstring PHYSICAL_LINE_GUIDED = \"PHYSICAL_LINE_GUIDED\"\nstring VIRTUAL_LINE_GUIDED = \"VIRTUAL_LINE_GUIDED\"\nstring AUTONOMOUS = \"AUTONOMOUS\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "series_name",
+          "comment": "Generalized series name as specified by manufacturer",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "series_description",
+          "comment": "Human readable description of the AGV type series",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "agv_kinematic",
+          "comment": "Simplified description of AGV kinematics-type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "agv_class",
+          "comment": "Simplified description of AGV class",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_load_mass",
+          "comment": "Maximum loadable mass [Kg]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "localization_types",
+          "comment": "Simplified description of localization type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "navigation_types",
+          "comment": "Path planning types supported by the AGV, sorted by priority",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "DIFF",
+          "comment": "",
+          "default": "\"DIFF\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "OMNI",
+          "comment": "",
+          "default": "\"OMNI\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "THREEWHEEL",
+          "comment": "",
+          "default": "\"THREEWHEEL\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FORKLIFT",
+          "comment": "",
+          "default": "\"FORKLIFT\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CONVEYOR",
+          "comment": "",
+          "default": "\"CONVEYOR\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "TUGGER",
+          "comment": "",
+          "default": "\"TUGGER\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CARRIER",
+          "comment": "",
+          "default": "\"CARRIER\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NATURAL",
+          "comment": "",
+          "default": "\"NATURAL\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "REFLECTOR",
+          "comment": "",
+          "default": "\"REFLECTOR\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "RFID",
+          "comment": "",
+          "default": "\"RFID\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "DMC",
+          "comment": "",
+          "default": "\"DMC\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SPOT",
+          "comment": "",
+          "default": "\"SPOT\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "GRID",
+          "comment": "",
+          "default": "\"GRID\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PHYSICAL_LINE_GUIDED",
+          "comment": "",
+          "default": "\"PHYSICAL_LINE_GUIDED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "VIRTUAL_LINE_GUIDED",
+          "comment": "",
+          "default": "\"VIRTUAL_LINE_GUIDED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "AUTONOMOUS",
+          "comment": "",
+          "default": "\"AUTONOMOUS\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "Velocity": {
+      "description": "",
+      "raw": "float64 vx    # [m/s] forward velocity\nfloat64 vy    # [m/s] sideways velocity\nfloat64 omega # [rad/s] rotational velocity\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "vx",
+          "comment": "[m/s] forward velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "vy",
+          "comment": "[m/s] sideways velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "omega",
+          "comment": "[rad/s] rotational velocity",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Visualization": {
+      "description": "HEADER",
+      "raw": "# HEADER\nuint32 header_id         # header ID of the message. The headerId is defined per topic and incremented by 1 with each sent\n                        # (but not necessarily received) message.\n\nstring timestamp        # Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)\n\nstring version          # Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)\n\nstring manufacturer     # Manufacturer of the AGV\n\nstring serial_number    # Serial Number of the AGV\n\n# CONTENTS\nAGVPosition agv_position # The AGV's position\n\nVelocity velocity       # The AGV's velocity in vehicle coordinates\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "header_id",
+          "comment": "header ID of the message. The headerId is defined per topic and incremented by 1 with each sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "timestamp",
+          "comment": "Timestamp after ISO8601 in the format YYYY-MM-DDTHH:mm:ss.ssZ (e.g.“2017-04-15T11:40:03.12Z”)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "version",
+          "comment": "Version of the protocol [Major].[Minor].[Patch] (e.g. 1.3.2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "comment": "Manufacturer of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "Serial Number of the AGV",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AGVPosition",
+          "name": "agv_position",
+          "comment": "The AGV's position",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Velocity",
+          "name": "velocity",
+          "comment": "The AGV's velocity in vehicle coordinates",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelDefinition": {
+      "description": "Enums for wheel type",
+      "raw": "string type                 # Wheel type\nbool is_active_driven\nbool is_active_steered\nPosition position\nfloat64 diameter            # Nominal diameter of the wheel [m]\nfloat64 width               # Nominal width of the wheel [m]\nfloat64 center_displacement # Nominal displacement of the wheel’s center to the rotation point [m]\nstring constraints\n\n# Enums for wheel type\nstring DRIVE = \"DRIVE\"\nstring CASTER = \"CASTER\"\nstring FIXED = \"FIXED\"\nstring MECANUM = \"MECANUM\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "Wheel type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_active_driven",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_active_steered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Position",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "diameter",
+          "comment": "Nominal diameter of the wheel [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "width",
+          "comment": "Nominal width of the wheel [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "center_displacement",
+          "comment": "Nominal displacement of the wheel’s center to the rotation point [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "DRIVE",
+          "comment": "",
+          "default": "\"DRIVE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CASTER",
+          "comment": "",
+          "default": "\"CASTER\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FIXED",
+          "comment": "",
+          "default": "\"FIXED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MECANUM",
+          "comment": "",
+          "default": "\"MECANUM\"",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,617 @@
+{
+  "name": "qb_device_msgs",
+  "version": "4.1.3",
+  "description": "This package contains the device-independent custom ROS messages for qbrobotics® devices.",
+  "license": "BSD 3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://bitbucket.org/qbrobotics/qbdevice-ros/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://bitbucket.org/qbrobotics/qbdevice-ros",
+      "type": "repository"
+    },
+    {
+      "uri": "http://wiki.ros.org/qb_device_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "qb_device",
+    "url": "https://bitbucket.org/qbrobotics/qbdevice-ros.git",
+    "branch": "production-humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_srvs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "qb_device",
+      "qb_device_driver",
+      "qb_device_ros2_control"
+    ]
+  },
+  "messages": {
+    "ConnectionState": {
+      "description": "Device-independent connection state message",
+      "raw": "# Device-independent connection state message\n\nqb_device_msgs/DeviceConnectionInfo[] devices",
+      "fields": [
+        {
+          "type": "qb_device_msgs/DeviceConnectionInfo[]",
+          "name": "devices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeviceConnectionInfo": {
+      "description": "Device-independent message that constains:",
+      "raw": "# Device-independent message that constains: \n\nint32 id           # device id;\nbool is_active     # motor activation status;\nstring port        # serial port",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "device id;",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_active",
+          "comment": "motor activation status;",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "port",
+          "comment": "serial port",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Info": {
+      "description": "Standard device-independent info message",
+      "raw": "# Standard device-independent info message\n\nint32 id\nstring serial_port\nint32 max_repeats\nbool get_positions\nbool get_currents\nbool get_distinct_packages\nbool set_commands\nbool set_commands_async\nint32[] position_limits\nuint8[] encoder_resolutions",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_repeats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "get_positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "get_currents",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "get_distinct_packages",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_commands",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_commands_async",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "position_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "encoder_resolutions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ResourceData": {
+      "description": "Device-independent resource data message",
+      "raw": "# Device-independent resource data message\n\nstring name\nfloat64 position\nfloat64 velocity\nfloat64 effort\nfloat64 command",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "effort",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "State": {
+      "description": "State message valid for either qbhand or qbmove",
+      "raw": "# State message valid for either qbhand or qbmove\n\n# either qbhand or qbmove:\n#  - motors: position, command in [ticks], velocity in [ticks/s], effort in [mA]\nqb_device_msgs/ResourceData[] actuators\n\n# qbhand:\n#  - closure: position, command in [0,1], velocity in [percent/s],  effort in [A].\n# qbmove:\n#  - shaft: position, command in [radians], velocity in [radians/s], effort in [A];\n#  - preset: position, command in [0,1], velocity in [percent/s], effort is not used.\nqb_device_msgs/ResourceData[] joints\n\n# Reliability of the retrieved measurements\nbool is_reliable\nint32 consecutive_failures",
+      "fields": [
+        {
+          "type": "qb_device_msgs/ResourceData[]",
+          "name": "actuators",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "qb_device_msgs/ResourceData[]",
+          "name": "joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_reliable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "consecutive_failures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StateStamped": {
+      "description": "State message with stamped info valid for either qbhand or qbmove",
+      "raw": "# State message with stamped info valid for either qbhand or qbmove\n\nstd_msgs/Header header\n\nqb_device_msgs/Info device_info\n\nqb_device_msgs/State device_data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "qb_device_msgs/Info",
+          "name": "device_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "qb_device_msgs/State",
+          "name": "device_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetMeasurements": {
+      "description": "request",
+      "raw": "# request\nint32 id\nint32 max_repeats\nbool get_positions\nbool get_currents\nbool get_commands\n---\n# response\nbool success\nint32 failures\nint16[] positions\nint16[] currents\nint16[] commands\nbuiltin_interfaces/Time stamp",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_repeats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "get_positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "get_currents",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "get_commands",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "failures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "currents",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "commands",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "InitializeDevice": {
+      "description": "request",
+      "raw": "# request\nint32 id\nbool activate\nbool rescan\nint32 max_repeats\n---\n# response\nbool success\nint32 failures\nstring message\nqb_device_msgs/Info info",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "activate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rescan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_repeats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "failures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "qb_device_msgs/Info",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetCommands": {
+      "description": "request",
+      "raw": "# request\nint32 id\nint32 max_repeats\nbool set_commands\nbool set_commands_async\nint16[] commands\n---\n# response\nbool success\nint32 failures",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_repeats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_commands",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_commands_async",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "commands",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "failures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetControlMode": {
+      "description": "request",
+      "raw": "# request\nint32 id\nint32 max_repeats\nstring control\n---\n# response\nbool success\nint32 failures",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_repeats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "failures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPid": {
+      "description": "request",
+      "raw": "# request\nint32 id\nint32 max_repeats\nfloat32 p\nfloat32 i\nfloat32 d\n---\n# response\nbool success\nint32 failures",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_repeats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "p",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "i",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "failures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trigger": {
+      "description": "request",
+      "raw": "# request\nint32 id\nint32 max_repeats\n---\n# response\nbool success\nint32 failures\nstring message",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_repeats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "failures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

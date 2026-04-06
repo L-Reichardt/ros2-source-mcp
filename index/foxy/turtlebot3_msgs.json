@@ -1,0 +1,404 @@
+{
+  "name": "turtlebot3_msgs",
+  "version": "2.2.1",
+  "description": "Message and service types: custom messages and services for TurtleBot3 packages for ROS2",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/turtlebot3_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "http://turtlebot3.robotis.com",
+      "type": "emanual"
+    },
+    {
+      "uri": "https://github.com/ROBOTIS-GIT/turtlebot3_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ROBOTIS-GIT/turtlebot3_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "turtlebot3_msgs",
+    "url": "https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "turtlebot3_example",
+      "turtlebot3_fake_node",
+      "turtlebot3_node"
+    ]
+  },
+  "messages": {
+    "SensorState": {
+      "description": "CONSTANTS",
+      "raw": "########################################\n# CONSTANTS\n########################################\n# Bumper states (states are combined, when multiple bumpers are pressed)\nuint8 BUMPER_FORWARD  = 1\nuint8 BUMPER_BACKWARD = 2\n\n# Cliff sensor states (states are combined, when multiple cliff sensors are triggered)\nuint8 CLIFF = 1\n\n# Sonar sensor states (states are combined, when multiple sonar sensors are triggered)\nuint8 SONAR = 1\n\n# Illumination sensor (states are combined, when multiple illumination sensors are triggered) \nuint8 ILLUMINATION = 1\n\n# Button states (states are combined, when multiple buttons are pressed)\nuint8 BUTTON0 = 1\nuint8 BUTTON1 = 2\n\n# Motor errors\nuint8 ERROR_LEFT_MOTOR  = 1\nuint8 ERROR_RIGHT_MOTOR = 2\n\n# Motor torque\nuint8 TORQUE_ON  = 1\nuint8 TORQUE_OFF = 2\n\n########################################\n# Messages\n########################################\nstd_msgs/Header  header\nuint8   bumper\nfloat32 cliff\nfloat32 sonar\nfloat32 illumination\nuint8   led\nuint8  button\nbool   torque\nint32  left_encoder    # (-2,147,483,648 ~ 2,147,483,647)\nint32  right_encoder   # (-2,147,483,648 ~ 2,147,483,647)\nfloat32  battery\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "BUMPER_FORWARD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUMPER_BACKWARD",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SONAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ILLUMINATION",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON0",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON1",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_LEFT_MOTOR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_RIGHT_MOTOR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TORQUE_ON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TORQUE_OFF",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "bumper",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cliff",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sonar",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "illumination",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "led",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "torque",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "left_encoder",
+          "comment": "(-2,147,483,648 ~ 2,147,483,647)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "right_encoder",
+          "comment": "(-2,147,483,648 ~ 2,147,483,647)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "battery",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Sound": {
+      "description": "CONSTANTS",
+      "raw": "########################################\n# CONSTANTS\n########################################\nuint8 OFF           = 0\nuint8 ON            = 1\nuint8 LOW_BATTERY   = 2\nuint8 ERROR         = 3\nuint8 BUTTON1       = 4\nuint8 BUTTON2       = 5\n\n########################################\n# Messages\n########################################\nuint8 value\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOW_BATTERY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON1",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON2",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VersionInfo": {
+      "description": "Messages",
+      "raw": "########################################\n# Messages\n########################################\nstring hardware   # <yyyy>.<mm>.<dd>        : hardware version of Turtlebot3 (ex. 2017.05.23)\nstring firmware   # <major>.<minor>.<patch> : firmware version of OpenCR\nstring software   # <major>.<minor>.<patch> : software version of Turtlebot3 ROS packages\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "hardware",
+          "comment": "<yyyy>.<mm>.<dd>        : hardware version of Turtlebot3 (ex. 2017.05.23)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware",
+          "comment": "<major>.<minor>.<patch> : firmware version of OpenCR",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "software",
+          "comment": "<major>.<minor>.<patch> : software version of Turtlebot3 ROS packages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "Dqn": {
+      "description": "",
+      "raw": "uint8 action\nbool init\n---\nfloat32[] state\nfloat32 reward\nbool done\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "init",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "float32[]",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "reward",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "done",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Sound": {
+      "description": "CONSTANTS",
+      "raw": "########################################\n# CONSTANTS\n########################################\n# uint8 OFF           = 0\n# uint8 ON            = 1\n# uint8 LOW_BATTERY   = 2\n# uint8 ERROR         = 3\n# uint8 BUTTON1       = 4\n# uint8 BUTTON2       = 5\n\nuint8 value\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "Patrol": {
+      "description": "Goal",
+      "raw": "# Goal\nfloat32 radius\n---\n# Result\nbool success\n---\n# Feedback\nfloat32 left_time\n",
+      "goal_fields": [
+        {
+          "type": "float32",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "left_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

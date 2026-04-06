@@ -1,0 +1,64 @@
+{
+  "name": "octomap_server",
+  "version": "2.3.1",
+  "description": "octomap_server loads a 3D map (as Octree-based OctoMap) and distributes it to other nodes in a compact binary format. It also allows to incrementally build 3D OctoMaps, and provides map saving in the node octomap_saver.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/octomap_server",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/OctoMap/octomap_mapping/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/OctoMap/octomap_mapping",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "octomap_mapping",
+    "url": "https://github.com/OctoMap/octomap_mapping.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "liboctomap-dev",
+      "libpcl-all-dev",
+      "message_filters",
+      "nav_msgs",
+      "octomap_msgs",
+      "octomap_ros",
+      "pcl_conversions",
+      "pcl_ros",
+      "rclcpp",
+      "rclcpp_components",
+      "sensor_msgs",
+      "std_msgs",
+      "std_srvs",
+      "tf2",
+      "tf2_eigen",
+      "tf2_geometry_msgs",
+      "tf2_ros",
+      "visualization_msgs"
+    ],
+    "depended_on_by": [
+      "grid_map_demos",
+      "octomap_mapping"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

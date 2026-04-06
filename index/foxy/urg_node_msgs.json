@@ -1,0 +1,116 @@
+{
+  "name": "urg_node_msgs",
+  "version": "1.0.1",
+  "description": "urg_node_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/urg_node",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/urg_node/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/urg_node",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "urg_node_msgs",
+    "url": "https://github.com/ros-drivers/urg_node_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": [
+      "urg_node"
+    ]
+  },
+  "messages": {
+    "Status": {
+      "description": "Normal vs setting in the UAM manual.",
+      "raw": "# Normal vs setting in the UAM manual.\nuint16 NORMAL=0\nuint16 SETTING=1\nuint16 operating_mode\n\n# The configured area number the stop occurred in.\nuint16 area_number\n# If the laser is reporting an error or not.\nbool error_status\n# The error code the laser is reporting.\nuint16 error_code\n# Does the laser report that it is locked out.\nbool lockout_status\n# Distance in mm the stop was reported at.\nuint16 distance\n# The reported angle of the stop in deg.\nfloat32 angle\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SETTING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "operating_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "area_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lockout_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

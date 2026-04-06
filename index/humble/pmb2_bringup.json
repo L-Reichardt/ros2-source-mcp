@@ -1,0 +1,51 @@
+{
+  "name": "pmb2_bringup",
+  "version": "5.11.2",
+  "description": "Launch files and scripts needed to bring up the ROS nodes of a PMB2 robot.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/pmb2_simulation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "pmb2_robot",
+    "url": "https://github.com/pal-robotics/pmb2_robot.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "ament_index_python",
+      "diagnostic_aggregator",
+      "geometry_msgs",
+      "joy_linux",
+      "joy_teleop",
+      "launch_pal",
+      "pmb2_controller_configuration",
+      "pmb2_description",
+      "robot_state_publisher",
+      "twist_mux",
+      "twist_mux_msgs"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "pmb2_gazebo",
+      "pmb2_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

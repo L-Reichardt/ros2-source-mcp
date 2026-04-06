@@ -1,0 +1,152 @@
+{
+  "name": "rclada",
+  "version": "0.1.0",
+  "description": "Ada ROS2 Client Library",
+  "license": "LGPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rclada",
+    "url": "https://github.com/ada-ros/rclada.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "rcl",
+      "rclada_common",
+      "rcutils",
+      "rmw",
+      "rosidl_generator_ada",
+      "std_msgs",
+      "std_srvs",
+      "test_msgs"
+    ],
+    "depended_on_by": [
+      "rclada_examples"
+    ]
+  },
+  "messages": {
+    "Test": {
+      "description": "Simple types",
+      "raw": "# Simple types\nint64      number\nstring     text\nstring<=8  bounded_string\nfloat64    real\n\n# Structured types\nbuiltin_interfaces/Time  time\n\n# Array types\nfloat32[]  dynamic_array\nint32[8]   static_array\nint8[<=8]  bounded_array\n\nbuiltin_interfaces/Time[2]  fix_msg_arr\nbuiltin_interfaces/Time[]   dyn_msg_arr\n\n# Matrix types\nstd_msgs/UInt64MultiArray  matrix\n\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=8",
+          "name": "bounded_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "real",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "dynamic_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[8]",
+          "name": "static_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[<=8]",
+          "name": "bounded_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time[2]",
+          "name": "fix_msg_arr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time[]",
+          "name": "dyn_msg_arr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/UInt64MultiArray",
+          "name": "matrix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "Test": {
+      "description": "",
+      "raw": "uint64  a\nuint64  b\n---\nuint64  sum",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint64",
+          "name": "sum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,140 @@
+{
+  "name": "unitree_ros",
+  "version": "1.1.1",
+  "description": "Unitree ros package",
+  "license": "GPL-3.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "unitree_ros",
+    "url": "https://github.com/snt-arg/unitree_ros.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators",
+      "boost"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "std_msgs",
+      "sensor_msgs",
+      "geometry_msgs",
+      "nav_msgs",
+      "tf2",
+      "tf2_ros"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "BmsState": {
+      "description": "This message is a fork from https://github.com/unitreerobotics/unitree_ros_to_real/tree/master/unitree_legged_msgs",
+      "raw": "#  This message is a fork from https://github.com/unitreerobotics/unitree_ros_to_real/tree/master/unitree_legged_msgs\nuint8 version_h\nuint8 version_l\nuint8 bms_status\nuint8 soc                  # SOC 0-100%\nint32 current              # mA\nuint16 cycle\nint8[2] bq_ntc             # x1 degrees centigrade\nint8[2] mcu_ntc            # x1 degrees centigrade\nuint16[10] cell_vol        # cell voltage mV",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "version_h",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version_l",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "bms_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "soc",
+          "comment": "SOC 0-100%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "current",
+          "comment": "mA",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "cycle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[2]",
+          "name": "bq_ntc",
+          "comment": "x1 degrees centigrade",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[2]",
+          "name": "mcu_ntc",
+          "comment": "x1 degrees centigrade",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[10]",
+          "name": "cell_vol",
+          "comment": "cell voltage mV",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorRanges": {
+      "description": "",
+      "raw": "float32 front\nfloat32 left\nfloat32 right \n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "front",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

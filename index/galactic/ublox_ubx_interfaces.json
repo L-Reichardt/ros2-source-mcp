@@ -1,0 +1,129 @@
+{
+  "name": "ublox_ubx_interfaces",
+  "version": "0.2.3",
+  "description": "UBLOX UBX Interfaces",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/aussierobots/ublox_dgnss",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "ublox_dgnss",
+    "url": "https://github.com/aussierobots/ublox_dgnss.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": [
+      "ublox_dgnss",
+      "ublox_dgnss_node"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "ColdStart": {
+      "description": "",
+      "raw": "uint8 HW_RESET_IMMEDIATELY=0x00\nuint8 SW_RESET_CONTROLLED=0x01\nuint8 SW_RESET_CONTROLLED_GNSS=0x02\nuint8 HW_RESET_AFTER_SHUTDOWN=0x04\nuint8 GNSS_STOP_CONTROLLED=0x08\nuint8 GNSS_START_CONTROLLED=0x09\nuint8 reset_type\n---",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "HW_RESET_IMMEDIATELY",
+          "comment": "",
+          "default": "0x00",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SW_RESET_CONTROLLED",
+          "comment": "",
+          "default": "0x01",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SW_RESET_CONTROLLED_GNSS",
+          "comment": "",
+          "default": "0x02",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HW_RESET_AFTER_SHUTDOWN",
+          "comment": "",
+          "default": "0x04",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GNSS_STOP_CONTROLLED",
+          "comment": "",
+          "default": "0x08",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GNSS_START_CONTROLLED",
+          "comment": "",
+          "default": "0x09",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "reset_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "HotStart": {
+      "description": "",
+      "raw": "uint8 reset_type\n---",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "reset_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ResetODO": {
+      "description": "",
+      "raw": "---",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "WarmStart": {
+      "description": "",
+      "raw": "uint8 reset_type\n---",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "reset_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

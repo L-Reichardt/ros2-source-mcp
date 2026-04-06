@@ -1,0 +1,2289 @@
+{
+  "name": "mobileye_560_660_msgs",
+  "version": "4.0.0",
+  "description": "Message definitions for the Mobileye 560/660",
+  "license": "MIT",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/mobileye_560_660_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/astuff/astuff_sensor_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/astuff/astuff_sensor_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "astuff_sensor_msgs",
+    "url": "https://github.com/astuff/astuff_sensor_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "message_generation",
+      "rosidl_default_generators",
+      "ros_environment"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "AftermarketLane": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 LANE_CONFIDENCE_NONE = 0\nuint8 LANE_CONFIDENCE_LOW = 1\nuint8 LANE_CONFIDENCE_MED = 2\nuint8 LANE_CONFIDENCE_HIGH = 3\n\nuint8 LANE_TYPE_DASHED = 0\nuint8 LANE_TYPE_SOLID = 1\nuint8 LANE_TYPE_NONE = 2\nuint8 LANE_TYPE_ROAD_EDGE = 3\nuint8 LANE_TYPE_DOUBLE_LANE_MARK = 4\nuint8 LANE_TYPE_BOTTS_DOTS = 5\nuint8 LANE_TYPE_INVALID = 6\n\nuint8 lane_confidence_left\nbool ldw_available_left\nuint8 lane_type_left\nfloat32 distance_to_left_lane\nuint8 lane_confidence_right\nbool ldw_available_right\nuint8 lane_type_right\nfloat32 distance_to_right_lane\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CONFIDENCE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CONFIDENCE_LOW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CONFIDENCE_MED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CONFIDENCE_HIGH",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_DASHED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_SOLID",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_NONE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_ROAD_EDGE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_DOUBLE_LANE_MARK",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_BOTTS_DOTS",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_INVALID",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "lane_confidence_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ldw_available_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "lane_type_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_to_left_lane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "lane_confidence_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ldw_available_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "lane_type_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_to_right_lane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Ahbc": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 HIGH_LOW_BEAM_DECISION_NO_RECOMMENDATION = 0\nuint8 HIGH_LOW_BEAM_DECISION_RECOMMENDATION_OFF = 1\nuint8 HIGH_LOW_BEAM_DECISION_RECOMMENDATION_ON = 2\nuint8 HIGH_LOW_BEAM_DECISION_INVALID = 3\nuint8 high_low_beam_decision\n\nuint16 reasons_for_switch_to_low_beam\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "HIGH_LOW_BEAM_DECISION_NO_RECOMMENDATION",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HIGH_LOW_BEAM_DECISION_RECOMMENDATION_OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HIGH_LOW_BEAM_DECISION_RECOMMENDATION_ON",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HIGH_LOW_BEAM_DECISION_INVALID",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "high_low_beam_decision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "reasons_for_switch_to_low_beam",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AhbcGradual": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 boundary_domain_bottom_non_glare_hlb\nfloat32 boundary_domain_non_glare_left_hand_hlb\nfloat32 boundary_domain_non_glare_right_hand_hlb\nuint16 object_distance_hlb\nuint8 status_boundary_domain_bottom_non_glare_hlb\nuint8 status_boundary_domain_non_glare_left_hand_hlb\nuint8 status_boundary_domain_non_glare_right_hand_hlb\nuint8 status_object_distance_hlb\nbool left_target_change\nbool right_target_change\nbool too_many_cars\nbool busy_scene\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "boundary_domain_bottom_non_glare_hlb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "boundary_domain_non_glare_left_hand_hlb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "boundary_domain_non_glare_right_hand_hlb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "object_distance_hlb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status_boundary_domain_bottom_non_glare_hlb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status_boundary_domain_non_glare_left_hand_hlb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status_boundary_domain_non_glare_right_hand_hlb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status_object_distance_hlb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "left_target_change",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right_target_change",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "too_many_cars",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "busy_scene",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AwsDisplay": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbool suppress_sound\nbool night_time\nbool dusk_time\n\nuint8 SOUND_SILENT = 0\nuint8 SOUND_LDWL = 1\nuint8 SOUND_LDWR = 2\nuint8 SOUND_FAR_HW = 3\nuint8 SOUND_NEAR_HW = 4\nuint8 SOUND_SOFT_FCW = 5\nuint8 SOUND_HARD_FCW = 6\nuint8 SOUND_RESERVED = 7\nuint8 sound_type\n\nbool headway_valid\nfloat32 headway_measurement\nbool lanes_on\nbool left_ldw_on\nbool right_ldw_on\nbool fcw_on\nbool left_crossing\nbool right_crossing\nbool maintenance\nbool failsafe\nbool ped_fcw\nbool ped_in_dz\n\nuint8 HEADWAY_LEVEL_OFF = 0\nuint8 HEADWAY_LEVEL_GREEN = 1\nuint8 HEADWAY_LEVEL_ORANGE = 2\nuint8 HEADWAY_LEVEL_RED = 3\nuint8 headway_warning_level\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "suppress_sound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "night_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dusk_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "SOUND_SILENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOUND_LDWL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOUND_LDWR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOUND_FAR_HW",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOUND_NEAR_HW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOUND_SOFT_FCW",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOUND_HARD_FCW",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOUND_RESERVED",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "sound_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "headway_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "headway_measurement",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lanes_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "left_ldw_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right_ldw_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fcw_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "left_crossing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right_crossing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "maintenance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "failsafe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ped_fcw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ped_in_dz",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "HEADWAY_LEVEL_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEADWAY_LEVEL_GREEN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEADWAY_LEVEL_ORANGE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEADWAY_LEVEL_RED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "headway_warning_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FixedFoe": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat64 fixed_yaw\nfloat64 fixed_horizon\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "fixed_yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "fixed_horizon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Lane": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat64 lane_curvature\nfloat64 lane_heading\nbool construction_area\nfloat64 pitch_angle\nfloat64 yaw_angle\nbool right_ldw_availability\nbool left_ldw_availability\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lane_curvature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lane_heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "construction_area",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "yaw_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right_ldw_availability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "left_ldw_availability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LkaLane": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 LANE_CONFIDENCE_NONE = 0\nuint8 LANE_CONFIDENCE_LOW = 1\nuint8 LANE_CONFIDENCE_MED = 2\nuint8 LANE_CONFIDENCE_HIGH = 3\n\nuint8 LANE_TYPE_DASHED = 0\nuint8 LANE_TYPE_SOLID = 1\nuint8 LANE_TYPE_NONE = 2\nuint8 LANE_TYPE_ROAD_EDGE = 3\nuint8 LANE_TYPE_DOUBLE_LANE_MARK = 4\nuint8 LANE_TYPE_BOTTS_DOTS = 5\nuint8 LANE_TYPE_INVALID = 6\n\nuint8 lane_type\nuint8 quality\nuint8 model_degree\nfloat64 position_parameter_c0\nfloat64 curvature_parameter_c2\nfloat64 curvature_derivative_parameter_c3\nfloat32 marking_width\nfloat64 heading_angle_parameter_c1\nfloat32 view_range\nbool view_range_availability\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CONFIDENCE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CONFIDENCE_LOW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CONFIDENCE_MED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_CONFIDENCE_HIGH",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_DASHED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_SOLID",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_NONE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_ROAD_EDGE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_DOUBLE_LANE_MARK",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_BOTTS_DOTS",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANE_TYPE_INVALID",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "lane_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "model_degree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position_parameter_c0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "curvature_parameter_c2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "curvature_derivative_parameter_c3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "marking_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "heading_angle_parameter_c1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "view_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "view_range_availability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LkaNumOfNextLaneMarkersReported": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint16 num_of_next_lane_markers_reported\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_of_next_lane_markers_reported",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LkaReferencePoints": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat64 ref_point_1_position\nfloat64 ref_point_1_distance\nbool ref_point_1_validity\nfloat64 ref_point_2_position\nfloat64 ref_point_2_distance\nbool ref_point_2_validity\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ref_point_1_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ref_point_1_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ref_point_1_validity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ref_point_2_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ref_point_2_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ref_point_2_validity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObstacleData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint16 obstacle_id\nfloat64 obstacle_pos_x\nfloat64 obstacle_pos_y\n\nuint8 BLINKER_INFO_UNAVAILABLE = 0\nuint8 BLINKER_INFO_OFF = 1\nuint8 BLINKER_INFO_LEFT = 2\nuint8 BLINKER_INFO_RIGHT = 3\nuint8 BLINKER_INFO_BOTH = 4\nuint8 blinker_info\n\nuint8 CUT_IN_AND_OUT_UNDEFINED = 0\nuint8 CUT_IN_AND_OUT_IN_HOST_LANE = 1\nuint8 CUT_IN_AND_OUT_OUT_HOST_LANE = 2\nuint8 CUT_IN_AND_OUT_CUT_IN = 3\nuint8 CUT_IN_AND_OUT_CUT_OUT = 4\nuint8 cut_in_and_out\n\nfloat64 obstacle_rel_vel_x\n\nuint8 OBSTACLE_TYPE_VEHICLE = 0\nuint8 OBSTACLE_TYPE_TRUCK = 1\nuint8 OBSTACLE_TYPE_BIKE = 2\nuint8 OBSTACLE_TYPE_PED = 3\nuint8 OBSTACLE_TYPE_BICYCLE = 4\nuint8 obstacle_type\n\nuint8 OBSTACLE_STATUS_UNDEFINED = 0\nuint8 OBSTACLE_STATUS_STANDING = 1\nuint8 OBSTACLE_STATUS_STOPPED = 2\nuint8 OBSTACLE_STATUS_MOVING = 3\nuint8 OBSTACLE_STATUS_ONCOMING = 4\nuint8 OBSTACLE_STATUS_PARKED = 5\nuint8 obstacle_status\n\nbool obstacle_brake_lights\n\nuint8 OBSTACLE_VALID_INVALID = 0\nuint8 OBSTACLE_VALID_NEW = 1\nuint8 OBSTACLE_VALID_OLDER = 2\nuint8 obstacle_valid\n\nfloat32 obstacle_length\nfloat32 obstacle_width\nuint16 obstacle_age\n\nuint8 OBSTACLE_LANE_NOT_ASSIGNED = 0\nuint8 OBSTACLE_LANE_EGO_LANE = 1\nuint8 OBSTACLE_LANE_NEXT_LANE = 2\nuint8 OBSTACLE_LANE_INVALID = 3\nuint8 obstacle_lane\n\nbool cipv_flag\nfloat32 radar_pos_x\nfloat32 radar_vel_x\n\nuint8 RADAR_MATCH_CONFIDENCE_NO_MATCH = 0\nuint8 RADAR_MATCH_CONFIDENCE_MULTI_MATCH = 1\nuint8 RADAR_MATCH_CONFIDENCE_BOUNDED_LOW = 2\nuint8 RADAR_MATCH_CONFIDENCE_BOUNDED_MED = 3\nuint8 RADAR_MATCH_CONFIDENCE_BOUNDED_HIGH = 4\nuint8 RADAR_MATCH_CONFIDENCE_HIGH = 5\nuint8 radar_match_confidence\n\nuint16 matched_radar_id\nfloat32 obstacle_angle_rate\nfloat64 obstacle_scale_change\nfloat32 object_accel_x\nbool obstacle_replaced\nfloat32 obstacle_angle\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "obstacle_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "obstacle_pos_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "obstacle_pos_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKER_INFO_UNAVAILABLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKER_INFO_OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKER_INFO_LEFT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKER_INFO_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKER_INFO_BOTH",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "blinker_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CUT_IN_AND_OUT_UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CUT_IN_AND_OUT_IN_HOST_LANE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CUT_IN_AND_OUT_OUT_HOST_LANE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CUT_IN_AND_OUT_CUT_IN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CUT_IN_AND_OUT_CUT_OUT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "cut_in_and_out",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "obstacle_rel_vel_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_TYPE_VEHICLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_TYPE_TRUCK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_TYPE_BIKE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_TYPE_PED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_TYPE_BICYCLE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "obstacle_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_STATUS_UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_STATUS_STANDING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_STATUS_STOPPED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_STATUS_MOVING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_STATUS_ONCOMING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_STATUS_PARKED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "obstacle_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "obstacle_brake_lights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_VALID_INVALID",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_VALID_NEW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_VALID_OLDER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "obstacle_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "obstacle_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "obstacle_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "obstacle_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_LANE_NOT_ASSIGNED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_LANE_EGO_LANE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_LANE_NEXT_LANE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBSTACLE_LANE_INVALID",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "obstacle_lane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cipv_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radar_pos_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radar_vel_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "RADAR_MATCH_CONFIDENCE_NO_MATCH",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RADAR_MATCH_CONFIDENCE_MULTI_MATCH",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RADAR_MATCH_CONFIDENCE_BOUNDED_LOW",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RADAR_MATCH_CONFIDENCE_BOUNDED_MED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RADAR_MATCH_CONFIDENCE_BOUNDED_HIGH",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RADAR_MATCH_CONFIDENCE_HIGH",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "radar_match_confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "matched_radar_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "obstacle_angle_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "obstacle_scale_change",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "object_accel_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "obstacle_replaced",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "obstacle_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObstacleStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint16 num_obstacles\nuint16 timestamp\nuint16 application_version\nuint16 active_version_number_section\nbool left_close_range_cut_in\nbool right_close_range_cut_in\n\nuint8 STOP_GO_STOP = 0\nuint8 STOP_GO_GO = 1\nuint8 STOP_GO_UNDECIDED = 2\nuint8 STOP_GO_DRIVER_DECISION_REQUIRED = 3\nuint8 STOP_GO_NOT_CALCULATED = 15\nuint8 stop_go\n\nuint8 protocol_version\nbool close_car\n\nuint8 FAILSAFE_NONE = 0\nuint8 FAILSAFE_LOW_SUN = 1\nuint8 FAILSAFE_BLUR_IMAGE = 2\nuint8 failsafe\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_obstacles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "application_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "active_version_number_section",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "left_close_range_cut_in",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right_close_range_cut_in",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "STOP_GO_STOP",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOP_GO_GO",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOP_GO_UNDECIDED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOP_GO_DRIVER_DECISION_REQUIRED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOP_GO_NOT_CALCULATED",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "stop_go",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "protocol_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "close_car",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FAILSAFE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILSAFE_LOW_SUN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILSAFE_BLUR_IMAGE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "failsafe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Tsr": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 SIGN_TYPE_REGULAR_10 = 0\nuint8 SIGN_TYPE_REGULAR_20 = 1\nuint8 SIGN_TYPE_REGULAR_30 = 2\nuint8 SIGN_TYPE_REGULAR_40 = 3\nuint8 SIGN_TYPE_REGULAR_50 = 4\nuint8 SIGN_TYPE_REGULAR_60 = 5\nuint8 SIGN_TYPE_REGULAR_70 = 6\nuint8 SIGN_TYPE_REGULAR_80 = 7\nuint8 SIGN_TYPE_REGULAR_90 = 8\nuint8 SIGN_TYPE_REGULAR_100 = 9\nuint8 SIGN_TYPE_REGULAR_110 = 10\nuint8 SIGN_TYPE_REGULAR_120 = 11\nuint8 SIGN_TYPE_REGULAR_130 = 12\nuint8 SIGN_TYPE_REGULAR_140 = 13\nuint8 SIGN_TYPE_REGULAR_END_RESTRICTION_OF_NUMBER = 20\nuint8 SIGN_TYPE_ELECTRONIC_10 = 28\nuint8 SIGN_TYPE_ELECTRONIC_20 = 29\nuint8 SIGN_TYPE_ELECTRONIC_30 = 30\nuint8 SIGN_TYPE_ELECTRONIC_40 = 31\nuint8 SIGN_TYPE_ELECTRONIC_50 = 32\nuint8 SIGN_TYPE_ELECTRONIC_60 = 33\nuint8 SIGN_TYPE_ELECTRONIC_70 = 34\nuint8 SIGN_TYPE_ELECTRONIC_80 = 35\nuint8 SIGN_TYPE_ELECTRONIC_90 = 36\nuint8 SIGN_TYPE_ELECTRONIC_100 = 37\nuint8 SIGN_TYPE_ELECTRONIC_110 = 38\nuint8 SIGN_TYPE_ELECTRONIC_120 = 39\nuint8 SIGN_TYPE_ELECTRONIC_130 = 40\nuint8 SIGN_TYPE_ELECTRONIC_140 = 41\nuint8 SIGN_TYPE_ELECTRONIC_END_RESTRICTION_OF_NUMBER = 50\nuint8 SIGN_TYPE_REGULAR_GENERAL_END_ALL_RESTRICTION = 64\nuint8 SIGN_TYPE_ELECTRONIC_GENERAL_END_ALL_RESTRICTION = 65\nuint8 SIGN_TYPE_REGULAR_5 = 100\nuint8 SIGN_TYPE_REGULAR_15 = 101\nuint8 SIGN_TYPE_REGULAR_25 = 102\nuint8 SIGN_TYPE_REGULAR_35 = 103\nuint8 SIGN_TYPE_REGULAR_45 = 104\nuint8 SIGN_TYPE_REGULAR_55 = 105\nuint8 SIGN_TYPE_REGULAR_65 = 106\nuint8 SIGN_TYPE_REGULAR_75 = 107\nuint8 SIGN_TYPE_REGULAR_85 = 108\nuint8 SIGN_TYPE_REGULAR_95 = 109\nuint8 SIGN_TYPE_REGULAR_105 = 110\nuint8 SIGN_TYPE_REGULAR_115 = 111\nuint8 SIGN_TYPE_REGULAR_125 = 112\nuint8 SIGN_TYPE_REGULAR_135 = 113\nuint8 SIGN_TYPE_REGULAR_145 = 114\nuint8 SIGN_TYPE_ELECTRONIC_5 = 115\nuint8 SIGN_TYPE_ELECTRONIC_15 = 116\nuint8 SIGN_TYPE_ELECTRONIC_25 = 117\nuint8 SIGN_TYPE_ELECTRONIC_35 = 118\nuint8 SIGN_TYPE_ELECTRONIC_45 = 119\nuint8 SIGN_TYPE_ELECTRONIC_55 = 120\nuint8 SIGN_TYPE_ELECTRONIC_65 = 121\nuint8 SIGN_TYPE_ELECTRONIC_75 = 122\nuint8 SIGN_TYPE_ELECTRONIC_85 = 123\nuint8 SIGN_TYPE_ELECTRONIC_95 = 124\nuint8 SIGN_TYPE_ELECTRONIC_105 = 125\nuint8 SIGN_TYPE_ELECTRONIC_115 = 126\nuint8 SIGN_TYPE_ELECTRONIC_125 = 127\nuint8 SIGN_TYPE_ELECTRONIC_135 = 128\nuint8 SIGN_TYPE_ELECTRONIC_145 = 129\nuint8 SIGN_TYPE_REGULAR_MOTORWAY_BEGIN = 171\nuint8 SIGN_TYPE_REGULAR_END_OF_MOTORWAY = 172\nuint8 SIGN_TYPE_REGULAR_EXPRESSWAY_BEGIN = 173\nuint8 SIGN_TYPE_REGULAR_END_OF_EXPRESSWAY = 174\nuint8 SIGN_TYPE_REGULAR_PLAYGROUND_AREA_BEGIN = 175\nuint8 SIGN_TYPE_REGULAR_END_OF_PLAYGROUND_AREA = 176\nuint8 SIGN_TYPE_REGULAR_NO_PASSING_START = 200\nuint8 SIGN_TYPE_REGULAR_END_OF_NO_PASSING = 201\nuint8 SIGN_TYPE_ELECTRONIC_NO_PASSING_START = 220\nuint8 SIGN_TYPE_ELECTRONIC_END_OF_NO_PASSING = 221\nuint8 SIGN_TYPE_NONE_DETECTED = 254\nuint8 SIGN_TYPE_INVALID = 255\nuint8 vision_only_sign_type\n\nuint8 SUPP_SIGN_TYPE_NONE = 0\nuint8 SUPP_SIGN_TYPE_RAIN = 1\nuint8 SUPP_SIGN_TYPE_SNOW = 2\nuint8 SUPP_SIGN_TYPE_TRAILER = 3\nuint8 SUPP_SIGN_TYPE_TIME = 4\nuint8 SUPP_SIGN_TYPE_ARROW_LEFT = 5\nuint8 SUPP_SIGN_TYPE_ARROW_RIGHT = 6\nuint8 SUPP_SIGN_TYPE_BEND_ARROW_LEFT = 7\nuint8 SUPP_SIGN_TYPE_BEND_ARROW_RIGHT = 8\nuint8 SUPP_SIGN_TYPE_TRUCK = 9\nuint8 SUPP_SIGN_TYPE_DISTANCE_ARROW = 10\nuint8 SUPP_SIGN_TYPE_WEIGHT = 11\nuint8 SUPP_SIGN_TYPE_DISTANCE_IN = 12\nuint8 SUPP_SIGN_TYPE_TRACTOR = 13\nuint8 SUPP_SIGN_TYPE_SNOW_RAIN = 14\nuint8 SUPP_SIGN_TYPE_SCHOOL = 15\nuint8 SUPP_SIGN_TYPE_RAIN_CLOUD = 16\nuint8 SUPP_SIGN_TYPE_FOG = 17\nuint8 SUPP_SIGN_TYPE_HAZARDOUS_MATERIALS = 18\nuint8 SUPP_SIGN_TYPE_NIGHT = 19\nuint8 SUPP_SIGN_TYPE_GENERIC = 20\nuint8 SUPP_SIGN_TYPE_RAPPEL = 21\nuint8 SUPP_SIGN_TYPE_ZONE = 22\nuint8 SUPP_SIGN_TYPE_INVALID = 255\nuint8 vision_only_supplementary_sign_type\n\nfloat32 sign_position_x\nfloat32 sign_position_y\nfloat32 sign_position_z\n\nuint8 FILTER_TYPE_NOT_FILTERED = 0\nuint8 FILTER_TYPE_IRRELEVANT_TO_DRIVER = 1\nuint8 FILTER_TYPE_ON_VEHICLE = 2\nuint8 FILTER_TYPE_EMBEDDED = 3\nuint8 filter_type\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_10",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_20",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_30",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_40",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_50",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_60",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_70",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_80",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_90",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_100",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_110",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_120",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_130",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_140",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_END_RESTRICTION_OF_NUMBER",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_10",
+          "comment": "",
+          "default": "28",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_20",
+          "comment": "",
+          "default": "29",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_30",
+          "comment": "",
+          "default": "30",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_40",
+          "comment": "",
+          "default": "31",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_50",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_60",
+          "comment": "",
+          "default": "33",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_70",
+          "comment": "",
+          "default": "34",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_80",
+          "comment": "",
+          "default": "35",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_90",
+          "comment": "",
+          "default": "36",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_100",
+          "comment": "",
+          "default": "37",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_110",
+          "comment": "",
+          "default": "38",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_120",
+          "comment": "",
+          "default": "39",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_130",
+          "comment": "",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_140",
+          "comment": "",
+          "default": "41",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_END_RESTRICTION_OF_NUMBER",
+          "comment": "",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_GENERAL_END_ALL_RESTRICTION",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_GENERAL_END_ALL_RESTRICTION",
+          "comment": "",
+          "default": "65",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_5",
+          "comment": "",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_15",
+          "comment": "",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_25",
+          "comment": "",
+          "default": "102",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_35",
+          "comment": "",
+          "default": "103",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_45",
+          "comment": "",
+          "default": "104",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_55",
+          "comment": "",
+          "default": "105",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_65",
+          "comment": "",
+          "default": "106",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_75",
+          "comment": "",
+          "default": "107",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_85",
+          "comment": "",
+          "default": "108",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_95",
+          "comment": "",
+          "default": "109",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_105",
+          "comment": "",
+          "default": "110",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_115",
+          "comment": "",
+          "default": "111",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_125",
+          "comment": "",
+          "default": "112",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_135",
+          "comment": "",
+          "default": "113",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_145",
+          "comment": "",
+          "default": "114",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_5",
+          "comment": "",
+          "default": "115",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_15",
+          "comment": "",
+          "default": "116",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_25",
+          "comment": "",
+          "default": "117",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_35",
+          "comment": "",
+          "default": "118",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_45",
+          "comment": "",
+          "default": "119",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_55",
+          "comment": "",
+          "default": "120",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_65",
+          "comment": "",
+          "default": "121",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_75",
+          "comment": "",
+          "default": "122",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_85",
+          "comment": "",
+          "default": "123",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_95",
+          "comment": "",
+          "default": "124",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_105",
+          "comment": "",
+          "default": "125",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_115",
+          "comment": "",
+          "default": "126",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_125",
+          "comment": "",
+          "default": "127",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_135",
+          "comment": "",
+          "default": "128",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_145",
+          "comment": "",
+          "default": "129",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_MOTORWAY_BEGIN",
+          "comment": "",
+          "default": "171",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_END_OF_MOTORWAY",
+          "comment": "",
+          "default": "172",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_EXPRESSWAY_BEGIN",
+          "comment": "",
+          "default": "173",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_END_OF_EXPRESSWAY",
+          "comment": "",
+          "default": "174",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_PLAYGROUND_AREA_BEGIN",
+          "comment": "",
+          "default": "175",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_END_OF_PLAYGROUND_AREA",
+          "comment": "",
+          "default": "176",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_NO_PASSING_START",
+          "comment": "",
+          "default": "200",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_REGULAR_END_OF_NO_PASSING",
+          "comment": "",
+          "default": "201",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_NO_PASSING_START",
+          "comment": "",
+          "default": "220",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_ELECTRONIC_END_OF_NO_PASSING",
+          "comment": "",
+          "default": "221",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_NONE_DETECTED",
+          "comment": "",
+          "default": "254",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIGN_TYPE_INVALID",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_sign_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_RAIN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_SNOW",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_TRAILER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_TIME",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_ARROW_LEFT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_ARROW_RIGHT",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_BEND_ARROW_LEFT",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_BEND_ARROW_RIGHT",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_TRUCK",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_DISTANCE_ARROW",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_WEIGHT",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_DISTANCE_IN",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_TRACTOR",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_SNOW_RAIN",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_SCHOOL",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_RAIN_CLOUD",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_FOG",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_HAZARDOUS_MATERIALS",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_NIGHT",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_GENERIC",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_RAPPEL",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_ZONE",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUPP_SIGN_TYPE_INVALID",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_supplementary_sign_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sign_position_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sign_position_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sign_position_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FILTER_TYPE_NOT_FILTERED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FILTER_TYPE_IRRELEVANT_TO_DRIVER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FILTER_TYPE_ON_VEHICLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FILTER_TYPE_EMBEDDED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "filter_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TsrVisionOnly": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 vision_only_sign_type_display1\nuint8 vision_only_supplementary_sign_type_display1\nuint8 vision_only_sign_type_display2\nuint8 vision_only_supplementary_sign_type_display2\nuint8 vision_only_sign_type_display3\nuint8 vision_only_supplementary_sign_type_display3\nuint8 vision_only_sign_type_display4\nuint8 vision_only_supplementary_sign_type_display4\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_sign_type_display1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_supplementary_sign_type_display1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_sign_type_display2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_supplementary_sign_type_display2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_sign_type_display3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_supplementary_sign_type_display3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_sign_type_display4",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vision_only_supplementary_sign_type_display4",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

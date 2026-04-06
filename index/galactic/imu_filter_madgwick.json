@@ -1,0 +1,45 @@
+{
+  "name": "imu_filter_madgwick",
+  "version": "2.0.3",
+  "description": "Filter which fuses angular velocities, accelerations, and (optionally) magnetic readings from a generic IMU device into an orientation. Based on code by Sebastian Madgwick, http://www.x-io.co.uk/node/8#open_source_ahrs_and_imu_algorithms.",
+  "license": "GPL",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/imu_filter_madgwick",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "imu_tools",
+    "url": "https://github.com/CCNYRoboticsLab/imu_tools.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_action",
+      "rclcpp_lifecycle",
+      "visualization_msgs",
+      "nav_msgs",
+      "geometry_msgs",
+      "builtin_interfaces",
+      "tf2_ros",
+      "tf2_geometry_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "imu_tools"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

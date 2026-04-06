@@ -1,0 +1,49 @@
+{
+  "name": "kuka_sunrise_fri_driver",
+  "version": "1.0.0",
+  "description": "ROS2 KUKA sunrise interface",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "kuka_drivers",
+    "url": "https://github.com/kroshu/kuka_drivers.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "ros2_control",
+      "joint_trajectory_controller",
+      "joint_state_broadcaster",
+      "fri_configuration_controller",
+      "fri_state_broadcaster",
+      "kuka_control_mode_handler",
+      "kuka_event_broadcaster",
+      "joint_group_impedance_controller",
+      "kuka_lbr_iiwa_support"
+    ],
+    "test": [
+      "ros2lifecycle",
+      "launch_testing_ament_cmake"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "std_srvs",
+      "kuka_driver_interfaces",
+      "kuka_drivers_core",
+      "hardware_interface",
+      "controller_manager_msgs",
+      "libnanopb-dev"
+    ],
+    "depended_on_by": [
+      "kuka_drivers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

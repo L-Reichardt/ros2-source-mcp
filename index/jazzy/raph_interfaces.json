@@ -1,6 +1,6 @@
 {
   "name": "raph_interfaces",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Interface definitions for Raph Rover",
   "license": "MIT",
   "build_type": "ament_cmake",
@@ -90,6 +90,61 @@
         }
       ]
     },
+    "DrivetrainState": {
+      "description": "Represents the state of the drivetrain",
+      "raw": "# Represents the state of the drivetrain\n\n# Current steering mode.\nraph_interfaces/SteeringMode steering_mode\n\nuint8 OPERATING_STATE_DISABLED=0\nuint8 OPERATING_STATE_ENABLED=1\nuint8 OPERATING_STATE_CALIBRATING_SERVOS=2\nuint8 OPERATING_STATE_CHANGING_STEERING_MODE=3\n\n# Current operating state.\nuint8 operating_state\n\n# Indicates if the servos are calibrated.\nbool is_servos_calibrated",
+      "fields": [
+        {
+          "type": "raph_interfaces/SteeringMode",
+          "name": "steering_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OPERATING_STATE_DISABLED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OPERATING_STATE_ENABLED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OPERATING_STATE_CALIBRATING_SERVOS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OPERATING_STATE_CHANGING_STEERING_MODE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "operating_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_servos_calibrated",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
     "ImuDiagnostics": {
       "description": "Diagnostic information about IMU sensor running on RaphCore.",
       "raw": "# Diagnostic information about IMU sensor running on RaphCore.\n\nstd_msgs/Header header\n\n# The current temperature of the sensor in degrees Celsius.\nfloat64 temperature\n\n# The current gyroscope biases.\nfloat64 gyro_bias_x\nfloat64 gyro_bias_y\nfloat64 gyro_bias_z\n",
@@ -125,6 +180,26 @@
         {
           "type": "float64",
           "name": "gyro_bias_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyValue": {
+      "description": "Represents an arbitrary key-value pair for arbitrary information.",
+      "raw": "# Represents an arbitrary key-value pair for arbitrary information.\n\nstring key\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
           "comment": "",
           "default": null,
           "is_constant": false
@@ -460,6 +535,40 @@
         }
       ]
     },
+    "ServoCommand": {
+      "description": "This message defines an interface of steering a single servo",
+      "raw": "# This message defines an interface of steering a single servo\n\n# Defines whether the motor is enabled or disabled (loose)\nbool enabled\n\n# Servo target position in rad\nfloat64 target_position\n\n# Target velocity of the servo in rad/s.\n# If set to 0 will use the value of drivetrain.servo.position_loop_speed parameter\nfloat64 target_velocity\n\n# The divider for the maximum acceleration of the servos (10000 rpm/s^2)\n# E.g. 1 = 10000 rpm/s^2, 2 = 5000 rpm/s^2, 4 = 2500 rpm/s^2 etc.\n# If set to 0 will use the value of drivetrain.servo.acceleration_divider parameter\nuint8 acceleration_divider",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "target_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "target_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "acceleration_divider",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
     "SteeringMode": {
       "description": "This message represents the steering mode used by the drivetrain controller.",
       "raw": "# This message represents the steering mode used by the drivetrain controller.\n\nuint8 ACKERMANN=0\nuint8 TURN_IN_PLACE=1\n\nuint8 data\n",
@@ -486,9 +595,84 @@
           "is_constant": false
         }
       ]
+    },
+    "TurnInPlaceDrive": {
+      "description": "This message defines a command to turn the robot in place.",
+      "raw": "# This message defines a command to turn the robot in place.\n\nfloat64 angular_velocity\nfloat64 acceleration\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "angular_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelCommand": {
+      "description": "This message defines an interface of steering a single wheel",
+      "raw": "# This message defines an interface of steering a single wheel\n\n# Defines whether the motor is enabled or disabled (loose)\nbool enabled\n\n# Target velocity of the wheel in rad/s.\nfloat64 target_velocity\n\n# The divider for the maximum acceleration of the wheels (10000 rpm/s^2)\n# E.g. 1 = 10000 rpm/s^2, 2 = 5000 rpm/s^2, 4 = 2500 rpm/s^2 etc.\n# If set to 0 will use the value of drivetrain.wheel.acceleration_divider parameter\nuint8 acceleration_divider",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "target_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "acceleration_divider",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
     }
   },
   "services": {
+    "GetControllerInfo": {
+      "description": "The version of the bootloader.",
+      "raw": "---\n# The version of the bootloader.\nstring bootloader_version\n\n# The version of the firmware.\nstring firmware_version\n\n# Additional information about the controller in the form of key-value pairs.\n# Can be used to provide any additional information about the controller in future versions of the\n# firmware without changing the service definition.\nraph_interfaces/KeyValue[] extra_information\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "bootloader_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "raph_interfaces/KeyValue[]",
+          "name": "extra_information",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
     "GetOsVersion": {
       "description": "version string in the format {major}.{minor}.{patch}",
       "raw": "---\n# version string in the format {major}.{minor}.{patch}\nstring version\n\n# Optional version variant\nstring variant\n\n# Parsed version numbers\nuint8 major\nuint8 minor\nuint8 patch\n",

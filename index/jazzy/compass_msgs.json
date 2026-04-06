@@ -1,0 +1,128 @@
+{
+  "name": "compass_msgs",
+  "version": "0.1.1",
+  "description": "ROS 2 port of compass_msgs — messages related to compass and azimuth.\n    Message definition identical to ctu-vras/compass for compatibility.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "fusioncore",
+    "url": "https://github.com/manankharwar/fusioncore.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "fusioncore_ros"
+    ]
+  },
+  "messages": {
+    "Azimuth": {
+      "description": "The azimuth angle in unit corresponding to the 'unit' field.",
+      "raw": "std_msgs/Header header\n\n# The azimuth angle in unit corresponding to the 'unit' field.\nfloat64 azimuth\n\n# Variance of the measurement (std dev squared) in squared 'unit' field.\nfloat64 variance\n\n# Unit of measurement\nuint8 UNIT_RAD=0\nuint8 UNIT_DEG=1\nuint8 unit\n\n# Orientation convention\nuint8 ORIENTATION_ENU=0\nuint8 ORIENTATION_NED=1\nuint8 orientation\n\n# North reference\nuint8 REFERENCE_MAGNETIC=0\nuint8 REFERENCE_GEOGRAPHIC=1\nuint8 REFERENCE_UTM=2\nuint8 reference\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNIT_RAD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNIT_DEG",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "unit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ORIENTATION_ENU",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ORIENTATION_NED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "REFERENCE_MAGNETIC",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REFERENCE_GEOGRAPHIC",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REFERENCE_UTM",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "reference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

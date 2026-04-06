@@ -1,0 +1,93 @@
+{
+  "name": "cascade_lifecycle_msgs",
+  "version": "1.0.0",
+  "description": "Messages for rclcpp_cascade_lifecycle package",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "cascade_lifecycle",
+    "url": "https://github.com/fmrico/cascade_lifecycle.git",
+    "branch": "galactic-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "builtin_interfaces",
+      "lifecycle_msgs",
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": [
+      "rclcpp_cascade_lifecycle"
+    ]
+  },
+  "messages": {
+    "Activation": {
+      "description": "",
+      "raw": "uint8 ADD=0\nuint8 REMOVE=1\n\nuint8 operation_type\n\nstring activator\nstring activation\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "ADD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REMOVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "operation_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "activator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "activation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "State": {
+      "description": "",
+      "raw": "uint8 state\nstring node_name\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

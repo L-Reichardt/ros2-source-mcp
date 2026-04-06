@@ -1,0 +1,2268 @@
+{
+  "name": "as2_msgs",
+  "version": "1.1.3",
+  "description": "Messages, services and action files for the AS2 stack",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "aerostack2",
+    "url": "https://github.com/aerostack2/aerostack2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators",
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "builtin_interfaces"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_xmllint"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "std_msgs",
+      "geometry_msgs",
+      "geographic_msgs",
+      "nav_msgs",
+      "action_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "aerostack2",
+      "as2_behavior_tree",
+      "as2_core",
+      "as2_map_server",
+      "as2_motion_controller",
+      "as2_motion_reference_handlers",
+      "as2_platform_crazyflie",
+      "as2_platform_dji_osdk",
+      "as2_platform_dji_psdk",
+      "as2_platform_mavlink",
+      "as2_platform_pixhawk",
+      "as2_platform_tello",
+      "as2_python_api"
+    ]
+  },
+  "messages": {
+    "Acro": {
+      "description": "Message for RPY rates and thrust (ACRO) [based on mav_msgs/msg/RateThrust.msg]",
+      "raw": "# Message for RPY rates and thrust (ACRO) [based on mav_msgs/msg/RateThrust.msg]\n\nstd_msgs/Header header               # Message header\n\ngeometry_msgs/Vector3 angular_rates  # Roll-, pitch-, yaw-rate around body axes [rad/s]\ngeometry_msgs/Vector3 thrust         # Thrust [N] expressed in the body frame.\n                                     # For a fixed-wing, usually the x-component is used.\n                                     # For a multi-rotor, usually the z-component is used.\n                                     # Set all un-used components to 0.",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "angular_rates",
+          "comment": "Roll-, pitch-, yaw-rate around body axes [rad/s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "thrust",
+          "comment": "Thrust [N] expressed in the body frame.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AlertEvent": {
+      "description": "Message that encodes different alert Events that can be handled by AS2 framework",
+      "raw": "# Message that encodes different alert Events that can be handled by AS2 framework\n\n# if value is < 0 then this alert will be handled by the platform directly\nint8 KILL_SWITCH = -1\nint8 EMERGENCY_HOVER = -2\nint8 EMERGENCY_LAND = -3\n\n# 0 value is used for ping or info alerts \nint8 INFO_ALERT = 0\n\n#if value is > 0 then this alert will be handled by the AS2 framework\nint8 FORCE_HOVER = 1\nint8 FORCE_LAND = 2\n\nint8 alert\nstring description # Further description of the alert, for debugging purposes mainly\n\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "KILL_SWITCH",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "EMERGENCY_HOVER",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "EMERGENCY_LAND",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "INFO_ALERT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FORCE_HOVER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FORCE_LAND",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "alert",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "Further description of the alert, for debugging purposes mainly",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorStatus": {
+      "description": "",
+      "raw": "uint8 IDLE    = 0\nuint8 RUNNING = 1\nuint8 PAUSED  = 2\n\nuint8 status\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "IDLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RUNNING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PAUSED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControlMode": {
+      "description": "Message that encodes the possible control modes supported in Aerostack2.",
+      "raw": "# Message that encodes the possible control modes supported in Aerostack2.\n\nstd_msgs/Header header          # Message header\n\nint8 NONE       = 0\nint8 YAW_ANGLE  = 1             # Yaw angle control mode (rad)\nint8 YAW_SPEED  = 2             # Yaw speed control mode (rad/s)\n\nint8 yaw_mode                   # Yaw mode\n\nint8 UNSET                =  0  # mode when the controller is not set\nint8 HOVER                =  1  # mode when the controller is in hover mode\nint8 POSITION             =  2  # x,   y , z  refs\nint8 SPEED                =  3  # vx, vy , vz refs\nint8 SPEED_IN_A_PLANE     =  4  # vx, vy , z refs\nint8 ATTITUDE             =  5  # roll, pitch, yaw  refs\nint8 ACRO                 =  6  # roll, pitch, yawrate  refs\nint8 TRAJECTORY           =  7  # x, y z, vx, vy, vz, ax, ay, az refs\n\nint8 control_mode               # Control mode\n\nint8 UNDEFINED_FRAME      =  0\nint8 LOCAL_ENU_FRAME      =  1  # local coordinates (use this by default)\nint8 BODY_FLU_FRAME       =  2  # body coordinates \nint8 GLOBAL_LAT_LONG_ASML =  3  # gnss wcoordinates \n\nint8 reference_frame            # Reference frame\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "YAW_ANGLE",
+          "comment": "Yaw angle control mode (rad)",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "YAW_SPEED",
+          "comment": "Yaw speed control mode (rad/s)",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "yaw_mode",
+          "comment": "Yaw mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "UNSET",
+          "comment": "mode when the controller is not set",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "HOVER",
+          "comment": "mode when the controller is in hover mode",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "POSITION",
+          "comment": "x,   y , z  refs",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SPEED",
+          "comment": "vx, vy , vz refs",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SPEED_IN_A_PLANE",
+          "comment": "vx, vy , z refs",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ATTITUDE",
+          "comment": "roll, pitch, yaw  refs",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ACRO",
+          "comment": "roll, pitch, yawrate  refs",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "TRAJECTORY",
+          "comment": "x, y z, vx, vy, vz, ax, ay, az refs",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "control_mode",
+          "comment": "Control mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "UNDEFINED_FRAME",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LOCAL_ENU_FRAME",
+          "comment": "local coordinates (use this by default)",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BODY_FLU_FRAME",
+          "comment": "body coordinates",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "GLOBAL_LAT_LONG_ASML",
+          "comment": "gnss wcoordinates",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "reference_frame",
+          "comment": "Reference frame",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControllerInfo": {
+      "description": "Message that shows the controller state and the current input_control_mode",
+      "raw": "# Message that shows the controller state and the current input_control_mode\n\nstd_msgs/Header header                      # Message header\n\nas2_msgs/ControlMode input_control_mode     # Input control mode\nas2_msgs/ControlMode output_control_mode    # Output control mode\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/ControlMode",
+          "name": "input_control_mode",
+          "comment": "Input control mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/ControlMode",
+          "name": "output_control_mode",
+          "comment": "Output control mode",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FollowTargetInfo": {
+      "description": "Message that encodes the possible follow target info supported in Aerostack2.",
+      "raw": "# Message that encodes the possible follow target info supported in Aerostack2.\n\nstd_msgs/Header header          # Message header\n\nint8 WAITING      = 0\nint8 RUNNING      = 1\nint8 END          = 2\n\nint8 follow_status              # Follow status\n\nint8 UNSET              =  0    # Mode when the follow mode is not set\nint8 PICKUP             =  1 \nint8 UNPICK             =  2\nint8 DYNAMIC_LAND       =  3 \nint8 DYNAMIC_FOLLOWER   =  4 \n\nint8 follow_mode                # Follow mode\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "WAITING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "RUNNING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "END",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "follow_status",
+          "comment": "Follow status",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "UNSET",
+          "comment": "Mode when the follow mode is not set",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PICKUP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "UNPICK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "DYNAMIC_LAND",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "DYNAMIC_FOLLOWER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "follow_mode",
+          "comment": "Follow mode",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Geozone": {
+      "description": "GeoStructure defined by an id, alert that generates in case of event and a polygon",
+      "raw": "# GeoStructure defined by an id, alert that generates in case of event and a polygon \n# that defines the area.\n\nint8 id                            # geofence id\nint8 alert                         # alert generated\nstring type                        # geofence or geocage\nstring data_type                   # cartesian or gps\ngeometry_msgs/Polygon polygon      # fence polygon\nfloat32 z_up                       # height limit up\nfloat32 z_down                     # height limit bottom\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "id",
+          "comment": "geofence id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "alert",
+          "comment": "alert generated",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "geofence or geocage",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data_type",
+          "comment": "cartesian or gps",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Polygon",
+          "name": "polygon",
+          "comment": "fence polygon",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_up",
+          "comment": "height limit up",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_down",
+          "comment": "height limit bottom",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GimbalControl": {
+      "description": "Gimbal Control message definition",
+      "raw": "# Gimbal Control message definition\n\nuint8 POSITION_MODE = 0\nuint8 SPEED_MODE = 1\n\nuint8 control_mode\ngeometry_msgs/Vector3Stamped target    # x: roll y: pitch z: yaw\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "POSITION_MODE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPEED_MODE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "control_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3Stamped",
+          "name": "target",
+          "comment": "x: roll y: pitch z: yaw",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MissionEvent": {
+      "description": "Message for trigger mission events",
+      "raw": "# Message for trigger mission events\n\nstd_msgs/Header header    # Message header\n\nstring data               # (Optional) data to send with the trigger\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "(Optional) data to send with the trigger",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MissionUpdate": {
+      "description": "Message that sends a mission to the interpreter",
+      "raw": "# Message that sends a mission to the interpreter\n\nstring drone_id     # ID of the drone that will execute the mission\nint32 mission_id    # ID of the mission to be executed\nint32 item_id       # ID of the item to be executed\n\nuint8 EXECUTE   = 0   # Execute a mission in the interpreter\nuint8 LOAD      = 1   # Load a mission to the interpreter\nuint8 START     = 2   # Start the execution of a mission\nuint8 PAUSE     = 3   # Pause the execution of a mission\nuint8 RESUME    = 4   # Resume the execution of a mission\nuint8 STOP      = 5   # Stop the execution of a mission\nuint8 NEXT_ITEM = 6   # Execute the next item in the mission\nuint8 REPEAT    = 7   # Repeat the execution of a mission\nuint8 INSERT    = 8   # Insert an item in the mission\nuint8 MODIFY    = 9   # Modify an item in the mission\nuint8 REMOVE    = 10  # Remove an item in the mission\nuint8 RESET     = 11  # Reset the interpreter\n\nuint8 action        # Action to be performed in the interpreter\n\nstring mission      # JSON formatted mission to be executed\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "drone_id",
+          "comment": "ID of the drone that will execute the mission",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "mission_id",
+          "comment": "ID of the mission to be executed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "item_id",
+          "comment": "ID of the item to be executed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "EXECUTE",
+          "comment": "Execute a mission in the interpreter",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOAD",
+          "comment": "Load a mission to the interpreter",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "START",
+          "comment": "Start the execution of a mission",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PAUSE",
+          "comment": "Pause the execution of a mission",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESUME",
+          "comment": "Resume the execution of a mission",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOP",
+          "comment": "Stop the execution of a mission",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEXT_ITEM",
+          "comment": "Execute the next item in the mission",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REPEAT",
+          "comment": "Repeat the execution of a mission",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INSERT",
+          "comment": "Insert an item in the mission",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODIFY",
+          "comment": "Modify an item in the mission",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REMOVE",
+          "comment": "Remove an item in the mission",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESET",
+          "comment": "Reset the interpreter",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "action",
+          "comment": "Action to be performed in the interpreter",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mission",
+          "comment": "JSON formatted mission to be executed",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NodeStatus": {
+      "description": "Message that shows the node status",
+      "raw": "# Message that shows the node status\n\nint8 UNCONFIGURED  = 0 \nint8 INACTIVE      = 1 \nint8 ACTIVE        = 2 \nint8 FINALIZED     = 3 \n\nint8 status                 # node status",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "UNCONFIGURED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "INACTIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ACTIVE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FINALIZED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "node status",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlatformInfo": {
+      "description": "Message that shows the platform status and the current control mode",
+      "raw": "# Message that shows the platform status and the current control mode\n\nstd_msgs/Header header                      # Message header\n\nbool connected                              # Whether the platform is connected or not\nbool armed                                  # Whether the platform is armed or not\nbool offboard                               # Whether the offboard mode is set or not\n\nas2_msgs/PlatformStatus status              # Platform status\nas2_msgs/ControlMode current_control_mode   # Platform control mode\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "connected",
+          "comment": "Whether the platform is connected or not",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "armed",
+          "comment": "Whether the platform is armed or not",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "offboard",
+          "comment": "Whether the offboard mode is set or not",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/PlatformStatus",
+          "name": "status",
+          "comment": "Platform status",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/ControlMode",
+          "name": "current_control_mode",
+          "comment": "Platform control mode",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlatformStateMachineEvent": {
+      "description": "Platform events that actives aerial platform state machine",
+      "raw": "# Platform events that actives aerial platform state machine \n\nint8 EMERGENCY     = -1 \nint8 ARM           = 0 \nint8 DISARM        = 1 \nint8 TAKE_OFF      = 2 \nint8 TOOK_OFF      = 3 \nint8 LAND          = 4 \nint8 LANDED        = 5 \n\nint8 event                  # Platform state machine event\n\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "EMERGENCY",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ARM",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "DISARM",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "TAKE_OFF",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "TOOK_OFF",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LAND",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LANDED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "event",
+          "comment": "Platform state machine event",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlatformStatus": {
+      "description": "Platform states that an aerial platform can have",
+      "raw": "# Platform states that an aerial platform can have\n\nint8 EMERGENCY     = -1 \nint8 DISARMED      = 0 \nint8 LANDED        = 1 \nint8 TAKING_OFF    = 2 \nint8 FLYING        = 3 \nint8 LANDING       = 4 \n\nint8 state                  # platform status\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "EMERGENCY",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "DISARMED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LANDED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "TAKING_OFF",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FLYING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LANDING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "state",
+          "comment": "platform status",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PolygonList": {
+      "description": "List of polygons to visualize multiple geozones in RVIZ2",
+      "raw": "# List of polygons to visualize multiple geozones in RVIZ2\n\ngeometry_msgs/PolygonStamped[] polygons",
+      "fields": [
+        {
+          "type": "geometry_msgs/PolygonStamped[]",
+          "name": "polygons",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PoseStampedWithID": {
+      "description": "A Pose stamped with an string id",
+      "raw": "# A Pose stamped with an string id\n\nstring id                       # Identification string\ngeometry_msgs/PoseStamped pose  # Pose\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "Identification string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "Pose",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PoseStampedWithIDArray": {
+      "description": "Pose Stamped with an string id array",
+      "raw": "# Pose Stamped with an string id array\n\nas2_msgs/PoseStampedWithID[] poses",
+      "fields": [
+        {
+          "type": "as2_msgs/PoseStampedWithID[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PoseWithID": {
+      "description": "A Pose with an string id",
+      "raw": "# A Pose with an string id\n\nstring id                       # Identification string\ngeometry_msgs/Pose pose         # Pose\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "Identification string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "Pose",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PoseWithIDArray": {
+      "description": "Pose with an string id array",
+      "raw": "# Pose with an string id array\n\nas2_msgs/PoseWithID[] poses",
+      "fields": [
+        {
+          "type": "as2_msgs/PoseWithID[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Speed": {
+      "description": "Speed message",
+      "raw": "# Speed message\n\nstd_msgs/Header header      # Message header\n\nfloat32 speed               # speed (m/s)\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "speed (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Thrust": {
+      "description": "Message for encoding the desired thrust value",
+      "raw": "# Message for encoding the desired thrust value\n\nstd_msgs/Header header          # Message header\n\nfloat32 thrust                  # Thrust (N)\nfloat32 thrust_normalized       # Thrust normalized [0,1] \n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "thrust",
+          "comment": "Thrust (N)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "thrust_normalized",
+          "comment": "Thrust normalized [0,1]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajGenInfo": {
+      "description": "Message that shows the trajectory generator state",
+      "raw": "# Message that shows the trajectory generator state\n\nstd_msgs/Header header              # Message header\n\nas2_msgs/NodeStatus node_status     # Node status\n\nuint8 WAITING       = 0\nuint8 EVALUATING    = 1\nuint8 STOPPED       = 2\n\nuint8 active_status                 # Active status\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/NodeStatus",
+          "name": "node_status",
+          "comment": "Node status",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "WAITING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EVALUATING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOPPED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "active_status",
+          "comment": "Active status",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajectoryPoint": {
+      "description": "Definition of a point of a trajectory",
+      "raw": "# Definition of a point of a trajectory\n\ngeometry_msgs/Vector3 position      # Position of the vehicle in the frame_id frame\ngeometry_msgs/Vector3 twist         # Twist of the vehicle in the frame_id frame\ngeometry_msgs/Vector3 acceleration  # Acceleration of the vehicle in the frame_id frame\n\nfloat32 yaw_angle                   # Yaw angle of the vehicle (rad) in the frame_id frame\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "position",
+          "comment": "Position of the vehicle in the frame_id frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "twist",
+          "comment": "Twist of the vehicle in the frame_id frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "acceleration",
+          "comment": "Acceleration of the vehicle in the frame_id frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw_angle",
+          "comment": "Yaw angle of the vehicle (rad) in the frame_id frame",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajectorySetpoints": {
+      "description": "Definition of a point of a trajectory",
+      "raw": "# Definition of a point of a trajectory\n\nstd_msgs/Header header              # Message header with the frame_id of the point\n\nas2_msgs/TrajectoryPoint[] setpoints # Array of setpoints of the vehicle in the frame_id frame\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header with the frame_id of the point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/TrajectoryPoint[]",
+          "name": "setpoints",
+          "comment": "Array of setpoints of the vehicle in the frame_id frame",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UInt16MultiArrayStamped": {
+      "description": "Please look at the std_msgs/MultiArrayLayout message definition for",
+      "raw": "# Please look at the std_msgs/MultiArrayLayout message definition for\n# documentation on all multiarrays.\n# This message is a multiarray of uint16 values with a timestamp, based on\n# the std_msgs/MultiArrayLayout message.\n\nbuiltin_interfaces/Time stamp     # Message timestamp\nstd_msgs/MultiArrayLayout layout  # Specification of data layout\nuint16[] data                     # Array of data",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "Message timestamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/MultiArrayLayout",
+          "name": "layout",
+          "comment": "Specification of data layout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "data",
+          "comment": "Array of data",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "YawMode": {
+      "description": "Yaw goal",
+      "raw": "# Yaw goal\n\nuint8 KEEP_YAW             = 0 # Keep the current yaw angle\nuint8 PATH_FACING          = 1 # Yaw angle is aligned with the path\nuint8 FIXED_YAW            = 2 # Yaw angle is fixed to a given angle\nuint8 YAW_FROM_TOPIC       = 3 # Yaw angle is set by a topic\nuint8 YAW_FROM_ORIENTATION = 4 # Yaw angle is set by pose orientation\nuint8 YAW_TO_FRAME         = 5 # Yaw angle is set to face the used frame\nuint8 FACE_REFERENCE       = 6 # Yaw angle is set to face the next reference\n\nuint8 mode      # Yaw mode\nfloat32 angle   # Fixed yaw (rad)\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "KEEP_YAW",
+          "comment": "Keep the current yaw angle",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PATH_FACING",
+          "comment": "Yaw angle is aligned with the path",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIXED_YAW",
+          "comment": "Yaw angle is fixed to a given angle",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "YAW_FROM_TOPIC",
+          "comment": "Yaw angle is set by a topic",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "YAW_FROM_ORIENTATION",
+          "comment": "Yaw angle is set by pose orientation",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "YAW_TO_FRAME",
+          "comment": "Yaw angle is set to face the used frame",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FACE_REFERENCE",
+          "comment": "Yaw angle is set to face the next reference",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "Yaw mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "Fixed yaw (rad)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddStaticTransform": {
+      "description": "SERVICE TYPE: AddStaticTransform",
+      "raw": "# SERVICE TYPE: AddStaticTransform\n# ------------------------------------------------------------------------------\n# This service receives a transform to add it to the tf tree as static transform\n\nstring frame_id                      # Parent frame frame id\nstring child_frame_id                # Child frame id\ngeometry_msgs/Transform transform  # Transform\n---\nbool success                        # whether the transform has been set or not\n# ------------------------------------------------------------------------------",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "Parent frame frame id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "child_frame_id",
+          "comment": "Child frame id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "transform",
+          "comment": "Transform",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the transform has been set or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AddStaticTransformGps": {
+      "description": "SERVICE TYPE: AddStaticTransform",
+      "raw": "# SERVICE TYPE: AddStaticTransform\n# ------------------------------------------------------------------------------\n# This service receives a transform to add it to the tf tree as static transform\n\nstring frame_id                      # Parent frame frame id\nstring child_frame_id                # Child frame id\nsensor_msgs/NavSatFix gps_position    # Transform\nfloat32 azimuth                        # yaw\nfloat32 elevation                      # pitch\nfloat32 bank                           # roll\n---\nbool success                        # whether the transform has been set or not\n# ------------------------------------------------------------------------------",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "Parent frame frame id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "child_frame_id",
+          "comment": "Child frame id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/NavSatFix",
+          "name": "gps_position",
+          "comment": "Transform",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "azimuth",
+          "comment": "yaw",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "elevation",
+          "comment": "pitch",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "bank",
+          "comment": "roll",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the transform has been set or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DynamicFollower": {
+      "description": "SERVICE TYPE: DynamicFollower",
+      "raw": "# SERVICE TYPE: DynamicFollower\n# ------------------------------------------------------------------------------\n# This service send command to start dynamic follower\n\nbool enable                         # Flag to enable follower\ngeometry_msgs/Twist speed_limit     # Speed limit (m/s)\n---\nbool success                        # whether it could be started or not\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "Flag to enable follower",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "speed_limit",
+          "comment": "Speed limit (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether it could be started or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DynamicLand": {
+      "description": "SERVICE TYPE: DynamicLand",
+      "raw": "# SERVICE TYPE: DynamicLand\n# ------------------------------------------------------------------------------\n# This service send command to start dynamic land\n\nbool enable                         # Flag to enable land\ngeometry_msgs/Twist speed_limit     # speed limit (m/s)\n---\nbool success                        # whether it could be started or not\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "Flag to enable land",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "speed_limit",
+          "comment": "speed limit (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether it could be started or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeopathToPath": {
+      "description": "SERVICE TYPE: PathToGeopath",
+      "raw": "# SERVICE TYPE: PathToGeopath\n# ------------------------------------------------------------------------------\n# This service receives a path in LatLon and returns it transformed into local\n\ngeographic_msgs/GeoPath geo_path    # Path in lat/lon and altitude\n---\nbool success                        # whether the origin has been set or not\nnav_msgs/Path path                  # Path in meters \n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "geographic_msgs/GeoPath",
+          "name": "geo_path",
+          "comment": "Path in lat/lon and altitude",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the origin has been set or not",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "Path in meters",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetGeozone": {
+      "description": "SERVICE TYPE: GetGeoStructure",
+      "raw": "# SERVICE TYPE: GetGeoStructure\n# ------------------------------------------------------------------------------\n# This service return a geostructure list (lat, lon, alt) stored in the geozones node\n\n---\nbool success                    # whether the geofence has been set or not\nas2_msgs/Geozone[] geozone_list   # geofences stored in memory\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the geofence has been set or not",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/Geozone[]",
+          "name": "geozone_list",
+          "comment": "geofences stored in memory",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetOrigin": {
+      "description": "SERVICE TYPE: GetOrigin",
+      "raw": "# SERVICE TYPE: GetOrigin\n# ------------------------------------------------------------------------------\n# This service return a origin (lat, lon, alt) if it was previously set\n\n---\nbool success                        # whether the origin has been set or not\ngeographic_msgs/GeoPoint origin     # origin \n# ------------------------------------------------------------------------------\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the origin has been set or not",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPoint",
+          "name": "origin",
+          "comment": "origin",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListControlModes": {
+      "description": "SERVICE TYPE: ListControlModes",
+      "raw": "# SERVICE TYPE: ListControlModes\n# ------------------------------------------------------------------------------\n# This service ask for available control modes list\n\n---\nstring source                   # Control modes source\nuint8[] control_modes           # Control modes list\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "source",
+          "comment": "Control modes source",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "control_modes",
+          "comment": "Control modes list",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ModifySwarm": {
+      "description": "SERVICE TYPE: NumSwarmFormation",
+      "raw": "# SERVICE TYPE: NumSwarmFormation\n# ------------------------------------------------------------------------------\n# This service modifies the number of drones in the swarm\nbool detach_drone                               # Detach the drone reference from the swarm\nbool new_drone                                  # Add new drone reference to the swarm\nbool new_virtual_centroid_ref                   # New reference to follow\ngeometry_msgs/PoseStamped  virtual_centroid     # Offset of the virtual centroid to the following frame\nas2_msgs/PoseWithID[] swarm_formation           # Topics to modify the flocking\n---\nbool success                                    # whether the SwarmBehavior has been set or not",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "detach_drone",
+          "comment": "Detach the drone reference from the swarm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "new_drone",
+          "comment": "Add new drone reference to the swarm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "new_virtual_centroid_ref",
+          "comment": "New reference to follow",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "virtual_centroid",
+          "comment": "Offset of the virtual centroid to the following frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/PoseWithID[]",
+          "name": "swarm_formation",
+          "comment": "Topics to modify the flocking",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the SwarmBehavior has been set or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PackagePickUp": {
+      "description": "SERVICE TYPE: PackagePickUp",
+      "raw": "# SERVICE TYPE: PackagePickUp\n# ------------------------------------------------------------------------------\n# This service send command to start package pickup\n\nbool enable                             # Flag to enable pickup\ngeometry_msgs/Twist speed_limit         # speed limit (m/s)\n---\nbool success                            # whether it could be started or not\n# ------------------------------------------------------------------------------",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "Flag to enable pickup",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "speed_limit",
+          "comment": "speed limit (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether it could be started or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PackageUnPick": {
+      "description": "SERVICE TYPE: PackageUnPick",
+      "raw": "# SERVICE TYPE: PackageUnPick\n# ------------------------------------------------------------------------------\n# This service send command to start package unpick\n\nbool enable                             # Flag to enable unpick\ngeometry_msgs/Twist speed_limit         # speed limit (m/s)\n---\nbool success                            # whether it could be started or not\n# ------------------------------------------------------------------------------",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "Flag to enable unpick",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "speed_limit",
+          "comment": "speed limit (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether it could be started or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PathToGeopath": {
+      "description": "SERVICE TYPE: PathToGeopath",
+      "raw": "# SERVICE TYPE: PathToGeopath\n# ------------------------------------------------------------------------------\n# This service receives a path in LatLon and returns it transformed into local\n\nnav_msgs/Path path                  # Path (m)\n---\nbool success                        # whether the origin has been set or not\ngeographic_msgs/GeoPath geo_path    # Path in lat/lon and altitude\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "Path (m)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the origin has been set or not",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPath",
+          "name": "geo_path",
+          "comment": "Path in lat/lon and altitude",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetControlMode": {
+      "description": "SERVICE TYPE: SetPlatformControlMode",
+      "raw": "# SERVICE TYPE: SetPlatformControlMode\n# ------------------------------------------------------------------------------\n# This service sets a platform control mode\n\nas2_msgs/ControlMode control_mode       # Control mode to set\n---\nbool success                        # whether the control mode has been set or not\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "as2_msgs/ControlMode",
+          "name": "control_mode",
+          "comment": "Control mode to set",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the control mode has been set or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetGeozone": {
+      "description": "SERVICE TYPE: SetGeostructure",
+      "raw": "# SERVICE TYPE: SetGeostructure\n# ------------------------------------------------------------------------------\n# This service creates a geoStructure (lat, lon, alt) to set in geozones node\n\nas2_msgs/Geozone geozone  # geostructure to set\n---\nbool success                # whether the geoStructure has been set or not\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "as2_msgs/Geozone",
+          "name": "geozone",
+          "comment": "geostructure to set",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the geoStructure has been set or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetOrigin": {
+      "description": "SERVICE TYPE: SetOrigin",
+      "raw": "# SERVICE TYPE: SetOrigin\n# ------------------------------------------------------------------------------\n# This service sends a origin (lat, lon, alt) to set\n\ngeographic_msgs/GeoPoint origin     # origin to set\n---\nbool success                        # whether the origin has been set or not\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "geographic_msgs/GeoPoint",
+          "name": "origin",
+          "comment": "origin to set",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the origin has been set or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPlatformStateMachineEvent": {
+      "description": "SERVICE TYPE: SetPlatformStateMachineEvent",
+      "raw": "# SERVICE TYPE: SetPlatformStateMachineEvent\n# ------------------------------------------------------------------------------\n# This service sets a PlatformStateMachineEvent\n\nas2_msgs/PlatformStateMachineEvent event     # event to set\n---\nbool success                                # whether the PSM has been set or not\nas2_msgs/PlatformStatus current_state       # PSM result of the aircraft\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "as2_msgs/PlatformStateMachineEvent",
+          "name": "event",
+          "comment": "event to set",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the PSM has been set or not",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/PlatformStatus",
+          "name": "current_state",
+          "comment": "PSM result of the aircraft",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetSpeed": {
+      "description": "SERVICE TYPE: SetSpeed",
+      "raw": "# SERVICE TYPE: SetSpeed\n# ------------------------------------------------------------------------------\n# This service sends a speed to set\n\nas2_msgs/Speed speed        # speed to send\n---\nbool success                # whether the speed has been received or not\n# ------------------------------------------------------------------------------\n",
+      "request_fields": [
+        {
+          "type": "as2_msgs/Speed",
+          "name": "speed",
+          "comment": "speed to send",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "whether the speed has been received or not",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "DetectArucoMarkers": {
+      "description": "List of ArUco IDs",
+      "raw": "# List of ArUco IDs\n\n# Request\nuint16[] target_ids\n\n---\n# Response\nbool success\n\n---\n# Feedback\nbool sucess\n",
+      "goal_fields": [
+        {
+          "type": "uint16[]",
+          "name": "target_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "bool",
+          "name": "sucess",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FollowPath": {
+      "description": "Follow path action definition",
+      "raw": "# Follow path action definition\n\n# Request\nstd_msgs/Header header                   # Message header, with the frame of the pose list\nas2_msgs/YawMode yaw                     # Yaw goal mode\nas2_msgs/PoseWithID[] path               # List of poses with ID in path\nfloat32 max_speed                        # Maximum speed desired in path (m/s)\n\n---\n# Result\nbool follow_path_success                 # False if failed to follow_path\n\n---\n# Feedback\nfloat32 actual_speed                     # Actual speed (m/s)\nfloat32 actual_distance_to_next_waypoint # Distance to next waypoint (m)\nuint16 remaining_waypoints               # Remaining_waypoints\nstring next_waypoint_id                  # Next waypoint id in path to follow\n",
+      "goal_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Message header, with the frame of the pose list",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/YawMode",
+          "name": "yaw",
+          "comment": "Yaw goal mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/PoseWithID[]",
+          "name": "path",
+          "comment": "List of poses with ID in path",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_speed",
+          "comment": "Maximum speed desired in path (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "follow_path_success",
+          "comment": "False if failed to follow_path",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "actual_speed",
+          "comment": "Actual speed (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "actual_distance_to_next_waypoint",
+          "comment": "Distance to next waypoint (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "remaining_waypoints",
+          "comment": "Remaining_waypoints",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "next_waypoint_id",
+          "comment": "Next waypoint id in path to follow",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FollowReference": {
+      "description": "Follow reference action definition",
+      "raw": "# Follow reference action definition\n\n# Request\n\nas2_msgs/YawMode yaw                    # Yaw mode\ngeometry_msgs/PointStamped target_pose  # Goal pose 3D (m)\nfloat32 max_speed_x                     # Maximum speed in x (m/s)\nfloat32 max_speed_y                     # Maximum speed in x (m/s)\nfloat32 max_speed_z                     # Maximum speed in x (m/s)\n---\n# Result\nbool follow_reference_success           # False if failed to takeoff\n---\n# Feedback\nfloat32 actual_speed                    # Actual speed (m/s)\nfloat32 actual_distance_to_goal         # Distance to goal (m)",
+      "goal_fields": [
+        {
+          "type": "as2_msgs/YawMode",
+          "name": "yaw",
+          "comment": "Yaw mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PointStamped",
+          "name": "target_pose",
+          "comment": "Goal pose 3D (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_speed_x",
+          "comment": "Maximum speed in x (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_speed_y",
+          "comment": "Maximum speed in x (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_speed_z",
+          "comment": "Maximum speed in x (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "follow_reference_success",
+          "comment": "False if failed to takeoff",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "actual_speed",
+          "comment": "Actual speed (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "actual_distance_to_goal",
+          "comment": "Distance to goal (m)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeneratePolynomialTrajectory": {
+      "description": "Trajectory_generator action definition",
+      "raw": "# Trajectory_generator action definition\n\n# Request\nbuiltin_interfaces/Time stamp      # Request timestamp\nas2_msgs/YawMode yaw               # Yaw goal mode\nas2_msgs/PoseStampedWithID[] path  # List of poses with ID in path, with each frame id and time stamp\nfloat32 max_speed                  # Maximum speed desired in path (m/s)\n\n---\n# Result\nbool trajectory_generator_success  # False if failed to follow the generated trajectory\n\n---\n# Feedback\nstring next_waypoint_id            # Next waypoint id in path to follow\nuint16 remaining_waypoints         # Number of remaining waypoints to follow\n",
+      "goal_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "Request timestamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/YawMode",
+          "name": "yaw",
+          "comment": "Yaw goal mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/PoseStampedWithID[]",
+          "name": "path",
+          "comment": "List of poses with ID in path, with each frame id and time stamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_speed",
+          "comment": "Maximum speed desired in path (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "trajectory_generator_success",
+          "comment": "False if failed to follow the generated trajectory",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "next_waypoint_id",
+          "comment": "Next waypoint id in path to follow",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "remaining_waypoints",
+          "comment": "Number of remaining waypoints to follow",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GoToWaypoint": {
+      "description": "Go to waypoint action definition",
+      "raw": "# Go to waypoint action definition\n\n# Request\n\nas2_msgs/YawMode yaw                    # Yaw mode\ngeometry_msgs/PointStamped target_pose  # Goal pose 3D (m)\nfloat32 max_speed                       # Maximum speed (m/s)\n---\n# Result\nbool go_to_success                       # False if failed to takeoff\n---\n# Feedback\nfloat32 actual_speed                    # Actual speed (m/s)\nfloat32 actual_distance_to_goal         # Distance to goal (m)\n",
+      "goal_fields": [
+        {
+          "type": "as2_msgs/YawMode",
+          "name": "yaw",
+          "comment": "Yaw mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PointStamped",
+          "name": "target_pose",
+          "comment": "Goal pose 3D (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_speed",
+          "comment": "Maximum speed (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "go_to_success",
+          "comment": "False if failed to takeoff",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "actual_speed",
+          "comment": "Actual speed (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "actual_distance_to_goal",
+          "comment": "Distance to goal (m)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Land": {
+      "description": "Land action definition",
+      "raw": "# Land action definition\n\n# Request\nfloat32 land_speed              # land speed (m/s) \n---\n# Result\nbool land_success               # false if failed to land\n---\n# Feedback\nfloat32 actual_land_speed       # actual speed (m/s)\nfloat32 actual_land_height      # actual height (m)\n",
+      "goal_fields": [
+        {
+          "type": "float32",
+          "name": "land_speed",
+          "comment": "land speed (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "land_success",
+          "comment": "false if failed to land",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "actual_land_speed",
+          "comment": "actual speed (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "actual_land_height",
+          "comment": "actual height (m)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavigateToPoint": {
+      "description": "Navigate to Point",
+      "raw": "# Navigate to Point\n\n# Request\ngeometry_msgs/PointStamped point                        # Goal pose 3D (m)\nas2_msgs/YawMode yaw                                    # Yaw goal mode\nfloat32 navigation_speed                                # Maximum speed desired in path (m/s)\n---\n# Result\nbool success                                            # Point reached?\n---\n# Feedback\ngeometry_msgs/PoseStamped current_pose                  # Current pose (m)\ngeometry_msgs/TwistStamped current_speed                # Current speed (m/s)\nbuiltin_interfaces/Duration navigation_time             # Time from departure (s)\nbuiltin_interfaces/Duration estimated_time_remaining    # Time to goal (s)\nfloat32 distance_remaining                              # Distance to goal (m)",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PointStamped",
+          "name": "point",
+          "comment": "Goal pose 3D (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/YawMode",
+          "name": "yaw",
+          "comment": "Yaw goal mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "navigation_speed",
+          "comment": "Maximum speed desired in path (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Point reached?",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "current_pose",
+          "comment": "Current pose (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistStamped",
+          "name": "current_speed",
+          "comment": "Current speed (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "navigation_time",
+          "comment": "Time from departure (s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "estimated_time_remaining",
+          "comment": "Time to goal (s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_remaining",
+          "comment": "Distance to goal (m)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointGimbal": {
+      "description": "Point Gimbal action definition",
+      "raw": "# Point Gimbal action definition\n\n# Request\nas2_msgs/GimbalControl control           # Goal target\nbool follow_mode                               # Keep following after reach target\n---\n# Result\nbool success                                   # False if failed to point to target\n---\n# Feedback\ngeometry_msgs/Vector3Stamped gimbal_attitude   # Current attitude (rad)\ngeometry_msgs/Vector3Stamped gimbal_speed      # Current speed (rad/s)",
+      "goal_fields": [
+        {
+          "type": "as2_msgs/GimbalControl",
+          "name": "control",
+          "comment": "Goal target",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "follow_mode",
+          "comment": "Keep following after reach target",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "False if failed to point to target",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/Vector3Stamped",
+          "name": "gimbal_attitude",
+          "comment": "Current attitude (rad)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3Stamped",
+          "name": "gimbal_speed",
+          "comment": "Current speed (rad/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetArmingState": {
+      "description": "Request",
+      "raw": "#Request\nbool request \n---\n#Response\nbool success\n---\n#Feedback\n",
+      "goal_fields": [
+        {
+          "type": "bool",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "SetOffboardMode": {
+      "description": "Request",
+      "raw": "#Request\nbool request \n---\n#Response\nbool success\n---\n#Feedback\n",
+      "goal_fields": [
+        {
+          "type": "bool",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "SwarmFlocking": {
+      "description": "Swarm action definition",
+      "raw": "# Swarm action definition\n\n# Request\ngeometry_msgs/PoseStamped   virtual_centroid    # Offset of the virtual centroid to the following frame\nas2_msgs/PoseWithID[] swarm_formation           # Pose of the drones with respect to the virtual centroid\nstring[]    drones_namespace                    # Namespaces of the drones in the swarm\n---\n# Result\nbool swarm_success                              # False if failed to swarm_success\n---\n# Feedback\ngeometry_msgs/Pose swarm_pose                   # Current swarm pose\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "virtual_centroid",
+          "comment": "Offset of the virtual centroid to the following frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "as2_msgs/PoseWithID[]",
+          "name": "swarm_formation",
+          "comment": "Pose of the drones with respect to the virtual centroid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "drones_namespace",
+          "comment": "Namespaces of the drones in the swarm",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "swarm_success",
+          "comment": "False if failed to swarm_success",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "swarm_pose",
+          "comment": "Current swarm pose",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Takeoff": {
+      "description": "Takeoff action definition",
+      "raw": "# Takeoff action definition\n\n# Request\nfloat32 takeoff_height              # Takeoff height (m)\nfloat32 takeoff_speed               # Takeoff speed (m/s) \n---\n# Result\nbool takeoff_success                # false if failed to takeoff\n---\n# Feedback\nfloat32 actual_takeoff_speed        # actual speed (m/s)\nfloat32 actual_takeoff_height       # actual height (m)\n",
+      "goal_fields": [
+        {
+          "type": "float32",
+          "name": "takeoff_height",
+          "comment": "Takeoff height (m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "takeoff_speed",
+          "comment": "Takeoff speed (m/s)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "takeoff_success",
+          "comment": "false if failed to takeoff",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "actual_takeoff_speed",
+          "comment": "actual speed (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "actual_takeoff_height",
+          "comment": "actual height (m)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

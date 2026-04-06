@@ -1,0 +1,976 @@
+{
+  "name": "lgsvl_msgs",
+  "version": "0.0.4",
+  "description": "Message definitions for interfacing with the LGSVL Simulator for ROS and ROS 2.",
+  "license": "BSD",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "lgsvl_msgs",
+    "url": "https://github.com/lgsvl/lgsvl_msgs.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "message_generation",
+      "rosidl_default_generators",
+      "ros_environment"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "lgsvl_bridge"
+    ]
+  },
+  "messages": {
+    "BoundingBox2D": {
+      "description": "",
+      "raw": "float32 x  # x position of the bounding box center in camera image space, in pixels\nfloat32 y  # y position of the bounding box center in camera image space, in pixels\nfloat32 width  # width of the bounding box, in pixels\nfloat32 height  # height of the bounding box, in pixels\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "x position of the bounding box center in camera image space, in pixels",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "y position of the bounding box center in camera image space, in pixels",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width",
+          "comment": "width of the bounding box, in pixels",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height",
+          "comment": "height of the bounding box, in pixels",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoundingBox3D": {
+      "description": "",
+      "raw": "geometry_msgs/Pose position  # 3D position and orientation of the bounding box center in Lidar space, in meters\ngeometry_msgs/Vector3 size  # Size of the bounding box, in meters\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "position",
+          "comment": "3D position and orientation of the bounding box center in Lidar space, in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "size",
+          "comment": "Size of the bounding box, in meters",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CanBusData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 speed_mps\nfloat32 throttle_pct  # 0 to 1\nfloat32 brake_pct     # 0 to 1\nfloat32 steer_pct     # -1 to 1\nbool parking_brake_active\nbool high_beams_active\nbool low_beams_active\nbool hazard_lights_active\nbool fog_lights_active\nbool left_turn_signal_active\nbool right_turn_signal_active\nbool wipers_active\nbool reverse_gear_active\nint8 selected_gear\nbool engine_active\nfloat32 engine_rpm\nfloat64 gps_latitude\nfloat64 gps_longitude\nfloat64 gps_altitude\ngeometry_msgs/Quaternion orientation\ngeometry_msgs/Vector3 linear_velocities\n\nint8 GEAR_NEUTRAL = 0\nint8 GEAR_DRIVE = 1\nint8 GEAR_REVERSE = 2\nint8 GEAR_PARKING = 3\nint8 GEAR_LOW = 4\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed_mps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "throttle_pct",
+          "comment": "0 to 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_pct",
+          "comment": "0 to 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_pct",
+          "comment": "-1 to 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "parking_brake_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "high_beams_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "low_beams_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hazard_lights_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fog_lights_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "left_turn_signal_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right_turn_signal_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wipers_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reverse_gear_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "selected_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "engine_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "engine_rpm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gps_latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gps_longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gps_altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "linear_velocities",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "GEAR_NEUTRAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "GEAR_DRIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "GEAR_REVERSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "GEAR_PARKING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "GEAR_LOW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "DetectedRadarObject": {
+      "description": "",
+      "raw": "int32 id\n\ngeometry_msgs/Vector3 sensor_aim\ngeometry_msgs/Vector3 sensor_right\ngeometry_msgs/Point sensor_position\ngeometry_msgs/Vector3 sensor_velocity\nfloat64 sensor_angle\n\ngeometry_msgs/Point object_position\ngeometry_msgs/Vector3 object_velocity\ngeometry_msgs/Point object_relative_position\ngeometry_msgs/Vector3 object_relative_velocity\ngeometry_msgs/Vector3 object_collider_size\nuint8 object_state\nbool new_detection\n\nuint8 STATE_MOVING = 0\nuint8 STATE_STATIONARY = 1\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "sensor_aim",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "sensor_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "sensor_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "sensor_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "sensor_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "object_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "object_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "object_relative_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "object_relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "object_collider_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "object_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "new_detection",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_MOVING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_STATIONARY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "DetectedRadarObjectArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nlgsvl_msgs/DetectedRadarObject[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "lgsvl_msgs/DetectedRadarObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detection2D": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 id  # The numeric ID of the detected object\nstring label  # car, pedestrian\nfloat32 score  # The confidence score of the detected object in the range [0-1]\nBoundingBox2D bbox  # A 2D bounding box\ngeometry_msgs/Twist velocity  # Linear and angular velocity\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "The numeric ID of the detected object",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "car, pedestrian",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "score",
+          "comment": "The confidence score of the detected object in the range [0-1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox2D",
+          "name": "bbox",
+          "comment": "A 2D bounding box",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "velocity",
+          "comment": "Linear and angular velocity",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detection2DArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nDetection2D[] detections  # A list of 2D detections\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Detection2D[]",
+          "name": "detections",
+          "comment": "A list of 2D detections",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detection3D": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 id  # The numeric ID of the detected object\nstring label  # car, pedestrian\nfloat32 score  # The confidence score of the detected object in the range [0-1]\nBoundingBox3D bbox  # A 3D bounding box\ngeometry_msgs/Twist velocity  # Linear and angular velocity\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "The numeric ID of the detected object",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "car, pedestrian",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "score",
+          "comment": "The confidence score of the detected object in the range [0-1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox3D",
+          "name": "bbox",
+          "comment": "A 3D bounding box",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "velocity",
+          "comment": "Linear and angular velocity",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detection3DArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nDetection3D[] detections  # A list of 3D detections\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Detection3D[]",
+          "name": "detections",
+          "comment": "A list of 3D detections",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Signal": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 id  # The numeric ID of the detected signal\nstring label  # green, yellow, red\nfloat32 score  # The confidence score of the detected signal in the range [0-1]\nBoundingBox3D bbox  # A 3D bounding box\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "The numeric ID of the detected signal",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "green, yellow, red",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "score",
+          "comment": "The confidence score of the detected signal in the range [0-1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox3D",
+          "name": "bbox",
+          "comment": "A 3D bounding box",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SignalArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nSignal[] signals  # A list of traffic signals\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Signal[]",
+          "name": "signals",
+          "comment": "A list of traffic signals",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Ultrasonic": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 minimum_distance\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "minimum_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VehicleControlData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 acceleration_pct  # 0 to 1\nfloat32 braking_pct  # 0 to 1\nfloat32 target_wheel_angle  # radians\nfloat32 target_wheel_angular_rate  # radians / second\nuint8 target_gear\n\nuint8 GEAR_NEUTRAL = 0\nuint8 GEAR_DRIVE = 1\nuint8 GEAR_REVERSE = 2\nuint8 GEAR_PARKING = 3\nuint8 GEAR_LOW = 4\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "acceleration_pct",
+          "comment": "0 to 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "braking_pct",
+          "comment": "0 to 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "target_wheel_angle",
+          "comment": "radians",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "target_wheel_angular_rate",
+          "comment": "radians / second",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "target_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_NEUTRAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_DRIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_REVERSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_PARKING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_LOW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "VehicleOdometry": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 velocity # meters / second \nfloat32 front_wheel_angle # radians\nfloat32 rear_wheel_angle # radians\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity",
+          "comment": "meters / second",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_wheel_angle",
+          "comment": "radians",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_wheel_angle",
+          "comment": "radians",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VehicleStateData": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 blinker_state\nuint8 headlight_state\nuint8 wiper_state\nuint8 current_gear\nuint8 vehicle_mode\nbool hand_brake_active\nbool horn_active\nbool autonomous_mode_active\n\nuint8 BLINKERS_OFF = 0\nuint8 BLINKERS_LEFT = 1\nuint8 BLINKERS_RIGHT = 2\nuint8 BLINKERS_HAZARD = 3\n\nuint8 HEADLIGHTS_OFF = 0\nuint8 HEADLIGHTS_LOW = 1\nuint8 HEADLIGHTS_HIGH = 2\n\nuint8 WIPERS_OFF = 0\nuint8 WIPERS_LOW = 1\nuint8 WIPERS_MED = 2\nuint8 WIPERS_HIGH = 3\n\nuint8 GEAR_NEUTRAL = 0\nuint8 GEAR_DRIVE = 1\nuint8 GEAR_REVERSE = 2\nuint8 GEAR_PARKING = 3\nuint8 GEAR_LOW = 4\n\nuint8 VEHICLE_MODE_COMPLETE_MANUAL = 0\nuint8 VEHICLE_MODE_COMPLETE_AUTO_DRIVE = 1\nuint8 VEHICLE_MODE_AUTO_STEER_ONLY = 2\nuint8 VEHICLE_MODE_AUTO_SPEED_ONLY = 3\nuint8 VEHICLE_MODE_EMERGENCY_MODE = 4\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "blinker_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "headlight_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "wiper_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "current_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vehicle_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hand_brake_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "horn_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "autonomous_mode_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKERS_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKERS_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKERS_RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLINKERS_HAZARD",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEADLIGHTS_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEADLIGHTS_LOW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEADLIGHTS_HIGH",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WIPERS_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WIPERS_LOW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WIPERS_MED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WIPERS_HIGH",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_NEUTRAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_DRIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_REVERSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_PARKING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GEAR_LOW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VEHICLE_MODE_COMPLETE_MANUAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VEHICLE_MODE_COMPLETE_AUTO_DRIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VEHICLE_MODE_AUTO_STEER_ONLY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VEHICLE_MODE_AUTO_SPEED_ONLY",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VEHICLE_MODE_EMERGENCY_MODE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

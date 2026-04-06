@@ -1,0 +1,380 @@
+{
+  "name": "webots_ros2_msgs",
+  "version": "2023.1.2",
+  "description": "Services and Messages of the webots_ros2 packages.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/webots_ros2",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/cyberbotics/webots_ros2/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/cyberbotics/webots_ros2",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "webots_ros2",
+    "url": "https://github.com/cyberbotics/webots_ros2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs",
+      "vision_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime",
+      "geometry_msgs",
+      "std_msgs",
+      "vision_msgs"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "webots_ros2",
+      "webots_ros2_driver",
+      "webots_ros2_epuck"
+    ]
+  },
+  "messages": {
+    "BoolStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nbool data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraRecognitionObject": {
+      "description": "",
+      "raw": "int32 id\ngeometry_msgs/PoseStamped pose\nvision_msgs/BoundingBox2D bbox\nstd_msgs/ColorRGBA[] colors\nstring model\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/BoundingBox2D",
+          "name": "bbox",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "colors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraRecognitionObjects": {
+      "description": "",
+      "raw": "std_msgs/Header header\nCameraRecognitionObject[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CameraRecognitionObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FloatStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PenInkProperties": {
+      "description": "Set the ink properties of a pen device.",
+      "raw": "# Set the ink properties of a pen device.\n# See https://www.cyberbotics.com/doc/reference/pen#wb_pen_set_ink_color for more details\n\n# Ink color in hexadecimal format\nint32 color\n\n# Ink density (similar in context to alpha of rgba)\nfloat32 density\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "density",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StringStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UrdfRobot": {
+      "description": "",
+      "raw": "string name\nstring urdf_path\nstring robot_description\nstring relative_path_prefix\nstring translation\nstring rotation\nbool normal\nbool box_collision\nstring init_pos\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "urdf_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "relative_path_prefix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "normal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "box_collision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "init_pos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "EmitterSendString": {
+      "description": "",
+      "raw": "string value\n---\nint64 result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetBool": {
+      "description": "",
+      "raw": "bool ask\n---\nbool value\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "ask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetString": {
+      "description": "",
+      "raw": "string value\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpawnNodeFromString": {
+      "description": "",
+      "raw": "string data\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpawnUrdfRobot": {
+      "description": "",
+      "raw": "UrdfRobot robot\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "UrdfRobot",
+          "name": "robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

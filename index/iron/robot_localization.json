@@ -1,0 +1,217 @@
+{
+  "name": "robot_localization",
+  "version": "3.7.1",
+  "description": "Provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/robot_localization",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "robot_localization",
+    "url": "https://github.com/cra-ros-pkg/robot_localization.git",
+    "branch": "iron-devel"
+  },
+  "dependencies": {
+    "build": [
+      "libboost-dev",
+      "rclcpp",
+      "rmw_implementation"
+    ],
+    "build_export": [
+      "libboost-dev"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "rclcpp",
+      "rmw_implementation"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "builtin_interfaces",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "launch_ros",
+      "launch_testing_ament_cmake"
+    ],
+    "build_and_runtime": [
+      "eigen",
+      "geographic_msgs",
+      "geometry_msgs",
+      "diagnostic_msgs",
+      "diagnostic_updater",
+      "geographiclib",
+      "message_filters",
+      "nav_msgs",
+      "angles",
+      "sensor_msgs",
+      "std_msgs",
+      "std_srvs",
+      "tf2",
+      "tf2_eigen",
+      "tf2_geometry_msgs",
+      "tf2_ros",
+      "yaml_cpp_vendor"
+    ],
+    "depended_on_by": [
+      "nav2_waypoint_follower"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "FromLL": {
+      "description": "",
+      "raw": "geographic_msgs/GeoPoint ll_point\n---\ngeometry_msgs/Point map_point\n",
+      "request_fields": [
+        {
+          "type": "geographic_msgs/GeoPoint",
+          "name": "ll_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "geometry_msgs/Point",
+          "name": "map_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetState": {
+      "description": "State vector: x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az",
+      "raw": "builtin_interfaces/Time time_stamp\nstring frame_id\n---\n# State vector: x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az\nfloat64[15] state\n\n# Covariance matrix in row-major order\nfloat64[225] covariance\n",
+      "request_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "float64[15]",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[225]",
+          "name": "covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetDatum": {
+      "description": "",
+      "raw": "geographic_msgs/GeoPose geo_pose\n---\n",
+      "request_fields": [
+        {
+          "type": "geographic_msgs/GeoPose",
+          "name": "geo_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetPose": {
+      "description": "",
+      "raw": "geometry_msgs/PoseWithCovarianceStamped pose\n---\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetUTMZone": {
+      "description": "Set an UTM zone navsat_transform should stick to.",
+      "raw": "# Set an UTM zone navsat_transform should stick to.\n# Example: 31U\nstring utm_zone\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "utm_zone",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ToLL": {
+      "description": "",
+      "raw": "geometry_msgs/Point map_point\n---\ngeographic_msgs/GeoPoint ll_point\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Point",
+          "name": "map_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "geographic_msgs/GeoPoint",
+          "name": "ll_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToggleFilterProcessing": {
+      "description": "",
+      "raw": "bool on\n---\nbool status\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

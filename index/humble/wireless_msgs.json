@@ -1,0 +1,222 @@
+{
+  "name": "wireless_msgs",
+  "version": "1.1.5",
+  "description": "Messages for describing a wireless network such as bitrate, essid, and link quality.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "wireless",
+    "url": "https://github.com/clearpathrobotics/wireless.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "wireless_watcher"
+    ]
+  },
+  "messages": {
+    "Connection": {
+      "description": "Fractional link quality number preserved in raw",
+      "raw": "float32 bitrate  # Mb/s\nint16 txpower  # dBm\n\n# Fractional link quality number preserved in raw\n# field, resolved to decimal for link_quality field.\nstring link_quality_raw\nfloat32 link_quality\n\nint16 signal_level  # dBm\nint16 noise_level  # dBm\n\nstring essid\nstring bssid\nfloat64 frequency\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "bitrate",
+          "comment": "Mb/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "txpower",
+          "comment": "dBm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "link_quality_raw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "link_quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "signal_level",
+          "comment": "dBm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "noise_level",
+          "comment": "dBm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "essid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "bssid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Network": {
+      "description": "",
+      "raw": "string type\nstring essid\nstring mac\nstring mode\nstring frequency\nbool encryption\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "essid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mac",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "encryption",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Quality": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint16 messages_received\nuint16 messages_missed\n\nuint32 total_length\nuint32[] message_lengths\n\nfloat32 latency_avg\nfloat32[] latency_measurements\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "messages_received",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "messages_missed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "total_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "message_lengths",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "latency_avg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "latency_measurements",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Scan": {
+      "description": "",
+      "raw": "Network[] networks\n",
+      "fields": [
+        {
+          "type": "Network[]",
+          "name": "networks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

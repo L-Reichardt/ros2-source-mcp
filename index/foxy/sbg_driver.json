@@ -1,0 +1,1609 @@
+{
+  "name": "sbg_driver",
+  "version": "1.0.1",
+  "description": "ROS driver package for communication with the SBG navigation systems.",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/sbg_driver",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "sbg_driver",
+    "url": "https://github.com/SBG-Systems/sbg_ros2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "rclcpp",
+      "sensor_msgs",
+      "std_msgs",
+      "std_srvs",
+      "boost"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "SbgAirData": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up micro s\nuint32 time_stamp\n\n# Airdata sensor status\nSbgAirDataStatus status\n\n# Raw absolute pressure measured by the barometer sensor in Pascals.\nfloat64 pressure_abs\n\n# Altitude computed from barometric altimeter in meters and positive upward.\nfloat64 altitude\n\n# Raw differential pressure measured by the pitot tube in Pascal.\nfloat64 pressure_diff\n\n# True airspeed measured by a pitot tube in m.s^-1 and positive forward.\nfloat64 true_air_speed\n\n# Outside air temperature in °C that could be used to compute true airspeed from differential pressure.\nfloat64 air_temperature\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgAirDataStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pressure_abs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pressure_diff",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "true_air_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "air_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgAirDataStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# Submessage\n\n# True if the time stamp field represents a delay instead of an absolute time stamp.\nbool is_delay_time\n\n# True if the pressure field is filled and valid.\nbool pressure_valid\n\n# True if the barometric altitude field is filled and valid.\nbool altitude_valid\n\n# True if the differential pressure field is filled and valid.\nbool pressure_diff_valid\n\n# True if the true airspeed field is filled and valid.\nbool air_speed_valid\n\n# True if the output air temperature field is filled and valid.\nbool air_temperature_valid\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "is_delay_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "pressure_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "altitude_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "pressure_diff_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "air_speed_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "air_temperature_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgEkfEuler": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n\nstd_msgs/Header header\n\n#  Time since sensor is powered up micro s\nuint32 time_stamp\n\n#  [Roll, Pitch, Yaw (heading)] angle rad \ngeometry_msgs/Vector3 angle\n\n#  [Roll, Pitch, Yaw (heading)] angle accuracy (1 sigma) rad\ngeometry_msgs/Vector3 accuracy\n\n#  Global solution status\nSbgEkfStatus status\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "accuracy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgEkfStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgEkfNav": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n\nstd_msgs/Header header\n\n# Time since sensor is powered up us\nuint32 time_stamp\n\n# Velocity (North, East, Down) direction m/s\ngeometry_msgs/Vector3 velocity\n\n# 1 sigma Velocity in (North, East, Down) direction accuracy m/s\ngeometry_msgs/Vector3 velocity_accuracy\n\n# [Latitude (deg), Longitude (deg), Altitude (above Mean Sea Level in meters)] \ngeometry_msgs/Vector3 position\n\n# Altitude difference between the geoid and the Ellipsoid (WGS-84 Altitude - MSL Altitude)\n# (Height above Ellipsoid = altitude + undulation)\nfloat32 undulation\n\n# Latitude, Longitude, Vertical accuracy m (1 sigma)\ngeometry_msgs/Vector3 position_accuracy\n\n#  Global solution status\nSbgEkfStatus status\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "velocity_accuracy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "position_accuracy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgEkfStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgEkfQuat": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n\nstd_msgs/Header header\n\n#  Time since sensor is powered up us \nuint32 time_stamp\n\n#  Quaternion parameter (ROS order X, Y, Z, W)\ngeometry_msgs/Quaternion quaternion\n\n#  [Roll, Pitch, Yaw (heading)] angle accuracy (1 sigma) rad \ngeometry_msgs/Vector3 accuracy\n\n#  Global solution status\nSbgEkfStatus status\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "quaternion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "accuracy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgEkfStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgEkfStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# Submessage\n\n# Defines the Kalman filter computation mode (see the table 4 below)\n# 0 UNINITIALIZED\tThe Kalman filter is not initialized and the returned data are all invalid.\n# 1 VERTICAL_GYRO\tThe Kalman filter only rely on a vertical reference to compute roll and pitch angles. Heading and navigation data drift freely.\n# 2 AHRS\t\t\tA heading reference is available, the Kalman filter provides full orientation but navigation data drift freely.\n# 3 NAV_VELOCITY\tThe Kalman filter computes orientation and velocity. Position is freely integrated from velocity estimation.\n# 4 NAV_POSITION\tNominal mode, the Kalman filter computes all parameters (attitude, velocity, position). Absolute position is provided. \nuint8 solution_mode \n\n# True if Attitude data is reliable (Roll/Pitch error < 0,5 deg)\nbool attitude_valid\n\n# True if Heading data is reliable (Heading error < 1 deg)\nbool heading_valid\n\n# True if Velocity data is reliable (velocity error < 1.5 m/s)\nbool velocity_valid\n\n# True if Position data is reliable (Position error < 10m)\nbool position_valid\n\n# True if vertical reference is used in solution (data used and valid since 3s)\nbool vert_ref_used\n\n# True if magnetometer is used in solution (data used and valid since 3s)\nbool mag_ref_used\n\n# True if GPS velocity is used in solution (data used and valid since 3s)\nbool gps1_vel_used\n\n# True if GPS Position is used in solution (data used and valid since 3s)\nbool gps1_pos_used\n\n# True if GPS Course is used in solution (data used and valid since 3s)\nbool gps1_course_used\n\n# True if GPS True Heading is used in solution (data used and valid since 3s)\nbool gps1_hdt_used\n\n# True if GPS2 velocity is used in solution (data used and valid since 3s)\nbool gps2_vel_used\n\n# True if GPS2 Position is used in solution (data used and valid since 3s)\nbool gps2_pos_used\n\n# True if GPS2 Course is used in solution (data used and valid since 3s)\nbool gps2_course_used\n\n# True if GPS2 True Heading is used in solution (data used and valid since 3s)\nbool gps2_hdt_used\n\n# True if Odometer is used in solution (data used and valid since 3s)\nbool odo_used\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "solution_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "attitude_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "heading_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "velocity_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "position_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "vert_ref_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mag_ref_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps1_vel_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps1_pos_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps1_course_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps1_hdt_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps2_vel_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps2_pos_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps2_course_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps2_hdt_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "odo_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgEvent": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up us \nuint32 time_stamp\n\n# True if we have received events at a higher rate than 1 kHz.\nbool overflow\n\n# True if at least two events have been received.\nbool offset_0_valid\n\n# True if at least three events have been received.\nbool offset_1_valid\n\n# True if at least four events have been received.\nbool offset_2_valid\n\n# True if five events have been received.\nbool offset_3_valid\n\n\n# Time offset for the second received event. (us)\nuint16 time_offset_0\n\n# Time offset for the third received event. (us)\nuint16 time_offset_1\n\n# Time offset for the fourth received event. (us)\nuint16  time_offset_2\n\n# Time offset for the fifth received event. (us)\nuint16  time_offset_3\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "overflow",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "offset_0_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "offset_1_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "offset_2_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "offset_3_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_offset_0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_offset_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_offset_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_offset_3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgGpsHdt": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up us \nuint32 time_stamp\n\n# GPS True Heading status.\n# 0 SOL_COMPUTED\t\tA valid solution has been computed.\n# 1 INSUFFICIENT_OBS\tNot enough valid SV to compute a solution.\n# 2 INTERNAL_ERROR\t\tAn internal error has occurred.\n# 3 HEIGHT_LIMIT\t\tThe height limit has been exceeded.\nuint16 status\n\n# GPS Time of Week ms\nuint32 tow\n\n# True heading angle (0 to 360 deg).\nfloat32 true_heading\n\n# 1 sigma True heading estimated accuracy (0 to 360 deg).\nfloat32 true_heading_acc\n\n# Pitch angle from the master to the rover\nfloat32 pitch\n\n# 1 sigma pitch estimated accuracy\nfloat32 pitch_acc\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "tow",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "true_heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "true_heading_acc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_acc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgGpsPos": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n#  Time since sensor is powered up us \nuint32 time_stamp\n\n# GPS position fix and status bitmask\nSbgGpsPosStatus status\n\n# GPS Time of Week ms\nuint32 gps_tow\n\n# [Latitude (positive North deg), Longitude (positive East deg), Altitude (Above Mean Sea Level m)]\ngeometry_msgs/Vector3 position\n\n# Altitude difference between the geoid and the Ellipsoid (WGS-84 Altitude - MSL Altitude)\n# (Height above Ellipsoid = altitude + undulation)\nfloat32 undulation\n\n# Latitude, Longitude, Vertical accuracy m (1 sigma)\ngeometry_msgs/Vector3 position_accuracy\n\n# Number of space vehicles used in GNSS solution\nuint8 num_sv_used\n\n# ID of the DGPS/RTK base station in use\nuint16 base_station_id\n\n# Differential data age 0.01 s\nuint16 diff_age\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgGpsPosStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gps_tow",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "position_accuracy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_sv_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "base_station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "diff_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgGpsPosStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# Submessage\n\n\n# The raw GPS position status\n# 0 SOL_COMPUTED\t\tA valid solution has been computed.\n# 1 INSUFFICIENT_OBS \tNot enough valid SV to compute a solution.\n# 2 INTERNAL_ERROR \t\tAn internal error has occurred.\n# 3 HEIGHT_LIMIT \t\tThe height limit has been exceeded.\nuint8 status\n\n# The raw GPS position type\n# 0 NO_SOLUTION\t\tNo valid solution available.\n# 1 UNKNOWN_TYPE\tAn unknown solution type has been computed.\n# 2 SINGLE\t\t\tSingle point solution position.\n# 3 PSRDIFF\t\t\tStandard Pseudorange Differential Solution (DGPS).\n# 4 SBAS\t\t\tSBAS satellite used for differential corrections.\n# 5 OMNISTAR\t\tOmnistar VBS Position (L1 sub-meter).\n# 6 RTK_FLOAT\t\tFloating RTK ambiguity solution (20 cms RTK).\n# 7 RTK_INT\t\t\tInteger RTK ambiguity solution (2 cms RTK).\n# 8 PPP_FLOAT\t\tPrecise Point Positioning with float ambiguities\n# 9 PPP_INT\t\t\tPrecise Point Positioning with fixed ambiguities\n# 10 FIXED\t\t\tFixed location solution position\nuint8 type\n\n# True if GPS L1 is used in the solution\nbool gps_l1_used\n\n# True if GPS L2 is used in the solution\nbool gps_l2_used\n\n# True if GPS L5 is used in the solution\nbool gps_l5_used\n\n# True if GLONASS L1 is used in the solution\nbool glo_l1_used\n\n# True if GLONASS L2 is used in the solution\nbool glo_l2_used\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps_l1_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps_l2_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps_l5_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "glo_l1_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "glo_l2_used",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgGpsRaw": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Raw Data\nuint8[] data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgGpsVel": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n#  Time since sensor is powered up us \nuint32 time_stamp\n\n# GPS velocity fix and status bitmask - \nSbgGpsVelStatus status\n\n# GPS Time of Week ms \nuint32 gps_tow\n\n# Velocity in [North, East, Down] direction m/s \ngeometry_msgs/Vector3 vel\n\n# 1 sgima Accuracy in [North, East, Down] direction m/s \ngeometry_msgs/Vector3 vel_acc\n\n# True direction of motion over ground (0 to 360 deg)\nfloat32 course\n\n# 1 sgima course accuracy (0 to 360 deg).\nfloat32 course_acc\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgGpsVelStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gps_tow",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "vel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "vel_acc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "course",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "course_acc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgGpsVelStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# Submessage\n\n# The raw GPS velocity status\n# 0 SOL_COMPUTED\t\tA valid solution has been computed.\n# 1 INSUFFICIENT_OBS\tNot enough valid SV to compute a solution.\n# 2 INTERNAL_ERROR\t\tAn internal error has occurred.\n# 3 LIMIT\t\t\t\tVelocity limit exceeded.\nuint8 vel_status\n\n# The raw GPS velocity type\n# 0 VEL_NO_SOLUTION\t\tNo valid velocity solution available.\n# 1 VEL_UNKNOWN_TYPE\tAn unknown solution type has been computed.\n# 2 VEL_DOPPLER\t\t\tA Doppler velocity has been computed.\n# 3 VEL_DIFFERENTIAL\tA velocity has been computed between two positions.\nuint8 vel_type",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "vel_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vel_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgImuData": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up us \nuint32 time_stamp\n\n# IMU Status\nSbgImuStatus imu_status\n\n# Filtered Accelerometer - X, Y, Z axis m/s2 \ngeometry_msgs/Vector3 accel\n\n# Filtered Gyroscope - X, Y, Z axis rad/s \ngeometry_msgs/Vector3 gyro\n\n# Internal Temperature degC \nfloat32 temp\n\n# Sculling output - X, Y, Z axis m/s2 \ngeometry_msgs/Vector3 delta_vel\n\n# Coning output - X, Y, Z axis rad/s \ngeometry_msgs/Vector3 delta_angle\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgImuStatus",
+          "name": "imu_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "gyro",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "delta_vel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "delta_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgImuShort": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up us \nuint32 time_stamp\n\n# IMU Status\nSbgImuStatus imu_status\n\n# X, Y, Z delta velocity. Unit is 1048576 LSB for 1 m.s^-2.\ngeometry_msgs/Vector3 delta_velocity\n\n# X, Y, Z delta angle. Unit is 67108864 LSB for 1 rad.s^-1.\ngeometry_msgs/Vector3 delta_angle\n\n# IMU average temperature. Unit is 256 LSB for 1°C.\nint16 temperature",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgImuStatus",
+          "name": "imu_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "delta_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "delta_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgImuStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# Submessage SbgImuData\n\n# True if the communication with the IMU is ok.\nbool imu_com\n\n# True if internal IMU passes Built In Test (Calibration, CPU)\nbool imu_status\n\n# True if accelerometer X passes Built In Test\nbool imu_accel_x\n\n# True if accelerometer Y passes Built In Test\nbool imu_accel_y\n\n# True if accelerometer Z passes Built In Test\nbool imu_accel_z\n\n# True if gyroscope X passes Built In Test\nbool imu_gyro_x\n\n# True if gyroscope Y passes Built In Test\nbool imu_gyro_y\n\n# True if gyroscope Z passes Built In Test\nbool imu_gyro_z\n\n# True if accelerometers are within operating range\nbool imu_accels_in_range\n\n# True if gyroscopes are within operating range\nbool imu_gyros_in_range\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "imu_com",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_accel_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_accel_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_accel_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_gyro_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_gyro_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_gyro_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_accels_in_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_gyros_in_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgMag": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up (us)\nuint32 time_stamp\n\n# Magnetometer output (X, Y, Z)\ngeometry_msgs/Vector3 mag\n\n# Accelerometer output (X, Y, Z) in m/s2\ngeometry_msgs/Vector3 accel\n\n# Status\nSbgMagStatus status\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "mag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgMagStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgMagCalib": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgMagStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# Submessage\n\n# True if the magnetometer X has passed the self test.\nbool mag_x\n\n# True if the magnetometer Y has passed the self test.\nbool mag_y\n\n# True if the magnetometer Z has passed the self test.\nbool mag_z\n\n# True if the accelerometer X has passed the self test.\nbool accel_x\n\n# True if the accelerometer Y has passed the self test.\nbool accel_y\n\n# True if the accelerometer Z has passed the self test.\nbool accel_z\n\n# True if magnetometer is not saturated\nbool mags_in_range\n\n# True if accelerometer is not saturated\nbool accels_in_range\n\n# True if magnetometer seems to be calibrated\nbool calibration\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "mag_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mag_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mag_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "accel_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "accel_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "accel_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mags_in_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "accels_in_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgOdoVel": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up us \nuint32 time_stamp\n\n# Real Measurement\n# True if this log comes from a real pulse measurement\n# False if it comes from a timeout\nbool status\n\n# Velocity in odometer direction (m/s)\nfloat32 vel\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgShipMotion": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up us \nuint32 time_stamp\n\n# Main heave period in seconds. s float 4 4\nuint16 heave_period\n\n# [Surge, Sway, Heave (positive down)] at main location (in m)\n# Note : Surge & Sway are not fulfilled\ngeometry_msgs/Vector3 ship_motion\n\n# [Longitudinal, Lateral, Vertical (positive down)] acceleration (in m/s2)\ngeometry_msgs/Vector3 acceleration\n\n# [Longitudinal, Lateral, Vertical (positive down)] velocity (in m/s)\ngeometry_msgs/Vector3 velocity\n\n# Ship motion output status\nSbgShipMotionStatus status\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "heave_period",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "ship_motion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgShipMotionStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgShipMotionStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# SbgShipMotionStatus\n\n# True after heave convergence time.\n# False in following conditions:\n# - Turn occurred and no velocity aiding is available\n# - Heave reached higher/lower limits\n# - If a step is detected and filter has to re-converge\n# - If internal failure\nbool heave_valid\n\n# True if heave output is compensated for transient accelerations\nbool heave_vel_aided\n\n# True if the swell period is provided in this output\nbool period_available\n\n# True if the period returned is assumed to be valid or not.\nbool period_valid",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "heave_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "heave_vel_aided",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "period_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "period_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n\nstd_msgs/Header header\n\n# Time since sensor is powered up (in us)\nuint32 time_stamp\n\n# General status bitmask and enums\nSbgStatusGeneral status_general\n\n# Communication status bitmask and enums.\nSbgStatusCom status_com\n\n# Aiding equipments status bitmask and enums.\nSbgStatusAiding status_aiding\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgStatusGeneral",
+          "name": "status_general",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgStatusCom",
+          "name": "status_com",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgStatusAiding",
+          "name": "status_aiding",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgStatusAiding": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# SbgStatus submessage\n\n# AIDING_GPS1_POS_RECV true when valid GPS 1 position data is received\nbool gps1_pos_recv\n\n# AIDING_GPS1_VEL_RECV true when valid GPS 1 velocity data is received\nbool gps1_vel_recv\n\n# AIDING_GPS1_HDT_RECV true when valid GPS 1 true heading data is received\nbool gps1_hdt_recv\n\n# AIDING_GPS1_UTC_RECV true when valid GPS 1 UTC time data is received\nbool gps1_utc_recv\n\n# AIDING_MAG_RECV true when valid Magnetometer data is received\nbool mag_recv\n\n# AIDING_ODO_RECV true when Odometer pulse is received\nbool odo_recv\n\n# AIDING_DVL_RECV true when valid DVL data is received\nbool dvl_recv\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "gps1_pos_recv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps1_vel_recv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps1_hdt_recv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps1_utc_recv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mag_recv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "odo_recv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dvl_recv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgStatusCom": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# SbgStatus submessage\n\n# PORT A: False in case of low level communication error.\nbool port_a\n\n# PORT B: False in case of low level communication error.\nbool port_b\n\n# PORT C: False in case of low level communication error.\nbool port_c\n\n# PORT D: False in case of low level communication error.\nbool port_d\n\n# PORT E: False in case of low level communication error.\nbool port_e\n\n# PORT A RX: False in case of saturation on PORT A input\nbool port_a_rx\n\n# PORT A TX: False in case of saturation on PORT A output\nbool port_a_tx\n\n# PORT B RX: False in case of saturation on PORT B input\nbool port_b_rx\n\n# PORT B TX: False in case of saturation on PORT B output\nbool port_b_tx\n\n# PORT C RX: False in case of saturation on PORT C input\nbool port_c_rx\n\n# PORT C TX: False in case of saturation on PORT C output\nbool port_c_tx\n\n# PORT D RX: False in case of saturation on PORT D input\nbool port_d_rx\n\n# PORT D TX: False in case of saturation on PORT D output\nbool port_d_tx\n\n# PORT E RX: False in case of saturation on PORT E input\nbool port_e_rx\n\n# PORT E TX: False in case of saturation on PORT E output\nbool port_e_tx\n\n# CAN RX: False in case of saturation on CAN Bus output buffer\nbool can_rx\n\n# CAN TX: False in case of saturation on CAN Bus input buffer\nbool can_tx\n\n# CAN BUS\n# 0 CAN BUS OFF \t\tBus OFF operation due to too much errors.\n# 1 CAN BUS TX_RX_ERR \tTransmit or received error.\n# 2 CAN BUS OK \t\t\tThe CAN bus is working correctly.\n# 3 CAN BUS ERROR \t\tA general error has occurred on the CAN bus.\nuint8 can_status",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "port_a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_e",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_a_rx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_a_tx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_b_rx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_b_tx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_c_rx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_c_tx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_d_rx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_d_tx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_e_rx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "port_e_tx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "can_rx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "can_tx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "can_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgStatusGeneral": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n# SbgStatus submessage\n\n# General main power\n# True when main power supply is OK.\nbool main_power\n\n# General imu power\n# True when IMU power supply is OK.\nbool imu_power\n\n# General gps power\n# Set to True when GPS power supply is OK.\nbool gps_power\n\n# General Settings\n# True if settings were correctly loaded\nbool settings\n\n# General Temperature\n# True when temperature is within specified limits.\nbool temperature",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "main_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "imu_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "settings",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgUtcTime": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\nstd_msgs/Header header\n\n# Time since sensor is powered up (us)\nuint32 time_stamp\n\n# General UTC time and clock sync status\nSbgUtcTimeStatus clock_status\n\n# Year\nuint16 year\n\n# Month in Year [1 ... 12]\nuint8 month\n\n# Day in Month [1 ... 31]\nuint8 day\n\n# Hour in day [0 ... 23]\nuint8 hour\n\n# Minute in hour [0 ... 59]\nuint8 min\n\n# Second in minute [0 ... 60], Note 60 is when a leap second is added.\nuint8 sec\n\n# Nanosecond of second.\nuint32 nanosec\n\n# GPS Time of week (ms)\nuint32 gps_tow\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SbgUtcTimeStatus",
+          "name": "clock_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "year",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "month",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "day",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "hour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sec",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "nanosec",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gps_tow",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SbgUtcTimeStatus": {
+      "description": "SBG Ellipse Messages",
+      "raw": "# SBG Ellipse Messages\n\n# True when a clock input can be used to synchronize the internal clock.\nbool clock_stable\n\n# Define the internal clock estimation status\n# 0 An error has occurred on the clock estimation.\n# 1 The clock is only based on the internal crystal.\n# 2 A PPS has been detected and the clock is converging to it.\n# 3 The clock has converged to the PPS and is within 500ns.\nuint8 clock_status\n\n# True if UTC time is synchronized with a PPS\nbool clock_utc_sync\n\n# UTC validity status\n# 0 The UTC time is not known, we are just propagating the UTC time internally.\n# 1 We have received valid UTC time information but we don't have the leap seconds information.\n# 2 We have received valid UTC time data with valid leap seconds.\nuint8 clock_utc_status",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "clock_stable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "clock_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clock_utc_sync",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "clock_utc_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

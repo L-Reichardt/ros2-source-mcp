@@ -1,0 +1,50 @@
+{
+  "name": "kobuki_ftdi",
+  "version": "1.0.0",
+  "description": "Utilities for flashing and enabling Kobuki's USB connection.\n\t    This package contains tools for flashing the Kobuki's FTDI chip (usually done at the factory).\n\t    The special firmware for the FTDI chip (USB to serial converter) enables it to appear as\n\t    /dev/kobuki on the user's PC.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/yujinrobot/kobuki_core/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/yujinrobot/kobuki_core",
+      "type": "repository"
+    },
+    {
+      "uri": "http://ros.org/wiki/kobuki_ftdi",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "kobuki_ftdi",
+    "url": "https://github.com/kobuki-base/kobuki_ftdi.git",
+    "branch": "release/1.0.x"
+  },
+  "dependencies": {
+    "build": [
+      "ecl_build",
+      "ecl_command_line",
+      "ftdi-eeprom",
+      "libusb-dev",
+      "libftdi-dev",
+      "pkg-config"
+    ],
+    "buildtool": [
+      "ament_cmake_ros"
+    ],
+    "runtime": [
+      "ecl_command_line",
+      "ftdi-eeprom",
+      "libusb-dev",
+      "libftdi-dev"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

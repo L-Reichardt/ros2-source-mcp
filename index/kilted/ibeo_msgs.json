@@ -1,0 +1,4203 @@
+{
+  "name": "ibeo_msgs",
+  "version": "4.0.0",
+  "description": "The ibeo_msgs package",
+  "license": "MIT",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/kartech_linear_actuator_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/astuff/astuff_sensor_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/astuff/astuff_sensor_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "astuff_sensor_msgs",
+    "url": "https://github.com/astuff/astuff_sensor_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "message_generation",
+      "rosidl_default_generators",
+      "ros_environment"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "CameraImage": {
+      "description": "image_format values",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nuint16 image_format\nuint32 us_since_power_on\nbuiltin_interfaces/Time timestamp\nuint8 device_id\nibeo_msgs/MountingPositionF mounting_position\nfloat64 horizontal_opening_angle\nfloat64 vertical_opening_angle\nuint16 image_width\nuint16 image_height\nuint32 compressed_size\nuint8[] image_buffer\n\n# image_format values\nuint16 JPEG=0\nuint16 MJPEG=1\nuint16 GRAY8=2\nuint16 YUV420=3\nuint16 YUV422=4\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "image_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "us_since_power_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/MountingPositionF",
+          "name": "mounting_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "horizontal_opening_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "vertical_opening_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "image_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "image_height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "compressed_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "image_buffer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "JPEG",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "MJPEG",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "GRAY8",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "YUV420",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "YUV422",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "ContourPointSigma": {
+      "description": "",
+      "raw": "int16 x\nint16 y\nuint8 x_sigma\nuint8 y_sigma\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "x_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "y_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeviceStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nuint8 scanner_type\nfloat32 sensor_temperature\nfloat32 frequency\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "scanner_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sensor_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ErrorWarning": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbool err_internal_error\nbool err_motor_1_fault\nbool err_buffer_error_xmt_incomplete\nbool err_buffer_error_overflow\nbool err_apd_over_temperature\nbool err_apd_under_temperature\nbool err_apd_temperature_sensor_defect\nbool err_motor_2_fault\nbool err_motor_3_fault\nbool err_motor_4_fault\nbool err_motor_5_fault\nbool err_int_no_scan_data\nbool err_int_communication_error\nbool err_int_incorrect_scan_data\nbool err_config_fpga_not_configurable\nbool err_config_incorrect_config_data\nbool err_config_contains_incorrect_params\nbool err_timeout_data_processing\nbool err_timeout_env_model_computation_reset\nbool wrn_int_communication_error\nbool wrn_low_temperature\nbool wrn_high_temperature\nbool wrn_int_motor_1\nbool wrn_sync_error\nbool wrn_laser_1_start_pulse_missing\nbool wrn_laser_2_start_pulse_missing\nbool wrn_can_interface_blocked\nbool wrn_eth_interface_blocked\nbool wrn_incorrect_can_data_rcvd\nbool wrn_int_incorrect_scan_data\nbool wrn_eth_unkwn_incomplete_data\nbool wrn_incorrect_or_forbidden_cmd_rcvd\nbool wrn_memory_access_failure\nbool wrn_int_overflow\nbool wrn_ego_motion_data_missing\nbool wrn_incorrect_mounting_params\nbool wrn_no_obj_comp_due_to_scan_freq\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_internal_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_motor_1_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_buffer_error_xmt_incomplete",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_buffer_error_overflow",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_apd_over_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_apd_under_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_apd_temperature_sensor_defect",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_motor_2_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_motor_3_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_motor_4_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_motor_5_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_int_no_scan_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_int_communication_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_int_incorrect_scan_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_config_fpga_not_configurable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_config_incorrect_config_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_config_contains_incorrect_params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_timeout_data_processing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "err_timeout_env_model_computation_reset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_int_communication_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_low_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_high_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_int_motor_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_sync_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_laser_1_start_pulse_missing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_laser_2_start_pulse_missing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_can_interface_blocked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_eth_interface_blocked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_incorrect_can_data_rcvd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_int_incorrect_scan_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_eth_unkwn_incomplete_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_incorrect_or_forbidden_cmd_rcvd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_memory_access_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_int_overflow",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_ego_motion_data_missing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_incorrect_mounting_params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wrn_no_obj_comp_due_to_scan_freq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HostVehicleState2805": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time timestamp\nuint16 scan_number\nuint16 error_flags\nfloat64 longitudinal_velocity\nfloat64 steering_wheel_angle\nfloat64 front_wheel_angle\nint32 x_position\nint32 y_position\nint16 course_angle\nuint16 time_difference\nint16 x_difference\nint16 y_difference\nint16 heading_difference\nint16 current_yaw_rate\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "error_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitudinal_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "steering_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "front_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "x_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "y_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "course_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_difference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "x_difference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "y_difference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "heading_difference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "current_yaw_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HostVehicleState2806": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time timestamp\nint32 distance_x\nint32 distance_y\nfloat32 course_angle\nfloat32 longitudinal_velocity\nfloat32 yaw_rate\nfloat32 steering_wheel_angle\nfloat32 cross_acceleration\nfloat32 front_wheel_angle\nfloat32 vehicle_width\nfloat32 vehicle_front_to_front_axle\nfloat32 rear_axle_to_front_axle\nfloat32 rear_axle_to_vehicle_rear\nfloat32 steer_ratio_poly_0\nfloat32 steer_ratio_poly_1\nfloat32 steer_ratio_poly_2\nfloat32 steer_ratio_poly_3\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "distance_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "distance_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "course_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitudinal_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cross_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_front_to_front_axle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_axle_to_front_axle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_axle_to_vehicle_rear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_ratio_poly_0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_ratio_poly_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_ratio_poly_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_ratio_poly_3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HostVehicleState2807": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time timestamp\nint32 distance_x\nint32 distance_y\nfloat32 course_angle\nfloat32 longitudinal_velocity\nfloat32 yaw_rate\nfloat32 steering_wheel_angle\nfloat32 cross_acceleration\nfloat32 front_wheel_angle\nfloat32 vehicle_width\nfloat32 vehicle_front_to_front_axle\nfloat32 rear_axle_to_front_axle\nfloat32 rear_axle_to_vehicle_rear\nfloat32 steer_ratio_poly_0\nfloat32 steer_ratio_poly_1\nfloat32 steer_ratio_poly_2\nfloat32 steer_ratio_poly_3\nfloat32 longitudinal_acceleration\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "distance_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "distance_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "course_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitudinal_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cross_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vehicle_front_to_front_axle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_axle_to_front_axle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_axle_to_vehicle_rear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_ratio_poly_0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_ratio_poly_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_ratio_poly_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer_ratio_poly_3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitudinal_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IbeoDataHeader": {
+      "description": "",
+      "raw": "uint32 previous_message_size\nuint32 message_size\nuint8 device_id\nuint16 data_type_id\nbuiltin_interfaces/Time stamp\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "previous_message_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "message_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "data_type_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MountingPositionF": {
+      "description": "",
+      "raw": "float32 yaw_angle\nfloat32 pitch_angle\nfloat32 roll_angle\nfloat32 x_position\nfloat32 y_position\nfloat32 z_position\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "yaw_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Object2221": {
+      "description": "classification values",
+      "raw": "uint16 id\nuint16 age\nuint16 prediction_age\nuint16 relative_timestamp\nibeo_msgs/Point2Di reference_point\nibeo_msgs/Point2Di reference_point_sigma\nibeo_msgs/Point2Di closest_point\nibeo_msgs/Point2Di bounding_box_center\nuint16 bounding_box_width\nuint16 bounding_box_length\nibeo_msgs/Point2Di object_box_center\nibeo_msgs/Size2D object_box_size\nint16 object_box_orientation\nibeo_msgs/Point2Di absolute_velocity\nibeo_msgs/Size2D absolute_velocity_sigma\nibeo_msgs/Point2Di relative_velocity\nuint8 classification\nuint16 classification_age\nuint16 classification_certainty\nuint16 number_of_contour_points\nibeo_msgs/Point2Di[] contour_point_list\n\n# classification values\nuint8 UNCLASSIFIED=0\nuint8 UNKNOWN_SMALL=1\nuint8 UNKNOWN_BIG=2\nuint8 PEDESTRIAN=3\nuint8 BIKE=4\nuint8 CAR=5\nuint8 TRUCK=6\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "prediction_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "relative_timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "reference_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "reference_point_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "closest_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "bounding_box_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "bounding_box_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "bounding_box_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "object_box_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Size2D",
+          "name": "object_box_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "object_box_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "absolute_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Size2D",
+          "name": "absolute_velocity_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "classification_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "classification_certainty",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_contour_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di[]",
+          "name": "contour_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNCLASSIFIED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_SMALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_BIG",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEDESTRIAN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BIKE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CAR",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRUCK",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        }
+      ]
+    },
+    "Object2225": {
+      "description": "classification values",
+      "raw": "uint16 id\nuint32 age\nbuiltin_interfaces/Time timestamp\nuint16 hidden_status_age\nuint8 classification\nuint8 classification_certainty\nuint32 classification_age\nibeo_msgs/Point2Df bounding_box_center\nibeo_msgs/Point2Df bounding_box_size\nibeo_msgs/Point2Df object_box_center\nibeo_msgs/Point2Df object_box_center_sigma\nibeo_msgs/Point2Df object_box_size\nfloat32 yaw_angle\nibeo_msgs/Point2Df relative_velocity\nibeo_msgs/Point2Df relative_velocity_sigma\nibeo_msgs/Point2Df absolute_velocity\nibeo_msgs/Point2Df absolute_velocity_sigma\nuint8 number_of_contour_points\nuint8 closest_point_index\nibeo_msgs/Point2Df[] contour_point_list\n\n# classification values\nuint8 UNCLASSIFIED=0\nuint8 UNKNOWN_SMALL=1\nuint8 UNKNOWN_BIG=2\nuint8 PEDESTRIAN=3\nuint8 BIKE=4\nuint8 CAR=5\nuint8 TRUCK=6\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "hidden_status_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification_certainty",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "classification_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "bounding_box_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "bounding_box_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "object_box_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "object_box_center_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "object_box_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "relative_velocity_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "absolute_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "absolute_velocity_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "number_of_contour_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "closest_point_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df[]",
+          "name": "contour_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNCLASSIFIED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_SMALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_BIG",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEDESTRIAN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BIKE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CAR",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRUCK",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        }
+      ]
+    },
+    "Object2270": {
+      "description": "reference_point_location values",
+      "raw": "uint16 id\nuint16 age\nuint16 prediction_age\nuint16 relative_moment_of_measurement\nuint8 reference_point_location\nint16 reference_point_position_x\nint16 reference_point_position_y\nuint16 reference_point_position_sigma_x\nuint16 reference_point_position_sigma_y\nint16 contour_points_cog_x\nint16 contour_points_cog_y\nuint16 object_box_length\nuint16 object_box_width\nint16 object_box_orientation_angle\nint16 object_box_orientation_angle_sigma\nint16 absolute_velocity_x\nint16 absolute_velocity_y\nuint16 absolute_velocity_sigma_x\nuint16 absolute_velocity_sigma_y\nint16 relative_velocity_x\nint16 relative_velocity_y\nuint16 relative_velocity_sigma_x\nuint16 relative_velocity_sigma_y\nuint8 classification\nuint8 tracking_model\nbool mobile_detected\nbool track_valid\nuint16 classification_age\nuint16 classification_confidence\nuint16 number_of_contour_points\nibeo_msgs/Point2Di[] contour_point_list\n\n# reference_point_location values\nuint8 CENTER_OF_GRAVITY=0\nuint8 TOP_FRONT_LEFT_CORNER=1\nuint8 TOP_FRONT_RIGHT_CORNER=2\nuint8 BOTTOM_REAR_RIGHT_CORNER=3\nuint8 BOTTOM_REAR_LEFT_CORNER=4\nuint8 CENTER_OF_TOP_FRONT_EDGE=5\nuint8 CENTER_OF_RIGHT_EDGE=6\nuint8 CENTER_OF_BOTTOM_REAR_EDGE=7\nuint8 CENTER_OF_LEFT_EDGE=8\nuint8 BOX_CENTER=9\nuint8 INVALID=255\n\n# classification values\nuint8 UNCLASSIFIED=0\nuint8 UNKNOWN_SMALL=1\nuint8 UNKNOWN_BIG=2\nuint8 PEDESTRIAN=3\nuint8 BIKE=4\nuint8 CAR=5\nuint8 TRUCK=6\nuint8 OVER_DRIVABLE=10\nuint8 UNDER_DRIVABLE=11\n\n# tracking_model values\nuint8 DYNAMIC_MODEL=0\nuint8 STATIC_MODEL=1\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "prediction_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "relative_moment_of_measurement",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "reference_point_location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "reference_point_position_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "reference_point_position_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "reference_point_position_sigma_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "reference_point_position_sigma_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "contour_points_cog_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "contour_points_cog_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "object_box_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "object_box_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "object_box_orientation_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "object_box_orientation_angle_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "absolute_velocity_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "absolute_velocity_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "absolute_velocity_sigma_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "absolute_velocity_sigma_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "relative_velocity_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "relative_velocity_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "relative_velocity_sigma_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "relative_velocity_sigma_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "tracking_model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mobile_detected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "track_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "classification_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "classification_confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_contour_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di[]",
+          "name": "contour_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_GRAVITY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TOP_FRONT_LEFT_CORNER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TOP_FRONT_RIGHT_CORNER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOTTOM_REAR_RIGHT_CORNER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOTTOM_REAR_LEFT_CORNER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_TOP_FRONT_EDGE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_RIGHT_EDGE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_BOTTOM_REAR_EDGE",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_LEFT_EDGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOX_CENTER",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNCLASSIFIED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_SMALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_BIG",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEDESTRIAN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BIKE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CAR",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRUCK",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVER_DRIVABLE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNDER_DRIVABLE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DYNAMIC_MODEL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATIC_MODEL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "Object2271": {
+      "description": "",
+      "raw": "uint32 id\nbool tracked_properties_available\nbool untracked_properties_available\nibeo_msgs/TrackedProperties tracked_properties\nibeo_msgs/UntrackedProperties untracked_properties\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "tracked_properties_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "untracked_properties_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/TrackedProperties",
+          "name": "tracked_properties",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/UntrackedProperties",
+          "name": "untracked_properties",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Object2280": {
+      "description": "tracking_model values",
+      "raw": "uint16 id\nuint8 tracking_model\nbool mobility_of_dyn_object_detected\nbool motion_model_validated\nuint32 object_age\nbuiltin_interfaces/Time timestamp\nuint16 object_prediction_age\nuint8 classification\nuint8 classification_certainty\nuint32 classification_age\nibeo_msgs/Point2Df object_box_center\nibeo_msgs/Point2Df object_box_center_sigma\nibeo_msgs/Point2Df object_box_size\nfloat32 object_box_orientation_angle\nfloat32 object_box_orientation_angle_sigma\nibeo_msgs/Point2Df relative_velocity\nibeo_msgs/Point2Df relative_velocity_sigma\nibeo_msgs/Point2Df absolute_velocity\nibeo_msgs/Point2Df absolute_velocity_sigma\nuint8 number_of_contour_points\nuint8 closest_point_index\nuint16 reference_point_location\nibeo_msgs/Point2Df reference_point_coordinate\nibeo_msgs/Point2Df reference_point_coordinate_sigma\nfloat32 reference_point_position_correction_coefficient\nuint16 object_priority\nfloat32 object_existence_measurement\nibeo_msgs/Point2Df[] contour_point_list\n\n# tracking_model values\nuint8 DYNAMIC_MODEL=0\nuint8 STATIC_MODEL=1\n\n# classification values\nuint8 UNCLASSIFIED=0\nuint8 UNKNOWN_SMALL=1\nuint8 UNKNOWN_BIG=2\nuint8 PEDESTRIAN=3\nuint8 BIKE=4\nuint8 CAR=5\nuint8 TRUCK=6\nuint8 UNDER_DRIVABLE=12\nuint8 OVER_DRIVABLE=13\n\n# reference_point_location values\nuint16 CENTER_OF_GRAVITY=0\nuint16 FRONT_LEFT=1\nuint16 FRONT_RIGHT=2\nuint16 REAR_RIGHT=3\nuint16 REAR_LEFT=4\nuint16 FRONT_CENTER=5\nuint16 RIGHT_CENTER=6\nuint16 REAR_CENTER=7\nuint16 LEFT_CENTER=8\nuint16 OBJECT_CENTER=9\nuint16 UNKNOWN=255\n\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "tracking_model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mobility_of_dyn_object_detected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "motion_model_validated",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "object_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "object_prediction_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification_certainty",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "classification_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "object_box_center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "object_box_center_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "object_box_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "object_box_orientation_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "object_box_orientation_angle_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "relative_velocity_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "absolute_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "absolute_velocity_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "number_of_contour_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "closest_point_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "reference_point_location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "reference_point_coordinate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df",
+          "name": "reference_point_coordinate_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "reference_point_position_correction_coefficient",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "object_priority",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "object_existence_measurement",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Df[]",
+          "name": "contour_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "DYNAMIC_MODEL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATIC_MODEL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNCLASSIFIED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_SMALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_BIG",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEDESTRIAN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BIKE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CAR",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRUCK",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNDER_DRIVABLE",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVER_DRIVABLE",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CENTER_OF_GRAVITY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "FRONT_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "FRONT_RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "REAR_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "REAR_LEFT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "FRONT_CENTER",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "RIGHT_CENTER",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "REAR_CENTER",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "LEFT_CENTER",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OBJECT_CENTER",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        }
+      ]
+    },
+    "ObjectData2221": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time scan_start_timestamp\nuint16 number_of_objects\nibeo_msgs/Object2221[] object_list\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_start_timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Object2221[]",
+          "name": "object_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectData2225": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time mid_scan_timestamp\nuint16 number_of_objects\nibeo_msgs/Object2225[] object_list\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "mid_scan_timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Object2225[]",
+          "name": "object_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectData2270": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time start_scan_timestamp\nuint16 object_list_number\nuint16 number_of_objects\nibeo_msgs/Object2270[] object_list\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_scan_timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "object_list_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Object2270[]",
+          "name": "object_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectData2271": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time start_scan_timestamp\nuint16 scan_number\nuint16 number_of_objects\nibeo_msgs/Object2271[] object_list\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_scan_timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Object2271[]",
+          "name": "object_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectData2280": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time mid_scan_timestamp\nuint16 number_of_objects\nibeo_msgs/Object2280[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "mid_scan_timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Object2280[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point2Df": {
+      "description": "",
+      "raw": "float32 x\nfloat32 y\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point2Di": {
+      "description": "",
+      "raw": "int16 x\nint16 y\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point2Dui": {
+      "description": "",
+      "raw": "uint16 x\nuint16 y\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ResolutionInfo": {
+      "description": "",
+      "raw": "float32 resolution_start_angle\nfloat32 resolution\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "resolution_start_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanData2202": {
+      "description": "mirror_side values",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nuint16 scan_number\nuint16 scanner_status\nuint16 sync_phase_offset\nbuiltin_interfaces/Time scan_start_time\nbuiltin_interfaces/Time scan_end_time\nuint16 angle_ticks_per_rotation\nint16 start_angle_ticks\nint16 end_angle_ticks\nuint16 scan_points_count\nint16 mounting_yaw_angle_ticks\nint16 mounting_pitch_angle_ticks\nint16 mounting_roll_angle_ticks\nint16 mounting_position_x\nint16 mounting_position_y\nint16 mounting_position_z\nbool ground_labeled\nbool dirt_labeled\nbool rain_labeled\nuint8 mirror_side\nibeo_msgs/ScanPoint2202[] scan_point_list\n\n# mirror_side values\nuint8 FRONT=0\nuint8 REAR=1\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scanner_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sync_phase_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_end_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "angle_ticks_per_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "start_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "end_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_points_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_yaw_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_pitch_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_roll_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_position_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_position_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_position_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ground_labeled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dirt_labeled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rain_labeled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mirror_side",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ScanPoint2202[]",
+          "name": "scan_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FRONT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "ScanData2204": {
+      "description": "mirror_side values",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nuint64 scan_start_time\nuint32 scan_end_time_offset\nbool ground_labeled\nbool dirt_labeled\nbool rain_labeled\nbool fused_scan\nuint8 mirror_side\nuint8 coordinate_system\nuint16 scan_number\nuint16 scan_points\nuint16 number_of_scanner_infos\nibeo_msgs/ScannerInfo2204[] scanner_info_list\nibeo_msgs/ScanPoint2204[] scan_point_list\n\n# mirror_side values\nuint8 FRONT=0\nuint8 REAR=1\n\n# coordinate_system values\nuint8 SCANNER=0\nuint8 VEHICLE=1\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "scan_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "scan_end_time_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ground_labeled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dirt_labeled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rain_labeled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fused_scan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mirror_side",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "coordinate_system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_scanner_infos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ScannerInfo2204[]",
+          "name": "scanner_info_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ScanPoint2204[]",
+          "name": "scan_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FRONT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCANNER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VEHICLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "ScanData2205": {
+      "description": "mirror_side values",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nbuiltin_interfaces/Time scan_start_time\nuint8 scan_end_time_offset\nbool fused_scan\nuint8 mirror_side\nuint8 coordinate_system\nuint16 scan_number\nuint16 scan_points\nuint8 number_of_scanner_infos\nibeo_msgs/ScannerInfo2205[] scanner_info_list\nibeo_msgs/ScanPoint2205[] scan_point_list\n\n# mirror_side values\nuint8 FRONT=0\nuint8 REAR=1\n\n# coordinate_system values\nuint8 SCANNER=0\nuint8 VEHICLE=1\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "scan_end_time_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fused_scan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mirror_side",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "coordinate_system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "number_of_scanner_infos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ScannerInfo2205[]",
+          "name": "scanner_info_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ScanPoint2205[]",
+          "name": "scan_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FRONT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCANNER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VEHICLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "ScanData2208": {
+      "description": "scanner_type values",
+      "raw": "std_msgs/Header header\n\nibeo_msgs/IbeoDataHeader ibeo_header\nuint16 scan_number\nuint16 scanner_type\nbool motor_on\nbool laser_on\nbool frequency_locked\nuint8 motor_rotating_direction\nuint16 angle_ticks_per_rotation\nuint32 scan_flags\nint16 mounting_yaw_angle_ticks\nint16 mounting_pitch_angle_ticks\nint16 mounting_roll_angle_ticks\nint16 mounting_position_x\nint16 mounting_position_y\nint16 mounting_position_z\nuint8 device_id\nbuiltin_interfaces/Time scan_start_time\nbuiltin_interfaces/Time scan_end_time\nint16 start_angle_ticks\nint16 end_angle_ticks\nuint8 mirror_side\nint16 mirror_tilt\nibeo_msgs/ScanPoint2208[] scan_point_list\n\n# scanner_type values\nuint16 SCALA_B2=11520\n\n# motor_rotating_direction values\nuint8 CLOCKWISE=0\nuint8 COUNTER_CLOCKWISE=1\n\n# mirror_side values\nuint8 FRONT_MIRROR=0\nuint8 REAR_MIRROR=1\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/IbeoDataHeader",
+          "name": "ibeo_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scanner_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "motor_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "laser_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "frequency_locked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "motor_rotating_direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "angle_ticks_per_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "scan_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_yaw_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_pitch_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_roll_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_position_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_position_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mounting_position_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_end_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "start_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "end_angle_ticks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mirror_side",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "mirror_tilt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ScanPoint2208[]",
+          "name": "scan_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "SCALA_B2",
+          "comment": "",
+          "default": "11520",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLOCKWISE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COUNTER_CLOCKWISE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FRONT_MIRROR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REAR_MIRROR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "ScanPoint2202": {
+      "description": "",
+      "raw": "uint8 layer\nuint8 echo\nbool transparent_point\nbool clutter_atmospheric\nbool ground\nbool dirt\nint16 horizontal_angle\nuint16 radial_distance\nuint16 echo_pulse_width\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "layer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "echo",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "transparent_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clutter_atmospheric",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ground",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dirt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "horizontal_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "radial_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "echo_pulse_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanPoint2204": {
+      "description": "",
+      "raw": "float32 x_position\nfloat32 y_position\nfloat32 z_position\nfloat32 echo_width\nuint8 device_id\nuint8 layer\nuint8 echo\nuint32 time_offset\nbool ground\nbool dirt\nbool precipitation\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "echo_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "layer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "echo",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ground",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dirt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "precipitation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanPoint2205": {
+      "description": "",
+      "raw": "float32 x_position\nfloat32 y_position\nfloat32 z_position\nfloat32 echo_width\nuint8 device_id\nuint8 layer\nuint8 echo\nuint32 time_offset\nbool ground\nbool dirt\nbool precipitation\nbool transparent\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "echo_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "layer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "echo",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "time_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ground",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dirt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "precipitation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "transparent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanPoint2208": {
+      "description": "",
+      "raw": "uint8 echo\nuint8 layer\nbool transparent_point\nbool clutter_atmospheric\nbool ground\nbool dirt\nint16 horizontal_angle\nuint16 radial_distance\nuint16 echo_pulse_width\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "echo",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "layer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "transparent_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clutter_atmospheric",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ground",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dirt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "horizontal_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "radial_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "echo_pulse_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScannerInfo2204": {
+      "description": "scanner_type values",
+      "raw": "uint8 device_id\nuint8 scanner_type\nuint16 scan_number\nfloat32 start_angle\nfloat32 end_angle\nfloat32 yaw_angle\nfloat32 pitch_angle\nfloat32 roll_angle\nfloat32 offset_x\nfloat32 offset_y\nfloat32 offset_z\n\n# scanner_type values\nuint8 ALASCA_XT=3\nuint8 LUX_ECU=4\nuint8 LUX_PROTOTYPE=5\nuint8 LUX=6\nuint8 SCALA_B1=96\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "scanner_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "start_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "end_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "offset_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "offset_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "offset_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ALASCA_XT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LUX_ECU",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LUX_PROTOTYPE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LUX",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCALA_B1",
+          "comment": "",
+          "default": "96",
+          "is_constant": true
+        }
+      ]
+    },
+    "ScannerInfo2205": {
+      "description": "scanner_type values",
+      "raw": "uint8 device_id\nuint8 scanner_type\nuint16 scan_number\nfloat32 start_angle\nfloat32 end_angle\nbuiltin_interfaces/Time scan_start_time\nbuiltin_interfaces/Time scan_end_time\nbuiltin_interfaces/Time scan_start_time_from_device\nbuiltin_interfaces/Time scan_end_time_from_device\nfloat32 scan_frequency\nfloat32 beam_tilt\nuint32 scan_flags\nibeo_msgs/MountingPositionF mounting_position\nibeo_msgs/ResolutionInfo[8] resolutions\n\n# scanner_type values\nuint8 ALASCA_XT=3\nuint8 LUX_ECU=4\nuint8 LUX_PROTOTYPE=5\nuint8 LUX=6\nuint8 SCALA_B1=96\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "scanner_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "start_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "end_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_end_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_start_time_from_device",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "scan_end_time_from_device",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "scan_frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "beam_tilt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "scan_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/MountingPositionF",
+          "name": "mounting_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ResolutionInfo[8]",
+          "name": "resolutions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ALASCA_XT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LUX_ECU",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LUX_PROTOTYPE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LUX",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCALA_B1",
+          "comment": "",
+          "default": "96",
+          "is_constant": true
+        }
+      ]
+    },
+    "Sigma2D": {
+      "description": "",
+      "raw": "uint16 sigma_x\nuint16 sigma_y\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "sigma_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sigma_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Size2D": {
+      "description": "",
+      "raw": "uint16 size_x\nuint16 size_y\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "size_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "size_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackedProperties": {
+      "description": "object_phase values",
+      "raw": "uint16 object_age\nuint16 hidden_status_age\nuint8 object_phase\nuint8 dynamic_property\nuint16 relative_time_of_measure\nibeo_msgs/Point2Di position_closest_point\nibeo_msgs/Point2Di relative_velocity\nibeo_msgs/Point2Dui relative_velocity_sigma\nuint8 classification\nuint16 classification_age\nibeo_msgs/Point2Di object_box_size\nibeo_msgs/Point2Dui object_box_size_sigma\nint16 object_box_orientation\nuint16 object_box_orientation_sigma\nuint8 tracking_point_location\nibeo_msgs/Point2Di tracking_point_coordinate\nibeo_msgs/Point2Dui tracking_point_coordinate_sigma\nibeo_msgs/Point2Di velocity\nibeo_msgs/Point2Dui velocity_sigma\nibeo_msgs/Point2Di acceleration\nibeo_msgs/Point2Dui acceleration_sigma\nint16 yaw_rate\nuint16 yaw_rate_sigma\nuint8 number_of_contour_points\nibeo_msgs/ContourPointSigma[] contour_point_list\n\n# object_phase values\nuint8 INITIALIZATION_PHASE=0\nuint8 TRACKING_PHASE=1\n\n# dynamic_property values\nuint8 DYNAMIC_AND_MOVING=0\nuint8 DYNAMIC_AND_STOPPED=1\nuint8 A_PRIORI_STATIONARY=2\n\n# classification values\nuint8 UNCLASSIFIED=0\nuint8 UNKNOWN_SMALL=1\nuint8 UNKNOWN_BIG=2\nuint8 PEDESTRIAN=3\nuint8 BIKE=4\nuint8 CAR=5\nuint8 TRUCK=6\nuint8 OVER_DRIVABLE=10\nuint8 UNDER_DRIVABLE=11\n\n# tracking_point_location values\nuint8 CENTER_OF_GRAVITY=0\nuint8 TOP_FRONT_LEFT_CORNER=1\nuint8 TOP_FRONT_RIGHT_CORNER=2\nuint8 BOTTOM_REAR_RIGHT_CORNER=3\nuint8 BOTTOM_REAR_LEFT_CORNER=4\nuint8 CENTER_OF_TOP_FRONT_EDGE=5\nuint8 CENTER_OF_RIGHT_EDGE=6\nuint8 CENTER_OF_BOTTOM_REAR_EDGE=7\nuint8 CENTER_OF_LEFT_EDGE=8\nuint8 BOX_CENTER=9\nuint8 INVALID=255\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "object_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "hidden_status_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "object_phase",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "dynamic_property",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "relative_time_of_measure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "position_closest_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Dui",
+          "name": "relative_velocity_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "classification_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "object_box_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Dui",
+          "name": "object_box_size_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "object_box_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "object_box_orientation_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "tracking_point_location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "tracking_point_coordinate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Dui",
+          "name": "tracking_point_coordinate_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Dui",
+          "name": "velocity_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Dui",
+          "name": "acceleration_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "yaw_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "yaw_rate_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "number_of_contour_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ContourPointSigma[]",
+          "name": "contour_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "INITIALIZATION_PHASE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRACKING_PHASE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DYNAMIC_AND_MOVING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DYNAMIC_AND_STOPPED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "A_PRIORI_STATIONARY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNCLASSIFIED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_SMALL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_BIG",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEDESTRIAN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BIKE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CAR",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRUCK",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVER_DRIVABLE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNDER_DRIVABLE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_GRAVITY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TOP_FRONT_LEFT_CORNER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TOP_FRONT_RIGHT_CORNER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOTTOM_REAR_RIGHT_CORNER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOTTOM_REAR_LEFT_CORNER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_TOP_FRONT_EDGE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_RIGHT_EDGE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_BOTTOM_REAR_EDGE",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER_OF_LEFT_EDGE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOX_CENTER",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        }
+      ]
+    },
+    "UntrackedProperties": {
+      "description": "",
+      "raw": "uint16 relative_time_of_measurement\nibeo_msgs/Point2Di position_closest_point\nibeo_msgs/Point2Di object_box_size\nibeo_msgs/Point2Dui object_box_size_sigma\nint16 object_box_orientation\nuint16 object_box_orientation_sigma\nibeo_msgs/Point2Di tracking_point_coordinate\nibeo_msgs/Point2Dui tracking_point_coordinate_sigma\nuint8 number_of_contour_points\nibeo_msgs/ContourPointSigma[] contour_point_list\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "relative_time_of_measurement",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "position_closest_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "object_box_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Dui",
+          "name": "object_box_size_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "object_box_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "object_box_orientation_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Di",
+          "name": "tracking_point_coordinate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/Point2Dui",
+          "name": "tracking_point_coordinate_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "number_of_contour_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ibeo_msgs/ContourPointSigma[]",
+          "name": "contour_point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Velocity2D": {
+      "description": "",
+      "raw": "int16 velocity_x\nint16 velocity_y\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "velocity_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "velocity_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

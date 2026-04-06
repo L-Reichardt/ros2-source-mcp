@@ -1,0 +1,49 @@
+{
+  "name": "talos_description",
+  "version": "2.10.3",
+  "description": "The talos_description package",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "talos_robot",
+    "url": "https://github.com/pal-robotics/talos_robot.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "xacro",
+      "talos_description_calibration",
+      "talos_description_inertial",
+      "launch_ros",
+      "launch",
+      "launch_pal",
+      "launch_param_builder",
+      "talos_controller_configuration",
+      "pal_urdf_utils",
+      "pal_transmissions"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "launch_testing_ament_cmake",
+      "urdf_test"
+    ],
+    "depended_on_by": [
+      "talos_bringup",
+      "talos_gazebo",
+      "talos_moveit_config",
+      "talos_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

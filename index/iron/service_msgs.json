@@ -1,0 +1,103 @@
+{
+  "name": "service_msgs",
+  "version": "1.6.0",
+  "description": "Messages definitions common among all ROS services",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_core_generators"
+    ],
+    "runtime": [
+      "rosidl_core_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "action_msgs",
+      "rcl",
+      "rosidl_default_generators",
+      "rosidl_default_runtime",
+      "type_description_interfaces"
+    ]
+  },
+  "messages": {
+    "ServiceEventInfo": {
+      "description": "The type of event this message represents",
+      "raw": "uint8 REQUEST_SENT = 0\nuint8 REQUEST_RECEIVED = 1\nuint8 RESPONSE_SENT = 2\nuint8 RESPONSE_RECEIVED = 3\n\n# The type of event this message represents\nuint8 event_type\n\n# Timestamp for when the event occurred (sent or received time)\nbuiltin_interfaces/Time stamp\n\n# Unique identifier for the client that sent the service request\n# Note, this is only unique for the current session.\n# The size here has to match the size of rmw_dds_common/msg/Gid,\n# but unfortunately we cannot use that message directly due to a\n# circular dependency.\nchar[16] client_gid\n\n# Sequence number for the request\n# Combined with the client ID, this creates a unique ID for the service transaction\nint64 sequence_number\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "REQUEST_SENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_RECEIVED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESPONSE_SENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESPONSE_RECEIVED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "event_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "char[16]",
+          "name": "client_gid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "sequence_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

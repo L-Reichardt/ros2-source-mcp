@@ -1,0 +1,63 @@
+{
+  "name": "rosapi",
+  "version": "3.2.0",
+  "description": "Provides services for getting various ROS meta-information, including ROS topic, services, interfaces or\naction servers and managing ROS parameters.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rosapi",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "rosbridge_suite",
+    "url": "https://github.com/RobotWebTools/rosbridge_suite.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rcl_interfaces",
+      "rclpy",
+      "ros2action",
+      "ros2interface",
+      "ros2node",
+      "ros2service",
+      "ros2topic",
+      "rosapi_msgs",
+      "rosbridge_library",
+      "rosidl_adapter",
+      "rosidl_runtime_py"
+    ],
+    "test": [
+      "ament_cmake_mypy",
+      "ament_cmake_pytest",
+      "geometry_msgs",
+      "rmw_dds_common",
+      "sensor_msgs",
+      "shape_msgs"
+    ],
+    "depended_on_by": [
+      "leo_bringup",
+      "rosbridge_server",
+      "rosbridge_suite"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,90 @@
+{
+  "name": "rviz_common",
+  "version": "8.5.2",
+  "description": "Common rviz API, used by rviz plugins and applications.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros2/rviz/blob/ros2/README.md",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros2/rviz",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros2/rviz/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "rviz",
+    "url": "https://github.com/ros2/rviz.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "build": [
+      "qtbase5-dev",
+      "rviz_assimp_vendor"
+    ],
+    "build_export": [
+      "qtbase5-dev",
+      "rviz_assimp_vendor"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "libqt5-core",
+      "libqt5-gui",
+      "libqt5-opengl",
+      "libqt5-widgets"
+    ],
+    "test": [
+      "ament_cmake_cppcheck",
+      "ament_cmake_cpplint",
+      "ament_cmake_gmock",
+      "ament_cmake_gtest",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_uncrustify",
+      "ament_cmake_xmllint",
+      "ament_lint_auto"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "pluginlib",
+      "rclcpp",
+      "resource_retriever",
+      "rviz_ogre_vendor",
+      "rviz_rendering",
+      "sensor_msgs",
+      "std_msgs",
+      "tf2",
+      "tf2_geometry_msgs",
+      "tf2_ros",
+      "message_filters",
+      "tinyxml2_vendor",
+      "urdf",
+      "yaml_cpp_vendor"
+    ],
+    "depended_on_by": [
+      "nav2_rviz_plugins",
+      "octomap_rviz_plugins",
+      "rmf_visualization_rviz2_plugins",
+      "rtabmap_ros",
+      "rtabmap_ros",
+      "rviz2",
+      "rviz_default_plugins",
+      "rviz_imu_plugin",
+      "rviz_visual_testing_framework",
+      "rviz_visual_tools",
+      "slam_toolbox",
+      "snowbot_operating_system"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

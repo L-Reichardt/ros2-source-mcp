@@ -1,0 +1,92 @@
+{
+  "name": "mavros",
+  "version": "2.4.0",
+  "description": "MAVROS -- MAVLink extendable communication node for ROS\n    with proxy for Ground Control Station.",
+  "license": "GPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/mavros",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/mavlink/mavros.git",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/mavlink/mavros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "mavros",
+    "url": "https://github.com/mavlink/mavros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "eigen",
+      "mavlink",
+      "geographiclib",
+      "geographiclib-tools",
+      "angles"
+    ],
+    "build_export": [
+      "eigen",
+      "mavlink",
+      "geographiclib",
+      "geographiclib-tools"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "eigen3_cmake_module"
+    ],
+    "buildtool_export": [
+      "eigen3_cmake_module"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "rclpy",
+      "python3-click"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_cmake_gmock",
+      "ament_cmake_pytest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "gtest",
+      "google-mock"
+    ],
+    "build_and_runtime": [
+      "diagnostic_updater",
+      "message_filters",
+      "eigen_stl_containers",
+      "libmavconn",
+      "pluginlib",
+      "libconsole-bridge-dev",
+      "tf2_ros",
+      "tf2_eigen",
+      "rclcpp",
+      "rclcpp_components",
+      "rcpputils",
+      "diagnostic_msgs",
+      "geometry_msgs",
+      "mavros_msgs",
+      "nav_msgs",
+      "sensor_msgs",
+      "geographic_msgs",
+      "trajectory_msgs",
+      "std_msgs",
+      "std_srvs"
+    ],
+    "depended_on_by": [
+      "mavros_extras"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

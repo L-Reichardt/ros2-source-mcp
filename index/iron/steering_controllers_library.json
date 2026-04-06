@@ -1,0 +1,67 @@
+{
+  "name": "steering_controllers_library",
+  "version": "3.28.0",
+  "description": "Package for steering robot configurations including odometry and interfaces.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "generate_parameter_library"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "backward_ros",
+      "control_msgs",
+      "controller_interface",
+      "geometry_msgs",
+      "hardware_interface",
+      "nav_msgs",
+      "pluginlib",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "realtime_tools",
+      "rcpputils",
+      "std_srvs",
+      "tf2",
+      "tf2_msgs",
+      "tf2_geometry_msgs",
+      "ackermann_msgs"
+    ],
+    "depended_on_by": [
+      "ackermann_steering_controller",
+      "bicycle_steering_controller",
+      "ros2_controllers",
+      "tricycle_steering_controller"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

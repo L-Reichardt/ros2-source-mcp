@@ -1,0 +1,59 @@
+{
+  "name": "zbar_ros_interfaces",
+  "version": "0.7.0",
+  "description": "Package containing interfaces for zbar_ros to use to publish results",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "zbar_ros",
+    "url": "https://github.com/ros-drivers/zbar_ros.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "vision_msgs"
+    ],
+    "depended_on_by": [
+      "zbar_ros"
+    ]
+  },
+  "messages": {
+    "Symbol": {
+      "description": "",
+      "raw": "string data\nvision_msgs/Point2D[] points\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/Point2D[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

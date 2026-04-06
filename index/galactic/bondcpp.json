@@ -1,0 +1,61 @@
+{
+  "name": "bondcpp",
+  "version": "3.0.1",
+  "description": "C++ implementation of bond, a mechanism for checking when\n    another process has terminated.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/bondcpp",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros/bond_core/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros/bond_core",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "bond_core",
+    "url": "https://github.com/ros/bond_core.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "build": [
+      "bond",
+      "pkg-config",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "smclib",
+      "uuid"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "bond",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "smclib",
+      "uuid"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "bond_core",
+      "nav2_lifecycle_manager",
+      "nav2_lifecycle_manager",
+      "nav2_util",
+      "test_bond"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

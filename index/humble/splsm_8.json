@@ -1,0 +1,91 @@
+{
+  "name": "splsm_8",
+  "version": "2.1.0",
+  "description": "RoboCup Standard Platform League Standard Message V8 ROS msg",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "r2r_spl",
+    "url": "https://github.com/ros-sports/r2r_spl.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "splsm_8_conversion"
+    ]
+  },
+  "messages": {
+    "SPLSM": {
+      "description": "",
+      "raw": "uint8 player_num 0\nuint8 team_num 0\nuint8 fallen 255\nfloat32[3] pose [0.0, 0.0, 0.0]\nfloat32 ball_age -1.0\nfloat32[2] ball [0.0, 0.0]\nuint8[<=128] data\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "player_num",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "team_num",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fallen",
+          "comment": "",
+          "default": "255",
+          "is_constant": false
+        },
+        {
+          "type": "float32[3]",
+          "name": "pose",
+          "comment": "",
+          "default": "[0.0, 0.0, 0.0]",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ball_age",
+          "comment": "",
+          "default": "-1.0",
+          "is_constant": false
+        },
+        {
+          "type": "float32[2]",
+          "name": "ball",
+          "comment": "",
+          "default": "[0.0, 0.0]",
+          "is_constant": false
+        },
+        {
+          "type": "uint8[<=128]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

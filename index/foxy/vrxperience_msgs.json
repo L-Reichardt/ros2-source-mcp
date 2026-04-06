@@ -1,0 +1,1358 @@
+{
+  "name": "vrxperience_msgs",
+  "version": "1.0.0",
+  "description": "Message definitions required for integration with Ansys VRXPERIENCE",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ansys_vrxperience",
+    "url": "https://github.com/autowarefoundation/ansys-vrxperience-ros2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "vrxperience_bridge"
+    ]
+  },
+  "messages": {
+    "CabToModelCorrective": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# Additive value for CabToModel Accelerator value (default is 0) [%]\nfloat64 accelerator_additive\n\n# Multiplicative coefficient for CabToModel Accelerator value (default is 1)\nfloat64 accelerator_multiplicative\n\n# Additive value for CabToModel Brake value (default is 0) [N]\nfloat64 brake_additive\n\n# Multiplicative coefficient for CabToModel Clutch value (default is 1)\nfloat64 brake_multiplicative\n\n# Additive value for CabToModel Clutch value (default is 0)\nfloat64 clutch_additive\n\n# Multiplicative coefficient for CabToModel Clutch value (default is 1)\nfloat64 clutch_multiplicative\n\n# Additive value for CabToModel ParkingBrake value (default is 0) [N]\nfloat64 parking_brake_additive\n\n# Multiplicative coefficient for CabToModel ParkingBrake value (default is 1)\nfloat64 parking_brake_multiplicative\n\n# True to take over gear box mode from CabToModel (default is false)\nbool gear_box_take_over\n\nint16 T_AUTO_MODE_MANUAL = 0\nint16 T_AUTO_MODE_REVERSE2 = 1\nint16 T_AUTO_MODE_REVERSE1 = 2\nint16 T_AUTO_MODE_NEUTRAL = 3\nint16 T_AUTO_MODE_PARK = 4\nint16 T_AUTO_MODE_LIMIT1 = 5\nint16 T_AUTO_MODE_LIMIT2 = 6\nint16 T_AUTO_MODE_LIMIT3 = 7\nint16 T_AUTO_MODE_LIMIT4 = 8\nint16 T_AUTO_MODE_RACE = 9\nint16 T_AUTO_MODE_DRIVE = 10\nint16 T_AUTO_MODE_OVER_DRIVE = 11\nint16 SEQUENTIAL = 12\n\n# Gear box mode\nint16 gear_box_auto_mode\n\n# Wanted gear (range: -2 to max_gear), used if GearBoxAutoMode is 0 (TAutoModeManual)\nint16 wanted_gear\n\nbool shift_up\nbool shift_down\n\nbool is_ratio_limit\nint16 min_ratio\nint16 max_ratio\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "accelerator_additive",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "accelerator_multiplicative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "brake_additive",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "brake_multiplicative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "clutch_additive",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "clutch_multiplicative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "parking_brake_additive",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "parking_brake_multiplicative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gear_box_take_over",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_MANUAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_REVERSE2",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_REVERSE1",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_NEUTRAL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_PARK",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_LIMIT1",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_LIMIT2",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_LIMIT3",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_LIMIT4",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_RACE",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_DRIVE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "T_AUTO_MODE_OVER_DRIVE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "SEQUENTIAL",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "gear_box_auto_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "wanted_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "shift_up",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "shift_down",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_ratio_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "min_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "max_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CabToSteeringCorrective": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# Additional angle value to apply on input of dynamics model [rad]\nfloat64 additive_steering_wheel_angle\n\n# Multiplicative coefficient to apply on input of dynamics model\nfloat64 multiplicative_steering_wheel_angle\n\n# Additional speed value to apply on input of dynamics model [rad/s]\nfloat64 additive_steering_wheel_speed\n\n# Multiplicative coefficient to apply on input of dynamics model\nfloat64 multiplicative_steering_wheel_speed\n\n# Additional angular acceleration to apply on input of dynamics model\nfloat64 additive_steering_wheel_accel\n\n# Multiplicative coefficient to apply on input of dynamics model\nfloat64 multiplicative_steering_wheel_accel\n\n# Additional torque value to apply on input of dynamics model\nfloat64 additive_steering_wheel_torque\n\n# Multiplicative coefficient to apply on input of dynamics model\nfloat64 multiplicative_steering_wheel_torque\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "additive_steering_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "multiplicative_steering_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "additive_steering_wheel_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "multiplicative_steering_wheel_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "additive_steering_wheel_accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "multiplicative_steering_wheel_accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "additive_steering_wheel_torque",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "multiplicative_steering_wheel_torque",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GPS": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# Unique identifier of the sensor\nint32 global_id\n\n# The index of the vehicle\nint16 ego_vehicle_id\n\n# The GPS index\nint16 sensor_id\n\n# Latitude of the vehicle's sensor position [deg]\nfloat64 latitude\n\n# Longitude of the vehicle's sensor position [deg]\nfloat64 longitude\n\n# Altitude of the vehicle's sensor position [deg]\nfloat64 altitude\n\n# Number of satellites used\nint16 satellites\n\n# GPS sensor horizontal precision\nfloat32 hdop\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "global_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "ego_vehicle_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "sensor_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "satellites",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "hdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaserMeter": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# Unique identifier of the sensor\nint32 global_id\n\n# The index of the vehicle\nint16 ego_vehicle_id\n\n# The laser index\nint16 sensor_id\n\n# Counter of emitted results\nint16 frame_count\n\n# Nearest point detected, if no point detected, the value is -1\nint16 nearest_point\n\n# Array of points detected by the laser sensors\nvrxperience_msgs/LaserMeterPoint[<=720] results\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "global_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "ego_vehicle_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "sensor_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "frame_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "nearest_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vrxperience_msgs/LaserMeterPoint[<=720]",
+          "name": "results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaserMeterPoint": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# Boolean value true if an point was detected with this ray\nbool hit\n\n# Horizontal angle relative to sensors main direction of this ray [rad]\nfloat32 h_angle\n\n# Vertical angle relative to sensors main direction of this ray\nfloat32 v_angle\n\n# Position of the intersection point. Valid only if hit is true\ngeometry_msgs/Point intersection_point\n\n# Distance from sensor of the hit point. Valid only if hit is true [m]\nfloat32 distance\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "hit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "h_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "v_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "intersection_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MovableTarget": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# The ID set be the sensor for the detected target\nint16 id\n\n# The SCANeR ID of the detected target\nint16 scaner_id\n\nint16 DETECTION_STATUS_UNDEFINED = 0\nint16 DETECTION_STATUS_NEW_TARGET = 1\nint16 DETECTION_STATUS_EXISTING_TARGET = 2\n\n# Stat detection of the target\nint16 detection_status\n\n# Type of the detected target (undocumented)\nint16 type\n\n# The index of the beam that detected the target\nint16 beam_index\n\n# Time past between the appearance of the target into the sensor detection area and the current time\nfloat64 existence_time\n\n# Localization of the detected point (undocumented)\nint16 anchor_point\n\n# The detected point position and orientation\ngeometry_msgs/Pose pose\n\n# The distance from the sensor origin to the detected point\nfloat32 distance_to_collision\n\n# The detected point azimuth angle in sensor reference frame\nfloat32 azimuth_in_sensor\n\n# The detected point elevation angle in sensor reference frame\nfloat32 elevation_in_sensor\n\n# The detected point azimuth angle in vehicle reference frame\nfloat32 azimuth_in_vehicle\n\n# The detected point elevation angle in vehicle reference frame\nfloat32 elevation_in_vehicle\n\n# The detected point absolute speed vector\ngeometry_msgs/Vector3 absolute_speed\n\n# The detected point absolute angular speed vector (RPY)\ngeometry_msgs/Vector3 absolute_angular_speed\n\n# The detected point relative speed vector\ngeometry_msgs/Vector3 relative_speed\n\n# The detected point relative angular speed vector (RPY)\ngeometry_msgs/Vector3 relative_angular_speed\n\n# The detected point absolute acceleration\ngeometry_msgs/Vector3 absolute_accel\n\n# The detected point relative acceleration\ngeometry_msgs/Vector3 relative_accel\n\n# Target length\nfloat32 length\n\n# Target width\nfloat32 width\n\n# Target height\nfloat32 height\n\nfloat32 HIDDEN = 0\nfloat32 VISIBLE = 1\n\n# 0 if the target shouldn't be detected by the sensor because\n# it is hidden by an object (vehicle, terrain), 1 otherwise\nfloat32 visibility\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "scaner_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "DETECTION_STATUS_UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "DETECTION_STATUS_NEW_TARGET",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "DETECTION_STATUS_EXISTING_TARGET",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "detection_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "beam_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "existence_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "anchor_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_to_collision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "azimuth_in_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "elevation_in_sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "azimuth_in_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "elevation_in_vehicle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "absolute_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "absolute_angular_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "relative_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "relative_angular_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "absolute_accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "relative_accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "HIDDEN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "VISIBLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "visibility",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MovableTargetBoundingBox": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# The ID of the associated sensor target\nint16 id\n\n# Corner coordinates of the bounding box\ngeometry_msgs/Point rear_bottom_right\ngeometry_msgs/Point rear_top_right\ngeometry_msgs/Point rear_bottom_left\ngeometry_msgs/Point rear_top_left\ngeometry_msgs/Point front_bottom_right\ngeometry_msgs/Point front_top_right\ngeometry_msgs/Point front_bottom_left\ngeometry_msgs/Point front_top_left\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "rear_bottom_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "rear_top_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "rear_bottom_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "rear_top_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "front_bottom_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "front_top_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "front_bottom_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "front_top_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MovableTargets": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# Unique identifier of the line road markings sensor\nint32 global_id\n\n# The ID of the equipped vehicle\nint16 ego_vehicle_id\n\n# Index in targets of the nearest target detected.\n# If no target detected, the value is -1\nint16 nearest_target\n\n# Array of targets detected by the sensor\nvrxperience_msgs/MovableTarget[<=30] targets\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "global_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "ego_vehicle_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "nearest_target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vrxperience_msgs/MovableTarget[<=30]",
+          "name": "targets",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MovableTargetsBoundingBoxes": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# Unique identifier of the sensor\nint32 global_id\n\n# The ID of the equipped vehicle\nint16 ego_vehicle_id\n\n# Array of target bounding boxes detected by the sensor\nvrxperience_msgs/MovableTargetBoundingBox[<=30] bounding_boxes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "global_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "ego_vehicle_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vrxperience_msgs/MovableTargetBoundingBox[<=30]",
+          "name": "bounding_boxes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoadLinePolynom": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# The ID of the line\nint16 line_id\n\n# The polynomial coefficients\nfloat64 c0\nfloat64 c1\nfloat64 c2\nfloat64 c3\n\n# The line curvature radius, got from the RND data. If the line is straight,\n# then this field is set to 99000.0 (infinite curve radius)\nfloat64 curvature_radius\n\n# 1/2c2, or 99000.0 (infinite curve radius) if c2=0.\nfloat64 estimated_curvature_radius\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "line_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "c0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "c1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "c2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "c3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "curvature_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "estimated_curvature_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoadLinesPolynoms": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# Unique identifier of the line road markings sensor\nint32 global_id\n\n# The ID of the equipped vehicle\nint16 ego_vehicle_id\n\n# Boolean value, true if the sent polynoms are noisy, false if not\nbool is_noisy\n\n# Array of structures describing each line polynom,\n# from left to the right of the ego-vehicle\nvrxperience_msgs/RoadLinePolynom[<=3] polynoms\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "global_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "ego_vehicle_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_noisy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vrxperience_msgs/RoadLinePolynom[<=3]",
+          "name": "polynoms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VehicleOutput": {
+      "description": "Copyright 2020 Adam Gotlib (WUT Driverless)",
+      "raw": "# Copyright 2020 Adam Gotlib (WUT Driverless)\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\n\n# Center of gravity speed vector, positive to the front of the vehicle\ngeometry_msgs/Vector3 cdg_speed\n\n# Center of gravity angular speed vector (RPY)\ngeometry_msgs/Vector3 cdg_angular_speed\n\n# Center of gravity acceleration vector, positive to the front of the vehicle\ngeometry_msgs/Vector3 cdg_accel\n\n# Center of gravity angular acceleration vector (RPY)\ngeometry_msgs/Vector3 cdg_angular_accel\n\n# Position of the vehicle's cabin CoG in the absolute referential\ngeometry_msgs/Vector3 cdg_position\n\n# Orientation of the vehicle's cabin CoG in the absolute referential (RPY)\ngeometry_msgs/Vector3 cdg_orientation\n\n# Masks of flags corresponding to the active lights\nint32 lights\n\n# Masks of flags corresponding to the active rosidl_generate_interfaces\nint32 sirens\n\n# Masks of flags corresponding to the active auxilary_lights\nint32 auxilary_lights\n\n# State of the engine (range: 0 OFF, 1 ON)\nbool engine_state\n\n# Engine fuel consumption (m3/s)\nfloat64 consumption\n\n# Engine CO2 emissions (kg/s)\nfloat64 pollution\n\n# Engine speed (rad/s)\nfloat64 engine_speed\n\n# Gear really engaged in the motor (range: from -1 to 5)\nint32 gear_engaged\n\n# Effective gas pedal position [0 1] (after regulations)\nfloat64 gas_pedal\n\n# Effective brake pedal force (after regulations) [N]\nfloat64 brake_pedal\n\n# Effective hand_brake force (after regulations) [N]\nfloat64 hand_brake\n\n# Effective clutch pedal position [0 1] (after regulations)\nfloat64 clutch_pedal\n\n# Effective gear box mode\nint32 gear_box_mode\n\n# Effective ignition key position\nint32 effective_ignition_key_position\n\nbool is_engine_retarder\nint32 brake_retarder_notch\nfloat64 trailer_brake\nint32 transfer_choice\n\n# Lock differentials mode\nint32 lock_diff_mode\n\n# Is transmission locked up\nbool force_lockup\n\n# Effective plow mode\nint32 plow_mode\n\nfloat64 steering_wheel_angle\nfloat64 steering_wheel_speed\nfloat64 steering_wheel_accel\nfloat64 steering_wheel_torque\n\ngeometry_msgs/Point[4] hub_position\n\n# RPY\ngeometry_msgs/Vector3[4] hub_orientation\n\nfloat64[4] wheel_rotation\nfloat64[4] wheel_rotation_speed\n\n# Degrees Celsius\nfloat64[4] brake_temperature\n\nbool[4] abs_is_active\nbool[4] is_in_contact\ngeometry_msgs/Point[4] contact_points\ngeometry_msgs/Vector3[4] ground_normals\nfloat64[4] grip\n\n# Material type of the road under the tire\nint32[4] ground_index\n\n# Longitudinal slip ratio of the tires\nfloat64[4] lsr\n\n# Tire slip angle\nfloat64[4] slip_angle\n\ngeometry_msgs/Vector3[4] tire_force\n\nint32[4] lane_type\nfloat64[4] roughness_height\nfloat64[4] roughness_length\nfloat64[4] roughness_height_stddev\nfloat64[4] roughness_length_stddev\n\nint32 E_GROUND_ASPHALT = 0\nint32 E_GROUND_CONRETE = 1\nint32 E_GROUND_GRASS = 2\nint32 E_GROUND_COBBLESTONE = 3\n\nint32[4] ground_type\n\n# Water height on the road uner the tire\nfloat64[4] water_height\n\nfloat64[512] custom_output\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "cdg_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "cdg_angular_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "cdg_accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "cdg_angular_accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "cdg_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "cdg_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "lights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "sirens",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "auxilary_lights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "engine_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "consumption",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pollution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "engine_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "gear_engaged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gas_pedal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "brake_pedal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "hand_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "clutch_pedal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "gear_box_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "effective_ignition_key_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_engine_retarder",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "brake_retarder_notch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "trailer_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "transfer_choice",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "lock_diff_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "force_lockup",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "plow_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "steering_wheel_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "steering_wheel_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "steering_wheel_accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "steering_wheel_torque",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[4]",
+          "name": "hub_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[4]",
+          "name": "hub_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "wheel_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "wheel_rotation_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "brake_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[4]",
+          "name": "abs_is_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[4]",
+          "name": "is_in_contact",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[4]",
+          "name": "contact_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[4]",
+          "name": "ground_normals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "grip",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[4]",
+          "name": "ground_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "lsr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "slip_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[4]",
+          "name": "tire_force",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[4]",
+          "name": "lane_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "roughness_height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "roughness_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "roughness_height_stddev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "roughness_length_stddev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "E_GROUND_ASPHALT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "E_GROUND_CONRETE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "E_GROUND_GRASS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "E_GROUND_COBBLESTONE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32[4]",
+          "name": "ground_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[4]",
+          "name": "water_height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[512]",
+          "name": "custom_output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

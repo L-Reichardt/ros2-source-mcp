@@ -1,0 +1,116 @@
+{
+  "name": "flir_camera_msgs",
+  "version": "2.2.17",
+  "description": "messages related to flir camera driver",
+  "license": "Apache-2",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "flir_camera_driver",
+    "url": "https://github.com/ros-drivers/flir_camera_driver.git",
+    "branch": "ros2-release"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "spinnaker_camera_driver"
+    ]
+  },
+  "messages": {
+    "CameraControl": {
+      "description": "camera control message",
+      "raw": "#\n# camera control message\n#\nstd_msgs/Header header\n\n# set exposure time in microseconds\nuint32 exposure_time\n\n# set gain in db\nfloat32 gain\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "exposure_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImageMetaData": {
+      "description": "meta data messages for camera images",
+      "raw": "#\n# meta data messages for camera images\n#\nstd_msgs/Header header\n\n# time stamp produced by camera, interpretation depends on camera model\nuint64 camera_time\n\n# computed brightness, either 0...255 (valid) or -1 (invalid)\nint16 brightness\n\n# exposure time in microseconds\nuint32 exposure_time\n\n# max allowed exposure time in microseconds\nuint32 max_exposure_time\n\n# gain in db\nfloat32 gain\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "camera_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "brightness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "exposure_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "max_exposure_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

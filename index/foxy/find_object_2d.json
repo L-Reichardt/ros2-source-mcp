@@ -1,0 +1,150 @@
+{
+  "name": "find_object_2d",
+  "version": "0.7.0",
+  "description": "The find_object_2d package",
+  "license": "BSD",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/introlab/find-object/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/introlab/find-object",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "find_object_2d",
+    "url": "https://github.com/introlab/find-object.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "rosidl_default_generators",
+      "message_generation",
+      "qtbase5-dev",
+      "cv_bridge",
+      "sensor_msgs",
+      "std_msgs",
+      "std_srvs",
+      "geometry_msgs",
+      "image_transport",
+      "message_filters"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "message_runtime",
+      "qtbase5-dev",
+      "cv_bridge",
+      "sensor_msgs",
+      "std_msgs",
+      "std_srvs",
+      "geometry_msgs",
+      "image_transport",
+      "message_filters"
+    ],
+    "build_and_runtime": [
+      "roscpp",
+      "tf",
+      "rclcpp",
+      "tf2",
+      "tf2_ros",
+      "tf2_geometry_msgs",
+      "builtin_interfaces"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "DetectionInfo": {
+      "description": "All arrays should have the same size",
+      "raw": "\nstd_msgs/Header header\n\n# All arrays should have the same size\nstd_msgs/Int32[] ids\nstd_msgs/Int32[] widths\nstd_msgs/Int32[] heights\nstd_msgs/String[] file_paths\nstd_msgs/Int32[] inliers\nstd_msgs/Int32[] outliers\n# 3x3 homography matrix: [h11, h12, h13, h21, h22, h23, h31, h32, h33] (h31 = dx and h32 = dy, see QTransform)\nstd_msgs/Float32MultiArray[] homographies\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int32[]",
+          "name": "ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int32[]",
+          "name": "widths",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int32[]",
+          "name": "heights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String[]",
+          "name": "file_paths",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int32[]",
+          "name": "inliers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int32[]",
+          "name": "outliers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Float32MultiArray[]",
+          "name": "homographies",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectsStamped": {
+      "description": "objects format:",
+      "raw": "# objects format: \n# [ObjectId1, objectWidth, objectHeight, h11, h12, h13, h21, h22, h23, h31, h32, h33, ObjectId2...] \n# where h## is a 3x3 homography matrix (h31 = dx and h32 = dy, see QTransform)\nstd_msgs/Header header\nstd_msgs/Float32MultiArray objects ",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Float32MultiArray",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

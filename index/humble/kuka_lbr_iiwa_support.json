@@ -1,0 +1,40 @@
+{
+  "name": "kuka_lbr_iiwa_support",
+  "version": "1.0.0",
+  "description": "ROS2 support package for the KUKA LBR iiwa",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "kuka_robot_descriptions",
+    "url": "https://github.com/kroshu/kuka_robot_descriptions.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "launch_ros",
+      "joint_state_publisher_gui",
+      "kuka_resources",
+      "robot_state_publisher",
+      "rviz2"
+    ],
+    "test": [
+      "launch_testing_ament_cmake"
+    ],
+    "build_and_runtime": [
+      "urdf",
+      "xacro"
+    ],
+    "depended_on_by": [
+      "kuka_robot_descriptions",
+      "kuka_sunrise_fri_driver"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

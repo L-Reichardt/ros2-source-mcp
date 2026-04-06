@@ -1,0 +1,609 @@
+{
+  "name": "rmf_scheduler_msgs",
+  "version": "3.5.0",
+  "description": "Messages used by rmf_scheduler_msgs",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_dev"
+    ]
+  },
+  "messages": {
+    "Payload": {
+      "description": "Denotes the type of payload",
+      "raw": "# Denotes the type of payload\nuint8 type\nuint8 PAYLOAD_TYPE_SERIALIZED_MESSAGE=1\n\nstring topic\n\nstring message_type\n\n# max 2mb\nuint8[<=2097152] data\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "PAYLOAD_TYPE_SERIALIZED_MESSAGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[<=2097152]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Schedule": {
+      "description": "Name to identify the schedule, must be unique across all schedules.",
+      "raw": "# Name to identify the schedule, must be unique across all schedules.\nstring name\n\n# unix timestamp in seconds\nint64 created_at\n\n# ┌─────────────seconds (0 - 59)\n# │ ┌───────────── minute (0 - 59)\n# │ │ ┌───────────── hour (0 - 23)\n# │ │ │ ┌───────────── day of the month (1 - 31)\n# │ │ │ │ ┌───────────── month (1 - 12)\n# │ │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday)\n# │ │ │ │ │ │ ┌───────────── years (1970 - 2099) (optional)\n# │ │ │ │ │ │ │\n# * * * * * * *\n# \n# | Field | Required | Allowed value | Allowed special characters |\n# | --- | --- | --- | --- |\n# | seconds | yes | 0-59 | `*` `,` `-` |\n# | minutes | yes | 0-59 | `*` `,` `-` |\n# | hours | yes | 0-23 | `*` `,` `-` |\n# | days of month | 1-31 | `*` `,` `-` `?` `L` `W` |\n# | months | yes | 1-12 | `*` `,` `-` |\n# | days of week | yes | `*` `,` `-` `?` `L` `#` |\n# | years | no | 1970-2099 | `*` `,` `-` |\n# \n# The special characters have the following meaning:\n# \n# | Special character | Meaning | Description |\n# | --- | --- | --- |\n# | `*` | all values | selects all values within a field |\n# | `?` | no specific value | specify one field and leave the other unspecified |\n# | `-` | range | specify ranges |\n# | `,` | comma | specify additional values |\n# | `/` | slash | speficy increments |\n# | `L` | last | last day of the month or last day of the week |\n# | `W` | weekday | the weekday nearest to the given day |\n# | `#` | nth |  specify the Nth day of the month |\n# Examples: \n# \n# | CRON | Description |\n# | --- | --- |\n# | * * * * * * | Every second |\n# | */5 * * * * ? | Every 5 seconds |\n# | 0 */5 */2 * * ? | Every 5 minutes, every 2 hours |\n# | 0 */2 */2 ? */2 */2 | Every 2 minutes, every 2 hours, every 2 days of the week, every 2 months |\n# | 0 15 10 * * ? * | 10:15 AM every day |\n# | 0 0/5 14 * * ? | Every 5 minutes starting at 2 PM and ending at 2:55 PM, every day |\n# | 0 10,44 14 ? 3 WED | 2:10 PM and at 2:44 PM every Wednesday of March |\n# | 0 15 10 ? * MON-FRI | 10:15 AM every Monday, Tuesday, Wednesday, Thursday and Friday |\n# | 0 15 10 L * ? | 10:15 AM on the last day of every month |\n# | 0 0 12 1/5 * ? | 12 PM every 5 days every month, starting on the first day of the month |\n# | 0 11 11 11 11 ? | Every November 11th at 11:11 AM |\n# \n# Reference: https://github.com/mariusbancila/croncpp/blob/999f7685ab683b58872386c0aa019acf97c6570a/README.md\nstring schedule\n\n# unix time in secs\nint64 start_at\n\n# unix time in secs\nint64 finish_at 9223372036854775807\n\nstring group \"default\"\n\nPayload payload\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "created_at",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "schedule",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "start_at",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "finish_at",
+          "comment": "",
+          "default": "9223372036854775807",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": "\"default\"",
+          "is_constant": false
+        },
+        {
+          "type": "Payload",
+          "name": "payload",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScheduleState": {
+      "description": "unix time in seconds",
+      "raw": "string name\n\n# unix time in seconds\nint64 last_modified\n\n# unix time in seconds\nint64 last_ran\n\n# unix time in seconds\nint64 next_run\n\nint8 status\nint8 CREATED=1\nint8 STARTED=2\nint8 FINISHED=3\nint8 CANCELLED=4\nint8 FAILED=-1\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "last_modified",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "last_ran",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "next_run",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "CREATED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STARTED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FINISHED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CANCELLED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FAILED",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        }
+      ]
+    },
+    "Trigger": {
+      "description": "Name to identify the trigger, must be unique across all triggers.",
+      "raw": "# Name to identify the trigger, must be unique across all triggers.\nstring name\n\n# unix timestamp in seconds\nint64 created_at\n\n# unix timestamp in seconds when the trigger should run\nint64 at\n\nstring group \"default\"\n\nPayload payload\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "created_at",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "at",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": "\"default\"",
+          "is_constant": false
+        },
+        {
+          "type": "Payload",
+          "name": "payload",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TriggerState": {
+      "description": "unix time in seconds",
+      "raw": "string name\n\n# unix time in seconds\nint64 last_modified\n\n# unix time in seconds\nint64 last_ran\n\nint8 status\nint8 STARTED=2\nint8 FINISHED=3\nint8 CANCELLED=4\nint8 FAILED=-1\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "last_modified",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "last_ran",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "STARTED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FINISHED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CANCELLED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FAILED",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {
+    "CancelAll": {
+      "description": "Cancel all triggers and schedules belonging to a group.",
+      "raw": "# Cancel all triggers and schedules belonging to a group.\n\nstring group\n\n---\n\n# Confirmation that the schedule is successfully registered\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CancelSchedule": {
+      "description": "Indicate that the schedule is considered finished successfully.",
+      "raw": "string name\n\n# Indicate that the schedule is considered finished successfully.\nbool finished\n\n---\n\n# Confirmation that the schedule is successfully cancelled.\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "finished",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CancelTrigger": {
+      "description": "Confirmation that the trigger is successfully cancelled.",
+      "raw": "string name\n\n---\n\n# Confirmation that the trigger is successfully cancelled.\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CreateSchedule": {
+      "description": "Registers a new recurring schedule. Existing schedule with the same name will be replaced.",
+      "raw": "# Registers a new recurring schedule. Existing schedule with the same name will be replaced.\n\n# The following fields are ignored:\n#   - created_at\nSchedule schedule\n\n---\n\n# Confirmation that the schedule is successfully registered\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n",
+      "request_fields": [
+        {
+          "type": "Schedule",
+          "name": "schedule",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CreateTrigger": {
+      "description": "Registers a new trigger to be performed at a specific time. Existing trigger with the same",
+      "raw": "# Registers a new trigger to be performed at a specific time. Existing trigger with the same\n# name will be replaced.\n\n# The following fields are ignored:\n#   - created_at\nTrigger trigger\n\n---\n\n# Confirmation that the trigger is successfully registered\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n",
+      "request_fields": [
+        {
+          "type": "Trigger",
+          "name": "trigger",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListScheduleStates": {
+      "description": "Get a list of currently registered schedules.",
+      "raw": "# Get a list of currently registered schedules.\n\n# unix time in seconds\nint64 modified_after\n\n---\n\n# Confirmation that the trigger is successfully cancelled.\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n\nScheduleState[] schedules\n",
+      "request_fields": [
+        {
+          "type": "int64",
+          "name": "modified_after",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScheduleState[]",
+          "name": "schedules",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListSchedules": {
+      "description": "Get a list of currently registered schedules.",
+      "raw": "# Get a list of currently registered schedules.\n\n# unix time in seconds\nint64 created_after\n\n---\n\n# Confirmation that the trigger is successfully cancelled.\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n\nSchedule[] schedules\n",
+      "request_fields": [
+        {
+          "type": "int64",
+          "name": "created_after",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Schedule[]",
+          "name": "schedules",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListTriggerStates": {
+      "description": "Get a list of currently registered triggers.",
+      "raw": "# Get a list of currently registered triggers.\n\n# unix time in seconds\nint64 modified_after\n\n---\n\n# Confirmation that the trigger is successfully cancelled.\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n\nTriggerState[] triggers\n",
+      "request_fields": [
+        {
+          "type": "int64",
+          "name": "modified_after",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TriggerState[]",
+          "name": "triggers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListTriggers": {
+      "description": "Get a list of currently registered triggers.",
+      "raw": "# Get a list of currently registered triggers.\n\n# unix time in seconds\nint64 created_after\n\n---\n\n# Confirmation that the trigger is successfully cancelled.\nbool success\n\n# If success is false, this provides a reason for the failure.\nstring message\n\nTrigger[] triggers\n",
+      "request_fields": [
+        {
+          "type": "int64",
+          "name": "created_after",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Trigger[]",
+          "name": "triggers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

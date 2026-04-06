@@ -1,0 +1,53 @@
+{
+  "name": "effort_controllers",
+  "version": "3.28.0",
+  "description": "Generic controller for forwarding commands.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "hardware_interface_testing",
+      "hardware_interface",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "backward_ros",
+      "forward_command_controller",
+      "pluginlib",
+      "rclcpp"
+    ],
+    "depended_on_by": [
+      "gazebo_ros2_control_demos",
+      "gz_ros2_control_demos",
+      "ros2_controllers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

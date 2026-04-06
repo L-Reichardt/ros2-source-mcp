@@ -1,0 +1,156 @@
+{
+  "name": "octomap_msgs",
+  "version": "2.0.0",
+  "description": "This package provides messages and serializations / conversion for the",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/octomap_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/OctoMap/octomap_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "octomap_msgs",
+    "url": "https://github.com/octomap/octomap_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "moveit_core",
+      "moveit_msgs",
+      "octomap_ros",
+      "octomap_rviz_plugins",
+      "octomap_server",
+      "rtabmap_ros",
+      "rtabmap_ros"
+    ]
+  },
+  "messages": {
+    "Octomap": {
+      "description": "A 3D map in binary format, as Octree",
+      "raw": "# A 3D map in binary format, as Octree\nstd_msgs/Header header\n\n# Flag to denote a binary (only free/occupied) or full occupancy octree (.bt/.ot file)\nbool binary\n\n# Class id of the contained octree \nstring id\n\n# Resolution (in m) of the smallest octree nodes\nfloat64 resolution\n\n# binary serialization of octree, use conversions.h to read and write octrees\nint8[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "binary",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OctomapWithPose": {
+      "description": "A 3D map in binary format, as Octree",
+      "raw": "# A 3D map in binary format, as Octree\nstd_msgs/Header header\n\n# The pose of the octree with respect to the header frame\ngeometry_msgs/Pose origin\n\n# The actual octree msg\noctomap_msgs/Octomap octomap\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "origin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "octomap_msgs/Octomap",
+          "name": "octomap",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "BoundingBoxQuery": {
+      "description": "Clear a region specified by a global axis-aligned bounding box in stored OctoMap",
+      "raw": "# Clear a region specified by a global axis-aligned bounding box in stored OctoMap\n\n# minimum corner point of axis-aligned bounding box in global frame\ngeometry_msgs/Point min\n# maximum corner point of axis-aligned bounding box in global frame\ngeometry_msgs/Point max\n---\n\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Point",
+          "name": "min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "GetOctomap": {
+      "description": "Get the map as a octomap",
+      "raw": "# Get the map as a octomap\n---\noctomap_msgs/Octomap map\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "octomap_msgs/Octomap",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

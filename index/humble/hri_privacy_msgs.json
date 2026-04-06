@@ -1,0 +1,65 @@
+{
+  "name": "hri_privacy_msgs",
+  "version": "1.2.0",
+  "description": "ROS message definitions for declaring privacy-sensitive data flows",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "hri_privacy_msgs",
+    "url": "https://github.com/ros4hri/hri_privacy_msgs.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "PersonalDataProcessor": {
+      "description": "ID of the ROS node generating the data",
+      "raw": "\n# ID of the ROS node generating the data\nstring data_source_node\n\n# user-friendly string for the ROS node name\nstring user_friendly_source_name\n\n# plain-English description of what the data is used for\nstring data_purpose\n\n# path to the data file\nstring path\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "data_source_node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "user_friendly_source_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data_purpose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,105 @@
+{
+  "name": "marti_can_msgs",
+  "version": "1.6.1",
+  "description": "marti_can_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/marti_messages",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "marti_messages",
+    "url": "https://github.com/swri-robotics/marti_messages.git",
+    "branch": "ros2-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "CanFrame": {
+      "description": "Header timestamp is the time when all messages were acquired",
+      "raw": "std_msgs/Header header\n# Header timestamp is the time when all messages were acquired\n# and synchronized.\n\nuint32 id\n# CAN Message ID - This is 11 bits for standard frames or 29 bits for\n# extended frames.\n\nuint8 msg_type\t  \n# CAN Message Type.  This should be one of the constants defined\n# below.  (Constants used to match pcan.h from Peak's driver.)\nuint8 MSGTYPE_STANDARD = 0\nuint8 MSGTYPE_RTR = 1\nuint8 MSGTYPE_EXTENDED = 2\nuint8 MSGTYPE_STATUS = 128\n\nuint8 data_length\n# Count of data bytes (0..8)\n\nuint8[8] data\n# Data bytes, up to 8\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "msg_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "MSGTYPE_STANDARD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MSGTYPE_RTR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MSGTYPE_EXTENDED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MSGTYPE_STATUS",
+          "comment": "",
+          "default": "128",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "data_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[8]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

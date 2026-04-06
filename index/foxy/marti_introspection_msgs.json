@@ -1,0 +1,335 @@
+{
+  "name": "marti_introspection_msgs",
+  "version": "1.4.1",
+  "description": "marti_introspection_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/marti_messages",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "marti_messages",
+    "url": "https://github.com/swri-robotics/marti_messages.git",
+    "branch": "ros2-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "swri_cli_tools"
+    ]
+  },
+  "messages": {
+    "NodeInfo": {
+      "description": "This message contains documentation data about a specific node",
+      "raw": "# This message contains documentation data about a specific node\n\n# The fully qualified node name\nstring name\n\n# The location the node handle is constructed\nstring location\n\n# The name of the nodelet manager this is running in, if any\nstring nodelet_manager\n\n# A human readable description of the node\nstring description\n\n# A list of each topic used in the node\nTopicInfo[] topics\n\n# A list of each parameter used in the node\nParamInfo[] parameters\n\n# A list of each service used in the node\nServiceInfo[] services\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "nodelet_manager",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TopicInfo[]",
+          "name": "topics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ParamInfo[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ServiceInfo[]",
+          "name": "services",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParamInfo": {
+      "description": "This message contains documentation data about a parameter in a node",
+      "raw": "# This message contains documentation data about a parameter in a node\nuint8 TYPE_XMLRPC=0\nuint8 TYPE_DOUBLE=1\nuint8 TYPE_STRING=2\nuint8 TYPE_INT=3\nuint8 TYPE_FLOAT=4\nuint8 TYPE_BOOL=5\n\n# The internal name of the parameter\nstring name\n\n# The external, global name of the parameter\nstring resolved_name\n\n# A description of the parameter and what it does\nstring description\n\n# Used to group related components\nstring group\n\n# The type of parameter using the enums above\nuint8 type\n\n# If the parameter is dynamic or not\nbool dynamic\n\n# Default values\nint32 default_int\nfloat32 default_float\nfloat64 default_double\nstring default_string\nbool default_bool\n\n# Max and minimum values (may have rounding issues)\n# Unused if both are 0.0\nfloat64 max_value\nfloat64 min_value\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "TYPE_XMLRPC",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_DOUBLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_STRING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_INT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_FLOAT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_BOOL",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "resolved_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dynamic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "default_int",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "default_float",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "default_double",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "default_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "default_bool",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServiceInfo": {
+      "description": "This message contains documentation data about a service client/server in a node",
+      "raw": "# This message contains documentation data about a service client/server in a node\n\n# The internal name of the service\nstring name\n\n# The external, global name of the service\nstring resolved_name\n\n# A human readable description of the service and how to use it\nstring description\n\n# Used to group related components\nstring group\n\n# The name of the message type\nstring message_type\n\n# If this is a service server, otherwise it is a service client\nbool server\n\n# Indicates if this is a topic service rather than a true service\nbool topic_service\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "resolved_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "server",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "topic_service",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TopicInfo": {
+      "description": "This message contains documentation data about a topic in a node",
+      "raw": "# This message contains documentation data about a topic in a node\n\n# The internal name of the topic\nstring name\n\n# The external, global name of the topic\nstring resolved_name\n\n# A human readable description of the topic and how to use it\nstring description\n\n# Used to group related components\nstring group\n\n# The name of the message type\nstring message_type\n\n# If the topic is being advertised, otherwise it is being subscribed to\nbool advertised\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "resolved_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "advertised",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

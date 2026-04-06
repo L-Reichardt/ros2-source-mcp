@@ -1,0 +1,1578 @@
+{
+  "name": "simulation_interfaces",
+  "version": "1.3.0",
+  "description": "A package containing simulation interfaces including messages, services and actions",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros-simulation/simulation-interfaces",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "simulation_interfaces",
+    "url": "https://github.com/ros-simulation/simulation_interfaces.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "ros_gz_sim"
+    ]
+  },
+  "messages": {
+    "Bounds": {
+      "description": "Bounds which are useful in several contexts, e.g. to avoid spawning with other object overlap,",
+      "raw": "# Bounds which are useful in several contexts, e.g. to avoid spawning with other object overlap,\n# or parking in a spot that is too small.\n# Certain goals or points might be valid for a small object, but not suitable for a large one,\n# or a differently shaped one.\n# Bounds can be also checked to ensure certain scenario conditions are met.\n# For entities, these limits are relative to entity's canonical link transform, following ROS rep-103 convention.\n\n# As bounds are optional in most interfaces, TYPE_EMPTY signifies empty bounds, to be understood as \"unbounded\".\n# Otherwise, the fields are expected to define a valid volume.\n# For spawning with a named pose, you should check whether the entity simulation model fits within the bounds\n# before calling SpawnEntity, to avoid overlaps and unstable behavior.\n\n# bounds type\nuint8 TYPE_EMPTY         = 0      # No bounds. The points vector will be empty.\nuint8 TYPE_BOX           = 1      # Axis-aligned bounding box, points field should have two values,\n                                  # which are upper right and lower left corners of the box.\nuint8 TYPE_CONVEX_HULL   = 2      # Points define a convex hull (at least 3 non-collinear points).\nuint8 TYPE_SPHERE        = 3      # A sphere with center and radius. First element of points vector is the center.\n                                  # The x field of the second point of the vector is the radius (y and z are ignored).\n\n\nuint8 type\ngeometry_msgs/Vector3[] points           # Points defining the bounded area. Check type field to determine semantics.\n                                         # Valid sizes are zero (no bounds), 2 (sphere or box, depending on type field),\n                                         # and 3 or more (convex hull).\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "TYPE_EMPTY",
+          "comment": "No bounds. The points vector will be empty.",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_BOX",
+          "comment": "Axis-aligned bounding box, points field should have two values,",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_CONVEX_HULL",
+          "comment": "Points define a convex hull (at least 3 non-collinear points).",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_SPHERE",
+          "comment": "A sphere with center and radius. First element of points vector is the center.",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[]",
+          "name": "points",
+          "comment": "Points defining the bounded area. Check type field to determine semantics.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EntityCategory": {
+      "description": "Entity major category, which often warrants a specific way to handle such entity, e.g. when handling humans",
+      "raw": "# Entity major category, which often warrants a specific way to handle such entity, e.g. when handling humans\n# or mapping persistence for dynamic vs static objects.\n\nuint8 CATEGORY_OBJECT         = 0    # Generic or unspecified type.\nuint8 CATEGORY_ROBOT          = 1    # A broad category for mobile robots, arms, drones etc.,\n                                     # usually with ROS 2 interfaces.\nuint8 CATEGORY_HUMAN          = 2    # Simulated humans, e.g. pedestrians, warehouse workers.\n                                     # Compared to CATEGORY_DYNAMIC_OBJECT, humans are often expected to be treated\n                                     # exceptionally in regards to safety constraints.\nuint8 CATEGORY_DYNAMIC_OBJECT = 4    # Vehicles, animals, mobile obstacles, typically to present a detection and\n                                     # tracking challenge, such as when simulation is used to test robot perception\n                                     # or navigation stack.\nuint8 CATEGORY_STATIC_OBJECT  = 5    # Any object which is static, e.g. not supposed to change its pose\n                                     # unless by means of SetEntityState.\n\nuint8 category",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CATEGORY_OBJECT",
+          "comment": "Generic or unspecified type.",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CATEGORY_ROBOT",
+          "comment": "A broad category for mobile robots, arms, drones etc.,",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CATEGORY_HUMAN",
+          "comment": "Simulated humans, e.g. pedestrians, warehouse workers.",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CATEGORY_DYNAMIC_OBJECT",
+          "comment": "Vehicles, animals, mobile obstacles, typically to present a detection and",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CATEGORY_STATIC_OBJECT",
+          "comment": "Any object which is static, e.g. not supposed to change its pose",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "category",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EntityFilters": {
+      "description": "A set of filters to apply to entity queries. See GetEntities, GetEntitiesStates.",
+      "raw": "# A set of filters to apply to entity queries. See GetEntities, GetEntitiesStates.\n\nstring filter                                       # Optional, defaults to empty. Return entities with matching names.\n                                                    # Entity names are matched with the filter regular expression.\n                                                    # An empty filter will result in all entities being returned.\n                                                    # The regular expression syntax is POSIX Extended,\n                                                    # see https://pubs.opengroup.org/onlinepubs/9799919799/ definitions.\n                                                    # Applies together with other filters (categories, tags).\nEntityCategory[] categories                         # Optional, defaults to empty, which means no category filter.\n                                                    # Entities matching any of the categories will be returned.\n                                                    # To get entity category, use GetEntityInfo.\n                                                    # Applies together with other filters (filter, tags).\n                                                    # Check ENTITY_CATEGORIES in GetSimulatorFeatures to determine if\n                                                    # your simulator supports entity categories.\nTagsFilter tags                                     # Tags filter to apply. To get entity tags, use GetEntityInfo.\n                                                    # Applies together with other filters (filter, categories).\n                                                    # Check support for this feature (ENTITY_TAGS) in GetSimulationFeatures.\nBounds bounds                                       # if bounds are not empty, the overlap filter is applied\n                                                    # and entities overlapping with bounds will be returned.\n                                                    # Note that not all bound types might be supported by the simulator,\n                                                    # though at least TYPE_SPHERE needs to be supported.\n                                                    # Check ENTITY_BOUNDS_BOX and ENTITY_BOUNDS_CONVEX in GetSimulationFeatures\n                                                    # to determine whether your simulator supports other bound types.\n                                                    # If service is called with filter bounds set to an unsupported type,\n                                                    # a FEATURE_UNSUPPORTED result will be returned.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "filter",
+          "comment": "Optional, defaults to empty. Return entities with matching names.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EntityCategory[]",
+          "name": "categories",
+          "comment": "Optional, defaults to empty, which means no category filter.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TagsFilter",
+          "name": "tags",
+          "comment": "Tags filter to apply. To get entity tags, use GetEntityInfo.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Bounds",
+          "name": "bounds",
+          "comment": "if bounds are not empty, the overlap filter is applied",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EntityInfo": {
+      "description": "Entity type and additional information",
+      "raw": "# Entity type and additional information\n\nEntityCategory category     # Major category for the entity. Extra entity type distinction can be made through tags.\nstring description          # optional: verbose, human-readable description of the entity.\nstring[] tags               # optional: tags which are useful for filtering and categorizing entities further.\n",
+      "fields": [
+        {
+          "type": "EntityCategory",
+          "name": "category",
+          "comment": "Major category for the entity. Extra entity type distinction can be made through tags.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "optional: verbose, human-readable description of the entity.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "tags",
+          "comment": "optional: tags which are useful for filtering and categorizing entities further.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EntityState": {
+      "description": "Entity current pose, twist and acceleration",
+      "raw": "# Entity current pose, twist and acceleration\n\nstd_msgs/Header header                  # Reference frame and timestamp for pose and twist. Empty frame defaults to world.\ngeometry_msgs/Pose pose                 # Pose in reference frame, ground truth.\ngeometry_msgs/Twist twist               # Ground truth linear and angular velocities\n                                        # observed in the frame specified by header.frame_id\n                                        # See https://github.com/ros2/common_interfaces/pull/240 for conventions.\ngeometry_msgs/Accel acceleration        # Linear and angular acceleration ground truth, following the same convention.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Reference frame and timestamp for pose and twist. Empty frame defaults to world.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "Pose in reference frame, ground truth.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "Ground truth linear and angular velocities",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Accel",
+          "name": "acceleration",
+          "comment": "Linear and angular acceleration ground truth, following the same convention.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NamedPose": {
+      "description": "A named pose defined in the simulation for certain purposes such as spawning.",
+      "raw": "# A named pose defined in the simulation for certain purposes such as spawning.\n\nstring name                               # Unique name.\nstring description                        # Description for the user, e.g. \"near the charging station\".\nstring[] tags                             # Optional tags which can be used to determine the named pose\n                                          # purpose, for example: \"spawn\", \"parking\", \"navigation_goal\",\n                                          # as well as fitting entity types e.g. \"drone\", \"turtlebot3\".\ngeometry_msgs/Pose pose                   # Pose relative to world, which can be used with SpawnEntity.srv.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Unique name.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "Description for the user, e.g. \"near the charging station\".",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "tags",
+          "comment": "Optional tags which can be used to determine the named pose",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "Pose relative to world, which can be used with SpawnEntity.srv.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Resource": {
+      "description": "This message is used to specify a resource, either by a URI or by its string content.",
+      "raw": "# This message is used to specify a resource, either by a URI or by its string content.\n\nstring uri              # If uri field is empty, resource_string must not be empty.\n\nstring resource_string  # An entity definition file passed as a string, only used if uri is empty.\n                        # If uri field is not empty, resource_string field will be ignored.\n                        # Simulators may support spawning from a file generated on the fly (e.g. XACRO).",
+      "fields": [
+        {
+          "type": "string",
+          "name": "uri",
+          "comment": "If uri field is empty, resource_string must not be empty.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "resource_string",
+          "comment": "An entity definition file passed as a string, only used if uri is empty.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Result": {
+      "description": "Result code and message for service calls.",
+      "raw": "# Result code and message for service calls.\n# Note that additional results for specific services can defined within them using values above 100.\n\nuint8 RESULT_FEATURE_UNSUPPORTED   = 0    # Feature is not supported by the simulator, check GetSimulatorFeatures.\n                                          # While feature support can sometimes be deduced from presence of corresponding\n                                          # service / action interface, in other cases it is about supporting certain\n                                          # call parameters, formats and options within interface call.\nuint8 RESULT_OK                    = 1\nuint8 RESULT_NOT_FOUND             = 2    # No match for input (such as when entity name does not exist).\nuint8 RESULT_INCORRECT_STATE       = 3    # Simulator is in an incorrect state for this interface call, e.g. a service\n                                          # requires paused state but the simulator is not paused.\nuint8 RESULT_OPERATION_FAILED      = 4    # Request could not be completed successfully even though feature is supported\n                                          # and the input is correct; check error_message for details.\n                                          # Implementation rule: check extended codes for called service\n                                          #  (e.g. SpawnEntity) to provide a return code which is more specific.\n\nuint8 result                              # Result to be checked on return from service interface call\nstring error_message                      # Additional error description when useful.\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "RESULT_FEATURE_UNSUPPORTED",
+          "comment": "Feature is not supported by the simulator, check GetSimulatorFeatures.",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_OK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_NOT_FOUND",
+          "comment": "No match for input (such as when entity name does not exist).",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_INCORRECT_STATE",
+          "comment": "Simulator is in an incorrect state for this interface call, e.g. a service",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_OPERATION_FAILED",
+          "comment": "Request could not be completed successfully even though feature is supported",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "result",
+          "comment": "Result to be checked on return from service interface call",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_message",
+          "comment": "Additional error description when useful.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SimulationState": {
+      "description": "Simulation states used in SetSimulationState and returned in GetSimulationState",
+      "raw": "# Simulation states used in SetSimulationState and returned in GetSimulationState\n\nuint8 STATE_STOPPED          = 0           # Simulation is stopped, which is equivalent to pausing and resetting with ALL_PAUSED.\n                                           # This is typically the default state when simulator is launched.\n                                           # Stopped simulation can be played. It can also be paused, which means\n                                           # starting simulation in a paused state immediately,\n                                           # without any time steps for physics or simulated clock ticks.\n\nuint8 STATE_PLAYING          = 1           # Simulation is playing, can be either paused or stopped.\n\nuint8 STATE_PAUSED           = 2           # Simulation is paused, can be either stopped (which will reset it) or played.\n\nuint8 STATE_QUITTING         = 3           # Closing the simulator application. Switching from STATE_PLAYING or STATE_PAUSED\n                                           # states is expected to stop the simulation first, and then exit.\n                                           # Simulation interfaces will become unavailable after quitting.\n                                           # Running simulation application is outside of the simulation interfaces as\n                                           # there is no service to handle the call when the simulator is not up.\n\nuint8 STATE_NO_WORLD         = 4           # Simulation world is currently unloaded.\n                                           # The simulation is inactive and cannot be started, stopped, or paused.\n\nuint8 STATE_LOADING_WORLD    = 5           # Simulation world is currently loading.\n                                           # The simulation is inactive while world is loading and cannot be started, stopped, or paused.\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "STATE_STOPPED",
+          "comment": "Simulation is stopped, which is equivalent to pausing and resetting with ALL_PAUSED.",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_PLAYING",
+          "comment": "Simulation is playing, can be either paused or stopped.",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_PAUSED",
+          "comment": "Simulation is paused, can be either stopped (which will reset it) or played.",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_QUITTING",
+          "comment": "Closing the simulator application. Switching from STATE_PLAYING or STATE_PAUSED",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_NO_WORLD",
+          "comment": "Simulation world is currently unloaded.",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_LOADING_WORLD",
+          "comment": "Simulation world is currently loading.",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SimulatorFeatures": {
+      "description": "Features supported by the simulator.",
+      "raw": "# Features supported by the simulator.\n\nuint8 SPAWNING                  = 0       # Supports spawn interface (SpawnEntity).\nuint8 DELETING                  = 1       # Supports deleting entities (DeleteEntity).\nuint8 NAMED_POSES               = 2       # Supports predefined named poses (GetNamedPoses).\nuint8 POSE_BOUNDS               = 3       # Supports pose bounds (GetNamedPoseBounds).\nuint8 ENTITY_TAGS               = 4       # Supports entity tags in interfaces using EntityFilters, such as GetEntities.\nuint8 ENTITY_BOUNDS             = 5       # Supports entity bounds (GetEntityBounds).\nuint8 ENTITY_BOUNDS_BOX         = 6       # Supports entity filtering with bounds with TYPE_BOX.\nuint8 ENTITY_BOUNDS_CONVEX      = 7       # Supports entity filtering with Bounds TYPE_CONVEX_HULL.\nuint8 ENTITY_CATEGORIES         = 8       # Supports entity categories, such as in use with EntityFilters or SetEntityInfo.\nuint8 SPAWNING_RESOURCE_STRING  = 9       # Supports SpawnEntity resource_string field.\n\nuint8 ENTITY_STATE_GETTING      = 10      # Supports GetEntityState interface.\nuint8 ENTITY_STATE_SETTING      = 11      # Supports SetEntityState interface.\nuint8 ENTITY_INFO_GETTING       = 12      # Supports GetEntityInfo interface.\nuint8 ENTITY_INFO_SETTING       = 13      # Supports SetEntityInfo interface.\nuint8 SPAWNABLES                = 14      # Supports GetSpawnables interface.\n\nuint8 SIMULATION_RESET          = 20      # Supports one or more ways to reset the simulation through ResetSimulation.\nuint8 SIMULATION_RESET_TIME     = 21      # Supports SCOPE_TIME flag for resetting.\nuint8 SIMULATION_RESET_STATE    = 22      # Supports SCOPE_STATE flag for resetting.\nuint8 SIMULATION_RESET_SPAWNED  = 23      # Supports SCOPE_SPAWNED flag for resetting.\nuint8 SIMULATION_STATE_GETTING  = 24      # Supports GetSimulationState interface.\nuint8 SIMULATION_STATE_SETTING  = 25      # Supports SetSimulationState interface. Check SIMULATION_STATE_PAUSE feature\n                                          # for setting STATE_PAUSED.\nuint8 SIMULATION_STATE_PAUSE    = 26      # Supports the STATE_PAUSED SimulationState in SetSimulationState interface.\n\nuint8 STEP_SIMULATION_SINGLE    = 31      # Supports single stepping through simulation with StepSimulation interface.\nuint8 STEP_SIMULATION_MULTIPLE  = 32      # Supports multi-stepping through simulation, either through StepSimulation.\n                                          # service or through SimulateSteps action.\nuint8 STEP_SIMULATION_ACTION    = 33      # Supports SimulateSteps action interface.\n\nuint8 WORLD_LOADING             = 40      # Supports LoadWorld interface\nuint8 WORLD_RESOURCE_STRING     = 41      # Supports LoadWorld resource_string field\nuint8 WORLD_TAGS                = 42      # Supports world tags and tag filtering\nuint8 WORLD_UNLOADING           = 43      # Supports UnloadWorld interface\nuint8 WORLD_INFO_GETTING        = 44      # Supports GetCurrentWorld interface\nuint8 AVAILABLE_WORLDS          = 45      # Supports GetAvailableWorlds interface\n\nuint16[] features                         # A list of simulation features as specified by the list above.\n\n# A list of additional supported formats for spawning, which might be empty. Values may include\n#  * sdf (SDFormat)\n#  * urdf (Unified Robot Description Format)\n#  * usd (Universal Scene Description)\n#  * mjcf (MuJoCo's XML format)\n# or whatever simulator-native formats that are supported. \nstring[] spawn_formats\nstring custom_info                       # Optional: extra information for the caller, which could point to\n                                         # documentation, version compatibility and other useful meta information.\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "SPAWNING",
+          "comment": "Supports spawn interface (SpawnEntity).",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DELETING",
+          "comment": "Supports deleting entities (DeleteEntity).",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NAMED_POSES",
+          "comment": "Supports predefined named poses (GetNamedPoses).",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POSE_BOUNDS",
+          "comment": "Supports pose bounds (GetNamedPoseBounds).",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_TAGS",
+          "comment": "Supports entity tags in interfaces using EntityFilters, such as GetEntities.",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_BOUNDS",
+          "comment": "Supports entity bounds (GetEntityBounds).",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_BOUNDS_BOX",
+          "comment": "Supports entity filtering with bounds with TYPE_BOX.",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_BOUNDS_CONVEX",
+          "comment": "Supports entity filtering with Bounds TYPE_CONVEX_HULL.",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_CATEGORIES",
+          "comment": "Supports entity categories, such as in use with EntityFilters or SetEntityInfo.",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPAWNING_RESOURCE_STRING",
+          "comment": "Supports SpawnEntity resource_string field.",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_STATE_GETTING",
+          "comment": "Supports GetEntityState interface.",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_STATE_SETTING",
+          "comment": "Supports SetEntityState interface.",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_INFO_GETTING",
+          "comment": "Supports GetEntityInfo interface.",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTITY_INFO_SETTING",
+          "comment": "Supports SetEntityInfo interface.",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPAWNABLES",
+          "comment": "Supports GetSpawnables interface.",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIMULATION_RESET",
+          "comment": "Supports one or more ways to reset the simulation through ResetSimulation.",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIMULATION_RESET_TIME",
+          "comment": "Supports SCOPE_TIME flag for resetting.",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIMULATION_RESET_STATE",
+          "comment": "Supports SCOPE_STATE flag for resetting.",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIMULATION_RESET_SPAWNED",
+          "comment": "Supports SCOPE_SPAWNED flag for resetting.",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIMULATION_STATE_GETTING",
+          "comment": "Supports GetSimulationState interface.",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIMULATION_STATE_SETTING",
+          "comment": "Supports SetSimulationState interface. Check SIMULATION_STATE_PAUSE feature",
+          "default": "25",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIMULATION_STATE_PAUSE",
+          "comment": "Supports the STATE_PAUSED SimulationState in SetSimulationState interface.",
+          "default": "26",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEP_SIMULATION_SINGLE",
+          "comment": "Supports single stepping through simulation with StepSimulation interface.",
+          "default": "31",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEP_SIMULATION_MULTIPLE",
+          "comment": "Supports multi-stepping through simulation, either through StepSimulation.",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEP_SIMULATION_ACTION",
+          "comment": "Supports SimulateSteps action interface.",
+          "default": "33",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WORLD_LOADING",
+          "comment": "Supports LoadWorld interface",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WORLD_RESOURCE_STRING",
+          "comment": "Supports LoadWorld resource_string field",
+          "default": "41",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WORLD_TAGS",
+          "comment": "Supports world tags and tag filtering",
+          "default": "42",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WORLD_UNLOADING",
+          "comment": "Supports UnloadWorld interface",
+          "default": "43",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WORLD_INFO_GETTING",
+          "comment": "Supports GetCurrentWorld interface",
+          "default": "44",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AVAILABLE_WORLDS",
+          "comment": "Supports GetAvailableWorlds interface",
+          "default": "45",
+          "is_constant": true
+        },
+        {
+          "type": "uint16[]",
+          "name": "features",
+          "comment": "A list of simulation features as specified by the list above.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "spawn_formats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "custom_info",
+          "comment": "Optional: extra information for the caller, which could point to",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Spawnable": {
+      "description": "Robot or other object which can be spawned in simulation runtime.",
+      "raw": "# Robot or other object which can be spawned in simulation runtime.\n\nstring uri                                # Resource such as SDFormat, URDF, USD or MJCF file, a native prefab, etc.\n                                          # Valid URIs can be determined by calling GetSpawnables first, and you can check\n                                          # the simulator format support by reading SimulatorFeatures spawn_formats field.\n\nstring description                        # Optional description for the user, e.g. \"robot X with sensors A,B,C\".\n\nBounds spawn_bounds                       # Optional spawn area bounds which fully encompass this object.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "uri",
+          "comment": "Resource such as SDFormat, URDF, USD or MJCF file, a native prefab, etc.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "Optional description for the user, e.g. \"robot X with sensors A,B,C\".",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Bounds",
+          "name": "spawn_bounds",
+          "comment": "Optional spawn area bounds which fully encompass this object.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TagsFilter": {
+      "description": "An utility message type for specification of tag-based filtering",
+      "raw": "# An utility message type for specification of tag-based filtering\n\nstring[] tags                           # Optional, defaults to empty, which means no tags filter.\n                                        # Results matching any or all of tags will be returned, depending\n                                        # on tags_filter_mode.\n\nuint8 FILTER_MODE_ANY    = 0            # Filter with OR mode (any tag can match).\nuint8 FILTER_MODE_ALL    = 1            # Filter with AND mode (all tags need to match).\n\nuint8 filter_mode                       # Set to control filter application for tags.\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "tags",
+          "comment": "Optional, defaults to empty, which means no tags filter.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "FILTER_MODE_ANY",
+          "comment": "Filter with OR mode (any tag can match).",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FILTER_MODE_ALL",
+          "comment": "Filter with AND mode (all tags need to match).",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "filter_mode",
+          "comment": "Set to control filter application for tags.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WorldResource": {
+      "description": "World is a virtual environment in which the simulation happens.",
+      "raw": "# World is a virtual environment in which the simulation happens.\n# Worlds are also known as scenes or levels in some simulators.\n# Depending on the world format, loading of a world might be associated with changes\n# in certain parameters, including physics settings such as gravity.\n# World resources may be defined in standard or simulation-specific formats,\n# and, depending on the simulator, loaded from local or remote repositories.\n\n\nstring name                               # World name, which is not necessarily unique.\n\nResource world_resource                   # The resource for the world to be loaded.\n\nstring description                        # Optional custom description of the world\n\nstring[] tags                             # Optional tags describing the world (e.g., \"indoor\", \"outdoor\", \"warehouse\")\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "World name, which is not necessarily unique.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Resource",
+          "name": "world_resource",
+          "comment": "The resource for the world to be loaded.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "Optional custom description of the world",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "tags",
+          "comment": "Optional tags describing the world (e.g., \"indoor\", \"outdoor\", \"warehouse\")",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "DeleteEntity": {
+      "description": "Remove an entity (a robot, other object) from the simulation.",
+      "raw": "# Remove an entity (a robot, other object) from the simulation.\n# Support for this interface is indicated through the DELETING value in GetSimulationFeatures.\n\nstring entity                         # Entity identified by its unique name with a namespace,\n                                      # as returned by SpawnEntity or GetEntities.\n\n---\n\nResult result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "entity",
+          "comment": "Entity identified by its unique name with a namespace,",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetAvailableWorlds": {
+      "description": "Return a list of available world resources which can be used with LoadWorld.",
+      "raw": "# Return a list of available world resources which can be used with LoadWorld.\n# Support for this interface is indicated through the AVAILABLE_WORLDS value in GetSimulatorFeatures.\n# By default, a simulator will search its default local and online sources. If some\n# default sources can't be accessed (e.g. due to connectivity issues), the\n# DEFAULT_SOURCES_FAILED error result code will be returned.\n\nstring[] additional_sources             # Optional field for additional sources (local or remote) to search,\n                                        # specified as standard URIs if possible.\n\nTagsFilter filter                       # Only get worlds with tags matching the filter. The filter is optional and matches everything by default.\n                                        # This feature is supported if WORLD_TAGS feature is included in output of GetSimulatorFeatures.\n\nbool offline_only                       # If true, only offline/local sources should be searched. Defaults to false.\n\nbool continue_on_error                  # If true, the simulator will continue to search sources even if some fail.\n                                        # The service will return success if any source yielded worlds. Defaults to false.\n---\n\nuint8 DEFAULT_SOURCES_FAILED = 101      # Some default sources could not be accessed.\n\nResult result                           # Standard result message. A specific result code should be used if some sources were not accessible.\n\nWorldResource[] worlds                  # Available world resources.\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "additional_sources",
+          "comment": "Optional field for additional sources (local or remote) to search,",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TagsFilter",
+          "name": "filter",
+          "comment": "Only get worlds with tags matching the filter. The filter is optional and matches everything by default.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "offline_only",
+          "comment": "If true, only offline/local sources should be searched. Defaults to false.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "continue_on_error",
+          "comment": "If true, the simulator will continue to search sources even if some fail.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "DEFAULT_SOURCES_FAILED",
+          "comment": "Some default sources could not be accessed.",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "Standard result message. A specific result code should be used if some sources were not accessible.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WorldResource[]",
+          "name": "worlds",
+          "comment": "Available world resources.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetCurrentWorld": {
+      "description": "Get information about the currently loaded world in the simulation.",
+      "raw": "# Get information about the currently loaded world in the simulation.\n# Support for this interface is indicated through the WORLD_INFO_GETTING value in GetSimulatorFeatures.\n\n---\n\nuint8 NO_WORLD_LOADED = 101     # No world is loaded at the moment.\n\nResult result                   # Standard result message\n\nWorldResource world             # Information about the currently loaded world. Only valid if result is RESULT_OK.\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "NO_WORLD_LOADED",
+          "comment": "No world is loaded at the moment.",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "Standard result message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WorldResource",
+          "name": "world",
+          "comment": "Information about the currently loaded world. Only valid if result is RESULT_OK.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetEntities": {
+      "description": "Get objects in the scene which can be interacted with, e.g. with using SetEntityState.",
+      "raw": "# Get objects in the scene which can be interacted with, e.g. with using SetEntityState.\n# You can get further information about entities through GetEntityInfo and GetEntityState services.\n# There is also a GetEntitiesStates service if you would like to get state for each entity.\n\nEntityFilters filters                               # Optional filters for the query, including name, category, tags,\n                                                    # and overlap filters.\n\n---\n\nResult result\nstring[] entities                                   # Unique names of all entities matching the filters.\n",
+      "request_fields": [
+        {
+          "type": "EntityFilters",
+          "name": "filters",
+          "comment": "Optional filters for the query, including name, category, tags,",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "entities",
+          "comment": "Unique names of all entities matching the filters.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetEntitiesStates": {
+      "description": "Get objects in the scene which can be interacted, e.g. with using SetEntityState.",
+      "raw": "# Get objects in the scene which can be interacted, e.g. with using SetEntityState.\n# Use GetEntities service instead if EntityState information for all entities is not needed.\n# Support for this interface is indicated through the ENTITY_STATE_GETTING value in GetSimulationFeatures.\n\nEntityFilters filters                               # Optional filters for the query, including name, category, tags,\n                                                    # and overlap filters.\n\n---\n\nResult result\nstring[] entities                                   # Unique names of all entities matching the filters.\nEntityState[] states                                # States for these entities.\n",
+      "request_fields": [
+        {
+          "type": "EntityFilters",
+          "name": "filters",
+          "comment": "Optional filters for the query, including name, category, tags,",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "entities",
+          "comment": "Unique names of all entities matching the filters.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EntityState[]",
+          "name": "states",
+          "comment": "States for these entities.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetEntityBounds": {
+      "description": "Get geometrical bounds for entity. This feature is available if GetSimulatorFeatures includes ENTITY_BOUNDS feature.",
+      "raw": "# Get geometrical bounds for entity. This feature is available if GetSimulatorFeatures includes ENTITY_BOUNDS feature.\n# Support for this interface is indicated through the ENTITY_BOUNDS value in GetSimulationFeatures.\n\nstring entity                         # Entity identified by its unique name as returned by GetEntities / SpawnEntity.\n\n---\n\nResult result\nBounds bounds                         # Entity bounds. Only valid if result.result_code is OK.\n                                      # Bounds with TYPE_BOX should be returned, unless there is a configuration\n                                      # parameter for the simulator to control the type and it is set otherwise.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "entity",
+          "comment": "Entity identified by its unique name as returned by GetEntities / SpawnEntity.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Bounds",
+          "name": "bounds",
+          "comment": "Entity bounds. Only valid if result.result_code is OK.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetEntityInfo": {
+      "description": "Get type and other information about an entity.",
+      "raw": "# Get type and other information about an entity.\n# Support for this interface is indicated through the ENTITY_INFO_GETTING value in GetSimulationFeatures.\n\nstring entity                         # Entity identified by its unique name as returned by GetEntities.\n\n---\n\nResult result\nEntityInfo info                       # Only valid if result.result_code is OK.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "entity",
+          "comment": "Entity identified by its unique name as returned by GetEntities.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EntityInfo",
+          "name": "info",
+          "comment": "Only valid if result.result_code is OK.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetEntityState": {
+      "description": "Get state of an entity.",
+      "raw": "# Get state of an entity.\n# Support for this interface is indicated through the ENTITY_STATE_GETTING value in GetSimulationFeatures.\n\nstring entity                         # Entity identified by its unique name as returned by GetEntities / SpawnEntity.\n\n---\n\nResult result\nEntityState state                     # Entity ground truth state. Valid when result.result = OK.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "entity",
+          "comment": "Entity identified by its unique name as returned by GetEntities / SpawnEntity.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EntityState",
+          "name": "state",
+          "comment": "Entity ground truth state. Valid when result.result = OK.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetNamedPoseBounds": {
+      "description": "Get bounds for the named pose. This feature is available if GetSimulatorFeatures includes POSE_BOUNDS feature.",
+      "raw": "# Get bounds for the named pose. This feature is available if GetSimulatorFeatures includes POSE_BOUNDS feature.\n# Support for this interface is indicated through the POSE_BOUNDS value in GetSimulationFeatures.\n\nstring name                                         # unique name (as returned from GetNamedPoses).\n\n---\n\nResult result\nBounds bounds                                       # bounds for the named pose.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "unique name (as returned from GetNamedPoses).",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Bounds",
+          "name": "bounds",
+          "comment": "bounds for the named pose.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetNamedPoses": {
+      "description": "Get predefined poses which are convenient to for spawning, navigation goals etc.",
+      "raw": "# Get predefined poses which are convenient to for spawning, navigation goals etc.\n# Support for this interface is indicated through the NAMED_POSES value in GetSimulationFeatures.\n\nTagsFilter tags                                     # Tags filter to apply. Only named poses with matching tags field\n                                                    # will be returned. Can be empty (see TagsFilter).\n\n---\n\nResult result\nNamedPose[] poses                                   # A list of predefined poses, which may be empty.\n",
+      "request_fields": [
+        {
+          "type": "TagsFilter",
+          "name": "tags",
+          "comment": "Tags filter to apply. Only named poses with matching tags field",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NamedPose[]",
+          "name": "poses",
+          "comment": "A list of predefined poses, which may be empty.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetSimulationState": {
+      "description": "Gets the simulation state (paused, playing, stopped)",
+      "raw": "# Gets the simulation state (paused, playing, stopped)\n# Support for this interface is indicated through the SIMULATION_STATE_GETTING value in GetSimulationFeatures.\n\n---\n\nSimulationState state                      # Current state of the simulation.\n\nResult result\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "SimulationState",
+          "name": "state",
+          "comment": "Current state of the simulation.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetSimulatorFeatures": {
+      "description": "Get a list of features supported by the simulator.",
+      "raw": "# Get a list of features supported by the simulator.\n# Simulators adhering to the standard need to implement at least this interface.\n\n---\n\nSimulatorFeatures features\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "SimulatorFeatures",
+          "name": "features",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetSpawnables": {
+      "description": "Return a list of resources which are valid as SpawnEntity uri fields (e.g. visible to or registered in simulator).",
+      "raw": "# Return a list of resources which are valid as SpawnEntity uri fields (e.g. visible to or registered in simulator).\n# This interface is an optional extension and might not be implemented by your simulator, check the result_code.\n# Support for this interface is indicated through the SPAWNABLES value in GetSimulationFeatures.\n\nstring[] sources                                    # Optional field for additional sources (local or remote) to search.\n                                                    # By default, each simulator has visibility of spawnables through\n                                                    # some mechanisms, e.g. a set of paths, registered assets etc.\n                                                    # Since the simulator cannot possibly look everywhere,\n                                                    # this field allows the user to specify additional sources.\n                                                    # Unrecognized values are listed as such in the result.error_message,\n                                                    # but do not hinder success of the response.\n                                                    # Sources may include subcategories and be simulator-specific.\n\n---\n\nResult result\nSpawnable[] spawnables                              # Spawnable objects with URI and additional information.\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "sources",
+          "comment": "Optional field for additional sources (local or remote) to search.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Spawnable[]",
+          "name": "spawnables",
+          "comment": "Spawnable objects with URI and additional information.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadWorld": {
+      "description": "Load a simulation world from a file or resource.",
+      "raw": "# Load a simulation world from a file or resource.\n# This means clearing the current scene (removing all entities), loading the new world and setting the simulation to the stopped state.\n# Support for this interface is indicated through the WORLD_LOADING value in GetSimulatorFeatures.\n# resource_string field support is indicated through the WORLD_RESOURCE_STRING value in GetSimulatorFeatures.\n# Currently loaded worlds will be unloaded before attempting to load a new one.\n# Any previously spawned entities will be removed. Once a world is loaded, simulation will be left in a Stopped state.\n\nstring uri                                  # Resource such as SDF, USD, MJCF, or other simulator-native format world file.\n\nstring resource_string                      # Simulation world passed as a string. This field is used if the uri field is empty.\n\nbool fail_on_unsupported_element            # Fail on unsupported elements (such as SDFormat sub-tags). By default, such elements are ignored.\n\n\nbool ignore_missing_or_unsupported_assets   # Ignore missing or unsupported assets. By default, missing or unsupported assets result in failure.\n\n---\n\nuint8 UNSUPPORTED_FORMAT = 101              # Format for uri or resource string is unsupported.\nuint8 NO_RESOURCE = 102                     # Both uri and resource string are empty.\nuint8 RESOURCE_PARSE_ERROR = 103            # Resource file or string failed to parse.\nuint8 MISSING_ASSETS = 104                  # At least one of resource assets (such as meshes) was not found.\nuint8 UNSUPPORTED_ASSETS = 105              # At least one of resource assets (such as meshes) is not supported.\nuint8 UNSUPPORTED_ELEMENTS = 106            # At least one of world definition elements such as format tags is unsupported.\n\n\nResult result                               # Standard result message\n\nWorldResource world                         # Information about the loaded world. Only valid if result is RESULT_OK.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "uri",
+          "comment": "Resource such as SDF, USD, MJCF, or other simulator-native format world file.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "resource_string",
+          "comment": "Simulation world passed as a string. This field is used if the uri field is empty.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fail_on_unsupported_element",
+          "comment": "Fail on unsupported elements (such as SDFormat sub-tags). By default, such elements are ignored.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore_missing_or_unsupported_assets",
+          "comment": "Ignore missing or unsupported assets. By default, missing or unsupported assets result in failure.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "UNSUPPORTED_FORMAT",
+          "comment": "Format for uri or resource string is unsupported.",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NO_RESOURCE",
+          "comment": "Both uri and resource string are empty.",
+          "default": "102",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESOURCE_PARSE_ERROR",
+          "comment": "Resource file or string failed to parse.",
+          "default": "103",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MISSING_ASSETS",
+          "comment": "At least one of resource assets (such as meshes) was not found.",
+          "default": "104",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNSUPPORTED_ASSETS",
+          "comment": "At least one of resource assets (such as meshes) is not supported.",
+          "default": "105",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNSUPPORTED_ELEMENTS",
+          "comment": "At least one of world definition elements such as format tags is unsupported.",
+          "default": "106",
+          "is_constant": true
+        },
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "Standard result message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WorldResource",
+          "name": "world",
+          "comment": "Information about the loaded world. Only valid if result is RESULT_OK.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ResetSimulation": {
+      "description": "Reset the simulation to the start, including the entire scene and the simulation time.",
+      "raw": "# Reset the simulation to the start, including the entire scene and the simulation time.\n# Objects that were dynamically spawned are de-spawned.\n# Support for this interface is indicated through the SIMULATION_RESET value in GetSimulationFeatures,\n# and supported scopes are further detailed by SIMULATION_RESET_TIME, SIMULATION_RESET_STATE, and SIMULATION_RESET_SPAWNED.\n\nuint8 SCOPE_DEFAULT       = 0             # same as SCOPE_ALL.\nuint8 SCOPE_TIME          = 1             # Reset simulation time to start.\nuint8 SCOPE_STATE         = 2             # Reset state such as poses and velocities. This may include state randomization\n                                          # if such feature is available and turned on.\nuint8 SCOPE_SPAWNED       = 4             # De-spawns all spawned entities.\nuint8 SCOPE_ALL           = 255           # Fully resets simulation to the start, as if it was closed and launched again.\n\nuint8 scope                               # Scope of the reset. Note that simulators might only support some scopes.\n                                          # This is a bit field which may be checked for each scope e.g. scope & SCOPE_TIME.\n\n---\n\nResult result\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "SCOPE_DEFAULT",
+          "comment": "same as SCOPE_ALL.",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCOPE_TIME",
+          "comment": "Reset simulation time to start.",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCOPE_STATE",
+          "comment": "Reset state such as poses and velocities. This may include state randomization",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCOPE_SPAWNED",
+          "comment": "De-spawns all spawned entities.",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SCOPE_ALL",
+          "comment": "Fully resets simulation to the start, as if it was closed and launched again.",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "scope",
+          "comment": "Scope of the reset. Note that simulators might only support some scopes.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetEntityInfo": {
+      "description": "Set type, tags and other information about an entity.",
+      "raw": "# Set type, tags and other information about an entity.\n# Support for this interface is indicated through the ENTITY_INFO_SETTING value in GetSimulationFeatures.\n\nstring entity                         # Entity identified by its unique name as returned by GetEntities.\nEntityInfo info                       # EntityInfo to set to the entity, which will override its current values.\n\n---\n\nResult result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "entity",
+          "comment": "Entity identified by its unique name as returned by GetEntities.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EntityInfo",
+          "name": "info",
+          "comment": "EntityInfo to set to the entity, which will override its current values.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetEntityState": {
+      "description": "Set a state of an object, which will result in an instant change in its pose and/or twist.",
+      "raw": "# Set a state of an object, which will result in an instant change in its pose and/or twist.\n# Support for this interface is indicated through the ENTITY_STATE_SETTING value in GetSimulationFeatures.\n\nstring entity                           # Entity identified by its unique name as returned by GetEntities / SpawnEntity.\nEntityState state                       # New state to set immediately. The timestamp in header is ignored.\n                                        # If non-zero twist or acceleration is requested for static object, the service call\n                                        # fails and RESULT_OPERATION_FAILED is returned.\n                                        # Note that the acceleration field may be ignored by simulators.\n\n---\n\nResult result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "entity",
+          "comment": "Entity identified by its unique name as returned by GetEntities / SpawnEntity.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EntityState",
+          "name": "state",
+          "comment": "New state to set immediately. The timestamp in header is ignored.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetSimulationState": {
+      "description": "Change the simulation state",
+      "raw": "# Change the simulation state\n# Support for this interface is indicated through the SIMULATION_STATE_SETTING value in GetSimulationFeatures.\n# Support for setting STATE_PAUSED is determined by SIMULATION_STATE_PAUSE feature.\n\nSimulationState state                      # Target state to set for the simulation.\n\n---\n\nuint8 ALREADY_IN_TARGET_STATE   = 101      # Additional result type for this call, which means simulation was already in\n                                           # the target state (e.g. was already stopped when STATE_STOPPED was requested).\nuint8 STATE_TRANSITION_ERROR    = 102      # The simulator failed to transition to the target state. This might happen\n                                           # especially with the transition to STATE_PLAYING from STATE_STOPPED.\n                                           # See result.error_message for details.\nuint8 INCORRECT_TRANSITION      = 103      # Incorrect transition (pausing when in stopped state).\n\nResult result\n",
+      "request_fields": [
+        {
+          "type": "SimulationState",
+          "name": "state",
+          "comment": "Target state to set for the simulation.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "ALREADY_IN_TARGET_STATE",
+          "comment": "Additional result type for this call, which means simulation was already in",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_TRANSITION_ERROR",
+          "comment": "The simulator failed to transition to the target state. This might happen",
+          "default": "102",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INCORRECT_TRANSITION",
+          "comment": "Incorrect transition (pausing when in stopped state).",
+          "default": "103",
+          "is_constant": true
+        },
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpawnEntity": {
+      "description": "Spawn an entity (a robot, other object) by name or URI",
+      "raw": "# Spawn an entity (a robot, other object) by name or URI\n# Support for this interface is indicated through the SPAWNING value in GetSimulationFeatures.\n\nstring name                             # A name to give to the spawned entity.\n                                        # If empty, a name field in the uri file or resource_string will be used,\n                                        # if supported and not empty (e.g. \"name\" field in SDFormat, URDF).\n                                        # If the name is still empty or not unique (as determined by the simulator),\n                                        # the service returns a generated name in the entity_name response field if the\n                                        # allow_renaming field is set to true. Otherwise, the service call fails and an\n                                        # error is returned.\nbool allow_renaming                     # Determines whether the spawning succeeds with a non-unique name.\n                                        # If it is set to true, the user should always check entity_name response field\n                                        # and use it for any further interactions.\nstring uri                              # Resource such as SDFormat, URDF, USD or MJCF file, a native prefab, etc.\n                                        # Valid URIs can be determined by calling GetSpawnables first, and you can check\n                                        # the simulator format support by reading SimulatorFeatures spawn_formats field.\n                                        # If uri field is empty, resource_string must not be empty.\nstring resource_string                  # An entity definition file passed as a string.\n                                        # Simulators may support spawning from a file generated on the fly (e.g. XACRO).\n                                        # It is supported by your simulator if GetSimulatorFeatures includes\n                                        # SPAWNING_RESOURCE_STRING feature.\n                                        # If uri field is not empty, resource_string field will be ignored.\nstring entity_namespace                 # Spawn the entity with all its interfaces under this namespace.\ngeometry_msgs/PoseStamped initial_pose  # Initial entity pose.\n                                        # The header contains a reference frame, which defaults to global \"world\" frame.\n                                        # This frame must be known to the simulator, e.g. of an object spawned earlier.\n                                        # The timestamp field in the header is ignored.\n\n---\n\n# Additional result.result_code values for this service. Check result.error_message for further details.\nuint8 NAME_NOT_UNIQUE       = 101       # Given name is already taken by entity and allow_renaming is false.\nuint8 NAME_INVALID          = 102       # Given name is invalid in the simulator (e.g. does not meet naming\n                                        # requirements such as allowed characters). This is also returned if name is\n                                        # empty and allow_renaming is false.\nuint8 UNSUPPORTED_FORMAT    = 103       # Format for uri or resource string is unsupported. Check supported formats\n                                        # through GetSimulatorFeatures service, in spawn_formats field.\nuint8 NO_RESOURCE           = 104       # Both uri and resource string are empty.\nuint8 NAMESPACE_INVALID     = 105       # Namespace does not meet namespace naming standards.\nuint8 RESOURCE_PARSE_ERROR  = 106       # Resource file or string failed to parse.\nuint8 MISSING_ASSETS        = 107       # At least one of resource assets (such as meshes) was not found.\nuint8 UNSUPPORTED_ASSETS    = 108       # At least one of resource assets (such as meshes) is not supported.\nuint8 INVALID_POSE          = 109       # initial_pose is invalid, such as when the quaternion is invalid or position\n                                        # exceeds simulator world bounds.\n\nResult result\nstring entity_name                      # Spawned entity full name, guaranteed to be unique in the simulation.\n                                        # If allow_renaming is true, it may differ from the request name field.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "A name to give to the spawned entity.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "allow_renaming",
+          "comment": "Determines whether the spawning succeeds with a non-unique name.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "uri",
+          "comment": "Resource such as SDFormat, URDF, USD or MJCF file, a native prefab, etc.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "resource_string",
+          "comment": "An entity definition file passed as a string.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "entity_namespace",
+          "comment": "Spawn the entity with all its interfaces under this namespace.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "initial_pose",
+          "comment": "Initial entity pose.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "NAME_NOT_UNIQUE",
+          "comment": "Given name is already taken by entity and allow_renaming is false.",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NAME_INVALID",
+          "comment": "Given name is invalid in the simulator (e.g. does not meet naming",
+          "default": "102",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNSUPPORTED_FORMAT",
+          "comment": "Format for uri or resource string is unsupported. Check supported formats",
+          "default": "103",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NO_RESOURCE",
+          "comment": "Both uri and resource string are empty.",
+          "default": "104",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NAMESPACE_INVALID",
+          "comment": "Namespace does not meet namespace naming standards.",
+          "default": "105",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESOURCE_PARSE_ERROR",
+          "comment": "Resource file or string failed to parse.",
+          "default": "106",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MISSING_ASSETS",
+          "comment": "At least one of resource assets (such as meshes) was not found.",
+          "default": "107",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNSUPPORTED_ASSETS",
+          "comment": "At least one of resource assets (such as meshes) is not supported.",
+          "default": "108",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_POSE",
+          "comment": "initial_pose is invalid, such as when the quaternion is invalid or position",
+          "default": "109",
+          "is_constant": true
+        },
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "entity_name",
+          "comment": "Spawned entity full name, guaranteed to be unique in the simulation.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StepSimulation": {
+      "description": "Assuming the simulation is paused, simulate a finite number of steps and return to paused state.",
+      "raw": "# Assuming the simulation is paused, simulate a finite number of steps and return to paused state.\n# The service only returns once stepping is complete, which might take considerable time.\n# There is an alternative in SimulateSteps action, which is worth considering for a multi-step interface.\n# Support for this interface is indicated through the STEP_SIMULATION_SINGLE and STEP_SIMULATION_MULTIPLE values\n# in GetSimulationFeatures, for steps = 1 and steps > 1 correspondingly.\n\nuint64 steps 1                      # Step through the simulation loop this many times.\n\n---\n\nResult result                       # Calling with simulation not paused will return RESULT_OPERATION_FAILED and error message.\n",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "steps",
+          "comment": "Step through the simulation loop this many times.",
+          "default": "1",
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "Calling with simulation not paused will return RESULT_OPERATION_FAILED and error message.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UnloadWorld": {
+      "description": "Unload the current simulation world.",
+      "raw": "# Unload the current simulation world.\n# Support for this interface is indicated through the WORLD_UNLOADING value in GetSimulatorFeatures.\n# Any previously spawned entities will be removed.\n\n---\n\nuint8 NO_WORLD_LOADED = 101      # No world is loaded at the moment.\n\nResult result # Standard result message\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "NO_WORLD_LOADED",
+          "comment": "No world is loaded at the moment.",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "Standard result message",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "SimulateSteps": {
+      "description": "Assuming the simulation is paused, simulate a finite number of steps and return to paused state.",
+      "raw": "# Assuming the simulation is paused, simulate a finite number of steps and return to paused state. \n# The action returns feedback after each complete step.\n# For a service alternative, see StepSimulation, which often makes more sense when doing a single step (steps = 1).\n# Support for this interface is indicated through the STEP_SIMULATION_ACTION value in GetSimulationFeatures.\n\nuint64 steps                        # Action goal: step through the simulation loop this many times.\n---\n\nResult result                       # Calling with simulation unpaused will return OPERATION_FAILED and error message.\n\n---\nuint64 completed_steps              # number of completed steps in this action so far.\nuint64 remaining_steps              # number of steps remaining to be completed in this action.\n",
+      "goal_fields": [
+        {
+          "type": "uint64",
+          "name": "steps",
+          "comment": "Action goal: step through the simulation loop this many times.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "Result",
+          "name": "result",
+          "comment": "Calling with simulation unpaused will return OPERATION_FAILED and error message.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "uint64",
+          "name": "completed_steps",
+          "comment": "number of completed steps in this action so far.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "remaining_steps",
+          "comment": "number of steps remaining to be completed in this action.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

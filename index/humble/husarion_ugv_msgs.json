@@ -1,0 +1,849 @@
+{
+  "name": "husarion_ugv_msgs",
+  "version": "2.2.2",
+  "description": "Custom messages for Husarion UGV",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://husarion.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/husarion/husarion_ugv_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/husarion/husarion_ugv_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "husarion_ugv_ros",
+    "url": "https://github.com/husarion/husarion_ugv_ros.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "ChargingStatus": {
+      "description": "This message defines the battery charging process status",
+      "raw": "# This message defines the battery charging process status\n\n# Charger types\nuint8 UNKNOWN = 0\nuint8 WIRED = 1\nuint8 WIRELESS = 2\n\nstd_msgs/Header header\nbool charging               # True if battery is being charged\nfloat32 current             # Power supply total current (A)\nfloat32 current_battery_1   # Power supply current (A) for battery 1\nfloat32 current_battery_2   # Power supply current (A) for battery 2 (NaN for single battery configuration)\nuint8 charger_type          # Determines the type of charger connection\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WIRED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WIRELESS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "charging",
+          "comment": "True if battery is being charged",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "Power supply total current (A)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current_battery_1",
+          "comment": "Power supply current (A) for battery 1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current_battery_2",
+          "comment": "Power supply current (A) for battery 2 (NaN for single battery configuration)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "charger_type",
+          "comment": "Determines the type of charger connection",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriverState": {
+      "description": "",
+      "raw": "float32 voltage\nfloat32 current\nfloat32 temperature\nfloat32 heatsink_temperature\n\nhusarion_ugv_msgs/FaultFlag fault_flag\nhusarion_ugv_msgs/ScriptFlag script_flag\nhusarion_ugv_msgs/RuntimeError channel_1_motor_runtime_error\nhusarion_ugv_msgs/RuntimeError channel_2_motor_runtime_error\n\nbool motor_states_data_timed_out\nbool driver_state_data_timed_out\nbool can_error\nbool heartbeat_timeout\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heatsink_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "husarion_ugv_msgs/FaultFlag",
+          "name": "fault_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "husarion_ugv_msgs/ScriptFlag",
+          "name": "script_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "husarion_ugv_msgs/RuntimeError",
+          "name": "channel_1_motor_runtime_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "husarion_ugv_msgs/RuntimeError",
+          "name": "channel_2_motor_runtime_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "motor_states_data_timed_out",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver_state_data_timed_out",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "can_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "heartbeat_timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriverStateNamed": {
+      "description": "",
+      "raw": "string NAME_DEFAULT = \"default\"\nstring NAME_FRONT = \"front\"\nstring NAME_REAR = \"rear\"\n\nstring name\nhusarion_ugv_msgs/DriverState state\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "NAME_DEFAULT",
+          "comment": "",
+          "default": "\"default\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NAME_FRONT",
+          "comment": "",
+          "default": "\"front\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NAME_REAR",
+          "comment": "",
+          "default": "\"rear\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "husarion_ugv_msgs/DriverState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FaultFlag": {
+      "description": "",
+      "raw": "bool overheat\nbool overvoltage\nbool undervoltage\nbool short_circuit\nbool emergency_stop\nbool motor_or_sensor_setup_fault\nbool mosfet_failure\nbool default_config_loaded_at_startup\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "overheat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "overvoltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "undervoltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "short_circuit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "emergency_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "motor_or_sensor_setup_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "mosfet_failure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "default_config_loaded_at_startup",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IOState": {
+      "description": "",
+      "raw": "bool aux_power\nbool charger_connected\nbool charger_enabled\nbool digital_power\nbool fan\nbool led_control\nbool motor_on\nbool power_button\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "aux_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "charger_connected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "charger_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "digital_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "led_control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "motor_on",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "power_button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LEDAnimation": {
+      "description": "",
+      "raw": "uint16 E_STOP = 0\nuint16 READY = 1\nuint16 ERROR = 2\nuint16 NO_ERROR = 3\nuint16 MANUAL_ACTION = 4\nuint16 LOW_BATTERY = 5\nuint16 CRITICAL_BATTERY = 6\nuint16 CHARGING_BATTERY = 7\nuint16 BATTERY_CHARGED = 8\nuint16 CHARGER_INSERTED = 9\nuint16 BATTERY_NOMINAL = 10\nuint16 AUTONOMOUS_READY = 11\nuint16 AUTONOMOUS_ACTION = 12\nuint16 GOAL_ACHIEVED = 13\nuint16 BLINKER_LEFT = 14\nuint16 BLINKER_RIGHT = 15\n\nuint16 id\nstring param\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "E_STOP",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "READY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ERROR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NO_ERROR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "MANUAL_ACTION",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "LOW_BATTERY",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CRITICAL_BATTERY",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGING_BATTERY",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "BATTERY_CHARGED",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CHARGER_INSERTED",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "BATTERY_NOMINAL",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "AUTONOMOUS_READY",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "AUTONOMOUS_ACTION",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "GOAL_ACHIEVED",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "BLINKER_LEFT",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "BLINKER_RIGHT",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "param",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LEDAnimationQueue": {
+      "description": "",
+      "raw": "string[] queue\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "queue",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LEDImageAnimation": {
+      "description": "",
+      "raw": "string image\nfloat32 duration\nfloat32 brightness\nuint8 repeat\nuint32 color\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brightness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "repeat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotDriverState": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nhusarion_ugv_msgs/DriverStateNamed[] driver_states\n\nbool error\nbool write_pdo_cmds_error\nbool read_pdo_motor_states_error\nbool read_pdo_driver_state_error\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "husarion_ugv_msgs/DriverStateNamed[]",
+          "name": "driver_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "write_pdo_cmds_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "read_pdo_motor_states_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "read_pdo_driver_state_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RuntimeError": {
+      "description": "",
+      "raw": "bool amps_limit_active\nbool motor_stall\nbool loop_error\nbool safety_stop_active\nbool forward_limit_triggered\nbool reverse_limit_triggered\nbool amps_trigger_activated\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "amps_limit_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "motor_stall",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "loop_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "safety_stop_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "forward_limit_triggered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reverse_limit_triggered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "amps_trigger_activated",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScriptFlag": {
+      "description": "",
+      "raw": "bool loop_error\nbool encoder_disconnected\nbool amp_limiter\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "loop_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "encoder_disconnected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "amp_limiter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SystemStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32[] cpu_percent\nfloat32 cpu_temp\nfloat32 avg_load_percent\nfloat32 ram_usage_percent\nfloat32 disc_usage_percent\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "cpu_percent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cpu_temp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "avg_load_percent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ram_usage_percent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "disc_usage_percent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetLEDAnimation": {
+      "description": "",
+      "raw": "husarion_ugv_msgs/LEDAnimation animation\nbool repeating\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "husarion_ugv_msgs/LEDAnimation",
+          "name": "animation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "repeating",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLEDBrightness": {
+      "description": "",
+      "raw": "float32 data\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLEDImageAnimation": {
+      "description": "",
+      "raw": "husarion_ugv_msgs/LEDImageAnimation front\nhusarion_ugv_msgs/LEDImageAnimation rear\nbool interrupting\nbool repeating\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "husarion_ugv_msgs/LEDImageAnimation",
+          "name": "front",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "husarion_ugv_msgs/LEDImageAnimation",
+          "name": "rear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "interrupting",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "repeating",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,42 @@
+{
+  "name": "joint_state_controller",
+  "version": "0.9.0",
+  "description": "Controller to publish joint state",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": "This package has been renamed to joint_state_broadcaster in order to\n      differentiate between true controllers and simple data broadcasters.\n      This package will be removed in ROS H-Turtle. Instead, use package\n      joint_state_broadcaster.",
+  "urls": [],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "pluginlib"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "hardware_interface",
+      "rclcpp",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "joint_state_broadcaster"
+    ],
+    "depended_on_by": [
+      "gazebo_ros2_control_demos",
+      "ign_ros2_control_demos",
+      "pmb2_controller_configuration",
+      "ros2_controllers",
+      "schunk_svh_driver"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

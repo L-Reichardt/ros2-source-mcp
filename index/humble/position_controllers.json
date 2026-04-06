@@ -1,0 +1,58 @@
+{
+  "name": "position_controllers",
+  "version": "2.53.0",
+  "description": "Generic position controller for forwarding position commands.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "hardware_interface_testing",
+      "hardware_interface",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "backward_ros",
+      "forward_command_controller",
+      "pluginlib",
+      "rclcpp"
+    ],
+    "depended_on_by": [
+      "clearpath_manipulators",
+      "mujoco_ros2_control_demos",
+      "pal_gripper_controller_configuration",
+      "pal_robotiq_controller_configuration",
+      "ros2_controllers",
+      "ur_bringup",
+      "ur_robot_driver",
+      "urdf_sim_tutorial"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

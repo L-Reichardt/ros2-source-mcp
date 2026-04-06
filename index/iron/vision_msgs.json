@@ -1,0 +1,430 @@
+{
+  "name": "vision_msgs",
+  "version": "4.1.1",
+  "description": "Messages for interfacing with various computer vision pipelines, such as\n    object detectors.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "vision_msgs",
+    "url": "https://github.com/ros-perception/vision_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "std_msgs",
+      "geometry_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "depthai_bridge",
+      "depthai_examples",
+      "depthai_filters",
+      "depthai_ros_driver",
+      "depthai_ros_msgs",
+      "rmf_visualization_obstacles",
+      "ros_gz_bridge",
+      "soccer_vision_2d_msgs",
+      "soccer_vision_3d_msgs",
+      "vision_msgs_layers",
+      "vision_msgs_rviz_plugins",
+      "webots_ros2_driver",
+      "webots_ros2_msgs",
+      "webots_ros2_msgs"
+    ]
+  },
+  "messages": {
+    "BoundingBox2D": {
+      "description": "A 2D bounding box that can be rotated about its center.",
+      "raw": "# A 2D bounding box that can be rotated about its center.\n# All dimensions are in pixels, but represented using floating-point\n#   values to allow sub-pixel precision. If an exact pixel crop is required\n#   for a rotated bounding box, it can be calculated using Bresenham's line\n#   algorithm.\n\n# The 2D position (in pixels) and orientation of the bounding box center.\nvision_msgs/Pose2D center\n\n# The total size (in pixels) of the bounding box surrounding the object relative\n#   to the pose of its center.\nfloat64 size_x\nfloat64 size_y\n",
+      "fields": [
+        {
+          "type": "vision_msgs/Pose2D",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "size_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "size_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoundingBox2DArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nvision_msgs/BoundingBox2D[] boxes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/BoundingBox2D[]",
+          "name": "boxes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoundingBox3D": {
+      "description": "A 3D bounding box that can be positioned and rotated about its center (6 DOF)",
+      "raw": "# A 3D bounding box that can be positioned and rotated about its center (6 DOF)\n# Dimensions of this box are in meters, and as such, it may be migrated to\n#   another package, such as geometry_msgs, in the future.\n\n# The 3D position and orientation of the bounding box center\ngeometry_msgs/Pose center\n\n# The total size of the bounding box, in meters, surrounding the object's center\n#   pose.\ngeometry_msgs/Vector3 size\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoundingBox3DArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nvision_msgs/BoundingBox3D[] boxes",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/BoundingBox3D[]",
+          "name": "boxes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Classification": {
+      "description": "Defines a classification result.",
+      "raw": "# Defines a classification result.\n#\n# This result does not contain any position information. It is designed for\n#   classifiers, which simply provide class probabilities given an instance of\n#   source data (e.g., an image or a point cloud).\n\nstd_msgs/Header header\n\n# A list of class probabilities. This list need not provide a probability for\n#   every possible class, just ones that are nonzero, or above some\n#   user-defined threshold.\nObjectHypothesis[] results\n\n# Source data that generated this classification are not a part of the message.\n# If you need to access them, use an exact or approximate time synchronizer in\n# your code, as this message's header should match the header of the source\n# data.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectHypothesis[]",
+          "name": "results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detection2D": {
+      "description": "Defines a 2D detection result.",
+      "raw": "# Defines a 2D detection result.\n#\n# This is similar to a 2D classification, but includes position information,\n#   allowing a classification result for a specific crop or image point to\n#   to be located in the larger image.\n\nstd_msgs/Header header\n\n# Class probabilities\nObjectHypothesisWithPose[] results\n\n# 2D bounding box surrounding the object.\nBoundingBox2D bbox\n\n# ID used for consistency across multiple detection messages. Detections\n# of the same object in different detection messages should have the same id.\n# This field may be empty.\nstring id\n\n# Source data that generated this detection are not a part of the message.\n# If you need to access them, use an exact or approximate time synchronizer in\n# your code, as this message's header should match the header of the source\n# data.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectHypothesisWithPose[]",
+          "name": "results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox2D",
+          "name": "bbox",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detection2DArray": {
+      "description": "A list of 2D detections, for a multi-object 2D detector.",
+      "raw": "# A list of 2D detections, for a multi-object 2D detector.\n\nstd_msgs/Header header\n\n# A list of the detected proposals. A multi-proposal detector might generate\n#   this list with many candidate detections generated from a single input.\nDetection2D[] detections\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Detection2D[]",
+          "name": "detections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detection3D": {
+      "description": "Defines a 3D detection result.",
+      "raw": "# Defines a 3D detection result.\n#\n# This extends a basic 3D classification by including the pose of the\n# detected object.\n\nstd_msgs/Header header\n\n# Class probabilities. Does not have to include hypotheses for all possible\n#   object ids, the scores for any ids not listed are assumed to be 0.\nObjectHypothesisWithPose[] results\n\n# 3D bounding box surrounding the object.\nBoundingBox3D bbox\n\n# ID used for consistency across multiple detection messages. Detections\n# of the same object in different detection messages should have the same id.\n# This field may be empty.\nstring id\n\n# Source data that generated this classification are not a part of the message.\n# If you need to access them, use an exact or approximate time synchronizer in\n# your code, as this message's header should match the header of the source\n# data.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ObjectHypothesisWithPose[]",
+          "name": "results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox3D",
+          "name": "bbox",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detection3DArray": {
+      "description": "A list of 3D detections, for a multi-object 3D detector.",
+      "raw": "# A list of 3D detections, for a multi-object 3D detector.\n\nstd_msgs/Header header\n\n# A list of the detected proposals. A multi-proposal detector might generate\n#   this list with many candidate detections generated from a single input.\nDetection3D[] detections\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Detection3D[]",
+          "name": "detections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LabelInfo": {
+      "description": "Provides meta-information about a visual pipeline.",
+      "raw": "# Provides meta-information about a visual pipeline.\n#\n# This message serves a similar purpose to sensor_msgs/CameraInfo, but instead\n#   of being tied to hardware, it represents information about a specific\n#   computer vision pipeline. This information stays constant (or relatively\n#   constant) over time, and so it is wasteful to send it with each individual\n#   result. By listening to these messages, subscribers will receive\n#   the context in which published vision messages are to be interpreted.\n# Each vision pipeline should publish its LabelInfo messages to its own topic,\n#   in a manner similar to CameraInfo.\n# This message is meant to allow converting data from vision pipelines that\n#   return id based classifications back to human readable string class names.\n\n# Used for sequencing\nstd_msgs/Header header\n\n# An array of uint16 keys and string values containing the association\n#   between class identifiers and their names. According to the amount\n#   of classes and the datatype used to store their ids internally, the\n#   maxiumum class id allowed (65535 for uint16 and 255 for uint8) belongs to\n#   the \"UNLABELED\" class.\nvision_msgs/VisionClass[] class_map \n\n# The value between 0-1 used as confidence threshold for the inference.\nfloat32 threshold\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/VisionClass[]",
+          "name": "class_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "threshold",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectHypothesis": {
+      "description": "An object hypothesis that contains no pose information.",
+      "raw": "# An object hypothesis that contains no pose information.\n# If you would like to define an array of ObjectHypothesis messages,\n#   please see the Classification message type.\n\n# The unique ID of the object class. To get additional information about\n#   this ID, such as its human-readable class name, listeners should perform a\n#   lookup in a metadata database. See vision_msgs/VisionInfo.msg for more detail.\nstring class_id\n\n# The probability or confidence value of the detected object. By convention,\n#   this value should lie in the range [0-1].\nfloat64 score\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "class_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "score",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectHypothesisWithPose": {
+      "description": "An object hypothesis that contains pose information.",
+      "raw": "# An object hypothesis that contains pose information.\n# If you would like to define an array of ObjectHypothesisWithPose messages,\n#   please see the Detection2D or Detection3D message types.\n\n# The object hypothesis (ID and score).\nObjectHypothesis hypothesis\n\n# The 6D pose of the object hypothesis. This pose should be\n#   defined as the pose of some fixed reference point on the object, such as\n#   the geometric center of the bounding box, the center of mass of the\n#   object or the origin of a reference mesh of the object.\n# Note that this pose is not stamped; frame information can be defined by\n#   parent messages.\n# Also note that different classes predicted for the same input data may have\n#   different predicted 6D poses.\ngeometry_msgs/PoseWithCovariance pose\n",
+      "fields": [
+        {
+          "type": "ObjectHypothesis",
+          "name": "hypothesis",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point2D": {
+      "description": "Represents a 2D point in pixel coordinates.",
+      "raw": "# Represents a 2D point in pixel coordinates.\n# XY matches the sensor_msgs/Image convention: X is positive right and Y is positive down.\n\nfloat64 x\nfloat64 y\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Pose2D": {
+      "description": "Represents a 2D pose (coordinates and a radian rotation). Rotation is positive counterclockwise.",
+      "raw": "# Represents a 2D pose (coordinates and a radian rotation). Rotation is positive counterclockwise.\n\nvision_msgs/Point2D position\nfloat64 theta\n",
+      "fields": [
+        {
+          "type": "vision_msgs/Point2D",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VisionClass": {
+      "description": "A key value pair that maps an integer class_id to a string class label",
+      "raw": "# A key value pair that maps an integer class_id to a string class label\n#   in computer vision systems.\n\n# The int value that identifies the class.\n# Elements identified with 65535, the maximum uint16 value are assumed\n#   to belong to the \"UNLABELED\" class. For vision pipelines using less\n#   than 255 classes the \"UNLABELED\" is the maximum value in the uint8\n#   range.\nuint16 class_id\n\n# The name of the class represented by the class_id\nstring class_name\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "class_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "class_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VisionInfo": {
+      "description": "Provides meta-information about a visual pipeline.",
+      "raw": "# Provides meta-information about a visual pipeline.\n#\n# This message serves a similar purpose to sensor_msgs/CameraInfo, but instead\n#   of being tied to hardware, it represents information about a specific\n#   computer vision pipeline. This information stays constant (or relatively\n#   constant) over time, and so it is wasteful to send it with each individual\n#   result. By listening to these messages, subscribers will receive\n#   the context in which published vision messages are to be interpreted.\n# Each vision pipeline should publish its VisionInfo messages to its own topic,\n#   in a manner similar to CameraInfo.\n\n# Used for sequencing\nstd_msgs/Header header\n\n# Name of the vision pipeline. This should be a value that is meaningful to an\n#   outside user.\nstring method\n\n# Location where the metadata database is stored. The recommended location is\n#   as an XML string on the ROS parameter server, but the exact implementation\n#   and information is left up to the user.\n# The database should store information attached to class ids. Each\n#   class id should map to an atomic, visually recognizable element. This\n#   definition is intentionally vague to allow extreme flexibility. The\n#   elements could be classes in a pixel segmentation algorithm, object classes\n#   in a detector, different people's faces in a face detection algorithm, etc.\n#   Vision pipelines report results in terms of numeric IDs, which map into\n#   this  database.\n# The information stored in this database is, again, left up to the user. The\n#   database could be as simple as a map from ID to class name, or it could\n#   include information such as object meshes or colors to use for\n#   visualization.\nstring database_location\n\n# Metadata database version. This counter is incremented\n#   each time the pipeline begins using a new version of the database (useful\n#   in the case of online training or user modifications).\n#   The counter value can be monitored by listeners to ensure that the pipeline\n#   and the listener are using the same metadata.\nint32 database_version",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "method",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "database_location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "database_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

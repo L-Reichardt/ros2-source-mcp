@@ -1,0 +1,44 @@
+{
+  "name": "schunk_svh_driver",
+  "version": "2.0.1",
+  "description": "ROS2-control system interface for the Schunk SVH",
+  "license": "GPL-3.0-or-later",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "schunk_svh_ros_driver",
+    "url": "https://github.com/SCHUNK-GmbH-Co-KG/schunk_svh_ros_driver.git",
+    "branch": "ros2-foxy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "schunk_svh_description",
+      "controller_manager",
+      "joint_state_controller",
+      "joint_trajectory_controller",
+      "launch",
+      "launch_ros",
+      "ros2launch",
+      "xacro"
+    ],
+    "test": [
+      "ament_lint_auto"
+    ],
+    "build_and_runtime": [
+      "hardware_interface",
+      "pluginlib",
+      "rclcpp",
+      "schunk_svh_library"
+    ],
+    "depended_on_by": [
+      "schunk_svh_tests"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,123 @@
+{
+  "name": "tuw_airskin_msgs",
+  "version": "0.0.15",
+  "description": "The tuw_airskin_msgs package",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs",
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "tuw_msgs"
+    ]
+  },
+  "messages": {
+    "AirskinColors": {
+      "description": "This expresses a set of AirSkin pad colors",
+      "raw": "# This expresses a set of AirSkin pad colors\nstd_msgs/Header header                  # timestamp in the header is the acquisition time and frame\n\nuint16[] idx                   # index of the color in the colors array \n                               # if empty the colors array must match the target system\nstd_msgs/ColorRGBA[] colors    # RGBA color values for corresponding AirSkin pads\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the acquisition time and frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "idx",
+          "comment": "index of the color in the colors array",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "colors",
+          "comment": "RGBA color values for corresponding AirSkin pads",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AirskinInfo": {
+      "description": "This expresses a set of AirSkin pad pressures",
+      "raw": "# This expresses a set of AirSkin pad pressures\nstd_msgs/Header header                  # timestamp in the header is the acquisition time and frame\n\nuint8[] ids                    # I2C ids of target AirSkin pads\nstring[] names                 # names and TF frames names of corresponding AirSkin pads\nuint32[] min                   # pressure min value\nuint32[] max                   # pressure max value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the acquisition time and frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "ids",
+          "comment": "I2C ids of target AirSkin pads",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "names and TF frames names of corresponding AirSkin pads",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "min",
+          "comment": "pressure min value",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "max",
+          "comment": "pressure max value",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AirskinPressures": {
+      "description": "This expresses a set of AirSkin pad pressures",
+      "raw": "# This expresses a set of AirSkin pad pressures\nstd_msgs/Header header                  # timestamp in the header is the acquisition time and frame\nuint32[] pressures             # pressure values of corresponding AirSkin pads\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the acquisition time and frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "pressures",
+          "comment": "pressure values of corresponding AirSkin pads",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

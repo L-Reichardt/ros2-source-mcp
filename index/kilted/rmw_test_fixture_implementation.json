@@ -1,0 +1,47 @@
+{
+  "name": "rmw_test_fixture_implementation",
+  "version": "0.14.7",
+  "description": "Tools for isolating ROS environments at the RMW layer",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ament_cmake_ros",
+    "url": "https://github.com/ros2/ament_cmake_ros.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "python3-dev",
+      "rmw_implementation",
+      "rmw_implementation_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_ros_core"
+    ],
+    "runtime": [
+      "rpyutils"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_cmake_pytest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rcpputils",
+      "rcutils",
+      "rmw",
+      "rmw_test_fixture"
+    ],
+    "depended_on_by": [
+      "ament_cmake_ros",
+      "launch_testing_ros"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

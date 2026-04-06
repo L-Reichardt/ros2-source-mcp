@@ -1,0 +1,371 @@
+{
+  "name": "soccer_vision_2d_msgs",
+  "version": "1.0.0",
+  "description": "A package containing some 2D vision related message definitions in the soccer domain.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "soccer_interfaces",
+    "url": "https://github.com/ros-sports/soccer_interfaces.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "vision_msgs",
+      "soccer_vision_attribute_msgs"
+    ],
+    "depended_on_by": [
+      "soccer_interfaces"
+    ]
+  },
+  "messages": {
+    "Ball": {
+      "description": "Describes a detected ball from vision modules, in image coordinates.",
+      "raw": "# Describes a detected ball from vision modules, in image coordinates.\n\n# A bounding box that surrounds the ball in the image, this does not have to include\n# the whole ball, but only the part of the ball that was detected.\nvision_msgs/BoundingBox2D bb\n\n# Center point of the ball in pixel coordinates\nvision_msgs/Point2D center\n\n# Confidence that the detected object is a ball\nsoccer_vision_attribute_msgs/Confidence confidence\n",
+      "fields": [
+        {
+          "type": "vision_msgs/BoundingBox2D",
+          "name": "bb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/Point2D",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Confidence",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BallArray": {
+      "description": "An array of balls with a header for global reference.",
+      "raw": "# An array of balls with a header for global reference.\n# This msg type is used to publish all balls detected in an image.\n\nstd_msgs/Header header\nsoccer_vision_2d_msgs/Ball[]  balls\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_2d_msgs/Ball[]",
+          "name": "balls",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldBoundary": {
+      "description": "Describes a detected field boundary from vision modules, in image coordinates.",
+      "raw": "# Describes a detected field boundary from vision modules, in image coordinates.\n# The field boundary is defined as the line that separates the field of play, to\n# outside the field of play. Field of play is a sports terminology.\n# Usually, this is where the field carpet ends, or meets a field border.\n# If no field boundary was detected, leave the \"points\" vector empty.\n\nstd_msgs/Header header\n\n# The points along the field boundary detected in the image, are stored as a line strip.\n# You can think of the field boundary as a line between every two consecutive points,\n# so 0-1, 1-2, 2-3, 3-4, 4-5...\nvision_msgs/Point2D[] points # 2D points (in pixel)\n\nsoccer_vision_attribute_msgs/Confidence confidence\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/Point2D[]",
+          "name": "points",
+          "comment": "2D points (in pixel)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Confidence",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Goalpost": {
+      "description": "Describes a detected goalpost from vision modules, in image coordinates.",
+      "raw": "# Describes a detected goalpost from vision modules, in image coordinates.\n\n# A bounding box that surrounds the goalpost in the image, that can be rotated about its center.\n# This does not have to include the whole goalpost, but only the\n# part of the goalpost that was detected.\n# The rotation of the bounding box should be 0 when the goalpost appears upright in the image.\nvision_msgs/BoundingBox2D bb\n\nsoccer_vision_attribute_msgs/Goalpost attributes\n\nsoccer_vision_attribute_msgs/Confidence confidence\n",
+      "fields": [
+        {
+          "type": "vision_msgs/BoundingBox2D",
+          "name": "bb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Goalpost",
+          "name": "attributes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Confidence",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GoalpostArray": {
+      "description": "An array of goalposts with a header for global reference.",
+      "raw": "# An array of goalposts with a header for global reference.\n# This msg type is used to publish all goalposts detected in an image.\n\nstd_msgs/Header header\nsoccer_vision_2d_msgs/Goalpost[]  posts\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_2d_msgs/Goalpost[]",
+          "name": "posts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MarkingArray": {
+      "description": "An array of markings with a header for global reference.",
+      "raw": "# An array of markings with a header for global reference.\n# This msg type is used to publish all markings detected in an image.\n\nstd_msgs/Header header\nsoccer_vision_2d_msgs/MarkingEllipse[] ellipses\nsoccer_vision_2d_msgs/MarkingIntersection[] intersections\nsoccer_vision_2d_msgs/MarkingSegment[] segments\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_2d_msgs/MarkingEllipse[]",
+          "name": "ellipses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_2d_msgs/MarkingIntersection[]",
+          "name": "intersections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_2d_msgs/MarkingSegment[]",
+          "name": "segments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MarkingEllipse": {
+      "description": "Describes a detected ellipse marking from vision modules, in image coordinates.",
+      "raw": "# Describes a detected ellipse marking from vision modules, in image coordinates.\n\n# A bounding box that surrounds the ellipse in the image, this does not have to include\n# the whole ellipse, but only the part of the ellipse that was detected.\nvision_msgs/BoundingBox2D bb\n\n# Center point of the ellipse in pixel coordinates\nvision_msgs/Point2D center\n\nsoccer_vision_attribute_msgs/Confidence confidence\n",
+      "fields": [
+        {
+          "type": "vision_msgs/BoundingBox2D",
+          "name": "bb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/Point2D",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Confidence",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MarkingIntersection": {
+      "description": "Describes a detected marking intersection from vision modules, in image coordinates.",
+      "raw": "# Describes a detected marking intersection from vision modules, in image coordinates.\n# An intersection is defined as a point where two or more line markings intersect.\n# The term ray is used to describe the outgoing rays from the center of the\n# intersection.\n#\n# For example, looking down at a perfectly upright T-intersection on the ground from above, you would have:\n# - num_rays = 3\n# - heading_rays = [0, pi / 2, pi]\n\n# Center point of the intersection, in pixel coordinates\nvision_msgs/Point2D center\n\n# The number of rays outgoing from an intersection. This is 3 for a T-Junction and \n# 4 for an X-Junction\nint32 num_rays\n\n# NOTE: The length of the array should either:\n# - Match the number of rays specified with num_rays OR\n# - Be empty, if the headings are unknown\n# Heading is defined as 0 along the +x axis, and pi / 2 along the +y axis.\n# Headings should:\n# - have an interval of [0, 2pi)\n# - be stored in ascending order\nfloat64[] heading_rays\n\nsoccer_vision_attribute_msgs/Confidence confidence\n",
+      "fields": [
+        {
+          "type": "vision_msgs/Point2D",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "num_rays",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "heading_rays",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Confidence",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MarkingSegment": {
+      "description": "Describes a detected straight segment marking from vision modules, in image coordinates.",
+      "raw": "# Describes a detected straight segment marking from vision modules, in image coordinates.\n# Note that curved segments can be approximated with a number of small segments, using\n# this msg.\n\n# Two points defining the ends of the segment.\n# The points should be located at the centre along the width of the segment marking.\nvision_msgs/Point2D start\nvision_msgs/Point2D end\n\nsoccer_vision_attribute_msgs/Confidence confidence\n",
+      "fields": [
+        {
+          "type": "vision_msgs/Point2D",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/Point2D",
+          "name": "end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Confidence",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Obstacle": {
+      "description": "Describes a detected obstacle from vision modules, in image coordinates.",
+      "raw": "# Describes a detected obstacle from vision modules, in image coordinates.\n# An Obstacle is defined as anything observed on the field that could not be classified as\n# one of the known types (such as Robot or Goalpost).\n\n# A bounding box that surrounds the obstacle in the image, this does not have to include\n# the whole obstacle, but only the part of the obstacle that was detected.\nvision_msgs/BoundingBox2D bb\n\nsoccer_vision_attribute_msgs/Confidence confidence\n",
+      "fields": [
+        {
+          "type": "vision_msgs/BoundingBox2D",
+          "name": "bb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Confidence",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObstacleArray": {
+      "description": "An array of obstacles with a header for global reference.",
+      "raw": "# An array of obstacles with a header for global reference.\n# This msg type is used to publish all obstacles detected in an image.\n\nstd_msgs/Header header\nsoccer_vision_2d_msgs/Obstacle[] obstacles\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_2d_msgs/Obstacle[]",
+          "name": "obstacles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Robot": {
+      "description": "Describes a detected robot from vision modules, in image coordinates.",
+      "raw": "# Describes a detected robot from vision modules, in image coordinates.\n\n# A bounding box that surrounds the robot in the image, this does not have to include\n# the whole robot, but only the part of the robot that was detected.\nvision_msgs/BoundingBox2D bb\n\nsoccer_vision_attribute_msgs/Robot attributes\n\nsoccer_vision_attribute_msgs/Confidence confidence\n",
+      "fields": [
+        {
+          "type": "vision_msgs/BoundingBox2D",
+          "name": "bb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Robot",
+          "name": "attributes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_attribute_msgs/Confidence",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotArray": {
+      "description": "An array of robots with a header for global reference.",
+      "raw": "# An array of robots with a header for global reference.\n# This msg type is used to publish all robots detected in an image.\n\nstd_msgs/Header header\nsoccer_vision_2d_msgs/Robot[]  robots\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "soccer_vision_2d_msgs/Robot[]",
+          "name": "robots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

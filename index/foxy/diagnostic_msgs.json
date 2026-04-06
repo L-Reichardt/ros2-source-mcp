@@ -1,0 +1,239 @@
+{
+  "name": "diagnostic_msgs",
+  "version": "2.0.5",
+  "description": "A package containing some diagnostics related message and service definitions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "common_interfaces",
+    "url": "https://github.com/ros2/common_interfaces.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "avt_vimba_camera",
+      "carla_msgs",
+      "common_interfaces",
+      "create_driver",
+      "dataspeed_dbw_gateway",
+      "depthai_ros_driver",
+      "diagnostic_aggregator",
+      "diagnostic_updater",
+      "dynamixel_hardware_interface",
+      "joy_linux",
+      "mavros",
+      "mavros_extras",
+      "micro_ros_diagnostic_bridge",
+      "micro_ros_diagnostic_bridge",
+      "naoqi_driver",
+      "nmea_hardware_interface",
+      "novatel_gps_driver",
+      "plotjuggler_ros",
+      "py_trees_ros_interfaces",
+      "realsense_hardware_interface",
+      "robot_localization",
+      "ros1_bridge",
+      "rosbridge_library",
+      "rosbridge_test_msgs",
+      "rqt_robot_dashboard",
+      "rqt_robot_monitor",
+      "rqt_runtime_monitor",
+      "self_test",
+      "septentrio_gnss_driver",
+      "swri_transform_util",
+      "ublox_gps",
+      "velodyne_driver"
+    ]
+  },
+  "messages": {
+    "DiagnosticArray": {
+      "description": "This message is used to send diagnostic information about the state of the robot.",
+      "raw": "# This message is used to send diagnostic information about the state of the robot.\nstd_msgs/Header header # for timestamp\nDiagnosticStatus[] status # an array of components being reported on\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "for timestamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DiagnosticStatus[]",
+          "name": "status",
+          "comment": "an array of components being reported on",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DiagnosticStatus": {
+      "description": "This message holds the status of an individual component of the robot.",
+      "raw": "# This message holds the status of an individual component of the robot.\n\n# Possible levels of operations.\nbyte OK=0\nbyte WARN=1\nbyte ERROR=2\nbyte STALE=3\n\n# Level of operation enumerated above.\nbyte level\n# A description of the test/component reporting.\nstring name\n# A description of the status.\nstring message\n# A hardware unique string.\nstring hardware_id\n# An array of values associated with the status.\nKeyValue[] values\n\n",
+      "fields": [
+        {
+          "type": "byte",
+          "name": "OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "WARN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "ERROR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "STALE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hardware_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyValue": {
+      "description": "What to label this value when viewing.",
+      "raw": "# What to label this value when viewing.\nstring key\n# A value to track over time.\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddDiagnostics": {
+      "description": "This service is used as part of the process for loading analyzers at runtime,",
+      "raw": "# This service is used as part of the process for loading analyzers at runtime,\n# and should be used by a loader script or program, not as a standalone service.\n# Information about dynamic addition of analyzers can be found at\n# http://wiki.ros.org/diagnostics/Tutorials/Adding%20Analyzers%20at%20Runtime\n\n# The load_namespace parameter defines the namespace where parameters for the\n# initialization of analyzers in the diagnostic aggregator have been loaded. The\n# value should be a global name (i.e. /my/name/space), not a relative\n# (my/name/space) or private (~my/name/space) name. Analyzers will not be added\n# if a non-global name is used. The call will also fail if the namespace\n# contains parameters that follow a namespace structure that does not conform to\n# that expected by the analyzer definitions. See\n# http://wiki.ros.org/diagnostics/Tutorials/Configuring%20Diagnostic%20Aggregators\n# and http://wiki.ros.org/diagnostics/Tutorials/Using%20the%20GenericAnalyzer\n# for examples of the structure of yaml files which are expected to have been\n# loaded into the namespace.\nstring load_namespace\n---\n\n# True if diagnostic aggregator was updated with new diagnostics, False\n# otherwise. A false return value means that either there is a bond in the\n# aggregator which already used the requested namespace, or the initialization\n# of analyzers failed.\nbool success\n\n# Message with additional information about the success or failure\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "load_namespace",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SelfTest": {
+      "description": "",
+      "raw": "---\nstring id\nbyte passed\nDiagnosticStatus[] status\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte",
+          "name": "passed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DiagnosticStatus[]",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

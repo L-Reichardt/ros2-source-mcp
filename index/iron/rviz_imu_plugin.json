@@ -1,0 +1,52 @@
+{
+  "name": "rviz_imu_plugin",
+  "version": "2.1.5",
+  "description": "RVIZ plugin for IMU visualization",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rviz_imu_plugin",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "imu_tools",
+    "url": "https://github.com/CCNYRoboticsLab/imu_tools.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "qtbase5-dev"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "libqt5-core",
+      "libqt5-gui",
+      "libqt5-opengl",
+      "libqt5-widgets"
+    ],
+    "build_and_runtime": [
+      "message_filters",
+      "pluginlib",
+      "rclcpp",
+      "rviz_common",
+      "rviz_ogre_vendor",
+      "rviz_rendering",
+      "sensor_msgs",
+      "tf2",
+      "tf2_ros"
+    ],
+    "depended_on_by": [
+      "depthai_examples",
+      "imu_tools",
+      "microstrain_inertial_examples"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

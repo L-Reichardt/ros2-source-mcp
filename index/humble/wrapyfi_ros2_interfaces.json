@@ -1,0 +1,204 @@
+{
+  "name": "wrapyfi_ros2_interfaces",
+  "version": "0.4.30",
+  "description": "Wrapyfi ROS 2 interfaces",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "wrapyfi_ros2_interfaces",
+    "url": "https://github.com/modular-ml/wrapyfi_ros2_interfaces.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "builtin_interfaces",
+      "sensor_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "ROS2AudioMessage": {
+      "description": "Based on https://github.com/ros-drivers/audio_common/blob/main/audio_common_msgs/msg/AudioInfo.msg",
+      "raw": "# Based on https://github.com/ros-drivers/audio_common/blob/main/audio_common_msgs/msg/AudioInfo.msg\n\nstd_msgs/Header header\n\n# Chunk size [samples]\nuint32 chunk_size\n# Number of channels\nuint8 channels\n# Sampling rate [Hz]\nuint32 sample_rate\n# Audio encoding (e.g. S16LE)\nstring encoding\n# Audio format\nuint8 is_bigendian\n# Amount of audio data per second [bits/s]\nuint32 bitrate\n# Audio coding format (e.g. WAVE, MP3)\nstring coding_format\n\nuint32 step\nuint8[] data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "chunk_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "channels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sample_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "encoding",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "is_bigendian",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "bitrate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "coding_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ROS2AudioService": {
+      "description": "",
+      "raw": "string request\n---\nwrapyfi_ros2_interfaces/ROS2AudioMessage response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "wrapyfi_ros2_interfaces/ROS2AudioMessage",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROS2CompressedImageService": {
+      "description": "",
+      "raw": "string request\n---\nsensor_msgs/CompressedImage response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "sensor_msgs/CompressedImage",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROS2ImageService": {
+      "description": "",
+      "raw": "string request\n---\nsensor_msgs/Image response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "sensor_msgs/Image",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROS2NativeObjectService": {
+      "description": "",
+      "raw": "string request\n---\nstring response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

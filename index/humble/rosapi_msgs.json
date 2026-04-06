@@ -1,0 +1,708 @@
+{
+  "name": "rosapi_msgs",
+  "version": "2.0.6",
+  "description": "Interface definitions for rosapi package.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rosapi",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "rosbridge_suite",
+    "url": "https://github.com/RobotWebTools/rosbridge_suite.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "rosapi"
+    ]
+  },
+  "messages": {
+    "TypeDef": {
+      "description": "",
+      "raw": "string type\nstring[] fieldnames\nstring[] fieldtypes\nint32[] fieldarraylen\nstring[] examples\nstring[] constnames\nstring[] constvalues\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "fieldnames",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "fieldtypes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "fieldarraylen",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "examples",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "constnames",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "constvalues",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ActionFeedbackDetails": {
+      "description": "",
+      "raw": "string type\n---\nTypeDef[] typedefs\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "TypeDef[]",
+          "name": "typedefs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActionGoalDetails": {
+      "description": "",
+      "raw": "string type\n---\nTypeDef[] typedefs\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "TypeDef[]",
+          "name": "typedefs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActionResultDetails": {
+      "description": "",
+      "raw": "string type\n---\nTypeDef[] typedefs\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "TypeDef[]",
+          "name": "typedefs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActionType": {
+      "description": "",
+      "raw": "string action\n---\nstring type\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteParam": {
+      "description": "",
+      "raw": "string name\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "GetActionServers": {
+      "description": "",
+      "raw": "\n---\nstring[] action_servers\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "action_servers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetParam": {
+      "description": "",
+      "raw": "string name\nstring default_value\n---\nstring value\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "default_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetParamNames": {
+      "description": "",
+      "raw": "---\nstring[] names\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetROSVersion": {
+      "description": "",
+      "raw": "---\nuint8 version\nstring distro\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "distro",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetTime": {
+      "description": "",
+      "raw": "---\nbuiltin_interfaces/Time time\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HasParam": {
+      "description": "",
+      "raw": "string name\n---\nbool exists\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "exists",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Interfaces": {
+      "description": "",
+      "raw": "---\nstring[] interfaces\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MessageDetails": {
+      "description": "",
+      "raw": "string type\n---\nTypeDef[] typedefs\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "TypeDef[]",
+          "name": "typedefs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NodeDetails": {
+      "description": "",
+      "raw": "string node\n---\nstring[] subscribing\nstring[] publishing\nstring[] services\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "subscribing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "publishing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "services",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Nodes": {
+      "description": "",
+      "raw": "\n---\nstring[] nodes\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Publishers": {
+      "description": "",
+      "raw": "string topic\n---\nstring[] publishers\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "publishers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServiceNode": {
+      "description": "",
+      "raw": "string service\n---\nstring node\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "service",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServiceProviders": {
+      "description": "",
+      "raw": "string service\n---\nstring[] providers\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "service",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "providers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServiceRequestDetails": {
+      "description": "",
+      "raw": "string type\n---\nTypeDef[] typedefs\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "TypeDef[]",
+          "name": "typedefs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServiceResponseDetails": {
+      "description": "",
+      "raw": "string type\n---\nTypeDef[] typedefs\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "TypeDef[]",
+          "name": "typedefs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServiceType": {
+      "description": "",
+      "raw": "string service\n---\nstring type\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "service",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Services": {
+      "description": "",
+      "raw": "\n---\nstring[] services\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "services",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServicesForType": {
+      "description": "",
+      "raw": "string type\n---\nstring[] services\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "services",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetParam": {
+      "description": "",
+      "raw": "string name\nstring value\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "Subscribers": {
+      "description": "",
+      "raw": "string topic\n---\nstring[] subscribers\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "subscribers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TopicType": {
+      "description": "",
+      "raw": "string topic\n---\nstring type\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Topics": {
+      "description": "",
+      "raw": "\n---\nstring[] topics\nstring[] types\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "topics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TopicsAndRawTypes": {
+      "description": "",
+      "raw": "\n---\nstring[] topics\nstring[] types\nstring[] typedefs_full_text\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "topics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "typedefs_full_text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TopicsForType": {
+      "description": "",
+      "raw": "string type\n---\nstring[] topics\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "topics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,66 @@
+{
+  "name": "rosbridge_msgs",
+  "version": "3.2.0",
+  "description": "Interface definitions for the rosbridge library.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rosbridge_suite",
+    "url": "https://github.com/RobotWebTools/rosbridge_suite.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "rosbridge_server"
+    ]
+  },
+  "messages": {
+    "ConnectedClient": {
+      "description": "",
+      "raw": "string ip_address\nbuiltin_interfaces/Time connection_time\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "ip_address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "connection_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConnectedClients": {
+      "description": "",
+      "raw": "ConnectedClient[] clients\n",
+      "fields": [
+        {
+          "type": "ConnectedClient[]",
+          "name": "clients",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

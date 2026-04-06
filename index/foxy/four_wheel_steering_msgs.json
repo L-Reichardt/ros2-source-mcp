@@ -1,0 +1,119 @@
+{
+  "name": "four_wheel_steering_msgs",
+  "version": "2.0.1",
+  "description": "ROS messages for robots using FourWheelSteering.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/four_wheel_steering_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/four_wheel_steering_msgs.git",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/four_wheel_steering_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "four_wheel_steering_msgs",
+    "url": "https://github.com/ros-drivers/four_wheel_steering_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "FourWheelSteering": {
+      "description": "Driving command or odometry msg for a FourWheelSteering vehicle.",
+      "raw": "## Driving command or odometry msg for a FourWheelSteering vehicle.\n#  $Id$\n\n# Assumes FourWheelSteering with front-wheel and rear-wheel steering. The left\n# and right front wheels are generally at different angles. To simplify,\n# the commanded angle corresponds to the yaw of a virtual wheel located at the\n# center of the front or rear axle, like on a tricycle.  Positive yaw is to\n# the left. (This is *not* the angle of the steering wheel inside the\n# passenger compartment.)\n#\n# Zero steering angle velocity means change the steering angle as\n# quickly as possible. Positive velocity indicates an absolute\n# rate of change either left or right.\n#\nfloat32 front_steering_angle           # position of the virtual angle (radians)\nfloat32 rear_steering_angle            # position of the virtual angle (radians)\nfloat32 front_steering_angle_velocity  # rate of change (radians/s)\nfloat32 rear_steering_angle_velocity   # rate of change (radians/s)\n\n# Speed, acceleration and jerk (the 1st, 2nd and 3rd\n# derivatives of position). All are measured at the vehicle's\n# center of the rear axle.\n#\n# Speed is the scalar magnitude of the velocity vector.\n# The speed value is the norm of the velocity component in x (longitudinal) \n# and y (lateral) direction\n# Direction is forward unless the sign is negative, indicating reverse.\n# If the steering angle are equal to +/- pi/2, then the direction is left\n# unless the sign is negative, indicating right.\n#\n# Zero acceleration means change speed as quickly as\n# possible. Positive acceleration indicates an absolute\n# magnitude; that includes deceleration.\n#\n# Zero jerk means change acceleration as quickly as possible. Positive\n# jerk indicates an absolute rate of acceleration change in\n# either direction (increasing or decreasing).\n#\nfloat32 speed                   # forward speed (m/s)\nfloat32 acceleration            # acceleration (m/s^2)\nfloat32 jerk                    # jerk (m/s^3)\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "front_steering_angle",
+          "comment": "position of the virtual angle (radians)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_steering_angle",
+          "comment": "position of the virtual angle (radians)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_steering_angle_velocity",
+          "comment": "rate of change (radians/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_steering_angle_velocity",
+          "comment": "rate of change (radians/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "forward speed (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "acceleration",
+          "comment": "acceleration (m/s^2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "jerk",
+          "comment": "jerk (m/s^3)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FourWheelSteeringStamped": {
+      "description": "Time stamped drive command or odometry for robots with FourWheelSteering.",
+      "raw": "## Time stamped drive command or odometry for robots with FourWheelSteering.\n#  $Id$\n\nstd_msgs/Header    header\nFourWheelSteering  data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FourWheelSteering",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

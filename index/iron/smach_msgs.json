@@ -1,0 +1,175 @@
+{
+  "name": "smach_msgs",
+  "version": "3.0.3",
+  "description": "this package contains a set of messages that are used by the introspection\n    interfaces for smach.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "smach",
+    "url": "https://github.com/ros/executive_smach.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_cppcheck",
+      "ament_cmake_flake8",
+      "ament_cmake_pep257",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_cmake_cpplint",
+      "ament_cmake_uncrustify",
+      "ament_lint"
+    ],
+    "depended_on_by": [
+      "executive_smach",
+      "smach_ros"
+    ]
+  },
+  "messages": {
+    "SmachContainerInitialStatusCmd": {
+      "description": "The path to the node in the server",
+      "raw": "# The path to the node in the server\nstring path\n\n# The desired initial state(s)\nstring[] initial_states\n\n# Initial values for the local user data of the state machine\n# A pickled user data structure\n# i.e. the UserData's internal dictionary\nuint8[] local_data\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "initial_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "local_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmachContainerStatus": {
+      "description": "The path to this node in the server",
+      "raw": "std_msgs/Header header\n\n# The path to this node in the server\nstring path\n\n# The initial state description\n# Effects an arc from the top state to each one\nstring[] initial_states\n\n# The current state description\nstring[] active_states\n\n# A pickled user data structure\n# i.e. the UserData's internal dictionary\nuint8[] local_data\n\n# Debugging info string\nstring info\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "initial_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "active_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "local_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmachContainerStructure": {
+      "description": "The path to this node in the server",
+      "raw": "std_msgs/Header header\n\n# The path to this node in the server\nstring path\n\n# The children of this node\nstring[] children\n\n# The outcome edges\n# Each index across these arrays denote one edge\nstring[] internal_outcomes\nstring[] outcomes_from\nstring[] outcomes_to\n\n# The potential outcomes from this container\nstring[] container_outcomes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "children",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "internal_outcomes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "outcomes_from",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "outcomes_to",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "container_outcomes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,135 @@
+{
+  "name": "point_cloud_interfaces",
+  "version": "1.0.13",
+  "description": "msg definitions for use with point_cloud_transport plugins.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ctu-vras/draco_point_cloud_transport",
+      "type": "repository"
+    },
+    {
+      "uri": "https://wiki.ros.org/draco_point_cloud_transport",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/draco_point_cloud_transport/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "point_cloud_transport_plugins",
+    "url": "https://github.com/ros-perception/point_cloud_transport_plugins.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "cloudini_ros",
+      "draco_point_cloud_transport",
+      "point_cloud_transport_plugins",
+      "zlib_point_cloud_transport",
+      "zstd_point_cloud_transport"
+    ]
+  },
+  "messages": {
+    "CompressedPointCloud2": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague .. 2019, paplhjak\n\nstd_msgs/Header header\n\nuint32 height\nuint32 width\n\nsensor_msgs/PointField[] fields\n\nbool is_bigendian\n\nuint32 point_step\n\nuint32 row_step\n\nuint8[] compressed_data\n\nbool is_dense\n\n# compression format used (e.g. draco, zlib, etc.)\nstring format",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointField[]",
+          "name": "fields",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_bigendian",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "point_step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "row_step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "compressed_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_dense",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

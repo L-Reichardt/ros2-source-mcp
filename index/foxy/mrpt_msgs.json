@@ -1,0 +1,74 @@
+{
+  "name": "mrpt_msgs",
+  "version": "0.4.4",
+  "description": "ROS messages for MRPT classes and objects",
+  "license": "BSD",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://wiki.ros.org/mrpt_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mrpt_msgs",
+    "url": "https://github.com/mrpt-ros-pkg/mrpt_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "message_generation",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_cmake",
+      "ament_lint_common",
+      "ament_cppcheck",
+      "ament_cpplint"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "GetCMGraph": {
+      "description": "Compute and return a condensed measurements graph",
+      "raw": "# Compute and return a condensed measurements graph\n# Service is currently used in mrpt_graphslam_2d application\n# Returned graph should, at all cost contain the specified nodes\n\nuint64[] node_ids\n---\nmrpt_msgs/NetworkOfPoses cm_graph\n",
+      "request_fields": [
+        {
+          "type": "uint64[]",
+          "name": "node_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "mrpt_msgs/NetworkOfPoses",
+          "name": "cm_graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

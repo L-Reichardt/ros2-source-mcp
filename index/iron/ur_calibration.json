@@ -1,0 +1,38 @@
+{
+  "name": "ur_calibration",
+  "version": "2.3.12",
+  "description": "Package for extracting the factory calibration from a UR robot and change it such that it can be used by ur_description to gain a correct URDF",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ur_robot_driver",
+    "url": "https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "ur_client_library",
+      "ur_robot_driver",
+      "eigen",
+      "yaml-cpp"
+    ],
+    "depended_on_by": [
+      "ur"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

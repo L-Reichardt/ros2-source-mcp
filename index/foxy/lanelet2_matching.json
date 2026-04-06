@@ -1,0 +1,47 @@
+{
+  "name": "lanelet2_matching",
+  "version": "1.2.1",
+  "description": "Library to match objects to lanelets",
+  "license": "BSD",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/fzi-forschungszentrum-informatik/lanelet2.git",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "lanelet2",
+    "url": "https://github.com/fzi-forschungszentrum-informatik/lanelet2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "catkin",
+      "ament_cmake_core",
+      "mrt_cmake_modules"
+    ],
+    "buildtool_export": [
+      "mrt_cmake_modules"
+    ],
+    "test": [
+      "gtest",
+      "lanelet2_io",
+      "lanelet2_projection",
+      "lanelet2_maps"
+    ],
+    "build_and_runtime": [
+      "lanelet2_core",
+      "lanelet2_traffic_rules"
+    ],
+    "depended_on_by": [
+      "lanelet2",
+      "lanelet2_examples",
+      "lanelet2_python"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

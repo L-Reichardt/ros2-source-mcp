@@ -1,0 +1,233 @@
+{
+  "name": "adi_tmcl",
+  "version": "2.0.3",
+  "description": "The adi_tmcl ROS2 package",
+  "license": "BSD 3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "adi_tmcl",
+    "url": "https://github.com/analogdevicesinc/tmcl_ros2.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rclcpp",
+      "std_msgs",
+      "std_srvs",
+      "geometry_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rclcpp",
+      "std_msgs",
+      "std_srvs",
+      "geometry_msgs",
+      "ros2launch",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "TmcInfo": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring          interface_name\nfloat32         board_voltage\nint32           status_flag\nstring          status\nuint8           motor_num\nfloat32         velocity\nint32           position\nint32           torque",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "interface_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "board_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "status_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "motor_num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "torque",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TmcParam": {
+      "description": "",
+      "raw": "string    name\nint64    value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "TmcCustomCmd": {
+      "description": "",
+      "raw": "string instruction\nuint8 instruction_type\nuint8 motor_num\nint32 value\n---\nint32 output\nbool result",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "instruction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "instruction_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "motor_num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TmcGapAll": {
+      "description": "",
+      "raw": "uint8           motor_num\n---\nbool            success\nTmcParam[]      param",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "motor_num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TmcParam[]",
+          "name": "param",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TmcGgpAll": {
+      "description": "",
+      "raw": "---\nbool            success\nTmcParam[]      param",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TmcParam[]",
+          "name": "param",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

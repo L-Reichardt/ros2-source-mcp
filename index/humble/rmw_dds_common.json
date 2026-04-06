@@ -1,0 +1,123 @@
+{
+  "name": "rmw_dds_common",
+  "version": "1.6.0",
+  "description": "Define a common interface between DDS implementations of ROS middleware.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmw_dds_common",
+    "url": "https://github.com/ros2/rmw_dds_common.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "osrf_testing_tools_cpp",
+      "performance_test_fixture"
+    ],
+    "build_and_runtime": [
+      "rcutils",
+      "rcpputils",
+      "rmw",
+      "rosidl_runtime_cpp"
+    ],
+    "depended_on_by": [
+      "rmw_connextdds_common",
+      "rmw_cyclonedds_cpp",
+      "rmw_desert",
+      "rmw_desert",
+      "rmw_fastrtps_cpp",
+      "rmw_fastrtps_cpp",
+      "rmw_fastrtps_dynamic_cpp",
+      "rmw_fastrtps_dynamic_cpp",
+      "rmw_fastrtps_shared_cpp",
+      "rmw_fastrtps_shared_cpp",
+      "rmw_gurumdds_cpp",
+      "rmw_gurumdds_cpp",
+      "rosapi",
+      "zenoh_security_tools"
+    ]
+  },
+  "messages": {
+    "Gid": {
+      "description": "",
+      "raw": "char[24] data\n",
+      "fields": [
+        {
+          "type": "char[24]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NodeEntitiesInfo": {
+      "description": "",
+      "raw": "string<=256 node_namespace\nstring<=256 node_name\nGid[] reader_gid_seq\nGid[] writer_gid_seq\n",
+      "fields": [
+        {
+          "type": "string<=256",
+          "name": "node_namespace",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=256",
+          "name": "node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gid[]",
+          "name": "reader_gid_seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gid[]",
+          "name": "writer_gid_seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParticipantEntitiesInfo": {
+      "description": "",
+      "raw": "Gid gid\nNodeEntitiesInfo[] node_entities_info_seq\n",
+      "fields": [
+        {
+          "type": "Gid",
+          "name": "gid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NodeEntitiesInfo[]",
+          "name": "node_entities_info_seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,54 @@
+{
+  "name": "dataspeed_ulc_can",
+  "version": "2.1.16",
+  "description": "Package to translate ROS messages to and from CAN messages to interact with the Universal Lat/Lon Controller (ULC) firmware",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://dataspeedinc.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dbw_ros",
+    "url": "https://bitbucket.org/dataspeedinc/dbw_ros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ros_testing"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclpy",
+      "dataspeed_dbw_common",
+      "std_msgs",
+      "geometry_msgs",
+      "can_msgs",
+      "dataspeed_ulc_msgs"
+    ],
+    "depended_on_by": [
+      "dataspeed_ulc",
+      "dbw_fca_can",
+      "dbw_ford_can",
+      "dbw_polaris_can"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,115 @@
+{
+  "name": "network_interface",
+  "version": "2003.1.1",
+  "description": "Network interfaces and messages.",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/network_interface",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/astuff/network_interface/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/astuff/network_interface",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "network_interface",
+    "url": "https://github.com/astuff/network_interface.git",
+    "branch": "ros2_master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "TCPFrame": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring address\nuint16 port\nuint16 size\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UDPFrame": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring address\nuint16 port\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

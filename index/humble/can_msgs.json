@@ -1,0 +1,120 @@
+{
+  "name": "can_msgs",
+  "version": "2.0.0",
+  "description": "CAN related message types.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/can_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-industrial/ros_canopen",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-industrial/ros_canopen/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "ros_canopen",
+    "url": "https://github.com/ros-industrial/ros_canopen.git",
+    "branch": "dashing-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "clearpath_ros2_socketcan_interface",
+      "dataspeed_can_msg_filters",
+      "dataspeed_can_tools",
+      "dataspeed_can_usb",
+      "dataspeed_ulc_can",
+      "dbw_fca_can",
+      "dbw_ford_can",
+      "dbw_polaris_can",
+      "ds_dbw_can",
+      "nobleo_socketcan_bridge",
+      "off_highway_can",
+      "off_highway_general_purpose_radar",
+      "off_highway_mm7p10",
+      "off_highway_radar",
+      "off_highway_uss",
+      "ros2_socketcan"
+    ]
+  },
+  "messages": {
+    "Frame": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 id\nbool is_rtr\nbool is_extended\nbool is_error\nuint8 dlc\nuint8[8] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_rtr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_extended",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "dlc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[8]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

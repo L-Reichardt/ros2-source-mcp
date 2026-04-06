@@ -1,6 +1,6 @@
 {
   "name": "controller_interface",
-  "version": "4.43.0",
+  "version": "4.44.0",
   "description": "Base classes for controllers and syntax cookies for supporting common sensor types in controllers and broadcasters",
   "license": "Apache License 2.0",
   "build_type": "ament_cmake",
@@ -13,11 +13,12 @@
   },
   "dependencies": {
     "build": [
+      "fmt",
       "hardware_interface",
+      "pal_statistics",
       "rclcpp_lifecycle",
       "realtime_tools",
-      "ros2_control_cmake",
-      "fmt"
+      "ros2_control_cmake"
     ],
     "build_export": [
       "hardware_interface",
@@ -60,6 +61,7 @@
       "joint_state_broadcaster",
       "joint_trajectory_controller",
       "mecanum_drive_controller",
+      "motion_primitives_controllers",
       "nmea_hardware_interface",
       "omni_wheel_drive_controller",
       "parallel_gripper_controller",

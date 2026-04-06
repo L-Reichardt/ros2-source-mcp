@@ -1,0 +1,146 @@
+{
+  "name": "autoware_internal_localization_msgs",
+  "version": "1.12.1",
+  "description": "The autoware_internal_localization_msgs package",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_internal_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_internal_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "autoware_common_msgs",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "InitializeLocalization": {
+      "description": "constants for specifying initialization method",
+      "raw": "# constants for specifying initialization method\nuint8 AUTO = 0\nuint8 DIRECT = 1\n\n# input pose for initialization\ngeometry_msgs/PoseWithCovarianceStamped[<=1] pose_with_covariance\n\n# Variable to set initialization method\n# AUTO: The initial position is automatically estimated with localization algorithm.\n#       The input pose will be used as an initial guess if provided.\n# DIRECT: The initial position is set directly by the input pose without going through localization algorithm.\nuint8 method\n---\n# ERROR CODES used in response status in case of failure\nuint16 ERROR_UNSAFE = 1\nuint16 ERROR_GNSS_SUPPORT = 2\nuint16 ERROR_GNSS = 3\nuint16 ERROR_ESTIMATION = 4\n\nautoware_common_msgs/ResponseStatus status\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "AUTO",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIRECT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped[<=1]",
+          "name": "pose_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "method",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint16",
+          "name": "ERROR_UNSAFE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ERROR_GNSS_SUPPORT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ERROR_GNSS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ERROR_ESTIMATION",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "autoware_common_msgs/ResponseStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PoseWithCovarianceStamped": {
+      "description": "If failure to run initial pose estimation and node could not get result, success is set to false.",
+      "raw": "geometry_msgs/PoseWithCovarianceStamped pose_with_covariance\n---\n# If failure to run initial pose estimation and node could not get result, success is set to false.\nbool success\n# reliable is used to check reliability of initial pose was good or bad.\nbool reliable\ngeometry_msgs/PoseWithCovarianceStamped pose_with_covariance\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reliable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose_with_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

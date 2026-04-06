@@ -1,0 +1,152 @@
+{
+  "name": "compass_interfaces",
+  "version": "3.0.2",
+  "description": "Messages related to compass",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ctu-vras/compass",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/compass/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://index.ros.org/p/compass_interfaces",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "compass",
+    "url": "https://github.com/ctu-vras/compass.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "cras_cpp_common"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "cras_cpp_common"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "cras_lint"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "compass_conversions",
+      "magnetometer_compass"
+    ]
+  },
+  "messages": {
+    "Azimuth": {
+      "description": "SPDX-License-Identifier: BSD-3-Clause",
+      "raw": "# SPDX-License-Identifier: BSD-3-Clause\n# SPDX-FileCopyrightText: Czech Technical University in Prague\n\nstd_msgs/Header header\n\n# The represented azimuth angle (angular difference between a direction given by the heading of the robot and north/east)\n# in unit corresponding to the 'unit' field.\nfloat64 azimuth\n\n# Variance of the measurement (i.e. standard deviation squared) in units corresponding to squared 'unit' field.\nfloat64 variance\n\n# Unit of measurement:\n#  RAD: radians, default\n#  DEG: degrees (not suggested by REP-103, but are more human-friendly)\nuint8 UNIT_RAD=0\nuint8 UNIT_DEG=1\nuint8 unit\n\n# Orientation type:\n#  ENU: default, 0 degrees on east, increases CCW, follows to REP-103\n#  NED: 0 degrees on north, increases CW (consistent with the touristic magnetic compasses)\nuint8 ORIENTATION_ENU=0\nuint8 ORIENTATION_NED=1\nuint8 orientation\n\n# Which north reference is used:\n#  MAGNETIC: magnetic north, changes in time\n#  GEOGRAPHIC: geographic north, stable in time, also called \"true azimuth\"\n#  UTM: UTM grid azimuth, based on GEOGRAPHIC, but accounts for UTM grid convergence; valid only in specific UTM zone\nuint8 REFERENCE_MAGNETIC=0\nuint8 REFERENCE_GEOGRAPHIC=1\nuint8 REFERENCE_UTM=2\nuint8 reference",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNIT_RAD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNIT_DEG",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "unit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ORIENTATION_ENU",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ORIENTATION_NED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "REFERENCE_MAGNETIC",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REFERENCE_GEOGRAPHIC",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REFERENCE_UTM",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "reference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

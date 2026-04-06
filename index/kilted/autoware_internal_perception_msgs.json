@@ -1,0 +1,67 @@
+{
+  "name": "autoware_internal_perception_msgs",
+  "version": "1.8.1",
+  "description": "Autoware internal perception messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_internal_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_internal_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "autoware_perception_msgs",
+      "builtin_interfaces",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_internal_msgs"
+    ]
+  },
+  "messages": {
+    "SegmentationMask": {
+      "description": "It represent map between instance segmentation mask and labels",
+      "raw": "std_msgs/Header header\n\n# It represent map between instance segmentation mask and labels\n# The pixel intensities in mask's starts with 1 (pixel value 0 represent pixel is not belong any object)\n#     `classification[0]` returns the `label_id` for pixels with an intensity value of `1` in the mask.\n#     `classification[1]` returns the `label_id` for pixels with an intensity value of `2` in the mask.\n#     ...\n# The relationship between pixels and label IDs continues in this way.\nautoware_perception_msgs/ObjectClassification[] classification\n\nsensor_msgs/Image image # Mask image\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_perception_msgs/ObjectClassification[]",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "Mask image",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

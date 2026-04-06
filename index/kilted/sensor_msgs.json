@@ -1,0 +1,1844 @@
+{
+  "name": "sensor_msgs",
+  "version": "5.5.2",
+  "description": "A package containing some sensor data related message and service definitions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "common_interfaces",
+    "url": "https://github.com/ros2/common_interfaces.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "rosidl_cmake"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "apriltag_detector",
+      "apriltag_detector_mit",
+      "apriltag_detector_umich",
+      "apriltag_draw",
+      "apriltag_ros",
+      "aruco_markers",
+      "aruco_ros",
+      "automatika_embodied_agents",
+      "automatika_ros_sugar",
+      "autoware_auto_msgs",
+      "autoware_internal_perception_msgs",
+      "autoware_map_msgs",
+      "avt_vimba_camera",
+      "bag2_to_image",
+      "battery_state_broadcaster",
+      "battery_state_rviz_overlay",
+      "beluga_ros",
+      "broll",
+      "camera_aravis2",
+      "camera_aravis2_msgs",
+      "camera_calibration",
+      "camera_calibration_parsers",
+      "camera_info_manager",
+      "camera_info_manager_py",
+      "camera_ros",
+      "canopen_402_driver",
+      "cartographer_ros",
+      "cloudini_ros",
+      "coin_d4_driver",
+      "common_interfaces",
+      "compass_conversions",
+      "control_msgs",
+      "controller_interface",
+      "controller_manager",
+      "cras_bag_tools",
+      "cras_msgs",
+      "cv_bridge",
+      "depth_image_proc",
+      "depthai_bridge",
+      "depthai_examples",
+      "depthai_filters",
+      "depthai_ros_driver",
+      "depthai_ros_msgs",
+      "depthimage_to_laserscan",
+      "dolly_follow",
+      "dolly_follow",
+      "doom_ros",
+      "draco_point_cloud_transport",
+      "easynav_common",
+      "easynav_sensors",
+      "easynav_system",
+      "event_camera_renderer",
+      "event_camera_tools",
+      "event_image_reconstruction_fibar",
+      "examples_tf2_py",
+      "ffmpeg_encoder_decoder",
+      "ffmpeg_image_transport",
+      "ffmpeg_image_transport_tools",
+      "find_object_2d",
+      "find_object_2d",
+      "fkie_message_filters",
+      "foxglove_compressed_video_transport",
+      "fuse_models",
+      "fuse_models",
+      "fuse_tutorials",
+      "fuse_tutorials",
+      "geodesy",
+      "gps_sensor_broadcaster",
+      "gps_tools",
+      "gpsd_client",
+      "grasping_msgs",
+      "greenwave_monitor",
+      "grid_map_cv",
+      "grid_map_demos",
+      "grid_map_ros",
+      "grid_map_visualization",
+      "gscam",
+      "hls_lfcd_lds_driver",
+      "ign_rviz",
+      "ign_rviz_plugins",
+      "image_geometry",
+      "image_proc",
+      "image_rotate",
+      "image_tools",
+      "image_tools",
+      "image_transport",
+      "image_transport_py",
+      "image_view",
+      "imu_complementary_filter",
+      "imu_filter_madgwick",
+      "imu_processors",
+      "imu_sensor_broadcaster",
+      "imu_transformer",
+      "intra_process_demo",
+      "intra_process_demo",
+      "joint_state_broadcaster",
+      "joint_state_publisher",
+      "joint_state_topic_hardware_interface",
+      "joy",
+      "joy_linux",
+      "joy_teleop",
+      "joy_tester",
+      "laser_filters",
+      "laser_geometry",
+      "laser_geometry",
+      "laser_proc",
+      "laser_proc",
+      "laser_segmentation",
+      "ld08_driver",
+      "leo_bringup",
+      "leo_filters",
+      "leo_filters",
+      "leo_fw",
+      "leo_fw",
+      "lgsvl_msgs",
+      "libcaer_driver",
+      "magnetic_model",
+      "magnetometer_compass",
+      "magnetometer_pipeline",
+      "map_msgs",
+      "map_msgs",
+      "mapviz_plugins",
+      "marti_nav_msgs",
+      "marti_perception_msgs",
+      "marti_visualization_msgs",
+      "mavros",
+      "mavros_examples",
+      "mavros_extras",
+      "mavros_msgs",
+      "message_filters",
+      "message_tf_frame_transformer",
+      "microstrain_inertial_driver",
+      "mobile_robot_simulator",
+      "mola_bridge_ros2",
+      "mola_input_rosbag2",
+      "motion_capture_tracking",
+      "moveit_core",
+      "moveit_msgs",
+      "mrpt_apps",
+      "mrpt_generic_sensor",
+      "mrpt_msgs",
+      "mrpt_pf_localization",
+      "mrpt_pointcloud_pipeline",
+      "mrpt_reactivenav2d",
+      "mrpt_sensor_bumblebee_stereo",
+      "mrpt_sensor_gnss_nmea",
+      "mrpt_sensor_gnss_novatel",
+      "mrpt_sensor_imu_taobotics",
+      "mrpt_sensorlib",
+      "mrpt_tps_astar_planner",
+      "mujoco_ros2_control",
+      "multisensor_calibration",
+      "multisensor_calibration_interface",
+      "mvsim",
+      "nao_lola_client",
+      "nav2_amcl",
+      "nav2_behavior_tree",
+      "nav2_collision_monitor",
+      "nav2_costmap_2d",
+      "nav2_waypoint_follower",
+      "navmap_ros",
+      "navmap_rviz_plugin",
+      "nmea_navsat_driver",
+      "nonpersistent_voxel_layer",
+      "novatel_gps_driver",
+      "ntpd_driver",
+      "ntrip_client",
+      "object_recognition_msgs",
+      "object_recognition_msgs",
+      "octomap_ros",
+      "octomap_server",
+      "open3d_conversions",
+      "open_manipulator_collision",
+      "open_manipulator_gui",
+      "open_manipulator_teleop",
+      "openni2_camera",
+      "opensw_ros",
+      "pcl_conversions",
+      "pcl_msgs",
+      "pcl_msgs",
+      "pcl_ros",
+      "pcl_ros",
+      "phidgets_accelerometer",
+      "phidgets_gyroscope",
+      "phidgets_high_speed_encoder",
+      "phidgets_magnetometer",
+      "phidgets_spatial",
+      "phidgets_stepper",
+      "play_motion2",
+      "play_motion2",
+      "play_motion_builder",
+      "point_cloud_interfaces",
+      "point_cloud_msg_wrapper",
+      "point_cloud_transport",
+      "point_cloud_transport_py",
+      "point_cloud_transport_tutorial",
+      "point_cloud_transport_tutorial",
+      "pointcloud_to_laserscan",
+      "pose_cov_ops",
+      "py_trees_ros",
+      "py_trees_ros_tutorials",
+      "range_sensor_broadcaster",
+      "rc_genicam_driver",
+      "rcss3d_nao",
+      "reach_ros",
+      "realsense2_camera",
+      "realsense2_camera_msgs",
+      "realsense2_camera_msgs",
+      "rko_lio",
+      "roadmap_explorer",
+      "robot_calibration",
+      "robot_calibration_msgs",
+      "robot_localization",
+      "robot_state_publisher",
+      "ros1_bridge",
+      "ros2_controllers_test_nodes",
+      "ros2launch_security_examples",
+      "ros_gz_bridge",
+      "ros_gz_image",
+      "ros_image_to_qimage",
+      "rosapi",
+      "rosbag2_storage_broll",
+      "rosbag2rawlog",
+      "rosbridge_library",
+      "rosx_introspection",
+      "rplidar_ros",
+      "rplidar_ros",
+      "rqt_bag_plugins",
+      "rqt_image_view",
+      "rqt_image_view",
+      "rqt_moveit",
+      "rqt_play_motion_builder",
+      "rqt_play_motion_builder",
+      "rt_usb_9axisimu_driver",
+      "rtabmap_conversions",
+      "rtabmap_msgs",
+      "rtabmap_odom",
+      "rtabmap_rviz_plugins",
+      "rtabmap_slam",
+      "rtabmap_sync",
+      "rtabmap_util",
+      "rviz2",
+      "rviz_common",
+      "rviz_imu_plugin",
+      "rviz_satellite",
+      "rviz_visual_tools",
+      "sbg_driver",
+      "sensor_msgs_py",
+      "septentrio_gnss_driver",
+      "sick_safetyscanners2",
+      "sick_safetyscanners2_interfaces",
+      "sick_safevisionary_driver",
+      "sick_scan_xd",
+      "sicks300_ros2",
+      "simple_grasping",
+      "slam_toolbox",
+      "slam_toolbox",
+      "spacenav",
+      "spinnaker_camera_driver",
+      "stereo_image_proc",
+      "stereo_msgs",
+      "swri_transform_util",
+      "teleop_twist_joy",
+      "tf2_ros_py",
+      "tf2_ros_py",
+      "tf2_sensor_msgs",
+      "theora_image_transport",
+      "topic_statistics_demo",
+      "topic_statistics_demo",
+      "turtlebot3_example",
+      "turtlebot3_fake_node",
+      "turtlebot3_gazebo",
+      "turtlebot3_node",
+      "tuw_geometry",
+      "ublox_gps",
+      "ublox_msgs",
+      "ublox_nav_sat_fix_hp_node",
+      "urg_node",
+      "usb_cam",
+      "v4l2_camera",
+      "velodyne_laserscan",
+      "velodyne_pointcloud",
+      "visualization_msgs",
+      "web_video_server",
+      "webots_ros2_driver",
+      "webots_ros2_epuck",
+      "webots_ros2_tests",
+      "wiimote",
+      "zbar_ros"
+    ]
+  },
+  "messages": {
+    "BatteryState": {
+      "description": "Constants are chosen to match the enums in the linux kernel",
+      "raw": "\n# Constants are chosen to match the enums in the linux kernel\n# defined in include/linux/power_supply.h as of version 3.7\n# The one difference is for style reasons the constants are\n# all uppercase not mixed case.\n\n# Power supply status constants\nuint8 POWER_SUPPLY_STATUS_UNKNOWN = 0\nuint8 POWER_SUPPLY_STATUS_CHARGING = 1\nuint8 POWER_SUPPLY_STATUS_DISCHARGING = 2\nuint8 POWER_SUPPLY_STATUS_NOT_CHARGING = 3\nuint8 POWER_SUPPLY_STATUS_FULL = 4\n\n# Power supply health constants\nuint8 POWER_SUPPLY_HEALTH_UNKNOWN = 0\nuint8 POWER_SUPPLY_HEALTH_GOOD = 1\nuint8 POWER_SUPPLY_HEALTH_OVERHEAT = 2\nuint8 POWER_SUPPLY_HEALTH_DEAD = 3\nuint8 POWER_SUPPLY_HEALTH_OVERVOLTAGE = 4\nuint8 POWER_SUPPLY_HEALTH_UNSPEC_FAILURE = 5\nuint8 POWER_SUPPLY_HEALTH_COLD = 6\nuint8 POWER_SUPPLY_HEALTH_WATCHDOG_TIMER_EXPIRE = 7\nuint8 POWER_SUPPLY_HEALTH_SAFETY_TIMER_EXPIRE = 8\n\n# Power supply technology (chemistry) constants\nuint8 POWER_SUPPLY_TECHNOLOGY_UNKNOWN = 0 # Unknown battery technology\nuint8 POWER_SUPPLY_TECHNOLOGY_NIMH = 1    # Nickel-Metal Hydride battery\nuint8 POWER_SUPPLY_TECHNOLOGY_LION = 2    # Lithium-ion battery\nuint8 POWER_SUPPLY_TECHNOLOGY_LIPO = 3    # Lithium Polymer battery\nuint8 POWER_SUPPLY_TECHNOLOGY_LIFE = 4    # Lithium Iron Phosphate battery\nuint8 POWER_SUPPLY_TECHNOLOGY_NICD = 5    # Nickel-Cadmium battery\nuint8 POWER_SUPPLY_TECHNOLOGY_LIMN = 6    # Lithium Manganese Dioxide battery\nuint8 POWER_SUPPLY_TECHNOLOGY_TERNARY = 7 # Ternary Lithium battery\nuint8 POWER_SUPPLY_TECHNOLOGY_VRLA = 8    # Valve Regulated Lead-Acid battery\n\nstd_msgs/Header  header\nfloat32 voltage          # Voltage in Volts (Mandatory)\nfloat32 temperature      # Temperature in Degrees Celsius (If unmeasured NaN)\nfloat32 current          # Negative when discharging (A)  (If unmeasured NaN)\nfloat32 charge           # Current charge in Ah  (If unmeasured NaN)\nfloat32 capacity         # Capacity in Ah (last full capacity)  (If unmeasured NaN)\nfloat32 design_capacity  # Capacity in Ah (design capacity)  (If unmeasured NaN)\nfloat32 percentage       # Charge percentage on 0 to 1 range  (If unmeasured NaN)\nuint8   power_supply_status     # The charging status as reported. Values defined above\nuint8   power_supply_health     # The battery health metric. Values defined above\nuint8   power_supply_technology # The battery chemistry. Values defined above\nbool    present          # True if the battery is present\n\nfloat32[] cell_voltage   # An array of individual cell voltages for each cell in the pack\n                         # If individual voltages unknown but number of cells known set each to NaN\nfloat32[] cell_temperature # An array of individual cell temperatures for each cell in the pack\n                           # If individual temperatures unknown but number of cells known set each to NaN\nstring location          # The location into which the battery is inserted. (slot number or plug)\nstring serial_number     # The best approximation of the battery serial number\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_STATUS_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_STATUS_CHARGING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_STATUS_DISCHARGING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_STATUS_NOT_CHARGING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_STATUS_FULL",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_GOOD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_OVERHEAT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_DEAD",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_OVERVOLTAGE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_UNSPEC_FAILURE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_COLD",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_WATCHDOG_TIMER_EXPIRE",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_HEALTH_SAFETY_TIMER_EXPIRE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_UNKNOWN",
+          "comment": "Unknown battery technology",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_NIMH",
+          "comment": "Nickel-Metal Hydride battery",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_LION",
+          "comment": "Lithium-ion battery",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_LIPO",
+          "comment": "Lithium Polymer battery",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_LIFE",
+          "comment": "Lithium Iron Phosphate battery",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_NICD",
+          "comment": "Nickel-Cadmium battery",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_LIMN",
+          "comment": "Lithium Manganese Dioxide battery",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_TERNARY",
+          "comment": "Ternary Lithium battery",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SUPPLY_TECHNOLOGY_VRLA",
+          "comment": "Valve Regulated Lead-Acid battery",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "voltage",
+          "comment": "Voltage in Volts (Mandatory)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "Temperature in Degrees Celsius (If unmeasured NaN)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "Negative when discharging (A)  (If unmeasured NaN)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "charge",
+          "comment": "Current charge in Ah  (If unmeasured NaN)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "capacity",
+          "comment": "Capacity in Ah (last full capacity)  (If unmeasured NaN)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "design_capacity",
+          "comment": "Capacity in Ah (design capacity)  (If unmeasured NaN)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percentage",
+          "comment": "Charge percentage on 0 to 1 range  (If unmeasured NaN)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "power_supply_status",
+          "comment": "The charging status as reported. Values defined above",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "power_supply_health",
+          "comment": "The battery health metric. Values defined above",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "power_supply_technology",
+          "comment": "The battery chemistry. Values defined above",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "present",
+          "comment": "True if the battery is present",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "cell_voltage",
+          "comment": "An array of individual cell voltages for each cell in the pack",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "cell_temperature",
+          "comment": "An array of individual cell temperatures for each cell in the pack",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "location",
+          "comment": "The location into which the battery is inserted. (slot number or plug)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "The best approximation of the battery serial number",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraInfo": {
+      "description": "This message defines meta information for a camera. It should be in a",
+      "raw": "# This message defines meta information for a camera. It should be in a\n# camera namespace on topic \"camera_info\" and accompanied by up to five\n# image topics named:\n#\n#   image_raw - raw data from the camera driver, possibly Bayer encoded\n#   image            - monochrome, distorted\n#   image_color      - color, distorted\n#   image_rect       - monochrome, rectified\n#   image_rect_color - color, rectified\n#\n# The image_pipeline contains packages (image_proc, stereo_image_proc)\n# for producing the four processed image topics from image_raw and\n# camera_info. The meaning of the camera parameters are described in\n# detail at http://www.ros.org/wiki/image_pipeline/CameraInfo.\n#\n# The image_geometry package provides a user-friendly interface to\n# common operations using this meta information. If you want to, e.g.,\n# project a 3d point into image coordinates, we strongly recommend\n# using image_geometry.\n#\n# If the camera is uncalibrated, the matrices D, K, R, P should be left\n# zeroed out. In particular, clients may assume that K[0] == 0.0\n# indicates an uncalibrated camera.\n\n#######################################################################\n#                     Image acquisition info                          #\n#######################################################################\n\n# Time of image acquisition, camera coordinate frame ID\nstd_msgs/Header header # Header timestamp should be acquisition time of image\n                             # Header frame_id should be optical frame of camera\n                             # origin of frame should be optical center of camera\n                             # +x should point to the right in the image\n                             # +y should point down in the image\n                             # +z should point into the plane of the image\n\n\n#######################################################################\n#                      Calibration Parameters                         #\n#######################################################################\n# These are fixed during camera calibration. Their values will be the #\n# same in all messages until the camera is recalibrated. Note that    #\n# self-calibrating systems may \"recalibrate\" frequently.              #\n#                                                                     #\n# The internal parameters can be used to warp a raw (distorted) image #\n# to:                                                                 #\n#   1. An undistorted image (requires D and K)                        #\n#   2. A rectified image (requires D, K, R)                           #\n# The projection matrix P projects 3D points into the rectified image.#\n#######################################################################\n\n# The image dimensions with which the camera was calibrated.\n# Normally this will be the full camera resolution in pixels.\nuint32 height\nuint32 width\n\n# The distortion model used. Supported models are listed in\n# sensor_msgs/distortion_models.hpp. For most cameras, \"plumb_bob\" - a\n# simple model of radial and tangential distortion - is sufficent.\nstring distortion_model\n\n# The distortion parameters, size depending on the distortion model.\n# For \"plumb_bob\", the 5 parameters are: (k1, k2, t1, t2, k3).\nfloat64[] d\n\n# Intrinsic camera matrix for the raw (distorted) images.\n#     [fx  0 cx]\n# K = [ 0 fy cy]\n#     [ 0  0  1]\n# Projects 3D points in the camera coordinate frame to 2D pixel\n# coordinates using the focal lengths (fx, fy) and principal point\n# (cx, cy).\nfloat64[9]  k # 3x3 row-major matrix\n\n# Rectification matrix (stereo cameras only)\n# A rotation matrix aligning the camera coordinate system to the ideal\n# stereo image plane so that epipolar lines in both stereo images are\n# parallel.\nfloat64[9]  r # 3x3 row-major matrix\n\n# Projection/camera matrix\n#     [fx'  0  cx' Tx]\n# P = [ 0  fy' cy' Ty]\n#     [ 0   0   1   0]\n# By convention, this matrix specifies the intrinsic (camera) matrix\n#  of the processed (rectified) image. That is, the left 3x3 portion\n#  is the normal camera intrinsic matrix for the rectified image.\n# It projects 3D points in the camera coordinate frame to 2D pixel\n#  coordinates using the focal lengths (fx', fy') and principal point\n#  (cx', cy') - these may differ from the values in K.\n# For monocular cameras, Tx = Ty = 0. Normally, monocular cameras will\n#  also have R = the identity and P[1:3,1:3] = K.\n# For a stereo pair, the fourth column [Tx Ty 0]' is related to the\n#  position of the optical center of the second camera in the first\n#  camera's frame. We assume Tz = 0 so both cameras are in the same\n#  stereo image plane. The first camera always has Tx = Ty = 0. For\n#  the right (second) camera of a horizontal stereo pair, Ty = 0 and\n#  Tx = -fx' * B, where B is the baseline between the cameras.\n# Given a 3D point [X Y Z]', the projection (x, y) of the point onto\n#  the rectified image is given by:\n#  [u v w]' = P * [X Y Z 1]'\n#         x = u / w\n#         y = v / w\n#  This holds for both images of a stereo pair.\nfloat64[12] p # 3x4 row-major matrix\n\n\n#######################################################################\n#                      Operational Parameters                         #\n#######################################################################\n# These define the image region actually captured by the camera       #\n# driver. Although they affect the geometry of the output image, they #\n# may be changed freely without recalibrating the camera.             #\n#######################################################################\n\n# Binning refers here to any camera setting which combines rectangular\n#  neighborhoods of pixels into larger \"super-pixels.\" It reduces the\n#  resolution of the output image to\n#  (width / binning_x) x (height / binning_y).\n# The default values binning_x = binning_y = 0 is considered the same\n#  as binning_x = binning_y = 1 (no subsampling).\nuint32 binning_x\nuint32 binning_y\n\n# Region of interest (subwindow of full camera resolution), given in\n#  full resolution (unbinned) image coordinates. A particular ROI\n#  always denotes the same window of pixels on the camera sensor,\n#  regardless of binning settings.\n# The default setting of roi (all values 0) is considered the same as\n#  full resolution (roi.width = width, roi.height = height).\nRegionOfInterest roi\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time of image",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "distortion_model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "k",
+          "comment": "3x3 row-major matrix",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "r",
+          "comment": "3x3 row-major matrix",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[12]",
+          "name": "p",
+          "comment": "3x4 row-major matrix",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "binning_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "binning_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RegionOfInterest",
+          "name": "roi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ChannelFloat32": {
+      "description": "This message is used by the PointCloud message to hold optional data",
+      "raw": "# This message is used by the PointCloud message to hold optional data\n# associated with each point in the cloud. The length of the values\n# array should be the same as the length of the points array in the\n# PointCloud, and each value should be associated with the corresponding\n# point.\n#\n# Channel names in existing practice include:\n#   \"u\", \"v\" - row and column (respectively) in the left stereo image.\n#              This is opposite to usual conventions but remains for\n#              historical reasons. The newer PointCloud2 message has no\n#              such problem.\n#   \"rgb\" - For point clouds produced by color stereo cameras. uint8\n#           (R,G,B) values packed into the least significant 24 bits,\n#           in order.\n#   \"intensity\" - laser or pixel intensity.\n#   \"distance\"\n\n# The channel name should give semantics of the channel (e.g.\n# \"intensity\" instead of \"value\").\nstring name\n\n# The values array should be 1-1 with the elements of the associated\n# PointCloud.\nfloat32[] values\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CompressedImage": {
+      "description": "This message contains a compressed image.",
+      "raw": "# This message contains a compressed image.\n\nstd_msgs/Header header # Header timestamp should be acquisition time of image\n                             # Header frame_id should be optical frame of camera\n                             # origin of frame should be optical center of cameara\n                             # +x should point to the right in the image\n                             # +y should point down in the image\n                             # +z should point into to plane of the image\n\nstring format                # Specifies the format of the data\n                             # Acceptable values differ by the image transport used:\n                             # - compressed_image_transport:\n                             #     ORIG_PIXFMT; CODEC compressed [COMPRESSED_PIXFMT]\n                             #   where:\n                             #   - ORIG_PIXFMT is pixel format of the raw image, i.e.\n                             #     the content of sensor_msgs/Image/encoding with\n                             #     values from include/sensor_msgs/image_encodings.h\n                             #   - CODEC is one of [jpeg, png, tiff]\n                             #   - COMPRESSED_PIXFMT is only appended for color images\n                             #     and is the pixel format used by the compression\n                             #     algorithm. Valid values for jpeg encoding are:\n                             #     [bgr8, rgb8]. Valid values for png encoding are:\n                             #     [bgr8, rgb8, bgr16, rgb16].\n                             #   If the field is empty or does not correspond to the\n                             #   above pattern, the image is treated as bgr8 or mono8\n                             #   jpeg image (depending on the number of channels).\n                             # - compressed_depth_image_transport:\n                             #     ORIG_PIXFMT; compressedDepth CODEC\n                             #   where:\n                             #   - ORIG_PIXFMT is pixel format of the raw image, i.e.\n                             #     the content of sensor_msgs/Image/encoding with\n                             #     values from include/sensor_msgs/image_encodings.h\n                             #     It is usually one of [16UC1, 32FC1].\n                             #   - CODEC is one of [png, rvl]\n                             #   If the field is empty or does not correspond to the\n                             #   above pattern, the image is treated as png image.\n                             # - Other image transports can store whatever values they\n                             #   need for successful decoding of the image. Refer to\n                             #   documentation of the other transports for details.\n\nuint8[] data                 # Compressed image buffer\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time of image",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "format",
+          "comment": "Specifies the format of the data",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "Compressed image buffer",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FluidPressure": {
+      "description": "Single pressure reading.  This message is appropriate for measuring the",
+      "raw": "# Single pressure reading.  This message is appropriate for measuring the\n# pressure inside of a fluid (air, water, etc).  This also includes\n# atmospheric or barometric pressure.\n#\n# This message is not appropriate for force/pressure contact sensors.\n\nstd_msgs/Header header # timestamp of the measurement\n                             # frame_id is the location of the pressure sensor\n\nfloat64 fluid_pressure       # Absolute pressure reading in Pascals.\n\nfloat64 variance             # 0 is interpreted as variance unknown\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp of the measurement",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "fluid_pressure",
+          "comment": "Absolute pressure reading in Pascals.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "variance",
+          "comment": "0 is interpreted as variance unknown",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Illuminance": {
+      "description": "Single photometric illuminance measurement.  Light should be assumed to be",
+      "raw": "# Single photometric illuminance measurement.  Light should be assumed to be\n# measured along the sensor's x-axis (the area of detection is the y-z plane).\n# The illuminance should have a 0 or positive value and be received with\n# the sensor's +X axis pointing toward the light source.\n#\n# Photometric illuminance is the measure of the human eye's sensitivity of the\n# intensity of light encountering or passing through a surface.\n#\n# All other Photometric and Radiometric measurements should not use this message.\n# This message cannot represent:\n#  - Luminous intensity (candela/light source output)\n#  - Luminance (nits/light output per area)\n#  - Irradiance (watt/area), etc.\n\nstd_msgs/Header header # timestamp is the time the illuminance was measured\n                             # frame_id is the location and direction of the reading\n\nfloat64 illuminance          # Measurement of the Photometric Illuminance in Lux.\n\nfloat64 variance             # 0 is interpreted as variance unknown\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp is the time the illuminance was measured",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "illuminance",
+          "comment": "Measurement of the Photometric Illuminance in Lux.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "variance",
+          "comment": "0 is interpreted as variance unknown",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Image": {
+      "description": "This message contains an uncompressed image",
+      "raw": "# This message contains an uncompressed image\n# (0, 0) is at top-left corner of image\n\nstd_msgs/Header header # Header timestamp should be acquisition time of image\n                             # Header frame_id should be optical frame of camera\n                             # origin of frame should be optical center of cameara\n                             # +x should point to the right in the image\n                             # +y should point down in the image\n                             # +z should point into to plane of the image\n                             # If the frame_id here and the frame_id of the CameraInfo\n                             # message associated with the image conflict\n                             # the behavior is undefined\n\nuint32 height                # image height, that is, number of rows\nuint32 width                 # image width, that is, number of columns\n\n# The legal values for encoding are in file include/sensor_msgs/image_encodings.hpp\n# If you want to standardize a new string format, join\n# ros-users@lists.ros.org and send an email proposing a new encoding.\n\nstring encoding       # Encoding of pixels -- channel meaning, ordering, size\n                      # taken from the list of strings in include/sensor_msgs/image_encodings.hpp\n\nuint8 is_bigendian    # is this data bigendian?\nuint32 step           # Full row length in bytes\nuint8[] data          # actual matrix data, size is (step * rows)\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time of image",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "image height, that is, number of rows",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "image width, that is, number of columns",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "encoding",
+          "comment": "Encoding of pixels -- channel meaning, ordering, size",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "is_bigendian",
+          "comment": "is this data bigendian?",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "step",
+          "comment": "Full row length in bytes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "actual matrix data, size is (step * rows)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Imu": {
+      "description": "This is a message to hold data from an IMU (Inertial Measurement Unit)",
+      "raw": "# This is a message to hold data from an IMU (Inertial Measurement Unit)\n#\n# Accelerations should be in m/s^2 (not in g's), and rotational velocity should be in rad/sec\n#\n# If the covariance of the measurement is known, it should be filled in (if all you know is the\n# variance of each measurement, e.g. from the datasheet, just put those along the diagonal)\n# A covariance matrix of all zeros will be interpreted as \"covariance unknown\", and to use the\n# data a covariance will have to be assumed or gotten from some other source\n#\n# If you have no estimate for one of the data elements (e.g. your IMU doesn't produce an\n# orientation estimate), please set element 0 of the associated covariance matrix to -1\n# If you are interpreting this message, please check for a value of -1 in the first element of each\n# covariance matrix, and disregard the associated estimate.\n\nstd_msgs/Header header\n\ngeometry_msgs/Quaternion orientation\nfloat64[9] orientation_covariance # Row major about x, y, z axes\n\ngeometry_msgs/Vector3 angular_velocity\nfloat64[9] angular_velocity_covariance # Row major about x, y, z axes\n\ngeometry_msgs/Vector3 linear_acceleration\nfloat64[9] linear_acceleration_covariance # Row major x, y z\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "orientation_covariance",
+          "comment": "Row major about x, y, z axes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "angular_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "angular_velocity_covariance",
+          "comment": "Row major about x, y, z axes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "linear_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "linear_acceleration_covariance",
+          "comment": "Row major x, y z",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointState": {
+      "description": "This is a message that holds data to describe the state of a set of torque controlled joints.",
+      "raw": "# This is a message that holds data to describe the state of a set of torque controlled joints.\n#\n# The state of each joint (revolute or prismatic) is defined by:\n#  * the position of the joint (rad or m),\n#  * the velocity of the joint (rad/s or m/s) and\n#  * the effort that is applied in the joint (Nm or N).\n#\n# Each joint is uniquely identified by its name\n# The header specifies the time at which the joint states were recorded. All the joint states\n# in one message have to be recorded at the same time.\n#\n# This message consists of a multiple arrays, one for each part of the joint state.\n# The goal is to make each of the fields optional. When e.g. your joints have no\n# effort associated with them, you can leave the effort array empty.\n#\n# All arrays in this message should have the same size, or be empty.\n# This is the only way to uniquely associate the joint name with the correct\n# states.\n\nstd_msgs/Header header\n\nstring[] name\nfloat64[] position\nfloat64[] velocity\nfloat64[] effort\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "effort",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Joy": {
+      "description": "Reports the state of a joystick's axes and buttons.",
+      "raw": "# Reports the state of a joystick's axes and buttons.\n\n# The timestamp is the time at which data is received from the joystick.\nstd_msgs/Header header\n\n# The axes measurements from a joystick.\nfloat32[] axes\n\n# The buttons measurements from a joystick.\nint32[] buttons\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "axes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "buttons",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JoyFeedback": {
+      "description": "Declare of the type of feedback",
+      "raw": "# Declare of the type of feedback\nuint8 TYPE_LED    = 0\nuint8 TYPE_RUMBLE = 1\nuint8 TYPE_BUZZER = 2\n\nuint8 type\n\n# This will hold an id number for each type of each feedback.\n# Example, the first led would be id=0, the second would be id=1\nuint8 id\n\n# Intensity of the feedback, from 0.0 to 1.0, inclusive.  If device is\n# actually binary, driver should treat 0<=x<0.5 as off, 0.5<=x<=1 as on.\nfloat32 intensity\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "TYPE_LED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_RUMBLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_BUZZER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "intensity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JoyFeedbackArray": {
+      "description": "This message publishes values for multiple feedback at once.",
+      "raw": "# This message publishes values for multiple feedback at once.\nJoyFeedback[] array\n",
+      "fields": [
+        {
+          "type": "JoyFeedback[]",
+          "name": "array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaserEcho": {
+      "description": "This message is a submessage of MultiEchoLaserScan and is not intended",
+      "raw": "# This message is a submessage of MultiEchoLaserScan and is not intended\n# to be used separately.\n\nfloat32[] echoes  # Multiple values of ranges or intensities.\n                  # Each array represents data from the same angle increment.\n",
+      "fields": [
+        {
+          "type": "float32[]",
+          "name": "echoes",
+          "comment": "Multiple values of ranges or intensities.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaserScan": {
+      "description": "Single scan from a planar laser range-finder",
+      "raw": "# Single scan from a planar laser range-finder\n#\n# If you have another ranging device with different behavior (e.g. a sonar\n# array), please find or create a different message, since applications\n# will make fairly laser-specific assumptions about this data\n\nstd_msgs/Header header # timestamp in the header is the acquisition time of\n                             # the first ray in the scan.\n                             #\n                             # in frame frame_id, angles are measured around\n                             # the positive Z axis (counterclockwise, if Z is up)\n                             # with zero angle being forward along the x axis\n\nfloat32 angle_min            # start angle of the scan [rad]\nfloat32 angle_max            # end angle of the scan [rad]\nfloat32 angle_increment      # angular distance between measurements [rad]\n\nfloat32 time_increment       # time between measurements [seconds] - if your scanner\n                             # is moving, this will be used in interpolating position\n                             # of 3d points\nfloat32 scan_time            # time between scans [seconds]\n\nfloat32 range_min            # minimum range value [m]\nfloat32 range_max            # maximum range value [m]\n\nfloat32[] ranges             # range data [m]\n                             # (Note: values < range_min or > range_max should be discarded)\nfloat32[] intensities        # intensity data [device-specific units].  If your\n                             # device does not provide intensities, please leave\n                             # the array empty.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the acquisition time of",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_min",
+          "comment": "start angle of the scan [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_max",
+          "comment": "end angle of the scan [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_increment",
+          "comment": "angular distance between measurements [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time_increment",
+          "comment": "time between measurements [seconds] - if your scanner",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "scan_time",
+          "comment": "time between scans [seconds]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "range_min",
+          "comment": "minimum range value [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "range_max",
+          "comment": "maximum range value [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "ranges",
+          "comment": "range data [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "intensities",
+          "comment": "intensity data [device-specific units].  If your",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MagneticField": {
+      "description": "Measurement of the Magnetic Field vector at a specific location.",
+      "raw": "# Measurement of the Magnetic Field vector at a specific location.\n#\n# If the covariance of the measurement is known, it should be filled in.\n# If all you know is the variance of each measurement, e.g. from the datasheet,\n# just put those along the diagonal.\n# A covariance matrix of all zeros will be interpreted as \"covariance unknown\",\n# and to use the data a covariance will have to be assumed or gotten from some\n# other source.\n\nstd_msgs/Header header               # timestamp is the time the\n                                           # field was measured\n                                           # frame_id is the location and orientation\n                                           # of the field measurement\n\ngeometry_msgs/Vector3 magnetic_field # x, y, and z components of the\n                                           # field vector in Tesla\n                                           # If your sensor does not output 3 axes,\n                                           # put NaNs in the components not reported.\n\nfloat64[9] magnetic_field_covariance       # Row major about x, y, z axes\n                                           # 0 is interpreted as variance unknown",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp is the time the",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "magnetic_field",
+          "comment": "x, y, and z components of the",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "magnetic_field_covariance",
+          "comment": "Row major about x, y, z axes",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MultiDOFJointState": {
+      "description": "Representation of state for joints with multiple degrees of freedom,",
+      "raw": "# Representation of state for joints with multiple degrees of freedom,\n# following the structure of JointState which can only represent a single degree of freedom.\n#\n# It is assumed that a joint in a system corresponds to a transform that gets applied\n# along the kinematic chain. For example, a planar joint (as in URDF) is 3DOF (x, y, yaw)\n# and those 3DOF can be expressed as a transformation matrix, and that transformation\n# matrix can be converted back to (x, y, yaw)\n#\n# Each joint is uniquely identified by its name\n# The header specifies the time at which the joint states were recorded. All the joint states\n# in one message have to be recorded at the same time.\n#\n# This message consists of a multiple arrays, one for each part of the joint state.\n# The goal is to make each of the fields optional. When e.g. your joints have no\n# wrench associated with them, you can leave the wrench array empty.\n#\n# All arrays in this message should have the same size, or be empty.\n# This is the only way to uniquely associate the joint name with the correct\n# states.\n\nstd_msgs/Header header\n\nstring[] joint_names\ngeometry_msgs/Transform[] transforms\ngeometry_msgs/Twist[] twist\ngeometry_msgs/Wrench[] wrench\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform[]",
+          "name": "transforms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist[]",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench[]",
+          "name": "wrench",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MultiEchoLaserScan": {
+      "description": "Single scan from a multi-echo planar laser range-finder",
+      "raw": "# Single scan from a multi-echo planar laser range-finder\n#\n# If you have another ranging device with different behavior (e.g. a sonar\n# array), please find or create a different message, since applications\n# will make fairly laser-specific assumptions about this data\n\nstd_msgs/Header header # timestamp in the header is the acquisition time of\n                             # the first ray in the scan.\n                             #\n                             # in frame frame_id, angles are measured around\n                             # the positive Z axis (counterclockwise, if Z is up)\n                             # with zero angle being forward along the x axis\n\nfloat32 angle_min            # start angle of the scan [rad]\nfloat32 angle_max            # end angle of the scan [rad]\nfloat32 angle_increment      # angular distance between measurements [rad]\n\nfloat32 time_increment       # time between measurements [seconds] - if your scanner\n                             # is moving, this will be used in interpolating position\n                             # of 3d points\nfloat32 scan_time            # time between scans [seconds]\n\nfloat32 range_min            # minimum range value [m]\nfloat32 range_max            # maximum range value [m]\n\nLaserEcho[] ranges           # range data [m]\n                             # (Note: NaNs, values < range_min or > range_max should be discarded)\n                             # +Inf measurements are out of range\n                             # -Inf measurements are too close to determine exact distance.\nLaserEcho[] intensities      # intensity data [device-specific units].  If your\n                             # device does not provide intensities, please leave\n                             # the array empty.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the acquisition time of",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_min",
+          "comment": "start angle of the scan [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_max",
+          "comment": "end angle of the scan [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_increment",
+          "comment": "angular distance between measurements [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time_increment",
+          "comment": "time between measurements [seconds] - if your scanner",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "scan_time",
+          "comment": "time between scans [seconds]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "range_min",
+          "comment": "minimum range value [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "range_max",
+          "comment": "maximum range value [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaserEcho[]",
+          "name": "ranges",
+          "comment": "range data [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaserEcho[]",
+          "name": "intensities",
+          "comment": "intensity data [device-specific units].  If your",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavSatFix": {
+      "description": "Navigation Satellite fix for any Global Navigation Satellite System",
+      "raw": "# Navigation Satellite fix for any Global Navigation Satellite System\n#\n# Specified using the WGS 84 reference ellipsoid\n\n# header.stamp specifies the ROS time for this measurement (the\n#        corresponding satellite time may be reported using the\n#        sensor_msgs/TimeReference message).\n#\n# header.frame_id is the frame of reference reported by the satellite\n#        receiver, usually the location of the antenna.  This is a\n#        Euclidean frame relative to the vehicle, not a reference\n#        ellipsoid.\nstd_msgs/Header header\n\n# Satellite fix status information.\nNavSatStatus status\n\n# Latitude [degrees]. Positive is north of equator; negative is south.\nfloat64 latitude\n\n# Longitude [degrees]. Positive is east of prime meridian; negative is west.\nfloat64 longitude\n\n# Altitude [m]. Positive is above the WGS 84 ellipsoid\n# (quiet NaN if no altitude is available).\nfloat64 altitude\n\n# Position covariance [m^2] defined relative to a tangential plane\n# through the reported position. The components are East, North, and\n# Up (ENU), in row-major order.\n#\n# Beware: this coordinate system exhibits singularities at the poles.\nfloat64[9] position_covariance\n\n# If the covariance of the fix is known, fill it in completely. If the\n# GPS receiver provides the variance of each measurement, put them\n# along the diagonal. If only Dilution of Precision is available,\n# estimate an approximate covariance from that.\n\nuint8 COVARIANCE_TYPE_UNKNOWN = 0\nuint8 COVARIANCE_TYPE_APPROXIMATED = 1\nuint8 COVARIANCE_TYPE_DIAGONAL_KNOWN = 2\nuint8 COVARIANCE_TYPE_KNOWN = 3\n\nuint8 position_covariance_type\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NavSatStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "position_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "COVARIANCE_TYPE_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COVARIANCE_TYPE_APPROXIMATED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COVARIANCE_TYPE_DIAGONAL_KNOWN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COVARIANCE_TYPE_KNOWN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "position_covariance_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavSatStatus": {
+      "description": "Navigation Satellite fix status for any Global Navigation Satellite System.",
+      "raw": "# Navigation Satellite fix status for any Global Navigation Satellite System.\n#\n# Whether to output an augmented fix is determined by both the fix\n# type and the last time differential corrections were received.  A\n# fix is valid when status >= STATUS_FIX.\n\nint8 STATUS_UNKNOWN = -2        # status is not yet set\nint8 STATUS_NO_FIX =  -1        # unable to fix position\nint8 STATUS_FIX =      0        # unaugmented fix\nint8 STATUS_SBAS_FIX = 1        # with satellite-based augmentation\nint8 STATUS_GBAS_FIX = 2        # with ground-based augmentation\n\nint8 status -2 # STATUS_UNKNOWN\n\n# Bits defining which Global Navigation Satellite System signals were\n# used by the receiver.\n\nuint16 SERVICE_UNKNOWN = 0  # Remember service is a bitfield, so checking (service & SERVICE_UNKNOWN) will not work. Use == instead.\nuint16 SERVICE_GPS =     1\nuint16 SERVICE_GLONASS = 2\nuint16 SERVICE_COMPASS = 4      # includes BeiDou.\nuint16 SERVICE_GALILEO = 8\n\nuint16 service\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "STATUS_UNKNOWN",
+          "comment": "status is not yet set",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_NO_FIX",
+          "comment": "unable to fix position",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_FIX",
+          "comment": "unaugmented fix",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_SBAS_FIX",
+          "comment": "with satellite-based augmentation",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_GBAS_FIX",
+          "comment": "with ground-based augmentation",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "STATUS_UNKNOWN",
+          "default": "-2",
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "SERVICE_UNKNOWN",
+          "comment": "Remember service is a bitfield, so checking (service & SERVICE_UNKNOWN) will not work. Use == instead.",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SERVICE_GPS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SERVICE_GLONASS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SERVICE_COMPASS",
+          "comment": "includes BeiDou.",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SERVICE_GALILEO",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "service",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointCloud": {
+      "description": "THIS MESSAGE IS DEPRECATED AS OF FOXY",
+      "raw": "## THIS MESSAGE IS DEPRECATED AS OF FOXY\n## Please use sensor_msgs/PointCloud2\n\n# This message holds a collection of 3d points, plus optional additional\n# information about each point.\n\n# Time of sensor data acquisition, coordinate frame ID.\nstd_msgs/Header header\n\n# Array of 3d points. Each Point32 should be interpreted as a 3d point\n# in the frame given in the header.\ngeometry_msgs/Point32[] points\n\n# Each channel should have the same number of elements as points array,\n# and the data in each channel should correspond 1:1 with each point.\n# Channel names in common practice are listed in ChannelFloat32.msg.\nChannelFloat32[] channels\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point32[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ChannelFloat32[]",
+          "name": "channels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointCloud2": {
+      "description": "This message holds a collection of N-dimensional points, which may",
+      "raw": "# This message holds a collection of N-dimensional points, which may\n# contain additional information such as normals, intensity, etc. The\n# point data is stored as a binary blob, its layout described by the\n# contents of the \"fields\" array.\n#\n# The point cloud data may be organized 2d (image-like) or 1d (unordered).\n# Point clouds organized as 2d images may be produced by camera depth sensors\n# such as stereo or time-of-flight.\n\n# Time of sensor data acquisition, and the coordinate frame ID (for 3d points).\nstd_msgs/Header header\n\n# 2D structure of the point cloud. If the cloud is unordered, height is\n# 1 and width is the length of the point cloud.\nuint32 height\nuint32 width\n\n# Describes the channels and their layout in the binary data blob.\nPointField[] fields\n\nbool    is_bigendian # Is this data bigendian?\nuint32  point_step   # Length of a point in bytes\nuint32  row_step     # Length of a row in bytes\nuint8[] data         # Actual point data, size is (row_step*height)\n\nbool is_dense        # True if there are no invalid points\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PointField[]",
+          "name": "fields",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_bigendian",
+          "comment": "Is this data bigendian?",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "point_step",
+          "comment": "Length of a point in bytes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "row_step",
+          "comment": "Length of a row in bytes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "Actual point data, size is (row_step*height)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_dense",
+          "comment": "True if there are no invalid points",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointField": {
+      "description": "This message holds the description of one point entry in the",
+      "raw": "# This message holds the description of one point entry in the\n# PointCloud2 message format.\nuint8 INT8    = 1\nuint8 UINT8   = 2\nuint8 INT16   = 3\nuint8 UINT16  = 4\nuint8 INT32   = 5\nuint8 UINT32  = 6\nuint8 FLOAT32 = 7\nuint8 FLOAT64 = 8\n\n# Common PointField names are x, y, z, intensity, rgb, rgba\nstring name      # Name of field\nuint32 offset    # Offset from start of point struct\nuint8  datatype  # Datatype enumeration, see above\nuint32 count     # How many elements in the field\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "INT8",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UINT8",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INT16",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UINT16",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INT32",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UINT32",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FLOAT32",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FLOAT64",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Name of field",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "offset",
+          "comment": "Offset from start of point struct",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "datatype",
+          "comment": "Datatype enumeration, see above",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "count",
+          "comment": "How many elements in the field",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Range": {
+      "description": "Single range reading from an active ranger that emits energy and reports",
+      "raw": "# Single range reading from an active ranger that emits energy and reports\n# one range reading that is valid along an arc at the distance measured.\n# This message is  not appropriate for laser scanners. See the LaserScan\n# message if you are working with a laser scanner.\n#\n# This message also can represent a fixed-distance (binary) ranger.  This\n# sensor will have min_range===max_range===distance of detection.\n# These sensors follow REP 117 and will output -Inf if the object is detected\n# and +Inf if the object is outside of the detection range.\n\nstd_msgs/Header header # timestamp in the header is the time the ranger\n                             # returned the distance reading\n\n# Radiation type enums\n# If you want a value added to this list, send an email to the ros-users list\nuint8 ULTRASOUND=0\nuint8 INFRARED=1\n\nuint8 radiation_type    # the type of radiation used by the sensor\n                        # (sound, IR, etc) [enum]\n\nfloat32 field_of_view   # the size of the arc that the distance reading is\n                        # valid for [rad]\n                        # the object causing the range reading may have\n                        # been anywhere within -field_of_view/2 and\n                        # field_of_view/2 at the measured range.\n                        # 0 angle corresponds to the x-axis of the sensor.\n\nfloat32 min_range       # minimum range value [m]\nfloat32 max_range       # maximum range value [m]\n                        # Fixed distance rangers require min_range==max_range\n\nfloat32 range           # range data [m]\n                        # (Note: values < range_min or > range_max should be discarded)\n                        # Fixed distance rangers only output -Inf or +Inf.\n                        # -Inf represents a detection within fixed distance.\n                        # (Detection too close to the sensor to quantify)\n                        # +Inf represents no detection within the fixed distance.\n                        # (Object out of range)\n\nfloat32 variance        # variance of the range sensor\n                        # 0 is interpreted as variance unknown\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the time the ranger",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ULTRASOUND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INFRARED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "radiation_type",
+          "comment": "the type of radiation used by the sensor",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "field_of_view",
+          "comment": "the size of the arc that the distance reading is",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_range",
+          "comment": "minimum range value [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_range",
+          "comment": "maximum range value [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "range",
+          "comment": "range data [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "variance",
+          "comment": "variance of the range sensor",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RegionOfInterest": {
+      "description": "This message is used to specify a region of interest within an image.",
+      "raw": "# This message is used to specify a region of interest within an image.\n#\n# When used to specify the ROI setting of the camera when the image was\n# taken, the height and width fields should either match the height and\n# width fields for the associated image; or height = width = 0\n# indicates that the full resolution image was captured.\n\nuint32 x_offset  # Leftmost pixel of the ROI\n                 # (0 if the ROI includes the left edge of the image)\nuint32 y_offset  # Topmost pixel of the ROI\n                 # (0 if the ROI includes the top edge of the image)\nuint32 height    # Height of ROI\nuint32 width     # Width of ROI\n\n# True if a distinct rectified ROI should be calculated from the \"raw\"\n# ROI in this message. Typically this should be False if the full image\n# is captured (ROI not used), and True if a subwindow is captured (ROI\n# used).\nbool do_rectify\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "x_offset",
+          "comment": "Leftmost pixel of the ROI",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "y_offset",
+          "comment": "Topmost pixel of the ROI",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "Height of ROI",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "Width of ROI",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "do_rectify",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RelativeHumidity": {
+      "description": "Single reading from a relative humidity sensor.",
+      "raw": "# Single reading from a relative humidity sensor.\n# Defines the ratio of partial pressure of water vapor to the saturated vapor\n# pressure at a temperature.\n\nstd_msgs/Header header # timestamp of the measurement\n                             # frame_id is the location of the humidity sensor\n\nfloat64 relative_humidity    # Expression of the relative humidity\n                             # from 0.0 to 1.0.\n                             # 0.0 is no partial pressure of water vapor\n                             # 1.0 represents partial pressure of saturation\n\nfloat64 variance             # 0 is interpreted as variance unknown\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp of the measurement",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "relative_humidity",
+          "comment": "Expression of the relative humidity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "variance",
+          "comment": "0 is interpreted as variance unknown",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Temperature": {
+      "description": "Single temperature reading.",
+      "raw": "# Single temperature reading.\n\nstd_msgs/Header header # timestamp is the time the temperature was measured\n                             # frame_id is the location of the temperature reading\n\nfloat64 temperature          # Measurement of the Temperature in Degrees Celsius.\n\nfloat64 variance             # 0 is interpreted as variance unknown.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp is the time the temperature was measured",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "temperature",
+          "comment": "Measurement of the Temperature in Degrees Celsius.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "variance",
+          "comment": "0 is interpreted as variance unknown.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TimeReference": {
+      "description": "Measurement from an external time source not actively synchronized with the system clock.",
+      "raw": "# Measurement from an external time source not actively synchronized with the system clock.\n\nstd_msgs/Header header      # stamp is system time for which measurement was valid\n                                  # frame_id is not used\n\nbuiltin_interfaces/Time time_ref  # corresponding time from this external source\nstring source                     # (optional) name of time source\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp is system time for which measurement was valid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time_ref",
+          "comment": "corresponding time from this external source",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source",
+          "comment": "(optional) name of time source",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetCameraInfo": {
+      "description": "This service requests that a camera stores the given CameraInfo as that",
+      "raw": "# This service requests that a camera stores the given CameraInfo as that\n# camera's calibration information.\n#\n# The width and height in the camera_info field should match what the\n# camera is currently outputting on its camera_info topic, and the camera\n# will assume that the region of the imager that is being referred to is\n# the region that the camera is currently capturing.\n\nsensor_msgs/CameraInfo camera_info # The camera_info to store\n---\nbool success                             # True if the call succeeded\nstring status_message                    # Used to give details about success\n",
+      "request_fields": [
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "camera_info",
+          "comment": "The camera_info to store",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "True if the call succeeded",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "Used to give details about success",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,1150 @@
+{
+  "name": "kobuki_ros_interfaces",
+  "version": "1.0.0",
+  "description": "",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://index.ros.org/k/kobuki_ros_interfaces/github-kobuki-base-kobuki_ros_interfaces",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/kobuki-base/kobuki_ros_interfaces",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/kobuki-base/kobuki_ros_interfaces/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "kobuki_ros_interfaces",
+    "url": "https://github.com/kobuki-base/kobuki_ros_interfaces.git",
+    "branch": "release/1.0.x"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "namoros"
+    ]
+  },
+  "messages": {
+    "BumperEvent": {
+      "description": "Provides a bumper event.",
+      "raw": "# Provides a bumper event.\n# This message is generated whenever a particular bumper is pressed or released.\n# Note that, despite bumper field on SensorState messages, state field is not a\n# bitmask, but the new state of a single sensor.\n\n# bumper\nuint8 LEFT   = 0\nuint8 CENTER = 1\nuint8 RIGHT  = 2\n\n# state\nuint8 RELEASED = 0\nuint8 PRESSED  = 1\n\nuint8 bumper\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELEASED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRESSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "bumper",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ButtonEvent": {
+      "description": "Provides a button event.",
+      "raw": "# Provides a button event.\n# This message is generated whenever a particular button is pressed or released.\n# Note that, despite buttons field on SensorState messages, state field is not a\n# bitmask, but the new state of a single button.\n\nuint8 BUTTON0 = 0\nuint8 BUTTON1 = 1\nuint8 BUTTON2 = 2\n\nuint8 RELEASED = 0\nuint8 PRESSED  = 1\n\nuint8 button\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "BUTTON0",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELEASED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRESSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "button",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CliffEvent": {
+      "description": "Provides a cliff sensor event.",
+      "raw": "# Provides a cliff sensor event.\n# This message is generated whenever a particular cliff sensor signals that the\n# robot approaches or moves away from a cliff.\n# Note that, despite cliff field on SensorState messages, state field is not a\n# bitmask, but the new state of a single sensor.\n\n# cliff sensor\nuint8 LEFT   = 0\nuint8 CENTER = 1\nuint8 RIGHT  = 2\n\n# cliff sensor state\nuint8 FLOOR = 0\nuint8 CLIFF = 1\n\nuint8 sensor\nuint8 state\n\n# distance to floor when cliff was detected\nuint16 bottom",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FLOOR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "sensor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "bottom",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControllerInfo": {
+      "description": "Controller info message, contains PID parameters",
+      "raw": "# Controller info message, contains PID parameters\n\nuint8 DEFAULT   =  0\nuint8 USER_CONFIGURED =  1\n\nuint8 type\nfloat64 p_gain #should be positive\nfloat64 i_gain #should be positive\nfloat64 d_gain #should be positive\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "DEFAULT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "USER_CONFIGURED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "p_gain",
+          "comment": "should be positive",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i_gain",
+          "comment": "should be positive",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "d_gain",
+          "comment": "should be positive",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DigitalInputEvent": {
+      "description": "This message is generated whenever the value of one or more digital input pins changes.",
+      "raw": "# This message is generated whenever the value of one or more digital input pins changes.\n\n# Array of values; indices represent pins 0-3 respectively.\nbool[4] values\n",
+      "fields": [
+        {
+          "type": "bool[4]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DigitalOutput": {
+      "description": "Digital output - only four pins.",
+      "raw": "# Digital output - only four pins. \n\n# Array of values indices represent pins 0-3 respectively.\nbool[4] values\n\n# Set indices to true to set a pin, false to ignore.\nbool[4] mask\n",
+      "fields": [
+        {
+          "type": "bool[4]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[4]",
+          "name": "mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DockInfraRed": {
+      "description": "Docking base ir sensors messages.",
+      "raw": "# Docking base ir sensors messages.\n# Generated on the proximity of the docking base to assist the automatic docking.\n\nuint8 NEAR_LEFT   =  1\nuint8 NEAR_CENTER =  2\nuint8 NEAR_RIGHT  =  4\nuint8 FAR_LEFT    = 16\nuint8 FAR_CENTER  =  8\nuint8 FAR_RIGHT   = 32\n\nstd_msgs/Header header\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NEAR_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEAR_CENTER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEAR_RIGHT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAR_LEFT",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAR_CENTER",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAR_RIGHT",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExternalPower": {
+      "description": "Turn on/off Kobuki's external power sources",
+      "raw": "# Turn on/off Kobuki's external power sources\n\n# Power sources\nuint8 PWR_3_3V1A  = 0 # DB25 connector only\nuint8 PWR_5V1A    = 1 # DB25 connector and Micro Molex connector\nuint8 PWR_12V5A   = 2 # Micro Molex connector only\nuint8 PWR_12V1_5A = 3 # Micro Molex connector only\n\n# State\nuint8 OFF = 0\nuint8 ON  = 1\n\nuint8 source\n\nuint8 state",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PWR_3_3V1A",
+          "comment": "DB25 connector only",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PWR_5V1A",
+          "comment": "DB25 connector and Micro Molex connector",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PWR_12V5A",
+          "comment": "Micro Molex connector only",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PWR_12V1_5A",
+          "comment": "Micro Molex connector only",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyboardInput": {
+      "description": "KEYBOARD INPUT",
+      "raw": "# KEYBOARD INPUT\n# \n# Keycodes to be transferred for remote teleops.\n\nuint8  KEYCODE_RIGHT    = 67     # 0x43\nuint8  KEYCODE_LEFT     = 68     # 0x44\nuint8  KEYCODE_UP       = 65     # 0x41\nuint8  KEYCODE_DOWN     = 66     # 0x42\nuint8  KEYCODE_SPACE    = 32     # 0x20\nuint8  KEYCODE_ENABLE   = 101    # 0x65, 'e'\nuint8  KEYCODE_DISABLE  = 100    # 0x64, 'd'\n\nuint8 pressed_key\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "KEYCODE_RIGHT",
+          "comment": "0x43",
+          "default": "67",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "KEYCODE_LEFT",
+          "comment": "0x44",
+          "default": "68",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "KEYCODE_UP",
+          "comment": "0x41",
+          "default": "65",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "KEYCODE_DOWN",
+          "comment": "0x42",
+          "default": "66",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "KEYCODE_SPACE",
+          "comment": "0x20",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "KEYCODE_ENABLE",
+          "comment": "0x65, 'e'",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "KEYCODE_DISABLE",
+          "comment": "0x64, 'd'",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "pressed_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Led": {
+      "description": "Sends a command for controlling the a LED.",
+      "raw": "# Sends a command for controlling the a LED.\n# \n# Typically the first LED is always reserved to denote\n# the state - the remainder will be controllable. \n\nuint8 BLACK   = 0\nuint8 GREEN   = 1\nuint8 ORANGE  = 2\nuint8 RED     = 3\n\n# For kobuki there are only two controllable LED's.\nuint8 value\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "BLACK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GREEN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ORANGE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotorPower": {
+      "description": "Turn on/off Kobuki's motors",
+      "raw": "# Turn on/off Kobuki's motors\n\n# State\nuint8 OFF = 0\nuint8 ON  = 1\n\nuint8 state",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PowerSystemEvent": {
+      "description": "Power system events",
+      "raw": "# Power system events\n# This message is generated by important changes in the power system:\n#  - plug/unplug to the docking base or adapter\n#  - transitions to low/critical battery levels\n#  - battery charge completed\n\nuint8 UNPLUGGED           = 0\nuint8 PLUGGED_TO_ADAPTER  = 1\nuint8 PLUGGED_TO_DOCKBASE = 2\nuint8 CHARGE_COMPLETED    = 3\nuint8 BATTERY_LOW         = 4\nuint8 BATTERY_CRITICAL    = 5\n\nuint8 event\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNPLUGGED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLUGGED_TO_ADAPTER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLUGGED_TO_DOCKBASE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHARGE_COMPLETED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BATTERY_LOW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BATTERY_CRITICAL",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "event",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotStateEvent": {
+      "description": "Provides a robot state event",
+      "raw": "# Provides a robot state event\n# This message is generated whenever the robot gets online/offline\n\nuint8 ONLINE  = 1\nuint8 OFFLINE = 0\n\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "ONLINE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFFLINE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanAngle": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 scan_angle\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "scan_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorState": {
+      "description": "Kobuki Sensor Data Messages",
+      "raw": "# Kobuki Sensor Data Messages\n#\n# For more direct simple interactions (buttons, leds, gyro, motor velocity\n# etc) use the other topics. This provides detailed information about the\n# entire state package that is transmitted at 50Hz from the robot.\n#\n\n\n###### CONSTANTS ######\n# Bumper states (states are combined, when multiple bumpers are pressed)\nuint8 BUMPER_RIGHT  = 1\nuint8 BUMPER_CENTRE = 2\nuint8 BUMPER_LEFT   = 4\n\n# Wheel drop sensor states (states are combined, when both wheel drop sensors are triggered)\nuint8 WHEEL_DROP_RIGHT = 1\nuint8 WHEEL_DROP_LEFT  = 2\n\n# Cliff sensor states (states are combined, when multiple cliff sensors are triggered)\nuint8 CLIFF_RIGHT  = 1\nuint8 CLIFF_CENTRE = 2\nuint8 CLIFF_LEFT   = 4\n\n# Button states (only one button can be triggered at a time)\nuint8 BUTTON0 = 1\nuint8 BUTTON1 = 2\nuint8 BUTTON2 = 4\n\n# Charger state is a combination of charging device (adapter, docking station)\n# and state (charging, charged, discharging):\nuint8 DISCHARGING      = 0\nuint8 DOCKING_CHARGED  = 2\nuint8 DOCKING_CHARGING = 6\nuint8 ADAPTER_CHARGED  = 18\nuint8 ADAPTER_CHARGING = 22\n\n# Over current states\nuint8 OVER_CURRENT_LEFT_WHEEL  = 1\nuint8 OVER_CURRENT_RIGHT_WHEEL = 2\nuint8 OVER_CURRENT_BOTH_WHEELS = 3\n\n# Digital input states (states are combined, when multiple inputs are set at the same time)\n# When connecting Yujin's test board, it acts as pull-up what inverts the behaviour:\n# No input: 79, all inputs set (e.g. buttons pressed): 64\nuint8 DIGITAL_INPUT0 = 1\nuint8 DIGITAL_INPUT1 = 2\nuint8 DIGITAL_INPUT2 = 4\nuint8 DIGITAL_INPUT3 = 8\nuint8 DB25_TEST_BOARD_CONNECTED = 64\n\n###### MESSAGE ######\n\nstd_msgs/Header header\n\n###################\n# Core Packet\n###################\nuint16 time_stamp      # milliseconds starting when turning on Kobuki (max. 65536, then starts from 0 again)\nuint8  bumper          # see bumper states\nuint8  wheel_drop      # see wheel drop sensor states\nuint8  cliff           # see cliff sensor states\nuint16 left_encoder    # accumulated ticks left wheel starting with turning on Kobuki (max. 65535)\nuint16 right_encoder   # accumulated ticks right wheel starting with turning on Kobuki (max. 65535)\nint8   left_pwm        # % of applied maximum voltage left wheel: -100 (max. voltage backward) to +100 (max. voltage forward)\nint8   right_pwm       # % of applied maximum voltage right wheel: -100 (max. voltage backward) to +100 (max. voltage forward)\nuint8  buttons         # see button states\nuint8  charger         # see charger states\nuint8  battery         # battery voltage in 0.1V (ex. 16.1V -> 161)\n\n###################\n# Cliff Packet\n###################\nuint16[] bottom        # ADC output of the right, centre, left cliff PSD sensor (0 - 4095, distance measure is non-linear)\n\n###################\n# Current Packet\n###################\nuint8[] current        # motor current for the left and right motor in 10mA (ex. 12 -> 120mA)\nuint8   over_current   # see over current states\n\n###################\n# Input Packet\n###################\nuint16   digital_input # see digital input states; will show garbage when nothing is connected\nuint16[] analog_input  # ADC values for the 4 analog inputs; 0 - 4095: 0.0 - 3.3V; will show garbage when nothing is connected\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "BUMPER_RIGHT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUMPER_CENTRE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUMPER_LEFT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WHEEL_DROP_RIGHT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WHEEL_DROP_LEFT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIFF_RIGHT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIFF_CENTRE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIFF_LEFT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON0",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON1",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON2",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISCHARGING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOCKING_CHARGED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOCKING_CHARGING",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ADAPTER_CHARGED",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ADAPTER_CHARGING",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVER_CURRENT_LEFT_WHEEL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVER_CURRENT_RIGHT_WHEEL",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVER_CURRENT_BOTH_WHEELS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIGITAL_INPUT0",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIGITAL_INPUT1",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIGITAL_INPUT2",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIGITAL_INPUT3",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DB25_TEST_BOARD_CONNECTED",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_stamp",
+          "comment": "milliseconds starting when turning on Kobuki (max. 65536, then starts from 0 again)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "bumper",
+          "comment": "see bumper states",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "wheel_drop",
+          "comment": "see wheel drop sensor states",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cliff",
+          "comment": "see cliff sensor states",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "left_encoder",
+          "comment": "accumulated ticks left wheel starting with turning on Kobuki (max. 65535)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "right_encoder",
+          "comment": "accumulated ticks right wheel starting with turning on Kobuki (max. 65535)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "left_pwm",
+          "comment": "% of applied maximum voltage left wheel: -100 (max. voltage backward) to +100 (max. voltage forward)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "right_pwm",
+          "comment": "% of applied maximum voltage right wheel: -100 (max. voltage backward) to +100 (max. voltage forward)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "buttons",
+          "comment": "see button states",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "charger",
+          "comment": "see charger states",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "battery",
+          "comment": "battery voltage in 0.1V (ex. 16.1V -> 161)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "bottom",
+          "comment": "ADC output of the right, centre, left cliff PSD sensor (0 - 4095, distance measure is non-linear)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "current",
+          "comment": "motor current for the left and right motor in 10mA (ex. 12 -> 120mA)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "over_current",
+          "comment": "see over current states",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "digital_input",
+          "comment": "see digital input states; will show garbage when nothing is connected",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "analog_input",
+          "comment": "ADC values for the 4 analog inputs; 0 - 4095: 0.0 - 3.3V; will show garbage when nothing is connected",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Sound": {
+      "description": "Sends a command for playing sounds.",
+      "raw": "# Sends a command for playing sounds.\n# The available sound sequences:\n# 0 - turn on\n# 1 - turn off\n# 2 - recharge start\n# 3 - press button,\n# 4 - error sound\n# 5 - start cleaning\n# 6 - cleaning end\n\nuint8 ON            = 0\nuint8 OFF           = 1\nuint8 RECHARGE      = 2\nuint8 BUTTON        = 3\nuint8 ERROR         = 4\nuint8 CLEANINGSTART = 5\nuint8 CLEANINGEND   = 6\n\nuint8 value",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "ON",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RECHARGE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLEANINGSTART",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLEANINGEND",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VersionInfo": {
+      "description": "Contains unique device id, version info and available features for the kobuki platform.",
+      "raw": "# Contains unique device id, version info and available features for the kobuki platform.\n# Useful for compatibility checking and introspection\n\nstring hardware   # <major>.<minor>.<patch>\nstring firmware   # <major>.<minor>.<patch>\nstring software   # Still to decide how it will look\nuint32[] udid\n\n# Bitmask that specifies the available features in the firmware and/or driver\nuint64 features\n\n# The following represent the bit fields corresponding to bits in the features value\n\n# Provided firmware kobuki_firmware_1.1.1.hex\nuint64 SMOOTH_MOVE_START    = 0000000000000001\nuint64 GYROSCOPE_3D_DATA    = 0000000000000002\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "hardware",
+          "comment": "<major>.<minor>.<patch>",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware",
+          "comment": "<major>.<minor>.<patch>",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "software",
+          "comment": "Still to decide how it will look",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "udid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "features",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "SMOOTH_MOVE_START",
+          "comment": "",
+          "default": "0000000000000001",
+          "is_constant": true
+        },
+        {
+          "type": "uint64",
+          "name": "GYROSCOPE_3D_DATA",
+          "comment": "",
+          "default": "0000000000000002",
+          "is_constant": true
+        }
+      ]
+    },
+    "WheelDropEvent": {
+      "description": "Provides a wheel drop event.",
+      "raw": "# Provides a wheel drop event.\n# This message is generated whenever one of the wheels is dropped (robot fell\n# or was raised) or raised (normal condition).\n# Note that, despite wheel_drop field on SensorState messages, state field is\n# not a bitmask, but the new state of a single sensor.\n\n# wheel\nuint8 LEFT  = 0\nuint8 RIGHT = 1\n\n# state\nuint8 RAISED  = 0\nuint8 DROPPED = 1\n\nuint8 wheel\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RAISED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DROPPED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "wheel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {
+    "AutoDocking": {
+      "description": "goal",
+      "raw": "#goal\n---\n#result\nstring text\n---\n#feedback\nstring state\nstring text\n",
+      "goal_fields": [],
+      "result_fields": [
+        {
+          "type": "string",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

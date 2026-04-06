@@ -1,0 +1,242 @@
+{
+  "name": "roadmap_explorer_msgs",
+  "version": "1.0.0",
+  "description": "A package that has the ROS 2 interfaces for running roadmap-explorer",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "roadmap_explorer",
+    "url": "https://github.com/suchetanrs/roadmap-explorer.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "rosidl_default_generators",
+      "rclcpp",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "roadmap_explorer",
+      "roadmap_explorer_rviz_plugins"
+    ]
+  },
+  "messages": {
+    "MapData": {
+      "description": "optimized graph",
+      "raw": "std_msgs/Header header\n\n#optimized graph\nroadmap_explorer_msgs/MapGraph graph",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "roadmap_explorer_msgs/MapGraph",
+          "name": "graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MapGraph": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint32[] poses_id\ngeometry_msgs/PoseStamped[] poses",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "poses_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SaveMapAndRoadmap": {
+      "description": "",
+      "raw": "string  base_path     \nstring  session_name\n---\nbool    success         \nstring  status_message",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "base_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "session_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "Explore": {
+      "description": "REQUEST",
+      "raw": "# REQUEST\n# If exploration in slam mode, this will create a fresh exploration instance. \n# it is recommended to also restart the mapping session from the slam before launching the exploration in this configuration.\n# if exploration in localisation only mode, this will start a fresh exploration instance.\nuint16 NEW_EXPLORATION_SESSION=0\n\n# if exploration in slam mode, this will continue from the last terminated exploration instance that's in memory but with the updated input map from the slam.\n# if exploration in localisation only mode, this will contine from the last terminated exploration instance but with the last mapping session from sensor simulator.\nuint16 CONTINUE_FROM_TERMINATED_SESSION=1\n\n# if exploration in slam mode, this mode will not run since it relies on sensor simulator.\n# if exploration in localisation only mode, this will continue from the loaded exploration map and the loaded frontier roadmap.\nuint16 CONTINUE_FROM_SAVED_SESSION=2\n\nuint16 exploration_bringup_mode 0\nstd_msgs/String load_from_folder\nstd_msgs/String session_name\n\n---\n# result\nuint16 NO_ERROR=0\nuint16 NO_MORE_REACHABLE_FRONTIERS=1\nuint16 NAV2_INTERNAL_FAULT=2\nuint16 TIMED_OUT_WAITING_FOR_MAP=3\nuint16 UNKNOWN=4\n\nuint16 error_code 0\nbool success True\ngeometry_msgs/Point[] failed_frontiers\n---\n# feedback\nbuiltin_interfaces/Duration exploration_time\ngeometry_msgs/Point[] current_frontier",
+      "goal_fields": [
+        {
+          "type": "uint16",
+          "name": "NEW_EXPLORATION_SESSION",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CONTINUE_FROM_TERMINATED_SESSION",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CONTINUE_FROM_SAVED_SESSION",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "exploration_bringup_mode",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "load_from_folder",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "session_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint16",
+          "name": "NO_ERROR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NO_MORE_REACHABLE_FRONTIERS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NAV2_INTERNAL_FAULT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TIMED_OUT_WAITING_FOR_MAP",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "error_code",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": "True",
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "failed_frontiers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "exploration_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "current_frontier",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

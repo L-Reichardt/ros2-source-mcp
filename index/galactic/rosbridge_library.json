@@ -1,0 +1,68 @@
+{
+  "name": "rosbridge_library",
+  "version": "1.3.1",
+  "description": "The core rosbridge package, responsible for interpreting JSON andperforming\n    the appropriate ROS action, like subscribe, publish, call service, and\n    interact with params.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rosbridge_library",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "rosbridge_suite",
+    "url": "https://github.com/RobotWebTools/rosbridge_suite.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "python3-pil",
+      "python3-bson"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_ros"
+    ],
+    "runtime": [
+      "rclpy",
+      "python3-pil",
+      "rosidl_default_runtime",
+      "python3-bson"
+    ],
+    "test": [
+      "rosbridge_test_msgs",
+      "actionlib_msgs",
+      "ament_cmake_pytest",
+      "builtin_interfaces",
+      "diagnostic_msgs",
+      "example_interfaces",
+      "geometry_msgs",
+      "nav_msgs",
+      "sensor_msgs",
+      "std_msgs",
+      "std_srvs",
+      "stereo_msgs",
+      "tf2_msgs",
+      "trajectory_msgs",
+      "visualization_msgs"
+    ],
+    "depended_on_by": [
+      "rosapi",
+      "rosbridge_server",
+      "rosbridge_suite"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

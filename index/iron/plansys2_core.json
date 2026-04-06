@@ -1,0 +1,40 @@
+{
+  "name": "plansys2_core",
+  "version": "2.0.11",
+  "description": "This package contains the PDDL-based core  for the ROS2 Planning System",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_planning_system",
+    "url": "https://github.com/PlanSys2/ros2_planning_system.git",
+    "branch": "iron-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_common",
+      "ament_lint_auto",
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "pluginlib",
+      "plansys2_pddl_parser",
+      "plansys2_msgs"
+    ],
+    "depended_on_by": [
+      "plansys2_domain_expert",
+      "plansys2_executor",
+      "plansys2_planner",
+      "plansys2_popf_plan_solver"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

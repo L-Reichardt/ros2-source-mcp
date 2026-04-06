@@ -1,0 +1,389 @@
+{
+  "name": "controller_manager_msgs",
+  "version": "1.6.0",
+  "description": "Messages and services for the controller manager.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/controller_manager_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "ros2_control",
+    "url": "https://github.com/ros-controls/ros2_control.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "controller_manager",
+      "ros2_control",
+      "ros2controlcli",
+      "ur_robot_driver"
+    ]
+  },
+  "messages": {
+    "ControllerState": {
+      "description": "",
+      "raw": "string name\nstring state\nstring type\nstring[] claimed_interfaces\nstring[] required_command_interfaces\nstring[] required_state_interfaces\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "claimed_interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "required_command_interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "required_state_interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HardwareInterface": {
+      "description": "",
+      "raw": "string name\nbool is_claimed\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_claimed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ConfigureController": {
+      "description": "The ConfigureController service allows you to configure a single controller",
+      "raw": "# The ConfigureController service allows you to configure a single controller\n# inside controller_manager\n\n# To configure a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# configured or not.\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConfigureStartController": {
+      "description": "The ConfigureStartController service allows you to configure and start a single controller",
+      "raw": "# The ConfigureStartController service allows you to configure and start a single controller\n# inside controller_manager\n\n# To configure and start a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# configured and started or not.\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListControllerTypes": {
+      "description": "The ListControllers service returns a list of controller types that are known",
+      "raw": "# The ListControllers service returns a list of controller types that are known\n# to the controller manager plugin mechanism.\n\n---\nstring[] types\nstring[] base_classes\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "base_classes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListControllers": {
+      "description": "The ListControllers service returns a list of controller names/states/types of the",
+      "raw": "# The ListControllers service returns a list of controller names/states/types of the\n# controllers that are loaded inside the controller_manager.\n\n---\ncontroller_manager_msgs/ControllerState[] controller\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "controller_manager_msgs/ControllerState[]",
+          "name": "controller",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListHardwareInterfaces": {
+      "description": "",
+      "raw": "\n---\nHardwareInterface[] command_interfaces\nHardwareInterface[] state_interfaces\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "HardwareInterface[]",
+          "name": "command_interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HardwareInterface[]",
+          "name": "state_interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadConfigureController": {
+      "description": "The LoadConfigureController service allows you to load and configure a single controller",
+      "raw": "# The LoadConfigureController service allows you to load and configure a single controller\n# inside controller_manager\n\n# To load and configure a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# constructed and configured or not.\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadController": {
+      "description": "The LoadController service allows you to load a single controller",
+      "raw": "# The LoadController service allows you to load a single controller\n# inside controller_manager\n\n# To load a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# constructed and initialized or not.\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadStartController": {
+      "description": "The LoadStartController service allows you to load, configure and start a single controller",
+      "raw": "# The LoadStartController service allows you to load, configure and start a single controller\n# inside controller_manager\n\n# To load, configure and start a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# constructed, configured and started or not.\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReloadControllerLibraries": {
+      "description": "The ReloadControllerLibraries service will reload all controllers that are available in",
+      "raw": "# The ReloadControllerLibraries service will reload all controllers that are available in\n# the system as plugins\n\n# Reloading libraries only works if there are no controllers loaded. If there\n# are still some controllers loaded, the reloading will fail.\n# If this bool is set to true, all loaded controllers will get\n# killed automatically, and the reloading can succeed.\nbool force_kill\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "force_kill",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SwitchController": {
+      "description": "The SwitchController service allows you stop a number of controllers",
+      "raw": "# The SwitchController service allows you stop a number of controllers\n# and start a number of controllers, all in one single timestep of the\n# controller_manager control loop.\n\n# To switch controllers, specify\n#  * the list of controller names to start,\n#  * the list of controller names to stop, and\n#  * the strictness (BEST_EFFORT or STRICT)\n#    * STRICT means that switching will fail if anything goes wrong (an invalid\n#      controller name, a controller that failed to start, etc. )\n#    * BEST_EFFORT means that even when something goes wrong with on controller,\n#      the service will still try to start/stop the remaining controllers\n#  * start the controllers as soon as their hardware dependencies are ready, will\n#    wait for all interfaces to be ready otherwise\n#  * the timeout before aborting pending controllers. Zero for infinite\n\n# The return value \"ok\" indicates if the controllers were switched\n# successfully or not.  The meaning of success depends on the\n# specified strictness.\n\n\nstring[] start_controllers\nstring[] stop_controllers\nint32 strictness\nint32 BEST_EFFORT=1\nint32 STRICT=2\nbool start_asap\nbuiltin_interfaces/Duration timeout\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "start_controllers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "stop_controllers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "strictness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "BEST_EFFORT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STRICT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "start_asap",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UnloadController": {
+      "description": "The UnloadController service allows you to unload a single controller",
+      "raw": "# The UnloadController service allows you to unload a single controller\n# from controller_manager\n\n# To unload a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# unloaded or not\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

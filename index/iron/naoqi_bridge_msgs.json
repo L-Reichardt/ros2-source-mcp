@@ -1,0 +1,1545 @@
+{
+  "name": "naoqi_bridge_msgs",
+  "version": "2.1.0",
+  "description": "The naoqi_bridge_msgs package provides custom messages for running Aldebaran's robots in ROS2.",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "naoqi_bridge_msgs2",
+    "url": "https://github.com/ros-naoqi/naoqi_bridge_msgs2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "sensor_msgs",
+      "nav_msgs",
+      "trajectory_msgs",
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "naoqi_driver"
+    ]
+  },
+  "messages": {
+    "AudioBuffer": {
+      "description": "timestanp the audio buffer",
+      "raw": "# timestanp the audio buffer\nstd_msgs/Header header\n# current frequency of the audio interface\nuint16 frequency\n# channel order properties :\nuint8 CHANNEL_FRONT_LEFT=0\nuint8 CHANNEL_FRONT_CENTER=1\nuint8 CHANNEL_FRONT_RIGHT=2\nuint8 CHANNEL_REAR_LEFT=3\nuint8 CHANNEL_REAR_CENTER=4\nuint8 CHANNEL_REAR_RIGHT=5\nuint8 CHANNEL_SURROUND_LEFT=6\nuint8 CHANNEL_SURROUND_RIGHT=7\nuint8 CHANNEL_SUBWOOFER=8\nuint8 CHANNEL_LFE=9\n# channel order of the current buffer\nuint8[] channel_map\n# interlaced data of the audio buffer\nint16[] data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_FRONT_LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_FRONT_CENTER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_FRONT_RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_REAR_LEFT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_REAR_CENTER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_REAR_RIGHT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_SURROUND_LEFT",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_SURROUND_RIGHT",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_SUBWOOFER",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHANNEL_LFE",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8[]",
+          "name": "channel_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BodyROI": {
+      "description": "",
+      "raw": "float32 angle\nfloat32 cx\nfloat32 cy\nfloat32 height\nfloat32 width\nfloat32 confidence\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoolStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nbool data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Bumper": {
+      "description": "A message for Nao's bumpers on the feet",
+      "raw": "# A message for Nao's bumpers on the feet\n\nuint8 bumper            # which bumper (left or right)\nuint8 state             # state of the bumper (pressed or released)\n\nuint8 RIGHT=0\nuint8 LEFT=1\nuint8 BACK=2\n\nuint8 STATE_RELEASED=0\nuint8 STATE_PRESSED=1\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "bumper",
+          "comment": "which bumper (left or right)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "state of the bumper (pressed or released)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BACK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_RELEASED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_PRESSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "EventStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstd_msgs/String name\nstd_msgs/String data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FaceROI": {
+      "description": "",
+      "raw": "float32 angle\nfloat32 cx\nfloat32 cy\nfloat32 height\nfloat32 width\nfloat32 confidence\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FadeRGB": {
+      "description": "Message to fade leds",
+      "raw": "#Message to fade leds\nstring led_name\nstd_msgs/ColorRGBA color\nbuiltin_interfaces/Duration fade_duration\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "led_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "fade_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FloatArrayStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FloatStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HandTouch": {
+      "description": "A message for Nao and Pepper's hand touch interface (touched tactile sensors on the hands)",
+      "raw": "# A message for Nao and Pepper's hand touch interface (touched tactile sensors on the hands)\n\nuint8 hand            # which hand (left or right)\nuint8 state           # state of the hands (pressed or released)\n\nuint8 RIGHT_BACK=0\nuint8 RIGHT_LEFT=1\nuint8 RIGHT_RIGHT=2\nuint8 LEFT_BACK=3\nuint8 LEFT_LEFT=4\nuint8 LEFT_RIGHT=5\n\nuint8 STATE_RELEASED=0\nuint8 STATE_PRESSED=1\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "hand",
+          "comment": "which hand (left or right)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "state of the hands (pressed or released)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_BACK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_BACK",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_LEFT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_RIGHT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_RELEASED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_PRESSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "HeadTouch": {
+      "description": "A message for Nao's tactile interface (toucht buttons on the head)",
+      "raw": "# A message for Nao's tactile interface (toucht buttons on the head)\n\nuint8 button            # which of the three segments is touched\nuint8 state             # pressed or released, see below\n\nuint8 BUTTON_FRONT=1\nuint8 BUTTON_MIDDLE=2\nuint8 BUTTON_REAR=3\n\nuint8 STATE_RELEASED=0\nuint8 STATE_PRESSED=1\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "button",
+          "comment": "which of the three segments is touched",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "pressed or released, see below",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON_FRONT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON_MIDDLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUTTON_REAR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_RELEASED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_PRESSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "IntArrayStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint32[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IntStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint32 data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointAngleTrajectory": {
+      "description": "A list of joint names, corresponding to their names in the Nao docs.",
+      "raw": "std_msgs/Header header\n\n# A list of joint names, corresponding to their names in the Nao docs.\n# This must be either the same lenght of joint_angles or 1 if it's a\n# keyword such as 'Body' (for all angles)\nstring[] joint_names\nfloat32[] joint_angles\nfloat32[] times\n\n# Absolute angle(=0, default) or relative change\nuint8 relative\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "joint_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "times",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "relative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointAnglesWithSpeed": {
+      "description": "A list of joint names, corresponding to their names in the Nao docs.",
+      "raw": "std_msgs/Header header\n\n# A list of joint names, corresponding to their names in the Nao docs.\n# This must either have the same length as joint_angles or \n# length 1 if it's a keyword such as 'Body' (for all angles)\nstring[] joint_names\nfloat32[] joint_angles\n\n# fraction of max joint velocity [0:1]\nfloat32 speed\n\n# Absolute angle (=0, default) or relative change\nuint8 relative\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "joint_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "relative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MemoryList": {
+      "description": "",
+      "raw": "std_msgs/Header header\nMemoryPairString[] strings\nMemoryPairInt[] ints\nMemoryPairFloat[] floats\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MemoryPairString[]",
+          "name": "strings",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MemoryPairInt[]",
+          "name": "ints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MemoryPairFloat[]",
+          "name": "floats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MemoryPairFloat": {
+      "description": "",
+      "raw": "string memory_key\nfloat32 data",
+      "fields": [
+        {
+          "type": "string",
+          "name": "memory_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MemoryPairInt": {
+      "description": "",
+      "raw": "string memory_key\nint32 data",
+      "fields": [
+        {
+          "type": "string",
+          "name": "memory_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MemoryPairString": {
+      "description": "",
+      "raw": "string memory_key\nstring data",
+      "fields": [
+        {
+          "type": "string",
+          "name": "memory_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PoseWithConfidenceStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Pose pose\nfloat32 confidence_index",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotInfo": {
+      "description": "info here is inspired by http://doc.aldebaran.com/2-1/naoqi/motion/tools-general-api.html?highlight=getrobotconfig#AL...",
+      "raw": "# info here is inspired by http://doc.aldebaran.com/2-1/naoqi/motion/tools-general-api.html?highlight=getrobotconfig#ALMotionProxy::getRobotConfig\n\n# enums describing the robot type\nuint8 NAO=0\nuint8 ROMEO=1\nuint8 PEPPER=2\n\n# one of NAO, ROMEO, PEPPER\nuint8 type\n\n# \"Model Type\"   : \"naoH25\", \"naoH21\", \"naoT14\" or \"naoT2\".\nstring model\n# \"Head Version\" : \"VERSION_32\" or \"VERSION_33\" or \"VERSION_40\".\nstring head_version\n# \"Body Version\" : \"VERSION_32\" or \"VERSION_33\" or \"VERSION_40\".\nstring body_version\n# \"Arm Version\"  : \"VERSION_32\" or \"VERSION_33\" or \"VERSION_40\".\nstring arm_version\n\n# \"Laser\"        : True or False.\nbool has_laser\n# \"Extended Arms\": True or False.\nbool has_extended_arms\n\n# Number of Legs : 0 or 2\nint32 number_of_legs\n# Number of Arms : 0 or 2\nint32 number_of_arms\n# Number of Hands: 0 or 2\nint32 number_of_hands\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NAO",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROMEO",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEPPER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "head_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "body_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "arm_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_laser",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_extended_arms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "number_of_legs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "number_of_arms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "number_of_hands",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SoundLocated": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 azimuth\nfloat64 elevation\nfloat64 confidence\nfloat64 energy\ngeometry_msgs/Twist head_position_frame_torso\ngeometry_msgs/Twist head_position_frame_robot\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "elevation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "energy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "head_position_frame_torso",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "head_position_frame_robot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatusChangeStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint16 recharge_type\nstd_msgs/String old_status\nstd_msgs/String new_status",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "recharge_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "old_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "new_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StringArrayStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StringStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WordRecognized": {
+      "description": "Message emitted by Nao speech recognition.",
+      "raw": "# Message emitted by Nao speech recognition.\n# It contains the list of words recognized and confidence values\n# Both arrays are of the same length\nstring[] words\nfloat32[] confidence_values\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "words",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "confidence_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "CmdPoseService": {
+      "description": "Command pose as service:",
+      "raw": "# Command pose as service:\ngeometry_msgs/Pose2D pose\n---\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Pose2D",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "CmdVelService": {
+      "description": "Command velocity as service:",
+      "raw": "# Command velocity as service:\ngeometry_msgs/Twist twist\n---\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "GetBodyROI": {
+      "description": "",
+      "raw": "---\nBodyROI[] bodies\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "BodyROI[]",
+          "name": "bodies",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetFacesROI": {
+      "description": "",
+      "raw": "---\nFaceROI[] faces\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "FaceROI[]",
+          "name": "faces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetFloat": {
+      "description": "",
+      "raw": "---\nfloat32 data\nstring message\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetInstalledBehaviors": {
+      "description": "List installed behaviors on the robot",
+      "raw": "# List installed behaviors on the robot\n---\nstring[] behaviors\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "behaviors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRobotInfo": {
+      "description": "Get several pieces of info about the robot",
+      "raw": "# Get several pieces of info about the robot\n---\nnaoqi_bridge_msgs/RobotInfo info\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "naoqi_bridge_msgs/RobotInfo",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetString": {
+      "description": "",
+      "raw": "---\nstring data\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetTruepose": {
+      "description": "Get the current truepose from the simulator environment",
+      "raw": "# Get the current truepose from the simulator environment\n---\ngeometry_msgs/PoseWithCovarianceStamped pose",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OrthogonalSecurityDistance": {
+      "description": "Service for setting the orthogonal security distance of Pepper",
+      "raw": "# Service for setting the orthogonal security distance of Pepper\n\nstd_msgs/Float32 orthogonal_distance\n---\n# Empty response",
+      "request_fields": [
+        {
+          "type": "std_msgs/Float32",
+          "name": "orthogonal_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetArmsEnabled": {
+      "description": "Enable or disable the arms while walking",
+      "raw": "# Enable or disable the arms while walking\nbool left_arm\nbool right_arm\n---\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "left_arm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right_arm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetFloat": {
+      "description": "",
+      "raw": "float32 data\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetString": {
+      "description": "",
+      "raw": "string data\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetTransform": {
+      "description": "Send a new manual offset to the odometry",
+      "raw": "# Send a new manual offset to the odometry\ngeometry_msgs/Transform offset\n---\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "TangentialSecurityDistance": {
+      "description": "Service for setting the tangential security distance of Pepper",
+      "raw": "# Service for setting the tangential security distance of Pepper\n\nstd_msgs/Float32 tangential_distance\n---\n# Empty response",
+      "request_fields": [
+        {
+          "type": "std_msgs/Float32",
+          "name": "tangential_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {
+    "Blink": {
+      "description": "Goal: colours to use for blinking, plus blinking rate mean and sd",
+      "raw": "# Goal: colours to use for blinking, plus blinking rate mean and sd\n# Result: true if robot is still blinking (call was pre-empted by another user)\n# Feedback: last blinked colour\nstd_msgs/ColorRGBA[] colors\nstd_msgs/ColorRGBA bg_color\nbuiltin_interfaces/Duration blink_duration\nfloat32 blink_rate_mean\nfloat32 blink_rate_sd\n---\nbool still_blinking\n---\nstd_msgs/ColorRGBA last_color\n",
+      "goal_fields": [
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "colors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "bg_color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "blink_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "blink_rate_mean",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "blink_rate_sd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "still_blinking",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "last_color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BodyPose": {
+      "description": "goal: a registered body pose name",
+      "raw": "# goal: a registered body pose name\nstring pose_name\n---\n# no result currently\n---\n# no feedback currently ",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "pose_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "BodyPoseWithSpeed": {
+      "description": "goal: a predefined body pose name :",
+      "raw": "# goal: a predefined body pose name :\n# Crouch, LyingBack, LyingBelly, Sit, SitRelax, Stand, StandInit, StandZero\n\nstring posture_name\nfloat32 speed\n---\n# no result currently\n---\n# no feedback\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "posture_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "FollowPath": {
+      "description": "goal: a path to follow",
+      "raw": "# goal: a path to follow\nnav_msgs/Path path\n---\n# no result currently\n---\n# feedback: index of current subgoal in path\nuint32 index\n",
+      "goal_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": [
+        {
+          "type": "uint32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointAnglesWithSpeed": {
+      "description": "goal: a registered body pose name",
+      "raw": "# goal: a registered body pose name\nnaoqi_bridge_msgs/JointAnglesWithSpeed joint_angles\n---\n# result is the actually reached position\nsensor_msgs/JointState goal_position\n---\n# no feedback currently \n",
+      "goal_fields": [
+        {
+          "type": "naoqi_bridge_msgs/JointAnglesWithSpeed",
+          "name": "joint_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "goal_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "JointTrajectory": {
+      "description": "goal: a joint angle trajectory",
+      "raw": "# goal: a joint angle trajectory\ntrajectory_msgs/JointTrajectory trajectory\n# flag whether motion is absolute (=0, default) or relative (=1)\nuint8 relative\n---\n# result is the actually reached position\nsensor_msgs/JointState goal_position\n---\n# no feedback currently ",
+      "goal_fields": [
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "relative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "goal_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "Listen": {
+      "description": "Action to perform one shot of speech recognition.",
+      "raw": "# Action to perform one shot of speech recognition.\n# Listens to the speech and tries to recognize expected utterances.\n# If speech-to-text is supported, unexpected results may be returned.\n\n# Set of strings that are expected to be heard.\n# Used to pre-configure the speech recognition.\n# Can be left empty.\nstring[] expected\n\n# The language in which to listen.\n# If empty, the current language is used.\nstring language \"\"\n---\n# What was heard.\n# May match expected utterances.\n# Results are ordered by decreasing confidence.\nstring[] result\n---\n# If supported, partial results may be sent during the recognition.\nstring[] partial_result",
+      "goal_fields": [
+        {
+          "type": "string[]",
+          "name": "expected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "language",
+          "comment": "",
+          "default": "\"\"",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "string[]",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string[]",
+          "name": "partial_result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RunBehavior": {
+      "description": "Goal [behavior]: name of the behavior to be executed",
+      "raw": "# Goal [behavior]: name of the behavior to be executed\n# Result: none, will be set to aborted or preempted\n# Feedback: none as NaoQI API cannot be queried in this respect\nstring behavior\n---\n---\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "behavior",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "SetSpeechVocabulary": {
+      "description": "Goal: The new vocabulary to be set in the speech recognition module",
+      "raw": "# Goal: The new vocabulary to be set in the speech recognition module\n# Result: True if the vocabulary was set\n# Feedback: None\n\nstring[] words\n---\nbool success\n---\n\n",
+      "goal_fields": [
+        {
+          "type": "string[]",
+          "name": "words",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "SpeechWithFeedback": {
+      "description": "Purpose : To have feedback on when the speech was started and when",
+      "raw": "# Purpose : To have feedback on when the speech was started and when \n# NAO stopped talking\n# Goal: The sentence for NAO to say \n# Result: NAO has finished speaking\n# Feedback: When NAO starts speaking\n\nstring say\n---\n# Empty result\n---\n# Empty feedback\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "say",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    }
+  }
+}

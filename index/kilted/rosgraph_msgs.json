@@ -1,0 +1,57 @@
+{
+  "name": "rosgraph_msgs",
+  "version": "2.3.1",
+  "description": "Messages relating to the ROS Computation Graph.\n    These are generally considered to be low-level messages that end users do not interact with.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "domain_bridge",
+      "mobile_robot_simulator",
+      "rclcpp",
+      "rclcpp",
+      "rclpy",
+      "ros2topic",
+      "ros_gz_bridge",
+      "tf2_ros"
+    ]
+  },
+  "messages": {
+    "Clock": {
+      "description": "This message communicates the current time.",
+      "raw": "# This message communicates the current time.\n#\n# For more information, see https://design.ros2.org/articles/clock_and_time.html.\nbuiltin_interfaces/Time clock\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "clock",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

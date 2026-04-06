@@ -1,0 +1,57 @@
+{
+  "name": "pcl_ros",
+  "version": "2.2.1",
+  "description": "PCL (Point Cloud Library) ROS interface stack. PCL-ROS is the preferred\n  bridge for 3D applications involving n-D Point Clouds and 3D geometry\n  processing in ROS.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/perception_pcl",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-perception/perception_pcl/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-perception/perception_pcl",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "perception_pcl",
+    "url": "https://github.com/ros-perception/perception_pcl.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "eigen",
+      "libpcl-all-dev",
+      "pcl_conversions",
+      "rclcpp",
+      "sensor_msgs",
+      "geometry_msgs",
+      "tf2",
+      "tf2_geometry_msgs",
+      "tf2_ros"
+    ],
+    "depended_on_by": [
+      "octomap_server",
+      "perception_pcl",
+      "rtabmap_odom",
+      "rtabmap_util"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

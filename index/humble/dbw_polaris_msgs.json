@@ -1,0 +1,978 @@
+{
+  "name": "dbw_polaris_msgs",
+  "version": "2.1.16",
+  "description": "Drive-by-wire messages for Polaris platforms",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://dataspeedinc.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dbw_ros",
+    "url": "https://bitbucket.org/dataspeedinc/dbw_ros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "dbw_polaris",
+      "dbw_polaris_can",
+      "dbw_polaris_joystick_demo"
+    ]
+  },
+  "messages": {
+    "BrakeCmd": {
+      "description": "Brake pedal",
+      "raw": "std_msgs/Header header\n\n# Brake pedal\n# Options defined below\nfloat32 pedal_cmd\nuint8 pedal_cmd_type\n\n# Enable\nbool enable\n\n# Clear driver overrides\nbool clear\n\n# Ignore driver overrides\nbool ignore\n\n# Watchdog counter (optional)\nuint8 count\n\nuint8 CMD_NONE=0\nuint8 CMD_PERCENT=2   # Percent of maximum torque, range 0 to 1\nuint8 CMD_TORQUE=3    # Nm, range 0 to 8000, open-loop\nuint8 CMD_TORQUE_RQ=4 # Nm, range 0 to 8000, closed-loop\n\nfloat32 TORQUE_MAX=8000 # Nm, maximum torque\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "pedal_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PERCENT",
+          "comment": "Percent of maximum torque, range 0 to 1",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_TORQUE",
+          "comment": "Nm, range 0 to 8000, open-loop",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_TORQUE_RQ",
+          "comment": "Nm, range 0 to 8000, closed-loop",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "TORQUE_MAX",
+          "comment": "Nm, maximum torque",
+          "default": "8000",
+          "is_constant": true
+        }
+      ]
+    },
+    "BrakeReport": {
+      "description": "Braking torque (Nm)",
+      "raw": "std_msgs/Header header\n\n# Braking torque (Nm)\nfloat32 torque_input\nfloat32 torque_cmd\nfloat32 torque_output\n\n# Status\nbool enabled  # Enabled\nbool override # Driver override\nbool driver   # Driver activity\nbool timeout  # Command timeout\n\n# Watchdog Counter\nWatchdogCounter watchdog_counter\nbool watchdog_braking\nbool fault_wdc\n\n# Faults\nbool fault_ch1\nbool fault_ch2\nbool fault_power\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_input",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "torque_output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "Enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override",
+          "comment": "Driver override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver",
+          "comment": "Driver activity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WatchdogCounter",
+          "name": "watchdog_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "watchdog_braking",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_wdc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_ch1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_ch2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gear": {
+      "description": "",
+      "raw": "uint8 gear\n\nuint8 NONE=0\nuint8 PARK=1\nuint8 REVERSE=2\nuint8 NEUTRAL=3\nuint8 DRIVE=4\nuint8 LOW=5\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REVERSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEUTRAL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOW",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        }
+      ]
+    },
+    "GearCmd": {
+      "description": "Gear command enumeration",
+      "raw": "std_msgs/Header header\n\n# Gear command enumeration\nGear cmd\n\n# Clear driver overrides\nbool clear\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gear",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearReject": {
+      "description": "",
+      "raw": "uint8 value\n\nuint8 NONE=0              # Not rejected\nuint8 SHIFT_IN_PROGRESS=1 # Shift in progress\nuint8 OVERRIDE=2          # Override on brake, throttle, or steering\nuint8 NEUTRAL=3           # Manually shift to neutral before auto-shift\nuint8 VEHICLE=5           # Rejected by vehicle (try pressing the brakes)\nuint8 UNSUPPORTED=6       # Unsupported gear command\nuint8 FAULT=7             # System in fault state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "Not rejected",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SHIFT_IN_PROGRESS",
+          "comment": "Shift in progress",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVERRIDE",
+          "comment": "Override on brake, throttle, or steering",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEUTRAL",
+          "comment": "Manually shift to neutral before auto-shift",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VEHICLE",
+          "comment": "Rejected by vehicle (try pressing the brakes)",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNSUPPORTED",
+          "comment": "Unsupported gear command",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT",
+          "comment": "System in fault state",
+          "default": "7",
+          "is_constant": true
+        }
+      ]
+    },
+    "GearReport": {
+      "description": "Current gear enumeration",
+      "raw": "std_msgs/Header header\n\n# Current gear enumeration\nGear state\n\n# Gear command enumeration\nGear cmd\n\n# Gear reject enumeration\nGearReject reject\n\n# Status\nbool override\n\n# Faults\nbool fault_bus\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gear",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Gear",
+          "name": "cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GearReject",
+          "name": "reject",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_bus",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringCmd": {
+      "description": "Steering Wheel",
+      "raw": "std_msgs/Header header\n\n# Steering Wheel\nfloat32 steering_wheel_angle_cmd        # rad, range -10.5 to 10.5\nfloat32 steering_wheel_angle_velocity   # rad/s, range 0 to 17.5, 0 = default\nfloat32 steering_wheel_torque_cmd       # Nm, range -60.0 to 60.0\nuint8 cmd_type\n\n# Enable\nbool enable\n\n# Clear driver overrides\nbool clear\n\n# Ignore driver overrides\nbool ignore\n\n# Sets current steering wheel angle to value in steering_wheel_angle_cmd\nbool calibrate\n\n# Disable or activate the driver override audible warning\nbool quiet\nbool alert\n\n# Watchdog counter (optional)\nuint8 count\n\n# Command types\nuint8 CMD_ANGLE=0\nuint8 CMD_TORQUE=1\n\n# Maximum values\nfloat32 ANGLE_MAX=10.5    # rad, maximum angle\nfloat32 VELOCITY_MAX=17.5 # rad/s, maximum velocity\nfloat32 TORQUE_MAX=60.0   # Nm, maximum torque\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle_cmd",
+          "comment": "rad, range -10.5 to 10.5",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle_velocity",
+          "comment": "rad/s, range 0 to 17.5, 0 = default",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_torque_cmd",
+          "comment": "Nm, range -60.0 to 60.0",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "calibrate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "quiet",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "alert",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ANGLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_TORQUE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "ANGLE_MAX",
+          "comment": "rad, maximum angle",
+          "default": "10.5",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "VELOCITY_MAX",
+          "comment": "rad/s, maximum velocity",
+          "default": "17.5",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "TORQUE_MAX",
+          "comment": "Nm, maximum torque",
+          "default": "60.0",
+          "is_constant": true
+        }
+      ]
+    },
+    "SteeringReport": {
+      "description": "Steering Wheel",
+      "raw": "std_msgs/Header header\n\n# Steering Wheel\nfloat32 steering_wheel_angle      # rad\nfloat32 steering_wheel_cmd        # rad or Nm\nfloat32 steering_wheel_torque     # Nm\nuint8 steering_wheel_cmd_type\n\n# Command types\nuint8 CMD_ANGLE=0\nuint8 CMD_TORQUE=1\n\n# Vehicle Speed\nfloat32 speed                     # m/s\n\n# Status\nbool enabled  # Enabled\nbool override # Driver override\nbool timeout  # Command timeout\n\n# Watchdog Counter\nbool fault_wdc\n\n# Faults\nbool fault_bus1\nbool fault_bus2\nbool fault_calibration\nbool fault_power\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle",
+          "comment": "rad",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_cmd",
+          "comment": "rad or Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_torque",
+          "comment": "Nm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "steering_wheel_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_ANGLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_TORQUE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "m/s",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "Enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override",
+          "comment": "Driver override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_wdc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_bus1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_bus2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_calibration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ThrottleCmd": {
+      "description": "Throttle pedal",
+      "raw": "std_msgs/Header header\n\n# Throttle pedal\n# Options defined below\nfloat32 pedal_cmd\nuint8 pedal_cmd_type\n\n# Enable\nbool enable\n\n# Clear driver overrides\nbool clear\n\n# Ignore driver overrides\nbool ignore\n\n# Watchdog counter (optional)\nuint8 count\n\nuint8 CMD_NONE=0\nuint8 CMD_PEDAL=1   # Unitless, range 0.20 to 0.80\nuint8 CMD_PERCENT=2 # Percent of maximum throttle, range 0 to 1\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "pedal_cmd_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ignore",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PEDAL",
+          "comment": "Unitless, range 0.20 to 0.80",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CMD_PERCENT",
+          "comment": "Percent of maximum throttle, range 0 to 1",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "ThrottleReport": {
+      "description": "Throttle pedal",
+      "raw": "std_msgs/Header header\n\n# Throttle pedal\n# Unitless, range 0.20 to 0.80\nfloat32 pedal_input\nfloat32 pedal_cmd\nfloat32 pedal_output\n\n# Status\nbool enabled  # Enabled\nbool override # Driver override\nbool driver   # Driver activity\nbool timeout  # Command timeout\n\n# Watchdog Counter\nWatchdogCounter watchdog_counter\nbool fault_wdc\n\n# Faults\nbool fault_ch1\nbool fault_ch2\nbool fault_power\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_input",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_cmd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pedal_output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "enabled",
+          "comment": "Enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override",
+          "comment": "Driver override",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driver",
+          "comment": "Driver activity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "timeout",
+          "comment": "Command timeout",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WatchdogCounter",
+          "name": "watchdog_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_wdc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_ch1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_ch2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fault_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WatchdogCounter": {
+      "description": "",
+      "raw": "uint8 source\n\nuint8 NONE=0               # No source for watchdog counter fault\nuint8 OTHER_BRAKE=1        # Fault determined by brake controller\nuint8 OTHER_THROTTLE=2     # Fault determined by throttle controller\nuint8 OTHER_STEERING=3     # Fault determined by steering controller\nuint8 BRAKE_COUNTER=4      # Brake command counter failed to increment\nuint8 BRAKE_DISABLED=5     # Brake transition to disabled while in gear or moving\nuint8 BRAKE_COMMAND=6      # Brake command timeout after 100ms\nuint8 BRAKE_REPORT=7       # Brake report timeout after 100ms\nuint8 THROTTLE_COUNTER=8   # Throttle command counter failed to increment\nuint8 THROTTLE_DISABLED=9  # Throttle transition to disabled while in gear or moving\nuint8 THROTTLE_COMMAND=10  # Throttle command timeout after 100ms\nuint8 THROTTLE_REPORT=11   # Throttle report timeout after 100ms\nuint8 STEERING_COUNTER=12  # Steering command counter failed to increment\nuint8 STEERING_DISABLED=13 # Steering transition to disabled while in gear or moving\nuint8 STEERING_COMMAND=14  # Steering command timeout after 100ms\nuint8 STEERING_REPORT=15   # Steering report timeout after 100ms\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "No source for watchdog counter fault",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER_BRAKE",
+          "comment": "Fault determined by brake controller",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER_THROTTLE",
+          "comment": "Fault determined by throttle controller",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER_STEERING",
+          "comment": "Fault determined by steering controller",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BRAKE_COUNTER",
+          "comment": "Brake command counter failed to increment",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BRAKE_DISABLED",
+          "comment": "Brake transition to disabled while in gear or moving",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BRAKE_COMMAND",
+          "comment": "Brake command timeout after 100ms",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BRAKE_REPORT",
+          "comment": "Brake report timeout after 100ms",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "THROTTLE_COUNTER",
+          "comment": "Throttle command counter failed to increment",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "THROTTLE_DISABLED",
+          "comment": "Throttle transition to disabled while in gear or moving",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "THROTTLE_COMMAND",
+          "comment": "Throttle command timeout after 100ms",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "THROTTLE_REPORT",
+          "comment": "Throttle report timeout after 100ms",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEERING_COUNTER",
+          "comment": "Steering command counter failed to increment",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEERING_DISABLED",
+          "comment": "Steering transition to disabled while in gear or moving",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEERING_COMMAND",
+          "comment": "Steering command timeout after 100ms",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STEERING_REPORT",
+          "comment": "Steering report timeout after 100ms",
+          "default": "15",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

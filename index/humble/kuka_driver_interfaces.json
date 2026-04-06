@@ -1,0 +1,252 @@
+{
+  "name": "kuka_driver_interfaces",
+  "version": "1.0.0",
+  "description": "Message definitions necessary for using KUKA drivers",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "kuka_drivers",
+    "url": "https://github.com/kroshu/kuka_drivers.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "kuka_drivers",
+      "kuka_sunrise_fri_driver"
+    ]
+  },
+  "messages": {
+    "FRIState": {
+      "description": "Message describing the state of the robot and FRI",
+      "raw": "# Message describing the state of the robot and FRI\n\n# FRI session state enum\n# IDLE = 0, MONITORING_WAIT = 1, MONITORING_READY = 2,COMMANDING_WAIT = 3, COMMANDING_ACTIVE = 4\nint32 session_state\n\n# FRI connection quality\n# POOR = 0, FAIR = 1, GOOD = 2, EXCELLENT = 3\nint32 connection_quality\n\n# Safety state\n# NORMAL_OPERATION = 0, SAFETY_STOP_LEVEL_0 = 1, SAFETY_STOP_LEVEL_1 = 2, SAFETY_STOP_LEVEL_2 = 3\nint32 safety_state\n\n# Client command mode\n# NO_COMMAND_MODE = 0, POSITION = 1, WRENCH = 2, TORQUE = 3\nint32 command_mode\n\n# Control mode of the robot\n# POSITION_CONTROL_MODE = 0, CART_IMP_CONTROL_MODE = 1, JOINT_IMP_CONTROL_MODE = 2, NO_CONTROL = 3\nint32 control_mode\n\n# Operation mode\n# TEST_MODE_1 = 0, TEST_MODE_2 = 1, AUTOMATIC_MODE = 2\nint32 operation_mode\n\n# Drive state\n# OFF = 0, TRANSITIONING = 1, ACTIVE = 2\nint32 drive_state\n\n# Overlay overlay_type\n# NO_OVERLAY = 0, JOINT = 1, CARTESIAN = 2\nint32 overlay_type\n\n# Tracking performance of the robot\n# Indicates how well the commanded robot is able to follow the commands of the FRI client.\n# The best possible value is 1.0, when the robot executes the given commands instantaneously.\n# The tracking performance is always 0 when the session state is not COMMANDING_ACTIVE.\nfloat64 tracking_performance\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "session_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "connection_quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "safety_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "command_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "control_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "operation_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "drive_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "overlay_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "tracking_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FriConfiguration": {
+      "description": "Message with the modifiable values of FRI configuration",
+      "raw": "# Message with the modifiable values of FRI configuration\nint32 receive_multiplier\nint32 send_period_ms\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "receive_multiplier",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "send_period_ms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KssStatus": {
+      "description": "Common constant",
+      "raw": "# Common constant\nuint8 UNSPECIFIED = 0\n\n# Control mode constants\nuint8 JOINT_POSITION_CONTROL = 1\nuint8 CARTESIAN_POSITION_CONTROL = 5\n\n# Cycle time constants\nuint8 RSI_4MS = 1\nuint8 RSI_12MS = 2\n\n# Operation mode constants\nuint8 T1 = 1\nuint8 T2 = 2\nuint8 AUT = 3\nuint8 EXT = 4\n\n# Message fields\nuint8 control_mode\nuint8 cycle_time\nbool drives_powered\nbool emergency_stop\nbool guard_stop\nbool in_motion\nbool motion_possible\nuint8 operation_mode\nbool robot_stopped\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNSPECIFIED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_POSITION_CONTROL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CARTESIAN_POSITION_CONTROL",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RSI_4MS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RSI_12MS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "T1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "T2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EXT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "control_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "cycle_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "drives_powered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "emergency_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "guard_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "in_motion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "motion_possible",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "operation_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "robot_stopped",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

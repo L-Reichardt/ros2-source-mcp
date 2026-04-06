@@ -1,0 +1,57 @@
+{
+  "name": "webots_ros2_control",
+  "version": "2023.0.2",
+  "description": "ros2_control plugin for Webots",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/webots_ros2",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/cyberbotics/webots_ros2/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/cyberbotics/webots_ros2",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "webots_ros2",
+    "url": "https://github.com/cyberbotics/webots_ros2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "hardware_interface",
+      "controller_manager",
+      "pluginlib",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "webots_ros2_driver"
+    ],
+    "depended_on_by": [
+      "webots_ros2",
+      "webots_ros2_epuck",
+      "webots_ros2_tiago",
+      "webots_ros2_turtlebot",
+      "webots_ros2_universal_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

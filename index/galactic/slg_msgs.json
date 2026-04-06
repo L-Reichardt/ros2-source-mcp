@@ -1,0 +1,132 @@
+{
+  "name": "slg_msgs",
+  "version": "3.5.1",
+  "description": "This package provides classes and messages to interact with laser related geometry.",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "slg_msgs",
+    "url": "https://github.com/ajtudela/slg_msgs.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Segment": {
+      "description": "Message for sorted segment of points.",
+      "raw": "# Message for sorted segment of points.\n\n# Each segment is assigned an id, which uniquely identifies the segment consistently across multiple frames.\n# The segments can be linked to previous and next segment using lastPointPriorSeg and firstPointNextSeg, respectively.\n# Segment messages can be used as an input to a classifier such as a person detector, or for annotating\n# sensor_msgs/Laserscan messages with groundtruth person tracks.\n\nuint64 \t\t\t\t\tid \t\t\t\t\t\t\t0\t\t# Id of the segment\nuint32 \t\t\t\t\tlabel \t\t\t\t\t\t0\t\t# Label of the segment\nfloat64 \t\t\t\tangular_distance \t\t\t0.0\t\t# Angular distance to the closest boundary (in rads)\ngeometry_msgs/Point \tlast_point_prior_segment\t\t\t# Last point of the previous segment\ngeometry_msgs/Point \tfirst_point_next_segment\t\t\t# First point of the next segment\ngeometry_msgs/Point[] \tpoints\t\t\t\t\t\t\t\t# Points per segment\n\n# Type of the labels\nuint32 \t\t\t\t\tBACKGROUND = 0\nuint32 \t\t\t\t\tPERSON = 1\nuint32 \t\t\t\t\tPERSON_CANE = 2\nuint32 \t\t\t\t\tPERSON_WHEEL_CHAIR = 3\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "id",
+          "comment": "Id of the segment",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "label",
+          "comment": "Label of the segment",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angular_distance",
+          "comment": "Angular distance to the closest boundary (in rads)",
+          "default": "0.0",
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "last_point_prior_segment",
+          "comment": "Last point of the previous segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "first_point_next_segment",
+          "comment": "First point of the next segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "points",
+          "comment": "Points per segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "BACKGROUND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "PERSON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "PERSON_CANE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "PERSON_WHEEL_CHAIR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "SegmentArray": {
+      "description": "Message for array of Segment",
+      "raw": "# Message for array of Segment\n\nstd_msgs/Header \t\theader\t\t# Standard message header.\nSegment[] \t\t\t\tsegments\t# List of sorted segments.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Standard message header.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Segment[]",
+          "name": "segments",
+          "comment": "List of sorted segments.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

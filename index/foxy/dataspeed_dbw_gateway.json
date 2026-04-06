@@ -1,0 +1,644 @@
+{
+  "name": "dataspeed_dbw_gateway",
+  "version": "2.1.1",
+  "description": "A multiplexer and demultiplexer between common dbw messages and platform specific dbw messages.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://dataspeedinc.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dbw_ros",
+    "url": "https://bitbucket.org/dataspeedinc/dbw_ros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake_ros"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "ros_environment",
+      "rclcpp",
+      "rclcpp_components",
+      "dbw_fca_msgs",
+      "dbw_ford_msgs",
+      "dbw_polaris_msgs",
+      "dataspeed_dbw_common",
+      "dataspeed_dbw_msgs",
+      "diagnostic_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "dbw_fca_can",
+      "dbw_ford_can",
+      "dbw_polaris_can"
+    ]
+  },
+  "messages": {
+    "BoundedDynamicArrays": {
+      "description": "",
+      "raw": "\nfloat32[<=10] t_float\nfloat64[<=10] t_double\nchar[<=10] t_char\nbool[<=10] t_bool\nbyte[<=10] t_octet\nuint8[<=10] t_u8\nint8[<=10] t_i8\nuint16[<=10] t_u16\nint16[<=10] t_i16\nuint32[<=10] t_u32\nint32[<=10] t_i32\nuint64[<=10] t_u64\nint64[<=10] t_i64\nstring[<=10] t_string\nwstring[<=10] t_wstring\nstring<=8[<=10] t_bounded_string\nwstring<=8[<=10] t_bounded_wstring\nExampleMessage[<=10] t_message\n",
+      "fields": [
+        {
+          "type": "float32[<=10]",
+          "name": "t_float",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[<=10]",
+          "name": "t_double",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "char[<=10]",
+          "name": "t_char",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[<=10]",
+          "name": "t_bool",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte[<=10]",
+          "name": "t_octet",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[<=10]",
+          "name": "t_u8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[<=10]",
+          "name": "t_i8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[<=10]",
+          "name": "t_u16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[<=10]",
+          "name": "t_i16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[<=10]",
+          "name": "t_u32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[<=10]",
+          "name": "t_i32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[<=10]",
+          "name": "t_u64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64[<=10]",
+          "name": "t_i64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[<=10]",
+          "name": "t_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring[<=10]",
+          "name": "t_wstring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=8[<=10]",
+          "name": "t_bounded_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring<=8[<=10]",
+          "name": "t_bounded_wstring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ExampleMessage[<=10]",
+          "name": "t_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DynamicArrays": {
+      "description": "",
+      "raw": "\nfloat32[] t_float\nfloat64[] t_double\nchar[] t_char\nbool[] t_bool\nbyte[] t_octet\nuint8[] t_u8\nint8[] t_i8\nuint16[] t_u16\nint16[] t_i16\nuint32[] t_u32\nint32[] t_i32\nuint64[] t_u64\nint64[] t_i64\nstring[] t_string\nwstring[] t_wstring\nstring<=8[] t_bounded_string\nwstring<=8[] t_bounded_wstring\nExampleMessage[] t_message\n",
+      "fields": [
+        {
+          "type": "float32[]",
+          "name": "t_float",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "t_double",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "char[]",
+          "name": "t_char",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "t_bool",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte[]",
+          "name": "t_octet",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "t_u8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "t_i8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "t_u16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "t_i16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "t_u32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "t_i32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "t_u64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64[]",
+          "name": "t_i64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "t_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring[]",
+          "name": "t_wstring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=8[]",
+          "name": "t_bounded_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring<=8[]",
+          "name": "t_bounded_wstring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ExampleMessage[]",
+          "name": "t_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExampleMessage": {
+      "description": "this is an example of a submessage message",
+      "raw": "#this is an example of a submessage message\n\nstring name\nuint64 timestamp\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExampleMessageExt": {
+      "description": "this is an example of an differing message",
+      "raw": "#this is an example of an differing message\n\nstring extra_string_field\n\nstring name\n#different type, but same name from Message.msg\nuint32 timestamp\n\nuint64 extra_int_field",
+      "fields": [
+        {
+          "type": "string",
+          "name": "extra_string_field",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "extra_int_field",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StaticArrays": {
+      "description": "this message contains a fixed array of every built in type and a Message type",
+      "raw": "#this message contains a fixed array of every built in type and a Message type\n\nfloat32[8] t_float\nfloat64[8] t_double\nchar[8] t_char\nbool[8] t_bool\nbyte[8] t_octet\nuint8[8] t_u8\nint8[8] t_i8\nuint16[8] t_u16\nint16[8] t_i16\nuint32[8] t_u32\nint32[8] t_i32\nuint64[8] t_u64\nint64[8] t_i64\nstring[8] t_string\nwstring[8] t_wstring\nstring<=8[8] t_bounded_string\nwstring<=8[8] t_bounded_wstring\nExampleMessage[8] t_message",
+      "fields": [
+        {
+          "type": "float32[8]",
+          "name": "t_float",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[8]",
+          "name": "t_double",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "char[8]",
+          "name": "t_char",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[8]",
+          "name": "t_bool",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte[8]",
+          "name": "t_octet",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[8]",
+          "name": "t_u8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[8]",
+          "name": "t_i8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[8]",
+          "name": "t_u16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[8]",
+          "name": "t_i16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[8]",
+          "name": "t_u32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[8]",
+          "name": "t_i32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[8]",
+          "name": "t_u64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64[8]",
+          "name": "t_i64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[8]",
+          "name": "t_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring[8]",
+          "name": "t_wstring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=8[8]",
+          "name": "t_bounded_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring<=8[8]",
+          "name": "t_bounded_wstring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ExampleMessage[8]",
+          "name": "t_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Types": {
+      "description": "",
+      "raw": "float32 t_float\nfloat64 t_double\nchar t_char\nbool t_bool\nbyte t_octet\nuint8 t_u8\nint8 t_i8\nuint16 t_u16\nint16 t_i16\nuint32 t_u32\nint32 t_i32\nuint64 t_u64\nint64 t_i64\nstring t_string\nwstring t_wstring\nstring<=8 t_bounded_string\nwstring<=8 t_bounded_wstring\nExampleMessage t_message",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "t_float",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "t_double",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "char",
+          "name": "t_char",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "t_bool",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte",
+          "name": "t_octet",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "t_u8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "t_i8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "t_u16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "t_i16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "t_u32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "t_i32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "t_u64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "t_i64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "t_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring",
+          "name": "t_wstring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=8",
+          "name": "t_bounded_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring<=8",
+          "name": "t_bounded_wstring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ExampleMessage",
+          "name": "t_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

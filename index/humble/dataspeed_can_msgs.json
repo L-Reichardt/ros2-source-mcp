@@ -1,0 +1,387 @@
+{
+  "name": "dataspeed_can_msgs",
+  "version": "2.0.6",
+  "description": "Controller Area Network (CAN) messages",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://dataspeedinc.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dataspeed_can",
+    "url": "https://bitbucket.org/dataspeedinc/dataspeed_can.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "dataspeed_can",
+      "dataspeed_can_tools"
+    ]
+  },
+  "messages": {
+    "Frame": {
+      "description": "Extension of can_msgs/Frame to support CAN-FD flags and larger data sizes",
+      "raw": "# Extension of can_msgs/Frame to support CAN-FD flags and larger data sizes\n\nstd_msgs/Header header\n\nuint32 id\nbool extended\nbool fdf\nbool brs\nbool esi\nbool rtr\nuint8[<=64] data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "extended",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fdf",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "esi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rtr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[<=64]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Frame16": {
+      "description": "Extension of dataspeed_can_msgs/Frame with fixed data array size to prevent memory overrun in PlotJuggler",
+      "raw": "# Extension of dataspeed_can_msgs/Frame with fixed data array size to prevent memory overrun in PlotJuggler\n\nstd_msgs/Header header\n\nuint32 id\nbool extended\nbool fdf\nbool brs\nbool esi\nbool rtr\nuint8 size\nuint8[16] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "extended",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fdf",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "esi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rtr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[16]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Frame32": {
+      "description": "Extension of dataspeed_can_msgs/Frame with fixed data array size to prevent memory overrun in PlotJuggler",
+      "raw": "# Extension of dataspeed_can_msgs/Frame with fixed data array size to prevent memory overrun in PlotJuggler\n\nstd_msgs/Header header\n\nuint32 id\nbool extended\nbool fdf\nbool brs\nbool esi\nbool rtr\nuint8 size\nuint8[32] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "extended",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fdf",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "esi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rtr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[32]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Frame48": {
+      "description": "Extension of dataspeed_can_msgs/Frame with fixed data array size to prevent memory overrun in PlotJuggler",
+      "raw": "# Extension of dataspeed_can_msgs/Frame with fixed data array size to prevent memory overrun in PlotJuggler\n\nstd_msgs/Header header\n\nuint32 id\nbool extended\nbool fdf\nbool brs\nbool esi\nbool rtr\nuint8 size\nuint8[48] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "extended",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fdf",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "esi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rtr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[48]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Frame64": {
+      "description": "Extension of dataspeed_can_msgs/Frame with fixed data array size to prevent memory overrun in PlotJuggler",
+      "raw": "# Extension of dataspeed_can_msgs/Frame with fixed data array size to prevent memory overrun in PlotJuggler\n\nstd_msgs/Header header\n\nuint32 id\nbool extended\nbool fdf\nbool brs\nbool esi\nbool rtr\nuint8 size\nuint8[64] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "extended",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fdf",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "esi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rtr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[64]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

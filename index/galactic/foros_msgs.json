@@ -1,0 +1,256 @@
+{
+  "name": "foros_msgs",
+  "version": "0.4.1",
+  "description": "Fail over ROS messages (raft RPCs)",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "foros",
+    "url": "https://github.com/42dot/foros.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "foros",
+      "foros_inspector"
+    ]
+  },
+  "messages": {
+    "Inspector": {
+      "description": "",
+      "raw": "builtin_interfaces/Time stamp   # timestamp\nstring cluster_name             # cluster name\nuint32 cluster_size             # cluster size\nuint32 id                       # id\nuint8 state                     # current state\nuint64 term                     # current term\nuint64 data_size                # data size\nuint32 voted_for                # id voted by this node\n\nuint8 UNKNOWN = 0\nuint8 STANDBY = 1\nuint8 FOLLOWER = 2\nuint8 CANDIDATE = 3\nuint8 LEADER = 4\nstring TOPIC_NAME = \"foros/inspector\"\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "timestamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "cluster_name",
+          "comment": "cluster name",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cluster_size",
+          "comment": "cluster size",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "current state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "term",
+          "comment": "current term",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "data_size",
+          "comment": "data size",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "voted_for",
+          "comment": "id voted by this node",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STANDBY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FOLLOWER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANDIDATE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEADER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "TOPIC_NAME",
+          "comment": "",
+          "default": "\"foros/inspector\"",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {
+    "AppendEntries": {
+      "description": "prev_data_index and prev_data_term",
+      "raw": "uint64 term              # leader's term\nuint32 leader_id         # so followers can redirect clients\nuint64 prev_log_index    # index of log entry immediately preceeding new ones\nuint64 prev_log_term     # term of prev_log_index\nbyte[] entries           # log entries to store (empty for heartbeat)\nuint64 leader_commit     # leader's commitIndex\n---\nuint64 term              # current term, for leader to update itself\nbool success             # true if follower contained entry matching\n                         # prev_data_index and prev_data_term\n",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "term",
+          "comment": "leader's term",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "leader_id",
+          "comment": "so followers can redirect clients",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "prev_log_index",
+          "comment": "index of log entry immediately preceeding new ones",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "prev_log_term",
+          "comment": "term of prev_log_index",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte[]",
+          "name": "entries",
+          "comment": "log entries to store (empty for heartbeat)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "leader_commit",
+          "comment": "leader's commitIndex",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint64",
+          "name": "term",
+          "comment": "current term, for leader to update itself",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true if follower contained entry matching",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RequestVote": {
+      "description": "",
+      "raw": "uint64 term              # candidate's term\nuint32 candidate_id      # candidate requesting vote\nuint64 last_data_index   # index of candidate's last data entry\nuint64 loat_data_term    # term of candidate's last data entry\n---\nuint64 term              # current term, for candidate to update itself\nbool vote_granted        # true means candidate received vote\n",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "term",
+          "comment": "candidate's term",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "candidate_id",
+          "comment": "candidate requesting vote",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "last_data_index",
+          "comment": "index of candidate's last data entry",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "loat_data_term",
+          "comment": "term of candidate's last data entry",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint64",
+          "name": "term",
+          "comment": "current term, for candidate to update itself",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "vote_granted",
+          "comment": "true means candidate received vote",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

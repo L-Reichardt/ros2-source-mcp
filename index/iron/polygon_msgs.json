@@ -1,0 +1,184 @@
+{
+  "name": "polygon_msgs",
+  "version": "1.1.0",
+  "description": "General purpose two-dimensional polygons. Formerly a part of nav_2d_msgs",
+  "license": "BSD 3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "polygon_ros",
+    "url": "https://github.com/MetroRobots/polygon_ros.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "polygon_demos",
+      "polygon_rviz_plugins",
+      "polygon_utils"
+    ]
+  },
+  "messages": {
+    "ComplexPolygon2D": {
+      "description": "Representation for a non-simple polygon, i.e. one with holes",
+      "raw": "# Representation for a non-simple polygon, i.e. one with holes\npolygon_msgs/Polygon2D outer    # The outer perimeter\npolygon_msgs/Polygon2D[] inner  # The perimeter of any inner holes\n",
+      "fields": [
+        {
+          "type": "polygon_msgs/Polygon2D",
+          "name": "outer",
+          "comment": "The outer perimeter",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "polygon_msgs/Polygon2D[]",
+          "name": "inner",
+          "comment": "The perimeter of any inner holes",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComplexPolygon2DCollection": {
+      "description": "Optional per-polygon coloring",
+      "raw": "std_msgs/Header header\npolygon_msgs/ComplexPolygon2D[] polygons\n# Optional per-polygon coloring\nstd_msgs/ColorRGBA[] colors\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "polygon_msgs/ComplexPolygon2D[]",
+          "name": "polygons",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "colors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComplexPolygon2DStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\npolygon_msgs/ComplexPolygon2D polygon\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "polygon_msgs/ComplexPolygon2D",
+          "name": "polygon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point2D": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Polygon2D": {
+      "description": "Vertices of a simple polygon. Adjacent points are connected, as are the first and last.",
+      "raw": "# Vertices of a simple polygon. Adjacent points are connected, as are the first and last.\npolygon_msgs/Point2D[] points\n",
+      "fields": [
+        {
+          "type": "polygon_msgs/Point2D[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Polygon2DCollection": {
+      "description": "Optional per-polygon coloring",
+      "raw": "std_msgs/Header header\npolygon_msgs/Polygon2D[] polygons\n# Optional per-polygon coloring\nstd_msgs/ColorRGBA[] colors\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "polygon_msgs/Polygon2D[]",
+          "name": "polygons",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "colors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Polygon2DStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\npolygon_msgs/Polygon2D polygon\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "polygon_msgs/Polygon2D",
+          "name": "polygon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

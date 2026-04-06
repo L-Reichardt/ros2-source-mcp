@@ -1,0 +1,48 @@
+{
+  "name": "tiago_pro_head_description",
+  "version": "1.9.0",
+  "description": "The tiago_pro_head_description package",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tiago_pro_head_robot",
+    "url": "https://github.com/pal-robotics/tiago_pro_head_robot.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto",
+      "ament_cmake_python"
+    ],
+    "runtime": [
+      "robot_state_publisher",
+      "xacro",
+      "tiago_pro_head_controller_configuration",
+      "realsense2_description",
+      "pal_urdf_utils",
+      "launch_param_builder"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "launch_testing_ament_cmake",
+      "urdf_test",
+      "ament_cmake_pytest"
+    ],
+    "depended_on_by": [
+      "tiago_pro_description",
+      "tiago_pro_gazebo",
+      "tiago_pro_head_bringup",
+      "tiago_pro_head_gazebo",
+      "tiago_pro_head_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

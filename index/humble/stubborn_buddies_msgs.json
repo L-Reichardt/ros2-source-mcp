@@ -1,0 +1,79 @@
+{
+  "name": "stubborn_buddies_msgs",
+  "version": "1.0.0",
+  "description": "Messages to support library of stubborn buddies",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "stubborn_buddies",
+    "url": "https://github.com/open-rmf/stubborn_buddies.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_fleet_adapter",
+      "stubborn_buddies",
+      "stubborn_buddies"
+    ]
+  },
+  "messages": {
+    "Heartbeat": {
+      "description": "Heartbeat message that supports additional checkpoint information for",
+      "raw": "# Heartbeat message that supports additional checkpoint information for\n# control flow monitoring on the receiver side.\n\n# Two-integer timestamp that is expressed as seconds and nanoseconds.\nbuiltin_interfaces/Time stamp\n\n# The unique identifier of the active checkpoint.\nuint16 checkpoint_id 0\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "checkpoint_id",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        }
+      ]
+    },
+    "Status": {
+      "description": "Status message for publishing lease expiry information of the watched entity.",
+      "raw": "# Status message for publishing lease expiry information of the watched entity.\n\n# Two-integer timestamp that is expressed as seconds and nanoseconds.\nbuiltin_interfaces/Time stamp\n\n# The unique identifier of the active checkpoint.\nuint16 missed_number 0\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "missed_number",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

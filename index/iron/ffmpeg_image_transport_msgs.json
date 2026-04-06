@@ -1,0 +1,104 @@
+{
+  "name": "ffmpeg_image_transport_msgs",
+  "version": "1.2.2",
+  "description": "messages for ffmpeg image transport plugin",
+  "license": "Apache-2",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ffmpeg_image_transport_msgs",
+    "url": "https://github.com/ros-misc-utilities/ffmpeg_image_transport_msgs.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "depthai_bridge",
+      "depthai_ros_driver",
+      "ffmpeg_image_transport",
+      "ffmpeg_image_transport_tools"
+    ]
+  },
+  "messages": {
+    "FFMPEGPacket": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint32 width       # original image width\nint32 height      # original image height\nstring encoding\t  # encoding used\nuint64 pts        # packet pts\nuint8  flags      # packet flags\nbool is_bigendian # true if machine stores in big endian format\nuint8[] data      # ffmpeg compressed payload\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "width",
+          "comment": "original image width",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "height",
+          "comment": "original image height",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "encoding",
+          "comment": "encoding used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "pts",
+          "comment": "packet pts",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "flags",
+          "comment": "packet flags",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_bigendian",
+          "comment": "true if machine stores in big endian format",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "ffmpeg compressed payload",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

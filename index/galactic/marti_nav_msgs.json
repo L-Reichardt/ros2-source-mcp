@@ -1,0 +1,1293 @@
+{
+  "name": "marti_nav_msgs",
+  "version": "1.3.0",
+  "description": "marti_nav_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/marti_messages",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "marti_messages",
+    "url": "https://github.com/swri-robotics/marti_messages.git",
+    "branch": "dashing-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geographic_msgs",
+      "geometry_msgs",
+      "marti_common_msgs",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "mapviz_plugins",
+      "swri_route_util",
+      "swri_transform_util"
+    ]
+  },
+  "messages": {
+    "Command": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint32[] startstop\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "startstop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GridMap": {
+      "description": "Map extents in the header frame.",
+      "raw": "std_msgs/Header header\n\n# Map extents in the header frame.\ngeometry_msgs/Point top_left\ngeometry_msgs/Point top_right\ngeometry_msgs/Point bottom_right\ngeometry_msgs/Point bottom_left\n\n# Map data layers\nstring[]            map_names\nsensor_msgs/Image[] map_data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "top_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "top_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "bottom_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "bottom_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "map_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image[]",
+          "name": "map_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LeadVehicle": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat32 headway_distance\nfloat32 speed\nfloat32 heading\nfloat32 x_pos\nfloat32 y_pos\nint8 classification\nint8 type\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "headway_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_pos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_pos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "classification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Obstacle": {
+      "description": "Unique id for the obstacle or empty if not used.",
+      "raw": "string id\n# Unique id for the obstacle or empty if not used.\n\ngeometry_msgs/Pose pose\n# The pose of the origin of the obstacle.\n\ngeometry_msgs/Point[] polygon\n# A list of points that define the obstacle's geometry in horizontal\n# plane relative to the obstacle's pose.  The polygon is implicitly\n# closed by a segment between the last and first points.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "polygon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObstacleArray": {
+      "description": "This message is used to communicate the position of one or more",
+      "raw": "# This message is used to communicate the position of one or more\n# obstacles.\n\nstd_msgs/Header header\n# The header defines the frame that the obstacles are defined in.\n\nObstacle[] obstacles\n# List of obstacles\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Obstacle[]",
+          "name": "obstacles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Path": {
+      "description": "",
+      "raw": "std_msgs/Header                header\nPathPoint[]                    points\nbool in_reverse\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "PathPoint[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "in_reverse",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PathPlanning": {
+      "description": "The following items are used in Intelligence, but won't be transmitted with",
+      "raw": "std_msgs/Header header\n\nint32   segment_type    # Type of path segment\nfloat32 length          # Length of path segment\nfloat32 start_speed     # Desired speed at start of path segment\nfloat32 end_speed       # Desired speed at end of path segment\nfloat32 startx          # Starting x-coordinate of the vehicle\nfloat32 starty          # Starting y-coordinate of the vehicle\nfloat32 endx            # Ending x-coordinate of the vehicle\nfloat32 endy            # Ending y-coordinate of the vehicle\nfloat32 theta0          # theta0 (constant) parameter for initial heading\nfloat32 a1              # a1 (linear) parameter for the x-y track\nfloat32 a2              # a2 (quadratric) parameter for the x-y track\nfloat32 k0              # k0 (constant) parameter for the curvature\nfloat32 c1              # c1 (linear) parameter for the curvature\nfloat32 c2              # c2 (quadratic) parameter for the curvature\nint32 behavior          # Type of behavior for the segment\nint32 creep             # Whether we should be in creep mode of not (0-No, 1-Yes)\nint32 acc               # Whether ACC Override is on (0-Normal ACC, 1-Override ACC)\nint32 reverse           # Whether we should be in reverse or not (0-No, 1-Yes)\nint32 vehicle_track     # Whether we are tracking a vehicle (0-No, 1-Yes)\n\n# The following items are used in Intelligence, but won't be transmitted with\n# the segments to C&C\n\nbool transmitted        # Flag to indicate whether the path segment has been\n                        # transmitted\n\nbool aux_transmitted\n\nfloat32 theta_end       # End heading (provided explicitly)\nfloat32 k_end           # End curvature\nint32 seg_len           # Number of route points used to calculate the segment\nfloat32 speed_limit     # Minimum speed of route points used (comes from MDF or -1)\n\n# Other variables\nfloat32 max_error\nfloat32 max_smooth\nfloat32 max_curv\nint32 possible_points\nbool exit_segment\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "segment_type",
+          "comment": "Type of path segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "length",
+          "comment": "Length of path segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "start_speed",
+          "comment": "Desired speed at start of path segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "end_speed",
+          "comment": "Desired speed at end of path segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "startx",
+          "comment": "Starting x-coordinate of the vehicle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "starty",
+          "comment": "Starting y-coordinate of the vehicle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "endx",
+          "comment": "Ending x-coordinate of the vehicle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "endy",
+          "comment": "Ending y-coordinate of the vehicle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta0",
+          "comment": "theta0 (constant) parameter for initial heading",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "a1",
+          "comment": "a1 (linear) parameter for the x-y track",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "a2",
+          "comment": "a2 (quadratric) parameter for the x-y track",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "k0",
+          "comment": "k0 (constant) parameter for the curvature",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "c1",
+          "comment": "c1 (linear) parameter for the curvature",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "c2",
+          "comment": "c2 (quadratic) parameter for the curvature",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "behavior",
+          "comment": "Type of behavior for the segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "creep",
+          "comment": "Whether we should be in creep mode of not (0-No, 1-Yes)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "acc",
+          "comment": "Whether ACC Override is on (0-Normal ACC, 1-Override ACC)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "reverse",
+          "comment": "Whether we should be in reverse or not (0-No, 1-Yes)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "vehicle_track",
+          "comment": "Whether we are tracking a vehicle (0-No, 1-Yes)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "transmitted",
+          "comment": "Flag to indicate whether the path segment has been",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "aux_transmitted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta_end",
+          "comment": "End heading (provided explicitly)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "k_end",
+          "comment": "End curvature",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "seg_len",
+          "comment": "Number of route points used to calculate the segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed_limit",
+          "comment": "Minimum speed of route points used (comes from MDF or -1)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_smooth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_curv",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "possible_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "exit_segment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PathPoint": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\nfloat32 yaw   # In radians\nfloat32 speed # In m/s\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw",
+          "comment": "In radians",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "In m/s",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Route": {
+      "description": "",
+      "raw": "std_msgs/Header                         header\nRoutePoint[]                   route_points\nmarti_common_msgs/KeyValue[]   properties\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RoutePoint[]",
+          "name": "route_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "marti_common_msgs/KeyValue[]",
+          "name": "properties",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteArray": {
+      "description": "list of muliple routes, for instance to support multi-lane roads",
+      "raw": "# list of muliple routes, for instance to support multi-lane roads\n\nstd_msgs/Header                         header\n\nmarti_nav_msgs/Route[]         routes\n\nmarti_common_msgs/KeyValue[]   properties # properties common to all routes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "marti_nav_msgs/Route[]",
+          "name": "routes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "marti_common_msgs/KeyValue[]",
+          "name": "properties",
+          "comment": "properties common to all routes",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteOffset": {
+      "description": "Gives a position and orientation relative to a position on a route",
+      "raw": "# Gives a position and orientation relative to a position on a route\n\nstd_msgs/Header header                                 # only stamp used\n\ngeometry_msgs/Pose relative_pose              # pose relative to position on route\nmarti_nav_msgs/RoutePosition route_position   # position on route\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "only stamp used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "relative_pose",
+          "comment": "pose relative to position on route",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "marti_nav_msgs/RoutePosition",
+          "name": "route_position",
+          "comment": "position on route",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoutePoint": {
+      "description": "",
+      "raw": "geometry_msgs/Pose           pose\nstring                       id         # unique identifier for this point\nmarti_common_msgs/KeyValue[] properties\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "unique identifier for this point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "marti_common_msgs/KeyValue[]",
+          "name": "properties",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoutePosition": {
+      "description": "Position along route",
+      "raw": "# Position along route\n\nstd_msgs/Header  header   # only stamp used\nstring  route_id # unique ID of the corresponding route\nstring  id       # unique ID of nearest point\nfloat32 distance # forward along route, in meters from point identified by id\n                 # field (negative values indicate the distance is backward\n                 # along the route)\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "only stamp used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "route_id",
+          "comment": "unique ID of the corresponding route",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "unique ID of nearest point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance",
+          "comment": "forward along route, in meters from point identified by id",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteSpeed": {
+      "description": "Speed at a position along route",
+      "raw": "# Speed at a position along route\n\nstd_msgs/Header  header   # only stamp used\nstring  id       # unique ID of nearest point\nfloat32 distance # forward along route, in meters from point identified by id\n                 # field (negative values indicate the distance is backward\n                 # along the route)\nfloat32 speed    # desired speed at the specified position\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "only stamp used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "unique ID of nearest point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance",
+          "comment": "forward along route, in meters from point identified by id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "desired speed at the specified position",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteSpeedArray": {
+      "description": "List of target speeds along a route.",
+      "raw": "# List of target speeds along a route.\n\nstd_msgs/Header header        # only stamp used\n\nRouteSpeed[] speeds\n# List of speeds along a route. The interpretation of the list is\n# application dependent.  It may represent a list of unrelated speeds,\n# a distance vs speed curve along a route, etc.\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "only stamp used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RouteSpeed[]",
+          "name": "speeds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TeleopState": {
+      "description": "",
+      "raw": "std_msgs/Header header\t\n\nint32[] teleop_signals\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "teleop_signals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackedObject": {
+      "description": "A list of points that define the obstacle's geometry in horizontal",
+      "raw": "uint8 VEHICLE=0\nuint8 PEDESTRIAN=1\nuint8 UNKNOWN=255\n\nstd_msgs/Header header  # Frame and timestamp\nuint16 id      # Id\n\ngeometry_msgs/PoseWithCovariance pose      # Pose in the header frame.\ngeometry_msgs/TwistWithCovariance velocity # Velocity in the header frame.\ngeometry_msgs/Vector3 linear_acceleration  # Acceleration in the header frame.\nfloat64[9] linear_acceleration_covariance  # Row major x, y z\n\ngeometry_msgs/Point[] polygon\n# A list of points that define the obstacle's geometry in horizontal\n# plane relative to the obstacle's pose.  The polygon is implicitly\n# closed by a segment between the last and first points.\n\n# Estimated oriented bounding box for object classes with rectangular shapes.\nfloat32 length                 # Length of the object in meters\nfloat32 length_quality         # Length quality number [0,1]\nfloat32 width                  # Width of the object in meters\nfloat32 width_quality          # Width quality number [0,1]\n\nuint8 classification           # Classification\nfloat32 classification_quality # Classification quality number [0,1]\n\nfloat32 existence_probability  # Existence probability [0,1]\n\nbuiltin_interfaces/Duration age_duration          # Age of the track since first detection.\nbuiltin_interfaces/Duration prediction_duration   # Age of the prediction since the active flag was last true.\n\nbool active                    # Active flag for if the objects is currently being detected.\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "VEHICLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEDESTRIAN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Frame and timestamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "id",
+          "comment": "Id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose",
+          "comment": "Pose in the header frame.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "velocity",
+          "comment": "Velocity in the header frame.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "linear_acceleration",
+          "comment": "Acceleration in the header frame.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "linear_acceleration_covariance",
+          "comment": "Row major x, y z",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "polygon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "length",
+          "comment": "Length of the object in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "length_quality",
+          "comment": "Length quality number [0,1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width",
+          "comment": "Width of the object in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width_quality",
+          "comment": "Width quality number [0,1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "classification",
+          "comment": "Classification",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "classification_quality",
+          "comment": "Classification quality number [0,1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "existence_probability",
+          "comment": "Existence probability [0,1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "age_duration",
+          "comment": "Age of the track since first detection.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "prediction_duration",
+          "comment": "Age of the prediction since the active flag was last true.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "active",
+          "comment": "Active flag for if the objects is currently being detected.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackedObjectArray": {
+      "description": "This message is used to communicate tracking data for one or more objects.",
+      "raw": "# This message is used to communicate tracking data for one or more objects.\n\nstd_msgs/Header header            # The frame that the objects are defined in.\n\nTrackedObject[] objects  # The tracked objects.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "The frame that the objects are defined in.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrackedObject[]",
+          "name": "objects",
+          "comment": "The tracked objects.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VehicleControl": {
+      "description": "",
+      "raw": "std_msgs/Header \t\theader\n\nint32 \t\tengine\nint32 \t\tgear\nfloat64 \tsteering\nfloat64 \tthrottle\nfloat64 \tbrake\nint16 \t\tsteering_position\nint16 \t\tgb_position",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "engine",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "steering",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "throttle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "steering_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "gb_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Wgs84Sample": {
+      "description": "This message contains an absolute position measurement (in",
+      "raw": "# This message contains an absolute position measurement (in\n# spherical/WGS-84 coordinates) and the corresponding sensor\n# (e.g. antenna) location in a vehicle's relative odometry coordinate\n# frame.\n\nstd_msgs/Header header\n# The header contains the /tf name of the relative odometry frame and\n# the timestamp of the measurement.\n\ngeometry_msgs/Point odom\n# The position of the sample in the relative odometry frame.\n\ngeometry_msgs/Point wgs84\n# The WGS84 measurement (x = longitude in decimal degrees, y =\n# latitude in decimal degrees, z = altitude over the reference\n# ellipsoid in meters)\n\nfloat64[9] wgs84_covariance\n# An estimate of WGS-84 measurement's covariance.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "odom",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "wgs84",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "wgs84_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "DeleteRoute": {
+      "description": "",
+      "raw": "string guid # GUID of the route, as 32 hex digits\n---\nbool success # indicate successful run of triggered service\nstring message # informational, e. g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "guid",
+          "comment": "GUID of the route, as 32 hex digits",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e. g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRoute": {
+      "description": "Get route associated with the given GUID.",
+      "raw": "# Get route associated with the given GUID.\n\nstring guid      # GUID of route to retrieve, as 32 hex digits\n\n---\n\nmarti_nav_msgs/Route route\n\nbool success     # indicate successful run of triggered service\nstring message   # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "guid",
+          "comment": "GUID of route to retrieve, as 32 hex digits",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "marti_nav_msgs/Route",
+          "name": "route",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRouteList": {
+      "description": "Get list of all routes. Routes will contain metadata, but no points.",
+      "raw": "# Get list of all routes. Routes will contain metadata, but no points.\n\n---\nmarti_nav_msgs/Route[] routes\n\nbool success     # indicate successful run of triggered service\nstring message   # informational, e.g. for error messages\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "marti_nav_msgs/Route[]",
+          "name": "routes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlanRoute": {
+      "description": "referenced in",
+      "raw": "std_msgs/Header header         # the frame the request and response are\n                               # referenced in\n\ngeometry_msgs/Pose[] waypoints # series of points the route should pass through\nbool plan_from_vehicle         # add the vehicle position as the first waypoint\n\n---\n\nRoute  route     # planned route\n\nbool success     # indicate successful run of service\nstring message   # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "the frame the request and response are",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "waypoints",
+          "comment": "series of points the route should pass through",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "plan_from_vehicle",
+          "comment": "add the vehicle position as the first waypoint",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Route",
+          "name": "route",
+          "comment": "planned route",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveRecordedRoute": {
+      "description": "",
+      "raw": "string name      # Name for the route\nstring thumbnail # base64-encoded in caller defined format\n\n---\n\nbool success     # indicate successful run of triggered service\nstring message   # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Name for the route",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "thumbnail",
+          "comment": "base64-encoded in caller defined format",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveRoute": {
+      "description": "",
+      "raw": "string name # Name to save the route as\nstring guid # GUID of the route, as 32 hex digits\nmarti_nav_msgs/Route route # The route that should be saved\nstring thumbnail # base64-encoded JPG or PNG thumbnail image\n---\nbool success # indicate successful run of triggered service\nstring message # informational, e. g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Name to save the route as",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "guid",
+          "comment": "GUID of the route, as 32 hex digits",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "marti_nav_msgs/Route",
+          "name": "route",
+          "comment": "The route that should be saved",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "thumbnail",
+          "comment": "base64-encoded JPG or PNG thumbnail image",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e. g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetRoute": {
+      "description": "Set a route as active",
+      "raw": "# Set a route as active\n\nstring guid # GUID of route to make active, as 32 hex digits\nbool repeat # If true, run the route repeatedly\n\n---\n\nbool success     # indicate successful run of triggered service\nstring message   # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "guid",
+          "comment": "GUID of route to make active, as 32 hex digits",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "repeat",
+          "comment": "If true, run the route repeatedly",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UpdateRouteMetadata": {
+      "description": "This service is intended for modifying the properties on an existing route",
+      "raw": "# This service is intended for modifying the properties on an existing route \n# and its points.\n# \n# The use of this service is a little non-intuitive.  Set route_guid to the GUID\n# of the route you want to modify, and fill metadata_points with all of the points\n# you want to modify.  The coordinates of the points actually don't matter; the\n# \"guid\" property will be matched against an existing point in the route, and that\n# point's properties will be replaced with the one in the new point.\nstring route_guid # The GUID of the route to modify\nmarti_nav_msgs/RoutePoint[] metadata_points # All of the points that should be modified\n---\nbool success\nstring message\n\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "route_guid",
+          "comment": "The GUID of the route to modify",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "marti_nav_msgs/RoutePoint[]",
+          "name": "metadata_points",
+          "comment": "All of the points that should be modified",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,81 @@
+{
+  "name": "motion_capture_tracking_interfaces",
+  "version": "1.0.3",
+  "description": "Interfaces for motion_capture_tracking package.",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "motion_capture_tracking",
+    "url": "https://github.com/IMRCLab/motion_capture_tracking.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "motion_capture_tracking"
+    ]
+  },
+  "messages": {
+    "NamedPose": {
+      "description": "",
+      "raw": "string name\ngeometry_msgs/Pose pose\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NamedPoseArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\nNamedPose[] poses\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NamedPose[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

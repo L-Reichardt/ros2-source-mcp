@@ -1,0 +1,109 @@
+{
+  "name": "mocap_msgs",
+  "version": "0.0.3",
+  "description": "mocap_msgs",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "mocap_msgs",
+    "url": "https://github.com/MOCAP4ROS2-Project/mocap_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "std_msgs",
+      "geometry_msgs",
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "ImusInfo": {
+      "description": "",
+      "raw": "string[] sensor_ids\nfloat32 battery_level\nfloat32 temperature\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "sensor_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "battery_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Marker": {
+      "description": "string marker_name",
+      "raw": "# string marker_name\n# string subject_name\n# string segment_name\n# bool occluded\nint64 index\ngeometry_msgs/Point translation\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Markers": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 frame_number\nmocap_msgs/Marker[] markers\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "frame_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "mocap_msgs/Marker[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

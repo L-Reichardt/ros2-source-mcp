@@ -1,0 +1,221 @@
+{
+  "name": "shape_msgs",
+  "version": "5.5.2",
+  "description": "A package containing some message definitions which describe geometric shapes.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "common_interfaces",
+    "url": "https://github.com/ros2/common_interfaces.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_adapi_v1_msgs",
+      "common_interfaces",
+      "derived_object_msgs",
+      "geometric_shapes",
+      "grasping_msgs",
+      "moveit_core",
+      "moveit_msgs",
+      "object_recognition_msgs",
+      "object_recognition_msgs",
+      "rc_reason_msgs",
+      "rosapi",
+      "rviz_visual_tools",
+      "simple_grasping",
+      "zed_msgs",
+      "zed_msgs"
+    ]
+  },
+  "messages": {
+    "Mesh": {
+      "description": "Definition of a mesh.",
+      "raw": "# Definition of a mesh.\n\n# List of triangles; the index values refer to positions in vertices[].\nMeshTriangle[] triangles\n\n# The actual vertices that make up the mesh.\ngeometry_msgs/Point[] vertices\n",
+      "fields": [
+        {
+          "type": "MeshTriangle[]",
+          "name": "triangles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "vertices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MeshTriangle": {
+      "description": "Definition of a triangle's vertices.",
+      "raw": "# Definition of a triangle's vertices.\n\nuint32[3] vertex_indices\n",
+      "fields": [
+        {
+          "type": "uint32[3]",
+          "name": "vertex_indices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Plane": {
+      "description": "Representation of a plane, using the plane equation ax + by + cz + d = 0.",
+      "raw": "# Representation of a plane, using the plane equation ax + by + cz + d = 0.\n#\n# a := coef[0]\n# b := coef[1]\n# c := coef[2]\n# d := coef[3]\nfloat64[4] coef\n",
+      "fields": [
+        {
+          "type": "float64[4]",
+          "name": "coef",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SolidPrimitive": {
+      "description": "Defines box, sphere, cylinder, cone and prism.",
+      "raw": "# Defines box, sphere, cylinder, cone and prism.\n# All shapes are defined to have their bounding boxes centered around 0,0,0.\n\nuint8 BOX=1\nuint8 SPHERE=2\nuint8 CYLINDER=3\nuint8 CONE=4\nuint8 PRISM=5\n\n# The type of the shape\nuint8 type\n\n# The dimensions of the shape\nfloat64[<=3] dimensions  # At no point will dimensions have a length > 3.\n\n# The meaning of the shape dimensions: each constant defines the index in the 'dimensions' array.\n\n# For type BOX, the X, Y, and Z dimensions are the length of the corresponding sides of the box.\nuint8 BOX_X=0\nuint8 BOX_Y=1\nuint8 BOX_Z=2\n\n# For the SPHERE type, only one component is used, and it gives the radius of the sphere.\nuint8 SPHERE_RADIUS=0\n\n# For the CYLINDER and CONE types, the center line is oriented along the Z axis.\n# Therefore the CYLINDER_HEIGHT (CONE_HEIGHT) component of dimensions gives the\n# height of the cylinder (cone).\n# The CYLINDER_RADIUS (CONE_RADIUS) component of dimensions gives the radius of\n# the base of the cylinder (cone).\n# Cone and cylinder primitives are defined to be circular. The tip of the cone\n# is pointing up, along +Z axis.\n\nuint8 CYLINDER_HEIGHT=0\nuint8 CYLINDER_RADIUS=1\n\nuint8 CONE_HEIGHT=0\nuint8 CONE_RADIUS=1\n\n# For the type PRISM, the center line is oriented along Z axis.\n# The PRISM_HEIGHT component of dimensions gives the\n# height of the prism.\n# The polygon defines the Z axis centered base of the prism.\n# The prism is constructed by extruding the base in +Z and -Z\n# directions by half of the PRISM_HEIGHT\n# Only x and y fields of the points are used in the polygon.\n# Points of the polygon are ordered counter-clockwise.\n\nuint8 PRISM_HEIGHT=0\ngeometry_msgs/Polygon polygon\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "BOX",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPHERE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CYLINDER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRISM",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[<=3]",
+          "name": "dimensions",
+          "comment": "At no point will dimensions have a length > 3.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "BOX_X",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOX_Y",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOX_Z",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPHERE_RADIUS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CYLINDER_HEIGHT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CYLINDER_RADIUS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONE_HEIGHT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONE_RADIUS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRISM_HEIGHT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "geometry_msgs/Polygon",
+          "name": "polygon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

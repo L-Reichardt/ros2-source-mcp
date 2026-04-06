@@ -1,0 +1,167 @@
+{
+  "name": "fuse_msgs",
+  "version": "1.0.1",
+  "description": "The fuse_msgs package contains messages capable of holding serialized fuse objects.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "fuse",
+    "url": "https://github.com/locusrobotics/fuse.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "fuse",
+      "fuse_core",
+      "fuse_core",
+      "fuse_models",
+      "fuse_models",
+      "fuse_optimizers",
+      "fuse_optimizers",
+      "fuse_publishers",
+      "fuse_publishers",
+      "fuse_viz"
+    ]
+  },
+  "messages": {
+    "SerializedGraph": {
+      "description": "",
+      "raw": "std_msgs/Header header  # A timestamp associated with the graph\nstring plugin_name      # The fully-qualified name of the plugin used to serialize/deserialize this graph\nuint8[] data            # The serialized graph as a raw data buffer\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "A timestamp associated with the graph",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "plugin_name",
+          "comment": "The fully-qualified name of the plugin used to serialize/deserialize this graph",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "The serialized graph as a raw data buffer",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SerializedTransaction": {
+      "description": "",
+      "raw": "std_msgs/Header header  # A timestamp associated with this transaction\nuint8[] data            # The serialized transaction as a raw data buffer\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "A timestamp associated with this transaction",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "The serialized transaction as a raw data buffer",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetGraph": {
+      "description": "",
+      "raw": "fuse_msgs/SerializedGraph graph\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "fuse_msgs/SerializedGraph",
+          "name": "graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPose": {
+      "description": "",
+      "raw": "geometry_msgs/PoseWithCovarianceStamped pose\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPoseDeprecated": {
+      "description": "",
+      "raw": "geometry_msgs/PoseWithCovarianceStamped pose\n---\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

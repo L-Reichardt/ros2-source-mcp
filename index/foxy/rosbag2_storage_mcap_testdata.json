@@ -1,0 +1,70 @@
+{
+  "name": "rosbag2_storage_mcap_testdata",
+  "version": "0.6.0",
+  "description": "message definition test fixtures for MCAP schema recording",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rosbag2_storage_mcap",
+    "url": "https://github.com/ros-tooling/rosbag2_storage_mcap.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rosbag2_storage_mcap"
+    ]
+  },
+  "messages": {
+    "BasicMsg": {
+      "description": "",
+      "raw": "float32 c\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComplexMsg": {
+      "description": "",
+      "raw": "rosbag2_storage_mcap_testdata/BasicMsg b\n",
+      "fields": [
+        {
+          "type": "rosbag2_storage_mcap_testdata/BasicMsg",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComplexMsgDependsOnIdl": {
+      "description": "",
+      "raw": "rosbag2_storage_mcap_testdata/BasicIdl a\n",
+      "fields": [
+        {
+          "type": "rosbag2_storage_mcap_testdata/BasicIdl",
+          "name": "a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

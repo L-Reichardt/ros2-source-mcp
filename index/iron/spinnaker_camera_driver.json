@@ -1,0 +1,48 @@
+{
+  "name": "spinnaker_camera_driver",
+  "version": "2.2.17",
+  "description": "ROS2 driver for flir spinnaker sdk",
+  "license": "Apache-2",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "flir_camera_driver",
+    "url": "https://github.com/ros-drivers/flir_camera_driver.git",
+    "branch": "ros2-release"
+  },
+  "dependencies": {
+    "build": [
+      "python3-distro",
+      "curl",
+      "dpkg"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_ros"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_clang_format"
+    ],
+    "build_and_runtime": [
+      "libusb-1.0-dev",
+      "ffmpeg",
+      "yaml-cpp",
+      "camera_info_manager",
+      "flir_camera_msgs",
+      "image_transport",
+      "rclcpp",
+      "rclcpp_components",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "spinnaker_synchronized_camera_driver"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

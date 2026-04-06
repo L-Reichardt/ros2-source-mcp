@@ -1,0 +1,190 @@
+{
+  "name": "clober_msgs",
+  "version": "0.1.0",
+  "description": "clober robot standard messages",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "clober_msgs",
+    "url": "https://github.com/CLOBOT-Co-Ltd/clober_msgs.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "clober_serial"
+    ]
+  },
+  "messages": {
+    "Command": {
+      "description": "",
+      "raw": "float64[] command # rad/s",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "command",
+          "comment": "rad/s",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControllerState": {
+      "description": "The voltage from the main battery (V)",
+      "raw": "# The voltage from the main battery (V)\nfloat64 battery_voltage\n\n# The voltage from the charger (V)\nfloat64 charging_voltage\n\n# The current from the 12V user power (A)\nfloat64 current_12v\n\n# The current from the 24V user power (A)\nfloat64 current_24v\n\n# Internal temperature of the motor controller (C)\nfloat64 temperature \n\n# The state of the controller fault conditions\nstring[] fault_flags   \n\n# The state of the emergency stop switch on the controller\nbool emergency_stop",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "battery_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "charging_voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "current_12v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "current_24v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "fault_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "emergency_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Feedback": {
+      "description": "Feedback data of robot base controller",
+      "raw": "# Feedback data of robot base controller\nstd_msgs/Header header\n\n# string robot\n\n# Controller state\nclober_msgs/ControllerState controller_state\n\n# Motor state\nclober_msgs/MotorState left_motor\nclober_msgs/MotorState right_motor",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "clober_msgs/ControllerState",
+          "name": "controller_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "clober_msgs/MotorState",
+          "name": "left_motor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "clober_msgs/MotorState",
+          "name": "right_motor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotorState": {
+      "description": "The actual velocity measured by the encoder as the actual RPM value (rad/s)",
+      "raw": "# The actual velocity measured by the encoder as the actual RPM value (rad/s)\nfloat64 velocity\n\n# The actual position by the encoder value (rad)\nfloat64 position\n\n# The current flowing through the motors (A)\nfloat64 current           ",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "Reset": {
+      "description": "",
+      "raw": "bool command\n---\nint16 result",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int16",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

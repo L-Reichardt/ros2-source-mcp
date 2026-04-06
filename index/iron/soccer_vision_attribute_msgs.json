@@ -1,0 +1,255 @@
+{
+  "name": "soccer_vision_attribute_msgs",
+  "version": "0.3.0",
+  "description": "A package containing attributes of objects in 2d/3d vision in the soccer domain.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "soccer_interfaces",
+    "url": "https://github.com/ros-sports/soccer_interfaces.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "soccer_interfaces",
+      "soccer_model_msgs",
+      "soccer_vision_2d_msgs",
+      "soccer_vision_3d_msgs",
+      "soccer_vision_3d_rviz_markers"
+    ]
+  },
+  "messages": {
+    "Confidence": {
+      "description": "A confidence rating in the range [0.0 - 1.0], or -1.0(CONFIDENCE_UNKNOWN) by default.",
+      "raw": "float32 CONFIDENCE_UNKNOWN=-1.0\n\n# A confidence rating in the range [0.0 - 1.0], or -1.0(CONFIDENCE_UNKNOWN) by default.\n# 0.0 - detection module is 0% sure\n# 1.0 - detection module is 100% sure\nfloat32 confidence -1.0\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "CONFIDENCE_UNKNOWN",
+          "comment": "",
+          "default": "-1.0",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": "-1.0",
+          "is_constant": false
+        }
+      ]
+    },
+    "Goalpost": {
+      "description": "Whether the post is a left or right post, when looking INTO the goal.",
+      "raw": "uint8 SIDE_UNKNOWN=0\nuint8 SIDE_LEFT=1\nuint8 SIDE_RIGHT=2\n\nuint8 TEAM_UNKNOWN=0\nuint8 TEAM_OWN=1\nuint8 TEAM_OPPONENT=2\n\n# Whether the post is a left or right post, when looking INTO the goal.\n# Value can be SIDE_UNKNOWN, SIDE_LEFT or SIDE_RIGHT\nuint8 side\n\n# Which team's goal, the goalpost is part of. A team's goal is the one\n# they have to defend. This can be useful if the two goals have different colors,\n# and you know whether you're looking at your own or opponent's goal.\n# Value can be TEAM_UNKNOWN, TEAM_OWN or TEAM_OPPONENT\nuint8 team\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "SIDE_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIDE_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SIDE_RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_OWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_OPPONENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "side",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "team",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Robot": {
+      "description": "The number of the robot, if it can be read from the image.",
+      "raw": "uint8 NUMBER_UNKNOWN=0\n\nuint8 TEAM_UNKNOWN=0\nuint8 TEAM_OWN=1\nuint8 TEAM_OPPONENT=2\n\nuint8 STATE_UNKNOWN=0\nuint8 STATE_STANDING=1\nuint8 STATE_FALLEN=2\nuint8 STATE_KICKING=3\nuint8 STATE_INACTIVE=4\n\nuint8 FACING_UNKNOWN=0\nuint8 FACING_THIS_WAY=1\nuint8 FACING_AWAY=2\nuint8 FACING_LEFT=3\nuint8 FACING_RIGHT=4\n\n# The number of the robot, if it can be read from the image.\n# Values can range from NUMBER_UNKNOWN(0) up to 255.\nuint8 player_number\n\n# Which team's robot it is. \n# Value can be TEAM_UNKNOWN, TEAM_OWN or TEAM_OPPONENT\nuint8 team\n\n# State of the robot.\n# Value can be one of the STATE_* constants defined in this msg\nuint8 state\n\n# An approximate direction the robot is facing in the image.\n# Value can be one of the FACING_* constants defined in this msg\nuint8 facing\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NUMBER_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_OWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_OPPONENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_STANDING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_FALLEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_KICKING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_INACTIVE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FACING_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FACING_THIS_WAY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FACING_AWAY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FACING_LEFT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FACING_RIGHT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "player_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "team",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "facing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

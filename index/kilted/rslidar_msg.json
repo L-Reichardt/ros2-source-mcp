@@ -1,0 +1,74 @@
+{
+  "name": "rslidar_msg",
+  "version": "0.0.0",
+  "description": "ros msgs for the rslidar_sdk project",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rslidar_msg",
+    "url": "https://github.com/RoboSense-LiDAR/rslidar_msg.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "rclcpp"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "RslidarPacket": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint8 is_difop\nuint8 is_frame_begin\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "is_difop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "is_frame_begin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

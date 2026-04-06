@@ -1,0 +1,51 @@
+{
+  "name": "random_numbers",
+  "version": "2.0.1",
+  "description": "This  library contains wrappers for generating floating point values, integers, quaternions using boost libraries.\n\n  The constructor of the wrapper is guaranteed to be thread safe and initialize its random number generator to a random seed.\n  Seeds are obtained using a separate and different random number generator.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/random_numbers",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "random_numbers",
+    "url": "https://github.com/ros-planning/random_numbers.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "libboost-dev",
+      "libboost-date-time-dev",
+      "libboost-random-dev",
+      "libboost-thread-dev"
+    ],
+    "build_export": [
+      "libboost-dev",
+      "libboost-random-dev",
+      "libboost-thread-dev"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "libboost-date-time",
+      "libboost-random",
+      "libboost-thread"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_cmake"
+    ],
+    "depended_on_by": [
+      "geometric_shapes",
+      "moveit_core"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

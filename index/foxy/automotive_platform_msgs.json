@@ -1,0 +1,1275 @@
+{
+  "name": "automotive_platform_msgs",
+  "version": "3.0.3",
+  "description": "Generic Messages for Communication with an Automotive Autonomous Platform",
+  "license": "MIT",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://github.com/automotive_platform_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/astuff/automotive_autonomy_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/astuff/automotive_autonomy_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "automotive_autonomy_msgs",
+    "url": "https://github.com/astuff/automotive_autonomy_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "message_generation",
+      "rosidl_default_generators",
+      "ros_environment"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "automotive_autonomy_msgs"
+    ]
+  },
+  "messages": {
+    "AdaptiveCruiseControlCommand": {
+      "description": "Adaptive Cruise Control Command Message",
+      "raw": "# Adaptive Cruise Control Command Message\n# Contains commands to engage/disengage ACC or adjust the set points\n\nstd_msgs/Header header\n\nuint8 msg_counter   # Increments each time a command is sent\n                    # An acknowledge message should be published with this value\n\nfloat32 set_speed   # Speed setpoint (m/sec)\nuint16 set          # Engage ACC at the above speed set point\nuint16 resume       # Resume ACC at previous speed set point\nuint16 cancel       # Disengage ACC\nuint16 speed_up     # Increase speed set point\nuint16 slow_down    # Decrease speed set point\nuint16 further      # Increase distance set point\nuint16 closer       # Decrease distance set point\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "msg_counter",
+          "comment": "Increments each time a command is sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "set_speed",
+          "comment": "Speed setpoint (m/sec)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "set",
+          "comment": "Engage ACC at the above speed set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "resume",
+          "comment": "Resume ACC at previous speed set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "cancel",
+          "comment": "Disengage ACC",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "speed_up",
+          "comment": "Increase speed set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "slow_down",
+          "comment": "Decrease speed set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "further",
+          "comment": "Increase distance set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "closer",
+          "comment": "Decrease distance set point",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AdaptiveCruiseControlSettings": {
+      "description": "Adaptive Cruise Control Settings Message",
+      "raw": "# Adaptive Cruise Control Settings Message\n# Contains the current settings/status of ACC\n\nstd_msgs/Header header\n\nfloat32 set_speed       # Current speed set point (m/sec)\n\nuint16 following_spot   # Discrete following location\n                        # 0 = following distance is the minimum allowed distance\n                        # n = following distance is the maximum allowed distance\n                        #      where (n + 1) is the number of allowed distances\n\nfloat32 min_percent     # Minimum distance relative to maximum allowed distance\n                        # 0 to 1.0\n\nfloat32 step_percent    # Distance between spots relative to maximum allowed\n                        # distance\n                        # 0 to 1.0\n\nfloat32 cipv_percent    # Where CIPV is relative to the maximum allowed distance\n                        # 0 = there isn't a detected CIPV\n                        # 1.0 = the CIPV is at the maximum allowed distance\n                        # The maximum allowed distance varies with speed\n\nfloat32 max_distance    # The distance corresponding to 1.0 percent (meters)\n\n# So if the driver wants to maintain the greatest separation behind the CIPV,\n# he can press the increase distance button over and over until the distance\n# set point reaches the maximum allowed distance.  If there are 5 allowed\n# following distance set points, then following_spot will equal 4.\n\n# If a Closest In Path Vehicle is detected at this distance then the\n# cipv_percent will be 1.0.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "set_speed",
+          "comment": "Current speed set point (m/sec)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "following_spot",
+          "comment": "Discrete following location",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_percent",
+          "comment": "Minimum distance relative to maximum allowed distance",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "step_percent",
+          "comment": "Distance between spots relative to maximum allowed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cipv_percent",
+          "comment": "Where CIPV is relative to the maximum allowed distance",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_distance",
+          "comment": "The distance corresponding to 1.0 percent (meters)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BlindSpotIndicators": {
+      "description": "Blind Spot Indicators Active",
+      "raw": "# Blind Spot Indicators Active\n# True if system is enabled and something is detected in the blind spot\n\nstd_msgs/Header header\n\nbool left\nbool right\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BrakeCommand": {
+      "description": "Current Brake Pedal Command",
+      "raw": "# Current Brake Pedal Command\n\nstd_msgs/Header header\n\nfloat32 brake_pedal     # 0 to 1.0\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_pedal",
+          "comment": "0 to 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BrakeFeedback": {
+      "description": "Current Brake Pedal Position Feedback",
+      "raw": "# Current Brake Pedal Position Feedback\n\nstd_msgs/Header header\n\nfloat32 brake_pedal     # 0 to 1.0\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake_pedal",
+          "comment": "0 to 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CabinReport": {
+      "description": "Status of vehicle cabin sensors",
+      "raw": "# Status of vehicle cabin sensors\nstd_msgs/Header header\n\n# The door positions below are from the point of view of someone sitting\n# in the vehicle, facing the X positive direction. Not using driver/passenger\n# since this is different in left- vs right-hand drive vehicles.\nbool door_open_front_right       # Status of the door nearest the front of the vehicle in the Y+ direction\nbool door_open_front_left        # Status of the door nearest the front of the vehicle in the Y- direction\nbool door_open_rear_right        # Status of the door nearest the rear of the vehicle in the Y+ direction\nbool door_open_rear_left         # Status of the door nearest the rear of the vehicle in the Y- direction\nbool hood_open                   # Status of the front compartment cover\nbool trunk_open                  # Status of the rear compartment cover\n\nbool passenger_present           # Whether or not a passenger is detected in the front non-driving seat\nbool passenger_airbag_enabled    # Whether or not the passenger-side airbag is enabled\n\nbool seatbelt_engaged_driver     # Whether or not the seatbelt for the driver's seat is buckled\nbool seatbelt_engaged_passenger  # Whether or not the seatbelt for the passenger's seat is buckled\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_open_front_right",
+          "comment": "Status of the door nearest the front of the vehicle in the Y+ direction",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_open_front_left",
+          "comment": "Status of the door nearest the front of the vehicle in the Y- direction",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_open_rear_right",
+          "comment": "Status of the door nearest the rear of the vehicle in the Y+ direction",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "door_open_rear_left",
+          "comment": "Status of the door nearest the rear of the vehicle in the Y- direction",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hood_open",
+          "comment": "Status of the front compartment cover",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "trunk_open",
+          "comment": "Status of the rear compartment cover",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "passenger_present",
+          "comment": "Whether or not a passenger is detected in the front non-driving seat",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "passenger_airbag_enabled",
+          "comment": "Whether or not the passenger-side airbag is enabled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "seatbelt_engaged_driver",
+          "comment": "Whether or not the seatbelt for the driver's seat is buckled",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "seatbelt_engaged_passenger",
+          "comment": "Whether or not the seatbelt for the passenger's seat is buckled",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CurvatureFeedback": {
+      "description": "Current Curvature Feedback",
+      "raw": "# Current Curvature Feedback\n# Curvature based on steering sensor feedback\n\nstd_msgs/Header header\n\nfloat32 curvature           # Measured steering curvature (1/m)\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "curvature",
+          "comment": "Measured steering curvature (1/m)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriverCommands": {
+      "description": "Driver Commands Message",
+      "raw": "# Driver Commands Message\n# Contains commands from the driver to the autonomy system\n\nuint8 msg_counter   # Increments each time a command is sent\n                    # An acknowledge message should be published with this value\n\nuint16 engage       # Engage auto\nuint16 disengage    # Disengage auto\nuint16 speed_up     # Increase speed set point\nuint16 slow_down    # Decrease speed set point\nuint16 further      # Increase distance set point\nuint16 closer       # Decrease distance set point\nuint16 right_turn   # Right turn signal\nuint16 left_turn    # Left turn signal\n\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "msg_counter",
+          "comment": "Increments each time a command is sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "engage",
+          "comment": "Engage auto",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "disengage",
+          "comment": "Disengage auto",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "speed_up",
+          "comment": "Increase speed set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "slow_down",
+          "comment": "Decrease speed set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "further",
+          "comment": "Increase distance set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "closer",
+          "comment": "Decrease distance set point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "right_turn",
+          "comment": "Right turn signal",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "left_turn",
+          "comment": "Left turn signal",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gear": {
+      "description": "Transmission Gear Value",
+      "raw": "# Transmission Gear Value\n# Provides common definitions for commanded and reported gear\n\nuint8 NONE=0\nuint8 PARK=1\nuint8 REVERSE=2\nuint8 NEUTRAL=3\nuint8 DRIVE=4\nuint8 LOW=5\nuint8 gear\n\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REVERSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEUTRAL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOW",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearCommand": {
+      "description": "Current Gear Command",
+      "raw": "# Current Gear Command\n\nstd_msgs/Header header\n\nautomotive_platform_msgs/Gear command\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "automotive_platform_msgs/Gear",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearFeedback": {
+      "description": "Current Gear Feedback",
+      "raw": "# Current Gear Feedback\n\nstd_msgs/Header header\n\nautomotive_platform_msgs/Gear current_gear\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "automotive_platform_msgs/Gear",
+          "name": "current_gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HillStartAssist": {
+      "description": "Hill Start Assist Active",
+      "raw": "# Hill Start Assist Active\n\nstd_msgs/Header header\n\nbool active\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Speed": {
+      "description": "Speed Control Message",
+      "raw": "# Speed Control Message\n# Contains speed commands\n\nstd_msgs/Header header\n\nstring module_name # module name of the source node of this message\n\nfloat32 speed                # Desired speed (m/sec)\nfloat32 acceleration_limit   # Max acceleration limit (m/sec^2)\nfloat32 deceleration_limit   # Max deceleration limit (m/sec^2)\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "module_name",
+          "comment": "module name of the source node of this message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "Desired speed (m/sec)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "acceleration_limit",
+          "comment": "Max acceleration limit (m/sec^2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "deceleration_limit",
+          "comment": "Max deceleration limit (m/sec^2)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpeedMode": {
+      "description": "Speed Control Message with Mode",
+      "raw": "# Speed Control Message with Mode\n# Contains speed commands and desired autonomy active mode flag\n\nstd_msgs/Header header\n\nuint16 mode # Is 1 if autonomy mode should be active\n\nfloat32 speed                # Desired speed (m/sec)\nfloat32 acceleration_limit   # Max acceleration limit (m/sec^2)\nfloat32 deceleration_limit   # Max deceleration limit (m/sec^2)\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mode",
+          "comment": "Is 1 if autonomy mode should be active",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "Desired speed (m/sec)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "acceleration_limit",
+          "comment": "Max acceleration limit (m/sec^2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "deceleration_limit",
+          "comment": "Max deceleration limit (m/sec^2)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpeedPedals": {
+      "description": "Speed Pedals Control Message with Mode",
+      "raw": "# Speed Pedals Control Message with Mode\n# Contains throttle and brake commands and desired autonomy active mode flag\n\nstd_msgs/Header header\n\nuint16 mode # Is 1 if autonomy mode should be active\n\nfloat32 throttle       # 0 to 1 percent\nfloat32 brake          # 0 to 1 percent\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mode",
+          "comment": "Is 1 if autonomy mode should be active",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "throttle",
+          "comment": "0 to 1 percent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake",
+          "comment": "0 to 1 percent",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Steer": {
+      "description": "Steering Control Message",
+      "raw": "# Steering Control Message\n# Contains steering commands\n\nstd_msgs/Header header\n\nstring module_name # module name of the source node of this message\n\nfloat32 curvature           # Desired steering curvature (1/m)\nfloat32 max_curvature_rate  # Max rate of change for curvature (1/m/sec)\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "module_name",
+          "comment": "module name of the source node of this message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "curvature",
+          "comment": "Desired steering curvature (1/m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_curvature_rate",
+          "comment": "Max rate of change for curvature (1/m/sec)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteerMode": {
+      "description": "Steering Control Message with Mode",
+      "raw": "# Steering Control Message with Mode\n# Contains steering commands and desired autonomy active mode flag\n\nstd_msgs/Header header\n\nuint16 mode # Is 1 if autonomy mode should be active\n\nfloat32 curvature           # Desired steering curvature (1/m)\nfloat32 max_curvature_rate  # Max rate of change for curvature (1/m/sec)\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mode",
+          "comment": "Is 1 if autonomy mode should be active",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "curvature",
+          "comment": "Desired steering curvature (1/m)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_curvature_rate",
+          "comment": "Max rate of change for curvature (1/m/sec)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteerWheel": {
+      "description": "Steering Wheel Control Message with Mode",
+      "raw": "# Steering Wheel Control Message with Mode\n# Contains steering wheel command and desired autonomy active mode flag\n\nstd_msgs/Header header\n\nuint16 mode             # Is 1 if autonomy mode should be active\n\nfloat32 angle           # Desired steering wheel angle (rad)\nfloat32 angle_velocity  # Desired steering wheel angle max velocity (rad/sec)\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mode",
+          "comment": "Is 1 if autonomy mode should be active",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "Desired steering wheel angle (rad)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_velocity",
+          "comment": "Desired steering wheel angle max velocity (rad/sec)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringCommand": {
+      "description": "Current Steering Wheel Angle Command",
+      "raw": "# Current Steering Wheel Angle Command\n\nstd_msgs/Header header\n\nfloat32 steering_wheel_angle     # Radians\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle",
+          "comment": "Radians",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringFeedback": {
+      "description": "Current Steering Wheel Angle Feedback",
+      "raw": "# Current Steering Wheel Angle Feedback\n\nstd_msgs/Header header\n\nfloat32 steering_wheel_angle     # Radians\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_wheel_angle",
+          "comment": "Radians",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ThrottleCommand": {
+      "description": "Current Throttle Pedal Command",
+      "raw": "# Current Throttle Pedal Command\n\nstd_msgs/Header header\n\nfloat32 throttle_pedal     # 0 to 1.0\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "throttle_pedal",
+          "comment": "0 to 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ThrottleFeedback": {
+      "description": "Current Throttle Pedal Position Feedback",
+      "raw": "# Current Throttle Pedal Position Feedback\n\nstd_msgs/Header header\n\nfloat32 throttle_pedal     # 0 to 1.0\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "throttle_pedal",
+          "comment": "0 to 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TurnSignalCommand": {
+      "description": "Turn Signal Command with Mode",
+      "raw": "# Turn Signal Command with Mode\n# Contains turn signal command and desired autonomy active mode flag\n\nstd_msgs/Header header\n\nuint16 mode             # Is 1 if autonomy mode should be active\n\nuint8 NONE=0\nuint8 LEFT=1\nuint8 RIGHT=2\nuint8 turn_signal       # Desired turn signal on\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "mode",
+          "comment": "Is 1 if autonomy mode should be active",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "turn_signal",
+          "comment": "Desired turn signal on",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UserInputADAS": {
+      "description": "User input (e.g. button presses) related to the factory ADAS functions",
+      "raw": "# User input (e.g. button presses) related to the factory ADAS functions\nstd_msgs/Header header\n\nbool btn_cc_on          # Cruise Control on\nbool btn_cc_off         # Cruise Control off\nbool btn_cc_on_off      # Cruise Control on/off toggle\nbool btn_cc_set_inc     # Cruise Control set/speed +\nbool btn_cc_set_dec     # Cruise Control set/speed -\nbool btn_cc_res         # Cruise Control resume\nbool btn_cc_cncl        # Cruise Control cancel\nbool btn_cc_res_cncl    # Cruise Control resume/cancle toggle\nbool btn_acc_gap_inc    # Adaptive Cruise Control gap -\nbool btn_acc_gap_dec    # Adaptive Cruise Control gap +\nbool btn_lka_on         # Lane Keep Assist off\nbool btn_lka_off        # Lane Keep Assist on\nbool btn_lka_on_off     # Lane Keep Assist on/off toggle\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_on",
+          "comment": "Cruise Control on",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_off",
+          "comment": "Cruise Control off",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_on_off",
+          "comment": "Cruise Control on/off toggle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_set_inc",
+          "comment": "Cruise Control set/speed +",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_set_dec",
+          "comment": "Cruise Control set/speed -",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_res",
+          "comment": "Cruise Control resume",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_cncl",
+          "comment": "Cruise Control cancel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_cc_res_cncl",
+          "comment": "Cruise Control resume/cancle toggle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_acc_gap_inc",
+          "comment": "Adaptive Cruise Control gap -",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_acc_gap_dec",
+          "comment": "Adaptive Cruise Control gap +",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_lka_on",
+          "comment": "Lane Keep Assist off",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_lka_off",
+          "comment": "Lane Keep Assist on",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_lka_on_off",
+          "comment": "Lane Keep Assist on/off toggle",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UserInputMedia": {
+      "description": "User input (e.g. button presses) related to media controls",
+      "raw": "# User input (e.g. button presses) related to media controls\nstd_msgs/Header header\n\nbool btn_vol_up\nbool btn_vol_down\nbool btn_mute\nbool btn_next\nbool btn_prev\nbool btn_next_hang_up\nbool btn_prev_answer\nbool btn_hang_up\nbool btn_answer\nbool btn_play\nbool btn_pause\nbool btn_play_pause\nbool btn_mode\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_vol_up",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_vol_down",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_mute",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_next",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_prev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_next_hang_up",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_prev_answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_hang_up",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_play",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_pause",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_play_pause",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "btn_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UserInputMenus": {
+      "description": "Inputs (e.g. button presses) for in-vehicle menus",
+      "raw": "# Inputs (e.g. button presses) for in-vehicle menus\nstd_msgs/Header header\n\nbool str_whl_left_btn_left\nbool str_whl_left_btn_down\nbool str_whl_left_btn_right\nbool str_whl_left_btn_up\nbool str_whl_left_btn_ok\n\nbool str_whl_right_btn_left\nbool str_whl_right_btn_down\nbool str_whl_right_btn_right\nbool str_whl_right_btn_up\nbool str_whl_right_btn_ok\n\nbool cntr_cons_btn_left\nbool cntr_cons_btn_down\nbool cntr_cons_btn_right\nbool cntr_cons_btn_up\nbool cntr_cons_btn_ok\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_left_btn_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_left_btn_down",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_left_btn_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_left_btn_up",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_left_btn_ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_right_btn_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_right_btn_down",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_right_btn_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_right_btn_up",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "str_whl_right_btn_ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cntr_cons_btn_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cntr_cons_btn_down",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cntr_cons_btn_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cntr_cons_btn_up",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cntr_cons_btn_ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelocityAccel": {
+      "description": "Vehicle Lateral Velocity and Acceleration Message",
+      "raw": "# Vehicle Lateral Velocity and Acceleration Message\n\nstd_msgs/Header header\n\nfloat32 velocity     # meters/sec\nfloat32 accleration  # meters/sec^2\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity",
+          "comment": "meters/sec",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accleration",
+          "comment": "meters/sec^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelocityAccelCov": {
+      "description": "Vehicle Lateral Velocity and Acceleration Message with Covariance",
+      "raw": "# Vehicle Lateral Velocity and Acceleration Message with Covariance\n\nstd_msgs/Header header\n\nfloat32 velocity     # meters/sec\nfloat32 accleration  # meters/sec^2\nfloat32 covariance   # (meters/sec)^2\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity",
+          "comment": "meters/sec",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "accleration",
+          "comment": "meters/sec^2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "covariance",
+          "comment": "(meters/sec)^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

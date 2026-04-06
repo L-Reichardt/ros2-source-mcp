@@ -1,0 +1,48 @@
+{
+  "name": "kdl_inverse_dynamics_solver",
+  "version": "1.0.4",
+  "description": "A KDL-based library implementing an inverse dynamics solver for simulated robots.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/unisa-acg/inverse-dynamics-solver.git",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "inverse_dynamics_solver",
+    "url": "https://github.com/unisa-acg/inverse-dynamics-solver.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "liborocos-kdl-dev"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "liborocos-kdl",
+      "ur_description"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "rclcpp",
+      "ros_testing"
+    ],
+    "build_and_runtime": [
+      "inverse_dynamics_solver",
+      "kdl_parser",
+      "pluginlib",
+      "rclcpp"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

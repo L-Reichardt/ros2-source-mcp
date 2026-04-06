@@ -1,0 +1,318 @@
+{
+  "name": "tuw_graph_msgs",
+  "version": "0.2.6",
+  "description": "The tuw_graph_msgs package contains messages for sending graphs.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "tuw_msgs"
+    ]
+  },
+  "messages": {
+    "Edge": {
+      "description": "A single edge in a graph",
+      "raw": "#################################################################\n## A single edge in a graph\n## Each edge of the same graph must have a unique id.\n#################################################################\nint64 id                   # Edge id\nbool valid                  # True if it can be used for planning\nfloat64 weight              # Weight of the edge\nuint32[] flags              # Flags or attributes\nint64 start                 # Ids start node\nint64 end                   # Ids end node\ngeometry_msgs/Pose[] path   # Path between the nodes\n                            # - path can be empty \n                            # - path does does not include the nodes locations\n\n\n\n\nuint32 FLAG_NA = 0\nuint32 FLAG_UNTOUCHED = 1\nuint32 FLAG_OPEN = 2\nuint32 FLAG_CLOSED = 3\nuint32 FLAG_VISITED = 4",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "id",
+          "comment": "Edge id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid",
+          "comment": "True if it can be used for planning",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "Weight of the edge",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "flags",
+          "comment": "Flags or attributes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "start",
+          "comment": "Ids start node",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "end",
+          "comment": "Ids end node",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "path",
+          "comment": "Path between the nodes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_NA",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_UNTOUCHED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_OPEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_CLOSED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_VISITED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "Graph": {
+      "description": "This message is used to transport a graph between two nodes.",
+      "raw": "#################################################################\n## This message is used to transport a graph between two nodes.\n## Each vertex has a set of points and a width describing the\n## shape of it and additionally successors and predecessors\n## to describe the overall structure of the graph\n##\n## Remark for the TUW_Multi_Robot_Router\n## !! all vertices have to be sorted by id\n## !! every id must be present...\n#################################################################\n\nstd_msgs/Header header      # Header for Timestamp and Id\ngeometry_msgs/Pose origin   # Graph origin\nNode[] nodes                # The nodes in the graph\nEdge[] edges                # The edges in the graph",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header for Timestamp and Id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "origin",
+          "comment": "Graph origin",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Node[]",
+          "name": "nodes",
+          "comment": "The nodes in the graph",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Edge[]",
+          "name": "edges",
+          "comment": "The edges in the graph",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Node": {
+      "description": "A single node in a graph",
+      "raw": "#################################################################\n## A single node in a graph\n## Each node of the same graph must have a unique id.\n#################################################################\nint64 id                     # Node id\nbool valid                   # True if it can be used for planning\ngeometry_msgs/Pose pose      # Position\nuint32[] flags               # Flags or attributes\n \n\nuint32 FLAG_NA = 0\nuint32 FLAG_UNTOUCHED = 1\nuint32 FLAG_OPEN = 2\nuint32 FLAG_CLOSED = 3\nuint32 FLAG_VISITED = 4\nuint32 FLAG_START = 5\nuint32 FLAG_GOAL = 6",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "id",
+          "comment": "Node id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid",
+          "comment": "True if it can be used for planning",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "Position",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "flags",
+          "comment": "Flags or attributes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_NA",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_UNTOUCHED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_OPEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_CLOSED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_VISITED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_START",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "FLAG_GOAL",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        }
+      ]
+    },
+    "State": {
+      "description": "",
+      "raw": "int64 step\nint32[] list_node_open\nint32[] list_edge_open\nstd_msgs/ColorRGBA[] color_open\nint32[] list_node_closed\nint32[] list_edge_closed\nstd_msgs/ColorRGBA[] color_closed",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "list_node_open",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "list_edge_open",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "color_open",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "list_node_closed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "list_edge_closed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "color_closed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetGraph": {
+      "description": "Get the Graph as a tuw_graph_msgs/Graph",
+      "raw": "# Get the Graph as a tuw_graph_msgs/Graph\n---\n# The current map hosted by this map service.\nGraph graph",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "Graph",
+          "name": "graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

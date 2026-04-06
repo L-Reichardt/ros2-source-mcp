@@ -1,0 +1,141 @@
+{
+  "name": "caret_msgs",
+  "version": "0.5.0",
+  "description": "Message definitions for CARET",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "caret_trace",
+    "url": "https://github.com/tier4/caret_trace.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto"
+    ],
+    "depended_on_by": [
+      "ros2caret"
+    ]
+  },
+  "messages": {
+    "End": {
+      "description": "",
+      "raw": "",
+      "fields": []
+    },
+    "Start": {
+      "description": "",
+      "raw": "uint32 recording_frequency 100\nstring ignore_nodes  # reserved\nstring ignore_topics # reserved\nstring select_nodes  # reserved\nstring select_topics # reserved\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "recording_frequency",
+          "comment": "",
+          "default": "100",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ignore_nodes",
+          "comment": "reserved",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ignore_topics",
+          "comment": "reserved",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "select_nodes",
+          "comment": "reserved",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "select_topics",
+          "comment": "reserved",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Status": {
+      "description": "request constants",
+      "raw": "# request constants\nint8 UNINITIALIZED=0\nint8 WAIT=1\nint8 PREPARE=2\nint8 RECORD=3\n\n# request fields\nstring caret_node_name\nint8 status\nstring[] node_names # reserved\nint64 pid # reserved\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "UNINITIALIZED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "WAIT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PREPARE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "RECORD",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "caret_node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "node_names",
+          "comment": "reserved",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "pid",
+          "comment": "reserved",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

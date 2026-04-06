@@ -1,0 +1,39 @@
+{
+  "name": "imu_complementary_filter",
+  "version": "2.1.5",
+  "description": "Filter which fuses angular velocities, accelerations, and (optionally) magnetic readings from a generic IMU device into a quaternion to represent the orientation of the device wrt the global frame. Based on the algorithm by Roberto G. Valenti etal. described in the paper \"Keeping a Good Attitude: A Quaternion-Based Orientation Filter for IMUs and MARGs\" available at http://www.mdpi.com/1424-8220/15/8/19302 .",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.mdpi.com/1424-8220/15/8/19302",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "imu_tools",
+    "url": "https://github.com/CCNYRoboticsLab/imu_tools.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "geometry_msgs",
+      "message_filters",
+      "rclcpp",
+      "sensor_msgs",
+      "std_msgs",
+      "tf2",
+      "tf2_ros"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "depended_on_by": [
+      "imu_tools"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

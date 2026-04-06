@@ -1,0 +1,49 @@
+{
+  "name": "mrpt_generic_sensor",
+  "version": "0.2.3",
+  "description": "ROS node for interfacing any sensor supported by mrpt-hwdrivers",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/mrpt-ros-pkg/mrpt_sensors",
+      "type": "website"
+    },
+    {
+      "uri": "https://wiki.ros.org/mrpt_msgs_bridge",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mrpt_sensors",
+    "url": "https://github.com/mrpt-ros-pkg/mrpt_sensors.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_components",
+      "tf2",
+      "tf2_ros",
+      "tf2_geometry_msgs",
+      "mrpt_sensorlib",
+      "sensor_msgs",
+      "mrpt_msgs",
+      "ament_lint_common",
+      "ament_lint_auto"
+    ],
+    "depended_on_by": [
+      "mrpt_sensors"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

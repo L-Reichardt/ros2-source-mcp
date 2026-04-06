@@ -1,0 +1,159 @@
+{
+  "name": "std_srvs",
+  "version": "5.0.1",
+  "description": "A package containing some standard service definitions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "common_interfaces",
+    "url": "https://github.com/ros2/common_interfaces.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "ackermann_steering_controller",
+      "beluga_amcl",
+      "bicycle_steering_controller",
+      "bosch_locator_bridge",
+      "camera_calibration",
+      "catch_ros2",
+      "common_interfaces",
+      "depthai_ros_driver",
+      "find_object_2d",
+      "find_object_2d",
+      "flexbe_core",
+      "foxglove_bridge",
+      "fuse_models",
+      "fuse_models",
+      "fuse_optimizers",
+      "fuse_optimizers",
+      "gazebo_plugins",
+      "gazebo_ros",
+      "gazebo_video_monitor_interfaces",
+      "gazebo_video_monitor_plugins",
+      "gazebo_video_monitor_utils",
+      "image_view",
+      "joy_teleop",
+      "leo_fw",
+      "libcaer_driver",
+      "mapviz",
+      "mavros",
+      "mavros_extras",
+      "metavision_driver",
+      "microstrain_inertial_driver",
+      "nav2_amcl",
+      "nav2_behavior_tree",
+      "nav2_behavior_tree",
+      "nav2_bt_navigator",
+      "nav2_costmap_2d",
+      "nav2_lifecycle_manager",
+      "nav2_lifecycle_manager",
+      "nav2_util",
+      "octomap_server",
+      "phidgets_gyroscope",
+      "phidgets_spatial",
+      "pid_controller",
+      "plansys2_executor",
+      "rclpy_message_converter",
+      "robot_localization",
+      "robotiq_controllers",
+      "rosbridge_library",
+      "rosbridge_server",
+      "rosbridge_test_msgs",
+      "rosidl_runtime_py",
+      "rplidar_ros",
+      "rplidar_ros",
+      "rtabmap_msgs",
+      "rtabmap_slam",
+      "rtabmap_viz",
+      "sbg_driver",
+      "slam_toolbox",
+      "slam_toolbox",
+      "smach_ros",
+      "spatio_temporal_voxel_layer",
+      "steering_controllers_library",
+      "swri_roscpp",
+      "tricycle_controller",
+      "tricycle_steering_controller",
+      "turtlesim",
+      "ur_controllers",
+      "ur_robot_driver",
+      "urg_node",
+      "usb_cam",
+      "webots_ros2_tests",
+      "wiimote"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "Empty": {
+      "description": "",
+      "raw": "---\n",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "SetBool": {
+      "description": "",
+      "raw": "bool data # e.g. for hardware enabling / disabling\n---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "e.g. for hardware enabling / disabling",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trigger": {
+      "description": "",
+      "raw": "---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,144 @@
+{
+  "name": "ros2cli_test_interfaces",
+  "version": "0.13.5",
+  "description": "A package containing interface definitions for testing ros2cli.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2cli",
+    "url": "https://github.com/ros2/ros2cli.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "ros2interface"
+    ]
+  },
+  "messages": {
+    "ShortVaried": {
+      "description": "A constant",
+      "raw": "# A constant\nbool BOOL_CONST=true # Comment - Nesting Level 1: 1 of 2\n\n# Bool and array of bools\nbool bool_value\nbool[<=3] bool_values # Comment - Nesting Level 1: 2 of 2\n\n# Trailing comment\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "BOOL_CONST",
+          "comment": "Comment - Nesting Level 1: 1 of 2",
+          "default": "true",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[<=3]",
+          "name": "bool_values",
+          "comment": "Comment - Nesting Level 1: 2 of 2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ShortVariedMultiNested": {
+      "description": "A short, varied, and nested type",
+      "raw": "# A short, varied, and nested type\nShortVariedNested short_varied_nested # Comment - Nesting Level 3: 1 of 1\n# Trailing comment\n",
+      "fields": [
+        {
+          "type": "ShortVariedNested",
+          "name": "short_varied_nested",
+          "comment": "Comment - Nesting Level 3: 1 of 1",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ShortVariedNested": {
+      "description": "A short, varied type",
+      "raw": "# A short, varied type\nShortVaried short_varied # Comment - Nesting Level 2: 1 of 1\n# Trailing comment\n",
+      "fields": [
+        {
+          "type": "ShortVaried",
+          "name": "short_varied",
+          "comment": "Comment - Nesting Level 2: 1 of 1",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ShortVariedMultiNested": {
+      "description": "Request",
+      "raw": "# Request\nShortVariedNested short_varied_nested # Comment - Nesting Level 3: 1 of 2\n---\n# Response\nbool bool_value # Comment - Nesting Level 3: 2 of 2\n",
+      "request_fields": [
+        {
+          "type": "ShortVariedNested",
+          "name": "short_varied_nested",
+          "comment": "Comment - Nesting Level 3: 1 of 2",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "Comment - Nesting Level 3: 2 of 2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ShortVariedMultiNested": {
+      "description": "Goal definition",
+      "raw": "# Goal definition\nShortVariedNested short_varied_nested # Comment - Nesting Level 3: 1 of 2\n---\n# Result definition\nbool bool_value # Comment - Nesting Level 3: 2 of 2\n---\n# Feedback definition\nbool[3] bool_values\n",
+      "goal_fields": [
+        {
+          "type": "ShortVariedNested",
+          "name": "short_varied_nested",
+          "comment": "Comment - Nesting Level 3: 1 of 2",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "Comment - Nesting Level 3: 2 of 2",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "bool[3]",
+          "name": "bool_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

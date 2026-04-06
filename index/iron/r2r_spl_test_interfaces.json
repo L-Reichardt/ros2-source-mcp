@@ -1,0 +1,229 @@
+{
+  "name": "r2r_spl_test_interfaces",
+  "version": "3.1.0",
+  "description": "Messages for testing r2r_spl",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "r2r_spl",
+    "url": "https://github.com/ros-sports/r2r_spl.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "r2r_spl"
+    ]
+  },
+  "messages": {
+    "ArrayTypes": {
+      "description": "",
+      "raw": "int8[3] data_int8_static  # Test numeric static array (since it uses numpy arrays)\nbool[2] data_bool_static  # Test non-numeric static array\nint8[] data_int8_unbounded_dynamic  # Test numeric unbounded array\nbool[] data_bool_unbounded_dynamic  # Test non-numeric unbounded array\nint8[<=3] data_int8_bounded_dynamic  # Test numeric bounded array\nbool[<=2] data_bool_bounded_dynamic  # Test non-numeric bounded array\nstring data_string  # Test string\nstring<=3 data_string_bounded  # Test bounded string\nwstring data_wstring  # Test wstring\nwstring<=3 data_wstring_bounded  # Test bounded wstring\n",
+      "fields": [
+        {
+          "type": "int8[3]",
+          "name": "data_int8_static",
+          "comment": "Test numeric static array (since it uses numpy arrays)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[2]",
+          "name": "data_bool_static",
+          "comment": "Test non-numeric static array",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "data_int8_unbounded_dynamic",
+          "comment": "Test numeric unbounded array",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "data_bool_unbounded_dynamic",
+          "comment": "Test non-numeric unbounded array",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[<=3]",
+          "name": "data_int8_bounded_dynamic",
+          "comment": "Test numeric bounded array",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[<=2]",
+          "name": "data_bool_bounded_dynamic",
+          "comment": "Test non-numeric bounded array",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data_string",
+          "comment": "Test string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=3",
+          "name": "data_string_bounded",
+          "comment": "Test bounded string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring",
+          "name": "data_wstring",
+          "comment": "Test wstring",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "wstring<=3",
+          "name": "data_wstring_bounded",
+          "comment": "Test bounded wstring",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BasicTypes": {
+      "description": "",
+      "raw": "bool val_bool\nbyte val_byte\nchar val_char\nfloat32 val_float32\nfloat64 val_float64\nint8 val_int8\nuint8 val_uint8\nint16 val_int16\nuint16 val_uint16\nint32 val_int32\nuint32 val_uint32\nint64 val_int64\nuint64 val_uint64\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "val_bool",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "byte",
+          "name": "val_byte",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "char",
+          "name": "val_char",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "val_float32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "val_float64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "val_int8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "val_uint8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "val_int16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "val_uint16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "val_int32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "val_uint32",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "val_int64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "val_uint64",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NestedTypes": {
+      "description": "Message containing other message types",
+      "raw": "# Message containing other message types\n\nr2r_spl_test_interfaces/BasicTypes data_basic_types\nr2r_spl_test_interfaces/BasicTypes[] data_basic_types_array\n",
+      "fields": [
+        {
+          "type": "r2r_spl_test_interfaces/BasicTypes",
+          "name": "data_basic_types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "r2r_spl_test_interfaces/BasicTypes[]",
+          "name": "data_basic_types_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

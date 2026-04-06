@@ -1,0 +1,527 @@
+{
+  "name": "smacc2_msgs",
+  "version": "2.3.20",
+  "description": "Messages and services used in smacc2.",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "smacc2",
+    "url": "https://github.com/robosoft-ai/SMACC2.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "smacc2"
+    ]
+  },
+  "messages": {
+    "SmaccContainerInitialStatusCmd": {
+      "description": "The path to the node in the server",
+      "raw": "# The path to the node in the server\nstring path\n\n# The desired initial state(s)\nstring[] initial_states\n\n# Initial values for the local user data of the state machine\n# A pickled user data structure\n# i.e. the UserData's internal dictionary\nstring local_data\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "initial_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "local_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccContainerStatus": {
+      "description": "The path to this node in the server",
+      "raw": "std_msgs/Header header\n\n# The path to this node in the server\nstring path\n\n# The initial state description\n# Effects an arc from the top state to each one\nstring[] initial_states\n\n# The current state description\nstring[] active_states\n\n# A pickled user data structure\n# i.e. the UserData's internal dictionary\nstring local_data\n\n# Debugging info string\nstring info\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "initial_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "active_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "local_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccContainerStructure": {
+      "description": "The path to this node in the server",
+      "raw": "std_msgs/Header header\n\n# The path to this node in the server\nstring path\n\n# The children of this node\nstring[] children\n\n# The outcome edges\n# Each index across these arrays denote one edge\nstring[] internal_outcomes\nstring[] outcomes_from\nstring[] outcomes_to\n\n# The potential outcomes from this container\nstring[] container_outcomes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "children",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "internal_outcomes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "outcomes_from",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "outcomes_to",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "container_outcomes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccEvent": {
+      "description": "",
+      "raw": "string event_type\nstring event_object_tag\nstring event_source # the client, client behavior or component that generated that event\nstring label\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "event_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "event_object_tag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "event_source",
+          "comment": "the client, client behavior or component that generated that event",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccEventGenerator": {
+      "description": "",
+      "raw": "int32 index\nstring type_name\nstring object_tag\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "object_tag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccOrthogonal": {
+      "description": "",
+      "raw": "string name\nstring[] client_behavior_names\nstring[] client_names\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "client_behavior_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "client_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccSMCommand": {
+      "description": "",
+      "raw": "int8 command\n\nint8 SM_STOP = 0\nint8 E_STOP = 0\nint8 SM_RESET = 1\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "SM_STOP",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "E_STOP",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SM_RESET",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "SmaccState": {
+      "description": "",
+      "raw": "int32 index\nstring name\nstring[] children_states\nint8 level\nsmacc2_msgs/SmaccTransition[] transitions\nsmacc2_msgs/SmaccOrthogonal[] orthogonals\nsmacc2_msgs/SmaccStateReactor[] state_reactors\nsmacc2_msgs/SmaccEventGenerator[] event_generators\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "children_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "smacc2_msgs/SmaccTransition[]",
+          "name": "transitions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "smacc2_msgs/SmaccOrthogonal[]",
+          "name": "orthogonals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "smacc2_msgs/SmaccStateReactor[]",
+          "name": "state_reactors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "smacc2_msgs/SmaccEventGenerator[]",
+          "name": "event_generators",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccStateMachine": {
+      "description": "",
+      "raw": "smacc2_msgs/SmaccState[] states\n",
+      "fields": [
+        {
+          "type": "smacc2_msgs/SmaccState[]",
+          "name": "states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccStateReactor": {
+      "description": "",
+      "raw": "int32 index\nstring type_name\nstring object_tag\n\nsmacc2_msgs/SmaccEvent[] event_sources\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "object_tag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "smacc2_msgs/SmaccEvent[]",
+          "name": "event_sources",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccStatus": {
+      "description": "returns the list of current states (the complete hierarchy)",
+      "raw": "std_msgs/Header header\n\n#returns the list of current states (the complete hierarchy)\n#from ancestor active states to descendents active states), ie: [Superstate1, State3]\nstring[] current_states\n\nstring[] global_variable_names\nstring[] global_variable_values\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "current_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "global_variable_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "global_variable_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccTransition": {
+      "description": "",
+      "raw": "int32 index\nstring transition_name\nstring transition_type\nstring destiny_state_name\nstring source_state_name\nbool history_node\nsmacc2_msgs/SmaccEvent event\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "transition_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "transition_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "destiny_state_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source_state_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "history_node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "smacc2_msgs/SmaccEvent",
+          "name": "event",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmaccTransitionLogEntry": {
+      "description": "",
+      "raw": "builtin_interfaces/Time timestamp\nsmacc2_msgs/SmaccTransition transition\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "smacc2_msgs/SmaccTransition",
+          "name": "transition",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SmaccGetTransitionHistory": {
+      "description": "",
+      "raw": "---\nsmacc2_msgs/SmaccTransitionLogEntry[] history\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "smacc2_msgs/SmaccTransitionLogEntry[]",
+          "name": "history",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

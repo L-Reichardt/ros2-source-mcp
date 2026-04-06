@@ -1,0 +1,864 @@
+{
+  "name": "bosch_locator_bridge",
+  "version": "2.1.15",
+  "description": "ROS interface to Rexroth ROKIT Locator",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "locator_ros_bridge",
+    "url": "https://github.com/boschglobal/locator_ros_bridge.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "launch_xml",
+      "nav_msgs",
+      "pcl_conversions",
+      "rclcpp",
+      "sensor_msgs",
+      "std_srvs",
+      "tf2_geometry_msgs",
+      "tf2_ros",
+      "libpoco-dev"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "ClientControlMode": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# Timestamp of the update\nbuiltin_interfaces/Time stamp\n\n# This mode is in RUN-state while a map is calculated live during the recording\nuint8 visual_recording_state\n\n# While a map is generated from a recording the ClientState of the Map mode is RUN\nuint8 map_state\n\n# This mode is in RUN-state while the system localizes itself to a map received from the Map Server\nuint8 localization_state\n\n#  This mode is in RUN-state while a recording is made\nuint8 recording_state\n\n# This mode is RUN-state while the user works on aligning the map\nuint8 alignment_state\n\n# This mode is RUN-state while the user is retrieving data from the laser scanners, for example to create a mask for the laser scans\nuint8 mask_state\n\n# This mode is RUN-state while the map expansion is activated for overwriting or expanding the prior map\nuint8 expandmap_state\n\n\n# Constants\nuint8 CLIENT_CONTROL_STATE_INIT=0\nuint8 CLIENT_CONTROL_STATE_READY=1\nuint8 CLIENT_CONTROL_STATE_RUN=2\nuint8 CLIENT_CONTROL_STATE_NOT_AVAILABLE=4\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "visual_recording_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "map_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "localization_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "recording_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "alignment_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mask_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "expandmap_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "CLIENT_CONTROL_STATE_INIT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIENT_CONTROL_STATE_READY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIENT_CONTROL_STATE_RUN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIENT_CONTROL_STATE_NOT_AVAILABLE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "ClientExpandMapOverwriteZoneInformation": {
+      "description": "Copyright (c) 2023 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2023 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nint64 id\nstring name\nint64 type\ngeometry_msgs/Point32[] polygon\n\n\n# Constants\nint32 TYPE_ENFORCE=1\nint32 TYPE_IGNORE=2\nint32 TYPE_DELETE=3",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point32[]",
+          "name": "polygon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "TYPE_ENFORCE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "TYPE_IGNORE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "TYPE_DELETE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "ClientExpandMapVisualization": {
+      "description": "Copyright (c) 2023 - for information on the respective copyright owner",
+      "raw": "\n# Copyright (c) 2023 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# The time at which the Localization Client received the ClientExpandMapVisualizationDatagram\nbuiltin_interfaces/Time timestamp\n\n# A unique id for matching datagrams that were emitted at the same time but by different visualization interfaces\nuint64 visualization_id\n\n# A set of OverwriteZones\nbosch_locator_bridge/ClientExpandMapOverwriteZoneInformation[] zones\n\n# The poses in the prior map\ngeometry_msgs/PoseArray prior_map_poses\n\n# The type of the poses in the prior map\nint32[] prior_map_pose_types\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "visualization_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bosch_locator_bridge/ClientExpandMapOverwriteZoneInformation[]",
+          "name": "zones",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseArray",
+          "name": "prior_map_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "prior_map_pose_types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClientGlobalAlignLandmarkObservationNotice": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nuint32 pose_index\nuint32 landmark_index\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "pose_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "landmark_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClientGlobalAlignLandmarkVisualizationInformation": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# Please note the the pose is directly published as PoseArray for visualization reasons\nint64 type\nbool has_orientation\nstring name\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClientGlobalAlignVisualization": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# The time at which the Localization Client received the laser scan used to generate this Datagram\nbuiltin_interfaces/Time timestamp\n\n# A unique id for matching datagrams that were emitted at the same time but by different visualization interfaces\nuint64 visualization_id\n\n# A set of landmarks known to the system\nbosch_locator_bridge/ClientGlobalAlignLandmarkVisualizationInformation[] landmarks\n\n#Specifies which landmarks in the landmarks array were observed from which poses in\n#the poses array. Note that some landmarks may have never been observed, and\n#that some poses within the poses array may not be associated with any landmark.\nbosch_locator_bridge/ClientGlobalAlignLandmarkObservationNotice[] observations\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "visualization_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bosch_locator_bridge/ClientGlobalAlignLandmarkVisualizationInformation[]",
+          "name": "landmarks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bosch_locator_bridge/ClientGlobalAlignLandmarkObservationNotice[]",
+          "name": "observations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClientLocalizationPose": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# The time passed between receiving the most recent laser scan and the generation of this Datagram\nbuiltin_interfaces/Duration age\n\n# The time at which the Localization Client received the laser scan used to generate this Datagram\nbuiltin_interfaces/Time timestamp\n\n# currently unused; this field is reserved to match a uniqueId provided via the ClientSensorLaser interface\nuint64 unique_id\n\n# The localization status\nint32 state\n\n# Only Datagrams with the same epoch can be treated as locally precise\n# and coherent. If the self-localization was temporarily disrupted, the system will\n# indicate this by incrementing the epoch\nuint64 epoch\n\n# A 64-bit bit field which indicates errors that may affect the localization\nuint64 error_flags\n\n# A 64-bit bit field which provides detailed information about specific aspects of the localization\nuint64 info_flags\n\n# Constants\nint32 LOC_STATUS_INFO_LOCALIZATION_NOT_RUNNING = -3\nint32 LOC_STATUS_NOT_LOCALIZED_STARTUP = -2\nint32 LOC_STATUS_NOT_LOCALIZED = -1\nint32 LOC_STATUS_LOCALIZED_ODO_ONLY = 1\nint32 LOC_STATUS_LOCALIZED = 2\nint32 LOC_STATUS_LOCALIZED_INTERNALUSE1 = 3\nint32 LOC_STATUS_LOCALIZED_INTERNALUSE2 = 4\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "unique_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "epoch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "error_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "info_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_INFO_LOCALIZATION_NOT_RUNNING",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_NOT_LOCALIZED_STARTUP",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_NOT_LOCALIZED",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_LOCALIZED_ODO_ONLY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_LOCALIZED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_LOCALIZED_INTERNALUSE1",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_LOCALIZED_INTERNALUSE2",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "ClientLocalizationVisualization": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# The time at which the Localization Client received the laser scan used to generate this Datagram\nbuiltin_interfaces/Time timestamp\n\n# currently unused; this field is reserved to match a uniqueId provided via the ClientSensorLaser interface\nuint64 unique_id\n\n# The localization status\nint32 loc_state\n\n# The relative delay within the system when processing laser scans.\n# 0: no delay; 1.0 : delay causes loop closures to be omitted when building the temporary map\nfloat64 delay\n\n# Constants\nint32 LOC_STATUS_INFO_LOCALIZATION_NOT_RUNNING = -3\nint32 LOC_STATUS_NOT_LOCALIZED_STARTUP = -2\nint32 LOC_STATUS_NOT_LOCALIZED = -1\nint32 LOC_STATUS_LOCALIZED_ODO_ONLY = 1\nint32 LOC_STATUS_LOCALIZED = 2\nint32 LOC_STATUS_LOCALIZED_INTERNALUSE1 = 3\nint32 LOC_STATUS_LOCALIZED_INTERNALUSE2 = 4\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "unique_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "loc_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delay",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_INFO_LOCALIZATION_NOT_RUNNING",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_NOT_LOCALIZED_STARTUP",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_NOT_LOCALIZED",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_LOCALIZED_ODO_ONLY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_LOCALIZED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_LOCALIZED_INTERNALUSE1",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LOC_STATUS_LOCALIZED_INTERNALUSE2",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "ClientMapVisualization": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# The time at which the Localization Client received the laser scan used to generate this Datagram\nbuiltin_interfaces/Time timestamp\n\n# A unique id for matching datagrams that were emitted at the same time but by different visualization interfaces\nuint64 visualization_id\n\n# The ClientRecordingRecordingStatus\nint32 status\n\n# Distance traversed by the sensor since the last successful loop closure\nfloat64 distance_to_last_lc\n\n# The relative delay within the system when processing laser scans.\n# 0: no delay; 1.0 : delay causes loop closures to be omitted when building the temporary map\nfloat64 delay\n\n# Currently unused\nfloat64 progress\n\n# Please note that pose, scan, and path_poses is published directly via the standard message types (custom nested messages would hinder using ros tools, such as rviz)\n\n#  Array of order state_1, state_2, using the ClientRecordingPathTypeEnum\nint32[] path_types\n\n\n# Constants\nint32 CLIENT_RECORDING_RECORDING_STATUS_STARTUP = -2\nint32 CLIENT_RECORDING_RECORDING_STATUS_DELAYED = 1\nint32 CLIENT_RECORDING_RECORDING_STATUS_OK = 2\n\nint32 CLIENT_RECORDING_PATH_TYPE_ENUM_NORMAL = 0\nint32 CLIENT_RECORDING_PATH_TYPE_ENUM_POSSIBLE_LOOP_CLOSURE = 1\nint32 CLIENT_RECORDING_PATH_TYPE_ENUM_POSSIBLY_VISIBLE_LOOP_CLOSURE = 2\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "visualization_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "distance_to_last_lc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delay",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "progress",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "path_types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_RECORDING_STATUS_STARTUP",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_RECORDING_STATUS_DELAYED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_RECORDING_STATUS_OK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_PATH_TYPE_ENUM_NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_PATH_TYPE_ENUM_POSSIBLE_LOOP_CLOSURE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_PATH_TYPE_ENUM_POSSIBLY_VISIBLE_LOOP_CLOSURE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "ClientRecordingVisualization": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# The time at which the Localization Client received the laser scan used to generate this Datagram\nbuiltin_interfaces/Time timestamp\n\n# A unique id for matching datagrams that were emitted at the same time but by different visualization interfaces\nuint64 visualization_id\n\n# The ClientRecordingRecordingStatus\nint32 status\n\n# Distance traversed by the sensor since the last successful loop closure\nfloat64 distance_to_last_lc\n\n# The relative delay within the system when processing laser scans.\n# 0: no delay; 1.0 : delay causes loop closures to be omitted when building the temporary map\nfloat64 delay\n\n# Currently unused\nfloat64 progress\n\n# Please note that pose, scan, and path_poses is published directly via the standard message types (custom nested messages would hinder using ros tools, such as rviz)\n\n#  Array of order state_1, state_2, using the ClientRecordingPathTypeEnum\nint32[] path_types\n\n\n# Constants\nint32 CLIENT_RECORDING_RECORDING_STATUS_STARTUP = -2\nint32 CLIENT_RECORDING_RECORDING_STATUS_DELAYED = 1\nint32 CLIENT_RECORDING_RECORDING_STATUS_OK = 2\n\nint32 CLIENT_RECORDING_PATH_TYPE_ENUM_NORMAL = 0\nint32 CLIENT_RECORDING_PATH_TYPE_ENUM_POSSIBLE_LOOP_CLOSURE = 1\nint32 CLIENT_RECORDING_PATH_TYPE_ENUM_POSSIBLY_VISIBLE_LOOP_CLOSURE = 2\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "visualization_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "distance_to_last_lc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delay",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "progress",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "path_types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_RECORDING_STATUS_STARTUP",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_RECORDING_STATUS_DELAYED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_RECORDING_STATUS_OK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_PATH_TYPE_ENUM_NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_PATH_TYPE_ENUM_POSSIBLE_LOOP_CLOSURE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "CLIENT_RECORDING_PATH_TYPE_ENUM_POSSIBLY_VISIBLE_LOOP_CLOSURE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {
+    "ClientConfigGetEntry": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring name\n---\nstring value\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClientExpandMapEnable": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring prior_map_name\n---",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "prior_map_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ClientMapList": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n---\nstring[] names\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClientMapSend": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring name\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ClientMapSet": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring name\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ClientMapStart": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring recording_name\nstring client_map_name\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "recording_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "client_map_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ClientRecordingSetCurrentPose": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\ngeometry_msgs/Pose2D pose\n---",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Pose2D",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ServerMapGetImageWithResolution": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring file_name #destination to save png and yaml to (do not specify a file extension)\nuint32 resolution #pixel per meter\nstring map_name #map name on map server\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "file_name",
+          "comment": "destination to save png and yaml to (do not specify a file extension)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "resolution",
+          "comment": "pixel per meter",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "map_name",
+          "comment": "map name on map server",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ServerMapList": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n---\nstring[] names\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StartRecording": {
+      "description": "Copyright (c) 2021 - for information on the respective copyright owner",
+      "raw": "# Copyright (c) 2021 - for information on the respective copyright owner\n# see the NOTICE file and/or the repository https://github.com/boschglobal/locator_ros_bridge.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring name\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

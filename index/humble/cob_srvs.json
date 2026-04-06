@@ -1,0 +1,191 @@
+{
+  "name": "cob_srvs",
+  "version": "2.7.10",
+  "description": "This Package contains Care-O-bot specific service definitions.",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/cob_srvs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "cob_common",
+    "url": "https://github.com/4am-robotics/cob_common.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "Dock": {
+      "description": "",
+      "raw": "string frame_id\ngeometry_msgs/Pose[] poses\nstring stop_topic\nstring stop_message_field\nbool stop_compare_value\nfloat32 dist_threshold\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "stop_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "stop_message_field",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stop_compare_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dist_threshold",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetFloat": {
+      "description": "",
+      "raw": "float32 data\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetInt": {
+      "description": "",
+      "raw": "int32 data\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetString": {
+      "description": "",
+      "raw": "string data\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

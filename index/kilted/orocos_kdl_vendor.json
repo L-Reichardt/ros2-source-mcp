@@ -1,0 +1,47 @@
+{
+  "name": "orocos_kdl_vendor",
+  "version": "0.7.1",
+  "description": "Wrapper around orocos_kdl, providing nothing but a dependency on orocos_kdl on some systems.\n    On others, it fetches and builds orocos_kdl locally.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/orocos/orocos_kinematics_dynamics",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "orocos_kdl_vendor",
+    "url": "https://github.com/ros2/orocos_kdl_vendor.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_vendor_package"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "eigen",
+      "eigen3_cmake_module",
+      "liborocos-kdl-dev"
+    ],
+    "depended_on_by": [
+      "kdl_parser",
+      "moveit_core",
+      "moveit_kinematics",
+      "python_orocos_kdl_vendor",
+      "robot_state_publisher",
+      "tf2_eigen_kdl",
+      "tf2_geometry_msgs",
+      "tf2_kdl"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,45 @@
+{
+  "name": "autoware_perception_rviz_plugin",
+  "version": "0.4.0",
+  "description": "Contains plugins to visualize object detection outputs",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_rviz_plugins",
+    "url": "https://github.com/autowarefoundation/autoware_rviz_plugins.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "libboost-dev",
+      "qtbase5-dev"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "autoware_cmake"
+    ],
+    "runtime": [
+      "libqt5-widgets",
+      "rviz2"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "autoware_lint_common"
+    ],
+    "build_and_runtime": [
+      "autoware_lanelet2_extension",
+      "autoware_map_msgs",
+      "autoware_perception_msgs",
+      "rviz_common",
+      "rviz_default_plugins",
+      "tf2_geometry_msgs",
+      "tf2_ros"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

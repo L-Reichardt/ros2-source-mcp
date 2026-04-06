@@ -1,0 +1,422 @@
+{
+  "name": "marti_sensor_msgs",
+  "version": "1.6.1",
+  "description": "marti_sensor_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/marti_messages",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "marti_messages",
+    "url": "https://github.com/swri-robotics/marti_messages.git",
+    "branch": "ros2-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "mapviz_plugins"
+    ]
+  },
+  "messages": {
+    "Altitude": {
+      "description": "Altitude estimate for the origin of the frame specified by header.frame_id",
+      "raw": "# Altitude estimate for the origin of the frame specified by header.frame_id\nstd_msgs/Header               header      \nfloat64 altitude  # meters above sea level\nfloat64 sigma     # Uncertainty (standard deviation) of the altitude\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "meters above sea level",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "sigma",
+          "comment": "Uncertainty (standard deviation) of the altitude",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DifferentialMeasurement": {
+      "description": "A differential measurement between two places in the world",
+      "raw": "# A differential measurement between two places in the world\n#  Usually used with RTK-gps setups\n\nstd_msgs/Header  header           # The time and location where this measurement is taken from\nstring  base_frame_id    # The location we are measuring relative to\n\nfloat64 baseline_length  # Distance in meters between the two locations\nfloat64 baseline_length_variance # set > 1e14 to mark as invalid\nfloat64 heading          # Heading in degrees of the relative position vector\nfloat64 heading_variance # set > 1e14 to mark as invalid\nfloat64 pitch            # Pitch in degrees of the relative position vector\nfloat64 pitch_variance   # set > 1e14 to mark as invalid\nfloat64 roll             # Roll in degrees of the relative position vector\nfloat64 roll_variance    # set > 1e14 to mark as invalid\n\ngeometry_msgs/Vector3 position  # position measurement between this point and our reference location\n                                # coordinates are given in ENU meters\nfloat64[9] position_covariance  # Covariance for the position measurement\n                       # set > 1e14 to mark as invalid\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "The time and location where this measurement is taken from",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "base_frame_id",
+          "comment": "The location we are measuring relative to",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "baseline_length",
+          "comment": "Distance in meters between the two locations",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "baseline_length_variance",
+          "comment": "set > 1e14 to mark as invalid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "heading",
+          "comment": "Heading in degrees of the relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "heading_variance",
+          "comment": "set > 1e14 to mark as invalid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch",
+          "comment": "Pitch in degrees of the relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch_variance",
+          "comment": "set > 1e14 to mark as invalid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll",
+          "comment": "Roll in degrees of the relative position vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll_variance",
+          "comment": "set > 1e14 to mark as invalid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "position",
+          "comment": "position measurement between this point and our reference location",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "position_covariance",
+          "comment": "Covariance for the position measurement",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DioPortState": {
+      "description": "Message containing the value of a digital i/o port.  This is used by",
+      "raw": "# Message containing the value of a digital i/o port.  This is used by\n# the rtd_dm7820 driver to send digital input changes and accept\n# digital output commands.\n\nstd_msgs/Header header\n# header contains the time that the event occurred.\n\nuint64 value\n# The new state of the port.  The meaning of the value depends on how\n# the port is configured.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DioRealTimeData": {
+      "description": "Message for containing digital data obtained by a real-time DAQ.",
+      "raw": "# Message for containing digital data obtained by a real-time DAQ.\n\nstd_msgs/Header header\n# header contains the timestamp of when this data was obtained from\n# the device.\n\nfloat64 sample_frequency\n# The sampling frequency [Hz] of the DAQ.\n\nuint64 latest_sample_time\n# The most recent time (in sampling clock ticks) that the port was\n# sampled.\n\nuint16[] sample_states\nuint32[] sample_times\n# DAQ data filtered to only contain changes in states.  sample_times[]\n# is a list of clock ticks encoded as a (negative) offset from\n# latest_sample_time (ex: clock_time[i] = latest_sample_time -\n# sample_times[i]).  This encoding reduces the times from uint64 to\n# uint32.  sample_states[] are the port states at the corresponding\n# times.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "sample_frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "latest_sample_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "sample_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "sample_times",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Direction": {
+      "description": "Direction of vehicle motion",
+      "raw": "# Direction of vehicle motion\n#\n# When combined with an unsigned speed, this message can be used to determine\n# signed vehicle speed\n\nstd_msgs/Header  header           # The time and location of the measurement.\n                         # The x-axis in the sensor space is interpreted as the\n                         # axis of linear motion.\n\nint8 BACKWARD=-1\nint8 ZERO=0\nint8 FORWARD=1\nint8 UNKNOWN=127         # Indicates either unknown motion or motion that isn't clear if it is forwards\n                         # or backwards such as turning in place\n\nint8 direction           # The direction of motion. Positive is forward, negative is\n                         # backward, and 0 is stopped.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "The time and location of the measurement.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "BACKWARD",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ZERO",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FORWARD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "UNKNOWN",
+          "comment": "Indicates either unknown motion or motion that isn't clear if it is forwards",
+          "default": "127",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "direction",
+          "comment": "The direction of motion. Positive is forward, negative is",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Exposure": {
+      "description": "This message contains an an exposure value along with a",
+      "raw": "# This message contains an an exposure value along with a\n# message header.  This message is to keep the same format\n# that we have with Image and CameraInfo.\n\nstd_msgs/Header header                    # Header timestamp is the time when all \n                                 # images were acquired and synchronized.\n                                 # Header frame_id is the count of these\n                                 # messages sent since the start.\n                               \nuint64 value                     # Exposure value\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp is the time when all",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "value",
+          "comment": "Exposure value",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gyro": {
+      "description": "Single axis gyro reading.",
+      "raw": "# Single axis gyro reading.\n\nstd_msgs/Header  header           # The time and location of the measurement.\n                         # The x-axis in the sensor space is interpreted as the\n                         # axis of rotation.\n                         \nfloat64 angular_rate     # Angular rate measurement in radians / sec\nfloat64 variance         # 0 is interpreted as variance unknown",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "The time and location of the measurement.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angular_rate",
+          "comment": "Angular rate measurement in radians / sec",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "variance",
+          "comment": "0 is interpreted as variance unknown",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Velocity": {
+      "description": "Single axis linear velocity reading.",
+      "raw": "# Single axis linear velocity reading.\n\nstd_msgs/Header  header           # The time and location of the measurement.\n                         # The x-axis in the sensor space is interpreted as the\n                         # axis of linear motion.\n                         \nfloat64 velocity         # Velocity measurement in meters / sec\nfloat64 variance         # 0 is interpreted as variance unknown\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "The time and location of the measurement.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "Velocity measurement in meters / sec",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "variance",
+          "comment": "0 is interpreted as variance unknown",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelEncoder": {
+      "description": "Frequency from wheel encoder",
+      "raw": "# Frequency from wheel encoder\n#  If directional (below) is True, positive frequency means forward, and\n#   negative frequency means backward.\n#  If directional is False, frequency is non-negative and has no directional\n#   information\nfloat64 frequency\n\n# True if frequency sign is significant; false else\nbool directional\n\n# ID of the wheel with which this data is associated\nuint8 id",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "frequency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "directional",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelEncoderSet": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nWheelEncoder[] encoders",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WheelEncoder[]",
+          "name": "encoders",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetExposure": {
+      "description": "",
+      "raw": "bool auto_exposure\nint64 time\n---\nbool auto_exposure\nint64 time\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "auto_exposure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "auto_exposure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,70 @@
+{
+  "name": "metro_benchmark_msgs",
+  "version": "0.1.1",
+  "description": "ROS interfaces for recording compute time and other related benchmarking concepts",
+  "license": "BSD 3-clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "metrics_msgs",
+    "url": "https://github.com/MetroRobots/metrics_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "metro_benchmark_pub"
+    ]
+  },
+  "messages": {
+    "ComputeTime": {
+      "description": "Interface for recording the amount of time some compute function took",
+      "raw": "# Interface for recording the amount of time some compute function took\n# In the header, the frame_id should be the name of the function/task i.e. ComputePathToPose\n#                and the stamp should be the *completion* time\nstd_msgs/Header header\n# The duration should be populated with the total amount of time the function took.\n# This implies that the function started at header.stamp - duration\nbuiltin_interfaces/Duration duration\n\n# The id (optional) is for providing a unique identifier for the instance of the function running\n# e.g. ComputePathToPose0\nstring id\n\n# The parent id (optional) allows you to create nested benchmarked functions\nstring parent_id\n\n# Example: Assume running a ComputePathToPose action has two parts: updating the costmap, and running A*.\n#   Here is a plausible sequence of messages.\n#     {header: {stamp: {nanosec: 4e8}, frame_id: costmap_update}, duration: {nanosec: 2e8}, parent_id: global_plan0}\n#     {header: {stamp: {nanosec: 5e8}, frame_id: astar         }, duration: {nanosec: 1e8}, parent_id: global_plan0}\n#     {header: {stamp: {nanosec: 6e8}, frame_id: global_plan   }, duration: {nanosec: 5e8}, id: global_plan0}\n#\n#   Here is the same data in timeline form\n#   01234567 Time (x1e8)\n#    o----o  global_plan0\n#     o-o    costmap_update\n#       oo   global_plan\n#\n#   With the nested structure, we can deduce that global_plan0 took 5e8 overall, with 3e8 for the nested functions\n#   and 2e8 in the global_plan call itself.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "parent_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

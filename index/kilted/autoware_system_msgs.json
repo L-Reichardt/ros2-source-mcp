@@ -1,0 +1,216 @@
+{
+  "name": "autoware_system_msgs",
+  "version": "1.7.0",
+  "description": "Autoware system messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "diagnostic_msgs",
+      "geometry_msgs",
+      "nav_msgs",
+      "std_msgs",
+      "unique_identifier_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_msgs"
+    ]
+  },
+  "messages": {
+    "AutowareState": {
+      "description": "",
+      "raw": "uint8 INITIALIZING = 1\nuint8 WAITING_FOR_ROUTE = 2\nuint8 PLANNING = 3\nuint8 WAITING_FOR_ENGAGE = 4\nuint8 DRIVING = 5\nuint8 ARRIVED_GOAL = 6\nuint8 FINALIZING = 7\nbuiltin_interfaces/Time stamp\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "INITIALIZING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WAITING_FOR_ROUTE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PLANNING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WAITING_FOR_ENGAGE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVING",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARRIVED_GOAL",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FINALIZING",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HazardStatus": {
+      "description": "",
+      "raw": "uint8 NO_FAULT = 0\nuint8 SAFE_FAULT = 1\nuint8 LATENT_FAULT = 2\nuint8 SINGLE_POINT_FAULT = 3\nuint8 level\nbool emergency\nbool emergency_holding\ndiagnostic_msgs/DiagnosticStatus[] diag_no_fault\ndiagnostic_msgs/DiagnosticStatus[] diag_safe_fault\ndiagnostic_msgs/DiagnosticStatus[] diag_latent_fault\ndiagnostic_msgs/DiagnosticStatus[] diag_single_point_fault\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NO_FAULT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SAFE_FAULT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LATENT_FAULT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SINGLE_POINT_FAULT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "emergency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "emergency_holding",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/DiagnosticStatus[]",
+          "name": "diag_no_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/DiagnosticStatus[]",
+          "name": "diag_safe_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/DiagnosticStatus[]",
+          "name": "diag_latent_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/DiagnosticStatus[]",
+          "name": "diag_single_point_fault",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HazardStatusStamped": {
+      "description": "",
+      "raw": "builtin_interfaces/Time stamp\nautoware_system_msgs/HazardStatus status\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_system_msgs/HazardStatus",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

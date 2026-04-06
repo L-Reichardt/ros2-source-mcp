@@ -1,0 +1,49 @@
+{
+  "name": "mola_launcher",
+  "version": "1.2.1",
+  "description": "Launcher app for MOLA systems",
+  "license": "GPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/MOLAorg/mola/tree/develop/mola_launcher",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mola",
+    "url": "https://github.com/MOLAorg/mola.git",
+    "branch": "develop"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "ament_cmake_xmllint"
+    ],
+    "buildtool": [
+      "cmake",
+      "ament_cmake_gtest",
+      "ament_cmake"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "mola_kernel",
+      "mrpt_libbase",
+      "mrpt_libtclap"
+    ],
+    "depended_on_by": [
+      "mola",
+      "mola_lidar_odometry"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

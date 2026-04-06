@@ -1,0 +1,95 @@
+{
+  "name": "velodyne_msgs",
+  "version": "2.3.0",
+  "description": "ROS message definitions for Velodyne 3D LIDARs.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/velodyne_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/velodyne",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/velodyne/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "velodyne",
+    "url": "https://github.com/ros-drivers/velodyne.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "velodyne",
+      "velodyne_driver",
+      "velodyne_pointcloud"
+    ]
+  },
+  "messages": {
+    "VelodynePacket": {
+      "description": "Raw Velodyne LIDAR packet.",
+      "raw": "# Raw Velodyne LIDAR packet.\n\nbuiltin_interfaces/Time stamp              # packet timestamp\nuint8[1206] data        # packet contents\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "packet timestamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[1206]",
+          "name": "data",
+          "comment": "packet contents",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelodyneScan": {
+      "description": "Velodyne LIDAR scan packets.",
+      "raw": "# Velodyne LIDAR scan packets.\n\nstd_msgs/Header header         # standard ROS message header\nVelodynePacket[] packets        # vector of raw packets\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "standard ROS message header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "VelodynePacket[]",
+          "name": "packets",
+          "comment": "vector of raw packets",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

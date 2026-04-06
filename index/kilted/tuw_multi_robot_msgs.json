@@ -1,0 +1,893 @@
+{
+  "name": "tuw_multi_robot_msgs",
+  "version": "0.2.5",
+  "description": "The tuw_multi_robot_msgs package contains messages for sending graph, route and sync data over topics.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "tuw_msgs"
+    ]
+  },
+  "messages": {
+    "Graph": {
+      "description": "This message is used to transport a graph between two nodes.",
+      "raw": "#################################################################\n## This message is used to transport a graph between two nodes.\n## Each vertex has a set of points and a width describing the\n## shape of it and additionally successors and predecessors\n## to describe the overall structure of the graph\n##\n## Remark for the TUW_Multi_Robot_Router\n## !! all vertices have to be sorted by id\n## !! every id must be present...\n#################################################################\n\nstd_msgs/Header header      # Header for Timestamp and Id\ngeometry_msgs/Pose origin   # The origin of the map (respectively: offset (the map is moved))\nVertex[] vertices           # The vertices in the graph (in pixels)\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header for Timestamp and Id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "origin",
+          "comment": "The origin of the map (respectively: offset (the map is moved))",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Vertex[]",
+          "name": "vertices",
+          "comment": "The vertices in the graph (in pixels)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Order": {
+      "description": "Good to deliver from position A to B (via intermediate",
+      "raw": "#################################################################\n## Good to deliver from position A to B (via intermediate\n## positions)\n#################################################################\n\nstd_msgs/Header        header\nint32                  order_id\nstring                 order_name\nStation[]              stations\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "order_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "order_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Station[]",
+          "name": "stations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OrderArray": {
+      "description": "List of multiple orders",
+      "raw": "#################################################################\n## List of multiple orders\n#################################################################\n\nstd_msgs/Header header\ntuw_multi_robot_msgs/Order[] orders\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "tuw_multi_robot_msgs/Order[]",
+          "name": "orders",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OrderPosition": {
+      "description": "Current position of an order",
+      "raw": "#################################################################\n## Current position of an order\n#################################################################\n\nstd_msgs/Header        header\nint32                  order_id\ngeometry_msgs/Pose     position\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "order_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Pickup": {
+      "description": "notifies robot to pick up good",
+      "raw": "#################################################################\n## notifies robot to pick up good\n#################################################################\n\nstd_msgs/Header        header\nstring                 robot_name\nint32                  order_id\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "order_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotGoals": {
+      "description": "used to describe a set of destinations for a robot",
+      "raw": "#################################################################\n## used to describe a set of destinations for a robot\n## robot_name is used as id and often used as namespace for topics\n#################################################################\n\nstring robot_name                   # the name of the robot\ngeometry_msgs/Pose[] destinations   # Describes a set of destinations, where the last one is the final goal of the trip\n                                    # if there are more than one destinations the first one is the start pose\n                                    # else the current pose of the robot is used as start\n \n \n\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "the name of the robot",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "destinations",
+          "comment": "Describes a set of destinations, where the last one is the final goal of the trip",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotGoalsArray": {
+      "description": "Used to send goal requests for multiple robots to the multi robot planner",
+      "raw": "#################################################################\n## Used to send goal requests for multiple robots to the multi robot planner\n#################################################################\n\nstd_msgs/Header header  # the time of the generation\nRobotGoals[] robots     # contains a goals/checkpoints for each robot\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "the time of the generation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotGoals[]",
+          "name": "robots",
+          "comment": "contains a goals/checkpoints for each robot",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotInfo": {
+      "description": "Presents dynamic parameters of a robot",
+      "raw": "#################################################################\n## Presents dynamic parameters of a robot\n#################################################################\n\nstd_msgs/Header header                   # the creation time\nstring robot_name                        # the name of the robot (used in preconditions and topics)\ngeometry_msgs/PoseWithCovariance pose    # the robots current pose within the frame related to the msgs header\nint32 shape                              # the shape of the robots (see enums)\nfloat32[] shape_variables                # shape variables to define width height, ...\nRoutePrecondition sync                   # the current position in the last received plan (-1 means none)\nint32   mode                             # the mode of operation\nint32   status                           # the status of the robot\nint32   good_id                          # the good id attached to the robot\nint32   order_id                         # the order id scheduled to this robot (-1: none)\nint32   order_status                     # the status of the assigned order\n\n# mode\nint32 MODE_NA = 0                   # undefined mode\nint32 MODE_IDLE = 1                 # robot is idle\nint32 MODE_SEGMENT_FOLLOWING = 2    # robot is in mode segment following\nint32 MODE_PICKUP = 3               # robot is picking up goods\n\n# status\nint32 STATUS_DRIVING = 0            # robot is driving\nint32 STATUS_STOPPED = 1            # robot has stopped\nint32 STATUS_DONE = 2               # robot has finished its last job\nint32 STATUS_BROKEN = 3             # robot is broken and not ready for any task\n\n# good_id\nint32 GOOD_EMPTY = -1               # no goods attached\nint32 GOOD_NA = -2                  # undefined good\n\n# shape\nint32 SHAPE_CIRCLE = 0                 # robot is in shape of a circle    ShapeVars\n\n# order_status\nint32 ORDER_NONE = 0                # no order assigned\nint32 ORDER_APPROACH = 1            # the robot approaches the first station of the order\nint32 ORDER_PICKUP = 2              # the robot picks up a good at the station\nint32 ORDER_TRANSPORT = 3           # the robot currently transports a good from one station to another\nint32 ORDER_DROP = 4                # the robot drops a good at the last station of its order, finishing the order\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "the creation time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "the name of the robot (used in preconditions and topics)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose",
+          "comment": "the robots current pose within the frame related to the msgs header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "shape",
+          "comment": "the shape of the robots (see enums)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "shape_variables",
+          "comment": "shape variables to define width height, ...",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RoutePrecondition",
+          "name": "sync",
+          "comment": "the current position in the last received plan (-1 means none)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "mode",
+          "comment": "the mode of operation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "status",
+          "comment": "the status of the robot",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "good_id",
+          "comment": "the good id attached to the robot",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "order_id",
+          "comment": "the order id scheduled to this robot (-1: none)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "order_status",
+          "comment": "the status of the assigned order",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "MODE_NA",
+          "comment": "undefined mode",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_IDLE",
+          "comment": "robot is idle",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_SEGMENT_FOLLOWING",
+          "comment": "robot is in mode segment following",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "MODE_PICKUP",
+          "comment": "robot is picking up goods",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATUS_DRIVING",
+          "comment": "robot is driving",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATUS_STOPPED",
+          "comment": "robot has stopped",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATUS_DONE",
+          "comment": "robot has finished its last job",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATUS_BROKEN",
+          "comment": "robot is broken and not ready for any task",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "GOOD_EMPTY",
+          "comment": "no goods attached",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "GOOD_NA",
+          "comment": "undefined good",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "SHAPE_CIRCLE",
+          "comment": "robot is in shape of a circle    ShapeVars",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "ORDER_NONE",
+          "comment": "no order assigned",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "ORDER_APPROACH",
+          "comment": "the robot approaches the first station of the order",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "ORDER_PICKUP",
+          "comment": "the robot picks up a good at the station",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "ORDER_TRANSPORT",
+          "comment": "the robot currently transports a good from one station to another",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "ORDER_DROP",
+          "comment": "the robot drops a good at the last station of its order, finishing the order",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "Route": {
+      "description": "used to guide a single vehicle along segments",
+      "raw": "#################################################################\n## used to guide a single vehicle along segments\n#################################################################\nstd_msgs/Header header   # time of route generation\nRouteSegment[] segments  # route segments a robot has to follow",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "time of route generation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RouteSegment[]",
+          "name": "segments",
+          "comment": "route segments a robot has to follow",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoutePrecondition": {
+      "description": "Route Preconditions are used to sync robots on a route",
+      "raw": "#################################################################\n## Route Preconditions are used to sync robots on a route\n## e.g.: Each robot publishes its current step of its route\n## with such a message\n## The specific segments of a route are marked with such\n## preconditions to block a robot from entering a segment\n## until the sync message of the other robot has the right\n## route_segment_nr\n#################################################################\n\nstring robot_id                  # the robot name for the precondition\nint32 current_route_segment      # the segment nr of the route executed by the given robot",
+      "fields": [
+        {
+          "type": "string",
+          "name": "robot_id",
+          "comment": "the robot name for the precondition",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "current_route_segment",
+          "comment": "the segment nr of the route executed by the given robot",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteProgress": {
+      "description": "",
+      "raw": "std_msgs/Header header           \nint32[] passed   # A list of already passed route segment id's.\nint32 current    # The route segment id where the robot is currently located.\nint32[] todo     # A list of route segment id's which will be visited by the robot. If this list is empty, the robot has finished its route.\nfloat32 progress        # The route progress in %.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "passed",
+          "comment": "A list of already passed route segment id's.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "current",
+          "comment": "The route segment id where the robot is currently located.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "todo",
+          "comment": "A list of route segment id's which will be visited by the robot. If this list is empty, the robot has finished its route.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "progress",
+          "comment": "The route progress in %.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteSegment": {
+      "description": "Describes a segment on a route with: start, end, width",
+      "raw": "#################################################################\n## Describes a segment on a route with: start, end, width\n## and preconditions for synchronisation to other robots\n#################################################################\n\nint32 segment_id                        # the unique identifier of a segment\nRoutePrecondition[] preconditions       # the preconditions, which have to be met before entering a segment\ngeometry_msgs/Pose start                # startpoint of the segment\ngeometry_msgs/Pose end                  # endpoint of the segment\nfloat32 width                           # width of the segment \n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "segment_id",
+          "comment": "the unique identifier of a segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RoutePrecondition[]",
+          "name": "preconditions",
+          "comment": "the preconditions, which have to be met before entering a segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "start",
+          "comment": "startpoint of the segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "end",
+          "comment": "endpoint of the segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width",
+          "comment": "width of the segment",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouterStatus": {
+      "description": "A message to publish the status of the last route",
+      "raw": "#################################################################\n## A message to publish the status of the last route\n## generation\n#################################################################\n\nint32 id # the unique id of the new plan\nbool success # true if a routing table was found to the given scenario\nstring[] missing_robots # if the plan fails because of absent robots, these robots are listed here\nint32 duration # the time until a routing table was found\nint32 overall_path_length # the overall path length in the routing table (calculated using weights)\nint32 longest_path_length # the longest path length in a routing table (calculated using weights)\nint32 priority_scheduling_attemps # shows how often robot priorities are exchanged\nint32 speed_scheduling_attemps # shows how many robots speed was reduced during planning",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "the unique id of the new plan",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true if a routing table was found to the given scenario",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "missing_robots",
+          "comment": "if the plan fails because of absent robots, these robots are listed here",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "duration",
+          "comment": "the time until a routing table was found",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "overall_path_length",
+          "comment": "the overall path length in the routing table (calculated using weights)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "longest_path_length",
+          "comment": "the longest path length in a routing table (calculated using weights)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "priority_scheduling_attemps",
+          "comment": "shows how often robot priorities are exchanged",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "speed_scheduling_attemps",
+          "comment": "shows how many robots speed was reduced during planning",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Station": {
+      "description": "Station for Robots to Drive to",
+      "raw": "#################################################################\n## Station for Robots to Drive to\n#################################################################\n\nstd_msgs/Header        header       # header\nint32                  id           # station ID\nstring                 name         # station name\ngeometry_msgs/Pose     pose         # station position",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "station ID",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "station name",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "station position",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StationArray": {
+      "description": "Array of Stations for Robots to Drive to",
+      "raw": "#################################################################\n## Array of Stations for Robots to Drive to\n#################################################################\n\nstd_msgs/Header header      # header\nStation[]       stations    # array of stations\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Station[]",
+          "name": "stations",
+          "comment": "array of stations",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Vertex": {
+      "description": "A single vertex in a graph",
+      "raw": "#################################################################\n## A single vertex in a graph\n## Each vertex of the same graph must have a unique id.\n## Successors and Predecessors must have a common start or end\n## point\n#################################################################\nuint32 id                   # Vertex id\nbool valid                  # true if it can be used for planning\ngeometry_msgs/Point[] path  # points describing a path from the vertex start to the vertex endpoint\n                            #    the first point in the array reprecents the start and the last the endpoint\n                            #    this points can also be used by the vehciles local path following algorithm \nuint32 weight               # the weight of the vertex (e.g. length of the segment)\nfloat32 width               # fee space next to the vertex\nuint32[] successors         # edges to successors\nuint32[] predecessors       # edges to predecessor\n \n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "Vertex id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid",
+          "comment": "true if it can be used for planning",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "path",
+          "comment": "points describing a path from the vertex start to the vertex endpoint",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "weight",
+          "comment": "the weight of the vertex (e.g. length of the segment)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "width",
+          "comment": "fee space next to the vertex",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "successors",
+          "comment": "edges to successors",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "predecessors",
+          "comment": "edges to predecessor",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "StationManagerControlProtocol": {
+      "description": "Protocol to Send and Receive Station Management Commands",
+      "raw": "#################################################################\n## Protocol to Send and Receive Station Management Commands\n#################################################################\n\nstring      request         # request\nstring      addition        # addition, holds information to the request\n\n# request constants\nstring LOAD = load          # command to load a file (addition is the file path)\nstring SAVE = save          # command to save a file (addition is the file path)\nstring UPDATE = update      # command to define update policy\n\nstring ONCE = once          # addition to publish data once on request\nstring CHANGE = change      # addition to publish data on ever change\n\n---\n\nstring      response        # response string\n\n# response constants\nstring EXECUTED = executed  # response if the request could be executed successful\nstring FAILED = failed      # response if the request could not be executed successful\nstring ERROR = error        # response if the request is unknown",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "request",
+          "comment": "request",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "addition",
+          "comment": "addition, holds information to the request",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "LOAD",
+          "comment": "command to load a file (addition is the file path)",
+          "default": "load",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SAVE",
+          "comment": "command to save a file (addition is the file path)",
+          "default": "save",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "UPDATE",
+          "comment": "command to define update policy",
+          "default": "update",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ONCE",
+          "comment": "addition to publish data once on request",
+          "default": "once",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CHANGE",
+          "comment": "addition to publish data on ever change",
+          "default": "change",
+          "is_constant": true
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "response",
+          "comment": "response string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "EXECUTED",
+          "comment": "response if the request could be executed successful",
+          "default": "executed",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FAILED",
+          "comment": "response if the request could not be executed successful",
+          "default": "failed",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ERROR",
+          "comment": "response if the request is unknown",
+          "default": "error",
+          "is_constant": true
+        }
+      ]
+    },
+    "StationManagerStationProtocol": {
+      "description": "Protocol to Send and Receive Control Commands",
+      "raw": "#################################################################\n## Protocol to Send and Receive Control Commands\n#################################################################\n\nstring                          request         # request string\ntuw_multi_robot_msgs/Station    station         # station message\n\n# request constants\nstring APPEND = append                          # request to append sent station\nstring REMOVE = remove                          # request to remove sent station\n\n---\n\nstring                          response        # response string\n\n# response constants\nstring EXECUTED = executed                      # response if the request could be executed successful\nstring FAILED = failed                          # response if the request could not be executed successful\nstring ERROR = error                            # response if the request is unknown",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "request",
+          "comment": "request string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "tuw_multi_robot_msgs/Station",
+          "name": "station",
+          "comment": "station message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "APPEND",
+          "comment": "request to append sent station",
+          "default": "append",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "REMOVE",
+          "comment": "request to remove sent station",
+          "default": "remove",
+          "is_constant": true
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "response",
+          "comment": "response string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "EXECUTED",
+          "comment": "response if the request could be executed successful",
+          "default": "executed",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FAILED",
+          "comment": "response if the request could not be executed successful",
+          "default": "failed",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ERROR",
+          "comment": "response if the request is unknown",
+          "default": "error",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "actions": {
+    "FollowRoute": {
+      "description": "goal definition",
+      "raw": "#goal definition\nstring behaviour_tree\ntuw_multi_robot_msgs/Route route\n---\n#result definition\nstd_msgs/Empty result\n---\n#feedback definition\ntuw_multi_robot_msgs/RouteProgress route_progress",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "behaviour_tree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "tuw_multi_robot_msgs/Route",
+          "name": "route",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "tuw_multi_robot_msgs/RouteProgress",
+          "name": "route_progress",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

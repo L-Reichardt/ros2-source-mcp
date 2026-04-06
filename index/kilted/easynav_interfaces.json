@@ -1,0 +1,255 @@
+{
+  "name": "easynav_interfaces",
+  "version": "0.3.2",
+  "description": "Easy Navigation: Message, Service, and Action definitions.",
+  "license": "GPL-3.0-only",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "easynav",
+    "url": "https://github.com/EasyNavigation/EasyNavigation.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "nav_msgs"
+    ],
+    "depended_on_by": [
+      "easynav",
+      "easynav_support_py",
+      "easynav_system",
+      "easynav_tools"
+    ]
+  },
+  "messages": {
+    "GoalManagerInfo": {
+      "description": "",
+      "raw": "uint8 IDLE=0\nuint8 ACTIVE=1\n\nuint8 status\n\nnav_msgs/Goals goals\n\nfloat64 position_distance\nfloat64 angle_distance\nfloat64 position_tolerance\nfloat64 angle_tolerance\n\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "IDLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACTIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/Goals",
+          "name": "goals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angle_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angle_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavigationControl": {
+      "description": "A message to represent the status of the navigation system",
+      "raw": "# A message to represent the status of the navigation system\n\nuint8 REQUEST=0\nuint8 REJECT=1\nuint8 ACCEPT=2   \nuint8 FEEDBACK=3\nuint8 FINISHED=4\nuint8 FAILED=5\nuint8 CANCEL=6\nuint8 CANCELLED=7\nuint8 ERROR=8\n\nuint8 type\n\n# Message header\nstd_msgs/Header header\n\n# Message sequence number\nint64 seq\n\n# A unique identifier for nav user\nstring user_id\nstring nav_current_user_id\n\n# The current goal reuested if status == REQUEST\n# Inform the current goal reuested otherwise\nnav_msgs/Goals goals\n\n# Message to provide additional information about the status\nstring status_message\n\n# Feedback extra information ===================================================== \n# if status == FEEDBACK || FINISHED || PREEMPTED || FAILED || CANCELED\n\n# Current robot position\ngeometry_msgs/PoseStamped current_pose\n\n# Total time navigating towards this goal\nbuiltin_interfaces/Duration navigation_time\n\n# Estimated remaining time to reach the goal\nbuiltin_interfaces/Duration estimated_time_remaining\n\n# Amount of distance that the robot has covered since it received this goal\nfloat32 distance_covered\n\n# Estimated remaining distance to the goal\nfloat32 distance_to_goal\n# Feedback extra information ===================================================== \n\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "REQUEST",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REJECT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ACCEPT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FEEDBACK",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FINISHED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANCEL",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANCELLED",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "user_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "nav_current_user_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/Goals",
+          "name": "goals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "current_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "navigation_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "estimated_time_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_covered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

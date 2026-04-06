@@ -1,0 +1,361 @@
+{
+  "name": "create_msgs",
+  "version": "3.1.0",
+  "description": "Common message definitions for create_robot",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/create_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "create_robot",
+    "url": "https://github.com/AutonomyLab/create_robot.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "create_driver",
+      "create_robot"
+    ]
+  },
+  "messages": {
+    "Bumper": {
+      "description": "Contact sensors",
+      "raw": "std_msgs/Header header\n\n# Contact sensors\nbool is_left_pressed\nbool is_right_pressed\n\n# Bumper light sensors (Create 2 only) in order from left to right\n# Value = true if an obstacle detected\nbool is_light_left\nbool is_light_front_left\nbool is_light_center_left\nbool is_light_center_right\nbool is_light_front_right\nbool is_light_right\n\n# Raw light sensor signals\n# Values in range [0, 4095]\nuint16 light_signal_left\nuint16 light_signal_front_left\nuint16 light_signal_center_left\nuint16 light_signal_center_right\nuint16 light_signal_front_right\nuint16 light_signal_right\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_left_pressed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_right_pressed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_light_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_light_front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_light_center_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_light_center_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_light_front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_light_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "light_signal_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "light_signal_front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "light_signal_center_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "light_signal_center_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "light_signal_front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "light_signal_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ChargingState": {
+      "description": "",
+      "raw": "uint8 CHARGE_NONE=0\nuint8 CHARGE_RECONDITION=1\nuint8 CHARGE_FULL=2\nuint8 CHARGE_TRICKLE=3\nuint8 CHARGE_WAITING=4\nuint8 CHARGE_FAULT=5\n\nstd_msgs/Header header\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CHARGE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHARGE_RECONDITION",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHARGE_FULL",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHARGE_TRICKLE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHARGE_WAITING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHARGE_FAULT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Cliff": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbool is_cliff_left\nbool is_cliff_front_left\nbool is_cliff_right\nbool is_cliff_front_right\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_cliff_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_cliff_front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_cliff_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_cliff_front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DefineSong": {
+      "description": "",
+      "raw": "uint8 song            # song number [0-3]\nuint8 length          # song length [1-16]\nuint8[] notes         # notes defined by the MIDI note numbering scheme. Notes outside the range of [31-127] are rest notes.\nfloat32[] durations   # durations in seconds. Maximum duration is 255/64.\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "song",
+          "comment": "song number [0-3]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "length",
+          "comment": "song length [1-16]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "notes",
+          "comment": "notes defined by the MIDI note numbering scheme. Notes outside the range of [31-127] are rest notes.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "durations",
+          "comment": "durations in seconds. Maximum duration is 255/64.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Mode": {
+      "description": "",
+      "raw": "uint8 MODE_OFF=0\nuint8 MODE_PASSIVE=1\nuint8 MODE_SAFE=2\nuint8 MODE_FULL=3\n\nstd_msgs/Header header\nuint8 mode\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "MODE_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_PASSIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_SAFE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_FULL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotorSetpoint": {
+      "description": "For the main and side brush motors, provide a duty cycle in the range [-1, 1]",
+      "raw": "# For the main and side brush motors, provide a duty cycle in the range [-1, 1]\n# The range of acceptable values for the vacuum motor is [0, 1]\nfloat32 duty_cycle\n\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "duty_cycle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlaySong": {
+      "description": "",
+      "raw": "uint8 song      # song number [0-3]\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "song",
+          "comment": "song number [0-3]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

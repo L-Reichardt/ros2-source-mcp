@@ -1,0 +1,67 @@
+{
+  "name": "web_video_server",
+  "version": "3.1.0",
+  "description": "HTTP Streaming of ROS Image Topics in Multiple Formats",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/web_video_server",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/web_video_server/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/web_video_server",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "web_video_server",
+    "url": "https://github.com/RobotWebTools/web_video_server.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "pluginlib",
+      "rclcpp_components"
+    ],
+    "buildtool": [
+      "ament_cmake_ros",
+      "pkg-config"
+    ],
+    "runtime": [
+      "pluginlib",
+      "rclcpp_components"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_cmake_clang_tidy",
+      "ament_cmake_copyright",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_xmllint",
+      "ament_cmake_uncrustify",
+      "ros_environment"
+    ],
+    "build_and_runtime": [
+      "async_web_server_cpp",
+      "boost",
+      "cv_bridge",
+      "ffmpeg",
+      "image_transport",
+      "libopencv-dev",
+      "rclcpp",
+      "rmw",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "leo_bringup"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

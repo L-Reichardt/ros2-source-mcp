@@ -1,0 +1,60 @@
+{
+  "name": "dbw_fca_can",
+  "version": "2.1.16",
+  "description": "Drive-by-wire interface to the Dataspeed Inc. Chrysler Pacifica DBW kit",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://dataspeedinc.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dbw_ros",
+    "url": "https://bitbucket.org/dataspeedinc/dbw_ros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "dataspeed_can_msg_filters"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "dataspeed_can_usb",
+      "dbw_fca_description",
+      "dataspeed_ulc_can"
+    ],
+    "test": [
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_components",
+      "dataspeed_dbw_common",
+      "std_msgs",
+      "geometry_msgs",
+      "sensor_msgs",
+      "can_msgs",
+      "dbw_fca_msgs"
+    ],
+    "depended_on_by": [
+      "dbw_fca",
+      "dbw_fca_joystick_demo"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

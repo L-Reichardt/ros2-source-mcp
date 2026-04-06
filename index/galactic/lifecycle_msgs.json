@@ -1,0 +1,517 @@
+{
+  "name": "lifecycle_msgs",
+  "version": "1.0.3",
+  "description": "A package containing some lifecycle related message and service definitions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "cascade_lifecycle_msgs",
+      "hardware_interface",
+      "launch_ros",
+      "lifecycle",
+      "lifecycle",
+      "nav2_behavior_tree",
+      "nav2_behavior_tree",
+      "nav2_lifecycle_manager",
+      "nav2_lifecycle_manager",
+      "nav2_simple_commander",
+      "nav2_util",
+      "plansys2_domain_expert",
+      "plansys2_executor",
+      "plansys2_lifecycle_manager",
+      "plansys2_planner",
+      "plansys2_problem_expert",
+      "plansys2_terminal",
+      "rcl_lifecycle",
+      "rcl_lifecycle",
+      "rclc_examples",
+      "rclc_examples",
+      "rclc_lifecycle",
+      "rclcpp_cascade_lifecycle",
+      "rclcpp_lifecycle",
+      "rclcpp_lifecycle",
+      "ros2_socketcan",
+      "ros2lifecycle",
+      "tracetools_test",
+      "tracetools_test",
+      "udp_driver",
+      "ur_controllers"
+    ]
+  },
+  "messages": {
+    "State": {
+      "description": "Primary state definitions as depicted in:",
+      "raw": "# Primary state definitions as depicted in:\n# http://design.ros2.org/articles/node_lifecycle.html\n\n# These are the primary states. State changes can only be requested when the\n# node is in one of these states.\n\n# Indicates state has not yet been set.\nuint8 PRIMARY_STATE_UNKNOWN = 0\n\n# This is the life cycle state the node is in immediately after being\n# instantiated.\nuint8 PRIMARY_STATE_UNCONFIGURED = 1\n\n# This state represents a node that is not currently performing any processing.\nuint8 PRIMARY_STATE_INACTIVE = 2\n\n# This is the main state of the node’s life cycle. While in this state, the node\n# performs any processing, responds to service requests, reads and processes\n# data, produces output, etc.\nuint8 PRIMARY_STATE_ACTIVE = 3\n\n# The finalized state is the state in which the node ends immediately before\n# being destroyed.\nuint8 PRIMARY_STATE_FINALIZED = 4\n\n# Temporary intermediate states. When a transition is requested, the node\n# changes its state into one of these states.\n\n# In this transition state the node’s onConfigure callback will be called to\n# allow the node to load its configuration and conduct any required setup.\nuint8 TRANSITION_STATE_CONFIGURING = 10\n\n# In this transition state the node’s callback onCleanup will be called to clear\n# all state and return the node to a functionally equivalent state as when\n# first created.\nuint8 TRANSITION_STATE_CLEANINGUP = 11\n\n# In this transition state the callback onShutdown will be executed to do any\n# cleanup necessary before destruction.\nuint8 TRANSITION_STATE_SHUTTINGDOWN = 12\n\n# In this transition state the callback onActivate will be executed to do any\n# final preparations to start executing.\nuint8 TRANSITION_STATE_ACTIVATING = 13\n\n# In this transition state the callback onDeactivate will be executed to do any\n# cleanup to start executing, and reverse the onActivate changes.\nuint8 TRANSITION_STATE_DEACTIVATING = 14\n\n# This transition state is where any error may be cleaned up.\nuint8 TRANSITION_STATE_ERRORPROCESSING = 15\n\n# The state id value from the above definitions.\nuint8 id\n\n# A text label of the state.\nstring label\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PRIMARY_STATE_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMARY_STATE_UNCONFIGURED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMARY_STATE_INACTIVE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMARY_STATE_ACTIVE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMARY_STATE_FINALIZED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_STATE_CONFIGURING",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_STATE_CLEANINGUP",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_STATE_SHUTTINGDOWN",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_STATE_ACTIVATING",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_STATE_DEACTIVATING",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_STATE_ERRORPROCESSING",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Transition": {
+      "description": "Default values for transitions as described in:",
+      "raw": "# Default values for transitions as described in:\n# http://design.ros2.org/articles/node_lifecycle.html\n\n# Reserved [0-9], publicly available transitions.\n# When a node is in one of these primary states, these transitions can be\n# invoked.\n\n# This transition will instantiate the node, but will not run any code beyond\n# the constructor.\nuint8 TRANSITION_CREATE = 0\n\n# The node’s onConfigure callback will be called to allow the node to load its\n# configuration and conduct any required setup.\nuint8 TRANSITION_CONFIGURE = 1\n\n# The node’s callback onCleanup will be called in this transition to allow the\n# node to load its configuration and conduct any required setup.\nuint8 TRANSITION_CLEANUP = 2\n\n# The node's callback onActivate will be executed to do any final preparations\n# to start executing.\nuint8 TRANSITION_ACTIVATE = 3\n\n# The node's callback onDeactivate will be executed to do any cleanup to start\n# executing, and reverse the onActivate changes.\nuint8 TRANSITION_DEACTIVATE = 4\n\n# This signals shutdown during an unconfigured state, the node's callback\n# onShutdown will be executed to do any cleanup necessary before destruction.\nuint8 TRANSITION_UNCONFIGURED_SHUTDOWN  = 5\n\n# This signals shutdown during an inactive state, the node's callback onShutdown\n# will be executed to do any cleanup necessary before destruction.\nuint8 TRANSITION_INACTIVE_SHUTDOWN = 6\n\n# This signals shutdown during an active state, the node's callback onShutdown\n# will be executed to do any cleanup necessary before destruction.\nuint8 TRANSITION_ACTIVE_SHUTDOWN = 7\n\n# This transition will simply cause the deallocation of the node.\nuint8 TRANSITION_DESTROY = 8\n\n# Reserved [10-69], private transitions\n# These transitions are not publicly available and cannot be invoked by a user.\n# The following transitions are implicitly invoked based on the callback\n# feedback of the intermediate transition states.\nuint8 TRANSITION_ON_CONFIGURE_SUCCESS = 10\nuint8 TRANSITION_ON_CONFIGURE_FAILURE = 11\nuint8 TRANSITION_ON_CONFIGURE_ERROR = 12\n\nuint8 TRANSITION_ON_CLEANUP_SUCCESS = 20\nuint8 TRANSITION_ON_CLEANUP_FAILURE = 21\nuint8 TRANSITION_ON_CLEANUP_ERROR = 22\n\nuint8 TRANSITION_ON_ACTIVATE_SUCCESS = 30\nuint8 TRANSITION_ON_ACTIVATE_FAILURE = 31\nuint8 TRANSITION_ON_ACTIVATE_ERROR = 32\n\nuint8 TRANSITION_ON_DEACTIVATE_SUCCESS = 40\nuint8 TRANSITION_ON_DEACTIVATE_FAILURE = 41\nuint8 TRANSITION_ON_DEACTIVATE_ERROR = 42\n\nuint8 TRANSITION_ON_SHUTDOWN_SUCCESS = 50\nuint8 TRANSITION_ON_SHUTDOWN_FAILURE = 51\nuint8 TRANSITION_ON_SHUTDOWN_ERROR = 52\n\nuint8 TRANSITION_ON_ERROR_SUCCESS = 60\nuint8 TRANSITION_ON_ERROR_FAILURE = 61\nuint8 TRANSITION_ON_ERROR_ERROR = 62\n\n# Reserved [90-99]. Transition callback success values.\n# These return values ought to be set as a return value for each callback.\n# Depending on which return value, the transition will be executed correctly or\n# fallback/error callbacks will be triggered.\n\n# The transition callback successfully performed its required functionality.\nuint8 TRANSITION_CALLBACK_SUCCESS = 97\n\n# The transition callback failed to perform its required functionality.\nuint8 TRANSITION_CALLBACK_FAILURE = 98\n\n# The transition callback encountered an error that requires special cleanup, if\n# possible.\nuint8 TRANSITION_CALLBACK_ERROR = 99\n\n##\n## Fields\n##\n\n# The transition id from above definitions.\nuint8 id\n\n# A text label of the transition.\nstring label\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "TRANSITION_CREATE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_CONFIGURE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_CLEANUP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ACTIVATE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_DEACTIVATE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_UNCONFIGURED_SHUTDOWN",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_INACTIVE_SHUTDOWN",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ACTIVE_SHUTDOWN",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_DESTROY",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_CONFIGURE_SUCCESS",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_CONFIGURE_FAILURE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_CONFIGURE_ERROR",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_CLEANUP_SUCCESS",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_CLEANUP_FAILURE",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_CLEANUP_ERROR",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_ACTIVATE_SUCCESS",
+          "comment": "",
+          "default": "30",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_ACTIVATE_FAILURE",
+          "comment": "",
+          "default": "31",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_ACTIVATE_ERROR",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_DEACTIVATE_SUCCESS",
+          "comment": "",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_DEACTIVATE_FAILURE",
+          "comment": "",
+          "default": "41",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_DEACTIVATE_ERROR",
+          "comment": "",
+          "default": "42",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_SHUTDOWN_SUCCESS",
+          "comment": "",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_SHUTDOWN_FAILURE",
+          "comment": "",
+          "default": "51",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_SHUTDOWN_ERROR",
+          "comment": "",
+          "default": "52",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_ERROR_SUCCESS",
+          "comment": "",
+          "default": "60",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_ERROR_FAILURE",
+          "comment": "",
+          "default": "61",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_ON_ERROR_ERROR",
+          "comment": "",
+          "default": "62",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_CALLBACK_SUCCESS",
+          "comment": "",
+          "default": "97",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_CALLBACK_FAILURE",
+          "comment": "",
+          "default": "98",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSITION_CALLBACK_ERROR",
+          "comment": "",
+          "default": "99",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TransitionDescription": {
+      "description": "The transition id and label of this description.",
+      "raw": "# The transition id and label of this description.\nTransition transition\n\n# The current state from which this transition transitions.\nState start_state\n\n# The desired target state of this transition.\nState goal_state\n",
+      "fields": [
+        {
+          "type": "Transition",
+          "name": "transition",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "State",
+          "name": "start_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "State",
+          "name": "goal_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TransitionEvent": {
+      "description": "The time point at which this event occurred.",
+      "raw": "# The time point at which this event occurred.\nuint64 timestamp\n\n# The id and label of this transition event.\nTransition transition\n\n# The starting state from which this event transitioned.\nState start_state\n\n# The end state of this transition event.\nState goal_state\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Transition",
+          "name": "transition",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "State",
+          "name": "start_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "State",
+          "name": "goal_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ChangeState": {
+      "description": "The requested transition.",
+      "raw": "# The requested transition.\n#\n# This change state service will fail if the transition is not possible.\nTransition transition\n---\n\n# Indicates whether the service was able to initiate the state transition\nbool success\n",
+      "request_fields": [
+        {
+          "type": "Transition",
+          "name": "transition",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetAvailableStates": {
+      "description": "Array of possible states that can be transitioned to.",
+      "raw": "---\n# Array of possible states that can be transitioned to.\nState[] available_states\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "State[]",
+          "name": "available_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetAvailableTransitions": {
+      "description": "An array of the possible start_state-goal_state transitions",
+      "raw": "---\n# An array of the possible start_state-goal_state transitions\nTransitionDescription[] available_transitions\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "TransitionDescription[]",
+          "name": "available_transitions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetState": {
+      "description": "The current state-machine state of the node.",
+      "raw": "---\n# The current state-machine state of the node.\nState current_state\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "State",
+          "name": "current_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

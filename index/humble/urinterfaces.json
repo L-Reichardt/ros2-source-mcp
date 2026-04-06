@@ -1,0 +1,1111 @@
+{
+  "name": "urinterfaces",
+  "version": "7.0.0",
+  "description": "A package containing ROS2 ur message definitions.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "urinterfaces",
+    "url": "https://github.com/UniversalRobots/urinterfaces.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "sensor_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime",
+      "std_msgs",
+      "geometry_msgs",
+      "sensor_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "ActiveTCP": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nstring data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Analog": {
+      "description": "",
+      "raw": "uint8 CURRENT = 0\nuint8 VOLTAGE = 1\n\nuint8 pin\nuint8 domain # can be VOLTAGE or CURRENT\nfloat32 value\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CURRENT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VOLTAGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "pin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "domain",
+          "comment": "can be VOLTAGE or CURRENT",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AnalogIO": {
+      "description": "Note: The array indices do not necessarily match the pin number",
+      "raw": "# Note: The array indices do not necessarily match the pin number\nAnalog[] analog_inputs\nAnalog[] analog_outputs\n",
+      "fields": [
+        {
+          "type": "Analog[]",
+          "name": "analog_inputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Analog[]",
+          "name": "analog_outputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AnalogIOStateStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nAnalogIO io_state\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AnalogIO",
+          "name": "io_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AnalogStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nAnalog data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Analog",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoolStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nbool data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControlCycle": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint64 data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Current": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Digital": {
+      "description": "",
+      "raw": "uint8 pin\nbool state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "pin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DigitalIO": {
+      "description": "Note: The array indices do not necessarily match the pin number",
+      "raw": "# Note: The array indices do not necessarily match the pin number\nDigital[] digital_inputs\nDigital[] digital_outputs\n",
+      "fields": [
+        {
+          "type": "Digital[]",
+          "name": "digital_inputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Digital[]",
+          "name": "digital_outputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DigitalIOStateStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nDigitalIO configurable_io\nDigitalIO standard_io\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DigitalIO",
+          "name": "configurable_io",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DigitalIO",
+          "name": "standard_io",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DigitalStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nDigital data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Digital",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DoubleMultiArrayStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Float32Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Float64Stamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointMode": {
+      "description": "",
+      "raw": "uint8 JOINT_MODE_RESET=235\nuint8 JOINT_MODE_SHUTTING_DOWN=236\nuint8 JOINT_MODE_PART_D_CALIBRATION=237\nuint8 JOINT_MODE_BACKDRIVE=238\nuint8 JOINT_MODE_POWER_OFF=239\nuint8 JOINT_MODE_READY_FOR_POWER_OFF=240\nuint8 JOINT_MODE_NOT_RESPONDING=245\nuint8 JOINT_MODE_MOTOR_INITIALISATION=246\nuint8 JOINT_MODE_BOOTING=247\nuint8 JOINT_MODE_PART_D_CALIBRATION_ERROR=248\nuint8 JOINT_MODE_BOOTLOADER=249\nuint8 JOINT_MODE_CALIBRATION=250\nuint8 JOINT_MODE_VIOLATION=251\nuint8 JOINT_MODE_FAULT=252\nuint8 JOINT_MODE_RUNNING=253\nuint8 JOINT_MODE_IDLE=255\n\nstd_msgs/Header header\nuint8[6] joint_modes\nuint8 tool_mode\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_RESET",
+          "comment": "",
+          "default": "235",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_SHUTTING_DOWN",
+          "comment": "",
+          "default": "236",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_PART_D_CALIBRATION",
+          "comment": "",
+          "default": "237",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_BACKDRIVE",
+          "comment": "",
+          "default": "238",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_POWER_OFF",
+          "comment": "",
+          "default": "239",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_READY_FOR_POWER_OFF",
+          "comment": "",
+          "default": "240",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_NOT_RESPONDING",
+          "comment": "",
+          "default": "245",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_MOTOR_INITIALISATION",
+          "comment": "",
+          "default": "246",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_BOOTING",
+          "comment": "",
+          "default": "247",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_PART_D_CALIBRATION_ERROR",
+          "comment": "",
+          "default": "248",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_BOOTLOADER",
+          "comment": "",
+          "default": "249",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_CALIBRATION",
+          "comment": "",
+          "default": "250",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_VIOLATION",
+          "comment": "",
+          "default": "251",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_FAULT",
+          "comment": "",
+          "default": "252",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_RUNNING",
+          "comment": "",
+          "default": "253",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT_MODE_IDLE",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[6]",
+          "name": "joint_modes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "tool_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointTemperature": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32[6] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[6]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointVoltage": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64[6] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[6]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotMode": {
+      "description": "",
+      "raw": "int8 DISCONNECTED=0\nint8 CONFIRM_SAFETY=1\nint8 BOOTING=2\nint8 POWER_OFF=3\nint8 POWER_ON=4\nint8 IDLE=5\nint8 BACKDRIVE=6\nint8 RUNNING=7\nint8 UPDATING_FIRMWARE=8\n\nstd_msgs/Header header\nint8 data\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "DISCONNECTED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CONFIRM_SAFETY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BOOTING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "POWER_OFF",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "POWER_ON",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "IDLE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BACKDRIVE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "RUNNING",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "UPDATING_FIRMWARE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RuntimeState": {
+      "description": "",
+      "raw": "int8 PROGRAM_STATE_UNDEFINED=-1\nint8 PROGRAM_STATE_STOPPING=0\nint8 PROGRAM_STATE_STOPPED=1\nint8 PROGRAM_STATE_RUNNING=2\nint8 PROGRAM_STATE_PAUSING=3\nint8 PROGRAM_STATE_PAUSED=4\nint8 PROGRAM_STATE_RESUMING=5\nint8 PROGRAM_STATE_RETRACTING=6\n\nstd_msgs/Header header\nint8 data\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "PROGRAM_STATE_UNDEFINED",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PROGRAM_STATE_STOPPING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PROGRAM_STATE_STOPPED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PROGRAM_STATE_RUNNING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PROGRAM_STATE_PAUSING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PROGRAM_STATE_PAUSED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PROGRAM_STATE_RESUMING",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PROGRAM_STATE_RETRACTING",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SafetyStatus": {
+      "description": "",
+      "raw": "int8 NORMAL=1\nint8 REDUCED=2\nint8 PROTECTIVE_STOP=3\nint8 RECOVERY=4\nint8 SAFEGUARD_STOP=5\nint8 SYSTEM_EMERGENCY_STOP=6\nint8 ROBOT_EMERGENCY_STOP=7\nint8 VIOLATION=8\nint8 FAULT=9\nint8 VALIDATE_JOINT_ID=10\nint8 UNDEFINED_SAFETY_MODE=11\nint8 AUTOMATIC_MODE_SAFEGUARD_STOP=12\nint8 SYSTEM_THREE_POSITION_ENABLING_STOP=13\n\nstd_msgs/Header header\nint8 data\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "NORMAL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "REDUCED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PROTECTIVE_STOP",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "RECOVERY",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SAFEGUARD_STOP",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SYSTEM_EMERGENCY_STOP",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ROBOT_EMERGENCY_STOP",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "VIOLATION",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FAULT",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "VALIDATE_JOINT_ID",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "UNDEFINED_SAFETY_MODE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "AUTOMATIC_MODE_SAFEGUARD_STOP",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SYSTEM_THREE_POSITION_ENABLING_STOP",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpeedSliderFraction": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TCPState": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\ngeometry_msgs/Pose pose\ngeometry_msgs/Twist speed\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToolOutputMode": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint8 TOOL_OUTPUT=0\nuint8 TOOL_POWER=1\n\nuint8 output_mode\n\nuint8 OUTPUT_MODE_DISABLED=0\nuint8 OUTPUT_MODE_SINKING=1\nuint8 OUTPUT_MODE_SOURCING=2\nuint8 OUTPUT_MODE_PUSH_PULL=3\n\nuint8[2] output_pin_mode\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "TOOL_OUTPUT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TOOL_POWER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "output_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OUTPUT_MODE_DISABLED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTPUT_MODE_SINKING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTPUT_MODE_SOURCING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTPUT_MODE_PUSH_PULL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8[2]",
+          "name": "output_pin_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VoltageCurrentStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 voltage\nfloat64 current\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "current",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WorldModelNames": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nstd_msgs/String[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetAnalogOutput": {
+      "description": "Set an analog output to a given value.",
+      "raw": "# Set an analog output to a given value.\n# Multiple outputs can be set at once by providing more than one entry in the data array\nAnalog[] data\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "Analog[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetDigitalOutput": {
+      "description": "Set a digital output to a given value.",
+      "raw": "# Set a digital output to a given value.\n# Multiple outputs can be set at once by providing more than one entry in the data array\nDigital[] data\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "Digital[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetSpeedFraction": {
+      "description": "Set the speed slider on the teach pendant to the specified value.",
+      "raw": "# Set the speed slider on the teach pendant to the specified value.\n#\n# Value must be from [0; 1.0];\n\nfloat32 value\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "SetMode": {
+      "description": "This action is for setting the robot into a desired mode (e.g. RUNNING) and safety mode into a",
+      "raw": "# This action is for setting the robot into a desired mode (e.g. RUNNING) and safety mode into a\n# non-critical state (e.g. NORMAL or REDUCED), for example after a safety incident happened.\n\n# goal\nRobotMode target_robot_mode\n\n# Stop program execution before restoring the target mode. Can be used together with 'play_program'.\nbool stop_program\n\n# Play the currently loaded program after target mode is reached.#\n# NOTE: Requesting mode RUNNING in combination with this will make the robot continue the motion it\n# was doing before. This might probably lead into the same problem (protective stop, EM-Stop due to\n# faulty motion, etc.) If you want to be safe, set the 'stop_program' flag below and manually play\n# the program after robot state is returned to normal.\n# This flag will only be used when requesting mode RUNNING\nbool play_program\n\n---\n# result\nbool success\nstring message\n---\n# feedback\nint8 current_robot_mode\nint8 current_safety_mode\n",
+      "goal_fields": [
+        {
+          "type": "RobotMode",
+          "name": "target_robot_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stop_program",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "play_program",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "int8",
+          "name": "current_robot_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "current_safety_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

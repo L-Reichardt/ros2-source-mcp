@@ -1,0 +1,554 @@
+{
+  "name": "cob_msgs",
+  "version": "2.7.10",
+  "description": "Messages for representing state information, such as battery information and emergency stop status.",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "cob_common",
+    "url": "https://github.com/4am-robotics/cob_common.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "diagnostic_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "AccessPoint": {
+      "description": "This message communicates the state of the PR2's wifi access point.",
+      "raw": "# This message communicates the state of the PR2's wifi access point.\nstd_msgs/Header header\nstring essid\nstring macaddr\nint32 signal\nint32 noise\nint32 snr\nint32 channel\nstring rate\nstring tx_power\nint32 quality\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "essid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "macaddr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "signal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "noise",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "snr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "channel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "tx_power",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DashboardState": {
+      "description": "This message communicates state information that might be used by a dashboard application.",
+      "raw": "# This message communicates state information that might be used by a dashboard application.\ndiagnostic_msgs/DiagnosticStatus diagnostics_toplevel_state\n\ncob_msgs/PowerState power_state\n\ncob_msgs/EmergencyStopState emergency_stop_state\n",
+      "fields": [
+        {
+          "type": "diagnostic_msgs/DiagnosticStatus",
+          "name": "diagnostics_toplevel_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "cob_msgs/PowerState",
+          "name": "power_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "cob_msgs/EmergencyStopState",
+          "name": "emergency_stop_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EmergencyStopState": {
+      "description": "This message holds the emergency stop (EMStop) status of the robot. It detects wether an EMStop is caused by the safe...",
+      "raw": "# This message holds the emergency stop (EMStop) status of the robot. It detects wether an EMStop is caused by the safety laserscanner or the emergency stop buttons. Moreover, it gives signalizes wether the EMStop was confirmed (after Button press stop) and the system is free again.\n\n# Possible EMStop States\nint16 EMFREE = 0            # system operatign normal\nint16 EMSTOP = 1            # emergency stop is active (Button pressed; obstacle in safety field of scanner)\nint16 EMCONFIRMED = 2       # emergency stop was confirmed system is reinitializing and going back to normal\n\nbool emergency_button_stop  # true = emergency stop signal is issued by button pressed\nbool scanner_stop           # true = emergency stop signal is issued by scanner\nbool monitoring_stop        # true = emergency stop signal is issued by monitor\nbool user_interaction_stop  # true = emergency stop signal is issued by ui\nbool hardware_stop          # true = emergency stop signal is issued due to hardware failure \nbool bumper_stop            # true = emergency stop signal is issued by bumper\nbool fall_stop              # true = emergency stop signal is issued by fall-protecting sensors\nbool charge_stop            # true = emergency stop signal is issued due to charging process\n\nint16 emergency_state       # state (including confimation by key-switch), values see above",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "EMFREE",
+          "comment": "system operatign normal",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "EMSTOP",
+          "comment": "emergency stop is active (Button pressed; obstacle in safety field of scanner)",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "EMCONFIRMED",
+          "comment": "emergency stop was confirmed system is reinitializing and going back to normal",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "emergency_button_stop",
+          "comment": "true = emergency stop signal is issued by button pressed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "scanner_stop",
+          "comment": "true = emergency stop signal is issued by scanner",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "monitoring_stop",
+          "comment": "true = emergency stop signal is issued by monitor",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "user_interaction_stop",
+          "comment": "true = emergency stop signal is issued by ui",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hardware_stop",
+          "comment": "true = emergency stop signal is issued due to hardware failure",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bumper_stop",
+          "comment": "true = emergency stop signal is issued by bumper",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fall_stop",
+          "comment": "true = emergency stop signal is issued by fall-protecting sensors",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "charge_stop",
+          "comment": "true = emergency stop signal is issued due to charging process",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "emergency_state",
+          "comment": "state (including confimation by key-switch), values see above",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Network": {
+      "description": "",
+      "raw": "string macattr\nstring essid\nint32 channel\nint32 rssi\nint32 noise\nint32 beacon\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "macattr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "essid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "channel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "rssi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "noise",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "beacon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PowerState": {
+      "description": "This message communicates the state of the power system.",
+      "raw": "# This message communicates the state of the power system.\nstd_msgs/Header header\nfloat64 voltage                     # [V]\nfloat64 current                     # [A]\nfloat64 power_consumption           # [W] can only be calculated if not charging\nfloat64 remaining_capacity          # [Ah]\nfloat64 relative_remaining_capacity # [0..100] percent of maximum capacity (parameter max_capacity)\nbool connected                      # flag if robot is connected to external power or not (charging station or external charger)\nbool charging                       # flag if robot is charging (energy flow into battery)\nfloat64 time_remaining              # [h] estimated time to empty or fully charged\nfloat64 temperature                 # [Celsius] temperature of the battery\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "voltage",
+          "comment": "[V]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "current",
+          "comment": "[A]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "power_consumption",
+          "comment": "[W] can only be calculated if not charging",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "remaining_capacity",
+          "comment": "[Ah]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "relative_remaining_capacity",
+          "comment": "[0..100] percent of maximum capacity (parameter max_capacity)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "connected",
+          "comment": "flag if robot is connected to external power or not (charging station or external charger)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "charging",
+          "comment": "flag if robot is charging (energy flow into battery)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "time_remaining",
+          "comment": "[h] estimated time to empty or fully charged",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "temperature",
+          "comment": "[Celsius] temperature of the battery",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SafetyControllerState": {
+      "description": "",
+      "raw": "std_msgs/Header header\nbool has_wireless_emstop\nbool has_fall_sensors\nbool has_magnetic_safety_switch\n\nbool ack_needed\nbool emergency_button_stop\nbool brake_button_stop\nbool laser_stop\nbool wireless_stop\nbool fall_sensor_stop\nbool external_stop\n\nbool laser_bridged\nbool wireless_bridged\n\nbool magnetic_safety_switch\n\nbool laser_front_ok\nbool laser_left_ok\nbool laser_right_ok\n\nbool fall_sensor_front\nbool fall_sensor_left\nbool fall_sensor_right\nbool fall_sensor_released\n\nbool base_active\nbool torso_active\nbool base_enabled\nbool torso_enabled\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_wireless_emstop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_fall_sensors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_magnetic_safety_switch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "ack_needed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "emergency_button_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "brake_button_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "laser_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wireless_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fall_sensor_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "external_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "laser_bridged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wireless_bridged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "magnetic_safety_switch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "laser_front_ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "laser_left_ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "laser_right_ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fall_sensor_front",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fall_sensor_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fall_sensor_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fall_sensor_released",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "base_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "torso_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "base_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "torso_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SiteSurvey": {
+      "description": "",
+      "raw": "std_msgs/Header header\nNetwork[] networks\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Network[]",
+          "name": "networks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

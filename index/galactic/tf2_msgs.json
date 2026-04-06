@@ -1,0 +1,234 @@
+{
+  "name": "tf2_msgs",
+  "version": "0.17.5",
+  "description": "tf2_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/tf2_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "geometry2",
+    "url": "https://github.com/ros2/geometry2.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "builtin_interfaces",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "cartographer_ros",
+      "diff_drive_controller",
+      "geometry2",
+      "ign_rviz",
+      "ign_rviz_common",
+      "ign_rviz_plugins",
+      "mrpt2",
+      "naoqi_driver",
+      "plotjuggler_ros",
+      "rc_reason_clients",
+      "rclpy_message_converter",
+      "ros_ign_bridge",
+      "rosbridge_library",
+      "rosbridge_test_msgs",
+      "rqt_tf_tree",
+      "sbg_driver",
+      "system_fingerprint",
+      "tf2_kdl",
+      "tf2_ros",
+      "tf2_ros_py",
+      "tf2_tools",
+      "turtlebot3_fake_node"
+    ]
+  },
+  "messages": {
+    "TF2Error": {
+      "description": "",
+      "raw": "uint8 NO_ERROR = 0\nuint8 LOOKUP_ERROR = 1\nuint8 CONNECTIVITY_ERROR = 2\nuint8 EXTRAPOLATION_ERROR = 3\nuint8 INVALID_ARGUMENT_ERROR = 4\nuint8 TIMEOUT_ERROR = 5\nuint8 TRANSFORM_ERROR = 6\n\nuint8 error\nstring error_string\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NO_ERROR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOOKUP_ERROR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONNECTIVITY_ERROR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EXTRAPOLATION_ERROR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_ARGUMENT_ERROR",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TIMEOUT_ERROR",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRANSFORM_ERROR",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TFMessage": {
+      "description": "",
+      "raw": "geometry_msgs/TransformStamped[] transforms\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/TransformStamped[]",
+          "name": "transforms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "FrameGraph": {
+      "description": "",
+      "raw": "---\nstring frame_yaml\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "frame_yaml",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "LookupTransform": {
+      "description": "Simple API",
+      "raw": "#Simple API\nstring target_frame\nstring source_frame\nbuiltin_interfaces/Time source_time\nbuiltin_interfaces/Duration timeout\n\n#Advanced API\nbuiltin_interfaces/Time target_time\nstring fixed_frame\n\n#Whether or not to use the advanced API\nbool advanced\n\n---\ngeometry_msgs/TransformStamped transform\ntf2_msgs/TF2Error error\n---\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "target_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "source_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "target_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "fixed_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "advanced",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "geometry_msgs/TransformStamped",
+          "name": "transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "tf2_msgs/TF2Error",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    }
+  }
+}

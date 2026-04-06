@@ -1,0 +1,84 @@
+{
+  "name": "social_nav_msgs",
+  "version": "0.1.0",
+  "description": "ROS interfaces for social navigation",
+  "license": "BSD 3-clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "social_nav_ros",
+    "url": "https://github.com/MetroRobots/social_nav_ros.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "nav_2d_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "social_nav_util"
+    ]
+  },
+  "messages": {
+    "Pedestrian": {
+      "description": "pose and velocity are relative to the same frame",
+      "raw": "string identifier\n\n# pose and velocity are relative to the same frame\n# i.e. if a pedestrian starts at x=1, y=0, facing positive y (i.e. theta=90deg)\n#      and was walking forward at 1 m/s, the velocity should be x=0, y=1, theta=0\ngeometry_msgs/Pose2D pose\nnav_2d_msgs/Twist2D velocity\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "identifier",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose2D",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_2d_msgs/Twist2D",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Pedestrians": {
+      "description": "",
+      "raw": "std_msgs/Header header\nsocial_nav_msgs/Pedestrian[] pedestrians\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "social_nav_msgs/Pedestrian[]",
+          "name": "pedestrians",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

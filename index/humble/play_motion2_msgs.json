@@ -1,0 +1,359 @@
+{
+  "name": "play_motion2_msgs",
+  "version": "1.8.4",
+  "description": "Play a pre-recorded motion on a robot",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/play_motion2",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "play_motion2",
+    "url": "https://github.com/pal-robotics/play_motion2.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "play_motion2",
+      "play_motion_builder",
+      "rqt_play_motion_builder",
+      "rqt_play_motion_builder",
+      "talos_gazebo",
+      "tiago_gazebo",
+      "tiago_gazebo",
+      "tiago_pro_gazebo"
+    ]
+  },
+  "messages": {
+    "Motion": {
+      "description": "meta",
+      "raw": "string key\n\n# meta\nstring name\nstring usage\nstring description\n\nstring[] joints\nfloat64[] positions\nfloat64[] times_from_start\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "usage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "times_from_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddMotion": {
+      "description": "Add a motion",
+      "raw": "# Add a motion\n\nplay_motion2_msgs/Motion motion\nbool overwrite\n---\nbool success",
+      "request_fields": [
+        {
+          "type": "play_motion2_msgs/Motion",
+          "name": "motion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "overwrite",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetMotionInfo": {
+      "description": "Get the information of a motion",
+      "raw": "# Get the information of a motion\n\nstring motion_key\n\n---\n\nplay_motion2_msgs/Motion motion\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "motion_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "play_motion2_msgs/Motion",
+          "name": "motion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsJointListReady": {
+      "description": "Shows if a list of joints is ready",
+      "raw": "# Shows if a list of joints is ready\n\nstring[] joints\n\n---\n\nbool is_ready\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_ready",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsMotionReady": {
+      "description": "Shows whether the motion be can executed",
+      "raw": "# Shows whether the motion be can executed\n\nstring motion_key\n\n---\n\nbool is_ready\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "motion_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_ready",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListMotions": {
+      "description": "Show the list of motions availables",
+      "raw": "# Show the list of motions availables\n\n---\n\nstring[] motion_keys\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "motion_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RemoveMotion": {
+      "description": "Remove a motion",
+      "raw": "# Remove a motion\n\nstring motion_key\n---\nbool success",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "motion_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveMotion": {
+      "description": "",
+      "raw": "string motion_key\nstring filepath\n---\nbool success",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "motion_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "filepath",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "PlayMotion2": {
+      "description": "",
+      "raw": "string motion_name\nbool skip_planning\n\n---\n\nbool success\nstring error\n\n---\n\nbuiltin_interfaces/Time current_time\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "motion_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "skip_planning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "current_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlayMotion2Raw": {
+      "description": "",
+      "raw": "Motion motion\nbool skip_planning\n\n---\n\nbool success\nstring error\n\n---\n\nbuiltin_interfaces/Time current_time\n",
+      "goal_fields": [
+        {
+          "type": "Motion",
+          "name": "motion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "skip_planning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "current_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

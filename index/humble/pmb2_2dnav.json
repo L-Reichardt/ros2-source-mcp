@@ -1,0 +1,68 @@
+{
+  "name": "pmb2_2dnav",
+  "version": "4.21.0",
+  "description": "PMB2-specific launch files needed to run\n    navigation on the PMB2 robot.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/pmb2_simulation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "pmb2_navigation",
+    "url": "https://github.com/pal-robotics/pmb2_navigation.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake",
+      "pal_configuration_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "ament_index_python",
+      "diagnostic_aggregator",
+      "launch_pal",
+      "ros2launch",
+      "pal_maps",
+      "nav2_amcl",
+      "nav2_behavior_tree",
+      "nav2_behaviors",
+      "nav2_bt_navigator",
+      "nav2_controller",
+      "nav2_dwb_controller",
+      "nav2_lifecycle_manager",
+      "nav2_map_server",
+      "nav2_mppi_controller",
+      "nav2_navfn_planner",
+      "nav2_planner",
+      "nav2_regulated_pure_pursuit_controller",
+      "nav2_rotation_shim_controller",
+      "nav2_rviz_plugins",
+      "nav2_smac_planner",
+      "nav2_smoother",
+      "nav2_velocity_smoother",
+      "nav2_waypoint_follower",
+      "pal_navigation_cfg",
+      "slam_toolbox",
+      "navigation_skills"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "pmb2_gazebo",
+      "pmb2_navigation",
+      "tiago_2dnav"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

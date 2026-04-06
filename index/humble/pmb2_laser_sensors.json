@@ -1,0 +1,53 @@
+{
+  "name": "pmb2_laser_sensors",
+  "version": "4.21.0",
+  "description": "Launch files and scripts needed to bring up the ROS nodes of a PMB2 robot.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/pmb2_simulation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "pmb2_navigation",
+    "url": "https://github.com/pal-robotics/pmb2_navigation.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake",
+      "pal_configuration_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "ament_index_python",
+      "diagnostic_aggregator",
+      "dlo_ros",
+      "ira_laser_tools",
+      "nav2_lifecycle_manager",
+      "pal_laser_filters",
+      "rclcpp_components",
+      "sick_laser_cfg",
+      "hokuyo_laser_cfg",
+      "sick_tim",
+      "urg_node"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "pmb2_gazebo",
+      "pmb2_navigation",
+      "tiago_laser_sensors"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

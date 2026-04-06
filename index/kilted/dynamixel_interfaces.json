@@ -1,0 +1,323 @@
+{
+  "name": "dynamixel_interfaces",
+  "version": "1.0.1",
+  "description": "dynamixel_interfaces contains base messages and service useful for controlling Dynamixel.",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "dynamixel_interfaces",
+    "url": "https://github.com/ROBOTIS-GIT/dynamixel_interfaces.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "std_msgs",
+      "geometry_msgs",
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "dynamixel_hardware_interface"
+    ]
+  },
+  "messages": {
+    "DynamixelState": {
+      "description": "dxl_hw_state = 0: no error",
+      "raw": "std_msgs/Header header\n\nint32 comm_state\nint32[] id\nbool[] torque_state\nint32[] dxl_hw_state\n\nint32 COMM_STATE_OK = 0\nint32 COMM_STATE_CANNOT_FIND_CONTROL_ITEM = -1\nint32 COMM_STATE_OPEN_PORT_FAIL = -2\nint32 COMM_STATE_INDIRECT_ADDR_FAIL = -3\nint32 COMM_STATE_ITEM_WRITE_FAIL = -4\nint32 COMM_STATE_ITEM_READ_FAIL = -5\nint32 COMM_STATE_SYNC_WRITE_FAIL = -6\nint32 COMM_STATE_SYNC_READ_FAIL = -7\nint32 COMM_STATE_SET_SYNC_WRITE_FAIL = -8\nint32 COMM_STATE_SET_SYNC_READ_FAIL = -9\nint32 COMM_STATE_BULK_WRITE_FAIL = -10\nint32 COMM_STATE_BULK_READ_FAIL = -11\nint32 COMM_STATE_SET_BULK_WRITE_FAIL = -12\nint32 COMM_STATE_SET_BULK_READ_FAIL = -13\nint32 COMM_STATE_SET_READ_ITEM_FAIL = -14\nint32 COMM_STATE_SET_WRITE_ITEM_FAIL = -15\nint32 COMM_STATE_DXL_HARDWARE_ERROR = -16\nint32 COMM_STATE_DXL_REBOOT_FAIL = -17\n\n# dxl_hw_state = 0: no error\n# dxl_hw_state = 1: input voltage error\n# dxl_hw_state = 4: overheating\n# dxl_hw_state = 8: motor encoder\n# dxl_hw_state = 16: electrical shork\n# dxl_hw_state = 32: Overload\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "comm_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "torque_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "dxl_hw_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_CANNOT_FIND_CONTROL_ITEM",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_OPEN_PORT_FAIL",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_INDIRECT_ADDR_FAIL",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_ITEM_WRITE_FAIL",
+          "comment": "",
+          "default": "-4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_ITEM_READ_FAIL",
+          "comment": "",
+          "default": "-5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_SYNC_WRITE_FAIL",
+          "comment": "",
+          "default": "-6",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_SYNC_READ_FAIL",
+          "comment": "",
+          "default": "-7",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_SET_SYNC_WRITE_FAIL",
+          "comment": "",
+          "default": "-8",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_SET_SYNC_READ_FAIL",
+          "comment": "",
+          "default": "-9",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_BULK_WRITE_FAIL",
+          "comment": "",
+          "default": "-10",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_BULK_READ_FAIL",
+          "comment": "",
+          "default": "-11",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_SET_BULK_WRITE_FAIL",
+          "comment": "",
+          "default": "-12",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_SET_BULK_READ_FAIL",
+          "comment": "",
+          "default": "-13",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_SET_READ_ITEM_FAIL",
+          "comment": "",
+          "default": "-14",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_SET_WRITE_ITEM_FAIL",
+          "comment": "",
+          "default": "-15",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_DXL_HARDWARE_ERROR",
+          "comment": "",
+          "default": "-16",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "COMM_STATE_DXL_REBOOT_FAIL",
+          "comment": "",
+          "default": "-17",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetDataFromDxl": {
+      "description": "Goals request",
+      "raw": "########################################\n# Goals request\n########################################\nstd_msgs/Header header\nuint8 id\nstring item_name\nfloat64 timeout_sec\n---\n########################################\n# Respones\n########################################\nuint32 item_data\nbool result\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "item_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "timeout_sec",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint32",
+          "name": "item_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RebootDxl": {
+      "description": "Goals request",
+      "raw": "########################################\n# Goals request\n########################################\nstd_msgs/Header header\n---\n########################################\n# Respones\n########################################\nbool result\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetDataToDxl": {
+      "description": "Goals request",
+      "raw": "########################################\n# Goals request\n########################################\nstd_msgs/Header header\nuint8 id\nstring item_name\nuint32 item_data\n---\n########################################\n# Respones\n########################################\nbool result\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "item_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "item_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,611 @@
+{
+  "name": "depthai_ros_msgs",
+  "version": "2.10.5",
+  "description": "Package to keep interface independent of the driver",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "depthai-ros",
+    "url": "https://github.com/luxonis/depthai-ros.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "rclcpp",
+      "rosidl_default_generators",
+      "sensor_msgs",
+      "std_msgs",
+      "geometry_msgs",
+      "vision_msgs"
+    ],
+    "depended_on_by": [
+      "depthai-ros",
+      "depthai_bridge",
+      "depthai_examples",
+      "depthai_filters",
+      "depthai_ros_driver"
+    ]
+  },
+  "messages": {
+    "AutoFocusCtrl": {
+      "description": "",
+      "raw": "uint8 AF_MODE_AUTO = 0\nuint8 AF_MODE_MACRO = 1\nuint8 AF_MODE_CONTINUOUS_VIDEO = 2\nuint8 AF_MODE_CONTINUOUS_PICTURE = 3\nuint8 AF_MODE_EDOF = 4\n\nuint8 auto_focus_mode\n\nbool trigger_auto_focus\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "AF_MODE_AUTO",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AF_MODE_MACRO",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AF_MODE_CONTINUOUS_VIDEO",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AF_MODE_CONTINUOUS_PICTURE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AF_MODE_EDOF",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "auto_focus_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "trigger_auto_focus",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HandLandmark": {
+      "description": "Center of the",
+      "raw": "\n# Center of the \n\nstring label\n\n# Landmarks score.\nfloat32 lm_score\n\ngeometry_msgs/Pose2D[] landmark\n\ngeometry_msgs/Point position\nbool is_spatial\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lm_score",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose2D[]",
+          "name": "landmark",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_spatial",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HandLandmarkArray": {
+      "description": "A list of hand landmark detections",
+      "raw": "# A list of hand landmark detections\n\nstd_msgs/Header header\n# A list of the detected proposals. A multi-proposal detector might generate along with the 3D depth information\n#   this list with many candidate detections generated from a single input.\nHandLandmark[] landmarks\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HandLandmark[]",
+          "name": "landmarks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImageMarker": {
+      "description": "",
+      "raw": "uint8 CIRCLE=0\nuint8 LINE_STRIP=1\nuint8 LINE_LIST=2\nuint8 POLYGON=3\nuint8 POINTS=4\nuint8 TEXT=5\n\nuint8 ADD=0\nuint8 REMOVE=1\n\nHeader header\nstring ns # namespace, used with id to form a unique id\nint32 id           # unique id within the namespace\nint32 type         # CIRCLE/LINE_STRIP/etc.\nint32 action       # ADD/REMOVE\ngeometry_msgs/Point position # 2D, in pixel-coords\nfloat32 scale   # the diameter for a circle, etc.\nstd_msgs/ColorRGBA outline_color\nuint8 filled # whether to fill in the shape with color\nstd_msgs/ColorRGBA fill_color # color [0.0-1.0]\nduration lifetime       # How long the object should last before being automatically deleted.  0 means forever\n\n\ngeometry_msgs/Point[] points # used for LINE_STRIP/LINE_LIST/POINTS/etc., 2D in pixel coords\nstd_msgs/ColorRGBA[] outline_colors # a color for each line, point, etc.\n\nstd_msgs/String text\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CIRCLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LINE_STRIP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LINE_LIST",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POLYGON",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POINTS",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEXT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ADD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REMOVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ns",
+          "comment": "namespace, used with id to form a unique id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "unique id within the namespace",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "type",
+          "comment": "CIRCLE/LINE_STRIP/etc.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "action",
+          "comment": "ADD/REMOVE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position",
+          "comment": "2D, in pixel-coords",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "scale",
+          "comment": "the diameter for a circle, etc.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "outline_color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "filled",
+          "comment": "whether to fill in the shape with color",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "fill_color",
+          "comment": "color [0.0-1.0]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "duration",
+          "name": "lifetime",
+          "comment": "How long the object should last before being automatically deleted.  0 means forever",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "points",
+          "comment": "used for LINE_STRIP/LINE_LIST/POINTS/etc., 2D in pixel coords",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA[]",
+          "name": "outline_colors",
+          "comment": "a color for each line, point, etc.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImageMarkerArray": {
+      "description": "",
+      "raw": "visualization_msgs/ImageMarker[] markers",
+      "fields": [
+        {
+          "type": "visualization_msgs/ImageMarker[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ImuWithMagneticField": {
+      "description": "",
+      "raw": "std_msgs/Header header\nsensor_msgs/Imu imu\nsensor_msgs/MagneticField field",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Imu",
+          "name": "imu",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/MagneticField",
+          "name": "field",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpatialDetection": {
+      "description": "Class probabilities",
+      "raw": "\n# Class probabilities\nvision_msgs/ObjectHypothesis[] results\n\n# 2D bounding box surrounding the object.\nvision_msgs/BoundingBox2D bbox\n\n# Center of the detected object in meters \ngeometry_msgs/Point position\n\n# If true, this message contains object tracking information.\nbool is_tracking\n\n# ID used for consistency across multiple detection messages. This value will\n# likely differ from the id field set in each individual ObjectHypothesis.\n# If you set this field, be sure to also set is_tracking to True.\nstring tracking_id",
+      "fields": [
+        {
+          "type": "vision_msgs/ObjectHypothesis[]",
+          "name": "results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/BoundingBox2D",
+          "name": "bbox",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_tracking",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "tracking_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpatialDetectionArray": {
+      "description": "A list of 2D detections, for a multi-object 2D detector along with 3D depth information.",
+      "raw": "# A list of 2D detections, for a multi-object 2D detector along with 3D depth information.\n\nstd_msgs/Header header\n# A list of the detected proposals. A multi-proposal detector might generate along with the 3D depth information\n#   this list with many candidate detections generated from a single input.\nSpatialDetection[] detections\n\n## These messages are created as close as possible to the official vision_msgs(http://wiki.ros.org/vision_msgs)",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SpatialDetection[]",
+          "name": "detections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackDetection2D": {
+      "description": "Class probabilities",
+      "raw": "\n# Class probabilities\nvision_msgs/ObjectHypothesisWithPose[] results\n\n# 2D bounding box surrounding the object.\nvision_msgs/BoundingBox2D bbox\n\n# If true, this message contains object tracking information.\nbool is_tracking\n\n# ID used for consistency across multiple detection messages. This value will\n# likely differ from the id field set in each individual ObjectHypothesis.\n# If you set this field, be sure to also set is_tracking to True.\nstring tracking_id\n\n# Age: number of frames the object is being tracked\nint32 tracking_age\n\n# Status of the tracking:\n# 0 = NEW -> the object is newly added.\n# 1 = TRACKED -> the object is being tracked.\n# 2 = LOST -> the object gets lost now. The object can be tracked again automatically (long term tracking) \n#\t\t\t  or by specifying detected object manually (short term and zero term tracking).\n# 3 = REMOVED -> the object is removed.\nint32 tracking_status\n",
+      "fields": [
+        {
+          "type": "vision_msgs/ObjectHypothesisWithPose[]",
+          "name": "results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vision_msgs/BoundingBox2D",
+          "name": "bbox",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_tracking",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "tracking_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "tracking_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "tracking_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackDetection2DArray": {
+      "description": "A list of 2D tracklets, for a multi-object 2D tracker.",
+      "raw": "# A list of 2D tracklets, for a multi-object 2D tracker.\n\nstd_msgs/Header header\n# A list of the tracking proposals.\nTrackDetection2D[] detections\n\n## These messages are created as close as possible to the official vision_msgs(http://wiki.ros.org/vision_msgs)",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrackDetection2D[]",
+          "name": "detections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackedFeature": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\ngeometry_msgs/Point position\nuint32 id\n\nuint32 age\n\nfloat32 harris_score\n\nfloat32 tracking_error\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "harris_score",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tracking_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackedFeatures": {
+      "description": "",
+      "raw": "std_msgs/Header header\ndepthai_ros_msgs/TrackedFeature[] features",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "depthai_ros_msgs/TrackedFeature[]",
+          "name": "features",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "NormalizedImageCrop": {
+      "description": "",
+      "raw": "geometry_msgs/Pose2D top_left\ngeometry_msgs/Pose2D bottom_right\n---\nint64 status",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Pose2D",
+          "name": "top_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose2D",
+          "name": "bottom_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TriggerNamed": {
+      "description": "",
+      "raw": "string name\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

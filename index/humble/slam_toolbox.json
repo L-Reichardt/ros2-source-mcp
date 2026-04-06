@@ -1,0 +1,305 @@
+{
+  "name": "slam_toolbox",
+  "version": "2.6.10",
+  "description": "This package provides a sped up improved slam karto with updated SDK and visualization and modification toolsets",
+  "license": "LGPL",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "slam_toolbox",
+    "url": "https://github.com/SteveMacenski/slam_toolbox.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "pluginlib",
+      "eigen",
+      "message_filters",
+      "nav_msgs",
+      "rclcpp",
+      "sensor_msgs",
+      "tf2_ros",
+      "tf2",
+      "tf2_sensor_msgs",
+      "visualization_msgs",
+      "std_srvs",
+      "boost",
+      "interactive_markers",
+      "std_msgs",
+      "suitesparse",
+      "liblapack-dev",
+      "libceres-dev",
+      "tf2_geometry_msgs",
+      "tbb",
+      "libqt5-core",
+      "libqt5-widgets",
+      "qtbase5-dev",
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "eigen",
+      "pluginlib",
+      "message_filters",
+      "nav_msgs",
+      "rclcpp",
+      "sensor_msgs",
+      "tf2",
+      "tf2_ros",
+      "tf2_sensor_msgs",
+      "visualization_msgs",
+      "std_srvs",
+      "boost",
+      "interactive_markers",
+      "std_msgs",
+      "suitesparse",
+      "liblapack-dev",
+      "libceres-dev",
+      "tf2_geometry_msgs",
+      "tbb",
+      "libqt5-core",
+      "libqt5-widgets",
+      "nav2_map_server",
+      "builtin_interfaces",
+      "rosidl_default_generators",
+      "libqt5-gui",
+      "libqt5-opengl"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "launch",
+      "launch_testing",
+      "ament_cmake_flake8",
+      "ament_cmake_cpplint",
+      "ament_cmake_uncrustify",
+      "ament_lint_auto"
+    ],
+    "build_and_runtime": [
+      "rviz_common",
+      "rviz_default_plugins",
+      "rviz_ogre_vendor",
+      "rviz_rendering"
+    ],
+    "depended_on_by": [
+      "andino_slam",
+      "clearpath_nav2_demos",
+      "create3_lidar_slam",
+      "nav2_bringup",
+      "neo_nav2_bringup",
+      "omni_base_2dnav",
+      "pmb2_2dnav",
+      "raspimouse_ros2_examples",
+      "raspimouse_slam",
+      "turtlebot4_navigation"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "AddSubmap": {
+      "description": "",
+      "raw": "string filename\n---",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "Clear": {
+      "description": "",
+      "raw": "\n\n---",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "ClearQueue": {
+      "description": "",
+      "raw": "\n---\nbool status",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeserializePoseGraph": {
+      "description": "inital_pose should be Map -> base_frame (parameter, generally base_link)",
+      "raw": "int8 UNSET = 0\nint8 START_AT_FIRST_NODE = 1\nint8 START_AT_GIVEN_POSE = 2\nint8 LOCALIZE_AT_POSE = 3\n\n# inital_pose should be Map -> base_frame (parameter, generally base_link)\n#\n\nstring filename\nint8 match_type\ngeometry_msgs/Pose2D initial_pose\n---",
+      "request_fields": [
+        {
+          "type": "int8",
+          "name": "UNSET",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "START_AT_FIRST_NODE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "START_AT_GIVEN_POSE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LOCALIZE_AT_POSE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "match_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose2D",
+          "name": "initial_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "LoopClosure": {
+      "description": "",
+      "raw": "\n---",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "MergeMaps": {
+      "description": "",
+      "raw": "\n---",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "Pause": {
+      "description": "trigger pause toggle",
+      "raw": "# trigger pause toggle\n\n---\nbool status",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveMap": {
+      "description": "Result code defintions",
+      "raw": "std_msgs/String name\n---\n# Result code defintions\nuint8 RESULT_SUCCESS=0\nuint8 RESULT_NO_MAP_RECEIEVD=1\nuint8 RESULT_UNDEFINED_FAILURE=255\n\nuint8 result\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/String",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "RESULT_SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_NO_MAP_RECEIEVD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_UNDEFINED_FAILURE",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SerializePoseGraph": {
+      "description": "Result code defintions",
+      "raw": "string filename\n---\n# Result code defintions\nuint8 RESULT_SUCCESS=0\nuint8 RESULT_FAILED_TO_WRITE_FILE=255\n\nuint8 result",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "RESULT_SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_FAILED_TO_WRITE_FILE",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToggleInteractive": {
+      "description": "",
+      "raw": "\n---",
+      "request_fields": [],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

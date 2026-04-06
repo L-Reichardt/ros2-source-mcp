@@ -1,0 +1,127 @@
+{
+  "name": "inuros2",
+  "version": "2.10.15",
+  "description": "Inuitive image publisher",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "inuitive-camera-ros2",
+    "url": "https://bitbucket.org/inuitive/inuros2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "ros_environment",
+      "pcl_conversions",
+      "pcl_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "launch_ros",
+      "ros2launch",
+      "rosidl_default_runtime",
+      "pcl_conversions",
+      "pcl_msgs"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "cv_bridge",
+      "image_transport",
+      "rclcpp",
+      "rclcpp_components",
+      "sensor_msgs",
+      "geometry_msgs",
+      "std_msgs",
+      "nav_msgs",
+      "vision_msgs",
+      "rclcpp_lifecycle",
+      "yaml_cpp_vendor"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Features": {
+      "description": "",
+      "raw": "uint32 keypointnumber\nuint32 descriptorsize\nuint32[] descriptor\nuint32[] uniqueid\nuint32[] isrightimage\nuint32[] patternzise\nuint32[] confidence\nfloat32[] x\nfloat32[] y\nfloat32[] angle\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "keypointnumber",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "descriptorsize",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "descriptor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "uniqueid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "isrightimage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "patternzise",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

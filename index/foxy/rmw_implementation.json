@@ -1,0 +1,48 @@
+{
+  "name": "rmw_implementation",
+  "version": "1.0.3",
+  "description": "The decision which ROS middleware implementation should be used for C++.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmw_implementation",
+    "url": "https://github.com/ros2/rmw_implementation.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "rmw",
+      "rmw_connext_cpp",
+      "rmw_cyclonedds_cpp",
+      "rmw_fastrtps_cpp"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rmw_implementation_cmake"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "performance_test_fixture"
+    ],
+    "build_and_runtime": [
+      "rcpputils",
+      "rcutils",
+      "rmw_implementation_cmake"
+    ],
+    "depended_on_by": [
+      "performance_test",
+      "rcl",
+      "rclpy",
+      "robot_localization",
+      "robot_localization",
+      "test_rmw_implementation"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,221 @@
+{
+  "name": "gazebo_video_monitor_interfaces",
+  "version": "0.8.1",
+  "description": "gazebo_video_monitor_interfaces defines interfaces for the gazebo_video_monitor_plugins package.",
+  "license": "GPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "gazebo_video_monitors",
+    "url": "https://github.com/nlamprian/gazebo_video_monitors.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_srvs"
+    ],
+    "depended_on_by": [
+      "gazebo_video_monitor_plugins",
+      "gazebo_video_monitors"
+    ]
+  },
+  "messages": {
+    "Pose": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\nfloat64 z\nfloat64 roll\nfloat64 pitch\nfloat64 yaw\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Strings": {
+      "description": "",
+      "raw": "string[] names\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetCamera": {
+      "description": "",
+      "raw": "string camera_name                         # Name of the camera (as given in the SDF description)\nstring model_name                          # Name of the model with which to associate the camera. If empty, the camera is attached to the world model (see multicamera bootstrapper)\nstring link_name                           # Name of the link to which to attach the camera\ngazebo_video_monitor_interfaces/Pose pose  # Pose relative to the parent link\n---\nstring message\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "camera_name",
+          "comment": "Name of the camera (as given in the SDF description)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "Name of the model with which to associate the camera. If empty, the camera is attached to the world model (see multicamera bootstrapper)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "Name of the link to which to attach the camera",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "gazebo_video_monitor_interfaces/Pose",
+          "name": "pose",
+          "comment": "Pose relative to the parent link",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StartGmcmRecording": {
+      "description": "Start recording service for the Gazebo Multi Camera Monitor plugin",
+      "raw": "# Start recording service for the Gazebo Multi Camera Monitor plugin\n\ngazebo_video_monitor_interfaces/Strings cameras\n---\n",
+      "request_fields": [
+        {
+          "type": "gazebo_video_monitor_interfaces/Strings",
+          "name": "cameras",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "StartGvmRecording": {
+      "description": "Start recording service for the Gazebo Video Monitor plugin",
+      "raw": "# Start recording service for the Gazebo Video Monitor plugin\n\nbool disable_window\nbool world_as_main_view\n---\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "disable_window",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "world_as_main_view",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "StopRecording": {
+      "description": "",
+      "raw": "bool discard     # True to discard the recording\nstring filename  # Filename without extension\n---\nstring path      # Absolute path to the recording\nbool success\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "discard",
+          "comment": "True to discard the recording",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "Filename without extension",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "Absolute path to the recording",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

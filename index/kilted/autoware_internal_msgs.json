@@ -1,0 +1,128 @@
+{
+  "name": "autoware_internal_msgs",
+  "version": "1.8.1",
+  "description": "Autoware internal messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_internal_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_internal_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "autoware_internal_debug_msgs",
+      "autoware_internal_metric_msgs",
+      "autoware_internal_perception_msgs",
+      "autoware_internal_planning_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "MissionRemainingDistanceTime": {
+      "description": "Information about the mission remaining distance and time.",
+      "raw": "# Information about the mission remaining distance and time.\n\nfloat64 remaining_distance    # Remaining distance in meters\nfloat64 remaining_time        # Remaining total time in seconds\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "remaining_distance",
+          "comment": "Remaining distance in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "remaining_time",
+          "comment": "Remaining total time in seconds",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PublishedTime": {
+      "description": "The debug message which includes header and published timestamp",
+      "raw": "# The debug message which includes header and published timestamp\n\nstd_msgs/Header header\n\n# Timestamp indicating when the message was published\nbuiltin_interfaces/Time published_stamp\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "published_stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ResourceUsageReport": {
+      "description": "Process identifier",
+      "raw": "std_msgs/Header header\n\n# Process identifier\nuint32 pid\n\n# CPU usage of the process\nfloat32 cpu_cores_utilized\n\n# Memory usage metrics for the whole system\nuint64 total_memory_bytes\nuint64 free_memory_bytes\n\n# Memory used by the process\nuint64 process_memory_bytes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "pid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cpu_cores_utilized",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "total_memory_bytes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "free_memory_bytes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "process_memory_bytes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

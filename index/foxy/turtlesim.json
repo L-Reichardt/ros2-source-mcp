@@ -1,0 +1,308 @@
+{
+  "name": "turtlesim",
+  "version": "1.2.6",
+  "description": "turtlesim is a tool made for teaching ROS and ROS packages.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/turtlesim",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros/ros_tutorials/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros/ros_tutorials",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "turtlesim",
+    "url": "https://github.com/ros/ros_tutorials.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "qt5-qmake",
+      "qtbase5-dev"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "libqt5-core",
+      "libqt5-gui",
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "ament_index_cpp",
+      "geometry_msgs",
+      "rclcpp",
+      "rclcpp_action",
+      "std_msgs",
+      "std_srvs"
+    ],
+    "depended_on_by": [
+      "desktop",
+      "turtle_tf2_cpp",
+      "turtle_tf2_py"
+    ]
+  },
+  "messages": {
+    "Color": {
+      "description": "",
+      "raw": "uint8 r\nuint8 g\nuint8 b\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "r",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "g",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Pose": {
+      "description": "",
+      "raw": "float32 x\nfloat32 y\nfloat32 theta\n\nfloat32 linear_velocity\nfloat32 angular_velocity",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "linear_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angular_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "Kill": {
+      "description": "",
+      "raw": "string name\n---",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetPen": {
+      "description": "",
+      "raw": "uint8 r\nuint8 g\nuint8 b\nuint8 width\nuint8 off\n---\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "r",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "g",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "off",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "Spawn": {
+      "description": "",
+      "raw": "float32 x\nfloat32 y\nfloat32 theta\nstring name # Optional.  A unique name will be created and returned if this is empty\n---\nstring name",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Optional.  A unique name will be created and returned if this is empty",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TeleportAbsolute": {
+      "description": "",
+      "raw": "float32 x\nfloat32 y\nfloat32 theta\n---\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "TeleportRelative": {
+      "description": "",
+      "raw": "float32 linear\nfloat32 angular\n---\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "linear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angular",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {
+    "RotateAbsolute": {
+      "description": "The desired heading in radians",
+      "raw": "# The desired heading in radians\nfloat32 theta\n---\n# The angular displacement in radians to the starting position\nfloat32 delta\n---\n# The remaining rotation in radians\nfloat32 remaining\n",
+      "goal_fields": [
+        {
+          "type": "float32",
+          "name": "theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "float32",
+          "name": "delta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

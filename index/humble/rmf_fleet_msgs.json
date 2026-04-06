@@ -1,0 +1,1098 @@
+{
+  "name": "rmf_fleet_msgs",
+  "version": "3.0.4",
+  "description": "A package containing messages used to interface to fleet managers",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_building_sim_gz_classic_plugins",
+      "rmf_building_sim_gz_plugins",
+      "rmf_dev",
+      "rmf_fleet_adapter",
+      "rmf_robot_sim_common",
+      "rmf_robot_sim_gz_classic_plugins",
+      "rmf_robot_sim_gz_plugins",
+      "rmf_traffic_ros2",
+      "rmf_visualization_fleet_states",
+      "rmf_visualization_navgraphs"
+    ]
+  },
+  "messages": {
+    "BeaconState": {
+      "description": "This message defines data from a robot beacon",
+      "raw": "# This message defines data from a robot beacon\n\nstring id \nbool online\nstring category\nbool activated\nstring level\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "online",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "category",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "activated",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ChargingAssignment": {
+      "description": "",
+      "raw": "string robot_name\nstring waypoint_name\nuint8 mode\n\nuint8 MODE_CHARGE = 0\nuint8 MODE_WAIT = 1\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "waypoint_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_CHARGE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_WAIT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "ChargingAssignments": {
+      "description": "",
+      "raw": "string fleet_name\nChargingAssignment[] assignments\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ChargingAssignment[]",
+          "name": "assignments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClosedLanes": {
+      "description": "",
+      "raw": "\nstring fleet_name\nuint64[] closed_lanes\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "closed_lanes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeliveryAlert": {
+      "description": "",
+      "raw": "string id\nDeliveryAlertCategory category\nDeliveryAlertTier tier\nstring task_id\nDeliveryAlertAction action\nstring message\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DeliveryAlertCategory",
+          "name": "category",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DeliveryAlertTier",
+          "name": "tier",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DeliveryAlertAction",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeliveryAlertAction": {
+      "description": "",
+      "raw": "uint32 value\nuint32 WAITING=0\nuint32 CANCEL=1\nuint32 OVERRIDE=2\nuint32 RESUME=3\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "WAITING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "CANCEL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "OVERRIDE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "RESUME",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "DeliveryAlertCategory": {
+      "description": "",
+      "raw": "uint32 value\nuint32 MISSING=0\nuint32 WRONG=1\nuint32 OBSTRUCTED=2\nuint32 CANCELLED=3\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "MISSING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "WRONG",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "OBSTRUCTED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "CANCELLED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "DeliveryAlertTier": {
+      "description": "",
+      "raw": "uint32 value\nuint32 WARNING=0\nuint32 ERROR=1\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "WARNING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "ERROR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "DestinationRequest": {
+      "description": "task_id must be copied into future RobotState messages",
+      "raw": "string fleet_name\nstring robot_name\nLocation destination\n\n# task_id must be copied into future RobotState messages\nstring task_id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Location",
+          "name": "destination",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Dock": {
+      "description": "",
+      "raw": "string fleet_name\nDockParameter[] params",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DockParameter[]",
+          "name": "params",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DockParameter": {
+      "description": "The name of the waypoint where the docking begins",
+      "raw": "# The name of the waypoint where the docking begins\nstring start\n\n# The name of the waypoint where the docking ends\nstring finish\n\n# The points in the docking path\nLocation[] path",
+      "fields": [
+        {
+          "type": "string",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "finish",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Location[]",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DockSummary": {
+      "description": "",
+      "raw": "Dock[] docks",
+      "fields": [
+        {
+          "type": "Dock[]",
+          "name": "docks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FleetState": {
+      "description": "",
+      "raw": "string name\nRobotState[] robots\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotState[]",
+          "name": "robots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "InterruptRequest": {
+      "description": "",
+      "raw": "string fleet_name\nstring robot_name\nstring interrupt_id\nstring[] labels\nuint8 type\n\nuint8 TYPE_INTERRUPT = 0\nuint8 TYPE_RESUME = 1\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "interrupt_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "labels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_INTERRUPT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_RESUME",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "LaneRequest": {
+      "description": "",
+      "raw": "\nstring fleet_name\nuint64[] open_lanes\nuint64[] close_lanes\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "open_lanes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "close_lanes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneStates": {
+      "description": "The name of the fleet with closed or speed limited lanes",
+      "raw": "# The name of the fleet with closed or speed limited lanes\nstring fleet_name\n\n# The indices of the lanes that are currently closed\nuint64[] closed_lanes\n\n# Lanes that have speed limits\nSpeedLimitedLane[] speed_limits\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "closed_lanes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SpeedLimitedLane[]",
+          "name": "speed_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Location": {
+      "description": "Speed limit of the lane leading to this waypoint in m/s",
+      "raw": "builtin_interfaces/Time t\nfloat32 x\nfloat32 y\nfloat32 yaw\n\nbool obey_approach_speed_limit false\n# Speed limit of the lane leading to this waypoint in m/s\nfloat32 approach_speed_limit\n\nstring level_name\nuint64 index\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "t",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "obey_approach_speed_limit",
+          "comment": "",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "approach_speed_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "level_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ModeParameter": {
+      "description": "",
+      "raw": "string name\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ModeRequest": {
+      "description": "task_id must be copied into future RobotState messages",
+      "raw": "string fleet_name\nstring robot_name\nRobotMode mode\n\n# task_id must be copied into future RobotState messages\nstring task_id\n\n# Some mode changes require parameters. For example, the name of a dock.\nModeParameter[] parameters\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotMode",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ModeParameter[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MutexGroupAssignment": {
+      "description": "This message maps a mutex group name to the name of an agent that is currently",
+      "raw": "# This message maps a mutex group name to the name of an agent that is currently\n# holding the claim to that group.\n\n# Name of the mutex group that is being described.\nstring group\n\n# Traffic Participant ID of the agent that has currently claimed the group.\n# If the group is unclaimed, this will be the max uint64 value.\nuint64 claimant\n\n# Time stamp of when the claim request began.\nbuiltin_interfaces/Time claim_time\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "claimant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "claim_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MutexGroupRequest": {
+      "description": "This message is used to attempt to claim a mutex group. It should be sent",
+      "raw": "# This message is used to attempt to claim a mutex group. It should be sent\n# periodically for the entire duration that the claimer needs the mutex because\n# mutex groups have a limited-time leasing period that will timeout if a request\n# heartbeat is not received in some amount of time.\n\n# Name of the mutex group that is being claimed\nstring group\n\n# Name of the agent that is trying to claim the mutex group.\nuint64 claimant\n\n# Time stamp of when the claim request began. The same time stamp should be used\n# for all subsequent heartbeat messages related to this claim. If the claim time\n# changes then this claim will be treated a new claim and may be deprioritized.\n# Earlier claims have priority over later claims.\nbuiltin_interfaces/Time claim_time\n\n# What kind of request is this?\nuint32 mode\n# Request to release the mutex group from this claimer\nuint32 MODE_RELEASE=0\n# Request to lock the mutex group for this claimer\nuint32 MODE_LOCK=1\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "claimant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "claim_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_RELEASE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_LOCK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "MutexGroupStates": {
+      "description": "A map of all the current mutex group assignments",
+      "raw": "# A map of all the current mutex group assignments\nMutexGroupAssignment[] assignments\n",
+      "fields": [
+        {
+          "type": "MutexGroupAssignment[]",
+          "name": "assignments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PathRequest": {
+      "description": "task_id must be copied into future RobotState messages",
+      "raw": "string fleet_name\nstring robot_name\nLocation[] path\n\n# task_id must be copied into future RobotState messages\nstring task_id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Location[]",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PauseRequest": {
+      "description": "",
+      "raw": "string fleet_name\nstring robot_name\nuint64 mode_request_id\n\nuint32 TYPE_PAUSE_IMMEDIATELY=0\nuint32 TYPE_PAUSE_AT_CHECKPOINT=1\nuint32 TYPE_RESUME=2\nuint32 type\n\nuint32 at_checkpoint\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "mode_request_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_PAUSE_IMMEDIATELY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_PAUSE_AT_CHECKPOINT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_RESUME",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "at_checkpoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotMode": {
+      "description": "Use this when a command received from the fleet adapter",
+      "raw": "uint32 mode\nuint32 MODE_IDLE=0\nuint32 MODE_CHARGING=1\nuint32 MODE_MOVING=2\nuint32 MODE_PAUSED=3\nuint32 MODE_WAITING=4\nuint32 MODE_EMERGENCY=5\nuint32 MODE_GOING_HOME=6\nuint32 MODE_DOCKING=7\n\n# Use this when a command received from the fleet adapter\n# has a problem and needs to be recomputed.\nuint32 MODE_ADAPTER_ERROR=8\n\nuint32 MODE_CLEANING=9\n\nuint64 mode_request_id\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_IDLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_CHARGING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_MOVING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_PAUSED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_WAITING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_EMERGENCY",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_GOING_HOME",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_DOCKING",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_ADAPTER_ERROR",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_CLEANING",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint64",
+          "name": "mode_request_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotState": {
+      "description": "task_id is copied in from the most recent Request message,",
+      "raw": "string name\nstring model\n\n# task_id is copied in from the most recent Request message,\n# such as ModeRequest, DestinationRequest, or PathRequest\nstring task_id\n\n# The sequence number of this message. Every new message should increment the\n# sequence number by 1.\nuint64 seq\n\nRobotMode mode\nfloat32 battery_percent\nLocation location\nLocation[] path\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RobotMode",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "battery_percent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Location",
+          "name": "location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Location[]",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpeedLimitRequest": {
+      "description": "The name of the fleet",
+      "raw": "# The name of the fleet\nstring fleet_name\n\n# The lanes to impose speed limits upon.\nSpeedLimitedLane[] speed_limits\n\n# The indices of lanes to remove speed limits\nuint64[] remove_limits\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SpeedLimitedLane[]",
+          "name": "speed_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "remove_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpeedLimitedLane": {
+      "description": "The index of the lane with a speed limit",
+      "raw": "# The index of the lane with a speed limit\nuint64 lane_index\n\n# The imposed speed limit for the lane\nfloat64 speed_limit",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "lane_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "LiftClearance": {
+      "description": "Name of the robot that wants to enter a lift",
+      "raw": "\n# Name of the robot that wants to enter a lift\nstring robot_name\n\n# Name of the lift that the robot wants to enter\nstring lift_name\n\n---\n\nuint32 decision\nuint32 DECISION_CLEAR = 1\nuint32 DECISION_CROWDED = 2\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lift_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint32",
+          "name": "decision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "DECISION_CLEAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "DECISION_CROWDED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

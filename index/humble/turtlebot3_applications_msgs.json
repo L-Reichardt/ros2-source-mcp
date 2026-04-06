@@ -1,0 +1,242 @@
+{
+  "name": "turtlebot3_applications_msgs",
+  "version": "1.0.1",
+  "description": "Message and service types: custom messages and services for TurtleBot3 Applications packages",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/turtlebot3_applications_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ROBOTIS-GIT/turtlebot3_applications_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ROBOTIS-GIT/turtlebot3_applications_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "turtlebot3_applications_msgs",
+    "url": "https://github.com/ROBOTIS-GIT/turtlebot3_applications_msgs.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "turtlebot3_panorama"
+    ]
+  },
+  "messages": {
+    "PanoramaImg": {
+      "description": "Messages",
+      "raw": "########################################\n# Messages\n########################################\nstd_msgs/Header header\nstring  pano_id\nfloat64 latitude\nfloat64 longitude\nfloat64 heading     #in degrees, compass heading\nstring  geo_tag\nsensor_msgs/Image image\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pano_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "heading",
+          "comment": "in degrees, compass heading",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "geo_tag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetFollowState": {
+      "description": "CONSTANTS",
+      "raw": "########################################\n# CONSTANTS\n########################################\nuint8 STOPPED = 0\nuint8 FOLLOW  = 1\n\nuint8 OK      = 0\nuint8 ERROR   = 1\n\n########################################\n# Messages\n########################################\nuint8 state     # STOPPED or FOLLOW\n---\nuint8 result    # OK or ERROR\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "STOPPED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FOLLOW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "STOPPED or FOLLOW",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "result",
+          "comment": "OK or ERROR",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TakePanorama": {
+      "description": "CONSTANTS",
+      "raw": "########################################\n# CONSTANTS\n########################################\nuint8 SNAPANDROTATE=0 # mode: rotate, stop, snapshot, rotate, stop, snapshot, ...\nuint8 CONTINUOUS=1    # mode: keep rotating while taking snapshots\nuint8 STOP=2          # mode: stop an ongoing panorama creation\n\nuint8 STARTED=0       # status\nuint8 IN_PROGRESS=1   # status\nuint8 STOPPED=2       # status\n\n########################################\n# Messages\n########################################\nuint8 mode            # mode for taking the pictures\nfloat32 pano_angle    # total angle of panorama picture\nfloat32 snap_interval # angle interval when creating the panorama picture in snap&rotate mode, time interval otherwise \nfloat32 rot_vel       # rotating velocity\n---\nuint8 status\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "SNAPANDROTATE",
+          "comment": "mode: rotate, stop, snapshot, rotate, stop, snapshot, ...",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONTINUOUS",
+          "comment": "mode: keep rotating while taking snapshots",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOP",
+          "comment": "mode: stop an ongoing panorama creation",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STARTED",
+          "comment": "status",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "IN_PROGRESS",
+          "comment": "status",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOPPED",
+          "comment": "status",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "mode for taking the pictures",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pano_angle",
+          "comment": "total angle of panorama picture",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "snap_interval",
+          "comment": "angle interval when creating the panorama picture in snap&rotate mode, time interval otherwise",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rot_vel",
+          "comment": "rotating velocity",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

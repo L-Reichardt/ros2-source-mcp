@@ -1,0 +1,801 @@
+{
+  "name": "autoware_vehicle_msgs",
+  "version": "1.7.0",
+  "description": "Interfaces between core Autoware vehicle components",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "autoware_planning_msgs",
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_msgs"
+    ]
+  },
+  "messages": {
+    "ControlModeReport": {
+      "description": "",
+      "raw": "uint8 NO_COMMAND = 0\nuint8 AUTONOMOUS = 1\nuint8 AUTONOMOUS_STEER_ONLY = 2\nuint8 AUTONOMOUS_VELOCITY_ONLY = 3\nuint8 MANUAL = 4\nuint8 DISENGAGED = 5\nuint8 NOT_READY = 6\n\nbuiltin_interfaces/Time stamp\nuint8 mode\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NO_COMMAND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTONOMOUS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTONOMOUS_STEER_ONLY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTONOMOUS_VELOCITY_ONLY",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MANUAL",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISENGAGED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_READY",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Engage": {
+      "description": "",
+      "raw": "builtin_interfaces/Time stamp\nbool engage\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "engage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearCommand": {
+      "description": "",
+      "raw": "uint8 NONE = 0\nuint8 NEUTRAL = 1\nuint8 DRIVE = 2\nuint8 DRIVE_2 = 3\nuint8 DRIVE_3 = 4\nuint8 DRIVE_4 = 5\nuint8 DRIVE_5 = 6\nuint8 DRIVE_6 = 7\nuint8 DRIVE_7 = 8\nuint8 DRIVE_8 = 9\nuint8 DRIVE_9 = 10\nuint8 DRIVE_10 = 11\nuint8 DRIVE_11 = 12\nuint8 DRIVE_12 = 13\nuint8 DRIVE_13 = 14\nuint8 DRIVE_14 = 15\nuint8 DRIVE_15 = 16\nuint8 DRIVE_16 = 17\nuint8 DRIVE_17 = 18\nuint8 DRIVE_18 = 19\nuint8 REVERSE = 20\nuint8 REVERSE_2 = 21\nuint8 PARK = 22\nuint8 LOW = 23\nuint8 LOW_2 = 24\n\nbuiltin_interfaces/Time stamp\nuint8 command\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEUTRAL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_2",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_3",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_4",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_5",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_6",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_7",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_8",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_9",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_10",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_11",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_12",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_13",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_14",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_15",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_16",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_17",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_18",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REVERSE",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REVERSE_2",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARK",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOW",
+          "comment": "",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOW_2",
+          "comment": "",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GearReport": {
+      "description": "",
+      "raw": "uint8 NONE = 0\nuint8 NEUTRAL = 1\nuint8 DRIVE = 2\nuint8 DRIVE_2 = 3\nuint8 DRIVE_3 = 4\nuint8 DRIVE_4 = 5\nuint8 DRIVE_5 = 6\nuint8 DRIVE_6 = 7\nuint8 DRIVE_7 = 8\nuint8 DRIVE_8 = 9\nuint8 DRIVE_9 = 10\nuint8 DRIVE_10 = 11\nuint8 DRIVE_11 = 12\nuint8 DRIVE_12 = 13\nuint8 DRIVE_13 = 14\nuint8 DRIVE_14 = 15\nuint8 DRIVE_15 = 16\nuint8 DRIVE_16 = 17\nuint8 DRIVE_17 = 18\nuint8 DRIVE_18 = 19\nuint8 REVERSE = 20\nuint8 REVERSE_2 = 21\nuint8 PARK = 22\nuint8 LOW = 23\nuint8 LOW_2 = 24\n\nbuiltin_interfaces/Time stamp\nuint8 report\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NEUTRAL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_2",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_3",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_4",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_5",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_6",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_7",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_8",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_9",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_10",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_11",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_12",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_13",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_14",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_15",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_16",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_17",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_18",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REVERSE",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REVERSE_2",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARK",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOW",
+          "comment": "",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOW_2",
+          "comment": "",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "report",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HazardLightsCommand": {
+      "description": "",
+      "raw": "uint8 NO_COMMAND = 0\nuint8 DISABLE = 1\nuint8 ENABLE = 2\n\nbuiltin_interfaces/Time stamp\nuint8 command\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NO_COMMAND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISABLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENABLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HazardLightsReport": {
+      "description": "",
+      "raw": "uint8 DISABLE = 1\nuint8 ENABLE = 2\n\nbuiltin_interfaces/Time stamp\nuint8 report\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "DISABLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENABLE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "report",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringReport": {
+      "description": "",
+      "raw": "builtin_interfaces/Time stamp\nfloat32 steering_tire_angle\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_tire_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TurnIndicatorsCommand": {
+      "description": "",
+      "raw": "uint8 NO_COMMAND = 0\nuint8 DISABLE = 1\nuint8 ENABLE_LEFT = 2\nuint8 ENABLE_RIGHT = 3\n\nbuiltin_interfaces/Time stamp\nuint8 command\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NO_COMMAND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISABLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENABLE_LEFT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENABLE_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TurnIndicatorsReport": {
+      "description": "",
+      "raw": "uint8 DISABLE = 1\nuint8 ENABLE_LEFT = 2\nuint8 ENABLE_RIGHT = 3\n\nbuiltin_interfaces/Time stamp\nuint8 report\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "DISABLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENABLE_LEFT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENABLE_RIGHT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "report",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VelocityReport": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 longitudinal_velocity\nfloat32 lateral_velocity\nfloat32 heading_rate\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitudinal_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lateral_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ControlModeCommand": {
+      "description": "",
+      "raw": "uint8 NO_COMMAND = 0\nuint8 AUTONOMOUS = 1\nuint8 AUTONOMOUS_STEER_ONLY = 2\nuint8 AUTONOMOUS_VELOCITY_ONLY = 3\nuint8 MANUAL = 4\n\nbuiltin_interfaces/Time stamp\nuint8 mode\n\n---\n\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "NO_COMMAND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTONOMOUS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTONOMOUS_STEER_ONLY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTONOMOUS_VELOCITY_ONLY",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MANUAL",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

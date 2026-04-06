@@ -1,0 +1,51 @@
+{
+  "name": "kinematics_interface_pinocchio",
+  "version": "2.4.0",
+  "description": "Pinocchio-based implementation of ros2_control kinematics interface",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "kinematics_interface",
+    "url": "https://github.com/ros-controls/kinematics_interface.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "ros2_control_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "eigen3_cmake_module"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "eigen",
+      "kinematics_interface",
+      "eigen3_cmake_module",
+      "pinocchio",
+      "pluginlib"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

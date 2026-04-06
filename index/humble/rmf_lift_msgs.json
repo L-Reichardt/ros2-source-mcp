@@ -1,0 +1,291 @@
+{
+  "name": "rmf_lift_msgs",
+  "version": "3.0.4",
+  "description": "Messages used to interface to lifts.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_building_sim_common",
+      "rmf_dev",
+      "rmf_fleet_adapter",
+      "rmf_visualization_building_systems",
+      "rmf_visualization_rviz2_plugins"
+    ]
+  },
+  "messages": {
+    "LiftRequest": {
+      "description": "session_id should be unique at least between different requesters.",
+      "raw": "string lift_name\nbuiltin_interfaces/Time request_time\n\n# session_id should be unique at least between different requesters.\n# For example, session_id could be the requester's node name.\nstring session_id\n\n# AGV mode means that the doors are always open when the lift is stopped\n# Human mode means that LiftDoorRequest messages must be used to open/close\n# the doors explicitly, since they may \"time out\" and close automatically.\nuint8 request_type\nuint8 REQUEST_END_SESSION=0\nuint8 REQUEST_AGV_MODE=1\nuint8 REQUEST_HUMAN_MODE=2\n\n# The destination_floor must be one of the values returned in a LiftState.\nstring destination_floor\n\n# Explicit door requests are necessary in \"human\" mode to open/close doors.\n# Door requests are not necessary in \"AGV\" mode, when the doors are always\n# held open when the lift cabin is stopped.\nuint8 door_state\nuint8 DOOR_CLOSED=0\nuint8 DOOR_OPEN=2\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "lift_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "request_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "session_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "request_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_END_SESSION",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_AGV_MODE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_HUMAN_MODE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "destination_floor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "door_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_CLOSED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_OPEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "LiftState": {
+      "description": "lift_time records when the information in this message was generated",
+      "raw": "# lift_time records when the information in this message was generated\nbuiltin_interfaces/Time lift_time\n\nstring lift_name\n\nstring[] available_floors\nstring current_floor\nstring destination_floor\n\nuint8 door_state\nuint8 DOOR_CLOSED=0\nuint8 DOOR_MOVING=1\nuint8 DOOR_OPEN=2\n\nuint8 motion_state\nuint8 MOTION_STOPPED=0\nuint8 MOTION_UP=1\nuint8 MOTION_DOWN=2\nuint8 MOTION_UNKNOWN=3\n\n# We can only set human or agv mode, but we can read other modes: fire, etc.\nuint8[] available_modes\nuint8 current_mode\nuint8 MODE_UNKNOWN=0\nuint8 MODE_HUMAN=1\nuint8 MODE_AGV=2\nuint8 MODE_FIRE=3\nuint8 MODE_OFFLINE=4\nuint8 MODE_EMERGENCY=5\n# we can add more \"read-only\" modes as we come across more of them.\n\n# this field records the session_id that has been granted control of the lift\n# until it sends a request with a request_type of REQUEST_END_SESSION\nstring session_id\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "lift_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lift_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "available_floors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "current_floor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "destination_floor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "door_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_CLOSED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_MOVING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DOOR_OPEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "motion_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "MOTION_STOPPED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOTION_UP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOTION_DOWN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOTION_UNKNOWN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8[]",
+          "name": "available_modes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "current_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_HUMAN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_AGV",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_FIRE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_OFFLINE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_EMERGENCY",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "session_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

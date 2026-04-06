@@ -1,0 +1,49 @@
+{
+  "name": "lanelet2_python",
+  "version": "1.2.1",
+  "description": "Python bindings for lanelet2",
+  "license": "BSD",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/fzi-forschungszentrum-informatik/lanelet2.git",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "lanelet2",
+    "url": "https://github.com/fzi-forschungszentrum-informatik/lanelet2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "catkin",
+      "ament_cmake_core",
+      "mrt_cmake_modules"
+    ],
+    "buildtool_export": [
+      "mrt_cmake_modules"
+    ],
+    "test": [
+      "gtest"
+    ],
+    "build_and_runtime": [
+      "lanelet2_core",
+      "lanelet2_io",
+      "lanelet2_routing",
+      "lanelet2_traffic_rules",
+      "lanelet2_projection",
+      "lanelet2_matching",
+      "libboost-python-dev"
+    ],
+    "depended_on_by": [
+      "autoware_lanelet2_extension_python",
+      "lanelet2",
+      "lanelet2_examples"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

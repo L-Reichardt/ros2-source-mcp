@@ -1,0 +1,101 @@
+{
+  "name": "control_toolbox",
+  "version": "3.3.0",
+  "description": "The control toolbox contains modules that are useful across all controllers.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/control_toolbox/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/control_toolbox/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "control_toolbox",
+    "url": "https://github.com/ros-controls/control_toolbox.git",
+    "branch": "ros2-master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "ament_cmake_gtest",
+      "rclcpp_lifecycle"
+    ],
+    "build_and_runtime": [
+      "control_msgs",
+      "eigen",
+      "filters",
+      "generate_parameter_library",
+      "geometry_msgs",
+      "pluginlib",
+      "rclcpp",
+      "rcutils",
+      "realtime_tools"
+    ],
+    "depended_on_by": [
+      "admittance_controller",
+      "gazebo_ros2_control",
+      "gripper_controllers",
+      "joint_trajectory_controller",
+      "pid_controller"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "SetPidGains": {
+      "description": "",
+      "raw": "float64 p\nfloat64 i\nfloat64 d\nfloat64 i_clamp\nbool antiwindup\n---\n",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "p",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i_clamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "antiwindup",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

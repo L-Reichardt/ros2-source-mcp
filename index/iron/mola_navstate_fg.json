@@ -1,0 +1,51 @@
+{
+  "name": "mola_navstate_fg",
+  "version": "1.2.1",
+  "description": "SE(3) pose and twist path data fusion estimator",
+  "license": "GPLv3",
+  "build_type": "cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/MOLAorg/mola/tree/develop/mola_navstate_fuse",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mola",
+    "url": "https://github.com/MOLAorg/mola.git",
+    "branch": "develop"
+  },
+  "dependencies": {
+    "build": [
+      "gtsam",
+      "libboost-serialization-dev",
+      "libboost-system-dev",
+      "libboost-filesystem-dev",
+      "libboost-thread-dev",
+      "libboost-program-options-dev",
+      "libboost-date-time-dev",
+      "libboost-timer-dev",
+      "libboost-chrono-dev",
+      "libboost-regex-dev"
+    ],
+    "buildtool": [
+      "cmake"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "build_and_runtime": [
+      "mola_common",
+      "mola_kernel",
+      "mola_imu_preintegration",
+      "mrpt_libobs"
+    ],
+    "depended_on_by": [
+      "mola"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,185 @@
+{
+  "name": "olive_interfaces",
+  "version": "0.1.0",
+  "description": "This package provides all olive custom interfaces",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://www.olive-robotics.com/",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "olive-interfaces",
+    "url": "https://github.com/olive-robotics/olive-ros2-interfaces.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "geometry_msgs",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "geometry_msgs"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "DeleteWaypoint": {
+      "description": "",
+      "raw": "string name\n---\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListWaypoints": {
+      "description": "",
+      "raw": "\n---\nstring[] waypoints\ngeometry_msgs/PoseStamped[] poses",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MoveToWaypoint": {
+      "description": "",
+      "raw": "string name\n---\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveWaypoint": {
+      "description": "",
+      "raw": "string name\n---\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveWaypointPose": {
+      "description": "",
+      "raw": "string name\ngeometry_msgs/Pose pose\n---\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

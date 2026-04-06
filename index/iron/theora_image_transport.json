@@ -1,0 +1,99 @@
+{
+  "name": "theora_image_transport",
+  "version": "3.1.0",
+  "description": "Theora_image_transport provides a plugin to image_transport for\n    transparently sending an image stream encoded with the Theora codec.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/image_transport_plugins",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "image_transport_plugins",
+    "url": "https://github.com/ros-perception/image_transport_plugins.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators",
+      "pkg-config"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "cv_bridge",
+      "image_transport",
+      "libogg",
+      "libopencv-imgproc-dev",
+      "libtheora",
+      "pluginlib",
+      "rclcpp",
+      "rcutils",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "image_transport_plugins"
+    ]
+  },
+  "messages": {
+    "Packet": {
+      "description": "ROS message adaptation of the ogg_packet struct from libogg,",
+      "raw": "# ROS message adaptation of the ogg_packet struct from libogg,\n# see http://www.xiph.org/ogg/doc/libogg/ogg_packet.html.\n\nstd_msgs/Header header # Original sensor_msgs/Image header\nuint8[] data      # Raw Theora packet data (combines packet and bytes fields from ogg_packet)\nint32 b_o_s       # Flag indicating whether this packet begins a logical bitstream\nint32 e_o_s       # Flag indicating whether this packet ends a bitstream\nint64 granulepos  # A number indicating the position of this packet in the decoded data\nint64 packetno    # Sequential number of this packet in the ogg bitstream\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Original sensor_msgs/Image header",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "Raw Theora packet data (combines packet and bytes fields from ogg_packet)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "b_o_s",
+          "comment": "Flag indicating whether this packet begins a logical bitstream",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "e_o_s",
+          "comment": "Flag indicating whether this packet ends a bitstream",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "granulepos",
+          "comment": "A number indicating the position of this packet in the decoded data",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "packetno",
+          "comment": "Sequential number of this packet in the ogg bitstream",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

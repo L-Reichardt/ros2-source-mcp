@@ -1,0 +1,73 @@
+{
+  "name": "collision_log_msgs",
+  "version": "0.1.1",
+  "description": "Messages for describing collisions (simulated or not)",
+  "license": "BSD 3-clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "metrics_msgs",
+    "url": "https://github.com/MetroRobots/metrics_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "NamedCollision": {
+      "description": "Message to indicate a collision between two entities.",
+      "raw": "# Message to indicate a collision between two entities.\n# The second entity name can be blank if a sensor detects a collision but doesn't have a name for the object\nstring entity0\nstring entity1\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "entity0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "entity1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NamedCollisions": {
+      "description": "",
+      "raw": "std_msgs/Header header\ncollision_log_msgs/NamedCollision[] collisions\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "collision_log_msgs/NamedCollision[]",
+          "name": "collisions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

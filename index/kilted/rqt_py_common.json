@@ -1,0 +1,65 @@
+{
+  "name": "rqt_py_common",
+  "version": "1.9.2",
+  "description": "rqt_py_common provides common functionality for rqt plugins written in Python.\n    Despite no plugin is provided, this package is part of the rqt_common_plugins\n    repository to keep refactoring generic functionality from these common plugins\n    into this package as easy as possible.\n\n    Functionality included in this package should cover generic ROS concepts and\n    should not introduce any special dependencies beside \"ros_base\".",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rqt_py_common",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-visualization/rqt_common_plugins",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-visualization/rqt_common_plugins/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "rqt",
+    "url": "https://github.com/ros-visualization/rqt.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python"
+    ],
+    "runtime": [
+      "python_qt_binding",
+      "qt_gui"
+    ],
+    "test": [
+      "ament_cmake_pytest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "rosidl_default_generators",
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "qtbase5-dev",
+      "rclpy"
+    ],
+    "depended_on_by": [
+      "rqt",
+      "rqt_action",
+      "rqt_common_plugins",
+      "rqt_console",
+      "rqt_moveit",
+      "rqt_msg",
+      "rqt_plot",
+      "rqt_publisher",
+      "rqt_reconfigure",
+      "rqt_robot_monitor",
+      "rqt_service_caller",
+      "rqt_topic"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

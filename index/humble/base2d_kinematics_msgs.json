@@ -1,0 +1,136 @@
+{
+  "name": "base2d_kinematics_msgs",
+  "version": "0.2.0",
+  "description": "Interfaces for 2.5D kinematics",
+  "license": "BSD 3-clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "metro_nav",
+    "url": "https://github.com/MetroRobots/metro_nav.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "base2d_kinematics"
+    ]
+  },
+  "messages": {
+    "Base2DKinematics": {
+      "description": "Velocities",
+      "raw": "# Velocities\n# X & Y in meters / second\nfloat64 min_vel_x\nfloat64 max_vel_x\nfloat64 min_vel_y\nfloat64 max_vel_y\n\n# theta in radians / second\n# The minimum rotational velocity is assumed to be -max_vel_theta\n# i.e. can turn both ways equally\nfloat64 max_vel_theta\n\n# Acceleration\n# X & Y in meters / second^2\nfloat64 acc_lim_x\nfloat64 decel_lim_x\nfloat64 acc_lim_y\nfloat64 decel_lim_y\n\n# Theta in radians / second^2\nfloat64 acc_lim_theta\nfloat64 decel_lim_theta\n\n# Speeds\n# Limits for combined xy / translational velocity in meters / second\nfloat64 min_speed_xy    # Previously called min_trans_vel\nfloat64 max_speed_xy    # Previously called max_trans_vel\n\n# The absolute value of the minimum rotational velocity in radians / second\nfloat64 min_speed_theta # Previously called min_rot_vel\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "min_vel_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_vel_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_vel_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_vel_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_vel_theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acc_lim_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "decel_lim_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acc_lim_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "decel_lim_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acc_lim_theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "decel_lim_theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_speed_xy",
+          "comment": "Previously called min_trans_vel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_speed_xy",
+          "comment": "Previously called max_trans_vel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_speed_theta",
+          "comment": "Previously called min_rot_vel",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

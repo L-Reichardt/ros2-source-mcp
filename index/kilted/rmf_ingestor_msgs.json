@@ -1,0 +1,228 @@
+{
+  "name": "rmf_ingestor_msgs",
+  "version": "3.5.0",
+  "description": "A package containing messages used to interface to ingestor workcells",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "rmf_dispenser_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime",
+      "geometry_msgs",
+      "rmf_dispenser_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_dev",
+      "rmf_fleet_adapter",
+      "rmf_robot_sim_gz_plugins"
+    ]
+  },
+  "messages": {
+    "IngestorRequest": {
+      "description": "A unique ID for this request",
+      "raw": "builtin_interfaces/Time time\n\n# A unique ID for this request\nstring request_guid\n\n# The unique name of the ingestor that this request is aimed at\nstring target_guid\n\n# below are custom workcell message fields\nstring transporter_type\nIngestorRequestItem[] items\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "request_guid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "target_guid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "transporter_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IngestorRequestItem[]",
+          "name": "items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IngestorRequestItem": {
+      "description": "",
+      "raw": "string type_guid\nint32 quantity\nstring compartment_name\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type_guid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "quantity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "compartment_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IngestorResult": {
+      "description": "A unique ID for the request which this result is for",
+      "raw": "builtin_interfaces/Time time\n\n# A unique ID for the request which this result is for\nstring request_guid\n\n# The unique ID of the workcell that this result was sent from\nstring source_guid\n\n# Different basic result statuses\nuint8 status\nuint8 ACKNOWLEDGED=0\nuint8 SUCCESS=1\nuint8 FAILED=2\n\n# below are custom workcell message fields\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "request_guid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source_guid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ACKNOWLEDGED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "IngestorState": {
+      "description": "A unique ID for this workcell",
+      "raw": "builtin_interfaces/Time time\n\n# A unique ID for this workcell\nstring guid\n\n# Different basic modes that the workcell could be in\nint32 mode\nint32 IDLE=0\nint32 BUSY=1\nint32 OFFLINE=2\n\n# Queued up requests that are being handled by this workcell\nstring[] request_guid_queue\n\n# below are custom workcell message fields\nfloat32 seconds_remaining\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "guid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "IDLE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "BUSY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "OFFLINE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "string[]",
+          "name": "request_guid_queue",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "seconds_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

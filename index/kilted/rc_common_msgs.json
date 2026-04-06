@@ -1,0 +1,247 @@
+{
+  "name": "rc_common_msgs",
+  "version": "0.5.3",
+  "description": "Common msg and srv definitions used by Roboception's ROS2 packages",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rc_common_msgs",
+    "url": "https://github.com/roboception/rc_common_msgs_ros2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "rc_genicam_driver",
+      "rc_reason_msgs"
+    ]
+  },
+  "messages": {
+    "CameraParam": {
+      "description": "Camera parameters that relate to a published image",
+      "raw": "# Camera parameters that relate to a published image\n\n# Header with timestamp and frame_id to which the parameters belong\nstd_msgs/Header header\n\n# True in case of a color camera\nbool is_color_camera\n\n# Exposure time of the camera in seconds\nfloat32 exposure_time\n\n# Gain factor in dB\nfloat32 gain\n\n# Line status for DigitalIO control according to GenICam SFNC:\n# Current status of all available line signals in a single bitfield\nuint32 line_status_all\n\n# Line sources for DigitalIO control according to GenICam SFNC:\n# Specifies for each line which internal acquisition or I/O source\n# signal is output on the respective line.\n#\n# The keys define the lines, the values define the sources; e.g.\n# [ {key: \"out1\", value: \"ExposureActive\"},\n#   {key: \"out2\", value: \"Low\"},\n#   ...\n# ]\n#\nKeyValue[] line_source\n\n# Additional optional camera parameters as key value pairs\nKeyValue[] extra_data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_color_camera",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "exposure_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "line_status_all",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "line_source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "extra_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyValue": {
+      "description": "",
+      "raw": "string key\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReturnCode": {
+      "description": "This message shall be used in the response of services as a field called return_code.",
+      "raw": "# This message shall be used in the response of services as a field called return_code.\n# Confer to ReturnCodeConsts message for commonly used return code definitions.\n\n# return codes\n# >=0 - success\n# < 0 - failure\n\n# return code\nint16 value\n\n# return message\nstring message\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReturnCodeConstants": {
+      "description": "This message file defines commonly used constants",
+      "raw": "# This message file defines commonly used constants\n# for services' return codes\n\n#  Default success without additional information\nint16 SUCCESS=0\n\n# Reserved error codes (reserved range [-99,-1])\nint16 INVALID_ARGUMENT=-1   # An invalid argument was passed with the service request\nint16 INTERNAL_ERROR=-2     # Internal error\nint16 INTERNAL_TIMEOUT=-3   # Timeout in internal computation\nint16 SENSOR_TIMEOUT=-4     # Timeout while waiting for image data to fulfill a request\nint16 IO_ERROR=-7           # IO error\nint16 NOT_APPLICABLE=-8     # Request not applicable (e.g. in current state)\nint16 INVALID_LICENSE=-9    # No valid license to fulfill this request\nint16 CAPACITY_EXCEEDED=-10 # capacity exceeded, i.e. new element could not be added\n\n# Reserved non-error codes (reserved range [1,99])\nint16 TIMEOUT_REACHED=3     # timeout in internal computation is reached, but a partial result could still be provided\nint16 CAPACITY_REACHED=10   # max capacity is reached, i.e. list is now full\nint16 OVERWRITTEN=11        # existing data/element overwritten\nint16 HINTS=999             # performance/implementation hints for application developers\n\n# each module defines own msg-file with consts for the module specific return codes\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "INVALID_ARGUMENT",
+          "comment": "An invalid argument was passed with the service request",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "INTERNAL_ERROR",
+          "comment": "Internal error",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "INTERNAL_TIMEOUT",
+          "comment": "Timeout in internal computation",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "SENSOR_TIMEOUT",
+          "comment": "Timeout while waiting for image data to fulfill a request",
+          "default": "-4",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "IO_ERROR",
+          "comment": "IO error",
+          "default": "-7",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "NOT_APPLICABLE",
+          "comment": "Request not applicable (e.g. in current state)",
+          "default": "-8",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "INVALID_LICENSE",
+          "comment": "No valid license to fulfill this request",
+          "default": "-9",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "CAPACITY_EXCEEDED",
+          "comment": "capacity exceeded, i.e. new element could not be added",
+          "default": "-10",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "TIMEOUT_REACHED",
+          "comment": "timeout in internal computation is reached, but a partial result could still be provided",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "CAPACITY_REACHED",
+          "comment": "max capacity is reached, i.e. list is now full",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "OVERWRITTEN",
+          "comment": "existing data/element overwritten",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "int16",
+          "name": "HINTS",
+          "comment": "performance/implementation hints for application developers",
+          "default": "999",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {
+    "Trigger": {
+      "description": "This is the roboception equivalent to the std_msgs/Trigger service.",
+      "raw": "# This is the roboception equivalent to the std_msgs/Trigger service.\n# It only differs in the response, which is the roboception standard\n# return code\n---\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

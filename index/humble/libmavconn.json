@@ -1,0 +1,52 @@
+{
+  "name": "libmavconn",
+  "version": "2.14.0",
+  "description": "MAVLink communication library.\n    This library provide unified connection handling classes\n    and URL to connection object mapper.\n\n    This library can be used in standalone programs.",
+  "license": "GPLv3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/mavros",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/mavlink/mavros.git",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/mavlink/mavros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "mavros",
+    "url": "https://github.com/mavlink/mavros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "python3-empy"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "asio",
+      "mavlink",
+      "libconsole-bridge-dev"
+    ],
+    "depended_on_by": [
+      "mavros",
+      "mavros_extras"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,100 @@
+{
+  "name": "aruco_msgs",
+  "version": "5.0.5",
+  "description": "The aruco_msgs package",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/aruco_ros",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "aruco_ros",
+    "url": "https://github.com/pal-robotics/aruco_ros.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "aruco_ros",
+      "rtabmap_slam"
+    ]
+  },
+  "messages": {
+    "Marker": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 id\ngeometry_msgs/PoseWithCovariance pose\nfloat64 confidence\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MarkerArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\naruco_msgs/Marker[] markers\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "aruco_msgs/Marker[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

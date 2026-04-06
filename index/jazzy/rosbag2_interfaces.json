@@ -1,6 +1,6 @@
 {
   "name": "rosbag2_interfaces",
-  "version": "0.26.9",
+  "version": "0.26.10",
   "description": "Interface definitions for controlling rosbag2",
   "license": "Apache License 2.0",
   "build_type": "ament_cmake",
@@ -125,6 +125,20 @@
         }
       ]
     },
+    "IsDiscoveryRunning": {
+      "description": "True if discovery is running, false otherwise",
+      "raw": "---\n# True if discovery is running, false otherwise\nbool running\n\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "running",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
     "IsPaused": {
       "description": "",
       "raw": "---\nbool paused\n",
@@ -190,6 +204,35 @@
           "type": "bool",
           "name": "success",
           "comment": "can only play-next while playback is paused",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Record": {
+      "description": "if provided, it will override the storage_options.uri provided during construction.",
+      "raw": "# if provided, it will override the storage_options.uri provided during construction.\n# Empty by default.\nstring uri\n---\n# Return code. Returns 1 when recording is already running or in case of error, otherwise 0.\nint32 return_code\n# Error string. Empty if no error occurred.\nstring error_string\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "uri",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
           "default": null,
           "is_constant": false
         }
@@ -265,11 +308,53 @@
       "request_fields": [],
       "response_fields": []
     },
+    "StartDiscovery": {
+      "description": "Return code. Returns 1 when discovery is already running or in case of error, otherwise 0.",
+      "raw": "---\n# Return code. Returns 1 when discovery is already running or in case of error, otherwise 0.\nint32 return_code\n# Error string. Empty if no error occurred.\nstring error_string\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
     "Stop": {
       "description": "",
       "raw": "---\n",
       "request_fields": [],
       "response_fields": []
+    },
+    "StopDiscovery": {
+      "description": "Return code. Returns 1 when discovery is not running, otherwise 0.",
+      "raw": "---\n# Return code. Returns 1 when discovery is not running, otherwise 0.\nint32 return_code\n# Error string. Empty if no error occurred.\nstring error_string\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
     },
     "TogglePaused": {
       "description": "",

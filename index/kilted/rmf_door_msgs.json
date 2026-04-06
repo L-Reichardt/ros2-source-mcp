@@ -1,0 +1,203 @@
+{
+  "name": "rmf_door_msgs",
+  "version": "3.5.0",
+  "description": "Messages used to interface to doors",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_building_sim_gz_plugins",
+      "rmf_dev",
+      "rmf_fleet_adapter",
+      "rmf_visualization_building_systems",
+      "rmf_visualization_rviz2_plugins"
+    ]
+  },
+  "messages": {
+    "DoorMode": {
+      "description": "The DoorMode message captures the \"mode\" of an automatic door controller.",
+      "raw": "# The DoorMode message captures the \"mode\" of an automatic door controller.\n# Most door controllers default to running in \"closed\" mode, and transition\n# through some sort of \"moving\" mode until reaching the \"open\" mode.\n\nuint32 value\n\n# \"value\" must be one of the following enumerations:\nuint32 MODE_CLOSED=0\nuint32 MODE_MOVING=1\nuint32 MODE_OPEN=2\nuint32 MODE_OFFLINE=3\nuint32 MODE_UNKNOWN=4\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_CLOSED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_MOVING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_OPEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_OFFLINE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "MODE_UNKNOWN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "DoorRequest": {
+      "description": "",
+      "raw": "builtin_interfaces/Time request_time\nstring requester_id\nstring door_name\nDoorMode requested_mode\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "request_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "requester_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "door_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorMode",
+          "name": "requested_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DoorSessions": {
+      "description": "",
+      "raw": "\nstring door_name\nSession[] sessions\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "door_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Session[]",
+          "name": "sessions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DoorState": {
+      "description": "",
+      "raw": "builtin_interfaces/Time door_time\nstring door_name\nDoorMode current_mode\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "door_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "door_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DoorMode",
+          "name": "current_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Session": {
+      "description": "",
+      "raw": "\nbuiltin_interfaces/Time request_time\nstring requester_id\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "request_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "requester_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SupervisorHeartbeat": {
+      "description": "",
+      "raw": "\nDoorSessions[] all_sessions\n",
+      "fields": [
+        {
+          "type": "DoorSessions[]",
+          "name": "all_sessions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

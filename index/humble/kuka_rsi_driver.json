@@ -1,0 +1,50 @@
+{
+  "name": "kuka_rsi_driver",
+  "version": "1.0.0",
+  "description": "A ROS2 hardware interface for use with KUKA RSI",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "kuka_drivers",
+    "url": "https://github.com/kroshu/kuka_drivers.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python"
+    ],
+    "runtime": [
+      "joint_trajectory_controller",
+      "joint_state_broadcaster",
+      "gpio_controllers",
+      "kuka_control_mode_handler",
+      "kuka_kss_message_handler",
+      "kuka_event_broadcaster",
+      "kuka_robot_descriptions",
+      "ros2_control"
+    ],
+    "test": [
+      "kuka_rsi_simulator",
+      "ros2lifecycle",
+      "launch_testing_ament_cmake"
+    ],
+    "build_and_runtime": [
+      "controller_manager_msgs",
+      "hardware_interface",
+      "kuka_external_control_sdk",
+      "kuka_drivers_core",
+      "pluginlib",
+      "std_msgs",
+      "tinyxml_vendor"
+    ],
+    "depended_on_by": [
+      "kuka_drivers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

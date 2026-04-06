@@ -1,0 +1,182 @@
+{
+  "name": "composition_interfaces",
+  "version": "1.6.0",
+  "description": "A package containing message and service definitions for managing composable nodes in a container process.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rcl_interfaces"
+    ],
+    "depended_on_by": [
+      "depthai_bridge",
+      "launch_ros",
+      "rclcpp_components",
+      "rclcpp_components",
+      "ros2component"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "ListNodes": {
+      "description": "List of full node names including namespace.",
+      "raw": "---\n# List of full node names including namespace.\nstring[] full_node_names\n# corresponding unique ids (must have same length as full_node_names).\nuint64[] unique_ids\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "full_node_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64[]",
+          "name": "unique_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadNode": {
+      "description": "The ROS package in which the composable node can be found.",
+      "raw": "# The ROS package in which the composable node can be found.\nstring package_name\n\n# A plugin within the ROS package \"package_name\".\nstring plugin_name\n\n# The assigned name of the composable node. Leave empty to use the node's\n# default name.\nstring node_name\n\n# The assigned namespace of the composable node. Leave empty to use the node's\n# default namespace.\nstring node_namespace\n\n# The assigned log level of the composable node. Enum values are found in\n# message rcl_interfaces/Log.\nuint8 log_level\n\n# Remapping rules for this composable node.\n#\n# For more info about static_remapping rules and their syntax, see\n# https://design.ros2.org/articles/static_remapping.html\n# TODO(sloretz) rcl_interfaces message for remap rules?\nstring[] remap_rules\n\n# The Parameters of this composable node to set.\nrcl_interfaces/Parameter[] parameters\n\n# key/value arguments that are specific to a type of container process.\nrcl_interfaces/Parameter[] extra_arguments\n---\n# True if the node was successfully loaded.\nbool success\n\n# Human readable error message if success is false, else empty string.\nstring error_message\n\n# Name of the loaded composable node (including namespace).\nstring full_node_name\n\n# A unique identifier for the loaded node.\nuint64 unique_id\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "package_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "plugin_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_namespace",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "log_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "remap_rules",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rcl_interfaces/Parameter[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rcl_interfaces/Parameter[]",
+          "name": "extra_arguments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "full_node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "unique_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UnloadNode": {
+      "description": "Container specific unique id of a loaded node.",
+      "raw": "# Container specific unique id of a loaded node.\nuint64 unique_id\n---\n# True if the node existed and was unloaded.\nbool success\n\n# Human readable error message if success is false, else empty string.\nstring error_message\n",
+      "request_fields": [
+        {
+          "type": "uint64",
+          "name": "unique_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

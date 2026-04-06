@@ -1,0 +1,147 @@
+{
+  "name": "gazebo_model_attachment_plugin_msgs",
+  "version": "1.0.3",
+  "description": "Model Attachment Plugin",
+  "license": "Boeing Proprietary",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "gazebo_model_attachment_plugin",
+    "url": "https://github.com/Boeing/gazebo_model_attachment_plugin.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python"
+    ],
+    "buildtool_export": [
+      "ament_cmake_cppcheck"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "rclpy"
+    ],
+    "test": [
+      "launch_testing_ament_cmake",
+      "ament_cmake_cpplint",
+      "ros2launch"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "std_msgs",
+      "ament_cmake_cpplint"
+    ],
+    "depended_on_by": [
+      "gazebo_model_attachment_plugin"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "Attach": {
+      "description": "",
+      "raw": "string joint_name\nstring model_name_1\nstring link_name_1\nstring model_name_2\nstring link_name_2\n---\nbool success\nstring message\n\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model_name_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "link_name_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model_name_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "link_name_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Detach": {
+      "description": "",
+      "raw": "string joint_name\nstring model_name_1\nstring model_name_2\n---\nbool success\nstring message\n\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model_name_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model_name_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

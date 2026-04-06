@@ -1,0 +1,179 @@
+{
+  "name": "robot_calibration_msgs",
+  "version": "0.9.2",
+  "description": "Messages for calibrating a robot",
+  "license": "Apache2",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/robot_calibration_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "robot_calibration",
+    "url": "https://github.com/mikeferguson/robot_calibration.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "builtin_interfaces",
+      "rosidl_default_generators",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "robot_calibration"
+    ]
+  },
+  "messages": {
+    "CalibrationData": {
+      "description": "State of the robot when this data was collected",
+      "raw": "# State of the robot when this data was collected\nsensor_msgs/JointState  joint_states\n\n# Observations, one entry per sensor that is collecting data\nObservation[]           observations\n",
+      "fields": [
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "joint_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Observation[]",
+          "name": "observations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraParameter": {
+      "description": "",
+      "raw": "string name\nfloat64 value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CaptureConfig": {
+      "description": "Pose the robot should be put in for this sample",
+      "raw": "# Pose the robot should be put in for this sample\nsensor_msgs/JointState joint_states\n\n# Names of feature detectors to use for this sample\nstring[] features\n",
+      "fields": [
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "joint_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "features",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExtendedCameraInfo": {
+      "description": "",
+      "raw": "sensor_msgs/CameraInfo  camera_info\nCameraParameter[]       parameters\n",
+      "fields": [
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "camera_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CameraParameter[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Observation": {
+      "description": "Name of the \"sensor\" that generate this data.",
+      "raw": "# Name of the \"sensor\" that generate this data.\nstring sensor_name\n\n# Features \"detected\" by the sensor.\ngeometry_msgs/PointStamped[] features\n\n# Sensor information\nExtendedCameraInfo ext_camera_info\n\n# Debugging data (optional)\nsensor_msgs/PointCloud2 cloud\nsensor_msgs/Image image\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "sensor_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PointStamped[]",
+          "name": "features",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ExtendedCameraInfo",
+          "name": "ext_camera_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "cloud",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {
+    "GripperLedCommand": {
+      "description": "This action is used to flash a sequence with LEDs, which can then be detected by calibration",
+      "raw": "# This action is used to flash a sequence with LEDs, which can then be detected by calibration\n\nuint8 led_code\n\n---\n\n---\n",
+      "goal_fields": [
+        {
+          "type": "uint8",
+          "name": "led_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    }
+  }
+}

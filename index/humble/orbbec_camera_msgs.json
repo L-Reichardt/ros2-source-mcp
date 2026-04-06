@@ -1,0 +1,767 @@
+{
+  "name": "orbbec_camera_msgs",
+  "version": "2.7.6",
+  "description": "A package containing orbbec camera messages definitions.",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "orbbec_camera_v2",
+    "url": "https://github.com/orbbec/OrbbecSDK_ROS2.git",
+    "branch": "v2-main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "sensor_msgs"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "orbbec_camera"
+    ]
+  },
+  "messages": {
+    "DeviceInfo": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring name\nstring serial_number\nstring firmware_version\nstring supported_min_sdk_version\nstring current_sdk_version\nstring hardware_version\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "supported_min_sdk_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "current_sdk_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hardware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeviceStatus": {
+      "description": "--- Color stream ---",
+      "raw": "std_msgs/Header header\n\n# --- Color stream ---\nfloat64 color_frame_rate_cur\nfloat64 color_frame_rate_avg\nfloat64 color_frame_rate_min\nfloat64 color_frame_rate_max\n\nfloat64 color_delay_ms_cur\nfloat64 color_delay_ms_avg\nfloat64 color_delay_ms_min\nfloat64 color_delay_ms_max\n\n# --- Depth stream ---\nfloat64 depth_frame_rate_cur\nfloat64 depth_frame_rate_avg\nfloat64 depth_frame_rate_min\nfloat64 depth_frame_rate_max\n\nfloat64 depth_delay_ms_cur\nfloat64 depth_delay_ms_avg\nfloat64 depth_delay_ms_min\nfloat64 depth_delay_ms_max\n\n# --- Device info ---\nbool device_online\nstring connection_type   # e.g. \"USB2.0\", \"USB3.0\", \"GigE\"\n\n# --- Calibration status ---\nbool customer_calibration_ready\nbool calibration_from_factory\nbool calibration_from_launch_param\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "color_frame_rate_cur",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "color_frame_rate_avg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "color_frame_rate_min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "color_frame_rate_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "color_delay_ms_cur",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "color_delay_ms_avg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "color_delay_ms_min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "color_delay_ms_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth_frame_rate_cur",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth_frame_rate_avg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth_frame_rate_min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth_frame_rate_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth_delay_ms_cur",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth_delay_ms_avg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth_delay_ms_min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "depth_delay_ms_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "device_online",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "connection_type",
+          "comment": "e.g. \"USB2.0\", \"USB3.0\", \"GigE\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "customer_calibration_ready",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "calibration_from_factory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "calibration_from_launch_param",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Extrinsics": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64[9] rotation\nfloat64[3] translation\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IMUInfo": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 noise_density\nfloat64 random_walk\nfloat64 reference_temperature\nfloat64[3] bias\nfloat64[3] gravity\nfloat64[9] scale_misalignment\nfloat64[9] temperature_slope\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "noise_density",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "random_walk",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "reference_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "bias",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "gravity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "scale_misalignment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "temperature_slope",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Metadata": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring json_data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "json_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RGBD": {
+      "description": "RGBD Message",
+      "raw": "# RGBD Message\nstd_msgs/Header header\nsensor_msgs/CameraInfo rgb_camera_info\nsensor_msgs/CameraInfo depth_camera_info\nsensor_msgs/Image rgb\nsensor_msgs/Image depth\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "rgb_camera_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "depth_camera_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "rgb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetBool": {
+      "description": "",
+      "raw": "---\nbool data\nbool success\nstring message\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetCameraInfo": {
+      "description": "",
+      "raw": "---\nsensor_msgs/CameraInfo info\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDeviceInfo": {
+      "description": "",
+      "raw": "---\nDeviceInfo info\nbool success\nstring message",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "DeviceInfo",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetInt32": {
+      "description": "",
+      "raw": "---\nint32 data\nbool success\nstring message\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetString": {
+      "description": "",
+      "raw": "---\nstring data\nbool success\nstring message\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetUserCalibParams": {
+      "description": "",
+      "raw": "---\nfloat64[9] k            #Intrinsic camera matrix for the raw (distorted) images\nfloat64[8] d            #The distortion parameters\nfloat64[9] rotation     #Extrinsic rotation matrix\nfloat64[3] translation  #Extrinsic translation vector\nbool success\nstring message\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "float64[9]",
+          "name": "k",
+          "comment": "Intrinsic camera matrix for the raw (distorted) images",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[8]",
+          "name": "d",
+          "comment": "The distortion parameters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "rotation",
+          "comment": "Extrinsic rotation matrix",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "translation",
+          "comment": "Extrinsic translation vector",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetArrays": {
+      "description": "",
+      "raw": "bool enable\nfloat32[] data_param\n---\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "data_param",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetFilter": {
+      "description": "",
+      "raw": "string filter_name\nbool filter_enable\nfloat32[] filter_param\n---\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filter_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "filter_enable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "filter_param",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetInt32": {
+      "description": "",
+      "raw": "int32 data\n---\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetString": {
+      "description": "",
+      "raw": "string data\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetUserCalibParams": {
+      "description": "",
+      "raw": "float64[9] k            #Intrinsic camera matrix for the raw (distorted) images\nfloat64[8] d            #The distortion parameters\nfloat64[9] rotation     #Extrinsic rotation matrix\nfloat64[3] translation  #Extrinsic translation vector\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "float64[9]",
+          "name": "k",
+          "comment": "Intrinsic camera matrix for the raw (distorted) images",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[8]",
+          "name": "d",
+          "comment": "The distortion parameters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "rotation",
+          "comment": "Extrinsic rotation matrix",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "translation",
+          "comment": "Extrinsic translation vector",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

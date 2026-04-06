@@ -1,0 +1,76 @@
+{
+  "name": "magnetometer_compass",
+  "version": "3.0.2",
+  "description": "Compass based on a 3-axis magnetometer, attitude readings and possibly also GNSS.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ctu-vras/compass",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ctu-vras/compass/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://index.ros.org/p/magnetometer_compass",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "compass",
+    "url": "https://github.com/ctu-vras/compass.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "angles",
+      "compass_conversions",
+      "magnetometer_pipeline",
+      "message_filters",
+      "pluginlib",
+      "rclcpp_components",
+      "std_msgs",
+      "tf2",
+      "tf2_geometry_msgs",
+      "tf2_sensor_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_gen_version_h"
+    ],
+    "runtime": [
+      "angles",
+      "compass_conversions",
+      "magnetometer_pipeline",
+      "message_filters",
+      "pluginlib",
+      "rclcpp_components",
+      "std_msgs",
+      "tf2",
+      "tf2_geometry_msgs",
+      "tf2_sensor_msgs"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_cmake_ros",
+      "builtin_interfaces",
+      "cras_lint"
+    ],
+    "build_and_runtime": [
+      "cras_cpp_common",
+      "compass_interfaces",
+      "eigen",
+      "geometry_msgs",
+      "rclcpp",
+      "sensor_msgs",
+      "tf2_ros"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

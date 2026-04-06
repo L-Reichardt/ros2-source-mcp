@@ -1,6 +1,6 @@
 {
   "name": "image_tools",
-  "version": "0.33.9",
+  "version": "0.33.10",
   "description": "Tools to capture and play back images to and from DDS subscriptions and publications.",
   "license": "Apache License 2.0",
   "build_type": "ament_cmake",
@@ -23,7 +23,11 @@
       "ament_cmake"
     ],
     "runtime": [
-      "libopencv-dev",
+      "libopencv-core",
+      "libopencv-imgcodecs",
+      "libopencv-highgui",
+      "libopencv-imgproc",
+      "libopencv-videoio",
       "rclcpp",
       "rclcpp_components",
       "sensor_msgs",

@@ -1,0 +1,108 @@
+{
+  "name": "rviz_resource_interfaces",
+  "version": "15.0.12",
+  "description": "ROS interfaces for working with resources like meshes.",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rviz",
+    "url": "https://github.com/ros2/rviz.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "rviz_default_plugins"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "GetResource": {
+      "description": "Resource path of the requested resource.",
+      "raw": "# Resource path of the requested resource.\nstring path\n\n# HTTP-style ETag value for the requested resource.\n# See: https://en.wikipedia.org/wiki/HTTP_ETag\n#\n# If this value is empty, then the server shall respond with the current\n# version of the resource and the ETag value, if it can be loaded.\n# If this value is not-empty, then the server may respond with a new resource\n# and ETag value.\n# However, if the ETag value for the resource has not changed, then the server\n# may respond with NOT_MODIFIED as the status_code, similar to\n# \"HTTP 304: Not Modified\".\n# See: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#304\n# The server may also ignore this value and always send the current version\n# of the resource and its ETag value, if caching is not implemented.\nstring etag\n\n---\n\n# An unspecified error occurred, check the error_reason string.\nint32 ERROR=0\n\n# The request was successful, etag and body will be set with valid values,\n# though etag may be empty.\n# The error_reason will be empty.\nint32 OK=1\n\n# The request was successful, but the etag value has not changed.\n# The etag value will be set to the requested etag value, but the body value\n# will be empty.\n# The error_reason should also be empty.\nint32 NOT_MODIFIED=2\n\n# Status code for the request, can be one of the above options.\nint32 status_code\n\n# Optionally set error reason string.\nstring error_reason\n\n# Expanded path, which may or may not be different from the given path.\n# The Service may expand, extend, or otherwise further qualify the path as it\n# resolves it, any of which would be reflected in this expanded path.\nstring expanded_path\n\n# HTTP-style ETag value for the requested resource.\n# See: https://en.wikipedia.org/wiki/HTTP_ETag\n#\n# As with the HTTP ETag, the value is unspecified, but it is described as:\n#\n# > Common methods of ETag generation include using a collision-resistant hash\n# > function of the resource's content, a hash of the last modification\n# > timestamp, or even just a revision number.\n#\n# This value may be empty if the server does not implement cache checking.\n#\n# This can be sent on subsequent requests to avoid getting the same unchanged\n# resource multiple times.\nstring etag\n\n# Opaque value of the resource.\nuint8[] body\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "etag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "ERROR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "OK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "NOT_MODIFIED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "status_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_reason",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "expanded_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "etag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "body",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,973 @@
+{
+  "name": "off_highway_premium_radar_msgs",
+  "version": "0.12.0",
+  "description": "The off_highway_premium_radar_msgs package",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "off_highway_sensor_drivers",
+    "url": "https://github.com/bosch-engineering/off_highway_sensor_drivers.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "off_highway_premium_radar",
+      "off_highway_sensor_drivers"
+    ]
+  },
+  "messages": {
+    "EgoVehicleData": {
+      "description": "Forward speed, forward speed variance, forward acceleration and yaw rate required",
+      "raw": "# Forward speed, forward speed variance, forward acceleration and yaw rate required\n# Comments provide naming from Technical Customer Information\n\n# FeedBack_VehSpd & FeedBack_VehSpdStdDev & FeedBack_RelYawRate\n# EgoData_VehSpd & EgoData_VehSpdStdDev & EgoData_RelYawRate\ngeometry_msgs/TwistWithCovariance velocity\n# FeedBack_LogAcc\n# EgoData_LogAcc\ngeometry_msgs/Accel acceleration\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Accel",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EgoVehicleInput": {
+      "description": "",
+      "raw": "std_msgs/Header header\nEgoVehicleData vehicle_data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EgoVehicleData",
+          "name": "vehicle_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "InterferenceIndicator": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\n# LocAtr_FovRedInt\nfloat32 fov_reduction_due_to_interfence\n# LocAtr_IntStat\nuint8 INVALID_INTERFERENCE = 0\nuint8 VALID_NO_INTERFERENCE = 1\nuint8 VALID_INTERFERENCE = 2\nuint8 interference_indicator\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "fov_reduction_due_to_interfence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_INTERFERENCE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VALID_NO_INTERFERENCE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VALID_INTERFERENCE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "interference_indicator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LocationAttributes": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\nstd_msgs/Header header\nLocationAttributesHeader location_attributes_header\nLocationAttributesPacket location_attributes_packet\n# LocAtr_MountingPosition\nSensorMounting mounting_position\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LocationAttributesHeader",
+          "name": "location_attributes_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LocationAttributesPacket",
+          "name": "location_attributes_packet",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SensorMounting",
+          "name": "mounting_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LocationAttributesHeader": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\n# LocAtr_LgpVer_i\nuint32 lgp_version\n# LocAtr_BlockCounter_i\nuint8 block_counter\n# LocAtr_TimeSts_i & LocAtr_TimeStns_i\nTime start_measurement\n# LocAtr_OpMode\nOperationMode operation_mode\n# LocAtr_DataMeas\nbool data_measured\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "lgp_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "block_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Time",
+          "name": "start_measurement",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "OperationMode",
+          "name": "operation_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "data_measured",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LocationAttributesPacket": {
+      "description": "",
+      "raw": "SensorModulationPerformance sensor_modulation_performance\nMisalignmentPacket misalignment\nInterferenceIndicator interference_indicator\nSensorFieldOfView sensor_field_of_view\nSensorCoatingPacket sensor_coating\n",
+      "fields": [
+        {
+          "type": "SensorModulationPerformance",
+          "name": "sensor_modulation_performance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MisalignmentPacket",
+          "name": "misalignment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "InterferenceIndicator",
+          "name": "interference_indicator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SensorFieldOfView",
+          "name": "sensor_field_of_view",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SensorCoatingPacket",
+          "name": "sensor_coating",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LocationDataHeader": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\nstd_msgs/Header header\n# LocData_TimeSts_i & LocData_TimeStns_i\nTime start_measurement\n# LocData_LgpVer_i\nuint32 lgp_version\n# LocData_BlockCounter_i\nuint8 block_counter\n# LocData_OpMode\nOperationMode operation_mode\n# LocData_DataMeas\nbool data_measured\n# LocData_NumLoc\nuint16 num_locations\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Time",
+          "name": "start_measurement",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "lgp_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "block_counter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "OperationMode",
+          "name": "operation_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "data_measured",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_locations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LocationDataPacket": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\nstd_msgs/Header header\n# LocData_RadDist_i_j\nfloat32 radial_distance\n# LocData_RadRelVel_i_j\nfloat32 radial_relative_velocity\n# LocData_AziAng_i_j\nfloat32 azimuth_angle\n# LocData_EleAng_i_j\nfloat32 elevation_angle\n# LocData_Rcs_i_j\nfloat32 radar_cross_section\n# LocData_Snr_i_j\nfloat32 snr\n# LocData_RadDistVar_i_j\nfloat32 radial_distance_variance\n# LocData_RadRelVelVar_i_j\nfloat32 radial_relative_velocity_variance\n# LocData_VarAzi_i_j\nfloat32 variance_azimuth\n# LocData_VarEle_i_j\nfloat32 variance_elevation\n# LocData_DistVelCov_i_j\nfloat32 distance_velocity_covariance\n# LocData_ProVelRes_i_j\nfloat32 probability_velocity_resolution\n# LocData_ProAziAng_i_j\nfloat32 probability_azimuth_angle\n# LocData_ProEleAng_i_j\nfloat32 probability_elevation_angle\n# LocData_MeasStat_i_j\nuint16 measurement_status\n# LocData_IdAngAmb_i_j\nuint16 index_angle_ambiguity\n# LocData_Reserved_i_j\nuint8[12] reserved\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radial_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radial_relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "azimuth_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "elevation_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radar_cross_section",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "snr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radial_distance_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radial_relative_velocity_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "variance_azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "variance_elevation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_velocity_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "probability_velocity_resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "probability_azimuth_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "probability_elevation_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "measurement_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "index_angle_ambiguity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[12]",
+          "name": "reserved",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MisalignmentPacket": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\n# LocAtr_ThetaMalAng\nfloat32 theta\n# LocAtr_ThetaMalAngVar\nfloat32 theta_variance\n# LocAtr_PhiMalAng\nfloat32 phi\n# LocAtr_PhiMalAngVar\nfloat32 phi_variance\n# LocAtr_PhiMalAngEme\nfloat32 phi_eme\n# LocAtr_PhiMalAngEmeVar\nfloat32 phi_eme_variance\n# LocAtr_MalStatus\nuint16 status\n# LocAtr_MalStatusEme\nuint16 status_eme\n# LocAtr_PercNegativeTheta\nfloat32 percent_negative_theta\n# LocAtr_MinThetaMalSOs\nfloat32 min_theta_sos\n# LocAtr_MaxThetaMalSOs\nfloat32 max_theta_sos\n# LocAtr_VarThetaMalSOs\nfloat32 theta_sos_variance\n# LocAtr_MeanThetaMalSOs\nfloat32 theta_sos_mean\n# LocAtr_MinPhiMalSOs\nfloat32 min_phi_sos\n# LocAtr_MaxPhiMalSOs\nfloat32 max_phi_sos\n# LocAtr_VarPhiMalSOs\nfloat32 phi_sos_variance\n# LocAtr_MeanPhiMalSOs\nfloat32 phi_sos_mean\n# LocAtr_SpreadPhiMalSOs\nfloat32 phi_sos_spread\n# LocAtr_NumSOs\nuint16 num_sos\n# LocAtr_NumEmeLocs\nuint16 num_eme\n# LocAtr_MalEstQuality\nfloat32 mal_est_quality\n\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi_eme",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi_eme_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "status_eme",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percent_negative_theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_theta_sos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_theta_sos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta_sos_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta_sos_mean",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_phi_sos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_phi_sos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi_sos_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi_sos_mean",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi_sos_spread",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_sos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_eme",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "mal_est_quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OperationMode": {
+      "description": "",
+      "raw": "uint8 INITIALIZATION = 13\nuint8 NORMAL = 20\nuint8 MODULATION_OFF = 22\nuint8 ALIGNMENT_MODE = 40\nuint8 RADAR_OFF = 51\nuint8 DRIVE_TEST = 61\nuint8 ERROR = 100\nuint8 operation_mode\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "INITIALIZATION",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NORMAL",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODULATION_OFF",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ALIGNMENT_MODE",
+          "comment": "",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RADAR_OFF",
+          "comment": "",
+          "default": "51",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DRIVE_TEST",
+          "comment": "",
+          "default": "61",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR",
+          "comment": "",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "operation_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorCoatingPacket": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\n# mdThetaIndcrMIMO\nfloat32 theta_indicator_mimo\n\n# mdThetaIndcrMIMOVldFlg\nbool theta_indicator_mimo_valid\n\n# mdPhiIndcr\nfloat32 phi_indicator\n\n# mdPhiIndcrVldFlg\nbool phi_indicator_valid\n\n# nRefIndcr\nfloat32 reflections_indicator\n\n# nRefIndcrVldFlg\nbool reflections_indicator_valid\n\n# thetaMIMORate\nfloat32 theta_mimo_rate\n\n# thetaMIMORteVldFlag\nbool theta_mimo_rate_valid\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "theta_indicator_mimo",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "theta_indicator_mimo_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi_indicator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "phi_indicator_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "reflections_indicator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reflections_indicator_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta_mimo_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "theta_mimo_rate_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorFieldOfView": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\n# LocAtr_FoVRange\nfloat32[99] fov\n# LocAtr_AziAngArr\nfloat32[99] azimuth\n# LocAtr_RangScaEle\nfloat32[11] elevation_range_scaling\n# LocAtr_EleAngArr\nfloat32[11] elevation\n",
+      "fields": [
+        {
+          "type": "float32[99]",
+          "name": "fov",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[99]",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[11]",
+          "name": "elevation_range_scaling",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[11]",
+          "name": "elevation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorModulationPerformance": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\n# LocAtr_DmpID\nuint8 detection_of_measurement_program\n# LocAtr_ModID\nuint16 modulation_id\nfloat32 distance_range_scaling\n# LocAtr_SepRadDist\nfloat32 separability_distance\n# LocAtr_SepRadVelo\nfloat32 separability_relative_velocity\n# LocAtr_PrecRadDist\nfloat32 precision_distance\n# LocAtr_PrecRadVelo\nfloat32 precision_relative_velocity\n# LocAtr_RadDistVeloCovVar\nfloat32 covariance_of_distance_and_relative_velocity\n# LocAtr_MinRadDist\nfloat32 minimum_measurable_distance\n# LocAtr_MaxRadDist\nfloat32 maximum_measurable_distance\n# LocAtr_MinRadVelo\nfloat32 minimum_measurable_relative_velocity\n# LocAtr_MaxRadVelo\nfloat32 maximum_measurable_relative_velocity\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "detection_of_measurement_program",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "modulation_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_range_scaling",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "separability_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "separability_relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "precision_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "precision_relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "covariance_of_distance_and_relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "minimum_measurable_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "maximum_measurable_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "minimum_measurable_relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "maximum_measurable_relative_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorMounting": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\n# LocAtr_SenPosX\nfloat32 x\n# LocAtr_SenPosY\nfloat32 y\n# LocAtr_SenPosZ\nfloat32 z\n# LocAtr_SenPosAzi\nfloat32 azimuth\n# LocAtr_SenPosEle\nfloat32 elevation\n# LocAtr_SenOrient\nint8 orientation\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "elevation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorStateInformation": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\nstd_msgs/Header header\n# SenStInfo_SenSt\nuint8 sensor_state\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sensor_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Time": {
+      "description": "Sensor uses uint32 for sec, ROS uses int32",
+      "raw": "# Sensor uses uint32 for sec, ROS uses int32\nuint32 sec\nuint32 nanosec\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "sec",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "nanosec",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "MeasurementProgram": {
+      "description": "Comments provide naming from Technical Customer Information",
+      "raw": "# Comments provide naming from Technical Customer Information\n\n# MeasPgm_ID\nuint16 DMP00 = 0\nuint16 DMP01 = 1\nuint16 DMP02 = 2\nuint16 DMP04 = 4\nuint16 id\n---\nbool success # Indicate successful run of triggered service\nstring message # Informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "DMP00",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DMP01",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DMP02",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DMP04",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "Informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

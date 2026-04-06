@@ -1,0 +1,53 @@
+{
+  "name": "libyaml_vendor",
+  "version": "1.5.0",
+  "description": "Vendored version of libyaml.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/yaml/libyaml",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "libyaml_vendor",
+    "url": "https://github.com/ros2/libyaml_vendor.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "libyaml-dev"
+    ],
+    "build_export": [
+      "libyaml-dev"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "git",
+      "pkg-config"
+    ],
+    "buildtool_export": [
+      "pkg-config"
+    ],
+    "runtime": [
+      "libyaml"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "performance_test_fixture",
+      "rcpputils",
+      "rcutils"
+    ],
+    "depended_on_by": [
+      "rcl",
+      "rcl_yaml_param_parser"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

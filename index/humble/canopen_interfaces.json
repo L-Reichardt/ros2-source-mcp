@@ -1,0 +1,429 @@
+{
+  "name": "canopen_interfaces",
+  "version": "0.2.13",
+  "description": "Services and Messages for ros2_canopen stack",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_canopen",
+    "url": "https://github.com/ros-industrial/ros2_canopen.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "canopen",
+      "canopen_402_driver",
+      "canopen_base_driver",
+      "canopen_core",
+      "canopen_master_driver",
+      "canopen_proxy_driver",
+      "canopen_ros2_controllers",
+      "canopen_utils"
+    ]
+  },
+  "messages": {
+    "COData": {
+      "description": "",
+      "raw": "uint16 index\nuint8 subindex\nuint32 data\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "subindex",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "COHeartbeatID": {
+      "description": "",
+      "raw": "uint8 nodeid\nuint16  heartbeat #ms\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "nodeid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "heartbeat",
+          "comment": "ms",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CONmtID": {
+      "description": "",
+      "raw": "uint8 nmtcommand\nuint8 nodeid\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "nmtcommand",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "nodeid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CONode": {
+      "description": "",
+      "raw": "uint8 nodeid\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "nodeid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CORead": {
+      "description": "",
+      "raw": "uint16 index\nuint8 subindex\n---\nbool success\nuint32 data\n",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "subindex",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "COReadID": {
+      "description": "8 = uint8_t, 16 = uint16_t, 32 = uint32_t",
+      "raw": "uint8 CANOPEN_DATATYPE_INT8 = 0x02\nuint8 CANOPEN_DATATYPE_INT16 = 0x03\nuint8 CANOPEN_DATATYPE_INT32 = 0x04\nuint8 CANOPEN_DATATYPE_UINT8 = 0x05\nuint8 CANOPEN_DATATYPE_UINT16 = 0x06\nuint8 CANOPEN_DATATYPE_UINT32 = 0x07\n\nuint8 nodeid\nuint16 index\nuint8 subindex\n# 8 = uint8_t, 16 = uint16_t, 32 = uint32_t\nuint8 canopen_datatype\n---\nbool success\nuint32 data\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_INT8",
+          "comment": "",
+          "default": "0x02",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_INT16",
+          "comment": "",
+          "default": "0x03",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_INT32",
+          "comment": "",
+          "default": "0x04",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_UINT8",
+          "comment": "",
+          "default": "0x05",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_UINT16",
+          "comment": "",
+          "default": "0x06",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_UINT32",
+          "comment": "",
+          "default": "0x07",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "nodeid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "subindex",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "canopen_datatype",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "COTargetDouble": {
+      "description": "",
+      "raw": "float64 target\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "COWrite": {
+      "description": "",
+      "raw": "uint16 index\nuint8 subindex\nuint32 data\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "subindex",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "COWriteID": {
+      "description": "8 = uint8_t, 16 = uint16_t, 32 = uint32_t",
+      "raw": "uint8 CANOPEN_DATATYPE_INT8 = 0x02\nuint8 CANOPEN_DATATYPE_INT16 = 0x03\nuint8 CANOPEN_DATATYPE_INT32 = 0x04\nuint8 CANOPEN_DATATYPE_UINT8 = 0x05\nuint8 CANOPEN_DATATYPE_UINT16 = 0x06\nuint8 CANOPEN_DATATYPE_UINT32 = 0x07\n\nint8 nodeid\nuint16 index\nuint8 subindex\nuint32 data\n# 8 = uint8_t, 16 = uint16_t, 32 = uint32_t\nuint8 canopen_datatype\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_INT8",
+          "comment": "",
+          "default": "0x02",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_INT16",
+          "comment": "",
+          "default": "0x03",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_INT32",
+          "comment": "",
+          "default": "0x04",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_UINT8",
+          "comment": "",
+          "default": "0x05",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_UINT16",
+          "comment": "",
+          "default": "0x06",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANOPEN_DATATYPE_UINT32",
+          "comment": "",
+          "default": "0x07",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "nodeid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "subindex",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "canopen_datatype",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

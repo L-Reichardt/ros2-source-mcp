@@ -1,0 +1,2084 @@
+{
+  "name": "hri_msgs",
+  "version": "2.1.0",
+  "description": "Messages, services and action definitions useful for Human-Robot Interaction",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "hri_msgs",
+    "url": "https://github.com/ros4hri/hri_msgs.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "hri",
+      "hri_face_body_matcher",
+      "hri_face_body_matcher",
+      "hri_face_body_matcher",
+      "hri_face_detect",
+      "hri_rviz",
+      "pyhri"
+    ]
+  },
+  "messages": {
+    "AudioFeatures": {
+      "description": "This message encodes the 16 audio features selected",
+      "raw": "# This message encodes the 16 audio features selected\n# in the INTERSPEECH2009 challenge.\n# \n# Reference: Schuller, Steidl, Batliner, The INTERSPEECH 2009 Emotion Challenge\n# \n# They can be extract using the OpenSMILE toolkit with the present\n# IS09_emotion.conf\n\nfloat32 zcr # zero-crossing rate from the time signal\nfloat32 rms # root mean square frame energy\nfloat32 pitch # pitch frequency (normalised to 500 Hz)\nfloat32 hnr # harmonics-to-noise ratio by autocorrelation function\nfloat32[] mfcc # mel-frequency cepstral coefficients 1 to 12\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "zcr",
+          "comment": "zero-crossing rate from the time signal",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rms",
+          "comment": "root mean square frame energy",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "pitch frequency (normalised to 500 Hz)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "hnr",
+          "comment": "harmonics-to-noise ratio by autocorrelation function",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "mfcc",
+          "comment": "mel-frequency cepstral coefficients 1 to 12",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BodyPosture": {
+      "description": "Describes the general body posture in a symbolic manner.",
+      "raw": "# Describes the general body posture in a symbolic manner.\nstd_msgs/Header header\n\nuint8 STANDING = 1\nuint8 SITTING = 2\nuint8 CROUCHING = 3\nuint8 LAYING = 4\n\nuint8 OTHER = 0\n\nuint8 posture # one of the above constants\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "STANDING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SITTING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CROUCHING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LAYING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "posture",
+          "comment": "one of the above constants",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EngagementLevel": {
+      "description": "Discrete engagement levels of a person with respect to the robot",
+      "raw": "# Discrete engagement levels of a person with respect to the robot\n# It is for instance published on /humans/persons/person_id/engagement_status \n# to access to the engagement level of a detected human. \n# It will output one of the five following levels: unknown, disengaged, \n# engaging, engaged and disengaging.\nstd_msgs/Header header  \n\n# unknown: no information is provided about the engagement level \nuint8 UNKNOWN=0\n# disengaged: the human has not looked in the direction of the robot\nuint8 DISENGAGED=1\n# engaging: the human has started to look in the direction of the robot\nuint8 ENGAGING=2\n# engaged: the human is fully engaged with the robot\nuint8 ENGAGED=3\n# disengaging: the human has started to look away from the robot\nuint8 DISENGAGING=4\n\nuint8 level\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISENGAGED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENGAGING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENGAGED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DISENGAGING",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Expression": {
+      "description": "Represents a human facial expression, either in a categorical way, or",
+      "raw": "# Represents a human facial expression, either in a categorical way, or\n# using the valence/arousal model of emotions\nstd_msgs/Header header\n\n# the list of expressions is based on Chambers MSc thesis, Bristol Robotics Lab 2020, and includes the six basic emotions in Eckman's model.\n#\n# Note that a node making use of this message definition is not supposed or\n# expected to handle all listed expressions.\n#\n# This list might change based on future needs/requests.\n\nstring NEUTRAL=\"neutral\"\nstring ANGRY=\"angry\"\nstring SAD=\"sad\"\nstring HAPPY=\"happy\"\nstring SURPRISED=\"surprised\"\nstring DISGUSTED=\"disgusted\"\nstring SCARED=\"scared\"\nstring PLEADING=\"pleading\"\nstring VULNERABLE=\"vulnerable\"\nstring DESPAIRED=\"despaired\"\nstring GUILTY=\"guilty\"\nstring DISAPPOINTED=\"disappointed\"\nstring EMBARRASSED=\"embarrassed\"\nstring HORRIFIED=\"horrified\"\nstring SKEPTICAL=\"skeptical\"\nstring ANNOYED=\"annoyed\"\nstring FURIOUS=\"furious\"\nstring SUSPICIOUS=\"suspicious\"\nstring REJECTED=\"rejected\"\nstring BORED=\"bored\"\nstring TIRED=\"tired\"\nstring ASLEEP=\"asleep\"\nstring CONFUSED=\"confused\"\nstring AMAZED=\"amazed\"\nstring EXCITED=\"excited\"\n\nstring expression # one of the listed expressions\n\n# Valence/Arousal model of emotions\nfloat32 valence # from -1.0 to +1.0\nfloat32 arousal # from -1.0 to +1.0\n\nfloat32 confidence # from 0.0 to 1.0\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "NEUTRAL",
+          "comment": "",
+          "default": "\"neutral\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ANGRY",
+          "comment": "",
+          "default": "\"angry\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SAD",
+          "comment": "",
+          "default": "\"sad\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "HAPPY",
+          "comment": "",
+          "default": "\"happy\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SURPRISED",
+          "comment": "",
+          "default": "\"surprised\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "DISGUSTED",
+          "comment": "",
+          "default": "\"disgusted\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SCARED",
+          "comment": "",
+          "default": "\"scared\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PLEADING",
+          "comment": "",
+          "default": "\"pleading\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "VULNERABLE",
+          "comment": "",
+          "default": "\"vulnerable\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "DESPAIRED",
+          "comment": "",
+          "default": "\"despaired\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "GUILTY",
+          "comment": "",
+          "default": "\"guilty\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "DISAPPOINTED",
+          "comment": "",
+          "default": "\"disappointed\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "EMBARRASSED",
+          "comment": "",
+          "default": "\"embarrassed\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "HORRIFIED",
+          "comment": "",
+          "default": "\"horrified\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SKEPTICAL",
+          "comment": "",
+          "default": "\"skeptical\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ANNOYED",
+          "comment": "",
+          "default": "\"annoyed\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "FURIOUS",
+          "comment": "",
+          "default": "\"furious\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SUSPICIOUS",
+          "comment": "",
+          "default": "\"suspicious\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "REJECTED",
+          "comment": "",
+          "default": "\"rejected\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "BORED",
+          "comment": "",
+          "default": "\"bored\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "TIRED",
+          "comment": "",
+          "default": "\"tired\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ASLEEP",
+          "comment": "",
+          "default": "\"asleep\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CONFUSED",
+          "comment": "",
+          "default": "\"confused\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "AMAZED",
+          "comment": "",
+          "default": "\"amazed\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "EXCITED",
+          "comment": "",
+          "default": "\"excited\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "expression",
+          "comment": "one of the listed expressions",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "valence",
+          "comment": "from -1.0 to +1.0",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "arousal",
+          "comment": "from -1.0 to +1.0",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "from 0.0 to 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FacialActionUnits": {
+      "description": "This message the intensity of each actions unit (AU), with their confidence, for a specific face.",
+      "raw": "# This message the intensity of each actions unit (AU), with their confidence, for a specific face.\n#\n# It follows the naming convention of the  Facial Action Coding System (FACS) developed by Ekman.\n\nstd_msgs/Header header\n\n# AU codes\n# List taken from https://en.wikipedia.org/wiki/Facial_Action_Coding_System\n\n# Main codes\nuint8 NEUTRAL_FACE=0  # Neutral face \nuint8 INNER_BROW_RAISER=1  # Inner brow raiser \nuint8 OUTER_BROW_RAISER=2  # Outer brow raiser \nuint8 BROW_LOWERER=4  # Brow lowerer \nuint8 UPPER_LID_RAISER=5  # Upper lid raiser \nuint8 CHEEK_RAISER=6  # Cheek raiser \nuint8 LID_TIGHTENER=7  # Lid tightener \nuint8 LIPS_TOWARD_EACH_OTHER=8  # Lips toward each other \nuint8 NOSE_WRINKLER=9  # Nose wrinkler \nuint8 UPPER_LIP_RAISER=10  # Upper lip raiser \nuint8 NASOLABIAL_DEEPENER=11  # Nasolabial deepener \nuint8 LIP_CORNER_PULLER=12  # Lip corner puller \nuint8 SHARP_LIP_PULLER=13  # Sharp lip puller \nuint8 DIMPLER=14  # Dimpler \nuint8 LIP_CORNER_DEPRESSOR=15  # Lip corner depressor \nuint8 LOWER_LIP_DEPRESSOR=16  # Lower lip depressor \nuint8 CHIN_RAISER=17  # Chin raiser \nuint8 LIP_PUCKER=18  # Lip pucker \nuint8 TONGUE_SHOW=19  # Tongue show \nuint8 LIP_STRETCHER=20  # Lip stretcher \nuint8 NECK_TIGHTENER=21  # Neck tightener \nuint8 LIP_FUNNELER=22  # Lip funneler \nuint8 LIP_TIGHTENER=23  # Lip tightener \nuint8 LIP_PRESSOR=24  # Lip pressor \nuint8 LIPS_PART=25  # Lips part \nuint8 JAW_DROP=26  # Jaw drop \nuint8 MOUTH_STRETCH=27  # Mouth stretch \nuint8 LIP_SUCK=28  # Lip suck \n\n# Head movement codes\nuint8 HEAD_TURN_LEFT=51  # Head turn left\nuint8 HEAD_TURN_RIGHT=52  # Head turn right\nuint8 HEAD_UP=53  # Head up\nuint8 HEAD_DOWN=54  # Head down\nuint8 HEAD_TILT_LEFT=55  # Head tilt left\nuint8 HEAD_TILT_RIGHT=56  # Head tilt right\nuint8 HEAD_FORWARD=57  # Head forward\nuint8 HEAD_BACK=58  # Head back\n\n# Eye movement codes\nuint8 EYES_TURN_LEFT=61  # Eyes turn left\nuint8 EYES_TURN_RIGHT=62  # Eyes turn right\nuint8 EYES_UP=63  # Eyes up\nuint8 EYES_DOWN=64  # Eyes down\nuint8 WALLEYE=65  # Walleye\nuint8 CROSS_EYE=66  # Cross-eye\nuint8 EYES_POSITIONED_TO_LOOK_AT_OTHER_PERSON=69  # Eyes positioned to look at other person : The 4, 5, or 7, alone or in combination, occurs while the eye position is fixed on the other person in the conversation.\n\n# Visibility codes\nuint8 BROWS_AND_FOREHEAD_NOT_VISIBLE=70  # Brows and forehead not visible\nuint8 EYES_NOT_VISIBLE=71  # Eyes not visible\nuint8 LOWER_FACE_NOT_VISIBLE=72  # Lower face not visible\nuint8 ENTIRE_FACE_NOT_VISIBLE=73  # Entire face not visible\nuint8 UNSOCIABLE=74  # Unsociable\n\n# Gross behavior codes\nuint8 JAW_THRUST=29  # Jaw thrust\nuint8 JAW_SIDEWAYS=30  # Jaw sideways\nuint8 JAW_CLENCHER=31  # Jaw clencher : masseter\nuint8 LIP_BITE=32  # [Lip] bite\nuint8 CHEEK_BLOW=33  # [Cheek] blow\nuint8 CHEEK_PUFF=34  # [Cheek] puff\nuint8 CHEEK_SUCK=35  # [Cheek] suck\nuint8 TONGUE_BULGE=36  # [Tongue] bulge\nuint8 LIP_WIPE=37  # Lip wipe\nuint8 NOSTRIL_DILATOR=38  # Nostril dilator : nasalis (pars alaris)\nuint8 NOSTRIL_COMPRESSOR=39  # Nostril compressor : nasalis (pars transversa) and depressor septi nasi\nuint8 SNIFF=40  # Sniff\nuint8 LID_DROOP=41  # Lid droop : Levator palpebrae superioris (relaxation)\nuint8 SLIT=42  # Slit : Orbicularis oculi muscle\nuint8 EYES_CLOSED=43  # Eyes closed : Relaxation of Levator palpebrae superioris\nuint8 SQUINT=44  # Squint : Corrugator supercilii and orbicularis oculi muscle\nuint8 BLINK=45  # Blink : Relaxation of Levator palpebrae superioris; contraction of orbicularis oculi (pars palpebralis)\nuint8 WINK=46  # Wink : orbicularis oculi\nuint8 SPEECH=50  # Speech\nuint8 SWALLOW=80  # Swallow\nuint8 CHEWING=81  # Chewing\nuint8 SHOULDER_SHRUG=82  # Shoulder shrug\nuint8 HEAD_SHAKE_BACK_AND_FORTH=84  # Head shake back and forth\nuint8 HEAD_NOD_UP_AND_DOWN=85  # Head nod up and down\nuint8 FLASH=91  # Flash\nuint8 PARTIAL_FLASH=92  # Partial flash\nuint8 SHIVER_TREMBLE=97  # Shiver/tremble\nuint8 FAST_UP_DOWN_LOOK=98  # Fast up-down look\n\n\nfloat32[99] intensity # array of 99 AUs intensities, one per AU, ordered per AU codes\nfloat32[99] confidence # array of 99 AUs intensity confidences, one per AU, ordered per AU codes\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NEUTRAL_FACE",
+          "comment": "Neutral face",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INNER_BROW_RAISER",
+          "comment": "Inner brow raiser",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUTER_BROW_RAISER",
+          "comment": "Outer brow raiser",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BROW_LOWERER",
+          "comment": "Brow lowerer",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UPPER_LID_RAISER",
+          "comment": "Upper lid raiser",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHEEK_RAISER",
+          "comment": "Cheek raiser",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LID_TIGHTENER",
+          "comment": "Lid tightener",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIPS_TOWARD_EACH_OTHER",
+          "comment": "Lips toward each other",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSE_WRINKLER",
+          "comment": "Nose wrinkler",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UPPER_LIP_RAISER",
+          "comment": "Upper lip raiser",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NASOLABIAL_DEEPENER",
+          "comment": "Nasolabial deepener",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_CORNER_PULLER",
+          "comment": "Lip corner puller",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SHARP_LIP_PULLER",
+          "comment": "Sharp lip puller",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIMPLER",
+          "comment": "Dimpler",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_CORNER_DEPRESSOR",
+          "comment": "Lip corner depressor",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOWER_LIP_DEPRESSOR",
+          "comment": "Lower lip depressor",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHIN_RAISER",
+          "comment": "Chin raiser",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_PUCKER",
+          "comment": "Lip pucker",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TONGUE_SHOW",
+          "comment": "Tongue show",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_STRETCHER",
+          "comment": "Lip stretcher",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NECK_TIGHTENER",
+          "comment": "Neck tightener",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_FUNNELER",
+          "comment": "Lip funneler",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_TIGHTENER",
+          "comment": "Lip tightener",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_PRESSOR",
+          "comment": "Lip pressor",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIPS_PART",
+          "comment": "Lips part",
+          "default": "25",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JAW_DROP",
+          "comment": "Jaw drop",
+          "default": "26",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_STRETCH",
+          "comment": "Mouth stretch",
+          "default": "27",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_SUCK",
+          "comment": "Lip suck",
+          "default": "28",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_TURN_LEFT",
+          "comment": "Head turn left",
+          "default": "51",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_TURN_RIGHT",
+          "comment": "Head turn right",
+          "default": "52",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_UP",
+          "comment": "Head up",
+          "default": "53",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_DOWN",
+          "comment": "Head down",
+          "default": "54",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_TILT_LEFT",
+          "comment": "Head tilt left",
+          "default": "55",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_TILT_RIGHT",
+          "comment": "Head tilt right",
+          "default": "56",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_FORWARD",
+          "comment": "Head forward",
+          "default": "57",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_BACK",
+          "comment": "Head back",
+          "default": "58",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EYES_TURN_LEFT",
+          "comment": "Eyes turn left",
+          "default": "61",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EYES_TURN_RIGHT",
+          "comment": "Eyes turn right",
+          "default": "62",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EYES_UP",
+          "comment": "Eyes up",
+          "default": "63",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EYES_DOWN",
+          "comment": "Eyes down",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WALLEYE",
+          "comment": "Walleye",
+          "default": "65",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CROSS_EYE",
+          "comment": "Cross-eye",
+          "default": "66",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EYES_POSITIONED_TO_LOOK_AT_OTHER_PERSON",
+          "comment": "Eyes positioned to look at other person : The 4, 5, or 7, alone or in combination, occurs while the eye position is fixed on the other person in the conversation.",
+          "default": "69",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BROWS_AND_FOREHEAD_NOT_VISIBLE",
+          "comment": "Brows and forehead not visible",
+          "default": "70",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EYES_NOT_VISIBLE",
+          "comment": "Eyes not visible",
+          "default": "71",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOWER_FACE_NOT_VISIBLE",
+          "comment": "Lower face not visible",
+          "default": "72",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ENTIRE_FACE_NOT_VISIBLE",
+          "comment": "Entire face not visible",
+          "default": "73",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNSOCIABLE",
+          "comment": "Unsociable",
+          "default": "74",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JAW_THRUST",
+          "comment": "Jaw thrust",
+          "default": "29",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JAW_SIDEWAYS",
+          "comment": "Jaw sideways",
+          "default": "30",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JAW_CLENCHER",
+          "comment": "Jaw clencher : masseter",
+          "default": "31",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_BITE",
+          "comment": "[Lip] bite",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHEEK_BLOW",
+          "comment": "[Cheek] blow",
+          "default": "33",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHEEK_PUFF",
+          "comment": "[Cheek] puff",
+          "default": "34",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHEEK_SUCK",
+          "comment": "[Cheek] suck",
+          "default": "35",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TONGUE_BULGE",
+          "comment": "[Tongue] bulge",
+          "default": "36",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIP_WIPE",
+          "comment": "Lip wipe",
+          "default": "37",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSTRIL_DILATOR",
+          "comment": "Nostril dilator : nasalis (pars alaris)",
+          "default": "38",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSTRIL_COMPRESSOR",
+          "comment": "Nostril compressor : nasalis (pars transversa) and depressor septi nasi",
+          "default": "39",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SNIFF",
+          "comment": "Sniff",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LID_DROOP",
+          "comment": "Lid droop : Levator palpebrae superioris (relaxation)",
+          "default": "41",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SLIT",
+          "comment": "Slit : Orbicularis oculi muscle",
+          "default": "42",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EYES_CLOSED",
+          "comment": "Eyes closed : Relaxation of Levator palpebrae superioris",
+          "default": "43",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SQUINT",
+          "comment": "Squint : Corrugator supercilii and orbicularis oculi muscle",
+          "default": "44",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLINK",
+          "comment": "Blink : Relaxation of Levator palpebrae superioris; contraction of orbicularis oculi (pars palpebralis)",
+          "default": "45",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WINK",
+          "comment": "Wink : orbicularis oculi",
+          "default": "46",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPEECH",
+          "comment": "Speech",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SWALLOW",
+          "comment": "Swallow",
+          "default": "80",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHEWING",
+          "comment": "Chewing",
+          "default": "81",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SHOULDER_SHRUG",
+          "comment": "Shoulder shrug",
+          "default": "82",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_SHAKE_BACK_AND_FORTH",
+          "comment": "Head shake back and forth",
+          "default": "84",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEAD_NOD_UP_AND_DOWN",
+          "comment": "Head nod up and down",
+          "default": "85",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FLASH",
+          "comment": "Flash",
+          "default": "91",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARTIAL_FLASH",
+          "comment": "Partial flash",
+          "default": "92",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SHIVER_TREMBLE",
+          "comment": "Shiver/tremble",
+          "default": "97",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAST_UP_DOWN_LOOK",
+          "comment": "Fast up-down look",
+          "default": "98",
+          "is_constant": true
+        },
+        {
+          "type": "float32[99]",
+          "name": "intensity",
+          "comment": "array of 99 AUs intensities, one per AU, ordered per AU codes",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[99]",
+          "name": "confidence",
+          "comment": "array of 99 AUs intensity confidences, one per AU, ordered per AU codes",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FacialLandmarks": {
+      "description": "This message contains a list of facial features detected on a face",
+      "raw": "# This message contains a list of facial features detected on a face\n# (0, 0) is at top-left corner of image\n# Features' coordinates are expressed in normalised pixel coordinates \n# (in the range [0., 1.]), from the top-left corner.\nstd_msgs/Header header\n\n# Facial landmarks codes\n# Follows dlib and OpenPose convention\n# https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/02_output.md#face-output-format\nuint8 RIGHT_EAR=0\nuint8 RIGHT_PROFILE_1=1\nuint8 RIGHT_PROFILE_2=2\nuint8 RIGHT_PROFILE_3=3\nuint8 RIGHT_PROFILE_4=4\nuint8 RIGHT_PROFILE_5=5\nuint8 RIGHT_PROFILE_6=6\nuint8 RIGHT_PROFILE_7=7\n\nuint8 MENTON=8\n\nuint8 LEFT_EAR=16\nuint8 LEFT_PROFILE_1=15\nuint8 LEFT_PROFILE_2=14\nuint8 LEFT_PROFILE_3=13\nuint8 LEFT_PROFILE_4=12\nuint8 LEFT_PROFILE_5=11\nuint8 LEFT_PROFILE_6=10\nuint8 LEFT_PROFILE_7=9\n\nuint8 RIGHT_EYEBROW_OUTSIDE=17\nuint8 RIGHT_EYEBROW_1=18\nuint8 RIGHT_EYEBROW_2=19\nuint8 RIGHT_EYEBROW_3=20\nuint8 RIGHT_EYEBROW_INSIDE=21\n\nuint8 RIGHT_EYE_OUTSIDE=36\nuint8 RIGHT_EYE_TOP_1=37\nuint8 RIGHT_EYE_TOP_2=38\nuint8 RIGHT_EYE_INSIDE=39\nuint8 RIGHT_EYE_BOTTOM_1=41\nuint8 RIGHT_EYE_BOTTOM_2=40\n\nuint8 RIGHT_PUPIL=68\n\nuint8 LEFT_EYEBROW_OUTSIDE=26\nuint8 LEFT_EYEBROW_1=25\nuint8 LEFT_EYEBROW_2=24\nuint8 LEFT_EYEBROW_3=23\nuint8 LEFT_EYEBROW_INSIDE=22\n\nuint8 LEFT_EYE_OUTSIDE=45\nuint8 LEFT_EYE_TOP_1=44\nuint8 LEFT_EYE_TOP_2=43\nuint8 LEFT_EYE_INSIDE=42\nuint8 LEFT_EYE_BOTTOM_1=46\nuint8 LEFT_EYE_BOTTOM_2=47\n\nuint8 LEFT_PUPIL=69\n\nuint8 SELLION=27\nuint8 NOSE_1=28\nuint8 NOSE_2=29\nuint8 NOSE=30\n\nuint8 NOSTRIL_1=31\nuint8 NOSTRIL_2=32\nuint8 NOSTRIL_3=33\nuint8 NOSTRIL_4=34\nuint8 NOSTRIL_5=35\n\nuint8 MOUTH_OUTER_RIGHT=48\nuint8 MOUTH_OUTER_TOP_1=49\nuint8 MOUTH_OUTER_TOP_2=50\nuint8 MOUTH_OUTER_TOP_3=51\nuint8 MOUTH_OUTER_TOP_4=52\nuint8 MOUTH_OUTER_TOP_5=53\nuint8 MOUTH_OUTER_LEFT=54\nuint8 MOUTH_OUTER_BOTTOM_1=59\nuint8 MOUTH_OUTER_BOTTOM_2=58\nuint8 MOUTH_OUTER_BOTTOM_3=57\nuint8 MOUTH_OUTER_BOTTOM_4=56\nuint8 MOUTH_OUTER_BOTTOM_5=55\n\nuint8 MOUTH_INNER_RIGHT=60\nuint8 MOUTH_INNER_TOP_1=61\nuint8 MOUTH_INNER_TOP_2=62\nuint8 MOUTH_INNER_TOP_3=63\nuint8 MOUTH_INNER_LEFT=64\nuint8 MOUTH_INNER_BOTTOM_1=67\nuint8 MOUTH_INNER_BOTTOM_2=66\nuint8 MOUTH_INNER_BOTTOM_3=65\n\n# array of 70 landmark normalized coordinates, one per landmark, ordered per landmarks codes\nNormalizedPointOfInterest2D[70] landmarks\n\nuint32 height # image height in pixels, that is, number of rows\nuint32 width # image width in pixels, that is, number of columns\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EAR",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_PROFILE_1",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_PROFILE_2",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_PROFILE_3",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_PROFILE_4",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_PROFILE_5",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_PROFILE_6",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_PROFILE_7",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MENTON",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EAR",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_PROFILE_1",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_PROFILE_2",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_PROFILE_3",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_PROFILE_4",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_PROFILE_5",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_PROFILE_6",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_PROFILE_7",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYEBROW_OUTSIDE",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYEBROW_1",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYEBROW_2",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYEBROW_3",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYEBROW_INSIDE",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYE_OUTSIDE",
+          "comment": "",
+          "default": "36",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYE_TOP_1",
+          "comment": "",
+          "default": "37",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYE_TOP_2",
+          "comment": "",
+          "default": "38",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYE_INSIDE",
+          "comment": "",
+          "default": "39",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYE_BOTTOM_1",
+          "comment": "",
+          "default": "41",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYE_BOTTOM_2",
+          "comment": "",
+          "default": "40",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_PUPIL",
+          "comment": "",
+          "default": "68",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYEBROW_OUTSIDE",
+          "comment": "",
+          "default": "26",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYEBROW_1",
+          "comment": "",
+          "default": "25",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYEBROW_2",
+          "comment": "",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYEBROW_3",
+          "comment": "",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYEBROW_INSIDE",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYE_OUTSIDE",
+          "comment": "",
+          "default": "45",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYE_TOP_1",
+          "comment": "",
+          "default": "44",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYE_TOP_2",
+          "comment": "",
+          "default": "43",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYE_INSIDE",
+          "comment": "",
+          "default": "42",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYE_BOTTOM_1",
+          "comment": "",
+          "default": "46",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYE_BOTTOM_2",
+          "comment": "",
+          "default": "47",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_PUPIL",
+          "comment": "",
+          "default": "69",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SELLION",
+          "comment": "",
+          "default": "27",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSE_1",
+          "comment": "",
+          "default": "28",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSE_2",
+          "comment": "",
+          "default": "29",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSE",
+          "comment": "",
+          "default": "30",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSTRIL_1",
+          "comment": "",
+          "default": "31",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSTRIL_2",
+          "comment": "",
+          "default": "32",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSTRIL_3",
+          "comment": "",
+          "default": "33",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSTRIL_4",
+          "comment": "",
+          "default": "34",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOSTRIL_5",
+          "comment": "",
+          "default": "35",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_RIGHT",
+          "comment": "",
+          "default": "48",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_TOP_1",
+          "comment": "",
+          "default": "49",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_TOP_2",
+          "comment": "",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_TOP_3",
+          "comment": "",
+          "default": "51",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_TOP_4",
+          "comment": "",
+          "default": "52",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_TOP_5",
+          "comment": "",
+          "default": "53",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_LEFT",
+          "comment": "",
+          "default": "54",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_BOTTOM_1",
+          "comment": "",
+          "default": "59",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_BOTTOM_2",
+          "comment": "",
+          "default": "58",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_BOTTOM_3",
+          "comment": "",
+          "default": "57",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_BOTTOM_4",
+          "comment": "",
+          "default": "56",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_OUTER_BOTTOM_5",
+          "comment": "",
+          "default": "55",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_INNER_RIGHT",
+          "comment": "",
+          "default": "60",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_INNER_TOP_1",
+          "comment": "",
+          "default": "61",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_INNER_TOP_2",
+          "comment": "",
+          "default": "62",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_INNER_TOP_3",
+          "comment": "",
+          "default": "63",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_INNER_LEFT",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_INNER_BOTTOM_1",
+          "comment": "",
+          "default": "67",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_INNER_BOTTOM_2",
+          "comment": "",
+          "default": "66",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOUTH_INNER_BOTTOM_3",
+          "comment": "",
+          "default": "65",
+          "is_constant": true
+        },
+        {
+          "type": "NormalizedPointOfInterest2D[70]",
+          "name": "landmarks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "image height in pixels, that is, number of rows",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "image width in pixels, that is, number of columns",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gaze": {
+      "description": "Represents the gaze direction from a particular person (sender ID) to the",
+      "raw": "# Represents the gaze direction from a particular person (sender ID) to the\n# person that is being gazed to (receiver ID).\n#\n# If the sender or receiver IDs are empty, it means that the gaze respectively\n# originates or is targeted to the robot itself.\nstd_msgs/Header header\n\nstring sender\nstring receiver\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sender",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "receiver",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gesture": {
+      "description": "Describes body language/attitude/gesture detected from a body.",
+      "raw": "# Describes body language/attitude/gesture detected from a body.\nstd_msgs/Header header\n\n# Additional gestures might be added in the future, please open\n# issues/pull requests to suggest new ones.\n\nuint8 HANDS_ON_FACE = 1\nuint8 ARMS_CROSSED = 2\nuint8 LEFT_HAND_RAISED = 3\nuint8 RIGHT_HAND_RAISED = 4\nuint8 BOTH_HANDS_RAISED = 5\nuint8 WAVING = 6 # eg, greeting someone with the hand\n\nuint8 OTHER = 0\n\nuint8 gesture # one of the above constants\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "HANDS_ON_FACE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ARMS_CROSSED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_HAND_RAISED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_HAND_RAISED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOTH_HANDS_RAISED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WAVING",
+          "comment": "eg, greeting someone with the hand",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "gesture",
+          "comment": "one of the above constants",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Group": {
+      "description": "List of person IDs of the people in this group",
+      "raw": "std_msgs/Header header\n\nstring group_id\n\n# List of person IDs of the people in this group\nstring[] members\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "group_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "members",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IdsList": {
+      "description": "This message encodes a list of ROS4HRI IDs (eg face ids, body ids, person",
+      "raw": "# This message encodes a list of ROS4HRI IDs (eg face ids, body ids, person\n# ids...).\n# It is for instance published on /humans/faces/tracked to access the list of\n# currently detected faces.\nstd_msgs/Header header\nstring[] ids\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IdsMatch": {
+      "description": "This message encodes possible matches between transient IDs (face, body,",
+      "raw": "# This message encodes possible matches between transient IDs (face, body,\n# voice) and permanent IDs (person), with their corresponding confidence level.\n# Such messages should be published on the /humans/candidate_matches topic.\n#\n# confidence == 0.0 has the special meaning of: those two IDs are *not* associated.\n# This can be use for instance if one of the ID (eg, a face id) is not valid anymore\n# (face not tracked anymore)\n#\n# Note that setting only one of `id1` or `id2` is invalid. Likewise, `id1` and\n# `id2` can not be equal.\n#\n# ## Examples\n#\n# For instance, a face recognition module might publish the following message\n# to indicate that face 'a3eb4' has been recognised with 63% confidence as\n# person 'b31ad':\n#\n# {id1: 'a3eb4', id1_type: FACE, id2: 'b31ad', id2_type: PERSON, confidence:\n# 0.63, }\n#\n# Another example: a module that detect both faces and skeleton might publish a\n# 100% confidence match between the two:\n#\n# {id1: 'ff424', id1_type: FACE, id2: '850d1', id2_type: BODY, confidence:\n# 1.0, }\n#\n\nint8 UNSET=0\nint8 PERSON=1\nint8 FACE=2\nint8 BODY=3\nint8 VOICE=4\n\nstring id1\nint8 id1_type\nstring id2\nint8 id2_type\n\nfloat32 confidence\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "UNSET",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PERSON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FACE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BODY",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "VOICE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "id1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "id1_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "id2_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LiveSpeech": {
+      "description": "This message encodes the live result of a speech recognition process.",
+      "raw": "# This message encodes the live result of a speech recognition process.\n# A series of incremental results might be provided, until a final recognition\n# hypothesis is returned.\n\nstd_msgs/Header header\n\nstring incremental # incremental recognition results\nstring final # final recognised text\n\nfloat64 confidence # confidence of the final recognised speech, [0-1]\n\n# The desired locale, using following format:\n# the [ISO 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), \n# lower case, followed by an underscore, \n# followed by the [ISO 3166-1 alpha-2 region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), \n# upper case.\n#\n# For example, 'en_GB' specifies British English.\nstring locale\n\n#### TMP -- to be removed\nstring language\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "incremental",
+          "comment": "incremental recognition results",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "final",
+          "comment": "final recognised text",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "confidence",
+          "comment": "confidence of the final recognised speech, [0-1]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "locale",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "language",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NormalizedPointOfInterest2D": {
+      "description": "This contains the position of a point of interest (typically in an image)",
+      "raw": "# This contains the position of a point of interest (typically in an image)\n# the coordinates are always normalized and must belong to [0.,1.].\n# c is a confidence level (between 0. and 1.) associated to that POI\nfloat32 x\nfloat32 y\nfloat32 c\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NormalizedPointOfInterest2DStamped": {
+      "description": "This contains the position of a point of interest (typically in an image)",
+      "raw": "# This contains the position of a point of interest (typically in an image)\n# the coordinates are always normalized and must belong to [0.,1.].\n# c is a confidence level (between 0. and 1.) associated to that POI\nstd_msgs/Header header # Header timestamp should be acquisition time of the original image\nfloat32 x\nfloat32 y\nfloat32 c\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time of the original image",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NormalizedRegionOfInterest2D": {
+      "description": "This contains the top-leftmost and bottom-rightmost coordinates of a region of interest (typically in an image)",
+      "raw": "# This contains the top-leftmost and bottom-rightmost coordinates of a region of interest (typically in an image)\n# the coordinates are always normalized and must belong to [0.,1.].\n# The (xmin, ymin) tuple stores the top-leftmost coordinates of the ROI, while (xmax, ymax) represents the\n# bottom-rightmost coordinates.\n# c is a confidence level (between 0. and 1.) associated to that ROI\nstd_msgs/Header header # Header timestamp should be acquisition time of the original image\nfloat32 xmin\nfloat32 ymin\nfloat32 xmax\nfloat32 ymax\nfloat32 c\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time of the original image",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "xmin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ymin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "xmax",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ymax",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "c",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Skeleton2D": {
+      "description": "This message contains a list of skeletal keypoints",
+      "raw": "# This message contains a list of skeletal keypoints \n# (0, 0) is at top-left corner of image\n\nstd_msgs/Header header # Header timestamp should be acquisition time of the original image\n\n# skeletal key points codes\n# Follows OpenPose coco model convention\n# https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/output.md#pose-output-format-coco\n\nuint8 NOSE = 0\nuint8 NECK = 1\nuint8 RIGHT_SHOULDER = 2\nuint8 RIGHT_ELBOW = 3\nuint8 RIGHT_WRIST = 4\nuint8 LEFT_SHOULDER = 5\nuint8 LEFT_ELBOW = 6\nuint8 LEFT_WRIST = 7\nuint8 RIGHT_HIP = 8\nuint8 RIGHT_KNEE = 9\nuint8 RIGHT_ANKLE = 10\nuint8 LEFT_HIP = 11\nuint8 LEFT_KNEE = 12\nuint8 LEFT_ANKLE = 13\nuint8 LEFT_EYE = 14\nuint8 RIGHT_EYE = 15\nuint8 LEFT_EAR = 16\nuint8 RIGHT_EAR = 17\n\n# array of 18 skeletal key points coordinates, one per skeletal key point, ordered per skeletal key points codes\nNormalizedPointOfInterest2D[18] skeleton\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header timestamp should be acquisition time of the original image",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NOSE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NECK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_SHOULDER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_ELBOW",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_WRIST",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_SHOULDER",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_ELBOW",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_WRIST",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_HIP",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_KNEE",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_ANKLE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_HIP",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_KNEE",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_ANKLE",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYE",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYE",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EAR",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EAR",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "NormalizedPointOfInterest2D[18]",
+          "name": "skeleton",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SoftBiometrics": {
+      "description": "This message describes soft biometrics (age and gender)",
+      "raw": "# This message describes soft biometrics (age and gender)\nstd_msgs/Header header\n\nuint8 age\nfloat32 age_confidence\n\nuint8 UNDEFINED=0\nuint8 FEMALE=1\nuint8 MALE=2\nuint8 OTHER=3\n\nuint8 gender # one of UNDEFINED, FEMALE, MALE, OTHER\nfloat32 gender_confidence \n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "age_confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "UNDEFINED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FEMALE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MALE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OTHER",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "gender",
+          "comment": "one of UNDEFINED, FEMALE, MALE, OTHER",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gender_confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

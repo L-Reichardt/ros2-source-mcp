@@ -1,0 +1,47 @@
+{
+  "name": "io_context",
+  "version": "1.2.0",
+  "description": "A library to write Synchronous and Asynchronous networking applications",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros-drivers/transport_drivers",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/transport_drivers/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "transport_drivers",
+    "url": "https://github.com/ros-drivers/transport_drivers.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "asio_cmake_module"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "asio",
+      "rclcpp",
+      "std_msgs",
+      "udp_msgs"
+    ],
+    "depended_on_by": [
+      "serial_driver",
+      "udp_driver"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

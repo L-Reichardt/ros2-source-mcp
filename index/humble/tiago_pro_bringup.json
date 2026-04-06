@@ -1,0 +1,46 @@
+{
+  "name": "tiago_pro_bringup",
+  "version": "1.35.4",
+  "description": "Launch files to upload the TIAGo pro robot description and start the controllers",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tiago_pro_robot",
+    "url": "https://github.com/pal-robotics/tiago_pro_robot.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "ament_index_python",
+      "diagnostic_aggregator",
+      "tiago_pro_controller_configuration",
+      "tiago_pro_head_bringup",
+      "joy_linux",
+      "joy_teleop",
+      "twist_mux",
+      "play_motion2",
+      "play_motion2_cli",
+      "collision_aware_joint_trajectory_wrapper",
+      "pal_pro_gripper_wrapper"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "tiago_pro_gazebo",
+      "tiago_pro_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

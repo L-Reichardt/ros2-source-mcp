@@ -1,0 +1,160 @@
+{
+  "name": "tf2_web_republisher_interfaces",
+  "version": "1.0.0",
+  "description": "Interface definitions for tf2_web_republisher",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tf2_web_republisher",
+    "url": "https://github.com/RobotWebTools/tf2_web_republisher.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "builtin_interfaces",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "tf2_web_republisher"
+    ]
+  },
+  "messages": {
+    "TFArray": {
+      "description": "",
+      "raw": "geometry_msgs/TransformStamped[] transforms\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/TransformStamped[]",
+          "name": "transforms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "RepublishTFs": {
+      "description": "Notify the tf2_web_republisher that republishing of certain",
+      "raw": "## Notify the tf2_web_republisher that republishing of certain\n## TFs is desired\nstring[] source_frames\nstring target_frame\nfloat32 angular_thres\nfloat32 trans_thres\nfloat32 rate\nbuiltin_interfaces/Duration timeout # tf2_web_republisher will stop publishing the topic if it has zero subscribers for this amount of time\n---\n# response\nstring topic_name # a topic of type geometry_msgs/TransformStamped[] that publishes the requested transforms\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "source_frames",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "target_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angular_thres",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "trans_thres",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "timeout",
+          "comment": "tf2_web_republisher will stop publishing the topic if it has zero subscribers for this amount of time",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "a topic of type geometry_msgs/TransformStamped[] that publishes the requested transforms",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "TFSubscription": {
+      "description": "goal",
+      "raw": "# goal\nstring[] source_frames\nstring target_frame\nfloat32 angular_thres\nfloat32 trans_thres\nfloat32 rate\n---\n# result\n---\n# feedback\ngeometry_msgs/TransformStamped[] transforms\n",
+      "goal_fields": [
+        {
+          "type": "string[]",
+          "name": "source_frames",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "target_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angular_thres",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "trans_thres",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/TransformStamped[]",
+          "name": "transforms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

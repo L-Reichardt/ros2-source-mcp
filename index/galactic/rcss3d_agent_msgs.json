@@ -1,0 +1,690 @@
+{
+  "name": "rcss3d_agent_msgs",
+  "version": "0.1.1",
+  "description": "Custom messages for communicating with rcss3d_agent",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcss3d_agent",
+    "url": "https://github.com/ros-sports/rcss3d_agent.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "rcss3d_agent"
+    ]
+  },
+  "messages": {
+    "Accelerometer": {
+      "description": "The proper acceleration it experiences relative to free fall. As a consequence an accelerometer",
+      "raw": "# The proper acceleration it experiences relative to free fall. As a consequence an accelerometer\n# at rest relative to the Earth's surface will indicate approximately 1g (9.81m/s^2) upwards. To\n# obtain the acceleration due to motion with respect to the earth, this gravity offset should be\n# subtracted.\n\nstring name  # The name of the body containing the accelerometer\nfloat32 x  # Acceleration along the x-axis in m/s2\nfloat32 y  # Acceleration along the y-axis in m/s2\nfloat32 z  # Acceleration along the z-axis in m/s2",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "The name of the body containing the accelerometer",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "Acceleration along the x-axis in m/s2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "Acceleration along the y-axis in m/s2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "Acceleration along the z-axis in m/s2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AgentState": {
+      "description": "Information about the internal state of the agent. It reports information about the current",
+      "raw": "# Information about the internal state of the agent. It reports information about the current\n# battery status and the temperature of the agent.\n\nfloat32 temp  # Degrees Celsius\nfloat32 battery  # Percentile",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "temp",
+          "comment": "Degrees Celsius",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "battery",
+          "comment": "Percentile",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Ball": {
+      "description": "",
+      "raw": "Spherical center",
+      "fields": [
+        {
+          "type": "Spherical",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Beam": {
+      "description": "The beam effector allows a player to position itself on the field before the start of each half.",
+      "raw": "# The beam effector allows a player to position itself on the field before the start of each half.\n# The x and y coordinates define the position on the field with respect to the field's coordinate\n# system, where (0,0) is the absolute center of the field. The rot specifies the facing angle of\n# the player. Zero points to positive x-axis, 90 to positive y-axis.\n\nfloat64 x  # metres\nfloat64 y  # metres\nfloat64 rot  # degrees",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "metres",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "metres",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rot",
+          "comment": "degrees",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Effector": {
+      "description": "Effectors allow agents to perform actions within the simulation. Agents control them by",
+      "raw": "# Effectors allow agents to perform actions within the simulation. Agents control them by\n# sending messages to the server, and the server changes the game state accordingly.\n# Effectors are the logical dual of perceptors.\n# Details of each message type are explained in each msg file.\n\nHingeJointVel[] hinge_joint_vels\nUniversalJointVel[] universal_joint_vels\nBeam[] beams\nSay[] says",
+      "fields": [
+        {
+          "type": "HingeJointVel[]",
+          "name": "hinge_joint_vels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "UniversalJointVel[]",
+          "name": "universal_joint_vels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Beam[]",
+          "name": "beams",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Say[]",
+          "name": "says",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldLine": {
+      "description": "",
+      "raw": "rcss3d_agent_msgs/Spherical start\nrcss3d_agent_msgs/Spherical end\n",
+      "fields": [
+        {
+          "type": "rcss3d_agent_msgs/Spherical",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rcss3d_agent_msgs/Spherical",
+          "name": "end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Flag": {
+      "description": "",
+      "raw": "string name  # F1L, F1R, F2L or F2R\nSpherical base  # The point at the base of the flag's pole",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "F1L, F1R, F2L or F2R",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Spherical",
+          "name": "base",
+          "comment": "The point at the base of the flag's pole",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ForceResistance": {
+      "description": "The force that acts on a body. [px, py, pz] describes the point of origin relative to the body",
+      "raw": "# The force that acts on a body. [px, py, pz] describes the point of origin relative to the body\n# itself and [fx, fy, fz] describes the resulting force on this point. The two vectors are just\n# an approximation about the real applied force. The point of origin is calculated as weighted\n# average of all contact points to which the force is applied, while the force vector represents\n# the total force applied to all of these contact points. The information to a force resistance\n# perceptor is just sent in case of a present collision of the corresponding body with another\n# simulation object. If there is no force applied, the message of this perceptor is omitted.\n\nstring name  # The name of the body, to which the force resistance perceptor belongs\nfloat32 px  # The local x coordinate of the origin of the applied force in meters\nfloat32 py  # The local y coordinate of the origin of the applied force in meters\nfloat32 pz  # The local z coordinate of the origin of the applied force in meters\nfloat32 fx  # The x component of the force vector in newton (kg m/s2)\nfloat32 fy  # The y component of the force vector in newton (kg m/s2)\nfloat32 fz  # The z component of the force vector in newton (kg m/s2)",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "The name of the body, to which the force resistance perceptor belongs",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "px",
+          "comment": "The local x coordinate of the origin of the applied force in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "py",
+          "comment": "The local y coordinate of the origin of the applied force in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pz",
+          "comment": "The local z coordinate of the origin of the applied force in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fx",
+          "comment": "The x component of the force vector in newton (kg m/s2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fy",
+          "comment": "The y component of the force vector in newton (kg m/s2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fz",
+          "comment": "The z component of the force vector in newton (kg m/s2)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GameState": {
+      "description": "Contains several information about the actual state of the soccer game environment. The actual",
+      "raw": "# Contains several information about the actual state of the soccer game environment. The actual\n# play time and play mode are transmitted in each cycle. Play time starts from zero at kickoff and\n# is given as a floating point number in seconds, to two decimal places.\n\nfloat32 time  # The current play time in seconds\nstring playmode  # The current play mode of the soccer game (eg. BeforeKickOff)\nint32 score_left  # The score of the left team\nint32 score_right  # The score of the right team",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "time",
+          "comment": "The current play time in seconds",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "playmode",
+          "comment": "The current play mode of the soccer game (eg. BeforeKickOff)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "score_left",
+          "comment": "The score of the left team",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "score_right",
+          "comment": "The score of the right team",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Goalpost": {
+      "description": "",
+      "raw": "string name  # G1L, G1R, G2L or G2R\nSpherical top  # The point at the top of the goal's post",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "G1L, G1R, G2L or G2R",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Spherical",
+          "name": "top",
+          "comment": "The point at the top of the goal's post",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GyroRate": {
+      "description": "Information about the change in orientation of a body. The message contains the name of the body",
+      "raw": "# Information about the change in orientation of a body. The message contains the name of the body\n# to which the gyro perceptor belongs and three rotation angles. These rotation angles describe the\n# change rates in orientation of the body during the last cycle. In other words the current angular\n# velocities along the three axes of freedom of the corresponding body in degrees per second.\n# To keep track of the orientation of the body, the information to each gyro rate perceptor is sent\n# every cycle.\n\nstring name  # The name of the body part the gyro rate perceptor is attached to\nfloat32 x  # The current angular velocities along the x axis in degrees per second\nfloat32 y  # The current angular velocities along the y axis in degrees per second\nfloat32 z  # The current angular velocities along the z axis in degrees per second",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "The name of the body part the gyro rate perceptor is attached to",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "The current angular velocities along the x axis in degrees per second",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "The current angular velocities along the y axis in degrees per second",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "The current angular velocities along the z axis in degrees per second",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Hear": {
+      "description": "Agent processes are not allowed to communicate with each other directly, but agents may exchange",
+      "raw": "# Agent processes are not allowed to communicate with each other directly, but agents may exchange\n# messages via the simulation server. For this purpose agents are equipped with the so-called hear\n# perceptor, which serves as an aural sensor and receives messages shouted by other players.\n#\n# See restrictions: https://gitlab.com/robocup-sim/SimSpark/-/wikis/Perceptors#restrictions\n\nstring team  # The team of the player who sent the message\nfloat32 time  # The simulation time at which the given message was heard in seconds.\nbool self  # Whether the player is hearing their own words.\nfloat32[<=1] direction  # Direction of heard message, if the message wasn't the player's own words.\n                        # Field has zero size if the \"self\" field is true.\nstring message  # Up to 20 characters, which may be taken from the ASCII printing character subset\n                # [0x20, 0x7E] except the white space character and the normal brackets ( and )",
+      "fields": [
+        {
+          "type": "string",
+          "name": "team",
+          "comment": "The team of the player who sent the message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time",
+          "comment": "The simulation time at which the given message was heard in seconds.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "self",
+          "comment": "Whether the player is hearing their own words.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[<=1]",
+          "name": "direction",
+          "comment": "Direction of heard message, if the message wasn't the player's own words.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "Up to 20 characters, which may be taken from the ASCII printing character subset",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HingeJointPos": {
+      "description": "Information about the angle of the correponding single-axis hinge joint. A zero angle",
+      "raw": "# Information about the angle of the correponding single-axis hinge joint. A zero angle\n# corresponds to straightly aligned bodies. The position angle of each hinge joint\n# perceptor is sent every cycle.\n#\n# Each hinge joint has minimum and maximum limits on its angular position. This varies\n# from hinge to hinge and depends upon the model being used.\n\nstring name  # The name of the corresponding hinge joint\nfloat32 ax  # The current position angle in degrees",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "The name of the corresponding hinge joint",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ax",
+          "comment": "The current position angle in degrees",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HingeJointVel": {
+      "description": "Effector for all axis with a single degree of freedom.",
+      "raw": "# Effector for all axis with a single degree of freedom.\n# name - name of the axis.\n# ax - a speed value, passed in radians per second.\n# Setting a speed value on a hinge means that the speed will be maintained until a new value is provided. \n# Even if the hinge meets its extremity, it will bounce around at the extremity until a new\n# speed value is requested.\n\nstring name  # The name of the corresponding hinge joint\nfloat32 ax  # The angular velocity in radians per second",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "The name of the corresponding hinge joint",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ax",
+          "comment": "The angular velocity in radians per second",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Percept": {
+      "description": "Perceptors are the senses of an agent, allowing awareness of the agent's model state and the",
+      "raw": "# Perceptors are the senses of an agent, allowing awareness of the agent's model state and the\n# environment. The server sends perceptor messages to agents, via the network protocol, for every\n# cycle of the simulation. Details of each message type are explained in each msg file.\n\nGyroRate[] gyro_rates\nHingeJointPos[] hinge_joints\nUniversalJointPos[] universal_joints\nForceResistance[] force_resistances\nAccelerometer[] accelerometers\nVision[<=1] vision\nGameState game_state\nAgentState[<=1] agent_state\nHear[] hears",
+      "fields": [
+        {
+          "type": "GyroRate[]",
+          "name": "gyro_rates",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HingeJointPos[]",
+          "name": "hinge_joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "UniversalJointPos[]",
+          "name": "universal_joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ForceResistance[]",
+          "name": "force_resistances",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Accelerometer[]",
+          "name": "accelerometers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Vision[<=1]",
+          "name": "vision",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GameState",
+          "name": "game_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AgentState[<=1]",
+          "name": "agent_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Hear[]",
+          "name": "hears",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Player": {
+      "description": "An observed player is described through the name of it's team, the player number and one or more",
+      "raw": "# An observed player is described through the name of it's team, the player number and one or more\n# position vectors to different body parts.\n\nstring team  # The player number of the seen player\nint32 id  # The player number of the seen player\nSpherical[<=1] head  # Observation of head\nSpherical[<=1] rlowerarm  # Observation of right lower arm\nSpherical[<=1] llowerarm  # Observation of left lower arm\nSpherical[<=1] rfoot  # Observation of right foot\nSpherical[<=1] lfoot  # Observation of left foot",
+      "fields": [
+        {
+          "type": "string",
+          "name": "team",
+          "comment": "The player number of the seen player",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "The player number of the seen player",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Spherical[<=1]",
+          "name": "head",
+          "comment": "Observation of head",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Spherical[<=1]",
+          "name": "rlowerarm",
+          "comment": "Observation of right lower arm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Spherical[<=1]",
+          "name": "llowerarm",
+          "comment": "Observation of left lower arm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Spherical[<=1]",
+          "name": "rfoot",
+          "comment": "Observation of right foot",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Spherical[<=1]",
+          "name": "lfoot",
+          "comment": "Observation of left foot",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Say": {
+      "description": "The say effector permits communication among agents by broadcasting messages. In order to say",
+      "raw": "# The say effector permits communication among agents by broadcasting messages. In order to say \n# something, the following command has to be employed.\n#\n# See restrictions: https://gitlab.com/robocup-sim/SimSpark/-/wikis/Perceptors#restrictions\n\nstring message  # Up to 20 characters, which may be taken from the ASCII printing character subset\n                # [0x20, 0x7E] except the white space character and the normal brackets ( and )",
+      "fields": [
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "Up to 20 characters, which may be taken from the ASCII printing character subset",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Spherical": {
+      "description": "Spherical msg used for soccer vision perceptors. All distances and angles are given",
+      "raw": "# Spherical msg used for soccer vision perceptors. All distances and angles are given\n# relative to the position and orientation of the camera.\n#\n# Details: https://gitlab.com/robocup-sim/SimSpark/-/wikis/Perceptors#vision-perceptors\n#\n# Angles are stored in degrees.\n\n# The distance to the seen object, in metres.\nfloat32 r\n\n# The horizontal angle (φ) to the visible object relative to the view direction in degrees\n# and an accuracy of two digits. Positive angles are left of the vertical midline of the\n# agent's vision, negative angles right.\nfloat32 phi\n\n# The vertical angle (θ) to the visible object relative to the view direction in degrees\n# and an accuracy of two digits. Positive angles mean the seen object is above the\n# horizontal midline of agent's vision, negative means below.\nfloat32 theta\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "r",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "phi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "theta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Synchronize": {
+      "description": "Synchronize Effector - Agents running in Agent Sync Mode must send this command at the end of",
+      "raw": "# Synchronize Effector - Agents running in Agent Sync Mode must send this command at the end of\n# each simulation cycle. \n# The server ignores this command if it is received in Real-Time Mode, so it is safe to \n# configure your agent to always append this command to your agent's responses.",
+      "fields": []
+    },
+    "UniversalJointPos": {
+      "description": "Information about the two angles of the correponding two axis universal joint. Zero degrees",
+      "raw": "# Information about the two angles of the correponding two axis universal joint. Zero degrees\n# corresponds to straightly aligned bodies.\n\nstring name  # The name of the corresponding universal joint\nfloat32 ax1  # Current position angle of the first axis in degrees\nfloat32 ax2  # Current position angle of the second axis in degrees",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "The name of the corresponding universal joint",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ax1",
+          "comment": "Current position angle of the first axis in degrees",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ax2",
+          "comment": "Current position angle of the second axis in degrees",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UniversalJointVel": {
+      "description": "Effector for all axis with a two degrees of freedom. The first parameter is the name of the axis.",
+      "raw": "# Effector for all axis with a two degrees of freedom. The first parameter is the name of the axis.\n# The second and third parameters contain the change in angle of the two joints. The order of the\n# joints is the same as in the name.\n\nstring name  # The name of the corresponding hinge joint\nfloat32 ax1  # The angular velocity of the first axis in radians per second\nfloat32 ax2  # The angular velocity of the second axis in radians per second",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "The name of the corresponding hinge joint",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ax1",
+          "comment": "The angular velocity of the first axis in radians per second",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ax2",
+          "comment": "The angular velocity of the second axis in radians per second",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Vision": {
+      "description": "Message consisting of observed vision information.",
+      "raw": "# Message consisting of observed vision information. \n# Details: https://gitlab.com/robocup-sim/SimSpark/-/wikis/Perceptors#vision-perceptors\n\nBall[<=1] ball\nFieldLine[] field_lines\nFlag[] flags\nGoalpost[] goalposts\nPlayer[] players",
+      "fields": [
+        {
+          "type": "Ball[<=1]",
+          "name": "ball",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FieldLine[]",
+          "name": "field_lines",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Flag[]",
+          "name": "flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Goalpost[]",
+          "name": "goalposts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Player[]",
+          "name": "players",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

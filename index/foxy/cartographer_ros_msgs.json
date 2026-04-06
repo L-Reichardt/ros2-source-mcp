@@ -1,0 +1,641 @@
+{
+  "name": "cartographer_ros_msgs",
+  "version": "1.0.9003",
+  "description": "ROS messages for the cartographer_ros package.",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros2/cartographer_ros",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "cartographer_ros",
+    "url": "https://github.com/ros2/cartographer_ros.git",
+    "branch": "dashing"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "cartographer_ros"
+    ]
+  },
+  "messages": {
+    "LandmarkEntry": {
+      "description": "2018 The Cartographer Authors",
+      "raw": "# 2018 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring id\ngeometry_msgs/Pose tracking_from_landmark_transform\nfloat64 translation_weight\nfloat64 rotation_weight\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "tracking_from_landmark_transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "translation_weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rotation_weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LandmarkList": {
+      "description": "Copyright 2018 The Cartographer Authors",
+      "raw": "# Copyright 2018 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\ncartographer_ros_msgs/LandmarkEntry[] landmark\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "cartographer_ros_msgs/LandmarkEntry[]",
+          "name": "landmark",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorTopics": {
+      "description": "Copyright 2016 The Cartographer Authors",
+      "raw": "# Copyright 2016 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring laser_scan_topic\nstring multi_echo_laser_scan_topic\nstring point_cloud2_topic\nstring imu_topic\nstring odometry_topic\nstring nav_sat_fix_topic\nstring landmark_topic\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "laser_scan_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "multi_echo_laser_scan_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "point_cloud2_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "imu_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "odometry_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "nav_sat_fix_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "landmark_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatusCode": {
+      "description": "Copyright 2018 The Cartographer Authors",
+      "raw": "# Copyright 2018 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# Definition of status code constants equivalent to the gRPC API.\n# https://developers.google.com/maps-booking/reference/grpc-api/status_codes\nuint8 OK=0\nuint8 CANCELLED=1\nuint8 UNKNOWN=2\nuint8 INVALID_ARGUMENT=3\nuint8 DEADLINE_EXCEEDED=4\nuint8 NOT_FOUND=5\nuint8 ALREADY_EXISTS=6\nuint8 PERMISSION_DENIED=7\nuint8 RESOURCE_EXHAUSTED=8\nuint8 FAILED_PRECONDITION=9\nuint8 ABORTED=10\nuint8 OUT_OF_RANGE=11\nuint8 UNIMPLEMENTED=12\nuint8 INTERNAL=13\nuint8 UNAVAILABLE=14\nuint8 DATA_LOSS=15\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CANCELLED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INVALID_ARGUMENT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DEADLINE_EXCEEDED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_FOUND",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ALREADY_EXISTS",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PERMISSION_DENIED",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESOURCE_EXHAUSTED",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILED_PRECONDITION",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ABORTED",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OUT_OF_RANGE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNIMPLEMENTED",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "INTERNAL",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNAVAILABLE",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DATA_LOSS",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        }
+      ]
+    },
+    "StatusResponse": {
+      "description": "Copyright 2018 The Cartographer Authors",
+      "raw": "# Copyright 2018 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n# A common message type to indicate the outcome of a service call.\nuint8 code\nstring message\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SubmapEntry": {
+      "description": "Copyright 2016 The Cartographer Authors",
+      "raw": "# Copyright 2016 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nint32 trajectory_id\nint32 submap_index\nint32 submap_version\ngeometry_msgs/Pose pose\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "trajectory_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "submap_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "submap_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SubmapList": {
+      "description": "Copyright 2016 The Cartographer Authors",
+      "raw": "# Copyright 2016 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstd_msgs/Header header\ncartographer_ros_msgs/SubmapEntry[] submap\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "cartographer_ros_msgs/SubmapEntry[]",
+          "name": "submap",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SubmapTexture": {
+      "description": "Copyright 2017 The Cartographer Authors",
+      "raw": "# Copyright 2017 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nuint8[] cells\nint32 width\nint32 height\nfloat64 resolution\ngeometry_msgs/Pose slice_pose\n",
+      "fields": [
+        {
+          "type": "uint8[]",
+          "name": "cells",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "slice_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajectoryOptions": {
+      "description": "Copyright 2016 The Cartographer Authors",
+      "raw": "# Copyright 2016 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring tracking_frame\nstring published_frame\nstring odom_frame\nbool provide_odom_frame\nbool use_odometry\nbool use_nav_sat\nbool use_landmarks\nbool publish_frame_projected_to_2d\nint32 num_laser_scans\nint32 num_multi_echo_laser_scans\nint32 num_subdivisions_per_laser_scan\nint32 num_point_clouds\nfloat64 rangefinder_sampling_ratio\nfloat64 odometry_sampling_ratio\nfloat64 fixed_frame_pose_sampling_ratio\nfloat64 imu_sampling_ratio\nfloat64 landmarks_sampling_ratio\n\n# This is a binary-encoded\n# 'cartographer.mapping.proto.TrajectoryBuilderOptions' proto.\nstring trajectory_builder_options_proto\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "tracking_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "published_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "odom_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "provide_odom_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_odometry",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_nav_sat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_landmarks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "publish_frame_projected_to_2d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "num_laser_scans",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "num_multi_echo_laser_scans",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "num_subdivisions_per_laser_scan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "num_point_clouds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rangefinder_sampling_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "odometry_sampling_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "fixed_frame_pose_sampling_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "imu_sampling_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "landmarks_sampling_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "trajectory_builder_options_proto",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "FinishTrajectory": {
+      "description": "Copyright 2016 The Cartographer Authors",
+      "raw": "# Copyright 2016 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nint32 trajectory_id\n---\ncartographer_ros_msgs/StatusResponse status\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "trajectory_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "cartographer_ros_msgs/StatusResponse",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StartTrajectory": {
+      "description": "Copyright 2016 The Cartographer Authors",
+      "raw": "# Copyright 2016 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\ncartographer_ros_msgs/TrajectoryOptions options\ncartographer_ros_msgs/SensorTopics topics\n---\ncartographer_ros_msgs/StatusResponse status\nint32 trajectory_id\n",
+      "request_fields": [
+        {
+          "type": "cartographer_ros_msgs/TrajectoryOptions",
+          "name": "options",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "cartographer_ros_msgs/SensorTopics",
+          "name": "topics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "cartographer_ros_msgs/StatusResponse",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "trajectory_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SubmapQuery": {
+      "description": "Copyright 2016 The Cartographer Authors",
+      "raw": "# Copyright 2016 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nint32 trajectory_id\nint32 submap_index\n---\ncartographer_ros_msgs/StatusResponse status\nint32 submap_version\ncartographer_ros_msgs/SubmapTexture[] textures\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "trajectory_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "submap_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "cartographer_ros_msgs/StatusResponse",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "submap_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "cartographer_ros_msgs/SubmapTexture[]",
+          "name": "textures",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WriteState": {
+      "description": "Copyright 2016 The Cartographer Authors",
+      "raw": "# Copyright 2016 The Cartographer Authors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#      http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nstring filename\n---\ncartographer_ros_msgs/StatusResponse status\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "cartographer_ros_msgs/StatusResponse",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

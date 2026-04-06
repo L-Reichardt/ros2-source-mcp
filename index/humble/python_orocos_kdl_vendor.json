@@ -1,0 +1,41 @@
+{
+  "name": "python_orocos_kdl_vendor",
+  "version": "0.2.5",
+  "description": "Wrapper around PyKDL, providing nothing but a dependency on PyKDL on some systems.\n    On others, it fetches and builds python_orocos_kdl locally.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/orocos/orocos_kinematics_dynamics",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "orocos_kdl_vendor",
+    "url": "https://github.com/ros2/orocos_kdl_vendor.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "python_cmake_module"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "orocos_kdl_vendor",
+      "pybind11_vendor",
+      "python3-pykdl"
+    ],
+    "depended_on_by": [
+      "tf2_kdl"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

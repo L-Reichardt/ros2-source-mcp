@@ -1,0 +1,1518 @@
+{
+  "name": "game_controller_spl_interfaces",
+  "version": "2.2.0",
+  "description": "RoboCup SPL GameController Data ROS msg",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "game_controller_spl",
+    "url": "https://github.com/ros-sports/game_controller_spl.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "game_controller_spl",
+      "r2r_spl"
+    ]
+  },
+  "messages": {
+    "RCGCD14": {
+      "description": "",
+      "raw": "uint8 COMPETITION_PHASE_ROUNDROBIN=0\nuint8 COMPETITION_PHASE_PLAYOFF=1\n\nuint8 COMPETITION_TYPE_NORMAL=0\nuint8 COMPETITION_TYPE_CHALLENGE_SHIELD=1\nuint8 COMPETITION_TYPE_7V7=2\nuint8 COMPETITION_TYPE_DYNAMIC_BALL_HANDLING=3\n\nuint8 GAME_PHASE_NORMAL=0\nuint8 GAME_PHASE_PENALTYSHOOT=1\nuint8 GAME_PHASE_OVERTIME=2\nuint8 GAME_PHASE_TIMEOUT=3\n\nuint8 STATE_INITIAL=0\nuint8 STATE_READY=1\nuint8 STATE_SET=2\nuint8 STATE_PLAYING=3\nuint8 STATE_FINISHED=4\n\nuint8 SET_PLAY_NONE=0\nuint8 SET_PLAY_GOAL_KICK=1\nuint8 SET_PLAY_PUSHING_FREE_KICK=2\nuint8 SET_PLAY_CORNER_KICK=3\nuint8 SET_PLAY_KICK_IN=4\nuint8 SET_PLAY_PENALTY_KICK=5\n\nuint8 packet_number\nuint8 players_per_team\nuint8 competition_phase\nuint8 competition_type\nuint8 game_phase\nuint8 state\nuint8 set_play\nuint8 first_half\nuint8 kicking_team\nint16 secs_remaining\nint16 secondary_time\ngame_controller_spl_interfaces/TeamInfo14[2] teams\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "COMPETITION_PHASE_ROUNDROBIN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_PHASE_PLAYOFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_TYPE_NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_TYPE_CHALLENGE_SHIELD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_TYPE_7V7",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_TYPE_DYNAMIC_BALL_HANDLING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_PENALTYSHOOT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_OVERTIME",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_TIMEOUT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_INITIAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_READY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_SET",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_PLAYING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_FINISHED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_GOAL_KICK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_PUSHING_FREE_KICK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_CORNER_KICK",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_KICK_IN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_PENALTY_KICK",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "packet_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "players_per_team",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "competition_phase",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "competition_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "game_phase",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "set_play",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "first_half",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "kicking_team",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "secs_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "secondary_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "game_controller_spl_interfaces/TeamInfo14[2]",
+          "name": "teams",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RCGCD15": {
+      "description": "",
+      "raw": "uint8 COMPETITION_PHASE_ROUNDROBIN=0\nuint8 COMPETITION_PHASE_PLAYOFF=1\n\nuint8 COMPETITION_TYPE_NORMAL=0\nuint8 COMPETITION_TYPE_DYNAMIC_BALL_HANDLING=1\n\nuint8 GAME_PHASE_NORMAL=0\nuint8 GAME_PHASE_PENALTYSHOOT=1\nuint8 GAME_PHASE_OVERTIME=2\nuint8 GAME_PHASE_TIMEOUT=3\n\nuint8 STATE_INITIAL=0\nuint8 STATE_READY=1\nuint8 STATE_SET=2\nuint8 STATE_PLAYING=3\nuint8 STATE_FINISHED=4\n\nuint8 SET_PLAY_NONE=0\nuint8 SET_PLAY_GOAL_KICK=1\nuint8 SET_PLAY_PUSHING_FREE_KICK=2\nuint8 SET_PLAY_CORNER_KICK=3\nuint8 SET_PLAY_KICK_IN=4\nuint8 SET_PLAY_PENALTY_KICK=5\n\nuint8 packet_number\nuint8 players_per_team\nuint8 competition_phase\nuint8 competition_type\nuint8 game_phase\nuint8 state\nuint8 set_play\nuint8 first_half\nuint8 kicking_team\nint16 secs_remaining\nint16 secondary_time\ngame_controller_spl_interfaces/TeamInfo15[2] teams\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "COMPETITION_PHASE_ROUNDROBIN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_PHASE_PLAYOFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_TYPE_NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_TYPE_DYNAMIC_BALL_HANDLING",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_PENALTYSHOOT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_OVERTIME",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_TIMEOUT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_INITIAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_READY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_SET",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_PLAYING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_FINISHED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_GOAL_KICK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_PUSHING_FREE_KICK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_CORNER_KICK",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_KICK_IN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_PENALTY_KICK",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "packet_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "players_per_team",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "competition_phase",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "competition_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "game_phase",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "set_play",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "first_half",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "kicking_team",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "secs_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "secondary_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "game_controller_spl_interfaces/TeamInfo15[2]",
+          "name": "teams",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RCGCD16": {
+      "description": "",
+      "raw": "uint8 COMPETITION_PHASE_ROUNDROBIN=0\nuint8 COMPETITION_PHASE_PLAYOFF=1\n\nuint8 COMPETITION_TYPE_NORMAL=0\nuint8 COMPETITION_TYPE_SHARED_AUTONOMY=1\n\nuint8 GAME_PHASE_NORMAL=0\nuint8 GAME_PHASE_PENALTYSHOOT=1\nuint8 GAME_PHASE_OVERTIME=2\nuint8 GAME_PHASE_TIMEOUT=3\n\nuint8 STATE_INITIAL=0\nuint8 STATE_READY=1\nuint8 STATE_SET=2\nuint8 STATE_PLAYING=3\nuint8 STATE_FINISHED=4\n\nuint8 SET_PLAY_NONE=0\nuint8 SET_PLAY_GOAL_KICK=1\nuint8 SET_PLAY_PUSHING_FREE_KICK=2\nuint8 SET_PLAY_CORNER_KICK=3\nuint8 SET_PLAY_KICK_IN=4\nuint8 SET_PLAY_PENALTY_KICK=5\n\nuint8 packet_number\nuint8 players_per_team\nuint8 competition_phase\nuint8 competition_type\nuint8 game_phase\nuint8 state\nuint8 set_play\nuint8 first_half\nuint8 kicking_team\nint16 secs_remaining\nint16 secondary_time\ngame_controller_spl_interfaces/TeamInfo15[2] teams\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "COMPETITION_PHASE_ROUNDROBIN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_PHASE_PLAYOFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_TYPE_NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPETITION_TYPE_SHARED_AUTONOMY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_NORMAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_PENALTYSHOOT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_OVERTIME",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GAME_PHASE_TIMEOUT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_INITIAL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_READY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_SET",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_PLAYING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATE_FINISHED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_GOAL_KICK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_PUSHING_FREE_KICK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_CORNER_KICK",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_KICK_IN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SET_PLAY_PENALTY_KICK",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "packet_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "players_per_team",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "competition_phase",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "competition_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "game_phase",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "set_play",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "first_half",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "kicking_team",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "secs_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "secondary_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "game_controller_spl_interfaces/TeamInfo15[2]",
+          "name": "teams",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RCGCRD4": {
+      "description": "",
+      "raw": "uint8 player_num 0\nuint8 team_num 0\nuint8 fallen 0\nfloat32[3] pose [0.0, 0.0, 0.0]\nfloat32 ball_age -1.0\nfloat32[2] ball [0.0, 0.0]\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "player_num",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "team_num",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fallen",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "float32[3]",
+          "name": "pose",
+          "comment": "",
+          "default": "[0.0, 0.0, 0.0]",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ball_age",
+          "comment": "",
+          "default": "-1.0",
+          "is_constant": false
+        },
+        {
+          "type": "float32[2]",
+          "name": "ball",
+          "comment": "",
+          "default": "[0.0, 0.0]",
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotInfo14": {
+      "description": "",
+      "raw": "uint8 PENALTY_NONE=0\nuint8 PENALTY_SPL_ILLEGAL_BALL_CONTACT=1\nuint8 PENALTY_SPL_PLAYER_PUSHING=2\nuint8 PENALTY_SPL_ILLEGAL_MOTION_IN_SET=3\nuint8 PENALTY_SPL_INACTIVE_PLAYER=4\nuint8 PENALTY_SPL_ILLEGAL_POSITION=5\nuint8 PENALTY_SPL_LEAVING_THE_FIELD=6\nuint8 PENALTY_SPL_REQUEST_FOR_PICKUP=7\nuint8 PENALTY_SPL_LOCAL_GAME_STUCK=8\nuint8 PENALTY_SPL_ILLEGAL_POSITION_IN_SET=9\n\nuint8 PENALTY_SUBSTITUTE=14\nuint8 PENALTY_MANUAL=15\n\nuint8 penalty\nuint8 secs_till_unpenalised\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PENALTY_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_BALL_CONTACT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_PLAYER_PUSHING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_MOTION_IN_SET",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_INACTIVE_PLAYER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_POSITION",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_LEAVING_THE_FIELD",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_REQUEST_FOR_PICKUP",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_LOCAL_GAME_STUCK",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_POSITION_IN_SET",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SUBSTITUTE",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_MANUAL",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "penalty",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "secs_till_unpenalised",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotInfo15": {
+      "description": "",
+      "raw": "uint8 PENALTY_NONE=0\nuint8 PENALTY_SPL_ILLEGAL_BALL_CONTACT=1\nuint8 PENALTY_SPL_PLAYER_PUSHING=2\nuint8 PENALTY_SPL_ILLEGAL_MOTION_IN_SET=3\nuint8 PENALTY_SPL_INACTIVE_PLAYER=4\nuint8 PENALTY_SPL_ILLEGAL_POSITION=5\nuint8 PENALTY_SPL_LEAVING_THE_FIELD=6\nuint8 PENALTY_SPL_REQUEST_FOR_PICKUP=7\nuint8 PENALTY_SPL_LOCAL_GAME_STUCK=8\nuint8 PENALTY_SPL_ILLEGAL_POSITION_IN_SET=9\nuint8 PENALTY_SPL_PLAYER_STANCE=10\n\nuint8 PENALTY_SUBSTITUTE=14\nuint8 PENALTY_MANUAL=15\n\nuint8 penalty\nuint8 secs_till_unpenalised\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PENALTY_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_BALL_CONTACT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_PLAYER_PUSHING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_MOTION_IN_SET",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_INACTIVE_PLAYER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_POSITION",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_LEAVING_THE_FIELD",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_REQUEST_FOR_PICKUP",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_LOCAL_GAME_STUCK",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_POSITION_IN_SET",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_PLAYER_STANCE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SUBSTITUTE",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_MANUAL",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "penalty",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "secs_till_unpenalised",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotInfo16": {
+      "description": "",
+      "raw": "uint8 PENALTY_NONE=0\nuint8 PENALTY_SPL_ILLEGAL_BALL_CONTACT=1\nuint8 PENALTY_SPL_PLAYER_PUSHING=2\nuint8 PENALTY_SPL_ILLEGAL_MOTION_IN_SET=3\nuint8 PENALTY_SPL_INACTIVE_PLAYER=4\nuint8 PENALTY_SPL_ILLEGAL_POSITION=5\nuint8 PENALTY_SPL_LEAVING_THE_FIELD=6\nuint8 PENALTY_SPL_REQUEST_FOR_PICKUP=7\nuint8 PENALTY_SPL_LOCAL_GAME_STUCK=8\nuint8 PENALTY_SPL_ILLEGAL_POSITION_IN_SET=9\nuint8 PENALTY_SPL_PLAYER_STANCE=10\nuint8 PENALTY_SPL_ILLEGAL_MOTION_IN_INITIAL=11\n\nuint8 PENALTY_SUBSTITUTE=14\nuint8 PENALTY_MANUAL=15\n\nuint8 penalty\nuint8 secs_till_unpenalised\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PENALTY_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_BALL_CONTACT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_PLAYER_PUSHING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_MOTION_IN_SET",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_INACTIVE_PLAYER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_POSITION",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_LEAVING_THE_FIELD",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_REQUEST_FOR_PICKUP",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_LOCAL_GAME_STUCK",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_POSITION_IN_SET",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_PLAYER_STANCE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SPL_ILLEGAL_MOTION_IN_INITIAL",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_SUBSTITUTE",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PENALTY_MANUAL",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "penalty",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "secs_till_unpenalised",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TeamInfo14": {
+      "description": "",
+      "raw": "uint8 TEAM_BLUE=0  # blue, cyan\nuint8 TEAM_RED=1  # red, magenta, pink\nuint8 TEAM_YELLOW=2  # yellow\nuint8 TEAM_BLACK=3  # black, dark gray\nuint8 TEAM_WHITE=4  # white\nuint8 TEAM_GREEN=5  # green\nuint8 TEAM_ORANGE=6  # orange\nuint8 TEAM_PURPLE=7  # purple, violet\nuint8 TEAM_BROWN=8  # brown\nuint8 TEAM_GRAY=9  # lighter gray\n\nuint8 team_number\nuint8 team_colour\nuint8 score\nuint8 penalty_shot\nuint16 single_shots\nuint16 message_budget\ngame_controller_spl_interfaces/RobotInfo14[7] players\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "TEAM_BLUE",
+          "comment": "blue, cyan",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_RED",
+          "comment": "red, magenta, pink",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_YELLOW",
+          "comment": "yellow",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_BLACK",
+          "comment": "black, dark gray",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_WHITE",
+          "comment": "white",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_GREEN",
+          "comment": "green",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_ORANGE",
+          "comment": "orange",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_PURPLE",
+          "comment": "purple, violet",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_BROWN",
+          "comment": "brown",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_GRAY",
+          "comment": "lighter gray",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "team_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "team_colour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "score",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "penalty_shot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "single_shots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "message_budget",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "game_controller_spl_interfaces/RobotInfo14[7]",
+          "name": "players",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TeamInfo15": {
+      "description": "",
+      "raw": "uint8 TEAM_BLUE=0  # blue, cyan\nuint8 TEAM_RED=1  # red, magenta, pink\nuint8 TEAM_YELLOW=2  # yellow\nuint8 TEAM_BLACK=3  # black, dark gray\nuint8 TEAM_WHITE=4  # white\nuint8 TEAM_GREEN=5  # green\nuint8 TEAM_ORANGE=6  # orange\nuint8 TEAM_PURPLE=7  # purple, violet\nuint8 TEAM_BROWN=8  # brown\nuint8 TEAM_GRAY=9  # lighter gray\n\nuint8 team_number\nuint8 field_player_colour\nuint8 goalkeeper_colour\nuint8 goalkeeper\nuint8 team_colour\nuint8 score\nuint8 penalty_shot\nuint16 single_shots\nuint16 message_budget\ngame_controller_spl_interfaces/RobotInfo15[20] players\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "TEAM_BLUE",
+          "comment": "blue, cyan",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_RED",
+          "comment": "red, magenta, pink",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_YELLOW",
+          "comment": "yellow",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_BLACK",
+          "comment": "black, dark gray",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_WHITE",
+          "comment": "white",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_GREEN",
+          "comment": "green",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_ORANGE",
+          "comment": "orange",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_PURPLE",
+          "comment": "purple, violet",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_BROWN",
+          "comment": "brown",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_GRAY",
+          "comment": "lighter gray",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "team_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "field_player_colour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "goalkeeper_colour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "goalkeeper",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "team_colour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "score",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "penalty_shot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "single_shots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "message_budget",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "game_controller_spl_interfaces/RobotInfo15[20]",
+          "name": "players",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TeamInfo16": {
+      "description": "",
+      "raw": "uint8 TEAM_BLUE=0  # blue, cyan\nuint8 TEAM_RED=1  # red, magenta, pink\nuint8 TEAM_YELLOW=2  # yellow\nuint8 TEAM_BLACK=3  # black, dark gray\nuint8 TEAM_WHITE=4  # white\nuint8 TEAM_GREEN=5  # green\nuint8 TEAM_ORANGE=6  # orange\nuint8 TEAM_PURPLE=7  # purple, violet\nuint8 TEAM_BROWN=8  # brown\nuint8 TEAM_GRAY=9  # lighter gray\n\nuint8 team_number\nuint8 field_player_colour\nuint8 goalkeeper_colour\nuint8 goalkeeper\nuint8 team_colour\nuint8 score\nuint8 penalty_shot\nuint16 single_shots\nuint16 message_budget\ngame_controller_spl_interfaces/RobotInfo15[20] players\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "TEAM_BLUE",
+          "comment": "blue, cyan",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_RED",
+          "comment": "red, magenta, pink",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_YELLOW",
+          "comment": "yellow",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_BLACK",
+          "comment": "black, dark gray",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_WHITE",
+          "comment": "white",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_GREEN",
+          "comment": "green",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_ORANGE",
+          "comment": "orange",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_PURPLE",
+          "comment": "purple, violet",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_BROWN",
+          "comment": "brown",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TEAM_GRAY",
+          "comment": "lighter gray",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "team_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "field_player_colour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "goalkeeper_colour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "goalkeeper",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "team_colour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "score",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "penalty_shot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "single_shots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "message_budget",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "game_controller_spl_interfaces/RobotInfo15[20]",
+          "name": "players",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

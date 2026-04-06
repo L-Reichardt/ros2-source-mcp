@@ -1,0 +1,1924 @@
+{
+  "name": "rc_reason_msgs",
+  "version": "0.3.1",
+  "description": "Msg and srv definitions for rc_reason_clients",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rc_reason_clients",
+    "url": "https://github.com/roboception/rc_reason_clients_ros2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs",
+      "shape_msgs",
+      "rc_common_msgs"
+    ],
+    "depended_on_by": [
+      "rc_reason_clients"
+    ]
+  },
+  "messages": {
+    "Box": {
+      "description": "Definition of a box",
+      "raw": "# Definition of a box\n\nfloat64 x\nfloat64 y\nfloat64 z\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CellFillingLevel": {
+      "description": "Dimensions of the 2D cell in meters",
+      "raw": "# Dimensions of the 2D cell in meters\nRectangle cell_size\n\n# Position of the cell center in meters (either in camera or external pose frame)\n# The z-coordinate is on the level of the load carrier rim\ngeometry_msgs/Point cell_position\n\n# Filling level of the cell in percent (100% represents a full cell)\nRangeValue level_in_percent\n\n# Free space of the cell in meters (how much space is left until the cell is full)\nRangeValue level_free_in_meters\n\n# Represents the percentage of valid pixels in this cell. Between 0 and 1 \nfloat64 coverage\n",
+      "fields": [
+        {
+          "type": "Rectangle",
+          "name": "cell_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "cell_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RangeValue",
+          "name": "level_in_percent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RangeValue",
+          "name": "level_free_in_meters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "coverage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CollisionDetection": {
+      "description": "",
+      "raw": "string gripper_id\n\ngeometry_msgs/Point pre_grasp_offset\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "gripper_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "pre_grasp_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Compartment": {
+      "description": "Definition of a load carrier compartment",
+      "raw": "# Definition of a load carrier compartment\n\n# The pose of the compartment is relative to the load carrier\ngeometry_msgs/Pose pose\n\n# Size of the compartment\nBox box\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Box",
+          "name": "box",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DetectedTag": {
+      "description": "Representation of detected tag",
+      "raw": "# Representation of detected tag\n\n# Header\nstd_msgs/Header header\n\n# Detected tag. The size will be set to the estimated tag size.\nTag tag\n\n# 3D pose of the detected tag\ngeometry_msgs/PoseStamped pose\n\n# Instance ID of the tag\nstring instance_id\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Tag",
+          "name": "tag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "instance_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Grasp": {
+      "description": "Definition of a grasp",
+      "raw": "# Definition of a grasp\n\n# user defined id (name)\nstring id\n\n# unique id of this grasp\nstring uuid\n\n# unique id of the match this grasp is associated to\nstring match_uuid\n\ngeometry_msgs/PoseStamped pose\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "match_uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GridSize": {
+      "description": "",
+      "raw": "uint32 x\nuint32 y\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Item": {
+      "description": "Definition of a detected item",
+      "raw": "# Definition of a detected item\n\nstring uuid\n\n# Contains uuids of grasps on this object (if requested)\nstring[] grasp_uuids\n\nstring type\n\n# Types\nstring RECTANGLE=RECTANGLE\n\n# if type==RECTANGLE\nRectangle rectangle\n\n# The pose of the item\ngeometry_msgs/PoseStamped pose\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "grasp_uuids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "RECTANGLE",
+          "comment": "",
+          "default": "RECTANGLE",
+          "is_constant": true
+        },
+        {
+          "type": "Rectangle",
+          "name": "rectangle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ItemModel": {
+      "description": "Definition of an item model for the ItemPick and BoxPick components",
+      "raw": "# Definition of an item model for the ItemPick and BoxPick components\n\n# Required\nstring type\n\n# Supported types (depending on component)\nstring UNKNOWN=UNKNOWN\nstring RECTANGLE=RECTANGLE\n\n# Only one of those required depending on the selected type\n# In case of unknown type, these values defines an optional bounding box for the item\nRangeBox unknown\nRangeRectangle rectangle\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "UNKNOWN",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "RECTANGLE",
+          "comment": "",
+          "default": "RECTANGLE",
+          "is_constant": true
+        },
+        {
+          "type": "RangeBox",
+          "name": "unknown",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RangeRectangle",
+          "name": "rectangle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadCarrier": {
+      "description": "This represents a detected load carrier by its geometry and its pose",
+      "raw": "# This represents a detected load carrier by its geometry and its pose\n\nstring id\n\n# Optional. The load carrier rim model. The only supported value is STANDARD\nstring type\n\n# Required\nBox outer_dimensions\n\n# Required\nBox inner_dimensions\n\n# Optional. If not provided, the rim thickness is computed from the outer and inner dimensions\nRectangle rim_thickness\n\n# Optional. Height of the rim step for rims with an L-profile.\nfloat64 rim_step_height\n\n# Optional. Length of the rim ledge in x and y direction. This requires rim_thickness to be set.\nRectangle rim_ledge\n\ngeometry_msgs/PoseStamped pose\n\n# True if a detected load carrier is overfilled. Ignored on setting load carrier.\nbool overfilled\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Box",
+          "name": "outer_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Box",
+          "name": "inner_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Rectangle",
+          "name": "rim_thickness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rim_step_height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Rectangle",
+          "name": "rim_ledge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "overfilled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadCarrierModel": {
+      "description": "This represents a load carrier by its geometry and its pose",
+      "raw": "# This represents a load carrier by its geometry and its pose\n\nstring id\n\n# Optional. The load carrier rim model. The only supported value is STANDARD\nstring type\n\n# Required\nBox outer_dimensions\n\n# Required\nBox inner_dimensions\n\n# Optional. If not provided, the rim thickness is computed from the outer and inner dimensions\nRectangle rim_thickness\n\n# Optional. Height of the rim step for rims with an L-profile.\nfloat64 rim_step_height\n\n# Optional. Length of the rim ledge in x and y direction. This requires rim_thickness to be set.\nRectangle rim_ledge\n\n# When setting a load carrier, this is the prior if frame_id is not empty (should be 'camera' or 'external')\ngeometry_msgs/PoseStamped pose\n\n# Optional. Indicates how to interpret the load carrier pose\n# If not set and pose is zero, it's equivalent to NO_POSE\n# If not set and any value in pose is not zero, it's equivalent to ORIENTATION_PRIOR\n# Valid values are:\n# NO_POSE\n# EXACT_POSE\n# ORIENTATION_PRIOR\nstring pose_type\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Box",
+          "name": "outer_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Box",
+          "name": "inner_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Rectangle",
+          "name": "rim_thickness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rim_step_height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Rectangle",
+          "name": "rim_ledge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pose_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadCarrierWithFillingLevel": {
+      "description": "This represents a detected load carrier with it's filling level",
+      "raw": "# This represents a detected load carrier with it's filling level\n\nstring id\n\n# Optional. The load carrier rim model. The only supported value is STANDARD\nstring type\n\n# Required\nBox outer_dimensions\n\n# Required\nBox inner_dimensions\n\n# Optional. If not provided, the rim thickness is computed from the outer and inner dimensions\nRectangle rim_thickness\n\n# Optional. Height of the rim step for rims with an L-profile.\nfloat64 rim_step_height\n\n# Optional. Length of the rim ledge in x and y direction. This requires rim_thickness to be set.\nRectangle rim_ledge\n\ngeometry_msgs/PoseStamped pose\n\n# True if a detected load carrier is overfilled. Ignored on setting load carrier.\nbool overfilled\n\n# Filling level of the whole load carrier\nCellFillingLevel overall_filling_level\n\n# Filling level of each load carrier cell\nCellFillingLevel[] cells_filling_levels\n\nGridSize filling_level_cell_count\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Box",
+          "name": "outer_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Box",
+          "name": "inner_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Rectangle",
+          "name": "rim_thickness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rim_step_height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Rectangle",
+          "name": "rim_ledge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "overfilled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CellFillingLevel",
+          "name": "overall_filling_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CellFillingLevel[]",
+          "name": "cells_filling_levels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GridSize",
+          "name": "filling_level_cell_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Match": {
+      "description": "id of template which was matched",
+      "raw": "# id of template which was matched\nstring template_id\n\n# unique id of this match\nstring uuid\n\ngeometry_msgs/PoseStamped pose\n\n# associated grasps\nstring[] grasp_uuids\n\n# how well the object matches the template (-1 if not available)\nfloat64 score\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "template_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "grasp_uuids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "score",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RangeBox": {
+      "description": "Definition of a box with minimum and maximum dimensions",
+      "raw": "# Definition of a box with minimum and maximum dimensions\n\nBox min_dimensions\nBox max_dimensions\n",
+      "fields": [
+        {
+          "type": "Box",
+          "name": "min_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Box",
+          "name": "max_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RangeRectangle": {
+      "description": "Definition of a rectangle with minimum and maximum dimensions",
+      "raw": "# Definition of a rectangle with minimum and maximum dimensions\n\nRectangle min_dimensions\nRectangle max_dimensions\n",
+      "fields": [
+        {
+          "type": "Rectangle",
+          "name": "min_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Rectangle",
+          "name": "max_dimensions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RangeValue": {
+      "description": "",
+      "raw": "float64 min\nfloat64 max\nfloat64 mean\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "mean",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Rectangle": {
+      "description": "Definition of a rectangle",
+      "raw": "# Definition of a rectangle\n\nfloat64 x\nfloat64 y\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RegionOfInterest2D": {
+      "description": "2D Region of Interest.",
+      "raw": "# 2D Region of Interest.\n# If width and height are both 0, the full image is covered\n\n# id of the ROI\nstring id\n\n# leftmost pixel of the ROI\nuint32 offset_x\n\n# topmost pixel of the ROI\nuint32 offset_y\n\n# width of ROI\nuint32 width\n\n# height of ROI.\nuint32 height\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "offset_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "offset_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RegionOfInterest3D": {
+      "description": "Definition of a 3D region of interest",
+      "raw": "# Definition of a 3D region of interest\n\n# Optional\nstring id\n\n# Required\ngeometry_msgs/PoseStamped pose\n\nshape_msgs/SolidPrimitive primitive\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/SolidPrimitive",
+          "name": "primitive",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SilhouetteMatchObject": {
+      "description": "ID of the object",
+      "raw": "# ID of the object\nstring object_id\n\n# ROI in which to detect the object\nstring region_of_interest_2d_id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "object_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_2d_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SuctionGrasp": {
+      "description": "Definition of a suction grasp for the ItemPick component",
+      "raw": "# Definition of a suction grasp for the ItemPick component\n\nstring uuid\n\n# Optional\nstring item_uuid\n\n# The grasp orientation is defined such that:\n# - the z axis is the normal of the surface at the grasp position\n# - the x axis is directed along the direction of maximum elongation of the surface\n# - the y axis is selected to form a right-handed coordinate system\ngeometry_msgs/PoseStamped pose\n\n# Optional. The quality of the grasp (between 0 and 1)\nfloat64 quality\n\n# Optional. The axis lengths of the biggest ellipse inscribed on the suction surface\nfloat64 max_suction_surface_length\nfloat64 max_suction_surface_width\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "item_uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_suction_surface_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_suction_surface_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Tag": {
+      "description": "Tag definition",
+      "raw": "# Tag definition\n\n# ID of the tag.\n# For april tags, it is <family>_<tag_id>.\n# Available april tag families: 16h5, 25h7, 25h9, 36h10, 36h11.\n# Example: april tag family 25h7, tag id 5: 25h7_5.\n# For QR codes, it the the data contained in the QR code.\nstring id\n\n# Side length of the (quadratic) tag.\nfloat64 size\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "CadMatchDetectObject": {
+      "description": "Description: Triggers detection of an object.",
+      "raw": "# Description: Triggers detection of an object.\n\n# Required\nstring template_id\n\n# Required. Pose frame for output poses (valid values are camera and external)\nstring pose_frame\n\n# Optional\nstring region_of_interest_id\n\n# Optional\nstring load_carrier_id\n\n# Optional\nCompartment load_carrier_compartment\n\n# Required only if reference frame = external and sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n# Optional. Enables collision checking of grasps with load carrier\nCollisionDetection collision_detection\n\n---\n\nbuiltin_interfaces/Time timestamp\n\n# List of detected matches (instances) of the object\nMatch[] matches\n\nGrasp[] grasps\n\nLoadCarrier[] load_carriers\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "template_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "load_carrier_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Compartment",
+          "name": "load_carrier_compartment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CollisionDetection",
+          "name": "collision_detection",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Match[]",
+          "name": "matches",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Grasp[]",
+          "name": "grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadCarrier[]",
+          "name": "load_carriers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CalibrateBasePlane": {
+      "description": "Description: Triggers base-plane calibration.",
+      "raw": "# Description: Triggers base-plane calibration.\n\n# Required. Pose frame for output poses (valid values are camera and external)\nstring pose_frame\n\n# Required only if reference frame = external and sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n# Required. Method to use for base-plane estimation\n# Valid values are:\n# STEREO\n# APRILTAG\n# MANUAL\nstring plane_estimation_method\n\n# Options for STEREO calibration\nstring stereo_plane_preference\n\n# Optional\nstring region_of_interest_2d_id\n\n# Optional. Shift in meters that will be applied to the estimated plane\nfloat64 offset\n\n# Reqired only if plane_estimation_method = MANUAL\nshape_msgs/Plane plane\n\n---\n\n# timestamp of the image set the calibration ran on\nbuiltin_interfaces/Time timestamp\n\n# frame in which plane is given\nstring pose_frame\nshape_msgs/Plane plane\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "plane_estimation_method",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "stereo_plane_preference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_2d_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Plane",
+          "name": "plane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Plane",
+          "name": "plane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComputeGrasps": {
+      "description": "Description: Triggers the computation of grasp poses for the given items and suction surface.",
+      "raw": "# Description: Triggers the computation of grasp poses for the given items and suction surface.\n\n# Required. Pose frame for output poses (valid values are camera and external)\nstring pose_frame\n\n# Optional\nstring region_of_interest_id\n\n# Optional\nstring load_carrier_id\n\n# Optional\nCompartment load_carrier_compartment\n\n# Optional. If empty, means one item of type unknown without dimensions\nItemModel[] item_models\n\n# Required. Dimensions of the gripper suction surface\n# In case of circular suction cups, the two values are expected to be the same and set to the suction cup diameter\n# Different values are expected for grippers with multiple suction cups or non-circular suction cups (e.g. oval cups)\nfloat64 suction_surface_length\nfloat64 suction_surface_width\n\n# Required only if reference frame = external and sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n# Optional. Enables collision checking of grasps with load carrier\nCollisionDetection collision_detection\n\n---\n\nbuiltin_interfaces/Time timestamp\n\nItem[] items\n\nLoadCarrier[] load_carriers\n\nSuctionGrasp[] grasps\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "load_carrier_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Compartment",
+          "name": "load_carrier_compartment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ItemModel[]",
+          "name": "item_models",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "suction_surface_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "suction_surface_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CollisionDetection",
+          "name": "collision_detection",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Item[]",
+          "name": "items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadCarrier[]",
+          "name": "load_carriers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SuctionGrasp[]",
+          "name": "grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteBasePlaneCalibration": {
+      "description": "Description: Deletes the configured base-plane calibration.",
+      "raw": "# Description: Deletes the configured base-plane calibration.\n\n#No request data\n---\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteLoadCarriers": {
+      "description": "Description: Deletes the configured load carriers with the requested ids. If no ids are provided, all configured load...",
+      "raw": "# Description: Deletes the configured load carriers with the requested ids. If no ids are provided, all configured load carriers are deleted.\n\n# Optional\nstring[] load_carrier_ids\n\n---\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "load_carrier_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteRegionsOfInterest2D": {
+      "description": "Description: Deletes the configured regions of interest with the requested ids. At least one id needs to be provided.",
+      "raw": "# Description: Deletes the configured regions of interest with the requested ids. At least one id needs to be provided.\n\nstring[] region_of_interest_2d_ids\n\n---\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "region_of_interest_2d_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteRegionsOfInterest3D": {
+      "description": "Description: Deletes the configured regions of interest with the requested ids. At least one id needs to be provided.",
+      "raw": "# Description: Deletes the configured regions of interest with the requested ids. At least one id needs to be provided.\n\nstring[] region_of_interest_ids\n\n---\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "region_of_interest_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DetectFillingLevel": {
+      "description": "Description: Triggers the detection of the given load carriers and their filling level.",
+      "raw": "# Description: Triggers the detection of the given load carriers and their filling level.\n\n# Required. Pose frame for output poses (valid values are camera and external)\nstring pose_frame\n\n# Optional\nstring region_of_interest_id\n\n# Optional\nstring region_of_interest_2d_id\n\n# Required\nstring[] load_carrier_ids\n\n# Required only if reference frame = external and sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n# Number of filling level cells to split detected load carriers\nGridSize filling_level_cell_count\n\n---\n\nbuiltin_interfaces/Time timestamp\n\nLoadCarrierWithFillingLevel[] load_carriers\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_2d_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "load_carrier_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GridSize",
+          "name": "filling_level_cell_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadCarrierWithFillingLevel[]",
+          "name": "load_carriers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DetectItems": {
+      "description": "Description: Triggers the detection of the given box model.",
+      "raw": "# Description: Triggers the detection of the given box model.\n\n# A valid pose_frame (either camera or external) is required in the request.\n# It can be provided either with the pose_frame field, as pose_frame of the selected region of interest\n# or as pose_frame of the selected load carriers.\n# If more than one pose_frame is provided, they must to be consistent.\n\n# Optional. Pose frame for output poses.\nstring pose_frame\n\n# Optional\nstring region_of_interest_id\n\n# Optional\nstring load_carrier_id\n\n# Optional\nCompartment load_carrier_compartment\n\n# Required\nItemModel[] item_models\n\n# Required only if reference frame = external and sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n---\n\nbuiltin_interfaces/Time timestamp\n\nItem[] items\n\nLoadCarrier[] load_carriers\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "load_carrier_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Compartment",
+          "name": "load_carrier_compartment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ItemModel[]",
+          "name": "item_models",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Item[]",
+          "name": "items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadCarrier[]",
+          "name": "load_carriers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DetectLoadCarriers": {
+      "description": "Description: Triggers the detection of the given load carriers.",
+      "raw": "# Description: Triggers the detection of the given load carriers.\n\n# Required. Pose frame for output poses (valid values are camera and external)\nstring pose_frame\n\n# Optional\nstring region_of_interest_id\n\n# Optional\nstring region_of_interest_2d_id\n\n# Required\nstring[] load_carrier_ids\n\n# Required only if reference frame = external and sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n---\n\nbuiltin_interfaces/Time timestamp\n\nLoadCarrier[] load_carriers\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "region_of_interest_2d_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "load_carrier_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadCarrier[]",
+          "name": "load_carriers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DetectTags": {
+      "description": "Description: Triggers a detection for the given tags",
+      "raw": "# Description: Triggers a detection for the given tags\n\n# Tags to detect. For pose estimation by homography, the sizes of the tags\n# must be set.\nTag[] tags\n\n# Optional. Pose frame for output poses (valid values are 'camera' and 'external', defaults to 'camera')\nstring pose_frame\n\n# Required only if reference frame = external and sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n---\n\n# List of detected tags.\nDetectedTag[] tags\n\n# Timestamp of the detection\nbuiltin_interfaces/Time timestamp\n\n# Return value\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "Tag[]",
+          "name": "tags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "DetectedTag[]",
+          "name": "tags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetBasePlaneCalibration": {
+      "description": "Description: Returns the configured base-plane calibration.",
+      "raw": "# Description: Returns the configured base-plane calibration.\n\n# Required. Pose frame for output poses (valid values are camera and external)\nstring pose_frame\n\n# Required only if sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n---\n\n# frame in which plane is given\nstring pose_frame\nshape_msgs/Plane plane\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Plane",
+          "name": "plane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetLoadCarriers": {
+      "description": "Description: Returns the configured load carriers with the requested ids. If no ids are provided, all configured load...",
+      "raw": "# Description: Returns the configured load carriers with the requested ids. If no ids are provided, all configured load carriers are returned.\n\n# Optional\nstring[] load_carrier_ids\n\n---\n\nLoadCarrierModel[] load_carriers\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "load_carrier_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "LoadCarrierModel[]",
+          "name": "load_carriers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRegionsOfInterest2D": {
+      "description": "Description: Returns the configured regions of interest with the requested ids. If no ids are provided, all configure...",
+      "raw": "# Description: Returns the configured regions of interest with the requested ids. If no ids are provided, all configured regions of interest are returned.\n\n# Optional\nstring[] region_of_interest_2d_ids\n\n---\n\nRegionOfInterest2D[] regions_of_interest\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "region_of_interest_2d_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "RegionOfInterest2D[]",
+          "name": "regions_of_interest",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRegionsOfInterest3D": {
+      "description": "Description: Returns the configured regions of interest with the requested ids. If no ids are provided, all configure...",
+      "raw": "# Description: Returns the configured regions of interest with the requested ids. If no ids are provided, all configured regions of interest are returned.\n\n# Optional\nstring[] region_of_interest_ids\n\n---\n\nRegionOfInterest3D[] regions_of_interest\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "region_of_interest_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "RegionOfInterest3D[]",
+          "name": "regions_of_interest",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HandEyeCalibration": {
+      "description": "Description: Request hand-eye calibration",
+      "raw": "# Description: Request hand-eye calibration\n\n#No request data\n---\n# True if calibration result is valid\nbool success\n# Internal status:\n# 0: Valid calibration returned\n# 1: Not enough poses\n# 2: Calibration result is not available\nint32 status\n# Human readable message, for development\nstring message\n# Relative pose of grid with respect to the frame for which the pose was given in the request of SetCalibrationPose\ngeometry_msgs/Pose pose\n# Calibration residual error\nfloat64 error\n# Expected translation error given in meter\nfloat64 translation_error_meter\n# Expected rotation error in degrees\nfloat64 rotation_error_degree\n# True if calibration was done with sensor mounted on robot\nbool robot_mounted\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "translation_error_meter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rotation_error_degree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "robot_mounted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HandEyeCalibrationTrigger": {
+      "description": "Description: Trigger action",
+      "raw": "# Description: Trigger action\n#like std_srvs/Trigger, with additional status code (to be used for translations of the message)\n---\nbool success\n#0: Success\n#1: Saving calibration failed\n#2: Calibration result is not available\n#3: Reset successful\nint32 status\nstring message\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetHandEyeCalibration": {
+      "description": "Description: Set hand-eye calibration",
+      "raw": "# Description: Set hand-eye calibration\n\n# Relative pose of grid with respect to the frame for which the pose was given in the request of SetCalibrationPose\ngeometry_msgs/Pose pose\n# True if calibration was done with sensor mounted on robot\nbool robot_mounted\n---\n# True if calibration result is valid\nbool success\n# Internal status:\n# 0: Success\n# 7: License not available\n# 12: Invalid orientation given, i.e. quaternion must have length 1\nint32 status\n# Human readable message, for development\nstring message\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "robot_mounted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetHandEyeCalibrationPose": {
+      "description": "Description: Save a pose (grid or gripper) for later calibration.",
+      "raw": "# Description: Save a pose (grid or gripper) for later calibration.\n#Request\n#Slot in which the pose-image pair is stored.\n#Required for overwriting previously stored data (by using the same slot again).\nint32 slot\ngeometry_msgs/Pose pose\n\n---\n#True if grid was detected and stored together with the pose in the given slot\nbool success\n#Internal status:\n#1: Grid detected, pose stored\n#3: Grid detected, pose stored. Ready to calibrate\n#4: Insufficient detection of the calibration pattern\n#8: No image data available\n#12: Invalid orientation given (0,0,0)\nint32 status\n#Human readable message, for development\nstring message\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "slot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLoadCarrier": {
+      "description": "Description: Persistently sets a load carrier.",
+      "raw": "# Description: Persistently sets a load carrier.\n\n# Required\nLoadCarrierModel load_carrier\n\n---\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "LoadCarrierModel",
+          "name": "load_carrier",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetRegionOfInterest2D": {
+      "description": "Description: Sets a 2D region of interest.",
+      "raw": "# Description: Sets a 2D region of interest.\n\n# Required\nRegionOfInterest2D region_of_interest_2d\n\n---\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "RegionOfInterest2D",
+          "name": "region_of_interest_2d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetRegionOfInterest3D": {
+      "description": "Description: Sets a 3D region of interest.",
+      "raw": "# Description: Sets a 3D region of interest.\n\n# Required\nRegionOfInterest3D region_of_interest\n\n---\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "RegionOfInterest3D",
+          "name": "region_of_interest",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SilhouetteMatchDetectObject": {
+      "description": "Description: Triggers detection of an object.",
+      "raw": "# Description: Triggers detection of an object.\n\n# Required. Object that is to be detected\nSilhouetteMatchObject object_to_detect\n\n# Optional. Shift in meters that will be applied to the calibrated base-plane\nfloat64 offset\n\n# Required. Pose frame for output poses (valid values are camera and external)\nstring pose_frame\n\n# Required only if reference frame = external and sensor is robot-mounted\ngeometry_msgs/Pose robot_pose\n\n# Optional\nstring load_carrier_id\n\n# Optional. Enables collision checking of grasps with load carrier\nCollisionDetection collision_detection\n\n---\n\nbuiltin_interfaces/Time timestamp\n\n# List of detected matches (instances) of the object\nMatch[] matches\n\nGrasp[] grasps\n\nLoadCarrier[] load_carriers\n\nrc_common_msgs/ReturnCode return_code\n",
+      "request_fields": [
+        {
+          "type": "SilhouetteMatchObject",
+          "name": "object_to_detect",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pose_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "robot_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "load_carrier_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CollisionDetection",
+          "name": "collision_detection",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Match[]",
+          "name": "matches",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Grasp[]",
+          "name": "grasps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LoadCarrier[]",
+          "name": "load_carriers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rc_common_msgs/ReturnCode",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

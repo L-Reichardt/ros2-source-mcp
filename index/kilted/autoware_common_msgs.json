@@ -1,0 +1,111 @@
+{
+  "name": "autoware_common_msgs",
+  "version": "1.7.0",
+  "description": "Autoware common messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "autoware_internal_planning_msgs",
+      "autoware_msgs"
+    ]
+  },
+  "messages": {
+    "ResponseStatus": {
+      "description": "error code",
+      "raw": "# error code\nuint16 UNKNOWN = 50000\nuint16 SERVICE_UNREADY = 50001\nuint16 SERVICE_TIMEOUT = 50002\nuint16 TRANSFORM_ERROR = 50003\nuint16 PARAMETER_ERROR = 50004\n\n# warning code\nuint16 DEPRECATED = 60000\nuint16 NO_EFFECT = 60001\n\n# variables\nbool   success\nuint16 code\nstring message\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "50000",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SERVICE_UNREADY",
+          "comment": "",
+          "default": "50001",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "SERVICE_TIMEOUT",
+          "comment": "",
+          "default": "50002",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TRANSFORM_ERROR",
+          "comment": "",
+          "default": "50003",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "PARAMETER_ERROR",
+          "comment": "",
+          "default": "50004",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DEPRECATED",
+          "comment": "",
+          "default": "60000",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NO_EFFECT",
+          "comment": "",
+          "default": "60001",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,46 @@
+{
+  "name": "nav2_bringup",
+  "version": "1.2.10",
+  "description": "Bringup scripts and configurations for the Nav2 stack",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "navigation2",
+    "url": "https://github.com/ros-planning/navigation2.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "nav2_common",
+      "navigation2",
+      "launch_ros"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "launch_ros",
+      "navigation2",
+      "nav2_common",
+      "slam_toolbox",
+      "turtlebot3_gazebo"
+    ],
+    "test": [
+      "ament_lint_common",
+      "ament_lint_auto",
+      "ament_cmake_gtest",
+      "ament_cmake_pytest",
+      "launch",
+      "launch_testing"
+    ],
+    "depended_on_by": [
+      "nav2_system_tests",
+      "rtabmap_demos"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

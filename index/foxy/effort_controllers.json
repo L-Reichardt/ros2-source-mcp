@@ -1,0 +1,39 @@
+{
+  "name": "effort_controllers",
+  "version": "0.9.0",
+  "description": "Generic controller for forwarding commands.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "pluginlib"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "forward_command_controller",
+      "rclcpp"
+    ],
+    "depended_on_by": [
+      "gazebo_ros2_control_demos",
+      "ign_ros2_control_demos",
+      "ros2_controllers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

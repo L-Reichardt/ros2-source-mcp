@@ -1,0 +1,1983 @@
+{
+  "name": "rtabmap_msgs",
+  "version": "0.21.1",
+  "description": "RTAB-Map's msgs package.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/introlab/rtabmap_ros/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/introlab/rtabmap_ros",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "rtabmap_ros",
+    "url": "https://github.com/introlab/rtabmap_ros.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "std_srvs",
+      "geometry_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "rtabmap_conversions",
+      "rtabmap_launch",
+      "rtabmap_odom",
+      "rtabmap_ros",
+      "rtabmap_rviz_plugins",
+      "rtabmap_slam",
+      "rtabmap_sync",
+      "rtabmap_util",
+      "rtabmap_viz"
+    ]
+  },
+  "messages": {
+    "CameraModel": {
+      "description": "",
+      "raw": "\nsensor_msgs/CameraInfo camera_info\ngeometry_msgs/Transform local_transform\n\n",
+      "fields": [
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "camera_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "local_transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraModels": {
+      "description": "",
+      "raw": "\nCameraModel[] models\n\n",
+      "fields": [
+        {
+          "type": "CameraModel[]",
+          "name": "models",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EnvSensor": {
+      "description": "EnvSensor",
+      "raw": "\nstd_msgs/Header header\n\n# EnvSensor\nint32 type\nfloat64 value",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GPS": {
+      "description": "",
+      "raw": "\nfloat64 stamp      # in seconds\nfloat64 longitude  # DD format\nfloat64 latitude   # DD format\nfloat64 altitude   # in meters\nfloat64 error      # in meters\nfloat64 bearing    # North 0->360 deg",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "stamp",
+          "comment": "in seconds",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "DD format",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "DD format",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error",
+          "comment": "in meters",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "bearing",
+          "comment": "North 0->360 deg",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GlobalDescriptor": {
+      "description": "compressed global descriptor",
+      "raw": "\nstd_msgs/Header header\n\n# compressed global descriptor\n# use rtabmap::util3d::uncompressData() from \"rtabmap/core/util3d.h\"\nint32 type\nuint8[] info\nuint8[] data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Goal": {
+      "description": "Set either node_id or node_label",
+      "raw": "\nstd_msgs/Header header\n\n# Set either node_id or node_label\nint32 node_id\nstring node_label\n\n# optional: if not set, the base frame of the robot is used\nstring frame_id\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Info": {
+      "description": "RTAB-Map info with statistics",
+      "raw": "\n########################################\n# RTAB-Map info with statistics \n########################################\n\nstd_msgs/Header header\n\nint32 ref_id\nint32 loop_closure_id\nint32 proximity_detection_id\nint32 landmark_id\n\ngeometry_msgs/Transform loop_closure_transform\n\n####\n# For statistics...\n####\n# State (node IDs) of the current Working Memory (including STM)\nint32[] wm_state\n\n# std::map<int, float> posterior;\nint32[] posterior_keys\nfloat32[] posterior_values\n\n# std::map<int, float> likelihood;\nint32[] likelihood_keys\nfloat32[] likelihood_values\n\n# std::map<int, float> raw_likelihood;\nint32[] raw_likelihood_keys\nfloat32[] raw_likelihood_values\n\n# std::map<int, int> weights;\nint32[] weights_keys\nint32[] weights_values\n\n# std::map<int, std::string> labels;\nint32[] labels_keys\nstring[] labels_values\n\n# std::map<std::string, float> stats\nstring[] stats_keys\nfloat32[] stats_values\n\n# std::vector<int> local_path\nint32[] local_path\nint32 current_goal_id\n\n# std::vector<int> odomCache\nMapGraph odom_cache\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ref_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "loop_closure_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "proximity_detection_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "landmark_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "loop_closure_transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "wm_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "posterior_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "posterior_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "likelihood_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "likelihood_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "raw_likelihood_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "raw_likelihood_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "weights_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "weights_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "labels_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "labels_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "stats_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "stats_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "local_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "current_goal_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MapGraph",
+          "name": "odom_cache",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyPoint": {
+      "description": "class cv::KeyPoint",
+      "raw": "#class cv::KeyPoint\n#{\n#    Point2f pt;\n#    float size;\n#    float angle;\n#    float response;\n#    int octave;\n#    int class_id;\n#}\n\nPoint2f pt\nfloat32 size\nfloat32 angle\nfloat32 response\nint32 octave\nint32 class_id",
+      "fields": [
+        {
+          "type": "Point2f",
+          "name": "pt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "octave",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "class_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Link": {
+      "description": "class rtabmap::Link",
+      "raw": "#class rtabmap::Link\n#{\n#   int from;\n#   int to;\n#   Type type;\n#   Transform transform;\n#   cv::Mat(6,6,CV_64FC1) information;\n#}\n\nint32 from_id\nint32 to_id\nint32 type\ngeometry_msgs/Transform transform\nfloat64[36] information\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "from_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "to_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[36]",
+          "name": "information",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MapData": {
+      "description": "Optimized graph",
+      "raw": "\nstd_msgs/Header header\n\n##################\n# Optimized graph\n##################\nMapGraph graph\n\n##################\n# Graph data\n##################\nNodeData[] nodes\n\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MapGraph",
+          "name": "graph",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NodeData[]",
+          "name": "nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MapGraph": {
+      "description": "/map to /odom transform",
+      "raw": "\nstd_msgs/Header header\n\n##\n# /map to /odom transform\n# Always identity when the graph is optimized from the latest pose.\n##\ngeometry_msgs/Transform map_to_odom\n\n# The poses\nint32[] poses_id\ngeometry_msgs/Pose[] poses\n\n# The links\nLink[] links\n\n\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "map_to_odom",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "poses_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Link[]",
+          "name": "links",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NodeData": {
+      "description": "Pose from odometry not corrected",
+      "raw": "\nint32 id\nint32 map_id\nint32 weight\nfloat64 stamp\nstring label\n\n# Pose from odometry not corrected\ngeometry_msgs/Pose pose\n\n# Ground truth (optional)\ngeometry_msgs/Pose ground_truth_pose\n\n# GPS (optional)\nGPS gps\n\n# compressed image in /camera_link frame\n# use rtabmap::util3d::uncompressImage() from \"rtabmap/core/util3d.h\"\nuint8[] image\n\n# compressed depth image in /camera_link frame\n# use rtabmap::util3d::uncompressImage() from \"rtabmap/core/util3d.h\"\nuint8[] depth\n\n# Camera models\nfloat32[] fx\nfloat32[] fy\nfloat32[] cx\nfloat32[] cy\nfloat32[] width\nfloat32[] height\nfloat32[] baseline\n# local transform (/base_link -> /camera_link)\ngeometry_msgs/Transform[] local_transform\n\n# compressed 2D or 3D laser scan\n# use rtabmap::util3d::uncompressData() from \"rtabmap/core/util3d.h\"\nuint8[] laser_scan\nint32 laser_scan_max_pts\nfloat32 laser_scan_max_range\nint32 laser_scan_format\n# local transform (/base_link -> /base_laser)\ngeometry_msgs/Transform laser_scan_local_transform\n\n# compressed user data\n# use rtabmap::util3d::uncompressData() from \"rtabmap/core/util3d.h\"\nuint8[] user_data\n\n# compressed occupancy grid\n# use rtabmap::util3d::uncompressData() from \"rtabmap/core/util3d.h\"\nuint8[] grid_ground\nuint8[] grid_obstacles\nuint8[] grid_empty_cells\nfloat32 grid_cell_size\nPoint3f grid_view_point\n\n# std::multimap<wordId, index>\n# std::vector<cv::Keypoint>\n# std::vector<cv::Point3f>\nint32[] word_id_keys\nint32[] word_id_values\nKeyPoint[] word_kpts\nPoint3f[] word_pts\n# compressed descriptors\n# use rtabmap::util3d::uncompressData() from \"rtabmap/core/util3d.h\"\nuint8[] word_descriptors\n\nGlobalDescriptor[] global_descriptors\n\nEnvSensor[] env_sensors\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "map_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "ground_truth_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GPS",
+          "name": "gps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "fx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "fy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "cx",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "cy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "baseline",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform[]",
+          "name": "local_transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "laser_scan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "laser_scan_max_pts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "laser_scan_max_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "laser_scan_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "laser_scan_local_transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "user_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "grid_ground",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "grid_obstacles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "grid_empty_cells",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "grid_cell_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point3f",
+          "name": "grid_view_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "word_id_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "word_id_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyPoint[]",
+          "name": "word_kpts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point3f[]",
+          "name": "word_pts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "word_descriptors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GlobalDescriptor[]",
+          "name": "global_descriptors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EnvSensor[]",
+          "name": "env_sensors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OdomInfo": {
+      "description": "Local bundle camera ids",
+      "raw": "\nstd_msgs/Header header\n\nbool lost\nint32 matches\nint32 inliers\nfloat32 icp_inliers_ratio\nfloat32 icp_rotation\nfloat32 icp_translation\nfloat32 icp_structural_complexity\nfloat32 icp_structural_distribution\nint32 icp_correspondences\nfloat64[36] covariance\nint32 features\nint32 local_map_size\nint32 local_scan_map_size\nint32 local_key_frames\nint32 local_bundle_outliers\nint32 local_bundle_constraints\nfloat32 local_bundle_time\nbool key_frame_added\nfloat32 time_estimation\nfloat32 time_particle_filtering\nfloat32 stamp\nfloat32 interval\nfloat32 distance_travelled\nint32 memory_usage # MB\n\nfloat32 gravity_roll_error\nfloat32 gravity_pitch_error\n\n# Local bundle camera ids\nint32[] local_bundle_ids\n\n# Local bundle camera models\nCameraModels[] local_bundle_models\n\n# Local bundle camera poses\ngeometry_msgs/Pose[] local_bundle_poses\n\ngeometry_msgs/Transform transform\ngeometry_msgs/Transform transform_filtered\ngeometry_msgs/Transform transform_ground_truth\ngeometry_msgs/Transform guess\n\n# 0=F2M, 1=F2F\nint32 type\n\n# F2M odometry\n#   std::multimap<int, cv::KeyPoint> words;\n#   std::vector<int> wordMatches;\n#   std::vector<int> wordInliers;\nint32[] words_keys\nKeyPoint[] words_values\nint32[] word_matches\nint32[] word_inliers\nint32[] local_map_keys\nPoint3f[] local_map_values\n\n# local scan map data\nsensor_msgs/PointCloud2 local_scan_map\n\n# F2F odometry\n#   std::vector<cv::Point2f> ref_corners;\n#   std::vector<cv::Point2f> new_corners;\n#   std::vector<int> corner_inliers;\nPoint2f[] ref_corners\nPoint2f[] new_corners\nint32[] corner_inliers\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "lost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "matches",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "inliers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "icp_inliers_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "icp_rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "icp_translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "icp_structural_complexity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "icp_structural_distribution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "icp_correspondences",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[36]",
+          "name": "covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "features",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "local_map_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "local_scan_map_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "local_key_frames",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "local_bundle_outliers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "local_bundle_constraints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "local_bundle_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "key_frame_added",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time_estimation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time_particle_filtering",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "interval",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_travelled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "memory_usage",
+          "comment": "MB",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gravity_roll_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gravity_pitch_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "local_bundle_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CameraModels[]",
+          "name": "local_bundle_models",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "local_bundle_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "transform_filtered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "transform_ground_truth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "guess",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "words_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyPoint[]",
+          "name": "words_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "word_matches",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "word_inliers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "local_map_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point3f[]",
+          "name": "local_map_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "local_scan_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point2f[]",
+          "name": "ref_corners",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point2f[]",
+          "name": "new_corners",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "corner_inliers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Path": {
+      "description": "",
+      "raw": "\nstd_msgs/Header header\n\nint32[] node_ids\ngeometry_msgs/Pose[] poses\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "node_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point2f": {
+      "description": "class cv::Point2f",
+      "raw": "#class cv::Point2f\n#{\n#    float x;\n#    float y;\n#}\n\nfloat32 x\nfloat32 y",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Point3f": {
+      "description": "class cv::Point3f",
+      "raw": "#class cv::Point3f\n#{\n#    float x;\n#    float y;\n#    float z;\n#}\n\nfloat32 x\nfloat32 y\nfloat32 z",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RGBDImage": {
+      "description": "For stereo, rgb corresponds to left camera, and depth the right camera.",
+      "raw": "\nstd_msgs/Header header\n\n# For stereo, rgb corresponds to left camera, and depth the right camera.\n\n# camera info\nsensor_msgs/CameraInfo rgb_camera_info\nsensor_msgs/CameraInfo depth_camera_info\n\n# Raw\nsensor_msgs/Image rgb\nsensor_msgs/Image depth\n\n# Compressed\nsensor_msgs/CompressedImage rgb_compressed\nsensor_msgs/CompressedImage depth_compressed\n\n# Local features\nKeyPoint[] key_points\nPoint3f[] points\n# compressed descriptors\n# use rtabmap::util3d::uncompressData() from \"rtabmap/core/util3d.h\"\nuint8[] descriptors\n\nGlobalDescriptor global_descriptor\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "rgb_camera_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "depth_camera_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "rgb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CompressedImage",
+          "name": "rgb_compressed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CompressedImage",
+          "name": "depth_compressed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyPoint[]",
+          "name": "key_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Point3f[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "descriptors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GlobalDescriptor",
+          "name": "global_descriptor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RGBDImages": {
+      "description": "",
+      "raw": "\nstd_msgs/Header header\n\nRGBDImage[] rgbd_images\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RGBDImage[]",
+          "name": "rgbd_images",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanDescriptor": {
+      "description": "scan or scan_cloud is set",
+      "raw": "\nstd_msgs/Header header\n\n# scan or scan_cloud is set\nsensor_msgs/LaserScan scan\nsensor_msgs/PointCloud2 scan_cloud\n\nGlobalDescriptor global_descriptor",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/LaserScan",
+          "name": "scan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "scan_cloud",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GlobalDescriptor",
+          "name": "global_descriptor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UserData": {
+      "description": "OpenCV matrix containing the user data. A matrix of type CV_8UC1",
+      "raw": "\nstd_msgs/Header header\n\n# OpenCV matrix containing the user data. A matrix of type CV_8UC1 \n# with 1 row is considered to be compressed (with rtabmap::compressData() method).\n# If you have one dimension unsigned 8 bits uncompressed data, make sure to transpose it\n# (to have multiple rows instead of multiple columns) in order to be detected as\n# not compressed.\nuint32 rows\nuint32 cols\nuint32 type\nuint8[] data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "rows",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cols",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddLink": {
+      "description": "request",
+      "raw": "#request\nLink link\n---\n#response",
+      "request_fields": [
+        {
+          "type": "Link",
+          "name": "link",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "CleanupLocalGrids": {
+      "description": "Cleanup local grids service",
+      "raw": "#  Cleanup local grids service\n# \n#     Clear empty space from local occupancy grids \n#     (and laser scans) based on the current optimized global 2d grid map.\n#     If the map needs to be regenerated in the future (e.g., when\n#     we re-use the map in SLAM mode), removed obstacles won't reappear.\n#     Use this with care and only when you know that the map doesn't have errors, \n#     otherwise some real obstacles/walls may be cleared if there is too much \n#     drift in the map.\n#\n\n# Radius in cells around empty cell without obstacles to clear underlying obstacles, default 1 cell if not set.\nint32 radius\n\n# Filter also the scans, default false if not set.\n# The filtered laser scans will be used for localization,\n# so if dynamic obstacles have been removed, localization won't try to\n# match them anymore. Filtering the laser scans cannot be reverted, \n# but grids can (see DatabaseViewer->Edit menu).\nbool filter_scans\n\n---\n# return the number of grids or scans modified, -1 if there is an error\nint32 modified\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "filter_scans",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "modified",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DetectMoreLoopClosures": {
+      "description": "Detect more loop closures service",
+      "raw": "# Detect more loop closures service\n#\n#     Based on the current optimized graph, \n#     this process will try to find more nodes corresponding with each \n#     other, and thus finding more loop closures to add to graph.\n# \n\n# Cluster radius (m),     default 1 m if not set\nfloat32 cluster_radius_max\n\n# Cluster radius min (m), default 0 m if not set\nfloat32 cluster_radius_min\n\n# Cluster angle (deg),    default 0 deg if not set\nfloat32 cluster_angle\n\n# Iterations,             default 1 if not set\nint32 iterations\n\n# Add only intra session loop closures\nbool intra_only\n\n# Add only inter session loop closures\nbool inter_only\n---\n# return the number of loop closures detected, or -1 if it failed.\nint32 detected\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "cluster_radius_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cluster_radius_min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cluster_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "iterations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "intra_only",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "inter_only",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "detected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetMap": {
+      "description": "request",
+      "raw": "#request\nbool global_map\nbool optimized\nbool graph_only\n---\n#response\nMapData data\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "global_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "optimized",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "graph_only",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "MapData",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetMap2": {
+      "description": "request",
+      "raw": "#request\nbool global_map\nbool optimized\nbool with_images\nbool with_scans\nbool with_user_data\nbool with_grids\nbool with_words\nbool with_global_descriptors\n---\n#response\nMapData data\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "global_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "optimized",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "with_images",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "with_scans",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "with_user_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "with_grids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "with_words",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "with_global_descriptors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "MapData",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetNodeData": {
+      "description": "request",
+      "raw": "#request\nint32[] ids\nbool images\nbool scan\nbool grid\nbool user_data\n---\n#response\nNodeData[] data\n",
+      "request_fields": [
+        {
+          "type": "int32[]",
+          "name": "ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "images",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "scan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "grid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "user_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "NodeData[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetNodesInRadius": {
+      "description": "request",
+      "raw": "#request\n\n# In mapping mode (Mem/IncrementalMemory=true), if target pose \n#   and node_id are all zeros, poses around the latest node \n#   in the graph are returned.\n# In localization mode (Mem/IncrementalMemory=false), if target pose \n#   and node_id are all zeros, poses around the latest localization \n#   pose are returned.\n# If node_id is not zero, target pose is ignored.\n\n# Node id\nint32 node_id\n\n# Target pose:\nfloat32 x\nfloat32 y\nfloat32 z\n\n# Radius, <=0 means that RGBD/LocalRadius will be used \n# if k is also 0. If k>0 and a radius of 0 means all nearest \n# poses up to k.\nfloat32 radius\n\n# Maximum number of nearest poses\nint32 k\n\n---\n#response\nint32[] ids\ngeometry_msgs/Pose[] poses\nfloat32[] dists_sqr",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "k",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32[]",
+          "name": "ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "dists_sqr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPlan": {
+      "description": "Get a plan from the current position to the goal node or pose",
+      "raw": "# Get a plan from the current position to the goal node or pose \n\n# The final node of the goal (set 0 to use pose instead)\nint32 goal_node\n# The final pose of the goal position (used only if goalNodeId=0)\ngeometry_msgs/PoseStamped goal\n\n# How many meters from the map's graph we can plan (0=infinite)\nfloat32 tolerance\n---\nPath plan",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "goal_node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Path",
+          "name": "plan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GlobalBundleAdjustment": {
+      "description": "Global Bundle Adjustment service",
+      "raw": "# Global Bundle Adjustment service\n#\n#       Perform global bundle adjustment. Note that as soon as the map \n#       is modified again, the graph is re-optimized the standard way (without SBA).\n#       It then makes only sense to use this after a mapping run (and after a call \n#       to /rtabmap/pause) when you know that the robot will restart in localization \n#       mode the next time, or at the beginning of the localization session.\n#\n\n# Optimizer type (0=g2o, 1=CVSBA), default 0\nint32 type\n\n# Iterations,        default 0 (use Optimizer/Iterations already loaded in the node)\nint32 iterations\n\n# Pixel variance,    default 0 (use g2o/PixelVariance already loaded in the node)\nfloat32 pixel_variance\n\n# Use vocabulary matches, default false (rematch all features between frames)\nbool voc_matches\n---\n# return false if failure\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "iterations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pixel_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "voc_matches",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ListLabels": {
+      "description": "request",
+      "raw": "#request\n---\n#response \nint32[] ids\nstring[] labels",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32[]",
+          "name": "ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "labels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadDatabase": {
+      "description": "request",
+      "raw": "#request\n\n# Local database path on which rtabmap is running.\n# If the path doesn't exist, a new database will be created.\nstring database_path\n\n# If the database already exists, data will be cleared if true.\nbool clear\n\n---\n#response, return false on rtabmap initialization failure.",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "database_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "PublishMap": {
+      "description": "request",
+      "raw": "#request\nbool global_map\nbool optimized\nbool graph_only\n---\n#response\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "global_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "optimized",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "graph_only",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "RemoveLabel": {
+      "description": "request",
+      "raw": "#request\nstring label\n---\n#response ",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "ResetPose": {
+      "description": "request",
+      "raw": "#request\nfloat32 x\nfloat32 y\nfloat32 z\nfloat32 roll\nfloat32 pitch\nfloat32 yaw\n---\n#response",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetGoal": {
+      "description": "request",
+      "raw": "#request\n\n# Set either node_id or node_label\nint32 node_id\nstring node_label\n\n# optional: if not set, the base frame of the robot is used\nstring frame_id\n\n---\n\n#response \nint32[] path_ids\ngeometry_msgs/Pose[] path_poses\nfloat32 planning_time",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32[]",
+          "name": "path_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "path_poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLabel": {
+      "description": "request",
+      "raw": "#request\n# Set node_id = 0 to set label to last node\nint32 node_id\nstring node_label\n---\n#response ",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

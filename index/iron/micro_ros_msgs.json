@@ -1,0 +1,129 @@
+{
+  "name": "micro_ros_msgs",
+  "version": "1.0.0",
+  "description": "Definitions for the ROS 2 msgs entities information used by micro-ROS to leverage its functionality to the same level as ROS 2, by means of a dedicated graph manager",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "micro_ros_msgs",
+    "url": "https://github.com/micro-ROS/micro_ros_msgs.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Entity": {
+      "description": "",
+      "raw": "byte PUBLISHER=0\nbyte SUBSCRIBER=1\nbyte SERVICE_SERVER=2\nbyte SERVICE_CLIENT=3\n\nbyte entity_type\nstring<=256 name\nstring<=256[] types\n",
+      "fields": [
+        {
+          "type": "byte",
+          "name": "PUBLISHER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "SUBSCRIBER",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "SERVICE_SERVER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "SERVICE_CLIENT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "byte",
+          "name": "entity_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=256",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=256[]",
+          "name": "types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Graph": {
+      "description": "",
+      "raw": "Node[] nodes\n",
+      "fields": [
+        {
+          "type": "Node[]",
+          "name": "nodes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Node": {
+      "description": "",
+      "raw": "string<=256 node_namespace\nstring<=256 node_name\nEntity[] entities\n",
+      "fields": [
+        {
+          "type": "string<=256",
+          "name": "node_namespace",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=256",
+          "name": "node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Entity[]",
+          "name": "entities",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,63 @@
+{
+  "name": "depth_image_proc",
+  "version": "3.0.9",
+  "description": "Contains components for processing depth images such as those\n     produced by OpenNI camera. Functions include creating disparity\n     images and point clouds, as well as registering (reprojecting)\n     a depth image into another camera frame.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://index.ros.org/p/depth_image_proc/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-perception/image_pipeline/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-perception/image_pipeline",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "image_pipeline",
+    "url": "https://github.com/ros-perception/image_pipeline.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "class_loader"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "cv_bridge",
+      "image_geometry",
+      "image_transport",
+      "libopencv-dev",
+      "message_filters",
+      "rclcpp",
+      "rclcpp_components",
+      "sensor_msgs",
+      "stereo_msgs",
+      "tf2",
+      "tf2_eigen",
+      "tf2_ros"
+    ],
+    "depended_on_by": [
+      "depthai_examples",
+      "image_pipeline",
+      "omni_base_rgbd_sensors",
+      "openni2_camera",
+      "pmb2_rgbd_sensors"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

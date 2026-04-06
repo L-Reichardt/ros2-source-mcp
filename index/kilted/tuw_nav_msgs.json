@@ -1,0 +1,513 @@
+{
+  "name": "tuw_nav_msgs",
+  "version": "0.2.5",
+  "description": "The tuw_nav_msgs package",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "nav_msgs"
+    ],
+    "depended_on_by": [
+      "tuw_msgs"
+    ]
+  },
+  "messages": {
+    "BaseConstr": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 v_max\nfloat64 av_max\nfloat64 w_max\nfloat64 aw_max\nfloat64 omg_wh_max\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "v_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "av_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "w_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "aw_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "omg_wh_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControllerState": {
+      "description": "Progress/State of a trajectory controller",
+      "raw": "#################################################################\n## Progress/State of a trajectory controller\n#################################################################\n\n\nstd_msgs/Header header         # header, ...\nint32  state                   # controller state\nuint32 progress                # passed waypoints \nuint32 progress_in_relation_to # id / seq nummer in oder to put the progess in realtion to a waypoint msg or spline msg\nstring info                    # details on the controller state in human form for debugging only \n\n\n\nint32 STATE_IDLE = 0                 # controller is inactive\nint32 STATE_DRIVING = 1              # controller is driving and following a path\nint32 STATE_FINISHED = 2             # controller finished a path\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "header, ...",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "state",
+          "comment": "controller state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "progress",
+          "comment": "passed waypoints",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "progress_in_relation_to",
+          "comment": "id / seq nummer in oder to put the progess in realtion to a waypoint msg or spline msg",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "info",
+          "comment": "details on the controller state in human form for debugging only",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "STATE_IDLE",
+          "comment": "controller is inactive",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATE_DRIVING",
+          "comment": "controller is driving and following a path",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATE_FINISHED",
+          "comment": "controller finished a path",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "DiffDriveCmdVWVec": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64[] v\nfloat64[] w\nfloat64[] delta_t\n\nfloat64[] state0\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "w",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "delta_t",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "state0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Float64Array": {
+      "description": "",
+      "raw": "float64[] val\n",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "val",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IwsCmdVRAT": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 v\nfloat64 rho\nfloat64 phi\nfloat64 delta_t\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rho",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "phi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delta_t",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IwsCmdVRATVec": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64[] v\nfloat64[] rho\nfloat64[] phi\nfloat64[] delta_t\n\nfloat64[] state0\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "rho",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "phi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "delta_t",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "state0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IwsCmdVWWTVec": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64[] v\nfloat64[] w_f\nfloat64[] w_icc\nfloat64[] delta_t\n\nfloat64[] state0\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "w_f",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "w_icc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "delta_t",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "state0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointsIWS": {
+      "description": "Message for sensing/control of an indepenend N wheel steering platform",
+      "raw": "# Message for sensing/control of an indepenend N wheel steering platform\nstd_msgs/Header header\n\n#the type defines the usage and units such as cmd_torque, cmd_acceleration, cmd_velocity, cmd_position, measured_torque, measured_acceleration, measured_velocity, measured_position\nstring type_steering\nstring type_revolute \n\n#actual sensing/control variables of the defined type\nfloat64[] steering\nfloat64[] revolute",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type_steering",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type_revolute",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "steering",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "revolute",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PathVec": {
+      "description": "",
+      "raw": "std_msgs/Header header\nnav_msgs/Path[] paths",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/Path[]",
+          "name": "paths",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteSegment": {
+      "description": "NA      = 0",
+      "raw": "\nuint32 id                     # Segment id\nuint8 type                    # Segment type\n                              # NA      = 0\n                              # LINE    = 1\n                              # ARC     = 2\n                              # SPIROS  = 3\n                              # SPLINE  = 4\nuint8 orientation             # Segment orientation\n                              # CLOCKWISE  = 0\n                              # COUNTER_CLOCKWISE  = 1\nuint8 motion_type             # Motion type\n                              # NA = 0\n                              # FLAT = 1\n                              # DWA_SLOW = 2\n                              # DWA_FAST = 3\n                              # MPC_SLOW = 4\n                              # MPC_FAST = 5\n                              # PI_SLOW = 6\n                              # PI_FAST = 7\ngeometry_msgs/Pose start\ngeometry_msgs/Pose end\ngeometry_msgs/Pose center    \nint8 level\n\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "Segment id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "Segment type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "orientation",
+          "comment": "Segment orientation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "motion_type",
+          "comment": "Motion type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteSegments": {
+      "description": "This expresses a marker/fiducial detection",
+      "raw": "# This expresses a marker/fiducial detection\nstd_msgs/Header header                      # timestamp in the header is the acquisition time and frame\n\nRouteSegment[] segments            # detected markers\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the acquisition time and frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RouteSegment[]",
+          "name": "segments",
+          "comment": "detected markers",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Spline": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64[] knots\nFloat64Array[] ctrls\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "knots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Float64Array[]",
+          "name": "ctrls",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

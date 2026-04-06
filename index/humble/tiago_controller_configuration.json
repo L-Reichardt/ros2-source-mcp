@@ -1,0 +1,55 @@
+{
+  "name": "tiago_controller_configuration",
+  "version": "4.24.1",
+  "description": "Configuration and launch files of TIAGo's controllers",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/tiago_simulation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "tiago_robot",
+    "url": "https://github.com/pal-robotics/tiago_robot.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "controller_manager",
+      "diff_drive_controller",
+      "omni_drive_controller",
+      "force_torque_sensor_broadcaster",
+      "joint_state_broadcaster",
+      "joint_trajectory_controller",
+      "launch",
+      "launch_pal",
+      "gravity_compensation_controller2",
+      "pal_gripper_controller_configuration",
+      "pal_hey5_controller_configuration",
+      "pal_robotiq_controller_configuration",
+      "ros2controlcli",
+      "pmb2_controller_configuration",
+      "omni_base_controller_configuration"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "tiago_bringup",
+      "tiago_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

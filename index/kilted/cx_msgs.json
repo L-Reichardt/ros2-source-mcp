@@ -1,0 +1,256 @@
+{
+  "name": "cx_msgs",
+  "version": "0.1.3",
+  "description": "ROS interfaces for ROS2 CLIPS-Executive",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "clips_executive",
+    "url": "https://github.com/carologistics/clips_executive.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": [
+      "clips_executive",
+      "cx_clips_env_manager"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "CreateClipsEnv": {
+      "description": "",
+      "raw": "string env_name\n---\nbool success\nstring error\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "env_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DestroyClipsEnv": {
+      "description": "",
+      "raw": "string env_name\n---\nbool success\nstring error\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "env_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListClipsEnvs": {
+      "description": "",
+      "raw": "---\nbool success\nstring[] envs\nstring error\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "envs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListClipsPlugins": {
+      "description": "",
+      "raw": "string env_name\n---\nbool success\nstring[] plugins\nstring error\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "env_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "plugins",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListClipsenvs": {
+      "description": "",
+      "raw": "---\nbool success\nstring[] plugins\nstring error\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "plugins",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadClipsPlugin": {
+      "description": "",
+      "raw": "string env_name\nstring plugin_name\n---\nbool success\nstring error\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "env_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "plugin_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UnloadClipsPlugin": {
+      "description": "",
+      "raw": "string env_name\nstring plugin_name\n---\nbool success\nstring error\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "env_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "plugin_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

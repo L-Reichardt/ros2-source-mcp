@@ -1,0 +1,67 @@
+{
+  "name": "ecl_time",
+  "version": "1.2.0",
+  "description": "Timing utilities are very dependent on the system api provided for their use.\n\tThis package provides a means for handling different timing models. Current support\n\n\t- posix rt : complete.\n\t- macosx : posix timers only, missing absolute timers.\n\t- win : none.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/ecl_time",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/stonier/ecl_core",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/stonier/ecl_core/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "ecl_core",
+    "url": "https://github.com/stonier/ecl_core.git",
+    "branch": "devel"
+  },
+  "dependencies": {
+    "build": [
+      "ecl_license",
+      "ecl_build",
+      "ecl_config",
+      "ecl_errors",
+      "ecl_exceptions",
+      "ecl_time_lite"
+    ],
+    "buildtool": [
+      "ament_cmake_ros"
+    ],
+    "runtime": [
+      "ecl_license",
+      "ecl_build",
+      "ecl_config",
+      "ecl_errors",
+      "ecl_exceptions",
+      "ecl_time_lite"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "ecl_core",
+      "ecl_ipc",
+      "ecl_ipc",
+      "ecl_streams",
+      "ecl_streams",
+      "ecl_threads",
+      "ecl_threads",
+      "kobuki_core",
+      "kobuki_core"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

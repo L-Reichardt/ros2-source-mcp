@@ -1,0 +1,109 @@
+{
+  "name": "espeak_interfaces",
+  "version": "1.0.0",
+  "description": "Messages for the `espeak-ros` package.",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://gitlab.com/comkieffer/espeak-ros2/",
+      "type": "repository"
+    },
+    {
+      "uri": "https://gitlab.com/comkieffer/espeak-ros2/-/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "espeak_ros",
+    "url": "https://gitlab.com/espeak-ros2/espeak-ros2.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "espeak_ros"
+    ]
+  },
+  "messages": {
+    "Sentence": {
+      "description": "",
+      "raw": "\nstring text\nespeak_interfaces/VoiceSettings settings\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "espeak_interfaces/VoiceSettings",
+          "name": "settings",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VoiceSettings": {
+      "description": "Voice configuration for Espeak-Ng",
+      "raw": "# Voice configuration for Espeak-Ng\n\nint32 amplitude         -1    # Volume - Range: [0; 200]\nint32 word_gap          -1    # Pause between words [ms]\nint32 pitch             -1    # Voice pitch - Range [0; 99]\nint32 words_per_minute  -1    # Speed at which the voice should read\n\nstring voice_name       \"\"    # Name of the voice to use\n                              # use `espeak-ng --voices=en` to list english voices.\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "amplitude",
+          "comment": "Volume - Range: [0; 200]",
+          "default": "-1",
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "word_gap",
+          "comment": "Pause between words [ms]",
+          "default": "-1",
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "pitch",
+          "comment": "Voice pitch - Range [0; 99]",
+          "default": "-1",
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "words_per_minute",
+          "comment": "Speed at which the voice should read",
+          "default": "-1",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "voice_name",
+          "comment": "Name of the voice to use",
+          "default": "\"\"",
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

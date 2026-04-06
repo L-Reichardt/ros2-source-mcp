@@ -1,0 +1,145 @@
+{
+  "name": "pendulum_msgs",
+  "version": "0.14.4",
+  "description": "Custom messages for real-time pendulum control.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "demos",
+    "url": "https://github.com/ros2/demos.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "desktop",
+      "pendulum_control",
+      "pendulum_control"
+    ]
+  },
+  "messages": {
+    "JointCommand": {
+      "description": "",
+      "raw": "float64 position\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointState": {
+      "description": "",
+      "raw": "float64 position\nfloat64 velocity\nfloat64 effort\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "effort",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RttestResults": {
+      "description": "",
+      "raw": "builtin_interfaces/Time stamp\n\nJointCommand command\nJointState state\n\nuint64 cur_latency\nfloat64 mean_latency\nuint64 min_latency\nuint64 max_latency\nuint64 minor_pagefaults \nuint64 major_pagefaults \n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointCommand",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "cur_latency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "mean_latency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "min_latency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "max_latency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "minor_pagefaults",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "major_pagefaults",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

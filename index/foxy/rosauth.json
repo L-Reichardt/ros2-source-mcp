@@ -1,0 +1,114 @@
+{
+  "name": "rosauth",
+  "version": "2.0.2",
+  "description": "Server Side tools for Authorization and Authentication of ROS Clients",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rosauth",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/GT-RAIL/rosauth/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/GT-RAIL/rosauth",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "rosauth",
+    "url": "https://github.com/GT-RAIL/rosauth.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "libssl-dev",
+      "rclcpp"
+    ],
+    "buildtool": [
+      "ament_cmake_ros",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rclcpp",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "launch_testing"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "Authentication": {
+      "description": "MAC string given by the client",
+      "raw": "# MAC string given by the client\nstring mac\n# IP of the client\nstring client\n# IP of the destination\nstring dest\n# Random string given by the client\nstring rand\n# Time of the authorization request given by the client\nbuiltin_interfaces/Time t\n# User level as a string given by the client\nstring level\n# End time of the client's session given by the client\nbuiltin_interfaces/Time end\n---\n# If the user has proper authentication\nbool authenticated\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "mac",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "client",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "dest",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "rand",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "t",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "authenticated",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

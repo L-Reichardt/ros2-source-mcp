@@ -1,0 +1,85 @@
+{
+  "name": "rcgcrd_spl_4",
+  "version": "3.1.0",
+  "description": "RoboCup SPL GameController Return Data V4 ROS msg",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "game_controller_spl",
+    "url": "https://github.com/ros-sports/game_controller_spl.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "gc_spl_2022",
+      "rcgcrd_spl_4_conversion"
+    ]
+  },
+  "messages": {
+    "RCGCRD": {
+      "description": "",
+      "raw": "uint8 player_num 0\nuint8 team_num 0\nuint8 fallen 0\nfloat32[3] pose [0.0, 0.0, 0.0]\nfloat32 ball_age -1.0\nfloat32[2] ball [0.0, 0.0]\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "player_num",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "team_num",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fallen",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "float32[3]",
+          "name": "pose",
+          "comment": "",
+          "default": "[0.0, 0.0, 0.0]",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ball_age",
+          "comment": "",
+          "default": "-1.0",
+          "is_constant": false
+        },
+        {
+          "type": "float32[2]",
+          "name": "ball",
+          "comment": "",
+          "default": "[0.0, 0.0]",
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

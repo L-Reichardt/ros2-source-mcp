@@ -1,0 +1,44 @@
+{
+  "name": "tiago_rgbd_sensors",
+  "version": "4.12.0",
+  "description": "Launch files and scripts needed to bring up the ROS nodes of a TIAGo robot.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/tiago_simulation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "tiago_navigation",
+    "url": "https://github.com/pal-robotics/tiago_navigation.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake",
+      "pal_configuration_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "astra_camera_cfg",
+      "pcl_ros",
+      "pal_pcl"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "tiago_gazebo",
+      "tiago_navigation"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,54 @@
+{
+  "name": "tiago_bringup",
+  "version": "4.24.1",
+  "description": "Launch files to upload the robot description and start the controllers",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/tiago_simulation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "tiago_robot",
+    "url": "https://github.com/pal-robotics/tiago_robot.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "ament_index_python",
+      "diagnostic_aggregator",
+      "geometry_msgs",
+      "joy_linux",
+      "joy_teleop",
+      "launch_pal",
+      "play_motion2",
+      "play_motion2_cli",
+      "teleop_tools_msgs",
+      "tiago_controller_configuration",
+      "tiago_description",
+      "twist_mux",
+      "twist_mux_msgs",
+      "collision_aware_joint_trajectory_wrapper"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "tiago_gazebo",
+      "tiago_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

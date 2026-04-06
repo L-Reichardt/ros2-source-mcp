@@ -1,0 +1,157 @@
+{
+  "name": "mini_tof_interfaces",
+  "version": "0.1.0",
+  "description": "Message definitions for the mini_tof package.",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "mini_tof_interfaces",
+    "url": "https://github.com/uwgraphics/mini_tof_interfaces.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "AmbientLight": {
+      "description": "",
+      "raw": "float64[] ambient_lights",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "ambient_lights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DepthEstimate": {
+      "description": "",
+      "raw": "float64[] depth_estimates\nfloat64[] confidences",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "depth_estimates",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "confidences",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToFFrame": {
+      "description": "",
+      "raw": "ToFHistogram reference_histogram\nToFHistogram[] histograms\nint64 i2c_address\nint64 measurement_num\nint64 temperature\nint64 num_valid_results\nint64 tick\nDepthEstimate[] depth_estimates\nAmbientLight[] ambient_lights\nstring serial_port\nstring sensor_model",
+      "fields": [
+        {
+          "type": "ToFHistogram",
+          "name": "reference_histogram",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ToFHistogram[]",
+          "name": "histograms",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "i2c_address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "measurement_num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "num_valid_results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "tick",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DepthEstimate[]",
+          "name": "depth_estimates",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AmbientLight[]",
+          "name": "ambient_lights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sensor_model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToFHistogram": {
+      "description": "",
+      "raw": "float64[] histogram",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "histogram",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

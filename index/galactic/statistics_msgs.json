@@ -1,0 +1,159 @@
+{
+  "name": "statistics_msgs",
+  "version": "1.0.3",
+  "description": "Message definitions for reporting statistics for topics and system resources.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "build_export": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "libstatistics_collector",
+      "rclcpp",
+      "topic_statistics_demo",
+      "topic_statistics_demo"
+    ]
+  },
+  "messages": {
+    "MetricsMessage": {
+      "description": "A generic metrics message providing statistics for measurements from different sources. For example,",
+      "raw": "#############################################\n# A generic metrics message providing statistics for measurements from different sources. For example,\n# measure a system's CPU % for a given window yields the following data points over a window of time:\n#\n#   - average cpu %\n#   - std deviation\n#   - min\n#   - max\n#   - sample count\n#\n# These are all represented as different 'StatisticDataPoint's.\n#############################################\n\n# Name metric measurement source, e.g., node, topic, or process name\nstring measurement_source_name\n\n# Name of the metric being measured, e.g. cpu_percentage, free_memory_mb, message_age, etc.\nstring metrics_source\n\n# Unit of measure of the metric, e.g. percent, mb, seconds, etc.\nstring unit\n\n# Measurement window start time\nbuiltin_interfaces/Time window_start\n\n# Measurement window end time\nbuiltin_interfaces/Time window_stop\n\n# A list of statistics data point, defined in StatisticDataPoint.msg\nStatisticDataPoint[] statistics\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "measurement_source_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "metrics_source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "unit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "window_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "window_stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "StatisticDataPoint[]",
+          "name": "statistics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatisticDataPoint": {
+      "description": "This holds the structure of a single data point of a StatisticDataType.",
+      "raw": "#############################################\n# This holds the structure of a single data point of a StatisticDataType.\n#\n# This message is used in MetricsStatisticsMessage, defined in MetricsStatisticsMessage.msg.\n#\n# Examples of the value of data point are\n# - average size of messages received\n# - standard deviation of the period of messages published\n# - maximum age of messages published\n#\n# A value of nan represents no data is available.\n# One example is that standard deviation is only available when there are two or more data points but there is only one,\n# and in this case the value would be nan.\n# +inf and -inf are not allowed.\n#\n#############################################\n\n# The statistic type of this data point, defined in StatisticDataType.msg\n# Default value should be StatisticDataType.STATISTICS_DATA_TYPE_UNINITIALIZED (0).\nuint8 data_type\n\n# The value of the data point\nfloat64 data\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "data_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatisticDataType": {
+      "description": "This file contains the commonly used constants for the statistics data type.",
+      "raw": "#############################################\n# This file contains the commonly used constants for the statistics data type.\n#\n# The value 0 is reserved for unitialized statistic message data type.\n# Range of values: [0, 255].\n# Unallowed values: any value that is not specified in this file.\n#\n#############################################\n\n# Constant for uninitialized\nuint8 STATISTICS_DATA_TYPE_UNINITIALIZED = 0\n\n# Allowed values\nuint8 STATISTICS_DATA_TYPE_AVERAGE = 1\nuint8 STATISTICS_DATA_TYPE_MINIMUM = 2\nuint8 STATISTICS_DATA_TYPE_MAXIMUM = 3\nuint8 STATISTICS_DATA_TYPE_STDDEV = 4\nuint8 STATISTICS_DATA_TYPE_SAMPLE_COUNT = 5\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "STATISTICS_DATA_TYPE_UNINITIALIZED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATISTICS_DATA_TYPE_AVERAGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATISTICS_DATA_TYPE_MINIMUM",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATISTICS_DATA_TYPE_MAXIMUM",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATISTICS_DATA_TYPE_STDDEV",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATISTICS_DATA_TYPE_SAMPLE_COUNT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

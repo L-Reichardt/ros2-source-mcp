@@ -1,0 +1,180 @@
+{
+  "name": "rviz_2d_overlay_msgs",
+  "version": "1.4.0",
+  "description": "Messages describing 2D overlays for RVIZ, extracted/derived from the jsk_visualization ROS1 packege.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rviz_2d_overlay_plugins",
+    "url": "https://github.com/teamspatzenhirn/rviz_2d_overlay_plugins.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_planning_rviz_plugin",
+      "rviz_2d_overlay_plugins"
+    ]
+  },
+  "messages": {
+    "OverlayText": {
+      "description": "constants for the horizontal and vertical alignment",
+      "raw": "uint8 ADD = 0\nuint8 DELETE = 1\n\n# constants for the horizontal and vertical alignment\nuint8 LEFT = 0\nuint8 RIGHT = 1\nuint8 CENTER = 2\nuint8 TOP = 3\nuint8 BOTTOM = 4\n\nuint8 action\n\nint32 width\nint32 height\n# Position: Positive values move the overlay towards the center of the window,\n#  for center alignment positive values move the overlay towards the bottom right\nint32 horizontal_distance # Horizontal distance from left/right border or center, depending on alignment\nint32 vertical_distance # Vertical distance between from top/bottom border or center, depending on alignment\n\n# Alignment of the overlay withing RVIZ\nuint8 horizontal_alignment # one of LEFT, CENTER, RIGHT\nuint8 vertical_alignment # one of TOP, CENTER, BOTTOM\n\nstd_msgs/ColorRGBA bg_color\n\nint32 line_width\nfloat32 text_size\nstring font\nstd_msgs/ColorRGBA fg_color\n\nstring text\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "ADD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DELETE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CENTER",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TOP",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BOTTOM",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "horizontal_distance",
+          "comment": "Horizontal distance from left/right border or center, depending on alignment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "vertical_distance",
+          "comment": "Vertical distance between from top/bottom border or center, depending on alignment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "horizontal_alignment",
+          "comment": "one of LEFT, CENTER, RIGHT",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "vertical_alignment",
+          "comment": "one of TOP, CENTER, BOTTOM",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "bg_color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "line_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "text_size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "font",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "fg_color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

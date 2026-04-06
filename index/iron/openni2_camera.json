@@ -1,0 +1,55 @@
+{
+  "name": "openni2_camera",
+  "version": "2.0.3",
+  "description": "Drivers for the Asus Xtion and Primesense Devices. For using a kinect\n  with ROS, try the",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "openni2_camera",
+    "url": "https://github.com/ros-drivers/openni2_camera.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "pkg-config"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "depth_image_proc",
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "camera_info_manager",
+      "libopenni2-dev",
+      "sensor_msgs",
+      "rclcpp",
+      "rclcpp_components",
+      "image_transport"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "GetSerial": {
+      "description": "",
+      "raw": "---\nstring serial\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "serial",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

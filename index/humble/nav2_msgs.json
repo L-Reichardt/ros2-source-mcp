@@ -1,0 +1,1790 @@
+{
+  "name": "nav2_msgs",
+  "version": "1.1.20",
+  "description": "Messages and service files for the Nav2 stack",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "navigation2",
+    "url": "https://github.com/ros-planning/navigation2.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "nav2_common"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "std_msgs",
+      "builtin_interfaces",
+      "rosidl_default_generators",
+      "geometry_msgs",
+      "action_msgs",
+      "nav_msgs"
+    ],
+    "depended_on_by": [
+      "as2_behavior_tree",
+      "grid_map_ros",
+      "homing_local_planner",
+      "nav2_amcl",
+      "nav2_behavior_tree",
+      "nav2_behavior_tree",
+      "nav2_behaviors",
+      "nav2_behaviors",
+      "nav2_bt_navigator",
+      "nav2_bt_navigator",
+      "nav2_constrained_smoother",
+      "nav2_controller",
+      "nav2_costmap_2d",
+      "nav2_graceful_controller",
+      "nav2_lifecycle_manager",
+      "nav2_lifecycle_manager",
+      "nav2_map_server",
+      "nav2_mppi_controller",
+      "nav2_navfn_planner",
+      "nav2_planner",
+      "nav2_regulated_pure_pursuit_controller",
+      "nav2_rotation_shim_controller",
+      "nav2_route",
+      "nav2_rviz_plugins",
+      "nav2_simple_commander",
+      "nav2_smac_planner",
+      "nav2_smoother",
+      "nav2_system_tests",
+      "nav2_system_tests",
+      "nav2_theta_star_planner",
+      "nav2_util",
+      "nav2_waypoint_follower",
+      "navigation2",
+      "opennav_docking",
+      "opennav_docking_bt",
+      "opennav_docking_msgs",
+      "rai_interfaces",
+      "roadmap_explorer",
+      "rtabmap_slam",
+      "turtlebot3_follower",
+      "turtlebot3_home_service_challenge_core",
+      "vector_pursuit_controller"
+    ]
+  },
+  "messages": {
+    "BehaviorTreeLog": {
+      "description": "",
+      "raw": "builtin_interfaces/Time timestamp    # ROS time that this log message was sent.\nBehaviorTreeStatusChange[] event_log\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "ROS time that this log message was sent.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BehaviorTreeStatusChange[]",
+          "name": "event_log",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorTreeStatusChange": {
+      "description": "",
+      "raw": "builtin_interfaces/Time timestamp  # internal behavior tree event timestamp. Typically this is wall clock time\nstring node_name\nstring previous_status              # IDLE, RUNNING, SUCCESS or FAILURE\nstring current_status               # IDLE, RUNNING, SUCCESS or FAILURE\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "internal behavior tree event timestamp. Typically this is wall clock time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "previous_status",
+          "comment": "IDLE, RUNNING, SUCCESS or FAILURE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "current_status",
+          "comment": "IDLE, RUNNING, SUCCESS or FAILURE",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CollisionMonitorState": {
+      "description": "Action type for robot in Collision Monitor",
+      "raw": "# Action type for robot in Collision Monitor\nuint8 DO_NOTHING=0 # No action\nuint8 STOP=1 # Stop the robot\nuint8 SLOWDOWN=2 # Slowdown in percentage from current operating speed\nuint8 APPROACH=3 # Keep constant time interval before collision\nuint8 action_type\n\n# Name of triggered polygon\nstring polygon_name",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "DO_NOTHING",
+          "comment": "No action",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STOP",
+          "comment": "Stop the robot",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SLOWDOWN",
+          "comment": "Slowdown in percentage from current operating speed",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "APPROACH",
+          "comment": "Keep constant time interval before collision",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "action_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "polygon_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Costmap": {
+      "description": "This represents a 2-D grid map, in which each cell has an associated cost",
+      "raw": "# This represents a 2-D grid map, in which each cell has an associated cost\n\nstd_msgs/Header header\n\n# MetaData for the map\nCostmapMetaData metadata\n\n# The cost data, in row-major order, starting with (0,0).\nuint8[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CostmapMetaData",
+          "name": "metadata",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CostmapFilterInfo": {
+      "description": "Type of plugin used (keepout filter, speed limit in m/s, speed limit in percent, etc...)",
+      "raw": "std_msgs/Header header\n# Type of plugin used (keepout filter, speed limit in m/s, speed limit in percent, etc...)\n# 0: keepout/lanes filter\n# 1: speed limit filter in % of maximum speed\n# 2: speed limit filter in absolute values (m/s)\nuint8 type\n# Name of filter mask topic\nstring filter_mask_topic\n# Multiplier base offset and multiplier coefficient for conversion of OccGrid.\n# Used to convert OccupancyGrid data values to filter space values.\n# data -> into some other number space:\n# space = data * multiplier + base\nfloat32 base\nfloat32 multiplier\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "filter_mask_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "base",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "multiplier",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CostmapMetaData": {
+      "description": "This hold basic information about the characteristics of the Costmap",
+      "raw": "# This hold basic information about the characteristics of the Costmap\n\n# The time at which the static map was loaded\nbuiltin_interfaces/Time map_load_time\n\n# The time of the last update to costmap\nbuiltin_interfaces/Time update_time\n\n# The corresponding layer name\nstring layer\n\n# The map resolution [m/cell]\nfloat32 resolution\n\n# Number of cells in the horizontal direction\nuint32 size_x\n\n# Number of cells in the vertical direction\nuint32 size_y\n\n# The origin of the costmap [m, m, rad].\n# This is the real-world pose of the cell (0,0) in the map.\ngeometry_msgs/Pose origin\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "map_load_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "update_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "layer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "size_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "size_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "origin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EdgeCost": {
+      "description": "Edge cost to use with nav2_msgs/srv/DynamicEdges to adjust route edge costs",
+      "raw": "# Edge cost to use with nav2_msgs/srv/DynamicEdges to adjust route edge costs\nuint16 edgeid\nfloat32 cost\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "edgeid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Particle": {
+      "description": "This represents an individual particle with weight produced by a particle filter",
+      "raw": "# This represents an individual particle with weight produced by a particle filter\n\ngeometry_msgs/Pose pose\n\nfloat64 weight\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ParticleCloud": {
+      "description": "This represents a particle cloud containing particle poses and weights",
+      "raw": "# This represents a particle cloud containing particle poses and weights\n\nstd_msgs/Header header\n\n# Array of particles in the cloud\nParticle[] particles\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Particle[]",
+          "name": "particles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Route": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 route_cost\nRouteNode[] nodes # ordered set of nodes of the route\nRouteEdge[] edges # ordered set of edges that connect nodes\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "route_cost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RouteNode[]",
+          "name": "nodes",
+          "comment": "ordered set of nodes of the route",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RouteEdge[]",
+          "name": "edges",
+          "comment": "ordered set of edges that connect nodes",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteEdge": {
+      "description": "",
+      "raw": "uint16 edgeid\ngeometry_msgs/Point start\ngeometry_msgs/Point end\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "edgeid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteNode": {
+      "description": "",
+      "raw": "uint16 nodeid\ngeometry_msgs/Point position\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "nodeid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpeedLimit": {
+      "description": "Setting speed limit in percentage if true or in absolute values in false case",
+      "raw": "std_msgs/Header header\n# Setting speed limit in percentage if true or in absolute values in false case\nbool percentage\n# Maximum allowed speed (in percent of maximum robot speed or in m/s depending\n# on \"percentage\" value). When no-limit it is set to 0.0\nfloat64 speed_limit\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "percentage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VoxelGrid": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32[] data\ngeometry_msgs/Point32 origin\ngeometry_msgs/Vector3 resolutions\nuint32 size_x\nuint32 size_y\nuint32 size_z\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point32",
+          "name": "origin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "resolutions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "size_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "size_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "size_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ClearCostmapAroundRobot": {
+      "description": "Clears the costmap within a distance",
+      "raw": "# Clears the costmap within a distance\n\nfloat32 reset_distance\n---\nstd_msgs/Empty response\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "reset_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClearCostmapExceptRegion": {
+      "description": "Clears the costmap except a rectangular region specified by reset_distance",
+      "raw": "# Clears the costmap except a rectangular region specified by reset_distance\n\nfloat32 reset_distance\n---\nstd_msgs/Empty response\n",
+      "request_fields": [
+        {
+          "type": "float32",
+          "name": "reset_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClearEntireCostmap": {
+      "description": "Clears all layers on the costmap",
+      "raw": "# Clears all layers on the costmap\n\nstd_msgs/Empty request\n---\nstd_msgs/Empty response\n",
+      "request_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DynamicEdges": {
+      "description": "",
+      "raw": "uint16[] closed_edges\nuint16[] opened_edges\nEdgeCost[] adjust_edges\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint16[]",
+          "name": "closed_edges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "opened_edges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EdgeCost[]",
+          "name": "adjust_edges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetCostmap": {
+      "description": "Get the costmap",
+      "raw": "# Get the costmap\n\n# Specifications for the requested costmap\nnav2_msgs/CostmapMetaData specs\n---\nnav2_msgs/Costmap map\n",
+      "request_fields": [
+        {
+          "type": "nav2_msgs/CostmapMetaData",
+          "name": "specs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "nav2_msgs/Costmap",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsPathValid": {
+      "description": "Determine if the current path is still valid",
+      "raw": "#Determine if the current path is still valid\n\nnav_msgs/Path path\n---\nbool is_valid\nint32[] invalid_pose_indices \n",
+      "request_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "invalid_pose_indices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadMap": {
+      "description": "URL of map resource",
+      "raw": "# URL of map resource\n# Can be an absolute path to a file: file:///path/to/maps/floor1.yaml\n# Or, relative to a ROS package: package://my_ros_package/maps/floor2.yaml\nstring map_url\n---\n# Result code defintions\nuint8 RESULT_SUCCESS=0\nuint8 RESULT_MAP_DOES_NOT_EXIST=1\nuint8 RESULT_INVALID_MAP_DATA=2\nuint8 RESULT_INVALID_MAP_METADATA=3\nuint8 RESULT_UNDEFINED_FAILURE=255\n\n# Returned map is only valid if result equals RESULT_SUCCESS\nnav_msgs/OccupancyGrid map\nuint8 result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "map_url",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "RESULT_SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_MAP_DOES_NOT_EXIST",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_INVALID_MAP_DATA",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_INVALID_MAP_METADATA",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_UNDEFINED_FAILURE",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "nav_msgs/OccupancyGrid",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ManageLifecycleNodes": {
+      "description": "",
+      "raw": "uint8 STARTUP = 0\nuint8 PAUSE = 1\nuint8 RESUME = 2\nuint8 RESET = 3\nuint8 SHUTDOWN = 4\n\nuint8 command\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "STARTUP",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PAUSE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESUME",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESET",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SHUTDOWN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SaveMap": {
+      "description": "URL of map resource",
+      "raw": "# URL of map resource\n# Can be an absolute path to a file: file:///path/to/maps/floor1.yaml\n# Or, relative to a ROS package: package://my_ros_package/maps/floor2.yaml\nstring map_topic\nstring map_url\n# Constants for image_format. Supported formats: pgm, png, bmp\nstring image_format\n# Map modes: trinary, scale or raw\nstring map_mode\n# Thresholds. Values in range of [0.0 .. 1.0]\nfloat32 free_thresh\nfloat32 occupied_thresh\n---\nbool result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "map_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "map_url",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "image_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "map_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "free_thresh",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "occupied_thresh",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetInitialPose": {
+      "description": "",
+      "raw": "geometry_msgs/PoseWithCovarianceStamped pose\n---\n\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetRouteGraph": {
+      "description": "",
+      "raw": "string graph_filepath\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "graph_filepath",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "AssistedTeleop": {
+      "description": "goal definition",
+      "raw": "#goal definition\nbuiltin_interfaces/Duration time_allowance\n---\n#result definition\nbuiltin_interfaces/Duration total_elapsed_time\n---\n#feedback\nbuiltin_interfaces/Duration current_teleop_duration\n",
+      "goal_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_allowance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "total_elapsed_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "current_teleop_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BackUp": {
+      "description": "goal definition",
+      "raw": "#goal definition\ngeometry_msgs/Point target\nfloat32 speed\nbuiltin_interfaces/Duration time_allowance\n---\n#result definition\nbuiltin_interfaces/Duration total_elapsed_time\n---\n#feedback definition\nfloat32 distance_traveled\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/Point",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_allowance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "total_elapsed_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "distance_traveled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComputeAndTrackRoute": {
+      "description": "goal definition",
+      "raw": "#goal definition\nuint16 start_id\ngeometry_msgs/PoseStamped start\nuint16 goal_id\ngeometry_msgs/PoseStamped goal\n\nbool use_start # Whether to use the start field or find the start pose in TF\nbool use_poses # Whether to use the poses or the IDs fields for request\n---\n#result definition\n\n# Error codes\nuint16 NONE=0\nuint16 UNKNOWN=400\nuint16 TF_ERROR=401\nuint16 NO_VALID_GRAPH=402\nuint16 INDETERMINANT_NODES_ON_GRAPH=403\nuint16 TIMEOUT=404\nuint16 NO_VALID_ROUTE=405\nuint16 OPERATION_FAILED=406\nuint16 INVALID_EDGE_SCORER_USE=407\n\nbuiltin_interfaces/Duration execution_duration\n---\n#feedback definition\nuint16 last_node_id\nuint16 next_node_id\nuint16 current_edge_id\nRoute route\nnav_msgs/Path path\nstring[] operations_triggered\nbool rerouted\n",
+      "goal_fields": [
+        {
+          "type": "uint16",
+          "name": "start_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "goal_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_start",
+          "comment": "Whether to use the start field or find the start pose in TF",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_poses",
+          "comment": "Whether to use the poses or the IDs fields for request",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint16",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "400",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TF_ERROR",
+          "comment": "",
+          "default": "401",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NO_VALID_GRAPH",
+          "comment": "",
+          "default": "402",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "INDETERMINANT_NODES_ON_GRAPH",
+          "comment": "",
+          "default": "403",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TIMEOUT",
+          "comment": "",
+          "default": "404",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NO_VALID_ROUTE",
+          "comment": "",
+          "default": "405",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "OPERATION_FAILED",
+          "comment": "",
+          "default": "406",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "INVALID_EDGE_SCORER_USE",
+          "comment": "",
+          "default": "407",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "execution_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "uint16",
+          "name": "last_node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "next_node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "current_edge_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Route",
+          "name": "route",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "operations_triggered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rerouted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ComputePathThroughPoses": {
+      "description": "goal definition",
+      "raw": "#goal definition\ngeometry_msgs/PoseStamped[] goals\ngeometry_msgs/PoseStamped start\nstring planner_id\nbool use_start # If false, use current robot pose as path start, if true, use start above instead\n---\n#result definition\nnav_msgs/Path path\nbuiltin_interfaces/Duration planning_time\n---\n#feedback definition\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "goals",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_start",
+          "comment": "If false, use current robot pose as path start, if true, use start above instead",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "ComputePathToPose": {
+      "description": "goal definition",
+      "raw": "#goal definition\ngeometry_msgs/PoseStamped goal\ngeometry_msgs/PoseStamped start\nstring planner_id\nbool use_start # If false, use current robot pose as path start, if true, use start above instead\n---\n#result definition\nnav_msgs/Path path\nbuiltin_interfaces/Duration planning_time\n---\n#feedback definition\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "planner_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_start",
+          "comment": "If false, use current robot pose as path start, if true, use start above instead",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "ComputeRoute": {
+      "description": "goal definition",
+      "raw": "#goal definition\nuint16 start_id\ngeometry_msgs/PoseStamped start\nuint16 goal_id\ngeometry_msgs/PoseStamped goal\n\nbool use_start # Whether to use the start field or find the start pose in TF\nbool use_poses # Whether to use the poses or the IDs fields for request\n---\n#result definition\n\n# Error codes\nuint16 NONE=0\nuint16 UNKNOWN=400\nuint16 TF_ERROR=401\nuint16 NO_VALID_GRAPH=402\nuint16 INDETERMINANT_NODES_ON_GRAPH=403\nuint16 TIMEOUT=404\nuint16 NO_VALID_ROUTE=405\nuint16 INVALID_EDGE_SCORER_USE=407\n\nbuiltin_interfaces/Duration planning_time\nnav_msgs/Path path\nRoute route\n---\n#feedback definition\n",
+      "goal_fields": [
+        {
+          "type": "uint16",
+          "name": "start_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "goal_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_start",
+          "comment": "Whether to use the start field or find the start pose in TF",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_poses",
+          "comment": "Whether to use the poses or the IDs fields for request",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint16",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "400",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TF_ERROR",
+          "comment": "",
+          "default": "401",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NO_VALID_GRAPH",
+          "comment": "",
+          "default": "402",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "INDETERMINANT_NODES_ON_GRAPH",
+          "comment": "",
+          "default": "403",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TIMEOUT",
+          "comment": "",
+          "default": "404",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NO_VALID_ROUTE",
+          "comment": "",
+          "default": "405",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "INVALID_EDGE_SCORER_USE",
+          "comment": "",
+          "default": "407",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "planning_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Route",
+          "name": "route",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "DriveOnHeading": {
+      "description": "goal definition",
+      "raw": "#goal definition\ngeometry_msgs/Point target\nfloat32 speed\nbuiltin_interfaces/Duration time_allowance\n---\n#result definition\nbuiltin_interfaces/Duration total_elapsed_time\n---\n#feedback definition\nfloat32 distance_traveled\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/Point",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_allowance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "total_elapsed_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "distance_traveled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DummyBehavior": {
+      "description": "goal definition",
+      "raw": "#goal definition\nstd_msgs/String command\n---\n#result definition\nbuiltin_interfaces/Duration total_elapsed_time\n---\n#feedback definition\n",
+      "goal_fields": [
+        {
+          "type": "std_msgs/String",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "total_elapsed_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "FollowPath": {
+      "description": "goal definition",
+      "raw": "#goal definition\nnav_msgs/Path path\nstring controller_id\nstring goal_checker_id\n---\n#result definition\nstd_msgs/Empty result\n---\n#feedback definition\nfloat32 distance_to_goal\nfloat32 speed\n",
+      "goal_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "controller_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "goal_checker_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "distance_to_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FollowWaypoints": {
+      "description": "goal definition",
+      "raw": "#goal definition\ngeometry_msgs/PoseStamped[] poses\n---\n#result definition\nint32[] missed_waypoints\n---\n#feedback definition\nuint32 current_waypoint\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "int32[]",
+          "name": "missed_waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "uint32",
+          "name": "current_waypoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavigateThroughPoses": {
+      "description": "goal definition",
+      "raw": "#goal definition\ngeometry_msgs/PoseStamped[] poses\nstring behavior_tree\n---\n#result definition\nstd_msgs/Empty result\n---\n#feedback definition\ngeometry_msgs/PoseStamped current_pose\nbuiltin_interfaces/Duration navigation_time\nbuiltin_interfaces/Duration estimated_time_remaining\nint16 number_of_recoveries\nfloat32 distance_remaining\nint16 number_of_poses_remaining\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "behavior_tree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "current_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "navigation_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "estimated_time_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "number_of_recoveries",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "number_of_poses_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavigateToPose": {
+      "description": "goal definition",
+      "raw": "#goal definition\ngeometry_msgs/PoseStamped pose\nstring behavior_tree\n---\n#result definition\nstd_msgs/Empty result\n---\n#feedback definition\ngeometry_msgs/PoseStamped current_pose\nbuiltin_interfaces/Duration navigation_time\nbuiltin_interfaces/Duration estimated_time_remaining\nint16 number_of_recoveries\nfloat32 distance_remaining\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "behavior_tree",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "current_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "navigation_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "estimated_time_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "number_of_recoveries",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance_remaining",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SmoothPath": {
+      "description": "goal definition",
+      "raw": "#goal definition\nnav_msgs/Path path\nstring smoother_id\nbuiltin_interfaces/Duration max_smoothing_duration\nbool check_for_collisions\n---\n#result definition\nnav_msgs/Path path\nbuiltin_interfaces/Duration smoothing_duration\nbool was_completed\n---\n#feedback definition\n",
+      "goal_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "smoother_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "max_smoothing_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "check_for_collisions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "nav_msgs/Path",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "smoothing_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "was_completed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "Spin": {
+      "description": "goal definition",
+      "raw": "#goal definition\nfloat32 target_yaw\nbuiltin_interfaces/Duration time_allowance\n---\n#result definition\nbuiltin_interfaces/Duration total_elapsed_time\n---\n#feedback definition\nfloat32 angular_distance_traveled\n",
+      "goal_fields": [
+        {
+          "type": "float32",
+          "name": "target_yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_allowance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "total_elapsed_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "angular_distance_traveled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Wait": {
+      "description": "goal definition",
+      "raw": "#goal definition\nbuiltin_interfaces/Duration time\n---\n#result definition\nbuiltin_interfaces/Duration total_elapsed_time\n---\n#feedback definition\nbuiltin_interfaces/Duration time_left\n",
+      "goal_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "total_elapsed_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

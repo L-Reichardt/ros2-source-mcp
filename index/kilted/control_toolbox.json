@@ -1,0 +1,68 @@
+{
+  "name": "control_toolbox",
+  "version": "5.9.1",
+  "description": "The control toolbox contains modules that are useful across all controllers.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/control_toolbox/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/control_toolbox/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "control_toolbox",
+    "url": "https://github.com/ros-controls/control_toolbox.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "ros2_control_cmake",
+      "fmt"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "rclcpp_lifecycle"
+    ],
+    "build_and_runtime": [
+      "backward_ros",
+      "control_msgs",
+      "eigen",
+      "filters",
+      "generate_parameter_library",
+      "geometry_msgs",
+      "libexpected-dev",
+      "pluginlib",
+      "rclcpp",
+      "rcutils",
+      "realtime_tools",
+      "rsl",
+      "tf2",
+      "tf2_ros",
+      "tf2_geometry_msgs"
+    ],
+    "depended_on_by": [
+      "admittance_controller",
+      "diff_drive_controller",
+      "joint_trajectory_controller",
+      "mujoco_ros2_control",
+      "parallel_gripper_controller",
+      "pid_controller"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

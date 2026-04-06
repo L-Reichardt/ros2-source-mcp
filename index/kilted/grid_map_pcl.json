@@ -1,0 +1,57 @@
+{
+  "name": "grid_map_pcl",
+  "version": "2.4.0",
+  "description": "Conversions between grid maps and Point Cloud Library (PCL) types.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://github.com/anybotics/grid_map",
+      "type": "website"
+    },
+    {
+      "uri": "http://github.com/anybotics/grid_map/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "grid_map",
+    "url": "https://github.com/ANYbotics/grid_map.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "grid_map_cmake_helpers",
+      "libpcl-all-dev"
+    ],
+    "build_export": [
+      "libpcl-all-dev"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "libpcl-all"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "grid_map_core",
+      "grid_map_msgs",
+      "grid_map_ros",
+      "rclcpp",
+      "rcutils",
+      "yaml-cpp"
+    ],
+    "depended_on_by": [
+      "grid_map"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

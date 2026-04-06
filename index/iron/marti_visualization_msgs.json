@@ -1,0 +1,143 @@
+{
+  "name": "marti_visualization_msgs",
+  "version": "1.6.1",
+  "description": "marti_visualization_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/marti_messages",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "marti_messages",
+    "url": "https://github.com/swri-robotics/marti_messages.git",
+    "branch": "ros2-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "mapviz_plugins"
+    ]
+  },
+  "messages": {
+    "TexturedMarker": {
+      "description": "conjunction with id to create a unique name",
+      "raw": "uint8 ADD=0\nuint8 MODIFY=0\nuint8 DELETE=2\n\nstd_msgs/Header              header\n\nstring              ns           # Namespace to place this object in... used in\n                                 # conjunction with id to create a unique name\n                                 # for the object.\n\nint32               id\nint32               action       # 0 add/modify an object, 2 deletes an object\n\nbuiltin_interfaces/Duration lifetime # How long the object should last before being\n                                 # automatically deleted.  0 means forever\n\nsensor_msgs/Image   image\ngeometry_msgs/Pose  pose         # The pose of the image center with respect to\n                                 # the header frame.\n\nfloat64             resolution   # The pixel scale in meters.\n\nfloat32             alpha        # The overall alpha transparency to display the\n                                 # marker with.\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "ADD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODIFY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DELETE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ns",
+          "comment": "Namespace to place this object in... used in",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "action",
+          "comment": "0 add/modify an object, 2 deletes an object",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "lifetime",
+          "comment": "How long the object should last before being",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/Image",
+          "name": "image",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "The pose of the image center with respect to",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "resolution",
+          "comment": "The pixel scale in meters.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "alpha",
+          "comment": "The overall alpha transparency to display the",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TexturedMarkerArray": {
+      "description": "",
+      "raw": "TexturedMarker[] markers\n",
+      "fields": [
+        {
+          "type": "TexturedMarker[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,50 @@
+{
+  "name": "kinematics_interface_kdl",
+  "version": "0.4.2",
+  "description": "KDL implementation of ros2_control kinematics interface",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "kinematics_interface",
+    "url": "https://github.com/ros-controls/kinematics_interface.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "eigen3_cmake_module"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "eigen",
+      "kdl_parser",
+      "kinematics_interface",
+      "pluginlib",
+      "tf2_eigen_kdl"
+    ],
+    "depended_on_by": [
+      "admittance_controller"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

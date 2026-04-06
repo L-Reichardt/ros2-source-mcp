@@ -1,0 +1,611 @@
+{
+  "name": "nao_sensor_msgs",
+  "version": "0.1.0",
+  "description": "Package defining sensor msgs to be received from NAO robot.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "nao_interfaces",
+    "url": "https://github.com/ijnek/nao_interfaces.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "nao_button_sim",
+      "nao_lola",
+      "rcss3d_nao"
+    ]
+  },
+  "messages": {
+    "Accelerometer": {
+      "description": "Holds Accelerometer information for a NAO V6",
+      "raw": "# Holds Accelerometer information for a NAO V6\n# Units are in m/s^2\n# Follows conventions here: http://doc.aldebaran.com/2-1/family/robots/inertial_robot.html\n# Note that gravity is measured by an accelerometer.\n# When standing, the robot will measure 9.8m/s^2 POSITIVE in the z-direction, since its \n# receiving an acceleration upwards from the floor when compared to a freefall state.\n\n# x is moving forwards / backwards (from robots perspective)\n# - Forwards is positive\n# - Backwards is negative\nfloat32 x\n\n# y is moving left / right (from robot's perspective)\n# - Left is positive\n# - Right is negative\nfloat32 y\n\n# z is moving up / down\n# - Standing straight is negative\n# - Upside down is positive\nfloat32 z",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Angle": {
+      "description": "Holds Angle information for a NAO V6",
+      "raw": "# Holds Angle information for a NAO V6\n# Units are in rad\n\n# x axis is rotating Nao left / right (vertical rotation)\n# - If Nao is facing towards you, rotating it to the left is positive\n# - Conversely, rotating it to the right is negative\nfloat32 x\n\n# y axis is rotating Nao back / forward\n# - Forward is positive angle\n# - Backwards is negative angle\nfloat32 y",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Battery": {
+      "description": "",
+      "raw": "float32 charge  # 0% - 100%\nbool charging  # True if robot is getting charged\nfloat32 current  # In Amperes, negative for discharge, positive for charge\nfloat32 temperature  # Celcius (°C)",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "charge",
+          "comment": "0% - 100%",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "charging",
+          "comment": "True if robot is getting charged",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "current",
+          "comment": "In Amperes, negative for discharge, positive for charge",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "Celcius (°C)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Buttons": {
+      "description": "",
+      "raw": "bool chest\nbool l_foot_bumper_left\nbool l_foot_bumper_right\nbool r_foot_bumper_left\nbool r_foot_bumper_right",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "chest",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "l_foot_bumper_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "l_foot_bumper_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "r_foot_bumper_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "r_foot_bumper_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FSR": {
+      "description": "FSR stands for Force Sensitive Resistors.",
+      "raw": "# FSR stands for Force Sensitive Resistors.\n# These sensors measure a resistance change according to the pressure applied.\n# Units used are in Newtons (equivalently kg/m/s^2)\n# http://doc.aldebaran.com/2-1/family/robots/fsr_robot.html\n\nfloat32 l_foot_front_left\nfloat32 l_foot_front_right\nfloat32 l_foot_back_left\nfloat32 l_foot_back_right\nfloat32 r_foot_front_left\nfloat32 r_foot_front_right\nfloat32 r_foot_back_left\nfloat32 r_foot_back_right",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "l_foot_front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "l_foot_front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "l_foot_back_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "l_foot_back_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "r_foot_front_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "r_foot_front_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "r_foot_back_left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "r_foot_back_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gyroscope": {
+      "description": "Holds Gyroscope information for a NAO V6",
+      "raw": "# Holds Gyroscope information for a NAO V6\n# Units are in rad/s\n# Follows conventions here: http://doc.aldebaran.com/2-1/family/robots/inertial_robot.html\n\n# x is rotating right / left vertically (from robots perspective)\n# - Falling right (from robot's perspective) is positive\n# - Falling left (from robot's perspective) is negative\nfloat32 x\n\n# y is rotating over toes and heels\n# - Rotating over toes is positive\n# - Rotating over heels is negative\nfloat32 y\n\n# NOTE: This is flipped on the V5, and because of that all of gyroscopez may be inverted in a lot of codebases.\n# z is rotating left / right horizontally (from robot's perspective)\n# - Turning to the left is positive\n# - Turning to the right is negative\nfloat32 z",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointCurrents": {
+      "description": "",
+      "raw": "float32[25] currents  # Amperes (A), in order of JointIndexes.msg",
+      "fields": [
+        {
+          "type": "float32[25]",
+          "name": "currents",
+          "comment": "Amperes (A), in order of JointIndexes.msg",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointIndexes": {
+      "description": "",
+      "raw": "uint8 HEADYAW=0\nuint8 HEADPITCH=1\nuint8 LSHOULDERPITCH=2\nuint8 LSHOULDERROLL=3\nuint8 LELBOWYAW=4\nuint8 LELBOWROLL=5\nuint8 LWRISTYAW=6\nuint8 LHIPYAWPITCH=7\nuint8 LHIPROLL=8\nuint8 LHIPPITCH=9\nuint8 LKNEEPITCH=10\nuint8 LANKLEPITCH=11\nuint8 LANKLEROLL=12\nuint8 RHIPROLL=13\nuint8 RHIPPITCH=14\nuint8 RKNEEPITCH=15\nuint8 RANKLEPITCH=16\nuint8 RANKLEROLL=17\nuint8 RSHOULDERPITCH=18\nuint8 RSHOULDERROLL=19\nuint8 RELBOWYAW=20\nuint8 RELBOWROLL=21\nuint8 RWRISTYAW=22\nuint8 LHAND=23\nuint8 RHAND=24\nuint8 NUMJOINTS=25",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "HEADYAW",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEADPITCH",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LSHOULDERPITCH",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LSHOULDERROLL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LELBOWYAW",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LELBOWROLL",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LWRISTYAW",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LHIPYAWPITCH",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LHIPROLL",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LHIPPITCH",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LKNEEPITCH",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANKLEPITCH",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LANKLEROLL",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RHIPROLL",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RHIPPITCH",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RKNEEPITCH",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RANKLEPITCH",
+          "comment": "",
+          "default": "16",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RANKLEROLL",
+          "comment": "",
+          "default": "17",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RSHOULDERPITCH",
+          "comment": "",
+          "default": "18",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RSHOULDERROLL",
+          "comment": "",
+          "default": "19",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELBOWYAW",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELBOWROLL",
+          "comment": "",
+          "default": "21",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RWRISTYAW",
+          "comment": "",
+          "default": "22",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LHAND",
+          "comment": "",
+          "default": "23",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RHAND",
+          "comment": "",
+          "default": "24",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NUMJOINTS",
+          "comment": "",
+          "default": "25",
+          "is_constant": true
+        }
+      ]
+    },
+    "JointPositions": {
+      "description": "An array of joint positions, corresponding to their indexes in the JointIndexes.msg.",
+      "raw": "# An array of joint positions, corresponding to their indexes in the JointIndexes.msg.\n\nfloat32[25] positions # radians",
+      "fields": [
+        {
+          "type": "float32[25]",
+          "name": "positions",
+          "comment": "radians",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointStatuses": {
+      "description": "Temperature status enums, computed accordingly to the temperature limitation to protect the motors.",
+      "raw": "# Temperature status enums, computed accordingly to the temperature limitation to protect the motors.\nint32 STATUS_NORMAL=0          # normal\nint32 STATUS_HOT=1             # high, start to reduce stiffness\nint32 STATUS_VERY_HOT=2        # very hot, stiffness reduced over 30%\nint32 STATUS_CRITICALLY_HOT=3  # critically hot, stiffness is set to 0\n\nint32[25] statuses  # Status codes, in order of JointIndexes.msg",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "STATUS_NORMAL",
+          "comment": "normal",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATUS_HOT",
+          "comment": "high, start to reduce stiffness",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATUS_VERY_HOT",
+          "comment": "very hot, stiffness reduced over 30%",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STATUS_CRITICALLY_HOT",
+          "comment": "critically hot, stiffness is set to 0",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32[25]",
+          "name": "statuses",
+          "comment": "Status codes, in order of JointIndexes.msg",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointStiffnesses": {
+      "description": "An array of joint stiffnesses, corresponding to their indexes in the JointIndexes.msg.",
+      "raw": "# An array of joint stiffnesses, corresponding to their indexes in the JointIndexes.msg.\n\nfloat32[25] stiffnesses  # 0.0 - 1.0",
+      "fields": [
+        {
+          "type": "float32[25]",
+          "name": "stiffnesses",
+          "comment": "0.0 - 1.0",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointTemperatures": {
+      "description": "",
+      "raw": "float32[25] temperatures  # Celcius (°C), in order of JointIndexes.msg",
+      "fields": [
+        {
+          "type": "float32[25]",
+          "name": "temperatures",
+          "comment": "Celcius (°C), in order of JointIndexes.msg",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotConfig": {
+      "description": "",
+      "raw": "string body_id  # eg.\"P0000073A07S94700012\"\nstring body_version  # eg. \"6.0.0\"\nstring head_id  # eg. \"P0000074A05S93M00061\"\nstring head_version  # eg. \"6.0.0\"",
+      "fields": [
+        {
+          "type": "string",
+          "name": "body_id",
+          "comment": "eg.\"P0000073A07S94700012\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "body_version",
+          "comment": "eg. \"6.0.0\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "head_id",
+          "comment": "eg. \"P0000074A05S93M00061\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "head_version",
+          "comment": "eg. \"6.0.0\"",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Sonar": {
+      "description": "",
+      "raw": "float32 left\nfloat32 right",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "left",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Touch": {
+      "description": "",
+      "raw": "bool head_front\nbool head_middle\nbool head_rear",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "head_front",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "head_middle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "head_rear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

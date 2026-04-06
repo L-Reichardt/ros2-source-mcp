@@ -1,0 +1,137 @@
+{
+  "name": "slg_msgs",
+  "version": "3.9.1",
+  "description": "This package provides classes and messages to interact with laser related geometry.",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "slg_msgs",
+    "url": "https://github.com/ajtudela/slg_msgs.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "laser_segmentation"
+    ]
+  },
+  "messages": {
+    "Segment": {
+      "description": "Message for sorted segment of points.",
+      "raw": "# Message for sorted segment of points.\n\n# Each segment is assigned an id, which uniquely identifies the segment consistently across multiple frames.\n# The segments can be linked to previous and next segment using lastPointPriorSeg and firstPointNextSeg, respectively.\n# Segment messages can be used as an input to a classifier such as a person detector, or for annotating\n# sensor_msgs/Laserscan messages with groundtruth person tracks.\n\n# ID of the segment\nuint64 id 0\n\n# Label of the segment\nuint32 label 0\n\n# Angular distance to the closest boundary (in rads)\nfloat64 angular_distance 0.0\n\n# Last point of the previous segment\ngeometry_msgs/Point last_point_prior_segment\n\n# First point of the next segment\ngeometry_msgs/Point first_point_next_segment\n\n# Points of the segment\ngeometry_msgs/Point[] points\n\n# Type of the labels\nuint32 BACKGROUND = 0\nuint32 PERSON = 1\nuint32 PERSON_CANE = 2\nuint32 PERSON_WHEEL_CHAIR = 3\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "id",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "label",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angular_distance",
+          "comment": "",
+          "default": "0.0",
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "last_point_prior_segment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "first_point_next_segment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "BACKGROUND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "PERSON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "PERSON_CANE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "PERSON_WHEEL_CHAIR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "SegmentArray": {
+      "description": "Message for array of Segment",
+      "raw": "# Message for array of Segment\n\nstd_msgs/Header header\n\n# Array of sorted segments\nSegment[] segments\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Segment[]",
+          "name": "segments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

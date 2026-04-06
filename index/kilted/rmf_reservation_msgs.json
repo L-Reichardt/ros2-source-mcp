@@ -1,0 +1,323 @@
+{
+  "name": "rmf_reservation_msgs",
+  "version": "3.5.0",
+  "description": "Messages for the reservation and queueing system",
+  "license": "Apache",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "rmf_fleet_adapter",
+      "rmf_reservation_node",
+      "rmf_traffic_ros2"
+    ]
+  },
+  "messages": {
+    "ClaimRequest": {
+      "description": "",
+      "raw": "rmf_reservation_msgs/Ticket ticket\nstring[] wait_points",
+      "fields": [
+        {
+          "type": "rmf_reservation_msgs/Ticket",
+          "name": "ticket",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "wait_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FixedTimeReservationAlt": {
+      "description": "",
+      "raw": "string resource_name\nfloat64 cost\nbuiltin_interfaces/Time start_time\nbool has_end\nbuiltin_interfaces/Duration duration",
+      "fields": [
+        {
+          "type": "string",
+          "name": "resource_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "cost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FlexibleTimeRequest": {
+      "description": "",
+      "raw": "rmf_reservation_msgs/RequestHeader header\nrmf_reservation_msgs/FlexibleTimeReservationAlt[] alternatives\n",
+      "fields": [
+        {
+          "type": "rmf_reservation_msgs/RequestHeader",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rmf_reservation_msgs/FlexibleTimeReservationAlt[]",
+          "name": "alternatives",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FlexibleTimeReservationAlt": {
+      "description": "",
+      "raw": "string resource_name\nfloat64 cost\nrmf_reservation_msgs/StartTimeRange start_time\nbool has_end\nbuiltin_interfaces/Duration duration",
+      "fields": [
+        {
+          "type": "string",
+          "name": "resource_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "cost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rmf_reservation_msgs/StartTimeRange",
+          "name": "start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FreeParkingSpots": {
+      "description": "",
+      "raw": "string[] spots\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "spots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReleaseRequest": {
+      "description": "",
+      "raw": "rmf_reservation_msgs/Ticket ticket\nstring location",
+      "fields": [
+        {
+          "type": "rmf_reservation_msgs/Ticket",
+          "name": "ticket",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "location",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RequestHeader": {
+      "description": "",
+      "raw": "string robot_name\nstring fleet_name\nuint64 request_id",
+      "fields": [
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "request_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReservationAllocation": {
+      "description": "",
+      "raw": "uint8 IMMEDIATELY_PROCEED=0\nuint8 WAIT_IDENTIFIED=1\n\nrmf_reservation_msgs/Ticket ticket\n\nuint8 instruction_type\nuint64 chosen_alternative\nstring resource\n\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "IMMEDIATELY_PROCEED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WAIT_IDENTIFIED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "rmf_reservation_msgs/Ticket",
+          "name": "ticket",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "instruction_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "chosen_alternative",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "resource",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StartTimeRange": {
+      "description": "",
+      "raw": "builtin_interfaces/Time earliest_start_time\nbool has_earliest_start_time\nbuiltin_interfaces/Time latest_start_time\nbool has_latest_start_time",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "earliest_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_earliest_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "latest_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_latest_start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Ticket": {
+      "description": "",
+      "raw": "rmf_reservation_msgs/RequestHeader header\nuint64 ticket_id\n",
+      "fields": [
+        {
+          "type": "rmf_reservation_msgs/RequestHeader",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "ticket_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

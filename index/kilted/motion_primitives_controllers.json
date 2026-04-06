@@ -1,0 +1,59 @@
+{
+  "name": "motion_primitives_controllers",
+  "version": "5.13.1",
+  "description": "Package to control robots using motion primitives like PTP, LIN and CIRC",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/ros2_controllers/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "generate_parameter_library",
+      "ros2_control_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "controller_manager",
+      "hardware_interface",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "control_msgs",
+      "controller_interface",
+      "hardware_interface",
+      "pluginlib",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "realtime_tools",
+      "std_srvs"
+    ],
+    "depended_on_by": [
+      "ros2_controllers",
+      "ur_robot_driver"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

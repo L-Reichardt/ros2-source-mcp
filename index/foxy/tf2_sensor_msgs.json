@@ -1,0 +1,52 @@
+{
+  "name": "tf2_sensor_msgs",
+  "version": "0.13.14",
+  "description": "Small lib to transform sensor_msgs with tf. Most notably, PointCloud2",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/tf2_ros",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "geometry2",
+    "url": "https://github.com/ros2/geometry2.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "eigen"
+    ],
+    "build_export": [
+      "eigen"
+    ],
+    "buildtool": [
+      "ament_cmake_auto",
+      "eigen3_cmake_module"
+    ],
+    "buildtool_export": [
+      "eigen3_cmake_module"
+    ],
+    "test": [
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "sensor_msgs",
+      "tf2",
+      "tf2_ros"
+    ],
+    "depended_on_by": [
+      "geometry2",
+      "nav2_costmap_2d",
+      "pointcloud_to_laserscan",
+      "slam_toolbox",
+      "slam_toolbox"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

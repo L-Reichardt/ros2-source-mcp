@@ -1,0 +1,131 @@
+{
+  "name": "pal_statistics_msgs",
+  "version": "2.0.2",
+  "description": "Statistics msgs package",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "pal_statistics",
+    "url": "https://github.com/pal-robotics/pal_statistics.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "pal_statistics"
+    ]
+  },
+  "messages": {
+    "Statistic": {
+      "description": "",
+      "raw": "string name\nfloat64 value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Statistics": {
+      "description": "header",
+      "raw": "# header\nstd_msgs/Header header\n\n# Statistics\nStatistic[] statistics\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Statistic[]",
+          "name": "statistics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatisticsNames": {
+      "description": "header",
+      "raw": "# header\nstd_msgs/Header header\n\n# Statistics names\nstring[] names\nuint32 names_version #This is increased each time names change\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "names_version",
+          "comment": "This is increased each time names change",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatisticsValues": {
+      "description": "header",
+      "raw": "# header\nstd_msgs/Header header\n\n# Statistics\nfloat64[] values\nuint32 names_version # The values vector corresponds to the name vector with the same name\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "names_version",
+          "comment": "The values vector corresponds to the name vector with the same name",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,48 @@
+{
+  "name": "naoqi_driver",
+  "version": "2.0.0",
+  "description": "Driver module between Aldebaran's NAOqiOS and ROS2. It publishes all sensor and actuator data as well as basic diagnostic for battery, temperature. It subscribes also to RVIZ simple goal and cmd_vel for teleop.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "naoqi_driver",
+    "url": "https://github.com/ros-naoqi/naoqi_driver2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "diagnostic_msgs",
+      "diagnostic_updater",
+      "geometry_msgs",
+      "sensor_msgs",
+      "tf2_geometry_msgs",
+      "tf2_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "cv_bridge",
+      "image_transport",
+      "kdl_parser",
+      "naoqi_bridge_msgs",
+      "naoqi_libqi",
+      "naoqi_libqicore",
+      "orocos_kdl",
+      "robot_state_publisher",
+      "tf2_ros",
+      "boost"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

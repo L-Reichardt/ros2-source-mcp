@@ -1,0 +1,2022 @@
+{
+  "name": "gazebo_msgs",
+  "version": "3.9.0",
+  "description": "Message and service data structures for interacting with Gazebo from ROS2.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://classic.gazebosim.org/tutorials?cat=connect_ros",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-simulation/gazebo_ros_pkgs/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-simulation/gazebo_ros_pkgs",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "gazebo_ros_pkgs",
+    "url": "https://github.com/ros-simulation/gazebo_ros_pkgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "trajectory_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "builtin_interfaces",
+      "geometry_msgs",
+      "trajectory_msgs",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "gazebo_model_attachment_plugin",
+      "gazebo_plugins",
+      "gazebo_plugins",
+      "gazebo_ros",
+      "gazebo_ros_pkgs",
+      "gazebo_video_monitor_utils",
+      "namoros",
+      "pal_gazebo_plugins",
+      "velodyne_gazebo_plugins"
+    ]
+  },
+  "messages": {
+    "ContactState": {
+      "description": "",
+      "raw": "string info                                   # text info on this contact\nstring collision1_name                        # name of contact collision1\nstring collision2_name                        # name of contact collision2\ngeometry_msgs/Wrench[] wrenches               # list of forces/torques\ngeometry_msgs/Wrench total_wrench             # sum of forces/torques in every DOF\ngeometry_msgs/Vector3[] contact_positions     # list of contact position\ngeometry_msgs/Vector3[] contact_normals       # list of contact normals\nfloat64[] depths                              # list of penetration depths\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "info",
+          "comment": "text info on this contact",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "collision1_name",
+          "comment": "name of contact collision1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "collision2_name",
+          "comment": "name of contact collision2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench[]",
+          "name": "wrenches",
+          "comment": "list of forces/torques",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench",
+          "name": "total_wrench",
+          "comment": "sum of forces/torques in every DOF",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[]",
+          "name": "contact_positions",
+          "comment": "list of contact position",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[]",
+          "name": "contact_normals",
+          "comment": "list of contact normals",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "depths",
+          "comment": "list of penetration depths",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ContactsState": {
+      "description": "",
+      "raw": "std_msgs/Header header                                   # stamp\ngazebo_msgs/ContactState[] states            # array of geom pairs in contact\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "gazebo_msgs/ContactState[]",
+          "name": "states",
+          "comment": "array of geom pairs in contact",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EntityState": {
+      "description": "Holds an entity's pose and twist",
+      "raw": "# Holds an entity's pose and twist\nstring name                 # Entity's scoped name.\n                            # An entity can be a model, link, collision, light, etc.\n                            # Be sure to use gazebo scoped naming notation (e.g. [model_name::link_name])\ngeometry_msgs/Pose pose     # Pose in reference frame.\ngeometry_msgs/Twist twist   # Twist in reference frame.\nstring reference_frame      # Pose/twist are expressed relative to the frame of this entity.\n                            # Leaving empty or \"world\" defaults to inertial world frame.\n\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Entity's scoped name.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "Pose in reference frame.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "Twist in reference frame.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "Pose/twist are expressed relative to the frame of this entity.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LinkState": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use EntityState\n# @todo: FIXME: sets pose and twist of a link.  All children link poses/twists of the URDF tree are not updated accordingly, but should be.\nstring link_name            # link name, link_names are in gazebo scoped name notation, [model_name::body_name]\ngeometry_msgs/Pose pose     # desired pose in reference frame\ngeometry_msgs/Twist twist   # desired twist in reference frame\nstring reference_frame      # set pose/twist relative to the frame of this link/body\n                            # leave empty or \"world\" or \"map\" defaults to world-frame\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "link name, link_names are in gazebo scoped name notation, [model_name::body_name]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "desired pose in reference frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "desired twist in reference frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "set pose/twist relative to the frame of this link/body",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LinkStates": {
+      "description": "broadcast all link states in world frame",
+      "raw": "# broadcast all link states in world frame\nstring[] name                 # link names\ngeometry_msgs/Pose[] pose     # desired pose in world frame\ngeometry_msgs/Twist[] twist   # desired twist in world frame\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "link names",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "pose",
+          "comment": "desired pose in world frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist[]",
+          "name": "twist",
+          "comment": "desired twist in world frame",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ModelState": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use EntityState\n# Set Gazebo Model pose and twist\nstring model_name           # model to set state (pose and twist)\ngeometry_msgs/Pose pose     # desired pose in reference frame\ngeometry_msgs/Twist twist   # desired twist in reference frame\nstring reference_frame      # set pose/twist relative to the frame of this entity (Body/Model)\n                            # leave empty or \"world\" or \"map\" defaults to world-frame\n\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "model to set state (pose and twist)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "desired pose in reference frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "desired twist in reference frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "set pose/twist relative to the frame of this entity (Body/Model)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ModelStates": {
+      "description": "broadcast all model states in world frame",
+      "raw": "# broadcast all model states in world frame\nstring[] name                 # model names\ngeometry_msgs/Pose[] pose     # desired pose in world frame\ngeometry_msgs/Twist[] twist   # desired twist in world frame\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "model names",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "pose",
+          "comment": "desired pose in world frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist[]",
+          "name": "twist",
+          "comment": "desired twist in world frame",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ODEJointProperties": {
+      "description": "access to low level joint properties, change these at your own risk",
+      "raw": "# access to low level joint properties, change these at your own risk\nfloat64[] damping             # joint damping\nfloat64[] hi_stop             # joint limit\nfloat64[] lo_stop             # joint limit\nfloat64[] erp                 # set joint erp\nfloat64[] cfm                 # set joint cfm\nfloat64[] stop_erp            # set joint erp for joint limit \"contact\" joint\nfloat64[] stop_cfm            # set joint cfm for joint limit \"contact\" joint\nfloat64[] fudge_factor        # joint fudge_factor applied at limits, see ODE manual for info.\nfloat64[] fmax                # ode joint param fmax\nfloat64[] vel                 # ode joint param vel\n",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "damping",
+          "comment": "joint damping",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "hi_stop",
+          "comment": "joint limit",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "lo_stop",
+          "comment": "joint limit",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "erp",
+          "comment": "set joint erp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "cfm",
+          "comment": "set joint cfm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "stop_erp",
+          "comment": "set joint erp for joint limit \"contact\" joint",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "stop_cfm",
+          "comment": "set joint cfm for joint limit \"contact\" joint",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "fudge_factor",
+          "comment": "joint fudge_factor applied at limits, see ODE manual for info.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "fmax",
+          "comment": "ode joint param fmax",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "vel",
+          "comment": "ode joint param vel",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ODEPhysics": {
+      "description": "",
+      "raw": "bool auto_disable_bodies           # enable auto disabling of bodies, default false\nuint32 sor_pgs_precon_iters        # preconditioning inner iterations when uisng projected Gauss Seidel\nuint32 sor_pgs_iters               # inner iterations when uisng projected Gauss Seidel\nfloat64 sor_pgs_w                  # relaxation parameter when using projected Gauss Seidel, 1 = no relaxation\nfloat64 sor_pgs_rms_error_tol      # rms error tolerance before stopping inner iterations\nfloat64 contact_surface_layer      # contact \"dead-band\" width\nfloat64 contact_max_correcting_vel # contact maximum correction velocity\nfloat64 cfm                        # global constraint force mixing\nfloat64 erp                        # global error reduction parameter\nuint32 max_contacts                # maximum contact joints between two geoms\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "auto_disable_bodies",
+          "comment": "enable auto disabling of bodies, default false",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sor_pgs_precon_iters",
+          "comment": "preconditioning inner iterations when uisng projected Gauss Seidel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sor_pgs_iters",
+          "comment": "inner iterations when uisng projected Gauss Seidel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "sor_pgs_w",
+          "comment": "relaxation parameter when using projected Gauss Seidel, 1 = no relaxation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "sor_pgs_rms_error_tol",
+          "comment": "rms error tolerance before stopping inner iterations",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "contact_surface_layer",
+          "comment": "contact \"dead-band\" width",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "contact_max_correcting_vel",
+          "comment": "contact maximum correction velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "cfm",
+          "comment": "global constraint force mixing",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "erp",
+          "comment": "global error reduction parameter",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "max_contacts",
+          "comment": "maximum contact joints between two geoms",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PerformanceMetrics": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nfloat64 real_time_factor\ngazebo_msgs/SensorPerformanceMetric[] sensors\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "real_time_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "gazebo_msgs/SensorPerformanceMetric[]",
+          "name": "sensors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SensorPerformanceMetric": {
+      "description": "",
+      "raw": "string name\nfloat64 sim_update_rate\nfloat64 real_update_rate\nfloat64 fps\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "sim_update_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "real_update_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "fps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelSlip": {
+      "description": "This is a message that holds data to describe the wheel slip for a set of wheels.",
+      "raw": "# This is a message that holds data to describe the wheel slip for a set of wheels.\n#\n# The wheel slip is defined by\n#  * the lateral slip of the wheel, as an angle from the direction of travel (radians), and\n#  * the longitudinal slip of the wheel, as a percentage of the current wheel's speed\n#\n# Each wheel is uniquely identified by its name.\n#\n# This message consists of multiple arrays.\n# All arrays in this message should be the same size.\n# This is the only way to uniquely associate the wheel name with the correct slip values.\n\nstring[] name\nfloat64[] lateral_slip\nfloat64[] longitudinal_slip",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "lateral_slip",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "longitudinal_slip",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WorldState": {
+      "description": "This is a message that holds data necessary to reconstruct a snapshot of the world",
+      "raw": "# This is a message that holds data necessary to reconstruct a snapshot of the world\n#\n# = Approach to Message Passing =\n# The state of the world is defined by either\n#   1. Inertial Model pose, twist\n#      * kinematic data - connectivity graph from Model to each Link\n#      * joint angles\n#      * joint velocities\n#      * Applied forces - Body wrench\n#        * relative transform from Body to each collision Geom\n# Or\n#   2. Inertial (absolute) Body pose, twist, wrench\n#      * relative transform from Body to each collision Geom - constant, so not sent over wire\n#      * back compute from canonical body info to get Model pose and twist.\n#\n# Chooing (2.) because it matches most physics engines out there\n#   and is simpler.\n#\n# = Future =\n# Consider impacts on using reduced coordinates / graph (parent/child links) approach\n#   constraint and physics solvers.\n#\n# = Application =\n# This message is used to do the following:\n#   * reconstruct the world and objects for sensor generation\n#   * stop / start simulation - need pose, twist, wrench of each body\n#   * collision detection - need pose of each collision geometry.  velocity/acceleration if\n#\n# = Assumptions =\n# Assuming that each (physics) processor node locally already has\n#   * collision information - Trimesh for Geoms, etc\n#   * relative transforms from Body to Geom - this is assumed to be fixed, do not send oved wire\n#   * inertial information - does not vary in time\n#   * visual information - does not vary in time\n#\n\nstd_msgs/Header header\n\nstring[] name\ngeometry_msgs/Pose[] pose\ngeometry_msgs/Twist[] twist\ngeometry_msgs/Wrench[] wrench\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose[]",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist[]",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench[]",
+          "name": "wrench",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ApplyBodyWrench": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use ApplyLinkWrench\n# Apply Wrench to Gazebo Body.\n# via the callback mechanism\n# all Gazebo operations are made in world frame\nstring body_name                          # Gazebo body to apply wrench (linear force and torque)\n                                          # wrench is applied in the gazebo world by default\n                                          # body names are prefixed by model name, e.g. pr2::base_link\nstring reference_frame                    # wrench is defined in the reference frame of this entity\n                                          # use inertial frame if left empty\n                                          # frame names are bodies prefixed by model name, e.g. pr2::base_link\ngeometry_msgs/Point  reference_point      # wrench is defined at this location in the reference frame\ngeometry_msgs/Wrench wrench               # wrench applied to the origin of the body\nbuiltin_interfaces/Time start_time        # (optional) wrench application start time (seconds)\n                                          # if start_time is not specified, or\n                                          # start_time < current time, start as soon as possible\nbuiltin_interfaces/Duration duration      # optional duration of wrench application time (seconds)\n                                          # if duration < 0, apply wrench continuously without end\n                                          # if duration = 0, do nothing\n                                          # if duration < step size, apply wrench\n                                          # for one step size\n---\nbool success                              # return true if set wrench successful\nstring status_message                     # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "body_name",
+          "comment": "Gazebo body to apply wrench (linear force and torque)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "wrench is defined in the reference frame of this entity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "reference_point",
+          "comment": "wrench is defined at this location in the reference frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench",
+          "name": "wrench",
+          "comment": "wrench applied to the origin of the body",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_time",
+          "comment": "(optional) wrench application start time (seconds)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "optional duration of wrench application time (seconds)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if set wrench successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ApplyJointEffort": {
+      "description": "set urdf joint effort",
+      "raw": "# set urdf joint effort\nstring joint_name                       # joint to apply wrench (linear force and torque)\nfloat64 effort                          # effort to apply\nbuiltin_interfaces/Time start_time      # optional wrench application start time (seconds)\n                                        # if start_time < current time, start as soon as possible\nbuiltin_interfaces/Duration  duration   # optional duration of wrench application time (seconds)\n                                        # if duration < 0, apply wrench continuously without end\n                                        # if duration = 0, do nothing\n                                        # if duration < step size, assume step size and\n                                        # display warning in status_message\n---\nbool success                            # return true if effort application is successful\nstring status_message                   # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "joint to apply wrench (linear force and torque)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "effort",
+          "comment": "effort to apply",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_time",
+          "comment": "optional wrench application start time (seconds)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "optional duration of wrench application time (seconds)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if effort application is successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ApplyLinkWrench": {
+      "description": "Apply Wrench to Gazebo Link.",
+      "raw": "# Apply Wrench to Gazebo Link.\n# via the callback mechanism\n# all Gazebo operations are made in world frame\nstring link_name                          # Gazebo link to apply wrench (linear force and torque)\n                                          # wrench is applied in the gazebo world by default\n                                          # link names are prefixed by model name, e.g. pr2::base_link\nstring reference_frame                    # wrench is defined in the reference frame of this entity\n                                          # use inertial frame if left empty\n                                          # frame names are links prefixed by model name, e.g. pr2::base_link\ngeometry_msgs/Point  reference_point      # wrench is defined at this location in the reference frame\ngeometry_msgs/Wrench wrench               # wrench applied to the origin of the link\nbuiltin_interfaces/Time start_time        # (optional) wrench application start time (seconds)\n                                          # if start_time is not specified, or\n                                          # start_time < current time, start as soon as possible\nbuiltin_interfaces/Duration duration      # optional duration of wrench application time (seconds)\n                                          # if duration < 0, apply wrench continuously without end\n                                          # if duration = 0, do nothing\n                                          # if duration < step size, apply wrench\n                                          # for one step size\n---\nbool success                              # return true if set wrench successful\nstring status_message                     # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "Gazebo link to apply wrench (linear force and torque)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "wrench is defined in the reference frame of this entity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "reference_point",
+          "comment": "wrench is defined at this location in the reference frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench",
+          "name": "wrench",
+          "comment": "wrench applied to the origin of the link",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_time",
+          "comment": "(optional) wrench application start time (seconds)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration",
+          "comment": "optional duration of wrench application time (seconds)",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if set wrench successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BodyRequest": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use LinkRequest\nstring body_name   # name of the body requested. body names are prefixed by model name, e.g. pr2::base_link\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "body_name",
+          "comment": "name of the body requested. body names are prefixed by model name, e.g. pr2::base_link",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "DeleteEntity": {
+      "description": "a model or a light.",
+      "raw": "string name                       # Name of the Gazebo entity to be deleted. This can be either\n                                  # a model or a light.\n---\nbool success                      # Return true if deletion is successful.\nstring status_message             # Comments if available.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Name of the Gazebo entity to be deleted. This can be either",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Return true if deletion is successful.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "Comments if available.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteLight": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use DeleteEntity\nstring light_name                 # name of the light to be deleted\n---\nbool success                      # return true if deletion is successful\nstring status_message             # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "light_name",
+          "comment": "name of the light to be deleted",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if deletion is successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteModel": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use DeleteEntity\nstring model_name                 # name of the Gazebo Model to be deleted\n---\nbool success                      # return true if deletion is successful\nstring status_message             # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "name of the Gazebo Model to be deleted",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if deletion is successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetEntityState": {
+      "description": "An entity can be a model, link, collision, light, etc.",
+      "raw": "string name                          # Entity's scoped name.\n                                     # An entity can be a model, link, collision, light, etc.\n                                     # Be sure to use gazebo scoped naming notation (e.g. [model_name::link_name])\nstring reference_frame               # Return pose and twist relative to this entity.\n                                     # Leaving empty or \"world\" will use inertial world frame.\n---\nstd_msgs/Header header               # Standard metadata for higher-level stamped data types.\n                                     # * header.stamp Timestamp related to the pose.\n                                     # * header.frame_id Filled with the relative_frame.\ngazebo_msgs/EntityState state        # Contains pose and twist.\nbool success                         # Return true if get was successful. If false, the state contains garbage.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Entity's scoped name.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "Return pose and twist relative to this entity.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Standard metadata for higher-level stamped data types.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "gazebo_msgs/EntityState",
+          "name": "state",
+          "comment": "Contains pose and twist.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Return true if get was successful. If false, the state contains garbage.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetJointProperties": {
+      "description": "joint type",
+      "raw": "string joint_name                    # Scoped name of joint\n---\n# joint type\nuint8 type\nuint8 REVOLUTE    = 0                # single DOF\nuint8 CONTINUOUS  = 1                # single DOF (revolute w/o limits)\nuint8 PRISMATIC   = 2                # single DOF\nuint8 FIXED       = 3                # 0 DOF\nuint8 BALL        = 4                # 3 DOF movement, 0 DOF control\nuint8 UNIVERSAL   = 5                # 2 DOF\n# dynamics properties\nfloat64[] damping\n# joint state\nfloat64[] position\nfloat64[] rate                       # TODO(chapulina) Rename to velocity\n# service return status\nbool success                         # return true if get successful\nstring status_message                # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "Scoped name of joint",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "REVOLUTE",
+          "comment": "single DOF",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONTINUOUS",
+          "comment": "single DOF (revolute w/o limits)",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRISMATIC",
+          "comment": "single DOF",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FIXED",
+          "comment": "0 DOF",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BALL",
+          "comment": "3 DOF movement, 0 DOF control",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNIVERSAL",
+          "comment": "2 DOF",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "float64[]",
+          "name": "damping",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "rate",
+          "comment": "TODO(chapulina) Rename to velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetLightProperties": {
+      "description": "",
+      "raw": "string light_name                    # name of Gazebo Light\n---\nstd_msgs/ColorRGBA diffuse           # diffuse color as red, green, blue, alpha\nfloat64 attenuation_constant\nfloat64 attenuation_linear\nfloat64 attenuation_quadratic\nbool success                         # return true if get successful\nstring status_message                # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "light_name",
+          "comment": "name of Gazebo Light",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "diffuse",
+          "comment": "diffuse color as red, green, blue, alpha",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "attenuation_constant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "attenuation_linear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "attenuation_quadratic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetLinkProperties": {
+      "description": "link names are prefixed by model name, e.g. pr2::base_link",
+      "raw": "string link_name          # name of link\n                          # link names are prefixed by model name, e.g. pr2::base_link\n---\ngeometry_msgs/Pose com    # center of mass location in link frame\n                          # and orientation of the moment of inertias\n                          # relative to the link frame\nbool gravity_mode         # set gravity mode on/off\nfloat64 mass              # linear mass of link\nfloat64 ixx               # moment of inertia\nfloat64 ixy               # moment of inertia\nfloat64 ixz               # moment of inertia\nfloat64 iyy               # moment of inertia\nfloat64 iyz               # moment of inertia\nfloat64 izz               # moment of inertia\nbool success              # return true if get info is successful\nstring status_message     # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "name of link",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "com",
+          "comment": "center of mass location in link frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gravity_mode",
+          "comment": "set gravity mode on/off",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "mass",
+          "comment": "linear mass of link",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ixx",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ixy",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ixz",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "iyy",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "iyz",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "izz",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get info is successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetLinkState": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use GetEntityState\nstring link_name          # name of link\n                          # link names are prefixed by model name, e.g. pr2::base_link\nstring reference_frame    # reference frame of returned information, must be a valid link\n                          # if empty, use inertial (gazebo world) frame\n                          # reference_frame names are prefixed by model name, e.g. pr2::base_link\n---\ngazebo_msgs/LinkState link_state\nbool success              # return true if get info is successful\nstring status_message     # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "name of link",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "reference frame of returned information, must be a valid link",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "gazebo_msgs/LinkState",
+          "name": "link_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get info is successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetModelList": {
+      "description": "* header.stamp Simulation time when data was collected.",
+      "raw": "---\nstd_msgs/Header header               # Standard metadata for higher-level stamped data types.\n                                     # * header.stamp Simulation time when data was collected.\nstring[] model_names                 # list of models in the world\nbool success                         # return true if get successful\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Standard metadata for higher-level stamped data types.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "model_names",
+          "comment": "list of models in the world",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get successful",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetModelProperties": {
+      "description": "",
+      "raw": "string model_name                    # name of Gazebo Model\n---\nstring parent_model_name             # parent model\nstring canonical_body_name           # name of canonical link, link names are prefixed by model name, e.g. pr2::base_link\nstring[] body_names                  # list of links, link names are prefixed by model name, e.g. pr2::base_link\nstring[] geom_names                  # list of collisions\nstring[] joint_names                 # list of joints attached to the model\nstring[] child_model_names           # list of child models\nbool is_static                       # returns true if model is static\nbool success                         # return true if get successful\nstring status_message                # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "name of Gazebo Model",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "parent_model_name",
+          "comment": "parent model",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "canonical_body_name",
+          "comment": "name of canonical link, link names are prefixed by model name, e.g. pr2::base_link",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "body_names",
+          "comment": "list of links, link names are prefixed by model name, e.g. pr2::base_link",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "geom_names",
+          "comment": "list of collisions",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "list of joints attached to the model",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "child_model_names",
+          "comment": "list of child models",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_static",
+          "comment": "returns true if model is static",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetModelState": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use GetEntityState\nstring model_name                    # name of Gazebo Model\nstring relative_entity_name          # return pose and twist relative to this entity\n                                     # an entity can be a model, body, or geom\n                                     # be sure to use gazebo scoped naming notation (e.g. [model_name::body_name])\n                                     # leave empty or \"world\" will use inertial world frame\n---\nstd_msgs/Header header               # Standard metadata for higher-level stamped data types.\n                                     # * header.seq holds the number of requests since the plugin started\n                                     # * header.stamp timestamp related to the pose\n                                     # * header.frame_id not used but currently filled with the relative_entity_name\ngeometry_msgs/Pose pose              # pose of model in relative entity frame\ngeometry_msgs/Twist twist            # twist of model in relative entity frame\nbool success                         # return true if get successful\nstring status_message                # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "name of Gazebo Model",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "relative_entity_name",
+          "comment": "return pose and twist relative to this entity",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Standard metadata for higher-level stamped data types.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "pose of model in relative entity frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "twist",
+          "comment": "twist of model in relative entity frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPhysicsProperties": {
+      "description": "sets pose and twist of a link.  All children link poses/twists of the URDF tree will be updated accordingly",
+      "raw": "---\n# sets pose and twist of a link.  All children link poses/twists of the URDF tree will be updated accordingly\nfloat64 time_step                  # dt in seconds\nbool pause                         # true if physics engine is paused\nfloat64 max_update_rate            # throttle maximum physics update rate\ngeometry_msgs/Vector3 gravity      # gravity vector (e.g. earth ~[0,0,-9.81])\ngazebo_msgs/ODEPhysics ode_config  # contains physics configurations pertaining to ODE\nbool success                       # return true if set wrench successful\nstring status_message              # comments if available\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "float64",
+          "name": "time_step",
+          "comment": "dt in seconds",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "pause",
+          "comment": "true if physics engine is paused",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_update_rate",
+          "comment": "throttle maximum physics update rate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "gravity",
+          "comment": "gravity vector (e.g. earth ~[0,0,-9.81])",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "gazebo_msgs/ODEPhysics",
+          "name": "ode_config",
+          "comment": "contains physics configurations pertaining to ODE",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if set wrench successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetWorldProperties": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use GetModelList\n---\nfloat64 sim_time                     # current sim time\nstring[] model_names                 # list of models in the world\nbool rendering_enabled               # if X is used\nbool success                         # return true if get successful\nstring status_message                # comments if available\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "float64",
+          "name": "sim_time",
+          "comment": "current sim time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "model_names",
+          "comment": "list of models in the world",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rendering_enabled",
+          "comment": "if X is used",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointRequest": {
+      "description": "",
+      "raw": "string joint_name   # name of the joint requested\n---\n\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "name of the joint requested",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "LinkRequest": {
+      "description": "",
+      "raw": "string link_name   # name of the link requested. link names are prefixed by model name, e.g. pr2::base_link\n---\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "name of the link requested. link names are prefixed by model name, e.g. pr2::base_link",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "SetEntityState": {
+      "description": "Be sure to fill all fields, values of zero have meaning.",
+      "raw": "gazebo_msgs/EntityState state   # Entity state to set to.\n                                # Be sure to fill all fields, values of zero have meaning.\n---\nbool success                    # Return true if setting state was successful.\n",
+      "request_fields": [
+        {
+          "type": "gazebo_msgs/EntityState",
+          "name": "state",
+          "comment": "Entity state to set to.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Return true if setting state was successful.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetJointProperties": {
+      "description": "",
+      "raw": "string joint_name                               # name of joint\ngazebo_msgs/ODEJointProperties ode_joint_config # access to ODE joint dynamics properties\n---\nbool success                                    # return true if get successful\nstring status_message                           # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "name of joint",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "gazebo_msgs/ODEJointProperties",
+          "name": "ode_joint_config",
+          "comment": "access to ODE joint dynamics properties",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetJointTrajectory": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\nstring model_name\ntrajectory_msgs/JointTrajectory joint_trajectory\ngeometry_msgs/Pose model_pose\nbool set_model_pose\nbool disable_physics_updates # defaults to false\n---\nbool success                # return true if set wrench successful\nstring status_message       # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "joint_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "model_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "set_model_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "disable_physics_updates",
+          "comment": "defaults to false",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if set wrench successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLightProperties": {
+      "description": "",
+      "raw": "string light_name                    # name of Gazebo Light\nstd_msgs/ColorRGBA diffuse           # diffuse color as red, green, blue, alpha\nfloat64 attenuation_constant\nfloat64 attenuation_linear\nfloat64 attenuation_quadratic\n---\nbool success                         # return true if get successful\nstring status_message                # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "light_name",
+          "comment": "name of Gazebo Light",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "diffuse",
+          "comment": "diffuse color as red, green, blue, alpha",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "attenuation_constant",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "attenuation_linear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "attenuation_quadratic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLinkProperties": {
+      "description": "link names are prefixed by model name, e.g. pr2::base_link",
+      "raw": "string link_name          # name of link\n                          # link names are prefixed by model name, e.g. pr2::base_link\ngeometry_msgs/Pose com    # center of mass location in link frame\n                          # and orientation of the moment of inertias\n                          # relative to the link frame\nbool gravity_mode         # set gravity mode on/off\nfloat64 mass              # linear mass of link\nfloat64 ixx               # moment of inertia\nfloat64 ixy               # moment of inertia\nfloat64 ixz               # moment of inertia\nfloat64 iyy               # moment of inertia\nfloat64 iyz               # moment of inertia\nfloat64 izz               # moment of inertia\n---\nbool success              # return true if get info is successful\nstring status_message     # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "link_name",
+          "comment": "name of link",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "com",
+          "comment": "center of mass location in link frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gravity_mode",
+          "comment": "set gravity mode on/off",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "mass",
+          "comment": "linear mass of link",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ixx",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ixy",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ixz",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "iyy",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "iyz",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "izz",
+          "comment": "moment of inertia",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if get info is successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetLinkState": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use SetEntityState\ngazebo_msgs/LinkState link_state\n---\nbool success                # return true if set wrench successful\nstring status_message       # comments if available\n",
+      "request_fields": [
+        {
+          "type": "gazebo_msgs/LinkState",
+          "name": "link_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if set wrench successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetModelConfiguration": {
+      "description": "Set joint positions for a model",
+      "raw": "# Set joint positions for a model\nstring model_name           # model to set state\nstring urdf_param_name      # UNUSED\n\nstring[] joint_names        # list of joints to set positions.  if joint is not listed here, preserve current position.\nfloat64[] joint_positions   # set to this position.\n---\nbool success                # return true if setting state successful\nstring status_message       # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "model to set state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "urdf_param_name",
+          "comment": "UNUSED",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "list of joints to set positions.  if joint is not listed here, preserve current position.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "joint_positions",
+          "comment": "set to this position.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if setting state successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetModelState": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use SetEntityState\ngazebo_msgs/ModelState model_state\n---\nbool success                  # return true if setting state successful\nstring status_message         # comments if available\n",
+      "request_fields": [
+        {
+          "type": "gazebo_msgs/ModelState",
+          "name": "model_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if setting state successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPhysicsProperties": {
+      "description": "sets pose and twist of a link.  All children link poses/twists of the URDF tree will be updated accordingly",
+      "raw": "# sets pose and twist of a link.  All children link poses/twists of the URDF tree will be updated accordingly\nfloat64 time_step                  # dt in seconds\nfloat64 max_update_rate            # throttle maximum physics update rate\ngeometry_msgs/Vector3 gravity      # gravity vector (e.g. earth ~[0,0,-9.81])\ngazebo_msgs/ODEPhysics ode_config  # configurations for ODE\n---\nbool success                       # return true if set wrench successful\nstring status_message              # comments if available\n",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "time_step",
+          "comment": "dt in seconds",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_update_rate",
+          "comment": "throttle maximum physics update rate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "gravity",
+          "comment": "gravity vector (e.g. earth ~[0,0,-9.81])",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "gazebo_msgs/ODEPhysics",
+          "name": "ode_config",
+          "comment": "configurations for ODE",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if set wrench successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpawnEntity": {
+      "description": "If left empty or \"world\" or \"map\", then gazebo world frame is",
+      "raw": "string name                       # Name of the entity to be spawned (optional).\nstring xml                        # Entity XML description as a string, either URDF or SDF.\nstring robot_namespace            # Spawn robot and all ROS interfaces under this namespace\ngeometry_msgs/Pose initial_pose   # Initial entity pose.\nstring reference_frame            # initial_pose is defined relative to the frame of this entity.\n                                  # If left empty or \"world\" or \"map\", then gazebo world frame is\n                                  # used.\n                                  # If non-existent entity is specified, an error is returned\n                                  # and the entity is not spawned.\n---\nbool success                      # Return true if spawned successfully.\nstring status_message             # Comments if available.\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Name of the entity to be spawned (optional).",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "xml",
+          "comment": "Entity XML description as a string, either URDF or SDF.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_namespace",
+          "comment": "Spawn robot and all ROS interfaces under this namespace",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "initial_pose",
+          "comment": "Initial entity pose.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "initial_pose is defined relative to the frame of this entity.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Return true if spawned successfully.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "Comments if available.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpawnModel": {
+      "description": "Deprecated, kept for ROS 1 bridge.",
+      "raw": "# Deprecated, kept for ROS 1 bridge.\n# Use SpawnEntity\nstring model_name                 # name of the model to be spawn\nstring model_xml                  # this should be an urdf or gazebo xml\nstring robot_namespace            # spawn robot and all ROS interfaces under this namespace\ngeometry_msgs/Pose initial_pose   # only applied to canonical body\nstring reference_frame            # initial_pose is defined relative to the frame of this model/body\n                                  # if left empty or \"world\", then gazebo world frame is used\n                                  # if non-existent model/body is specified, an error is returned\n                                  #   and the model is not spawned\n---\nbool success                      # return true if spawn successful\nstring status_message             # comments if available\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "model_name",
+          "comment": "name of the model to be spawn",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model_xml",
+          "comment": "this should be an urdf or gazebo xml",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_namespace",
+          "comment": "spawn robot and all ROS interfaces under this namespace",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "initial_pose",
+          "comment": "only applied to canonical body",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reference_frame",
+          "comment": "initial_pose is defined relative to the frame of this model/body",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "return true if spawn successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status_message",
+          "comment": "comments if available",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

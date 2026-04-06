@@ -1,0 +1,601 @@
+{
+  "name": "automotive_navigation_msgs",
+  "version": "3.0.3",
+  "description": "Generic Messages for Navigation Objectives in Automotive Automation Software",
+  "license": "MIT",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://github.com/automotive_navigation_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/astuff/automotive_autonomy_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/astuff/automotive_autonomy_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "automotive_autonomy_msgs",
+    "url": "https://github.com/astuff/automotive_autonomy_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "message_generation",
+      "rosidl_default_generators",
+      "ros_environment"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rosbag_migration_rule",
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "automotive_autonomy_msgs"
+    ]
+  },
+  "messages": {
+    "CommandWithHandshake": {
+      "description": "General Command Message",
+      "raw": "# General Command Message\n# Contains a command and a message counter that can be used for handshaking\n\nstd_msgs/Header header\n\nuint8 msg_counter   # Increments each time a command is sent\n                    # An acknowledge message should be published with this value\n\nint16 command       # The command value\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "msg_counter",
+          "comment": "Increments each time a command is sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "command",
+          "comment": "The command value",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DesiredDestination": {
+      "description": "Desired Destination Message",
+      "raw": "# Desired Destination Message\n# Contains the location of a desired destination\n\nstd_msgs/Header header\n\nuint8 msg_counter   # Increments each time a command is sent\n                    # An acknowledge message should be published with this value\n\nuint16 valid        # 1 if location should be used, 0 to cancel out previous location\n\nfloat64 latitude    # Latitude of destination (rad)\nfloat64 longitude   # Longitude of destination (rad)\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "msg_counter",
+          "comment": "Increments each time a command is sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "valid",
+          "comment": "1 if location should be used, 0 to cancel out previous location",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "Latitude of destination (rad)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "Longitude of destination (rad)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Direction": {
+      "description": "Simple vehicle direction",
+      "raw": "# Simple vehicle direction\nstd_msgs/Header header\n\nint8 BACKWARD=-1\nint8 ZERO=0\nint8 FORWARD=1\n\nint8 direction\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "BACKWARD",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ZERO",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FORWARD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DistanceToDestination": {
+      "description": "Distance To Destination Message",
+      "raw": "# Distance To Destination Message\n# Contains the distance to the desired destination\n\nstd_msgs/Header header\n\nuint8 msg_counter   # Increments each time a command is sent\n                    # An acknowledge message should be published with this value\n\nfloat32 distance    # Distance to destination (m)\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "msg_counter",
+          "comment": "Increments each time a command is sent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance",
+          "comment": "Distance to destination (m)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneBoundary": {
+      "description": "Lane Boundary Message",
+      "raw": "# Lane Boundary Message\n# Contains an array of points and other details\n\nuint8 UNKNOWN=0\n\nuint8 SOLID=1\nuint8 DASHED=2\nuint8 SOLID_DASHED=3\nuint8 DASHED_SOLID=4\nuint8 SOLID_SOLID=5\nuint8 style\n\nuint8 WHITE=1\nuint8 YELLOW=2\nuint8 color\n\ngeometry_msgs/Point[] line\n\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOLID",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DASHED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOLID_DASHED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DASHED_SOLID",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOLID_SOLID",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "style",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "WHITE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "YELLOW",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "color",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "line",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneBoundaryArray": {
+      "description": "Lane Boundary Array Message",
+      "raw": "# Lane Boundary Array Message\n# Contains an array of lane boundaries contained in a section or segment of road\n\nautomotive_navigation_msgs/LaneBoundary[] boundaries\n\n",
+      "fields": [
+        {
+          "type": "automotive_navigation_msgs/LaneBoundary[]",
+          "name": "boundaries",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ModuleState": {
+      "description": "Module State Message",
+      "raw": "# Module State Message\n# Contains the state of a module\n\nstd_msgs/Header header\n\nstring name     # Module's name of the source node of this message\n\nstring state    # Current state\n\nstring info     # Information on current state\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Module's name of the source node of this message",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "Current state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "info",
+          "comment": "Information on current state",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointOfInterest": {
+      "description": "Point of Interest Message",
+      "raw": "# Point of Interest Message\n# Contains the guid, latitude, longitude, and other information for a point of interest\n\nuint64 guid        # Unique Id for this point\n\nfloat64 latitude   # Latitude (degrees)\nfloat64 longitude  # Longitude (degrees)\n\nstring params      # List of parameter:value pairs\n\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "guid",
+          "comment": "Unique Id for this point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "Latitude (degrees)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "Longitude (degrees)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "params",
+          "comment": "List of parameter:value pairs",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointOfInterestArray": {
+      "description": "Point of Interest List Message",
+      "raw": "# Point of Interest List Message\n# Contains an array of points of interest\n# update_num is incremented each time a new list is sent\n\nstd_msgs/Header header\nuint16 update_num\nautomotive_navigation_msgs/PointOfInterest[] point_list\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "update_num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "automotive_navigation_msgs/PointOfInterest[]",
+          "name": "point_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointOfInterestRequest": {
+      "description": "Point of Interest Request Message",
+      "raw": "# Point of Interest Request Message\n# Contains information needed to request point of interest information\n\nstd_msgs/Header header\n\nstring name        # Name of the point of interest list\n\nstring module_name # module name of the requesting node\n\nuint16 request_id  # Unique id of this request\n                   # Can make another request with the same requestId and\n                   # different update_num, guid, or tolerance.  New one will\n                   # replace the old one.\n\nuint16 cancel      # Set to 1 to cancel the request with this requestId\n\nuint16 update_num  # The update number of the point list to use\n\nuint16 guid_valid  # Request is for a specific point, not all points in list\nuint64 guid        # The unique Id for the desired point\n\nfloat32 tolerance  # How close to the current vehicle's position a point needs to be\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Name of the point of interest list",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "module_name",
+          "comment": "module name of the requesting node",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "request_id",
+          "comment": "Unique id of this request",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "cancel",
+          "comment": "Set to 1 to cancel the request with this requestId",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "update_num",
+          "comment": "The update number of the point list to use",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "guid_valid",
+          "comment": "Request is for a specific point, not all points in list",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "guid",
+          "comment": "The unique Id for the desired point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tolerance",
+          "comment": "How close to the current vehicle's position a point needs to be",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointOfInterestResponse": {
+      "description": "Point of Interest Response Message",
+      "raw": "# Point of Interest Response Message\n# Contains status information about the points within the threshold\n\nstd_msgs/Header header\n\nstring name             # Name of the point of interest list\n\nstring module_name      # module name of the requesting node\n\nuint16 request_id       # Unique id of this request\n\nuint16 update_num       # The update number of the point list to use\n\nautomotive_navigation_msgs/PointOfInterestStatus[] point_statuses # The status information\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Name of the point of interest list",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "module_name",
+          "comment": "module name of the requesting node",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "request_id",
+          "comment": "Unique id of this request",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "update_num",
+          "comment": "The update number of the point list to use",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "automotive_navigation_msgs/PointOfInterestStatus[]",
+          "name": "point_statuses",
+          "comment": "The status information",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointOfInterestStatus": {
+      "description": "Point of Interest Status Message",
+      "raw": "# Point of Interest Status Message\n# Contains the distance, heading, a localized position of a point of interest\n\nuint64 guid        # Unique Id for this point\n\nfloat32 distance   # Great circle distance (meters)\nfloat32 heading    # Heading (radians)\nfloat32 x_position # Distance in front of the vehicle (meters)\nfloat32 y_position # Distance to the left of the vehicle (meters)\n\nstring params      # List of parameter:value pairs\n\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "guid",
+          "comment": "Unique Id for this point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "distance",
+          "comment": "Great circle distance (meters)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading",
+          "comment": "Heading (radians)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_position",
+          "comment": "Distance in front of the vehicle (meters)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_position",
+          "comment": "Distance to the left of the vehicle (meters)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "params",
+          "comment": "List of parameter:value pairs",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoadNetworkBoundaries": {
+      "description": "Road Network Boundaries Array Message",
+      "raw": "# Road Network Boundaries Array Message\n# Contains an array of lane boundary arrays forming a map/road network\n\nstd_msgs/Header header\n\nautomotive_navigation_msgs/LaneBoundaryArray[] road_network_boundaries\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "automotive_navigation_msgs/LaneBoundaryArray[]",
+          "name": "road_network_boundaries",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetImageForMapTile": {
+      "description": "",
+      "raw": "string tile_id  # Id of the desired tile\n---\nbool success    # indicate successful run of triggered service\nstring message  # informational, e. g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "tile_id",
+          "comment": "Id of the desired tile",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e. g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

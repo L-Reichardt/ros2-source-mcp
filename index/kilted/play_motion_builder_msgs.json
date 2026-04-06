@@ -1,0 +1,418 @@
+{
+  "name": "play_motion_builder_msgs",
+  "version": "1.4.1",
+  "description": "The play_motion_builder_msgs package",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "play_motion_builder",
+    "url": "https://github.com/pal-robotics/play_motion_builder.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "play_motion_builder",
+      "rqt_play_motion_builder",
+      "rqt_play_motion_builder"
+    ]
+  },
+  "messages": {
+    "Frame": {
+      "description": "Array with joint poses",
+      "raw": "# Array with joint poses\nfloat64[] pose\n# Time since last Frame\nfloat32 time_from_last",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time_from_last",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Meta": {
+      "description": "Human-readable name for the motion",
+      "raw": "# Human-readable name for the motion\nstring name\n# Keywords to identify purpose of the motion\nstring usage\n# Short description of the motion\nstring description\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "usage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Motion": {
+      "description": "List of joint names, keyframe positions are ordered based on this list",
+      "raw": "# List of joint names, keyframe positions are ordered based on this list\nstring[] joints\n# List of Frames\nplay_motion_builder_msgs/Frame[] keyframes\n# Name of the joint group used during this motion\nstring used_group\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "play_motion_builder_msgs/Frame[]",
+          "name": "keyframes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "used_group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ChangeJoints": {
+      "description": "Empty if group shouldn't be changed, name of the group otherwise",
+      "raw": "# Empty if group shouldn't be changed, name of the group otherwise\nstring group\n# List of joints not in a group to be removed from the motion\nstring[] joints_to_remove\n# List of joints not in a group to be added to a motion\nstring[] joints_to_add\n---\n# True if no issues ocurred during the call\nbool ok\n# Error message in case an issue occurred during the call\nstring message\n# Current group configuration\nstring current_group\n# List of current active joints not in a group\nstring[] used_joints \n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joints_to_remove",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joints_to_add",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "current_group",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "used_joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EditMotion": {
+      "description": "Definitions of actions",
+      "raw": "# Definitions of actions\nuint8 LIST=0\nuint8 APPEND=1\nuint8 EDIT=2\nuint8 COPY_AS_NEXT=3\nuint8 COPY_AS_LAST=4\nuint8 REMOVE=5\nuint8 EDIT_TIME=6\n\n# Step id for the step to which the action should be applied\nuint16 step_id\n# Action to execute\nuint8 action\n# Time to be set (only used if action is EDIT_TIME)\nfloat32 time\n---\n# True if no issues ocurred during the call\nbool ok\n# Error message in case an issue occurred during the call\nstring message\n# Current state of the motion\nplay_motion_builder_msgs/Motion motion\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "LIST",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "APPEND",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EDIT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COPY_AS_NEXT",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COPY_AS_LAST",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REMOVE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EDIT_TIME",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "step_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "play_motion_builder_msgs/Motion",
+          "name": "motion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListJointGroups": {
+      "description": "List of available groups",
+      "raw": "---\n# List of available groups\nstring[] groups\n# List of joints not in any group\nstring[] additional_joints\n# Complete list of joints (including those in a group)\nstring[] available_joints\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "groups",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "additional_joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "available_joints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StoreMotion": {
+      "description": "Path to where the file should be stored (if wmpty no file is stored)",
+      "raw": "# Path to where the file should be stored (if wmpty no file is stored)\nstring file_path\n# Parameter name assigned to the motion\nstring ros_name\n# Metadata of the motion\nplay_motion_builder_msgs/Meta meta\n---\n# True if no issues occured\nbool ok\n# If an error has occurred information on the error, otherwise \n# this field will contain the data written to the file in string format\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "file_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ros_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "play_motion_builder_msgs/Meta",
+          "name": "meta",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "BuildMotion": {
+      "description": "Optional name of the motion, if not empty load this motion",
+      "raw": "# Optional name of the motion, if not empty load this motion\nstring motion\n---\n# True if no issues happened during the action\nbool ok\n# If any error has ocurred provide information\nstring message\n---\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "motion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "RunMotion": {
+      "description": "Motion modes",
+      "raw": "# Motion modes\nuint8 RUN_MOTION=0\nuint8 GO_TO_STEP=1\n\nuint8 run_mode\n# Factor by which to slow down the motion (only used if run_mode is RUN_MOTION)\nfloat32 downshift\n# Step id to which the robot will be moved (only used if run_mode is GO_TO_STEP)\nuint16 step_id\n---\n---\n",
+      "goal_fields": [
+        {
+          "type": "uint8",
+          "name": "RUN_MOTION",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GO_TO_STEP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "run_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "downshift",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "step_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    }
+  }
+}

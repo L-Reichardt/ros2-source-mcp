@@ -1,0 +1,68 @@
+{
+  "name": "moveit_kinematics",
+  "version": "2.3.4",
+  "description": "Package for all inverse kinematics solvers in MoveIt",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://moveit.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-planning/moveit2",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-planning/moveit2/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "moveit",
+    "url": "https://github.com/ros-planning/moveit2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "moveit_common"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "urdfdom",
+      "python-lxml"
+    ],
+    "test": [
+      "moveit_ros_planning",
+      "moveit_resources_fanuc_description",
+      "moveit_resources_fanuc_moveit_config",
+      "moveit_resources_panda_description",
+      "moveit_resources_panda_moveit_config",
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ros_testing",
+      "moveit_configs_utils",
+      "launch_param_builder"
+    ],
+    "build_and_runtime": [
+      "moveit_core",
+      "class_loader",
+      "pluginlib",
+      "eigen",
+      "tf2",
+      "tf2_kdl",
+      "orocos_kdl",
+      "moveit_msgs"
+    ],
+    "depended_on_by": [
+      "ur_moveit_config"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

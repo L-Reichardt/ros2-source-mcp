@@ -1,0 +1,647 @@
+{
+  "name": "ur_dashboard_msgs",
+  "version": "2.12.0",
+  "description": "Messages around the UR Dashboard server.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "ur_robot_driver",
+    "url": "https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "ur",
+      "ur_controllers",
+      "ur_robot_driver"
+    ]
+  },
+  "messages": {
+    "ProgramState": {
+      "description": "",
+      "raw": "string STOPPED=STOPPED\nstring PLAYING=PLAYING\nstring PAUSED=PAUSED\n\nstring state\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "STOPPED",
+          "comment": "",
+          "default": "STOPPED",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PLAYING",
+          "comment": "",
+          "default": "PLAYING",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PAUSED",
+          "comment": "",
+          "default": "PAUSED",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotMode": {
+      "description": "",
+      "raw": "int8 NO_CONTROLLER=-1\nint8 DISCONNECTED=0\nint8 CONFIRM_SAFETY=1\nint8 BOOTING=2\nint8 POWER_OFF=3\nint8 POWER_ON=4\nint8 IDLE=5\nint8 BACKDRIVE=6\nint8 RUNNING=7\nint8 UPDATING_FIRMWARE=8\n\nint8 mode\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "NO_CONTROLLER",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "DISCONNECTED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CONFIRM_SAFETY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BOOTING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "POWER_OFF",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "POWER_ON",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "IDLE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "BACKDRIVE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "RUNNING",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "UPDATING_FIRMWARE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SafetyMode": {
+      "description": "",
+      "raw": "uint8 NORMAL=1\nuint8 REDUCED=2\nuint8 PROTECTIVE_STOP=3\nuint8 RECOVERY=4\nuint8 SAFEGUARD_STOP=5\nuint8 SYSTEM_EMERGENCY_STOP=6\nuint8 ROBOT_EMERGENCY_STOP=7\nuint8 VIOLATION=8\nuint8 FAULT=9\nuint8 VALIDATE_JOINT_ID=10\nuint8 UNDEFINED_SAFETY_MODE=11\nuint8 AUTOMATIC_MODE_SAFEGUARD_STOP=12\nuint8 SYSTEM_THREE_POSITION_ENABLING_STOP=13\n\nuint8 mode\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NORMAL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REDUCED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PROTECTIVE_STOP",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RECOVERY",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SAFEGUARD_STOP",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SYSTEM_EMERGENCY_STOP",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ROBOT_EMERGENCY_STOP",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VIOLATION",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAULT",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VALIDATE_JOINT_ID",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNDEFINED_SAFETY_MODE",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AUTOMATIC_MODE_SAFEGUARD_STOP",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SYSTEM_THREE_POSITION_ENABLING_STOP",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddToLog": {
+      "description": "",
+      "raw": "string message\n---\nstring answer\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetLoadedProgram": {
+      "description": "",
+      "raw": "---\nstring answer\nstring program_name\nbool success\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "program_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetProgramState": {
+      "description": "",
+      "raw": "---\nProgramState state\nstring program_name\nstring answer\nbool success\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "ProgramState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "program_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRobotMode": {
+      "description": "",
+      "raw": "---\nRobotMode robot_mode\nstring answer\nbool success\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "RobotMode",
+          "name": "robot_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetSafetyMode": {
+      "description": "",
+      "raw": "---\nSafetyMode safety_mode\nstring answer\nbool success\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "SafetyMode",
+          "name": "safety_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsInRemoteControl": {
+      "description": "",
+      "raw": "---\nstring answer\nbool remote_control # is the robot in remote control?\nbool success # Did the dashboard server call succeed?\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "remote_control",
+          "comment": "is the robot in remote control?",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Did the dashboard server call succeed?",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsProgramRunning": {
+      "description": "",
+      "raw": "---\nstring answer\nbool program_running # is a program running?\nbool success # Did the dashboard server call succeed?\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "program_running",
+          "comment": "is a program running?",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Did the dashboard server call succeed?",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsProgramSaved": {
+      "description": "",
+      "raw": "---\nstring answer\nstring program_name\nbool program_saved # is the current program saved?\nbool success # Did the dashboard server call succeed?\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "program_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "program_saved",
+          "comment": "is the current program saved?",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Did the dashboard server call succeed?",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Load": {
+      "description": "Service to load programs or installations",
+      "raw": "# Service to load programs or installations\nstring filename\n---\nstring answer\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Popup": {
+      "description": "",
+      "raw": "string message\n---\nstring answer\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RawRequest": {
+      "description": "This service is there to support any dashboard query not explicitly supported",
+      "raw": "# This service is there to support any dashboard query not explicitly supported\nstring query\n---\nstring answer\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "query",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "answer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "SetMode": {
+      "description": "This action is for setting the robot into a desired mode (e.g. RUNNING) and safety mode into a",
+      "raw": "# This action is for setting the robot into a desired mode (e.g. RUNNING) and safety mode into a\n# non-critical state (e.g. NORMAL or REDUCED), for example after a safety incident happened.\n\n# Target modes can be one of\n# - 3: ROBOT_MODE_POWER_OFF\n# - 5: ROBOT_MODE_IDLE\n# - 7: ROBOT_MODE_RUNNING\nint8 target_robot_mode\n\n# Stop program execution before restoring the target mode. Can be used together with 'play_program'.\nbool stop_program\n\n# Play the currently loaded program after target mode is reached.#\n# NOTE: Requesting mode RUNNING in combination with this will make the robot continue the motion it\n# was doing before. This might probably lead into the same problem (protective stop, EM-Stop due to\n# faulty motion, etc.) If you want to be safe, set the 'stop_program' flag below and manually play\n# the program after robot state is returned to normal.\n# This flag will only be used when requesting mode RUNNING\nbool play_program\n\n---\n# result\nbool success\nstring message\n---\n# feedback\nint8 current_robot_mode\nint8 current_safety_mode\n",
+      "goal_fields": [
+        {
+          "type": "int8",
+          "name": "target_robot_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stop_program",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "play_program",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "int8",
+          "name": "current_robot_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "current_safety_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

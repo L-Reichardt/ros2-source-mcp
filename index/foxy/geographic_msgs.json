@@ -1,0 +1,644 @@
+{
+  "name": "geographic_msgs",
+  "version": "1.0.4",
+  "description": "ROS messages for Geographic Information Systems.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/geographic_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-geographic-info/geographic_info/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-geographic-info/geographic_info.git",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "geographic_info",
+    "url": "https://github.com/ros-geographic-info/geographic_info.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_msgs",
+      "unique_identifier_msgs"
+    ],
+    "depended_on_by": [
+      "geodesy",
+      "geographic_info",
+      "marti_nav_msgs",
+      "mavros",
+      "mavros_extras",
+      "mavros_msgs",
+      "nmea_hardware_interface",
+      "robot_localization",
+      "swri_transform_util"
+    ]
+  },
+  "messages": {
+    "BoundingBox": {
+      "description": "Geographic map bounding box.",
+      "raw": "# Geographic map bounding box. \n#\n# The two GeoPoints denote diagonally opposite corners of the box.\n#\n# If min_pt.latitude is NaN, the bounding box is \"global\", matching\n# any valid latitude, longitude and altitude.\n#\n# If min_pt.altitude is NaN, the bounding box is two-dimensional and\n# matches any altitude within the specified latitude and longitude\n# range.\n\nGeoPoint min_pt         # lowest and most Southwestern corner\nGeoPoint max_pt         # highest and most Northeastern corner\n",
+      "fields": [
+        {
+          "type": "GeoPoint",
+          "name": "min_pt",
+          "comment": "lowest and most Southwestern corner",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoPoint",
+          "name": "max_pt",
+          "comment": "highest and most Northeastern corner",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoPath": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeographic_msgs/GeoPoseStamped[] poses\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPoseStamped[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoPoint": {
+      "description": "Geographic point, using the WGS 84 reference ellipsoid.",
+      "raw": "# Geographic point, using the WGS 84 reference ellipsoid.\n\n# Latitude [degrees]. Positive is north of equator; negative is south\n# (-90 <= latitude <= +90).\nfloat64 latitude\n\n# Longitude [degrees]. Positive is east of prime meridian; negative is\n# west (-180 <= longitude <= +180). At the poles, latitude is -90 or\n# +90, and longitude is irrelevant, but must be in range.\nfloat64 longitude\n\n# Altitude [m]. Positive is above the WGS 84 ellipsoid (NaN if unspecified).\nfloat64 altitude\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoPointStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeographic_msgs/GeoPoint position\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPoint",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoPose": {
+      "description": "Geographic pose, using the WGS 84 reference ellipsoid.",
+      "raw": "# Geographic pose, using the WGS 84 reference ellipsoid.\n#\n# Orientation uses the East-North-Up (ENU) frame of reference.\n# (But, what about singularities at the poles?)\n\nGeoPoint position\ngeometry_msgs/Quaternion orientation\n",
+      "fields": [
+        {
+          "type": "GeoPoint",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoPoseStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeographic_msgs/GeoPose pose\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeographicMap": {
+      "description": "Geographic map for a specified region.",
+      "raw": "# Geographic map for a specified region.\n\nstd_msgs/Header header            # stamp specifies time\n                         # frame_id (normally /map)\n\nunique_identifier_msgs/UUID id    # identifier for this map\nBoundingBox  bounds      # 2D bounding box containing map\n\nWayPoint[]   points      # way-points\nMapFeature[] features    # map features\nKeyValue[]   props       # map properties\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp specifies time",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "id",
+          "comment": "identifier for this map",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox",
+          "name": "bounds",
+          "comment": "2D bounding box containing map",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WayPoint[]",
+          "name": "points",
+          "comment": "way-points",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MapFeature[]",
+          "name": "features",
+          "comment": "map features",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "props",
+          "comment": "map properties",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeographicMapChanges": {
+      "description": "A list of geographic map changes.",
+      "raw": "# A list of geographic map changes.\n\nstd_msgs/Header header                   # stamp specifies time of change\n                                # frame_id (normally /map)\n\nGeographicMap diffs             # new and changed points and features\nunique_identifier_msgs/UUID[] deletes    # deleted map components\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "stamp specifies time of change",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeographicMap",
+          "name": "diffs",
+          "comment": "new and changed points and features",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID[]",
+          "name": "deletes",
+          "comment": "deleted map components",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyValue": {
+      "description": "Geographic map tag (key, value) pair",
+      "raw": "# Geographic map tag (key, value) pair\n#\n# This is equivalent to diagnostic_msgs/KeyValue, repeated here to\n# avoid introducing a trivial stack dependency.\n\nstring key                     # tag label\nstring value                   # corresponding value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "tag label",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "corresponding value",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MapFeature": {
+      "description": "Geographic map feature.",
+      "raw": "# Geographic map feature.\n#\n# A list of WayPoint IDs for features like streets, highways, hiking\n# trails, the outlines of buildings and parking lots in sequential\n# order.\n#\n# Feature lists may also contain other feature lists as members.\n\nunique_identifier_msgs/UUID   id         # Unique feature identifier\nunique_identifier_msgs/UUID[] components # Sequence of feature components\nKeyValue[] props                # Key/value properties for this feature\n",
+      "fields": [
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "id",
+          "comment": "Unique feature identifier",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID[]",
+          "name": "components",
+          "comment": "Sequence of feature components",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "props",
+          "comment": "Key/value properties for this feature",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteNetwork": {
+      "description": "Geographic map route network.",
+      "raw": "# Geographic map route network.\n#\n# A directed graph of WayPoint nodes and RouteSegment edges.  This\n# information is extracted from the more-detailed contents of a\n# GeographicMap.  A RouteNetwork contains only the way points and\n# route segments of interest for path planning.\n\nstd_msgs/Header          header\n\nunique_identifier_msgs/UUID id    # This route network identifier\nBoundingBox     bounds   # 2D bounding box for network\n\nWayPoint[]      points   # Way points in this network\nRouteSegment[]  segments # Directed edges of this network\n\nKeyValue[]      props    # Network key/value properties\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "id",
+          "comment": "This route network identifier",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox",
+          "name": "bounds",
+          "comment": "2D bounding box for network",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WayPoint[]",
+          "name": "points",
+          "comment": "Way points in this network",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RouteSegment[]",
+          "name": "segments",
+          "comment": "Directed edges of this network",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "props",
+          "comment": "Network key/value properties",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoutePath": {
+      "description": "Path through a route network.",
+      "raw": "# Path through a route network.\n#\n# A path is a sequence of RouteSegment edges.  This information is\n# extracted from a RouteNetwork graph.  A RoutePath lists the route\n# segments needed to reach some chosen goal.\n\nstd_msgs/Header header\n\nunique_identifier_msgs/UUID   network    # Route network containing this path\nunique_identifier_msgs/UUID[] segments   # Sequence of RouteSegment IDs\nKeyValue[]           props      # Key/value properties\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "network",
+          "comment": "Route network containing this path",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID[]",
+          "name": "segments",
+          "comment": "Sequence of RouteSegment IDs",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "props",
+          "comment": "Key/value properties",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RouteSegment": {
+      "description": "Route network segment.",
+      "raw": "# Route network segment.\n#\n# This is one directed edge of a RouteNetwork graph. It represents a\n# known path from one way point to another.  If the path is two-way,\n# there will be another RouteSegment with \"start\" and \"end\" reversed.\n\nunique_identifier_msgs/UUID id           # Unique identifier for this segment\n\nunique_identifier_msgs/UUID start        # beginning way point of segment\nunique_identifier_msgs/UUID end          # ending way point of segment\n\nKeyValue[] props                # segment properties\n",
+      "fields": [
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "id",
+          "comment": "Unique identifier for this segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "start",
+          "comment": "beginning way point of segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "end",
+          "comment": "ending way point of segment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "props",
+          "comment": "segment properties",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WayPoint": {
+      "description": "Way-point element for a geographic map.",
+      "raw": "# Way-point element for a geographic map.\n\nunique_identifier_msgs/UUID id   # Unique way-point identifier\nGeoPoint   position     # Position relative to WGS 84 ellipsoid\nKeyValue[] props        # Key/value properties for this point\n",
+      "fields": [
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "id",
+          "comment": "Unique way-point identifier",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoPoint",
+          "name": "position",
+          "comment": "Position relative to WGS 84 ellipsoid",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "props",
+          "comment": "Key/value properties for this point",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetGeoPath": {
+      "description": "Searches for given start and goal the nearest route segments",
+      "raw": "# Searches for given start and goal the nearest route segments\n# and determine the path through the RouteNetwork\n\ngeographic_msgs/GeoPoint start        # starting point\ngeographic_msgs/GeoPoint goal         # goal point\n\n---\n\nbool success                          # true if the call succeeded\nstring status                         # more details\n\ngeographic_msgs/GeoPath plan          # path to follow\n\nunique_identifier_msgs/UUID network            # the uuid of the RouteNetwork\nunique_identifier_msgs/UUID start_seg          # the uuid of the starting RouteSegment\nunique_identifier_msgs/UUID goal_seg           # the uuid of the ending RouteSegment\nfloat64 distance                      # the length of the plan\n",
+      "request_fields": [
+        {
+          "type": "geographic_msgs/GeoPoint",
+          "name": "start",
+          "comment": "starting point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPoint",
+          "name": "goal",
+          "comment": "goal point",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true if the call succeeded",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "more details",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geographic_msgs/GeoPath",
+          "name": "plan",
+          "comment": "path to follow",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "network",
+          "comment": "the uuid of the RouteNetwork",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "start_seg",
+          "comment": "the uuid of the starting RouteSegment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "goal_seg",
+          "comment": "the uuid of the ending RouteSegment",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "distance",
+          "comment": "the length of the plan",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetGeographicMap": {
+      "description": "This service requests a region of a geographic map.",
+      "raw": "# This service requests a region of a geographic map.\n\nstring url            # where to read map data\n\n# Bounding box for the desired map.  If all zeros, provide all data\n# available from the specified URL.\nBoundingBox bounds\n\n---\n\nbool success          # true if the call succeeded\nstring status         # more details\n\n# The requested map, its bounds may differ from the requested bounds.\nGeographicMap map\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "url",
+          "comment": "where to read map data",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BoundingBox",
+          "name": "bounds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true if the call succeeded",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "more details",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeographicMap",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetRoutePlan": {
+      "description": "Get a plan to traverse a route network from start to goal.",
+      "raw": "# Get a plan to traverse a route network from start to goal.\n#\n# Similar to nav_msgs/GetPlan, but constrained to use the route network.\n\nunique_identifier_msgs/UUID network      # route network to use\nunique_identifier_msgs/UUID start        # starting way point\nunique_identifier_msgs/UUID goal         # goal way point\n\n---\n\nbool            success         # true if the call succeeded\nstring          status          # more details\n\nRoutePath       plan            # path to follow\n",
+      "request_fields": [
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "network",
+          "comment": "route network to use",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "start",
+          "comment": "starting way point",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "goal",
+          "comment": "goal way point",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true if the call succeeded",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "more details",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RoutePath",
+          "name": "plan",
+          "comment": "path to follow",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UpdateGeographicMap": {
+      "description": "This service updates a geographic map.",
+      "raw": "# This service updates a geographic map.\n\n# Changes to geographic map.\nGeographicMapChanges updates\n\n---\n\nbool   success        # true if the call succeeded\nstring status         # more details\n",
+      "request_fields": [
+        {
+          "type": "GeographicMapChanges",
+          "name": "updates",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "true if the call succeeded",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "more details",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,909 @@
+{
+  "name": "py_trees_ros_interfaces",
+  "version": "2.0.3",
+  "description": "Interfaces used by py_trees_ros and py_trees_ros_tutorials.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/py_trees_ros_interfaces",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/splintered-reality/py_trees_ros_interfaces",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/splintered-reality/py_trees_ros_interfaces/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "py_trees_ros_interfaces",
+    "url": "https://github.com/splintered-reality/py_trees_ros_interfaces.git",
+    "branch": "release/1.2.x"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "diagnostic_msgs",
+      "geometry_msgs",
+      "unique_identifier_msgs"
+    ],
+    "depended_on_by": [
+      "py_trees_ros",
+      "py_trees_ros_tutorials",
+      "py_trees_ros_viewer"
+    ]
+  },
+  "messages": {
+    "ActivityItem": {
+      "description": "A single blackboard activity item",
+      "raw": "##############################################################################\n#\n# A single blackboard activity item\n#\n#    key: the active blackboard key\n#    client_name : name of the blackboard client accessing the key\n#    activity_type: type of operation attempted on the ky\n#    previous_value: if the key was modified, stores the previous value of the key\n#    current_value: if the key was modified, stores the current value of the key\n#\n##############################################################################\n\n# Activity types\nstring READ = \"READ\"\nstring INITIALISED = \"INITIALISED\"\nstring WRITE = \"WRITE\"\nstring ACCESSED = \"ACCESSED\"\nstring ACCESS_DENIED = \"ACCESS_DENIED\"\nstring NO_KEY = \"NO_KEY\"\nstring NO_OVERWRITE = \"NO_OVERWRITE\"\nstring UNSET = \"UNSET\"\n\nstring key\nstring client_name\nstring activity_type\nstring previous_value\nstring current_value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "READ",
+          "comment": "",
+          "default": "\"READ\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "INITIALISED",
+          "comment": "",
+          "default": "\"INITIALISED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "WRITE",
+          "comment": "",
+          "default": "\"WRITE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ACCESSED",
+          "comment": "",
+          "default": "\"ACCESSED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ACCESS_DENIED",
+          "comment": "",
+          "default": "\"ACCESS_DENIED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NO_KEY",
+          "comment": "",
+          "default": "\"NO_KEY\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NO_OVERWRITE",
+          "comment": "",
+          "default": "\"NO_OVERWRITE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "UNSET",
+          "comment": "",
+          "default": "\"UNSET\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "client_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "activity_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "previous_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "current_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Behaviour": {
+      "description": "Possible behaviour states - these must match py_trees.common.Status",
+      "raw": "# Possible behaviour states - these must match py_trees.common.Status\nuint8 INVALID = 1\nuint8 RUNNING = 2\nuint8 SUCCESS = 3\nuint8 FAILURE = 4\n\n# Possible types of behaviour\nuint8 UNKNOWN_TYPE = 0\nuint8 BEHAVIOUR = 1\nuint8 SEQUENCE = 2\nuint8 SELECTOR = 3\nuint8 PARALLEL = 4\nuint8 CHOOSER = 5\nuint8 DECORATOR = 6\n\n# Blackbox Level - these must match py_trees.common.BlackBoxLevel\nuint8 BLACKBOX_LEVEL_DETAIL = 1\nuint8 BLACKBOX_LEVEL_COMPONENT = 2\nuint8 BLACKBOX_LEVEL_BIG_PICTURE = 3\nuint8 BLACKBOX_LEVEL_NOT_A_BLACKBOX = 4\n\n# Key Access Levels - these must match py_trees.common.Access\nstring BLACKBOARD_ACCESS_READ = \"r\"\nstring BLACKBOARD_ACCESS_WRITE = \"w\"\nstring BLACKBOARD_ACCESS_EXCLUSIVE_WRITE = \"x\"\n\n# Name given to the behaviour on construction\nstring name\n\n# Name of the class of this behaviour\nstring class_name\n\n# The ID of this behaviour\nunique_identifier_msgs/UUID own_id\n\n# The ID of the parent behaviour\nunique_identifier_msgs/UUID parent_id\n\n# ID of the tip of this behaviour. If the tip is the behaviour itself or None,\n# this is the zero-filled UUID\nunique_identifier_msgs/UUID tip_id\n\n# The IDs of children of this behaviour, if any\nunique_identifier_msgs/UUID[] child_ids\n\n# The ID of the current child (in case of a composite).\n# If None, this is the zero-filled UUID.\nunique_identifier_msgs/UUID current_child_id\n\n# A composite, sequence, selector, plain behaviour, etc.\nuint8 type\n\n# Additional detail about this behaviour, useful for debugging. Example: Parallel policy\nstring additional_detail\n\n# Blackbox level (for visualisation purposes)\nuint8 blackbox_level\n\n# The current state of execution. Can be invalid, running, success or failure\nuint8 status\n\n# The message attached to the current execution state\nstring message\n\n# Whether this node was part of the last tick\nbool is_active\n\n# Blackboard keys and access level registered by blackboard clients of this behaviour\nKeyValue[] blackboard_access\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "INVALID",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RUNNING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILURE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN_TYPE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BEHAVIOUR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SEQUENCE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SELECTOR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PARALLEL",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CHOOSER",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DECORATOR",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLACKBOX_LEVEL_DETAIL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLACKBOX_LEVEL_COMPONENT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLACKBOX_LEVEL_BIG_PICTURE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLACKBOX_LEVEL_NOT_A_BLACKBOX",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "BLACKBOARD_ACCESS_READ",
+          "comment": "",
+          "default": "\"r\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "BLACKBOARD_ACCESS_WRITE",
+          "comment": "",
+          "default": "\"w\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "BLACKBOARD_ACCESS_EXCLUSIVE_WRITE",
+          "comment": "",
+          "default": "\"x\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "class_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "own_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "parent_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "tip_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID[]",
+          "name": "child_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "current_child_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "additional_detail",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "blackbox_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "KeyValue[]",
+          "name": "blackboard_access",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviourTree": {
+      "description": "Tree",
+      "raw": "##############################################################################\n# Tree\n##############################################################################\n\n# Leaves of the tree\nBehaviour[] behaviours\n\n# Whether the status of any single behaviour or the tree graph itself changed\nbool changed\n\n##############################################################################\n# Blackboard\n##############################################################################\n\ndiagnostic_msgs/KeyValue[] blackboard_on_visited_path\nActivityItem[] blackboard_activity\n\n##############################################################################\n# Other\n##############################################################################\n\nStatistics statistics\n",
+      "fields": [
+        {
+          "type": "Behaviour[]",
+          "name": "behaviours",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "changed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/KeyValue[]",
+          "name": "blackboard_on_visited_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActivityItem[]",
+          "name": "blackboard_activity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Statistics",
+          "name": "statistics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KeyValue": {
+      "description": "",
+      "raw": "string key\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PublisherDetails": {
+      "description": "Introspection information about publishers",
+      "raw": "# Introspection information about publishers\n\nstring topic_name\nstring message_type\nbool latched\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "latched",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ServiceDetails": {
+      "description": "Introspection information about services",
+      "raw": "# Introspection information about services\n\nstring service_name\nstring service_type\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "service_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "service_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SnapshotStreamParameters": {
+      "description": "Configuration for a snapshot stream.",
+      "raw": "##############################################################################\n#\n# Configuration for a snapshot stream.\n#\n#    blackboard_data: publish blackboard variables on the visited path\n#    blackboard_activity: enable and publish blackboard activity in the last tick\n#    snapshot_period: period between snapshots (use /inf to only publish on tree status changes)\n#\n##############################################################################\n\nfloat32 snapshot_period\nbool blackboard_data\nbool blackboard_activity\n\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "snapshot_period",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "blackboard_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "blackboard_activity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Statistics": {
+      "description": "",
+      "raw": "\nint64 count\nbuiltin_interfaces/Time stamp\n\nfloat32 tick_duration\nfloat32 tick_duration_average\nfloat32 tick_duration_variance\n\nfloat32 tick_interval\nfloat32 tick_interval_average\nfloat32 tick_interval_variance\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tick_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tick_duration_average",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tick_duration_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tick_interval",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tick_interval_average",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tick_interval_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SubscriberDetails": {
+      "description": "Introspection information about subscribers",
+      "raw": "# Introspection information about subscribers\n\nstring topic_name\nstring message_type\nbool latched\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "latched",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "CloseBlackboardStream": {
+      "description": "Close an existing blackboard stream.",
+      "raw": "##############################################################################\n#\n# Close an existing blackboard stream.\n#\n# Request\n#   topic_name: blackboard stream to close\n#\n# Response\n#   result: success/failure of the operation (failure: stream did not exist)\n#\n##############################################################################\n\nstring topic_name\n---\nbool result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CloseSnapshotStream": {
+      "description": "Close an existing snapshot stream.",
+      "raw": "##############################################################################\n#\n# Close an existing snapshot stream.\n#\n# Request\n#   topic_name: snapshot stream to close\n#\n# Response\n#   result: success/failure of the operation (failure: stream did not exist)\n#\n##############################################################################\n\nstring topic_name\n\n---\n\nbool result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetBlackboardVariables": {
+      "description": "Retrieve a list of variables currently available in the blackboard.",
+      "raw": "# Retrieve a list of variables currently available in the blackboard.\n# This is primarily used as a utility for the blackboard watcher (find what\n# variables are available without the entire spam of the blackboard contents\n# before proceeding to watch a subset of these.\n\n---\nstring[] variables\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "variables",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IntrospectPublishers": {
+      "description": "Introspect the requested node for information about it's operation.",
+      "raw": "# Introspect the requested node for information about it's operation.\n---\nPublisherDetails[] publisher_details\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "PublisherDetails[]",
+          "name": "publisher_details",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IntrospectServices": {
+      "description": "Introspect the requested node for information about it's operation.",
+      "raw": "# Introspect the requested node for information about it's operation.\n---\nServiceDetails[] service_details\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "ServiceDetails[]",
+          "name": "service_details",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IntrospectSubscribers": {
+      "description": "Introspect the requested node for information about it's operation.",
+      "raw": "# Introspect the requested node for information about it's operation.\n---\nSubscriberDetails[] subscriber_details\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "SubscriberDetails[]",
+          "name": "subscriber_details",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OpenBlackboardStream": {
+      "description": "Specify a list of variables to watch on the blackboard. These",
+      "raw": "# Specify a list of variables to watch on the blackboard. These\n# can be nested variables (e.g. get only the position in an odom\n# message). Typically this service is not used directly, but by the\n# blackboard watcher utility\n\n# list of variables to watch\nstring[] variables\n# restrict the list of variable names to select from those\n# associated with behaviours on the tree tick's visited path\nbool filter_on_visited_path\n# include the activity stream associated with the most recent\n# changes to the blackboard\nbool with_activity_stream\n---\n# topic name that is dynamically created for watching\nstring topic\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "variables",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "filter_on_visited_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "with_activity_stream",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OpenSnapshotStream": {
+      "description": "Open a snapshot stream.",
+      "raw": "##############################################################################\n# Open a snapshot stream.\n#\n# Request\n#   topic_name: (optional) snapshot stream location \n#   parameters: used to configure the contents/rate of the stream\n#\n# Response\n#\n#   topic_name: the topic created for the snapshot stream\n#\n# Note: if the topic_name is not provided the service is expected to\n# create and return a dynamically created snapshot stream on a hidden\n# topic (the topic name will be returned in the response).\n#\n##############################################################################\n\nstring topic_name\nSnapshotStreamParameters parameters\n\n---\n\nstring topic_name\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SnapshotStreamParameters",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReconfigureSnapshotStream": {
+      "description": "Reconfigure a snapshot stream.",
+      "raw": "##############################################################################\n# Reconfigure a snapshot stream.\n#\n# Request\n#   topic_name: the snapshot stream to reconfigure\n#   parameters: used to configure the contents/rate of the stream\n#\n# Response\n#\n#   result: success/failure of the operation (failure: stream did not exist)\n#\n##############################################################################\n\nstring topic_name\nSnapshotStreamParameters parameters\n\n---\n\nbool result\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SnapshotStreamParameters",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StatusReport": {
+      "description": "Solely for use with tutorials in py_trees_ros_tutorials",
+      "raw": "# Solely for use with tutorials in py_trees_ros_tutorials\n\n---\nstring report\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "report",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "Dock": {
+      "description": "Dock",
+      "raw": "###############################################################################\n# Dock\n###############################################################################\n#\n# Interface to a mock docking controller\n#\n###############################################################################\n\n####################\n# Goal\n####################\n# To dock (True) or undock (False)\nbool dock\n\n---\n####################\n# Result\n####################\n\nstring message\n\n---\n\n####################\n# Feedback\n####################\n\nfloat32 percentage_completed\n",
+      "goal_fields": [
+        {
+          "type": "bool",
+          "name": "dock",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "percentage_completed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MoveBase": {
+      "description": "Dock",
+      "raw": "###############################################################################\n# Dock\n###############################################################################\n#\n# Interface to a mock ROS1 style move base action server.\n#\n###############################################################################\n\n####################\n# Goal\n####################\n\ngeometry_msgs/PoseStamped target_pose\n\n---\n####################\n# Result\n####################\n\nstring message\n\n---\n\n####################\n# Feedback\n####################\n\ngeometry_msgs/PoseStamped base_position\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "target_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "base_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Rotate": {
+      "description": "Rotate",
+      "raw": "###############################################################################\n# Rotate\n###############################################################################\n#\n# Rotates the robot a full 2pi radians.\n# Used for the py_trees_ros mocking demos/tests!\n#\n###############################################################################\n\n####################\n# Goal\n####################\n\n---\n####################\n# Result\n####################\n\nstring message\n\n---\n\n####################\n# Feedback\n####################\n\nfloat32 percentage_completed\nfloat32 angle_rotated          # in radians\n",
+      "goal_fields": [],
+      "result_fields": [
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "percentage_completed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_rotated",
+          "comment": "in radians",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

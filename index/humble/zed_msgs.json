@@ -1,0 +1,946 @@
+{
+  "name": "zed_msgs",
+  "version": "5.2.1",
+  "description": "Contains message and service definitions used by the ZED ROS2 nodes.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://www.stereolabs.com/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/stereolabs/zed-ros2-wrapper",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/stereolabs/zed-ros2-wrapper/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "zed-ros2-interfaces",
+    "url": "https://github.com/stereolabs/zed-ros2-interfaces.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "ament_cmake_auto",
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "shape_msgs",
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "std_msgs",
+      "geometry_msgs",
+      "shape_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_cmake_copyright",
+      "ament_cmake_cppcheck",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_pep257",
+      "ament_cmake_uncrustify",
+      "ament_cmake_xmllint"
+    ],
+    "depended_on_by": [
+      "husarion_components_description"
+    ]
+  },
+  "messages": {
+    "BoundingBox2Df": {
+      "description": "0 ------- 1",
+      "raw": "#      0 ------- 1\n#      |         |\n#      |         |\n#      |         |\n#      3 ------- 2\nzed_msgs/Keypoint2Df[4] corners\n",
+      "fields": [
+        {
+          "type": "zed_msgs/Keypoint2Df[4]",
+          "name": "corners",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoundingBox2Di": {
+      "description": "0 ------- 1",
+      "raw": "#      0 ------- 1\n#      |         |\n#      |         |\n#      |         |\n#      3 ------- 2\nzed_msgs/Keypoint2Di[4] corners\n",
+      "fields": [
+        {
+          "type": "zed_msgs/Keypoint2Di[4]",
+          "name": "corners",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoundingBox3D": {
+      "description": "1 ------- 2",
+      "raw": "#      1 ------- 2\n#     /.        /|\n#    0 ------- 3 |\n#    | .       | |\n#    | 5.......| 6\n#    |.        |/\n#    4 ------- 7\nzed_msgs/Keypoint3D[8] corners\n",
+      "fields": [
+        {
+          "type": "zed_msgs/Keypoint3D[8]",
+          "name": "corners",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DepthInfoStamped": {
+      "description": "Standard Header",
+      "raw": "# Standard Header\nstd_msgs/Header header\n\n# Miminum measured depth\nfloat32 min_depth\n\n# Maximum measured depth\nfloat32 max_depth",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_depth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GnssFusionStatus": {
+      "description": "GNSS_FUSION_STATUS",
+      "raw": "# GNSS_FUSION_STATUS\n# Represents the current state of GNSS fusion for global localization.\n# OK - The GNSS fusion module is calibrated and working successfully.\n# OFF - The GNSS fusion module is not enabled.\n# CALIBRATION_IN_PROGRESS - Calibration of the GNSS/VIO fusion module is in progress.\n# RECALIBRATION_IN_PROGRESS- Re-alignment of GNSS/VIO data is in progress, leading to potentially inaccurate global position.\nuint8 OK = 0\nuint8 OFF = 1\nuint8 CALIBRATION_IN_PROGRESS = 2\nuint8 RECALIBRATION_IN_PROGRESS = 3\n\nuint8 gnss_fusion_status",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CALIBRATION_IN_PROGRESS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RECALIBRATION_IN_PROGRESS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "gnss_fusion_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HealthStatusStamped": {
+      "description": "Message to provide information concerning the status of health of the ZED Camera",
+      "raw": "# Message to provide information concerning the status of health of the ZED Camera\n\n# Standard Header\nstd_msgs/Header header\n\n# ZED Camera serial number\nuint32 serial_number\n\n# ZED Camera name\nstring camera_name\n\n# Image quality is degraded\nbool low_image_quality\n\n# Environmental light conditions are not optimal\nbool low_lighting\n\n# Depth reliability is low\nbool low_depth_reliability\n\n# Motion sensors reliability is low\nbool low_motion_sensors_reliability",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "serial_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "camera_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "low_image_quality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "low_lighting",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "low_depth_reliability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "low_motion_sensors_reliability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Heartbeat": {
+      "description": "Message to notify that the node is alive to other nodes",
+      "raw": "# Message to notify that the node is alive to other nodes\n\n# idx of the message\nuint64 beat_count\n\n# namespace of the node\nstring node_ns\n# name of the node\nstring node_name\n# full node name\nstring full_name\n\n# serial number of the input camera\nuint32 camera_sn\n\n# data from an svo?\nbool svo_mode\n\n# data from simulation?\nbool simul_mode\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "beat_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_ns",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "node_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "full_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "camera_sn",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "svo_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "simul_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Keypoint2Df": {
+      "description": "",
+      "raw": "float32[2] kp\n",
+      "fields": [
+        {
+          "type": "float32[2]",
+          "name": "kp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Keypoint2Di": {
+      "description": "",
+      "raw": "uint32[2] kp\n",
+      "fields": [
+        {
+          "type": "uint32[2]",
+          "name": "kp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Keypoint3D": {
+      "description": "",
+      "raw": "float32[3] kp\n",
+      "fields": [
+        {
+          "type": "float32[3]",
+          "name": "kp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MagHeadingStatus": {
+      "description": "Status constants",
+      "raw": "# Status constants\n#  GOOD               The heading is reliable and not affected by iron interferences.\n#  OK                 The heading is reliable, but affected by slight iron interferences.\n#  NOT_GOOD           The heading is not reliable because affected by strong iron interferences.\n#  NOT_CALIBRATED     The magnetometer has not been calibrated.\n#  MAG_NOT_AVAILABLE  The magnetometer sensor is not available.\n\nuint8 GOOD=0 \nuint8 OK = 1\nuint8 NOT_GOOD = 2\nuint8 NOT_CALIBRATED = 3\nuint8 MAG_NOT_AVAILABLE = 4\n\n# Status\nuint8 status\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "GOOD",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_GOOD",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_CALIBRATED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MAG_NOT_AVAILABLE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Object": {
+      "description": "Object label",
+      "raw": "# Object label\nstring label\n\n# Object label ID\nint16 label_id\n\n# Object sub\nstring sublabel\n\n# Object confidence level (1-99)\nfloat32 confidence\n\n# Object centroid position\nfloat32[3] position\n\n# Position covariance\nfloat32[6] position_covariance\n\n# Object velocity\nfloat32[3] velocity\n\nbool tracking_available\n\n# Tracking available\n# Tracking state\n# 0 -> OFF (object not valid)\n# 1 -> OK\n# 2 -> SEARCHING (occlusion occurred, trajectory is estimated)\n# 3 -> TERMINATE (This is the last searching state of the track. The track will be deleted in the next frame).\nint8 tracking_state\n\n# Action state\n# 0 -> IDLE\n# 2 -> MOVING\nint8 action_state\n\n# 2D Bounding box projected to the Camera image\nzed_msgs/BoundingBox2Di bounding_box_2d\n\n# 3D Bounding box in world frame\nzed_msgs/BoundingBox3D bounding_box_3d\n\n# 3D dimensions (width, height, lenght)\nfloat32[3] dimensions_3d\n\n# Is skeleton available?\nbool skeleton_available\n\n# Skeleton format\n# 0 -> POSE_18\n# 1 -> POSE_34\n# 2 -> POSE_38\nint8 body_format\n\n# 2D Bounding box projected to Camera image of the person head\nzed_msgs/BoundingBox2Df head_bounding_box_2d\n\n# 3D Bounding box in world frame of the person head\nzed_msgs/BoundingBox3D head_bounding_box_3d\n\n# 3D position of the centroid of the person head\nfloat32[3] head_position\n\n# 2D Person skeleton projected to Camera image\nzed_msgs/Skeleton2D skeleton_2d\n\n# 3D Person skeleton in world frame\nzed_msgs/Skeleton3D skeleton_3d\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "label_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sublabel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[3]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[6]",
+          "name": "position_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[3]",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "tracking_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "tracking_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "action_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "zed_msgs/BoundingBox2Di",
+          "name": "bounding_box_2d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "zed_msgs/BoundingBox3D",
+          "name": "bounding_box_3d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[3]",
+          "name": "dimensions_3d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "skeleton_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "body_format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "zed_msgs/BoundingBox2Df",
+          "name": "head_bounding_box_2d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "zed_msgs/BoundingBox3D",
+          "name": "head_bounding_box_3d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[3]",
+          "name": "head_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "zed_msgs/Skeleton2D",
+          "name": "skeleton_2d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "zed_msgs/Skeleton3D",
+          "name": "skeleton_3d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectsStamped": {
+      "description": "Standard Header",
+      "raw": "# Standard Header\nstd_msgs/Header header\n\n# Array of `object_stamped` topics\nzed_msgs/Object[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "zed_msgs/Object[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PlaneStamped": {
+      "description": "Standard Header",
+      "raw": "# Standard Header\nstd_msgs/Header header\n\n# Mesh of the place\nshape_msgs/Mesh mesh\n\n# Representation of a plane, using the plane equation ax + by + cz + d = 0\nshape_msgs/Plane coefficients\n\n# Normal vector\ngeometry_msgs/Point32 normal\n\n# Center point \ngeometry_msgs/Point32 center\n\n# Plane pose relative to the global reference frame\ngeometry_msgs/Transform pose\n\n# Width and height of the bounding rectangle around the plane contours\nfloat32[2] extents\n\n# The polygon bounds of the plane\ngeometry_msgs/Polygon bounds",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Mesh",
+          "name": "mesh",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "shape_msgs/Plane",
+          "name": "coefficients",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point32",
+          "name": "normal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point32",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Transform",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[2]",
+          "name": "extents",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Polygon",
+          "name": "bounds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PosTrackStatus": {
+      "description": "CONSTANTS",
+      "raw": "# CONSTANTS\nuint8 OK = 0\nuint8 UNAVAILABLE = 1\nuint8 LOOP_CLOSED = 1\nuint8 SEARCHING = 2\nuint8 OFF = 3\n\n# VISUAL_STATUS\n# Represents the current state of Visual-Inertial Odometry (VIO) tracking between the previous frame and the current frame.\n# OK  - The positional tracking module successfully tracked from the previous frame to the current frame.\n# NOT_OK - The positional tracking module failed to track from the previous frame to the current frame.\nuint8 odometry_status\n\n# SPATIAL_MEMORY_STATUS\n# Represents the current state of camera tracking in the global map.\n# OK - The positional tracking module is operating normally.\n# LOOP_CLOSED - The positional tracking module detected a loop and corrected its position.\n# SEARCHING - The positional tracking module is searching for recognizable areas in the global map to relocate.\n# OFF - Spatial memory is disabled\nuint8 spatial_memory_status\n\n# Deprecated\nuint8 status\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNAVAILABLE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOOP_CLOSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SEARCHING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "odometry_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "spatial_memory_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Skeleton2D": {
+      "description": "Skeleton joints",
+      "raw": "# Skeleton joints\nzed_msgs/Keypoint2Df[70] keypoints\n",
+      "fields": [
+        {
+          "type": "zed_msgs/Keypoint2Df[70]",
+          "name": "keypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Skeleton3D": {
+      "description": "Skeleton joints",
+      "raw": "# Skeleton joints\nzed_msgs/Keypoint3D[70] keypoints\n",
+      "fields": [
+        {
+          "type": "zed_msgs/Keypoint3D[70]",
+          "name": "keypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SvoStatus": {
+      "description": "Message to provide information concerning the status of the SVO playback",
+      "raw": "# Message to provide information concerning the status of the SVO playback\n\n# SVO File name\nstring file_name\n\n# SVO playback status\nuint8 status\n\n# SVO playback status constants\nuint8 STATUS_PLAYING=0\nuint8 STATUS_PAUSED=1\nuint8 STATUS_END=2\n\n# SVO frame timestamp\nuint64 frame_ts\n\n# SVO playback position\nuint32 frame_id\n\n# SVO total number of frames\nuint32 total_frames\n\n# SVO loop status\nbool loop_active\n\n# SVO loop count\nuint32 loop_count\n\n# SVO real-time mode status\nbool real_time_mode\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "file_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_PLAYING",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_PAUSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_END",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint64",
+          "name": "frame_ts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "total_frames",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "loop_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "loop_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "real_time_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SaveAreaMemory": {
+      "description": "Save the current area memory to a file",
+      "raw": "# Save the current area memory to a file\n\n# Path of an area localization file that describes the surroundings. Use \".area\" extension.\nstring area_file_path\n---\nbool success   # indicate successful run of service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "area_file_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetPose": {
+      "description": "Restart positional tracking to a new pose in camera_link frame",
+      "raw": "# Restart positional tracking to a new pose in camera_link frame\n\n# Translation XYZ [meters]\nfloat32[3] pos\n# Orientation RPY [radians]\nfloat32[3] orient\n---\nbool success   # indicate successful run of service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "float32[3]",
+          "name": "pos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[3]",
+          "name": "orient",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetROI": {
+      "description": "Set the Region of Interest for ZED SDK computing",
+      "raw": "# Set the Region of Interest for ZED SDK computing\n\n# Region of interest polygon as an array of normalized vertices. e.g. \"[[0.5,0.25],[0.75,0.5],[0.5,0.75],[0.25,0.5]]\"\n# You can use\nstring roi\n---\nbool success   # indicate successful run of service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "roi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetSvoFrame": {
+      "description": "Set SVO frame",
+      "raw": "# Set SVO frame \n\n# Frame ID\nint32 frame_id\n---\nbool success\nstring message",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StartSvoRec": {
+      "description": "Start SVO Recording",
+      "raw": "# Start SVO Recording\n\n# Bitrate - 0 or [1000,60000]\nuint32 bitrate\n\n# Compression Mode - [0,2]\nuint8 compression_mode\n\n# Target Framerate\n# Allowed framerates are 0,15,30, 60 or 100. \n# Any other values will be discarded and camera FPS will be taken.\nuint32 target_framerate\n\n# Input Transcode\nbool input_transcode\n\n# Filename\nstring svo_filename \n---\nbool success   # indicate successful run of service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "uint32",
+          "name": "bitrate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "compression_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "target_framerate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "input_transcode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "svo_filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

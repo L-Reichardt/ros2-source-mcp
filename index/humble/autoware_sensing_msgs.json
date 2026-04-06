@@ -1,0 +1,632 @@
+{
+  "name": "autoware_sensing_msgs",
+  "version": "1.11.0",
+  "description": "Autoware sensing messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_auto",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_msgs"
+    ]
+  },
+  "messages": {
+    "ConcatenatedPointCloudInfo": {
+      "description": "This message holds information about a concatenated point cloud that combines multiple source",
+      "raw": "# This message holds information about a concatenated point cloud that combines multiple source\n# point clouds, including the overall point cloud structure and metadata for each source segment.\n\n# Available matching strategies for source point clouds concatenation\nuint8 STRATEGY_NAIVE = 0     # Assigns the oldest stamp of the sensor that was concatenated\nuint8 STRATEGY_ADVANCED = 1  # Assigns the oldest stamp of the sensor that was concatenated\n\n# The concatenated point cloud header, where timestamp assignment depends on matching strategy\nstd_msgs/Header header\n\nbool concatenation_success                       # Whether concatenation was successful\nuint8 matching_strategy                          # Strategy used for concatenation\n\n# Raw data of concatenation config, relevant to matching_strategy field.\nuint8[] matching_strategy_config\n\nSourcePointCloudInfo[] source_info               # Meta information of input point clouds\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "STRATEGY_NAIVE",
+          "comment": "Assigns the oldest stamp of the sensor that was concatenated",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STRATEGY_ADVANCED",
+          "comment": "Assigns the oldest stamp of the sensor that was concatenated",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "concatenation_success",
+          "comment": "Whether concatenation was successful",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "matching_strategy",
+          "comment": "Strategy used for concatenation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "matching_strategy_config",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SourcePointCloudInfo[]",
+          "name": "source_info",
+          "comment": "Meta information of input point clouds",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GnssInsOrientation": {
+      "description": "GNSS(Global Navigation Satellite System) INS(Inertial Navigation System) orientation message",
+      "raw": "# GNSS(Global Navigation Satellite System) INS(Inertial Navigation System) orientation message\n#\n# Represents a 3D orientation in a global coordinate system.\n#\n# ROS uses ENU axes convention (East, North, Up) corresponds to (x, y, z).\n\n# Quaternion representation of the orientation.\ngeometry_msgs/Quaternion orientation\n\n# Root mean square error of the rotation [rad]\n# (x, y, z) axes corresponding to (roll, pitch, yaw)\nfloat32 rmse_rotation_x\nfloat32 rmse_rotation_y\nfloat32 rmse_rotation_z\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rmse_rotation_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rmse_rotation_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rmse_rotation_z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GnssInsOrientationStamped": {
+      "description": "GNSS(Global Navigation Satellite System) INS(Inertial Navigation System) orientation message",
+      "raw": "# GNSS(Global Navigation Satellite System) INS(Inertial Navigation System) orientation message\n#\n# Represents a 3D orientation in a global coordinate system with coordinate frame and timestamp.\n\n# Timestamp this reading was received by the INS sensor\n# Frame is expected to be of the INS device\nstd_msgs/Header header\n\nGnssInsOrientation orientation\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GnssInsOrientation",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarClassification": {
+      "description": "Common autoware classes",
+      "raw": "# Common autoware classes\nuint8 UNKNOWN = 0\nuint8 CAR = 1\nuint8 TRUCK = 2\nuint8 BUS = 3\nuint8 TRAILER = 4\nuint8 MOTORCYCLE = 5\nuint8 BICYCLE = 6\nuint8 PEDESTRIAN = 7\nuint8 ANIMAL = 8\n\n# Radar specific classes\nuint8 HAZARD = 9 # Defined as an object that can cause danger to autonomous driving\nuint8 OVER_DRIVABLE = 10 # Defined as an object that can be safely driven over (e.g., leaf)\nuint8 UNDER_DRIVABLE = 11 # Defined as an object that can be safely driven under (e.g., overpass)\n\nuint8 label\nfloat32 probability\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CAR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRUCK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TRAILER",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOTORCYCLE",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BICYCLE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PEDESTRIAN",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ANIMAL",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HAZARD",
+          "comment": "Defined as an object that can cause danger to autonomous driving",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OVER_DRIVABLE",
+          "comment": "Defined as an object that can be safely driven over (e.g., leaf)",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNDER_DRIVABLE",
+          "comment": "Defined as an object that can be safely driven under (e.g., overpass)",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "probability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarFieldInfo": {
+      "description": "",
+      "raw": "std_msgs/String field_name\nbool min_value_available\nbool max_value_available\nbool resolution_available\n\nfloat32 min_value\nfloat32 max_value\nfloat32 resolution\n",
+      "fields": [
+        {
+          "type": "std_msgs/String",
+          "name": "field_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "min_value_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "max_value_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "resolution_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "min_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarInfo": {
+      "description": "",
+      "raw": "std_msgs/Header header\nRadarFieldInfo[] object_fields_info\nRadarFieldInfo[] detection_fields_info\n\nuint32[] available_classes\nbool absolute_dynamics # absolute or relative dynamics\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RadarFieldInfo[]",
+          "name": "object_fields_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RadarFieldInfo[]",
+          "name": "detection_fields_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32[]",
+          "name": "available_classes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "absolute_dynamics",
+          "comment": "absolute or relative dynamics",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarObject": {
+      "description": "",
+      "raw": "float32 INVALID_COV_VALUE = -1.0\n\nuint8 MEASUREMENT_STATUS_INVALID = 0\nuint8 MEASUREMENT_STATUS_MEASURED = 1\nuint8 MEASUREMENT_STATUS_PREDICTED = 2\nuint8 MEASUREMENT_STATUS_NEW = 3\nuint8 MEASUREMENT_STATUS_UNKNOWN = 4\n\nuint8 MOVEMENT_STATUS_INVALID = 0\nuint8 MOVEMENT_STATUS_DYNAMIC = 1\nuint8 MOVEMENT_STATUS_STATIC = 2\nuint8 MOVEMENT_STATUS_UNKNOWN = 3\n\nuint32 object_id\nuint16 age\nuint8 measurement_status\nuint8 movement_status\n\ngeometry_msgs/Point position\ngeometry_msgs/Vector3 velocity\ngeometry_msgs/Vector3 acceleration\ngeometry_msgs/Vector3 size\n\nfloat32[6] position_covariance\nfloat32[6] velocity_covariance\nfloat32[6] acceleration_covariance\nfloat32[6] size_covariance\n\nfloat32 orientation\nfloat32 orientation_std\nfloat32 orientation_rate\nfloat32 orientation_rate_std\n\nfloat32 existence_probability\nRadarClassification[] classifications\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "INVALID_COV_VALUE",
+          "comment": "",
+          "default": "-1.0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MEASUREMENT_STATUS_INVALID",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MEASUREMENT_STATUS_MEASURED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MEASUREMENT_STATUS_PREDICTED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MEASUREMENT_STATUS_NEW",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MEASUREMENT_STATUS_UNKNOWN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOVEMENT_STATUS_INVALID",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOVEMENT_STATUS_DYNAMIC",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOVEMENT_STATUS_STATIC",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MOVEMENT_STATUS_UNKNOWN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "object_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "measurement_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "movement_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[6]",
+          "name": "position_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[6]",
+          "name": "velocity_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[6]",
+          "name": "acceleration_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[6]",
+          "name": "size_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "orientation_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "orientation_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "orientation_rate_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "existence_probability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RadarClassification[]",
+          "name": "classifications",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarObjects": {
+      "description": "",
+      "raw": "std_msgs/Header header\nRadarObject[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RadarObject[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SourcePointCloudInfo": {
+      "description": "This message holds metadata information about a source point cloud segment",
+      "raw": "# This message holds metadata information about a source point cloud segment\n# within a concatenated point cloud, including its spatial boundaries and structural properties.\n\n# Available status codes for source point cloud\nuint8 STATUS_OK = 0       # Cloud received (may have 0 or more points)\nuint8 STATUS_TIMEOUT = 1  # Cloud not received due to timeout\nuint8 STATUS_INVALID = 2  # Cloud arrived but was malformed/corrupt\n\n# Time of sensor data acquisition, and the coordinate frame ID (for 3d points).\nstd_msgs/Header header\n\nstring topic              # Source topic\nuint8 status              # Status of the source point cloud\n\n# The starting index (inclusive) of the point cloud segment within the concatenated point cloud\nuint32 idx_begin\n\n# The length of the point cloud segment in the concatenated point cloud\nuint32 length\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "STATUS_OK",
+          "comment": "Cloud received (may have 0 or more points)",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_TIMEOUT",
+          "comment": "Cloud not received due to timeout",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_INVALID",
+          "comment": "Cloud arrived but was malformed/corrupt",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "Source topic",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "Status of the source point cloud",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "idx_begin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

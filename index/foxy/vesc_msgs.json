@@ -1,0 +1,353 @@
+{
+  "name": "vesc_msgs",
+  "version": "1.2.0",
+  "description": "ROS message definitions for the Vedder VESC open source motor controller.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/vesc_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/f1tenth/vesc",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/f1tenth/vesc/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "vesc",
+    "url": "https://github.com/f1tenth/vesc.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "vesc",
+      "vesc_ackermann",
+      "vesc_driver"
+    ]
+  },
+  "messages": {
+    "VescImu": {
+      "description": "",
+      "raw": "\n\ngeometry_msgs/Vector3  ypr\ngeometry_msgs/Vector3  linear_acceleration\ngeometry_msgs/Vector3  angular_velocity\n\ngeometry_msgs/Vector3  compass\ngeometry_msgs/Quaternion orientation\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "ypr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "linear_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "angular_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "compass",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VescImuStamped": {
+      "description": "",
+      "raw": "\n\nstd_msgs/Header  header\nVescImu imu",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "VescImu",
+          "name": "imu",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VescState": {
+      "description": "Vedder VESC open source motor controller state (telemetry)",
+      "raw": "# Vedder VESC open source motor controller state (telemetry)\n\n# fault codes\nint32 FAULT_CODE_NONE=0\nint32 FAULT_CODE_OVER_VOLTAGE=1\nint32 FAULT_CODE_UNDER_VOLTAGE=2\nint32 FAULT_CODE_DRV8302=3\nint32 FAULT_CODE_ABS_OVER_CURRENT=4\nint32 FAULT_CODE_OVER_TEMP_FET=5\nint32 FAULT_CODE_OVER_TEMP_MOTOR=6\n\n# follow the bledc firwmare: commands.c\nfloat64 temp_fet             # fet temperature \nfloat64 temp_motor           # motor temperature\nfloat64 current_motor        # motor current (ampere) avg_motor_current\nfloat64 current_input        # input current (ampere) avg_input_current          \nfloat64 avg_id\nfloat64 avg_iq\nfloat64 duty_cycle           # duty cycle (0 to 1) duty_cycle_now\nfloat64 speed                # motor electrical speed (revolutions per minute) rpm\n\nfloat64 voltage_input        # input voltage (volt)\nfloat64 charge_drawn         # electric charge drawn from input (ampere-hours)\nfloat64 charge_regen         # electric charge regenerated to input (ampere-hour) amp_hours_charged    \nfloat64 energy_drawn         # energy drawn from input (watt-hour)\nfloat64 energy_regen         # energy regenerated to input (watt_hours_charged)\nint32   displacement         # net tachometer (counts) tachometer\nint32   distance_traveled    # total tachnometer (counts) tachometer_abs\nint32   fault_code\n\nfloat64 pid_pos_now\nint32 controller_id\n\n\nfloat64 ntc_temp_mos1\nfloat64 ntc_temp_mos2\nfloat64 ntc_temp_mos3\nfloat64 avg_vd\nfloat64 avg_vq\n\n#float64 temperature_pcb      # temperature of printed circuit board (degrees Celsius)\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "FAULT_CODE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FAULT_CODE_OVER_VOLTAGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FAULT_CODE_UNDER_VOLTAGE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FAULT_CODE_DRV8302",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FAULT_CODE_ABS_OVER_CURRENT",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FAULT_CODE_OVER_TEMP_FET",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FAULT_CODE_OVER_TEMP_MOTOR",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "float64",
+          "name": "temp_fet",
+          "comment": "fet temperature",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "temp_motor",
+          "comment": "motor temperature",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "current_motor",
+          "comment": "motor current (ampere) avg_motor_current",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "current_input",
+          "comment": "input current (ampere) avg_input_current",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "avg_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "avg_iq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "duty_cycle",
+          "comment": "duty cycle (0 to 1) duty_cycle_now",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed",
+          "comment": "motor electrical speed (revolutions per minute) rpm",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "voltage_input",
+          "comment": "input voltage (volt)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "charge_drawn",
+          "comment": "electric charge drawn from input (ampere-hours)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "charge_regen",
+          "comment": "electric charge regenerated to input (ampere-hour) amp_hours_charged",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "energy_drawn",
+          "comment": "energy drawn from input (watt-hour)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "energy_regen",
+          "comment": "energy regenerated to input (watt_hours_charged)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "displacement",
+          "comment": "net tachometer (counts) tachometer",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "distance_traveled",
+          "comment": "total tachnometer (counts) tachometer_abs",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "fault_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pid_pos_now",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "controller_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ntc_temp_mos1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ntc_temp_mos2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "ntc_temp_mos3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "avg_vd",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "avg_vq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VescStateStamped": {
+      "description": "Timestamped VESC open source motor controller state (telemetry)",
+      "raw": "# Timestamped VESC open source motor controller state (telemetry)\n\nstd_msgs/Header  header\nVescState state\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "VescState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

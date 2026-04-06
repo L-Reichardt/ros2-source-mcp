@@ -1,0 +1,66 @@
+{
+  "name": "move_base_msgs",
+  "version": "2.0.2",
+  "description": "Holds the action description and relevant messages for the move_base package.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/move_base_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-planning/navigation_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "navigation_msgs",
+    "url": "https://github.com/ros-planning/navigation_msgs.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {
+    "MoveBase": {
+      "description": "",
+      "raw": "geometry_msgs/PoseStamped target_pose\n---\n---\ngeometry_msgs/PoseStamped base_position\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "target_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "base_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

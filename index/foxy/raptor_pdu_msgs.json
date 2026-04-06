@@ -1,0 +1,536 @@
+{
+  "name": "raptor_pdu_msgs",
+  "version": "1.2.0",
+  "description": "Messages for the New Eagle Multiplex Power Distribution Module (MPDM) interface\n    https://store.neweagle.net/product/multiplexed-power-distribution-module-mpdm/",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "raptor_dbw_ros2",
+    "url": "https://github.com/NewEagleRaptor/raptor-dbw-ros2.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "raptor_dbw_can",
+      "raptor_pdu"
+    ]
+  },
+  "messages": {
+    "FuseReport": {
+      "description": "Fuse status enumeration",
+      "raw": "std_msgs/Header header\n\n# Fuse status enumeration\nuint8 grid_address\n\nFuseStatus fuse_1\nFuseStatus fuse_2\nFuseStatus fuse_3\nFuseStatus fuse_4\nFuseStatus fuse_5\nFuseStatus fuse_6\nFuseStatus fuse_7\nFuseStatus fuse_8\nFuseStatus fuse_9\nFuseStatus fuse_10\nFuseStatus fuse_11\nFuseStatus fuse_12\nFuseStatus fuse_13\nFuseStatus fuse_14\nFuseStatus fuse_15\nFuseStatus fuse_16\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "grid_address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_4",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_5",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_6",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_7",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_9",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_10",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_11",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_12",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_13",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_14",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_15",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FuseStatus",
+          "name": "fuse_16",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FuseStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 value\n\nuint8 NO_FAULT = 0\nuint8 BLOWN = 1\nuint8 NOT_POWERED = 2\nuint8 NOT_USED = 3\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NO_FAULT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BLOWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_POWERED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NOT_USED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        }
+      ]
+    },
+    "RelayCommand": {
+      "description": "Relay state enumerations",
+      "raw": "std_msgs/Header header\n\n# Relay state enumerations\n\nRelayState relay_1\nRelayState relay_2\nRelayState relay_3\nRelayState relay_4\nRelayState relay_5\nRelayState relay_6\nRelayState relay_7\nRelayState relay_8\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayState",
+          "name": "relay_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayState",
+          "name": "relay_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayState",
+          "name": "relay_3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayState",
+          "name": "relay_4",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayState",
+          "name": "relay_5",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayState",
+          "name": "relay_6",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayState",
+          "name": "relay_7",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayState",
+          "name": "relay_8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RelayReport": {
+      "description": "Fuse status enumeration",
+      "raw": "std_msgs/Header header\n\n# Fuse status enumeration\nuint8 grid_address\n\nRelayStatus relay_1\nRelayStatus relay_2\nRelayStatus relay_3\nRelayStatus relay_4\nRelayStatus relay_5\nRelayStatus relay_6\nRelayStatus relay_7\nRelayStatus relay_8\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "grid_address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayStatus",
+          "name": "relay_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayStatus",
+          "name": "relay_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayStatus",
+          "name": "relay_3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayStatus",
+          "name": "relay_4",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayStatus",
+          "name": "relay_5",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayStatus",
+          "name": "relay_6",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayStatus",
+          "name": "relay_7",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RelayStatus",
+          "name": "relay_8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RelayState": {
+      "description": "MAINTAIN_STATE items perform the same function.",
+      "raw": "std_msgs/Header header\n\nuint8 value\n\n# MAINTAIN_STATE items perform the same function.\nuint8 RELAY_OFF = 0\nuint8 RELAY_ON = 1\nuint8 MAINTAIN_STATE = 2\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "RELAY_OFF",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELAY_ON",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MAINTAIN_STATE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "RelayStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 value\n\nuint8 OK = 0\nuint8 RELAY_COIL_OPEN = 1\nuint8 RELAY_COIL_SHORTED = 2\nuint8 NORM_OPEN_RELAY_OPEN = 3\nuint8 NORM_CLOSED_RELAY_OPEN = 4\nuint8 COIL_NOT_POWERED = 5\nuint8 NORM_OPEN_RELAY_SHORTED = 6\nuint8 NORM_CLOSED_RELAY_SHORTED = 7\nuint8 RESERVED_01 = 8\nuint8 RESERVED_02 = 9\nuint8 RESERVED_03 = 10\nuint8 HIGH_SIDE_FAULT = 11\nuint8 HIGH_SIDE_OPEN_LOAD = 12\nuint8 HIGH_SIDE_OVER_VOLTAGE = 13\nuint8 RESERVED_04 = 14\nuint8 RELAY_LOCATION_NOT_USED = 15\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELAY_COIL_OPEN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELAY_COIL_SHORTED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NORM_OPEN_RELAY_OPEN",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NORM_CLOSED_RELAY_OPEN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COIL_NOT_POWERED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NORM_OPEN_RELAY_SHORTED",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NORM_CLOSED_RELAY_SHORTED",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESERVED_01",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESERVED_02",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESERVED_03",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HIGH_SIDE_FAULT",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HIGH_SIDE_OPEN_LOAD",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HIGH_SIDE_OVER_VOLTAGE",
+          "comment": "",
+          "default": "13",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESERVED_04",
+          "comment": "",
+          "default": "14",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RELAY_LOCATION_NOT_USED",
+          "comment": "",
+          "default": "15",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

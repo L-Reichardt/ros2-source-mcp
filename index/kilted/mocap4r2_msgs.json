@@ -1,0 +1,235 @@
+{
+  "name": "mocap4r2_msgs",
+  "version": "0.2.0",
+  "description": "Interfaces for Mocap4ROS2 project",
+  "license": "Apache License, Version 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "mocap4r2_msgs",
+    "url": "https://github.com/MOCAP4ROS2-Project/mocap4r2_msgs.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "std_msgs",
+      "geometry_msgs",
+      "builtin_interfaces",
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "ImusInfo": {
+      "description": "",
+      "raw": "string[] sensor_ids\nfloat32 battery_level\nfloat32 temperature\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "sensor_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "battery_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Marker": {
+      "description": "",
+      "raw": "int8 USE_NAME=0\nint8 USE_INDEX=1\nint8 USE_BOTH=2\n\nint8 id_type\nint32 marker_index\nstring marker_name\ngeometry_msgs/Point translation",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "USE_NAME",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "USE_INDEX",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "USE_BOTH",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "id_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "marker_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "marker_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Markers": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 frame_number\nmocap4r2_msgs/Marker[] markers\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "frame_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "mocap4r2_msgs/Marker[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RigidBodies": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint32 frame_number\nmocap4r2_msgs/RigidBody[] rigidbodies\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "frame_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "mocap4r2_msgs/RigidBody[]",
+          "name": "rigidbodies",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RigidBody": {
+      "description": "",
+      "raw": "string rigid_body_name\nMarker[] markers\ngeometry_msgs/Pose pose\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "rigid_body_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Marker[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "CreateRigidBody": {
+      "description": "",
+      "raw": "string rigid_body_name\nstring link_parent\nint32[] markers\n\n---\nbool success",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "rigid_body_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "link_parent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

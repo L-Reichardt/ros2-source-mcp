@@ -1,0 +1,82 @@
+{
+  "name": "spatio_temporal_voxel_layer",
+  "version": "2.3.4",
+  "description": "The spatio-temporal 3D obstacle costmap package",
+  "license": "LGPL v2.1",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "spatio_temporal_voxel_layer",
+    "url": "https://github.com/SteveMacenski/spatio_temporal_voxel_layer.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "nav2_costmap_2d",
+      "geometry_msgs",
+      "pluginlib",
+      "sensor_msgs",
+      "std_msgs",
+      "std_srvs",
+      "laser_geometry",
+      "libpcl-all",
+      "pcl_conversions",
+      "rclcpp",
+      "message_filters",
+      "tf2_ros",
+      "tf2_geometry_msgs",
+      "tf2_sensor_msgs",
+      "visualization_msgs",
+      "openvdb_vendor",
+      "libopenexr-dev"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "SaveGrid": {
+      "description": "",
+      "raw": "string file_name\n---\nfloat64 map_size_bytes\nbool status",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "file_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "float64",
+          "name": "map_size_bytes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

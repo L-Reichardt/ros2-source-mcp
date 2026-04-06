@@ -1,0 +1,2851 @@
+{
+  "name": "control_msgs",
+  "version": "6.9.0",
+  "description": "control_msgs contains base messages and actions useful for\n    controlling robots. It provides representations for controller\n    setpoints and joint and cartesian trajectories.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://control.ros.org",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "control_msgs",
+    "url": "https://github.com/ros-controls/control_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "builtin_interfaces",
+      "diagnostic_msgs",
+      "geometry_msgs",
+      "sensor_msgs",
+      "std_msgs",
+      "trajectory_msgs"
+    ],
+    "depended_on_by": [
+      "ackermann_steering_controller",
+      "admittance_controller",
+      "bicycle_steering_controller",
+      "control_toolbox",
+      "gpio_controllers",
+      "gz_ros2_control_demos",
+      "gz_ros2_control_demos",
+      "hardware_interface",
+      "hardware_interface_testing",
+      "joint_state_broadcaster",
+      "joint_state_topic_hardware_interface",
+      "joint_trajectory_controller",
+      "joy_teleop",
+      "mecanum_drive_controller",
+      "motion_primitives_controllers",
+      "open_manipulator_teleop",
+      "parallel_gripper_controller",
+      "pid_controller",
+      "play_motion2",
+      "robot_calibration",
+      "rosbridge_library",
+      "rqt_joint_trajectory_controller",
+      "state_interfaces_broadcaster",
+      "steering_controllers_library",
+      "tricycle_steering_controller",
+      "ur_controllers",
+      "ur_msgs",
+      "ur_robot_driver",
+      "webots_ros2_universal_robot"
+    ]
+  },
+  "messages": {
+    "AdmittanceControllerState": {
+      "description": "Admittance parameters",
+      "raw": "# Admittance parameters\nstd_msgs/Float64MultiArray mass  # 6-vector of mass terms used in the admittance calculation\nstd_msgs/Float64MultiArray damping # 6-vector of damping terms used in the admittance calculation\nstd_msgs/Float64MultiArray stiffness # 6-vector of stiffness terms used in the admittance calculation\n\n# Frame information\ngeometry_msgs/Quaternion rot_base_control # quaternion describing the orientation of the control frame\ngeometry_msgs/TransformStamped ref_trans_base_ft # force torque sensor transform at the reference joint configuration\nstd_msgs/Int8MultiArray selected_axes # 6-vector of 0/1 describing if admittance is enable in the corresponding control frame axis\nstd_msgs/String ft_sensor_frame # name of the force torque frame\n\n# State information\ngeometry_msgs/TransformStamped admittance_position # calculated admittance position in cartesian space\ngeometry_msgs/TwistStamped admittance_acceleration # calculated admittance acceleration in cartesian space\ngeometry_msgs/TwistStamped admittance_velocity # calculated admittance velocity in cartesian space\ngeometry_msgs/WrenchStamped wrench_base # wrench used in the admittance calculation\nsensor_msgs/JointState joint_state # calculated admittance offsets in joint space\n",
+      "fields": [
+        {
+          "type": "std_msgs/Float64MultiArray",
+          "name": "mass",
+          "comment": "6-vector of mass terms used in the admittance calculation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Float64MultiArray",
+          "name": "damping",
+          "comment": "6-vector of damping terms used in the admittance calculation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Float64MultiArray",
+          "name": "stiffness",
+          "comment": "6-vector of stiffness terms used in the admittance calculation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "rot_base_control",
+          "comment": "quaternion describing the orientation of the control frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TransformStamped",
+          "name": "ref_trans_base_ft",
+          "comment": "force torque sensor transform at the reference joint configuration",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/Int8MultiArray",
+          "name": "selected_axes",
+          "comment": "6-vector of 0/1 describing if admittance is enable in the corresponding control frame axis",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "ft_sensor_frame",
+          "comment": "name of the force torque frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TransformStamped",
+          "name": "admittance_position",
+          "comment": "calculated admittance position in cartesian space",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistStamped",
+          "name": "admittance_acceleration",
+          "comment": "calculated admittance acceleration in cartesian space",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistStamped",
+          "name": "admittance_velocity",
+          "comment": "calculated admittance velocity in cartesian space",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/WrenchStamped",
+          "name": "wrench_base",
+          "comment": "wrench used in the admittance calculation",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "joint_state",
+          "comment": "calculated admittance offsets in joint space",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BatteryStateArray": {
+      "description": "This message publishes values for multiple batteries at once.",
+      "raw": "# This message publishes values for multiple batteries at once.\nsensor_msgs/BatteryState[] battery_states\n",
+      "fields": [
+        {
+          "type": "sensor_msgs/BatteryState[]",
+          "name": "battery_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CANopenState": {
+      "description": "This message presents CANopen-specific device state information",
+      "raw": "# This message presents CANopen-specific device state information\n# Refer CiA 301 and CiA 402 application layer documentation\n\n# The CANopen node ID of the device (1-127)\nuint8 node_id\n\n# --- CiA 301 State -------------------------------------------------\n# Network Management state, see NMTState constants below\nuint8 nmt_state\n\n# --- CiA 402 State (for drives) ------------------------------------\n# Drive state machine state for motion control devices, see DSP402State constants below\nuint8 dsp_402_state\n\n# --- Error Reporting -----------------------------------------------\n# Last Emergency (EMCY) error code received from the device\nuint32 last_emcy_code\n\n# --- NMT State Constants -------------------------------------------\n# CiA 301 Network Management states\nuint8 NMT_INITIALISING      = 0   # Device is initializing\nuint8 NMT_PRE_OPERATIONAL   = 127 # Device is in pre-operational state\nuint8 NMT_OPERATIONAL       = 5   # Device is operational\nuint8 NMT_STOPPED           = 4   # Device is stopped\n\n# --- DSP 402 State Constants ---------------------------------------\n# CiA 402 Drive state machine states\nuint8 DSP402_NOT_READY_TO_SWITCH_ON    = 0  # Not ready to switch on\nuint8 DSP402_SWITCH_ON_DISABLED        = 1  # Switch on disabled\nuint8 DSP402_READY_TO_SWITCH_ON        = 2  # Ready to switch on\nuint8 DSP402_SWITCHED_ON               = 3  # Switched on\nuint8 DSP402_OPERATION_ENABLED         = 4  # Operation enabled\nuint8 DSP402_QUICK_STOP_ACTIVE         = 5  # Quick stop active\nuint8 DSP402_FAULT_REACTION_ACTIVE     = 6  # Fault reaction active\nuint8 DSP402_FAULT                     = 7  # Fault state\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "nmt_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "dsp_402_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "last_emcy_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "NMT_INITIALISING",
+          "comment": "Device is initializing",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NMT_PRE_OPERATIONAL",
+          "comment": "Device is in pre-operational state",
+          "default": "127",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NMT_OPERATIONAL",
+          "comment": "Device is operational",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NMT_STOPPED",
+          "comment": "Device is stopped",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DSP402_NOT_READY_TO_SWITCH_ON",
+          "comment": "Not ready to switch on",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DSP402_SWITCH_ON_DISABLED",
+          "comment": "Switch on disabled",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DSP402_READY_TO_SWITCH_ON",
+          "comment": "Ready to switch on",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DSP402_SWITCHED_ON",
+          "comment": "Switched on",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DSP402_OPERATION_ENABLED",
+          "comment": "Operation enabled",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DSP402_QUICK_STOP_ACTIVE",
+          "comment": "Quick stop active",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DSP402_FAULT_REACTION_ACTIVE",
+          "comment": "Fault reaction active",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DSP402_FAULT",
+          "comment": "Fault state",
+          "default": "7",
+          "is_constant": true
+        }
+      ]
+    },
+    "DynamicInterfaceGroupValues": {
+      "description": "List of interface group names , e.g. [\"flange_analog_IOs\", \"flange_vacuum\"]",
+      "raw": "std_msgs/Header header\n\n# List of interface group names , e.g. [\"flange_analog_IOs\", \"flange_vacuum\"]\nstring[] interface_groups\n# Key-value pairs representing interfaces and their corresponding values for each interface group listed in `interface_groups`\nInterfaceValue[] interface_values\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "interface_groups",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "InterfaceValue[]",
+          "name": "interface_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DynamicInterfaceValues": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nInterfaceValue states\nInterfaceValue commands\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "InterfaceValue",
+          "name": "states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "InterfaceValue",
+          "name": "commands",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DynamicJointState": {
+      "description": "List of resource names, e.g. [\"arm_joint_1\", \"arm_joint_2\", \"gripper_joint\"]",
+      "raw": "std_msgs/Header header\n\n# List of resource names, e.g. [\"arm_joint_1\", \"arm_joint_2\", \"gripper_joint\"]\nstring[] joint_names\n# Key-value pairs representing interfaces and their corresponding values for each joint listed in `joint_names`\nInterfaceValue[] interface_values\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "InterfaceValue[]",
+          "name": "interface_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EtherCATState": {
+      "description": "This message presents EtherCAT-specific device state information",
+      "raw": "# This message presents EtherCAT-specific device state information\n# Refer ETG.1000 EtherCAT Specification\n\n# Position of the slave on the bus (0, 1, 2...)\nuint16 slave_position\n\n# Unique vendor identifier from the device's ESI file\nstring vendor_id\n\n# Unique product code for the device from the device's ESI file\nstring product_code\n\n# --- EtherCAT State Machine (ESM) ----------------------------------\n# Application Layer state, see ALState constants below\nuint8 al_state\n\n# True if the slave is in an error state\nbool has_error\n\n# AL Status Code indicating the reason for an error (0 = no error)\nuint16 al_status_code\n\n# --- Application Layer State Constants -----------------------------\n# EtherCAT slave states according to ETG.1000\nuint8 AL_STATE_INIT    = 1   # INIT state - slave initialization\nuint8 AL_STATE_PREOP   = 2   # PREOP state - pre-operational, mailbox communication\nuint8 AL_STATE_BOOTSTRAP = 3 # BOOTSTRAP state - firmware update mode\nuint8 AL_STATE_SAFEOP  = 4   # SAFEOP state - safe operational, inputs updated\nuint8 AL_STATE_OP      = 8   # OP state - operational, full communication\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "slave_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "vendor_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "product_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "al_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "al_status_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "AL_STATE_INIT",
+          "comment": "INIT state - slave initialization",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AL_STATE_PREOP",
+          "comment": "PREOP state - pre-operational, mailbox communication",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AL_STATE_BOOTSTRAP",
+          "comment": "BOOTSTRAP state - firmware update mode",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AL_STATE_SAFEOP",
+          "comment": "SAFEOP state - safe operational, inputs updated",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AL_STATE_OP",
+          "comment": "OP state - operational, full communication",
+          "default": "8",
+          "is_constant": true
+        }
+      ]
+    },
+    "Float64Values": {
+      "description": "List of values corresponding to the interfaces or joints defined in Keys.msg",
+      "raw": "std_msgs/Header header\n\n# List of values corresponding to the interfaces or joints defined in Keys.msg\n# The size and order must match that of Keys.msg\n# Each value corresponds to the key at the same index in Keys.msg\n#\n# For example. if Keys.msg has keys = [\"joint1/position\", \"joint2/velocity\"], then\n# InterfacesValues.msg could have values = [1.57, 0.0]. The first value (1.57) corresponds to \"joint1/position\"\n# and the second value (0.0) corresponds to \"joint2/velocity\"\n#\n# This message is used by the interfaces_state_broadcaster to publish the values of the interfaces via\n# ROS 2 topics ~/names (Keys.msg) and ~/values (InterfacesValues.msg)\nfloat64[] values\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GenericHardwareState": {
+      "description": "This message encapsulates the general-purpose status fields, serving as a baseline for any hardware component",
+      "raw": "# This message encapsulates the general-purpose status fields, serving as a baseline for any hardware component\n\n# --- Health & Error ----------------------------------------------\n# Overall health status of the device, see HealthStatus constants below\nuint8 health_status\n\n# Array of device errors by category, see ErrorDomain constants below\nuint8[] error_domain\n\n# --- Operational State -------------------------------------------\n# Current operational mode of the device, see ModeStatus constants below\nuint8 operational_mode\n\n# Current power state of the device, see PowerState constants below\nuint8 power_state\n\n# Current connectivity status of the device, see ConnectivityStatus constants below\nuint8 connectivity_status\n\n# --- Vendor & Version Info ----------------------------------------\n# Device manufacturer name, e.g. \"Bosch\"\nstring manufacturer\n\n# Device model identifier, e.g. \"Lidar-XYZ-v2\"\nstring model\n\n# Current firmware version, e.g. \"1.2.3\"\nstring firmware_version\n\n# --- Optional Details for Context ---------------------------------\n# Provides specific quantitative values related to the enums above.\n# e.g., for power_state, could have {key: \"voltage\", value: \"24.1\"}\n# e.g., for connectivity, could have {key: \"signal_strength\", value: \"-55dBm\"}\ndiagnostic_msgs/KeyValue[] state_details\n\n# --- Health Status Constants -------------------------------------\n# High-level health indicators\nuint8 HEALTH_UNKNOWN  = 0\nuint8 HEALTH_OK       = 1\nuint8 HEALTH_DEGRADED = 2\nuint8 HEALTH_WARNING  = 3\n# Hardware stops publishing state when it returns ERROR/FATAL, how are these set/updated?\nuint8 HEALTH_ERROR    = 4\nuint8 HEALTH_FATAL    = 5\n\n# --- Error Domain Constants --------------------------------------\n# Error categories\nuint8 ERROR_NONE           = 0\nuint8 ERROR_UNKNOWN        = 1\nuint8 ERROR_HW             = 2  # generic hardware fault/error\nuint8 ERROR_SW             = 3  # generic software fault/error\nuint8 ERROR_OVER_TRAVEL    = 4  # Hardware stopped motion because position is over limits\n\n# Hardware/Software emergency and safety states\nuint8 EMERGENCY_STOP_HW    = 5  # state of the emergency stop hardware (i.e. e-stop button state)\nuint8 EMERGENCY_STOP_SW    = 6  # state of the emergency stop software system (over travel, pinch point)\nuint8 PROTECTIVE_STOP_HW   = 7  # state of the protective stop hardware (i.e. safety field state)\nuint8 PROTECTIVE_STOP_SW   = 8  # state of the software protective stop\nuint8 SAFETY_STOP          = 9\nuint8 CALIBRATION_REQUIRED = 10\n\n# --- Operational Mode Constants ----------------------------------\n# Mode of operation\nuint8 MODE_UNKNOWN              = 0\nuint8 MODE_MANUAL               = 1\nuint8 MODE_AUTO                 = 2  # automatic mode when the driver is remote controlling the hardware\nuint8 MODE_SAFE                 = 3  # what is the expected use case for this mode?\nuint8 MODE_MAINTENANCE          = 4\nuint8 MODE_JOG_MANUAL           = 5\nuint8 MODE_ADMITTANCE           = 6\nuint8 MODE_MONITORED_STOP       = 7\nuint8 MODE_HOLD_TO_RUN          = 8\nuint8 MODE_CARTESIAN_TWIST      = 9\nuint8 MODE_CARTESIAN_POSE       = 10\nuint8 MODE_TRAJECTORY_FORWARDING = 11\nuint8 MODE_TRAJECTORY_STREAMING  = 12\n\n# --- Power State Constants ---------------------------------------\n# Power states\nuint8 POWER_UNKNOWN         = 0\nuint8 POWER_OFF             = 1\nuint8 POWER_STANDBY         = 2\nuint8 POWER_ON              = 3\nuint8 POWER_SLEEP           = 4\nuint8 POWER_ERROR           = 5\n# Battery power states see BatteryState.msg\nuint8 POWER_LEVEL_LOW       = 6\nuint8 POWER_LEVEL_CRITICAL  = 7\nuint8 POWER_CHARGING        = 8\nuint8 POWER_CHARGING_ERROR  = 9\n\n# --- Connectivity Status Constants -------------------------------\n# Connectivity states\nuint8 CONNECT_UNKNOWN    = 0\nuint8 CONNECT_UP         = 1\nuint8 CONNECT_DOWN       = 2\nuint8 CONNECT_FAILURE    = 3\nuint8 CONNECTION_SLOW    = 4  # to tell the controlling system it is struggling to communicate at rate\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "health_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "error_domain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "operational_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "power_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "connectivity_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "manufacturer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "model",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/KeyValue[]",
+          "name": "state_details",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "HEALTH_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEALTH_OK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEALTH_DEGRADED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEALTH_WARNING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEALTH_ERROR",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HEALTH_FATAL",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_UNKNOWN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_HW",
+          "comment": "generic hardware fault/error",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_SW",
+          "comment": "generic software fault/error",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR_OVER_TRAVEL",
+          "comment": "Hardware stopped motion because position is over limits",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EMERGENCY_STOP_HW",
+          "comment": "state of the emergency stop hardware (i.e. e-stop button state)",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "EMERGENCY_STOP_SW",
+          "comment": "state of the emergency stop software system (over travel, pinch point)",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PROTECTIVE_STOP_HW",
+          "comment": "state of the protective stop hardware (i.e. safety field state)",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PROTECTIVE_STOP_SW",
+          "comment": "state of the software protective stop",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SAFETY_STOP",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CALIBRATION_REQUIRED",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_MANUAL",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_AUTO",
+          "comment": "automatic mode when the driver is remote controlling the hardware",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_SAFE",
+          "comment": "what is the expected use case for this mode?",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_MAINTENANCE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_JOG_MANUAL",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_ADMITTANCE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_MONITORED_STOP",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_HOLD_TO_RUN",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_CARTESIAN_TWIST",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_CARTESIAN_POSE",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_TRAJECTORY_FORWARDING",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODE_TRAJECTORY_STREAMING",
+          "comment": "",
+          "default": "12",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_OFF",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_STANDBY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_ON",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_SLEEP",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_ERROR",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_LEVEL_LOW",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_LEVEL_CRITICAL",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_CHARGING",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "POWER_CHARGING_ERROR",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONNECT_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONNECT_UP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONNECT_DOWN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONNECT_FAILURE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONNECTION_SLOW",
+          "comment": "to tell the controlling system it is struggling to communicate at rate",
+          "default": "4",
+          "is_constant": true
+        }
+      ]
+    },
+    "GripperCommand": {
+      "description": "",
+      "raw": "float64 position\nfloat64 max_effort\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_effort",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HardwareDeviceDiagnostics": {
+      "description": "This message presents current hardware device status information",
+      "raw": "# This message presents current hardware device status information\n\n# Header timestamp should be update time of device diagnostics\nstd_msgs/Header header\n\n# Unique identifier for the device, e.g. \"base_motor\", \"gripper_joint_1\"\nstring device_id\n\n# --- Diagnostic Entries --------------------------------------------\n# Key-value pairs representing diagnostic information for the device.\ndiagnostic_msgs/KeyValue[] entries\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/KeyValue[]",
+          "name": "entries",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HardwareDeviceStatus": {
+      "description": "This message presents current hardware device status information",
+      "raw": "# This message presents current hardware device status information\n\n# Header timestamp should be update time of device status\nstd_msgs/Header header\n\n# Unique identifier for the device, e.g. \"base_motor\", \"gripper_joint_1\"\nstring device_id\n\n# --- Standard-Specific States --------------------------------------\n# States populated based on the standards relevant to this device.\n# A device will only fill the arrays for the standards it implements, rest will be empty\n\n# Generic hardware status information applicable to any device, it is suggested to fill this for all devices\nGenericHardwareState[] hardware_status\n\n# CANopen-specific device states (DS-301/DS-402 compliant devices)\nCANopenState[] canopen_states\n\n# EtherCAT-specific device states (CoE, FoE, etc.)\nEtherCATState[] ethercat_states\n\n# VDA5050-specific states for AGV/mobile robot devices\nVDA5050State[] vda5050_states\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GenericHardwareState[]",
+          "name": "hardware_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CANopenState[]",
+          "name": "canopen_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "EtherCATState[]",
+          "name": "ethercat_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "VDA5050State[]",
+          "name": "vda5050_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HardwareDiagnostics": {
+      "description": "This message presents current hardware diagnostics",
+      "raw": "# This message presents current hardware diagnostics\n\n# Header timestamp should be update time of device diagnostics\nstd_msgs/Header header\n\n# Unique identifier per hardware component, ideally the name of the hardware derived from HardwareInfo e.g. \"pal_arm\"\nstring hardware_id\n\n# --- Device Diagnostics Aggregation ---------------------------------\n# Diagnostics for individual devices within this hardware set\nHardwareDeviceDiagnostics[] hardware_device_diagnostics\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hardware_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HardwareDeviceDiagnostics[]",
+          "name": "hardware_device_diagnostics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HardwareStatus": {
+      "description": "This message presents current hardware component status information",
+      "raw": "# This message presents current hardware component status information\n\n# Header timestamp should be update time of hardware status\nstd_msgs/Header header\n\n# Unique identifier per hardware component, ideally the name of the hardware derived from HardwareInfo e.g. \"pal_arm\"\nstring hardware_id\n\n# --- Device Status Aggregation ---------------------------------\n# An array containing the status of individual devices in the hardware component\nHardwareDeviceStatus[] hardware_device_states\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "hardware_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HardwareDeviceStatus[]",
+          "name": "hardware_device_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "InterfaceValue": {
+      "description": "List of resource interface names",
+      "raw": "# List of resource interface names\nstring[] interface_names\n# Values corresponding to the list of interfaces in `interface_names`, [1.0, 0.0] for example\nfloat64[] values\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "interface_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointComponentTolerance": {
+      "description": "Version of JointTolerance.msg with added component field for joints with multiple degrees of freedom",
+      "raw": "# Version of JointTolerance.msg with added component field for joints with multiple degrees of freedom\n# The difference between two MultiDOFJointTrajectoryPoint cannot be represented as a single number,\n# hence we use the component field to represent how to calculate the difference in a way that can\n# be represented as a single number.\n\n# Since each joint has multiple degrees of freedom,\n# there can be multiple tolerances for each joint, each looking\n# at different components.\n\n# If the component is X_AXIS, Y_AXIS, or Z_AXIS, then the tolerance\n# is only applied for the specific axis.\n# However, if the component is TRANSLATION, then the tolerance is for\n# the overall Euclidean distance.\n# For these components, the units are meters, meters/sec and meters/sec^2.\n# Z_AXIS is only valid with a floating joint, not planar.\n\n# If the component is ROTATION the tolerance is measured in\n# radians, radians/sec and radians/sec^2, computed\n# between the difference in quaternions.\n\nuint16 X_AXIS=1\nuint16 Y_AXIS=2\nuint16 Z_AXIS=3\nuint16 TRANSLATION=4\nuint16 ROTATION=5\n\nstring joint_name\nuint16 component\nfloat64 position\nfloat64 velocity\nfloat64 acceleration\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "X_AXIS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "Y_AXIS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "Z_AXIS",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "TRANSLATION",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ROTATION",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "joint_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "component",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointControllerState": {
+      "description": "This message presents current controller state of one joint.",
+      "raw": "# This message presents current controller state of one joint.\n\n# It is deprecated as of Humble in favor of SingleDOFStateStamped.msg\n\n# Header timestamp should be update time of controller state\nstd_msgs/Header header\n\n# The set point, that is, desired state.\nfloat64 set_point\n\n# Current value of the process (ie: latest sensor measurement on the controlled value).\nfloat64 process_value\n\n# First time-derivative of the process value.\nfloat64 process_value_dot\n\n# The error of the controlled value, essentially process_value - set_point (for a regular PID implementation).\nfloat64 error\n\n# Time between two consecutive updates/execution of the control law.\nfloat64 time_step\n\n# Current output of the controller.\nfloat64 command\n\n# Current PID parameters of the controller.\nfloat64 p\nfloat64 i\nfloat64 d\nfloat64 i_clamp\nbool antiwindup\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "set_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "process_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "process_value_dot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "time_step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "p",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i_clamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "antiwindup",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointJog": {
+      "description": "Used in time-stamping the message.",
+      "raw": "# Used in time-stamping the message.\nstd_msgs/Header header\n\n# Name list of the joints. You don't need to specify all joints of the\n# robot. Joint names are case-sensitive.\nstring[] joint_names\n\n# A position command to the joints listed in joint_names.\n# The order must be identical.\n# Units are meters or radians.\n# If displacements and velocities are filled, a profiled motion is requested.\nfloat64[] displacements # or position_deltas\n\n# A velocity command to the joints listed in joint_names.\n# The order must be identical.\n# Units are m/s or rad/s.\n# If displacements and velocities are filled, a profiled motion is requested.\nfloat64[] velocities\n\nfloat64 duration\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "displacements",
+          "comment": "or position_deltas",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "velocities",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointTolerance": {
+      "description": "The tolerances specify the amount the position, velocity, and",
+      "raw": "# The tolerances specify the amount the position, velocity, and\n# accelerations can vary from the setpoints.  For example, in the case\n# of trajectory control, when the actual position varies beyond\n# (desired position + position tolerance), the trajectory goal may\n# abort.\n#\n# There are two special values for tolerances:\n#  * 0 - The tolerance is unspecified and will remain at whatever the default is\n#  * -1 - The tolerance is \"erased\".  If there was a default, the joint will be\n#         allowed to move without restriction.\n\nstring name\nfloat64 position  # in radians or meters (for a revolute or prismatic joint, respectively)\nfloat64 velocity  # in rad/sec or m/sec\nfloat64 acceleration  # in rad/sec^2 or m/sec^2\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "in radians or meters (for a revolute or prismatic joint, respectively)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "in rad/sec or m/sec",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "acceleration",
+          "comment": "in rad/sec^2 or m/sec^2",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointTrajectoryControllerState": {
+      "description": "This message presents current controller state of JTC",
+      "raw": "# This message presents current controller state of JTC\n\n# Header timestamp should be update time of controller state\nstd_msgs/Header header\n\nstring[] joint_names\n# The set point, that is, desired state.\ntrajectory_msgs/JointTrajectoryPoint reference\n# Current value of the process (ie: latest sensor measurement on the controlled value).\ntrajectory_msgs/JointTrajectoryPoint feedback\n# The error of the controlled value, essentially reference - feedback (for a regular PID implementation).\ntrajectory_msgs/JointTrajectoryPoint error\n# Current output of the controller.\ntrajectory_msgs/JointTrajectoryPoint output\n\nstring[] multi_dof_joint_names\n# The set point, that is, desired state.\ntrajectory_msgs/MultiDOFJointTrajectoryPoint multi_dof_reference\n# Current value of the process (ie: latest sensor measurement on the controlled value).\ntrajectory_msgs/MultiDOFJointTrajectoryPoint multi_dof_feedback\n# The error of the controlled value, essentially reference - feedback (for a regular PID implementation).\ntrajectory_msgs/MultiDOFJointTrajectoryPoint multi_dof_error\n# Current output of the controller.\ntrajectory_msgs/MultiDOFJointTrajectoryPoint multi_dof_output\n# The speed scaling factor the trajectory is currently being executed with\nfloat64 speed_scaling_factor\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "reference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "feedback",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "multi_dof_joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectoryPoint",
+          "name": "multi_dof_reference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectoryPoint",
+          "name": "multi_dof_feedback",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectoryPoint",
+          "name": "multi_dof_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectoryPoint",
+          "name": "multi_dof_output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "speed_scaling_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointWrenchTrajectory": {
+      "description": "The header is used to specify the reference time for the trajectory durations",
+      "raw": "# The header is used to specify the reference time for the trajectory durations\nstd_msgs/Header header\n\n# The names of the active joints in each trajectory point. These names are\n# ordered and must correspond to the values in each trajectory point.\nstring[] joint_names\n\n# Array of trajectory points, which describe the joint positions, velocities,\n# accelerations and/or efforts, and task space wrenches at each time point.\ncontrol_msgs/JointWrenchTrajectoryPoint[] points\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/JointWrenchTrajectoryPoint[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointWrenchTrajectoryPoint": {
+      "description": "A joint-wrench trajectory point defines joint positions, joint velocities, joint accelerations, joint efforts, and a ...",
+      "raw": "# A joint-wrench trajectory point defines joint positions, joint velocities, joint accelerations, joint efforts, and a task space wrench, typically used by controllers.\n# Note: The time_from_start field is included in the JointTrajectoryPoint.\ntrajectory_msgs/JointTrajectoryPoint point\n\n# The task-space wrench to apply at this trajectory point.\ncontrol_msgs/WrenchFramed wrench\n",
+      "fields": [
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/WrenchFramed",
+          "name": "wrench",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Keys": {
+      "description": "List of names defining interfaces or joints or other string-based entities",
+      "raw": "std_msgs/Header header\n\n# List of names defining interfaces or joints or other string-based entities\n# being published with Keys.msg\nstring[] keys\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MecanumDriveControllerState": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 front_left_wheel_velocity\nfloat64 back_left_wheel_velocity\nfloat64 back_right_wheel_velocity\nfloat64 front_right_wheel_velocity\ngeometry_msgs/Twist reference_velocity\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "front_left_wheel_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "back_left_wheel_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "back_right_wheel_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "front_right_wheel_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "reference_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionArgument": {
+      "description": "Key Value pair to be used in MotionPrimitive messages",
+      "raw": "# Key Value pair to be used in MotionPrimitive messages\n\nstring name\nfloat64 value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionPrimitive": {
+      "description": "potentially more, such as spline motion",
+      "raw": "int8 UNKNOWN=-1\nint8 LINEAR_JOINT=0 # Often referred as PTP\nint8 LINEAR_CARTESIAN=50 # Often referred as LIN\nint8 CIRCULAR_CARTESIAN=51 # Often referred as CIRC\n# potentially more, such as spline motion\n\nint8 type -1 # one of the above\n\nfloat64 blend_radius\n\n# MotionArguments are meant to be used as vendor-specific or use-case-specific arguments to\n# MotionPrimitive messages. This is to avoid bloating the MotionPrimitive message with all possible\n# uses cases but rather add specific data using as a list of key-value pairs, which is what this\n# message represents.\nMotionArgument[] additional_arguments # (max) velocity, (max) acceleration, efficiency\n\n# Targets should be either specified through joint configurations or Cartesian poses.\n# Depending on the motion type and implementation, there might be multiple poses allowed.\n# For example, circular motions are often specified as via and target\n# Usually one of these is empty, in some edge cases even both can be empty, when all input is given\n# in the more flexible MotionArgument[] field.\ngeometry_msgs/PoseStamped[] poses\nfloat64[] joint_positions\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LINEAR_JOINT",
+          "comment": "Often referred as PTP",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "LINEAR_CARTESIAN",
+          "comment": "Often referred as LIN",
+          "default": "50",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CIRCULAR_CARTESIAN",
+          "comment": "Often referred as CIRC",
+          "default": "51",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "type",
+          "comment": "one of the above",
+          "default": "-1",
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "blend_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MotionArgument[]",
+          "name": "additional_arguments",
+          "comment": "(max) velocity, (max) acceleration, efficiency",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "joint_positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotionPrimitiveSequence": {
+      "description": "",
+      "raw": "MotionPrimitive[] motions\n",
+      "fields": [
+        {
+          "type": "MotionPrimitive[]",
+          "name": "motions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MultiDOFCommand": {
+      "description": "The message defines command for multiple degrees of freedom (DoF) typically used by many controllers.",
+      "raw": "# The message defines command for multiple degrees of freedom (DoF) typically used by many controllers.\n# The message intentionally avoids 'joint' nomenclature because it can be generally use for command with\n# different semantic meanings, e.g., joints, Cartesian axes, or have abstract meaning like GPIO interface.\n\n# names of degrees of freedom\nstring[] dof_names\n\n# values used by most of the controller\nfloat64[] values\n\n# First derivation of the values, e.g., velocity if values are positions.\n# This is useful for PID and similar controllers.\nfloat64[] values_dot\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "dof_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "values_dot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MultiDOFStateStamped": {
+      "description": "This message presents current controller state of multiple degrees of freedom.",
+      "raw": "# This message presents current controller state of multiple degrees of freedom.\n\n# Header timestamp should be update time of controller state\nstd_msgs/Header header\n\nSingleDOFState[] dof_states\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SingleDOFState[]",
+          "name": "dof_states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PidState": {
+      "description": "error = target - state",
+      "raw": "std_msgs/Header header\nbuiltin_interfaces/Duration timestep\n\n# error = target - state\nfloat64 error\n# derivative of error\nfloat64 error_dot\n\n# weighted integral of error\nfloat64 i_term\n\n# proportional gain\nfloat64 p_gain\n# integral gain\nfloat64 i_gain\n# derivative gain\nfloat64 d_gain\n\n# output of the PID controller\nfloat64 output\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "timestep",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error_dot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i_term",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "p_gain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i_gain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "d_gain",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SingleDOFState": {
+      "description": "This message presents current controller state of one degree of freedom.",
+      "raw": "# This message presents current controller state of one degree of freedom.\n\n# DoF name, e.g., joint or Cartesian axis name\nstring name\n\n# The set point, that is, desired state.\nfloat64 reference\n\n# Current value of the process (ie: latest sensor measurement on the controlled value).\nfloat64 feedback\n\n# First time-derivative of the process value. E.g., velocity.\nfloat64 feedback_dot\n\n# The error of the controlled value, essentially reference - feedback (for a regular PID implementation).\nfloat64 error\n\n# First time-derivative of the error of the controlled value.\nfloat64 error_dot\n\n# Time between two consecutive updates/execution of the control law.\nfloat64 time_step\n\n# Current output of the controller.\nfloat64 output\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "reference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "feedback",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "feedback_dot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error_dot",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "time_step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SingleDOFStateStamped": {
+      "description": "This message presents current controller state of one degree of freedom.",
+      "raw": "# This message presents current controller state of one degree of freedom.\n\n# Header timestamp should be update time of controller state\nstd_msgs/Header header\n\nSingleDOFState dof_state\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SingleDOFState",
+          "name": "dof_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpeedScalingFactor": {
+      "description": "This message contains a scaling factor to scale trajectory execution. A factor of 1.0 means",
+      "raw": "# This message contains a scaling factor to scale trajectory execution. A factor of 1.0 means\n# execution at normal speed, a factor of 0.0 means a full pause.\n# Negative values are not allowed (Which should be checked by any instance consuming this message).\n\nfloat64 factor\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringControllerCommand": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64 steering_angle  # in rad\nfloat64 linear_velocity # in m/s\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "steering_angle",
+          "comment": "in rad",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "linear_velocity",
+          "comment": "in m/s",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SteeringControllerStatus": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat64[] traction_wheels_position  # positions of traction wheels if the robot is controlled by position\nfloat64[] traction_wheels_velocity  # velocities of traction wheels if the robot is controlled by velocity\nfloat64[] steer_positions           # positions of steering joints\nfloat64[] traction_command          # values commanded to traction joints\nfloat64[] steering_angle_command    # values commanded to steering joints\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "traction_wheels_position",
+          "comment": "positions of traction wheels if the robot is controlled by position",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "traction_wheels_velocity",
+          "comment": "velocities of traction wheels if the robot is controlled by velocity",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "steer_positions",
+          "comment": "positions of steering joints",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "traction_command",
+          "comment": "values commanded to traction joints",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "steering_angle_command",
+          "comment": "values commanded to steering joints",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VDA5050SafetyState": {
+      "description": "autoAck: autoacknowledgeable e-stop is activated e.g. by bumper or protective field",
+      "raw": "string e_stop           # Enum {autoAck, manual, remote, none} Acknowledge-Type of eStop:\n                        # autoAck: autoacknowledgeable e-stop is activated e.g. by bumper or protective field\n                        # manual: e-stop has to be acknowledged manually at the vehicle\n                        # remote: facility estop has to be acknowledged remotely\n                        # none: no e-stop activated\nbool field_violation    # Protective field violation. True: field is violated False: field is not violated\n\n# Enums for eStop\nstring AUTO_ACK=\"autoAck\"\nstring MANUAL=\"manual\"\nstring REMOTE=\"remote\"\nstring NONE=\"none\"\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "e_stop",
+          "comment": "Enum {autoAck, manual, remote, none} Acknowledge-Type of eStop:",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "field_violation",
+          "comment": "Protective field violation. True: field is violated False: field is not violated",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "AUTO_ACK",
+          "comment": "",
+          "default": "\"autoAck\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MANUAL",
+          "comment": "",
+          "default": "\"manual\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "REMOTE",
+          "comment": "",
+          "default": "\"remote\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "NONE",
+          "comment": "",
+          "default": "\"none\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "VDA5050State": {
+      "description": "This message presents VDA5050-specific vehicle state information",
+      "raw": "# This message presents VDA5050-specific vehicle state information\n# For AGVs and AMRs compliant with VDA5050, this provides a snapshot of the vehicle's high-level status\n# Refer Official Specification document for the VDA 5050 - https://github.com/VDA5050/VDA5050\n\n# --- Order and Action Status ---------------------------------------\n# ID of the currently executed order\nstring order_id\n\n# Current action execution status, see ActionStatus constants below\nstring action_status\n\n# ID of the last reached node in the topology\nuint32 last_node_id\n\n# --- Vehicle State -------------------------------------------------\n# True if the vehicle's drives are active and vehicle is in motion\nbool driving\n\n# Current battery charge level in percent (0.0 - 100.0)\nfloat64 battery_charge\n\n# Current operating mode of the vehicle, see OperatingMode constants below\nstring operating_mode\n\n# --- Error Reporting -----------------------------------------------\n# Type/category of the current error, empty string if no error\nstring error_type\n\n# Human-readable description of the current error, empty string if no error\nstring error_description\n\n# --- Action Status Constants ---------------------------------------\n# VDA5050 action execution states\nstring ACTION_WAITING    = \"WAITING\"     # Action is waiting to be executed\nstring ACTION_INITIALIZING = \"INITIALIZING\" # Action is being initialized\nstring ACTION_RUNNING    = \"RUNNING\"     # Action is currently executing\nstring ACTION_PAUSED     = \"PAUSED\"      # Action execution is paused\nstring ACTION_FINISHED   = \"FINISHED\"    # Action completed successfully\nstring ACTION_FAILED     = \"FAILED\"      # Action execution failed\n\n# --- Operating Mode Constants -------------------------------------\n# VDA5050 vehicle operating modes\nstring MODE_AUTOMATIC    = \"AUTOMATIC\"   # Vehicle operates autonomously\nstring MODE_SEMI_AUTOMATIC = \"SEMIAUTOMATIC\" # Vehicle requires operator confirmation\nstring MODE_MANUAL       = \"MANUAL\"      # Vehicle is under manual control\nstring MODE_SERVICE      = \"SERVICE\"     # Vehicle is in service/maintenance mode\nstring MODE_EMERGENCY    = \"EMERGENCY\"   # Vehicle is in emergency mode\nstring MODE_TEACHIN      = \"TEACHIN\"     # Vehicle is in teach-in mode for route learning\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "order_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "last_node_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "driving",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "battery_charge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "operating_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ACTION_WAITING",
+          "comment": "Action is waiting to be executed",
+          "default": "\"WAITING\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ACTION_INITIALIZING",
+          "comment": "Action is being initialized",
+          "default": "\"INITIALIZING\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ACTION_RUNNING",
+          "comment": "Action is currently executing",
+          "default": "\"RUNNING\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ACTION_PAUSED",
+          "comment": "Action execution is paused",
+          "default": "\"PAUSED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ACTION_FINISHED",
+          "comment": "Action completed successfully",
+          "default": "\"FINISHED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ACTION_FAILED",
+          "comment": "Action execution failed",
+          "default": "\"FAILED\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODE_AUTOMATIC",
+          "comment": "Vehicle operates autonomously",
+          "default": "\"AUTOMATIC\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODE_SEMI_AUTOMATIC",
+          "comment": "Vehicle requires operator confirmation",
+          "default": "\"SEMIAUTOMATIC\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODE_MANUAL",
+          "comment": "Vehicle is under manual control",
+          "default": "\"MANUAL\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODE_SERVICE",
+          "comment": "Vehicle is in service/maintenance mode",
+          "default": "\"SERVICE\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODE_EMERGENCY",
+          "comment": "Vehicle is in emergency mode",
+          "default": "\"EMERGENCY\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODE_TEACHIN",
+          "comment": "Vehicle is in teach-in mode for route learning",
+          "default": "\"TEACHIN\"",
+          "is_constant": true
+        }
+      ]
+    },
+    "WrenchFramed": {
+      "description": "This message represents a wrench (force and torque) expressed in a specific reference frame.",
+      "raw": "# This message represents a wrench (force and torque) expressed in a specific reference frame.\n\n# The reference frame in which the wrench is expressed.\nstring frame_id\n\n# The wrench applied.\ngeometry_msgs/Wrench wrench\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench",
+          "name": "wrench",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "QueryCalibrationState": {
+      "description": "",
+      "raw": "---\nbool is_calibrated\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "is_calibrated",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "QueryTrajectoryState": {
+      "description": "",
+      "raw": "builtin_interfaces/Time time\n---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n\nstring[] name\nfloat64[] position\nfloat64[] velocity\nfloat64[] acceleration\n",
+      "request_fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetOdometry": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\nfloat64 z\nfloat64 roll\nfloat64 pitch\nfloat64 yaw\n---\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ExecuteMotionPrimitiveSequence": {
+      "description": "A list of MotionPrimitive messages that are executed in sequence. They don't have to be of the",
+      "raw": "# A list of MotionPrimitive messages that are executed in sequence. They don't have to be of the\n# same type, as long as the robot supports executing them one after another.\nMotionPrimitiveSequence trajectory\n---\nint32 SUCCESSFUL = 0\nint32 INVALID_GOAL = -1\nint32 OLD_HEADER_TIMESTAMP = -3\n\nint32 error_code\nstring error_string\n---\n# Index of the currently executed motion primitive in the sequence.\nuint8 current_primitive_index\n",
+      "goal_fields": [
+        {
+          "type": "MotionPrimitiveSequence",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "int32",
+          "name": "SUCCESSFUL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_GOAL",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "OLD_HEADER_TIMESTAMP",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "uint8",
+          "name": "current_primitive_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FollowJointTrajectory": {
+      "description": "The trajectory for all revolute, continuous or prismatic joints",
+      "raw": "# The trajectory for all revolute, continuous or prismatic joints\ntrajectory_msgs/JointTrajectory trajectory\n# The trajectory for all planar or floating joints (i.e. individual joints with more than one DOF)\ntrajectory_msgs/MultiDOFJointTrajectory multi_dof_trajectory\n\n# Tolerances for the trajectory.  If the measured joint values fall\n# outside the tolerances the trajectory goal is aborted.  Any\n# tolerances that are not specified (by being omitted or set to 0) are\n# set to the defaults for the action server (often taken from the\n# parameter server).\n\n# Tolerances applied to the joints as the trajectory is executed.  If\n# violated, the goal aborts with error_code set to\n# PATH_TOLERANCE_VIOLATED.\nJointTolerance[] path_tolerance\nJointComponentTolerance[] component_path_tolerance\n\n# To report success, the joints must be within goal_tolerance of the\n# final trajectory value.  The goal must be achieved by time the\n# trajectory ends plus goal_time_tolerance.  (goal_time_tolerance\n# allows some leeway in time, so that the trajectory goal can still\n# succeed even if the joints reach the goal some time after the\n# precise end time of the trajectory).\n#\n# If the joints are not within goal_tolerance after \"trajectory finish\n# time\" + goal_time_tolerance, the goal aborts with error_code set to\n# GOAL_TOLERANCE_VIOLATED\nJointTolerance[] goal_tolerance\nJointComponentTolerance[] component_goal_tolerance\nbuiltin_interfaces/Duration goal_time_tolerance\n\n---\nint32 error_code\nint32 SUCCESSFUL = 0\nint32 INVALID_GOAL = -1\nint32 INVALID_JOINTS = -2\nint32 OLD_HEADER_TIMESTAMP = -3\nint32 PATH_TOLERANCE_VIOLATED = -4\nint32 GOAL_TOLERANCE_VIOLATED = -5\n\n# Human readable description of the error code. Contains complementary\n# information that is especially useful when execution fails, for instance:\n# - INVALID_GOAL: The reason for the invalid goal (e.g., the requested\n#   trajectory is in the past).\n# - INVALID_JOINTS: The mismatch between the expected controller joints\n#   and those provided in the goal.\n# - PATH_TOLERANCE_VIOLATED and GOAL_TOLERANCE_VIOLATED: Which joint\n#   violated which tolerance, and by how much.\nstring error_string\n\n---\nstd_msgs/Header header\nstring[] joint_names\ntrajectory_msgs/JointTrajectoryPoint desired\ntrajectory_msgs/JointTrajectoryPoint actual\ntrajectory_msgs/JointTrajectoryPoint error\n# the currently used point from trajectory.points array\nint32 index\n\nstring[] multi_dof_joint_names\ntrajectory_msgs/MultiDOFJointTrajectoryPoint multi_dof_desired\ntrajectory_msgs/MultiDOFJointTrajectoryPoint multi_dof_actual\ntrajectory_msgs/MultiDOFJointTrajectoryPoint multi_dof_error\n# the currently used point from multi_dof_trajectory.points array\nint32 multi_dof_index\n",
+      "goal_fields": [
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectory",
+          "name": "multi_dof_trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointTolerance[]",
+          "name": "path_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointComponentTolerance[]",
+          "name": "component_path_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointTolerance[]",
+          "name": "goal_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointComponentTolerance[]",
+          "name": "component_goal_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "goal_time_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "SUCCESSFUL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_GOAL",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_JOINTS",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "OLD_HEADER_TIMESTAMP",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "PATH_TOLERANCE_VIOLATED",
+          "comment": "",
+          "default": "-4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "GOAL_TOLERANCE_VIOLATED",
+          "comment": "",
+          "default": "-5",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "desired",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "actual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/JointTrajectoryPoint",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "multi_dof_joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectoryPoint",
+          "name": "multi_dof_desired",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectoryPoint",
+          "name": "multi_dof_actual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "trajectory_msgs/MultiDOFJointTrajectoryPoint",
+          "name": "multi_dof_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "multi_dof_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FollowJointWrenchTrajectory": {
+      "description": "The joint trajectory to follow",
+      "raw": "# The joint trajectory to follow\ncontrol_msgs/JointWrenchTrajectory trajectory\n\n# Tolerances for the trajectory.  If the measured joint values fall\n# outside the tolerances the trajectory goal is aborted.  Any\n# tolerances that are not specified (by being omitted or set to 0) are\n# set to the defaults for the action server (often taken from the\n# parameter server).\n\n# Tolerances applied to the joints as the trajectory is executed.  If\n# violated, the goal aborts with error_code set to\n# PATH_TOLERANCE_VIOLATED.\ncontrol_msgs/JointTolerance[] path_tolerance\n\n# To report success, the joints must be within goal_tolerance of the\n# final trajectory value.  The goal must be achieved by time the\n# trajectory ends plus goal_time_tolerance.  (goal_time_tolerance\n# allows some leeway in time, so that the trajectory goal can still\n# succeed even if the joints reach the goal some time after the\n# precise end time of the trajectory).\n#\n# If the joints are not within goal_tolerance after \"trajectory finish\n# time\" + goal_time_tolerance, the goal aborts with error_code set to\n# GOAL_TOLERANCE_VIOLATED\ncontrol_msgs/JointTolerance[] goal_tolerance\nbuiltin_interfaces/Duration goal_time_tolerance\n\n---\nint32 error_code\nint32 SUCCESSFUL = 0\nint32 INVALID_GOAL = -1\nint32 INVALID_JOINTS = -2\nint32 OLD_HEADER_TIMESTAMP = -3\nint32 PATH_TOLERANCE_VIOLATED = -4\nint32 GOAL_TOLERANCE_VIOLATED = -5\nint32 TRAJECTORY_ABORTED = -6\n\n# Human readable description of the error code. Contains complementary\n# information that is especially useful when execution fails, for instance:\n# - INVALID_GOAL: The reason for the invalid goal (e.g., the requested\n#   trajectory requires a command that differ significantly from the\n#   robot's current state).\n# - INVALID_JOINTS: The mismatch between the expected controller joints\n#   and those provided in the goal.\n# - PATH_TOLERANCE_VIOLATED and GOAL_TOLERANCE_VIOLATED: Which joint\n#   violated which tolerance, and by how much.\n# - TRAJECTORY_ABORTED: Indicates that the trajectory was aborted during\n#   execution (e.g., another trajectory was sent for execution, or a\n#   problem occurred).\nstring error_string\n\n---\nstd_msgs/Header header\nstring[] joint_names\ncontrol_msgs/JointWrenchTrajectoryPoint desired\ncontrol_msgs/JointWrenchTrajectoryPoint actual\ncontrol_msgs/JointWrenchTrajectoryPoint error\n# the currently used point from trajectory.points array\nint32 index\n",
+      "goal_fields": [
+        {
+          "type": "control_msgs/JointWrenchTrajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/JointTolerance[]",
+          "name": "path_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/JointTolerance[]",
+          "name": "goal_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "goal_time_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "int32",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "SUCCESSFUL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_GOAL",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "INVALID_JOINTS",
+          "comment": "",
+          "default": "-2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "OLD_HEADER_TIMESTAMP",
+          "comment": "",
+          "default": "-3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "PATH_TOLERANCE_VIOLATED",
+          "comment": "",
+          "default": "-4",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "GOAL_TOLERANCE_VIOLATED",
+          "comment": "",
+          "default": "-5",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "TRAJECTORY_ABORTED",
+          "comment": "",
+          "default": "-6",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "joint_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/JointWrenchTrajectoryPoint",
+          "name": "desired",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/JointWrenchTrajectoryPoint",
+          "name": "actual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "control_msgs/JointWrenchTrajectoryPoint",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GripperCommand": {
+      "description": "",
+      "raw": "GripperCommand command\n---\nfloat64 position  # The current gripper gap size (in meters)\nfloat64 effort    # The current effort exerted (in Newtons)\nbool stalled      # True iff the gripper is exerting max effort and not moving\nbool reached_goal # True iff the gripper position has reached the commanded setpoint\n---\nfloat64 position  # The current gripper gap size (in meters)\nfloat64 effort    # The current effort exerted (in Newtons)\nbool stalled      # True iff the gripper is exerting max effort and not moving\nbool reached_goal # True iff the gripper position has reached the commanded setpoint\n",
+      "goal_fields": [
+        {
+          "type": "GripperCommand",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "The current gripper gap size (in meters)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "effort",
+          "comment": "The current effort exerted (in Newtons)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stalled",
+          "comment": "True iff the gripper is exerting max effort and not moving",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reached_goal",
+          "comment": "True iff the gripper position has reached the commanded setpoint",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "The current gripper gap size (in meters)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "effort",
+          "comment": "The current effort exerted (in Newtons)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stalled",
+          "comment": "True iff the gripper is exerting max effort and not moving",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reached_goal",
+          "comment": "True iff the gripper position has reached the commanded setpoint",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointTrajectory": {
+      "description": "",
+      "raw": "trajectory_msgs/JointTrajectory trajectory\n---\n---\n",
+      "goal_fields": [
+        {
+          "type": "trajectory_msgs/JointTrajectory",
+          "name": "trajectory",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "ParallelGripperCommand": {
+      "description": "Parallel grippers refer to an end effector where two opposing fingers grasp an object from opposite sides.",
+      "raw": "# Parallel grippers refer to an end effector where two opposing fingers grasp an object from opposite sides.\nsensor_msgs/JointState command\n# name: the name(s) of the joint this command is requesting\n# position: desired position of each gripper joint (radians or meters)\n# velocity: (optional, not used if empty) max velocity of the joint allowed while moving (radians or meters / second)\n# effort: (optional, not used if empty) max effort of the joint allowed while moving (Newtons or Newton-meters)\n---\nsensor_msgs/JointState state # The current gripper state.\n# position of each joint (radians or meters)\n# optional: velocity of each joint (radians or meters / second)\n# optional: effort of each joint (Newtons or Newton-meters)\nbool stalled      # True if the gripper is exerting max effort and not moving\nbool reached_goal # True if the gripper position has reached the commanded setpoint\n---\nsensor_msgs/JointState state # The current gripper state.\n# position of each joint (radians or meters)\n# optional: velocity of each joint (radians or meters / second)\n# optional: effort of each joint (Newtons or Newton-meters)\n",
+      "goal_fields": [
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "state",
+          "comment": "The current gripper state.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stalled",
+          "comment": "True if the gripper is exerting max effort and not moving",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reached_goal",
+          "comment": "True if the gripper position has reached the commanded setpoint",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "sensor_msgs/JointState",
+          "name": "state",
+          "comment": "The current gripper state.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointHead": {
+      "description": "",
+      "raw": "geometry_msgs/PointStamped target\ngeometry_msgs/Vector3 pointing_axis\nstring pointing_frame\nbuiltin_interfaces/Duration min_duration\nfloat64 max_velocity\n---\n---\nfloat64 pointing_angle_error\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PointStamped",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "pointing_axis",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pointing_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "min_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "pointing_angle_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SingleJointPosition": {
+      "description": "",
+      "raw": "float64 position\nbuiltin_interfaces/Duration min_duration\nfloat64 max_velocity\n---\n---\nstd_msgs/Header header\nfloat64 position\nfloat64 velocity\nfloat64 error\n",
+      "goal_fields": [
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "min_duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

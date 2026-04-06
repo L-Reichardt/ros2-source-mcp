@@ -1,0 +1,61 @@
+{
+  "name": "kinematic_pose_msgs",
+  "version": "1.0.0",
+  "description": "A package containing the Kinematic Pose message, for dynamic pose tracking.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "kinematic_pose_msgs",
+    "url": "https://github.com/qleonardolp/kinematic_pose_msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "KinematicPose": {
+      "description": "Linear and angular position in free space.",
+      "raw": "# Linear and angular position in free space.\ngeometry_msgs/Pose pose\n\n# Linear and angular velocity in free space.\ngeometry_msgs/Twist pose_twist\n\n# Linear and angular accelerations in free space.\ngeometry_msgs/Accel pose_accel\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Twist",
+          "name": "pose_twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Accel",
+          "name": "pose_accel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,46 @@
+{
+  "name": "kuka_gazebo",
+  "version": "1.0.0",
+  "description": "A helper package for Gazebo support with KUKA robots",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "kuka_robot_descriptions",
+    "url": "https://github.com/kroshu/kuka_robot_descriptions.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "gz_ros2_control",
+      "ros_gz_bridge",
+      "ros_gz_sim",
+      "xacro",
+      "urdf",
+      "robot_state_publisher",
+      "controller_manager"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "moveit_ros_planning_interface",
+      "moveit_visual_tools"
+    ],
+    "depended_on_by": [
+      "kuka_agilus_support",
+      "kuka_fortec_support",
+      "kuka_iontec_support",
+      "kuka_lbr_iisy_support",
+      "kuka_quantec_support"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,361 @@
+{
+  "name": "mrpt_nav_interfaces",
+  "version": "2.2.1",
+  "description": "Message, services, and actions, for other mrpt navigation packages.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/mrpt-ros-pkg/mrpt_navigation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mrpt_navigation",
+    "url": "https://github.com/mrpt-ros-pkg/mrpt_navigation.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "geometry_msgs",
+      "mrpt_msgs",
+      "nav_msgs"
+    ],
+    "depended_on_by": [
+      "mrpt_map_server",
+      "mrpt_navigation",
+      "mrpt_reactivenav2d",
+      "mrpt_tps_astar_planner"
+    ]
+  },
+  "messages": {
+    "GeoreferencingMetadata": {
+      "description": "For a diagram of the frames defined in this message, refer to online docs:",
+      "raw": "# For a diagram of the frames defined in this message, refer to online docs: \n# https://docs.mola-slam.org/latest/geo-referencing.html\n\n# This is true only if the map is georeferenced. If it is false,\n# the rest of the fields in this message should be ignored.\nbool valid\n\ngeometry_msgs/PoseWithCovariance t_enu_to_map\ngeometry_msgs/Pose t_enu_to_utm\n\n# The geodetic coordinates of the ENU reference frame:\nfloat64 latitude\nfloat64 longitude\nfloat64 height\n\n# UTM zone, for the ENU point.\nint32 utm_zone\nstring utm_band  # just one letter (or empty if valid=false)\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "t_enu_to_map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "t_enu_to_utm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "utm_zone",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "utm_band",
+          "comment": "just one letter (or empty if valid=false)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavigationFeedback": {
+      "description": "",
+      "raw": "int16 total_waypoints\nint16 reached_waypoints\n",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "total_waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "reached_waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavigationFinalStatus": {
+      "description": "",
+      "raw": "int8 navigation_status\n\nint8 STATUS_SUCCESS=0\nint8 STATUS_ERROR=1\nint8 STATUS_CANCELLED=2\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "navigation_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_SUCCESS",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_ERROR",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_CANCELLED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetGridmapLayer": {
+      "description": "",
+      "raw": "string layer_name\n---\nbool valid\nnav_msgs/OccupancyGrid grid",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "layer_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "nav_msgs/OccupancyGrid",
+          "name": "grid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetLayers": {
+      "description": "",
+      "raw": "---\nstring[] layers\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "layers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPointmapLayer": {
+      "description": "",
+      "raw": "string layer_name\n---\nbool valid\nsensor_msgs/PointCloud2 points",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "layer_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MakePlanFromTo": {
+      "description": "This service requests a given server node to:",
+      "raw": "# This service requests a given server node to:\n# - Use all current obstacles from all configured obstacle sources in the node configuration,\n# - Make a plan to go from the given robot pose to the requested pose in this service request.\n\n# Start pose\ngeometry_msgs/Pose start\n# Goal pose\ngeometry_msgs/Pose target\n---\n# Result\nbool valid_path_found\nmrpt_msgs/WaypointSequence waypoints\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "valid_path_found",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "mrpt_msgs/WaypointSequence",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MakePlanTo": {
+      "description": "This service requests a given server node to:",
+      "raw": "# This service requests a given server node to:\n# - Use all current obstacles from all configured obstacle sources in the node configuration,\n# - Use /tf to find out the current robot pose,\n# - Make a plan to go from the current robot pose, to the requested pose in this service request.\n\n# Goal\ngeometry_msgs/PoseStamped target\n---\n# Result\nbool valid_path_found\nmrpt_msgs/WaypointSequence waypoints\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "valid_path_found",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "mrpt_msgs/WaypointSequence",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "NavigateGoal": {
+      "description": "Goal",
+      "raw": "# Goal\ngeometry_msgs/PoseStamped target\n---\n# Result\nmrpt_nav_interfaces/NavigationFinalStatus state\n---\n# Feedback\nmrpt_nav_interfaces/NavigationFeedback state\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "mrpt_nav_interfaces/NavigationFinalStatus",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "mrpt_nav_interfaces/NavigationFeedback",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavigateWaypoints": {
+      "description": "Goal",
+      "raw": "# Goal\nmrpt_msgs/WaypointSequence waypoints\n---\n# Result\nmrpt_nav_interfaces/NavigationFinalStatus state\n---\n# Feedback\nmrpt_nav_interfaces/NavigationFeedback state\n",
+      "goal_fields": [
+        {
+          "type": "mrpt_msgs/WaypointSequence",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "mrpt_nav_interfaces/NavigationFinalStatus",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "mrpt_nav_interfaces/NavigationFeedback",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

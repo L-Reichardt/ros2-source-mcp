@@ -1,0 +1,263 @@
+{
+  "name": "camera_aravis2_msgs",
+  "version": "1.0.0",
+  "description": "Messages and service definitions for the camera_aravis2 package.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "camera_aravis2",
+    "url": "https://github.com/FraunhoferIOSB/camera_aravis2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "sensor_msgs",
+      "diagnostic_msgs"
+    ],
+    "depended_on_by": [
+      "camera_aravis2"
+    ]
+  },
+  "messages": {
+    "CameraDiagnostics": {
+      "description": "Camera diagnostics message",
+      "raw": "# Camera diagnostics message\n\nstd_msgs/Header header\n\n# Array of key-value pairs holding the diagnostic data\ndiagnostic_msgs/KeyValue[] data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/KeyValue[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetBooleanFeatureValue": {
+      "description": "",
+      "raw": "string feature\n---\nbool response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetFloatFeatureValue": {
+      "description": "",
+      "raw": "string feature\n---\nfloat64 response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "float64",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetIntegerFeatureValue": {
+      "description": "",
+      "raw": "string feature\n---\nint64 response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetStringFeatureValue": {
+      "description": "",
+      "raw": "string feature\n---\nstring response\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "response",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetBooleanFeatureValue": {
+      "description": "",
+      "raw": "string feature\nbool value\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetFloatFeatureValue": {
+      "description": "",
+      "raw": "string feature\nfloat64 value\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetIntegerFeatureValue": {
+      "description": "",
+      "raw": "string feature\nint64 value\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetStringFeatureValue": {
+      "description": "",
+      "raw": "string feature\nstring value\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "feature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

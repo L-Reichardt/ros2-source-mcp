@@ -1,0 +1,60 @@
+{
+  "name": "dbw_ford_can",
+  "version": "2.1.1",
+  "description": "Drive-by-wire interface to the Dataspeed Inc. Ford DBW kit",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://dataspeedinc.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://bitbucket.org/DataspeedInc/dbw_ros/",
+      "type": "repository"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dbw_ros",
+    "url": "https://bitbucket.org/dataspeedinc/dbw_ros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "dataspeed_can_msg_filters"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "dataspeed_can_usb",
+      "dbw_ford_description",
+      "dataspeed_dbw_gateway",
+      "dataspeed_ulc_can"
+    ],
+    "test": [
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "dataspeed_dbw_common",
+      "std_msgs",
+      "geometry_msgs",
+      "sensor_msgs",
+      "can_msgs",
+      "dbw_ford_msgs"
+    ],
+    "depended_on_by": [
+      "dbw_ford",
+      "dbw_ford_joystick_demo"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

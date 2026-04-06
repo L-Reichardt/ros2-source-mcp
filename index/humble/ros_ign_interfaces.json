@@ -1,0 +1,815 @@
+{
+  "name": "ros_ign_interfaces",
+  "version": "0.244.24",
+  "description": "Shim package to redirect to ros_gz_interfaces.",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros_gz",
+    "url": "https://github.com/gazebosim/ros_gz.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "ros_gz_interfaces",
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "ros_gz_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "simulation",
+      "turtlebot4_ignition_bringup",
+      "turtlebot4_ignition_toolbox"
+    ]
+  },
+  "messages": {
+    "Contact": {
+      "description": "",
+      "raw": "ros_gz_interfaces/Entity collision1        # Contact collision1\nros_gz_interfaces/Entity collision2        # Contact collision2\ngeometry_msgs/Vector3[] positions           # List of contact position\ngeometry_msgs/Vector3[] normals             # List of contact normals\nfloat64[] depths                            # List of penetration depths\nros_gz_interfaces/JointWrench[] wrenches   # List of joint wrenches including forces/torques\n",
+      "fields": [
+        {
+          "type": "ros_gz_interfaces/Entity",
+          "name": "collision1",
+          "comment": "Contact collision1",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ros_gz_interfaces/Entity",
+          "name": "collision2",
+          "comment": "Contact collision2",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[]",
+          "name": "positions",
+          "comment": "List of contact position",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3[]",
+          "name": "normals",
+          "comment": "List of contact normals",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "depths",
+          "comment": "List of penetration depths",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ros_gz_interfaces/JointWrench[]",
+          "name": "wrenches",
+          "comment": "List of joint wrenches including forces/torques",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Contacts": {
+      "description": "",
+      "raw": "std_msgs/Header header                  # Time stamp\nros_gz_interfaces/Contact[] contacts   # List of contacts\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Time stamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ros_gz_interfaces/Contact[]",
+          "name": "contacts",
+          "comment": "List of contacts",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Entity": {
+      "description": "Entity type: constant definition",
+      "raw": "# Entity type: constant definition\nuint8 NONE      = 0\nuint8 LIGHT     = 1\nuint8 MODEL     = 2\nuint8 LINK      = 3\nuint8 VISUAL    = 4\nuint8 COLLISION = 5\nuint8 SENSOR    = 6\nuint8 JOINT     = 7\n\nuint64 id      # Entity unique identifier across all types. Defaults to 0\nstring name    # Entity name, which is not guaranteed to be unique.\nuint8 type     # Entity type.\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LIGHT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MODEL",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LINK",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "VISUAL",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COLLISION",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SENSOR",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "JOINT",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint64",
+          "name": "id",
+          "comment": "Entity unique identifier across all types. Defaults to 0",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Entity name, which is not guaranteed to be unique.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "Entity type.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EntityFactory": {
+      "description": "overlap with existing entities.",
+      "raw": "string name                             # New name for the entity, overrides the name on the SDF\nbool allow_renaming false               # Whether the server is allowed to rename the entity in case of\n                                        # overlap with existing entities.\n\n# Only one method is supported at a time (sdf,sdf_filename,clone_name)\nstring sdf                              # SDF description in string format\nstring sdf_filename                     # Full path to SDF file.\nstring clone_name                       # Name of entity to clone\n\ngeometry_msgs/Pose pose                 # Pose where the entity will be spawned in the world.\nstring relative_to \"world\"              # Pose is defined relative to the frame of this entity.\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "New name for the entity, overrides the name on the SDF",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "allow_renaming",
+          "comment": "Whether the server is allowed to rename the entity in case of",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sdf",
+          "comment": "SDF description in string format",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sdf_filename",
+          "comment": "Full path to SDF file.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "clone_name",
+          "comment": "Name of entity to clone",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "Pose where the entity will be spawned in the world.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "relative_to",
+          "comment": "Pose is defined relative to the frame of this entity.",
+          "default": "\"world\"",
+          "is_constant": false
+        }
+      ]
+    },
+    "GuiCamera": {
+      "description": "Message for a GUI Camera.",
+      "raw": "# Message for a GUI Camera.\n\n# Optional header data.\nstd_msgs/Header header\n\nstring name\nstring view_controller\ngeometry_msgs/Pose pose\nTrackVisual track\n\n# Type of projection: \"perspective\" or \"orthographic\".\nstring projection_type\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "view_controller",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrackVisual",
+          "name": "track",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "projection_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointWrench": {
+      "description": "",
+      "raw": "std_msgs/Header header                  # Time stamp\nstd_msgs/String body_1_name             # Body 1 name string\nstd_msgs/UInt32 body_1_id               # Body 1 id\nstd_msgs/String body_2_name             # Body 2 name string\nstd_msgs/UInt32 body_2_id               # Body 2 id\n\ngeometry_msgs/Wrench body_1_wrench      # Body 1 wrench\ngeometry_msgs/Wrench body_2_wrench      # Body 2 wrench\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Time stamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "body_1_name",
+          "comment": "Body 1 name string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/UInt32",
+          "name": "body_1_id",
+          "comment": "Body 1 id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/String",
+          "name": "body_2_name",
+          "comment": "Body 2 name string",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/UInt32",
+          "name": "body_2_id",
+          "comment": "Body 2 id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench",
+          "name": "body_1_wrench",
+          "comment": "Body 1 wrench",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Wrench",
+          "name": "body_2_wrench",
+          "comment": "Body 2 wrench",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Light": {
+      "description": "Light type: constant definition",
+      "raw": "std_msgs/Header header            # Optional header data\n\nstring name                       # Light name\n\n# Light type: constant definition\nuint8 POINT       = 0\nuint8 SPOT        = 1\nuint8 DIRECTIONAL = 2\n\nuint8 type                        # Light type (from constant definitions)\n\ngeometry_msgs/Pose pose           # Light pose\nstd_msgs/ColorRGBA diffuse        # Light diffuse emission\nstd_msgs/ColorRGBA specular       # Light specular emission\nfloat32 attenuation_constant      # Constant variable in attenuation formula\nfloat32 attenuation_linear        # Linear variable in attenuation formula\nfloat32 attenuation_quadratic     # Quadratic variable in attenuation formula\ngeometry_msgs/Vector3 direction   # Light direction\nfloat32 range                     # Light range\nbool cast_shadows                 # Enable/disable shadow casting\nfloat32 spot_inner_angle          # Spotlight inner cone angle\nfloat32 spot_outer_angle          # Spotlight outer cone angle\nfloat32 spot_falloff              # Falloff between inner and outer cone\n\nuint32 id                         # Unique id of the light\n\nuint32 parent_id                  # Unique id of the light's parent\n\nfloat32 intensity                 # Light intensity\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Optional header data",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Light name",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "POINT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SPOT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DIRECTIONAL",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "Light type (from constant definitions)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "Light pose",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "diffuse",
+          "comment": "Light diffuse emission",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "std_msgs/ColorRGBA",
+          "name": "specular",
+          "comment": "Light specular emission",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "attenuation_constant",
+          "comment": "Constant variable in attenuation formula",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "attenuation_linear",
+          "comment": "Linear variable in attenuation formula",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "attenuation_quadratic",
+          "comment": "Quadratic variable in attenuation formula",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "direction",
+          "comment": "Light direction",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "range",
+          "comment": "Light range",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cast_shadows",
+          "comment": "Enable/disable shadow casting",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "spot_inner_angle",
+          "comment": "Spotlight inner cone angle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "spot_outer_angle",
+          "comment": "Spotlight outer cone angle",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "spot_falloff",
+          "comment": "Falloff between inner and outer cone",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "Unique id of the light",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "parent_id",
+          "comment": "Unique id of the light's parent",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "intensity",
+          "comment": "Light intensity",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StringVec": {
+      "description": "A message for a vector of string data.",
+      "raw": "# A message for a vector of string data.\n\n# Optional header data.\nstd_msgs/Header header\n\n# The vector of strings.\nstring[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackVisual": {
+      "description": "Message for a tracking a rendering::Visual with a rendering::Camera.",
+      "raw": "# Message for a tracking a rendering::Visual with a rendering::Camera.\n\n# Optional header data.\nstd_msgs/Header header\n\n# Name of the visual to track.\nstring name\n\n# Id of the visual to track.\nuint32 id\n\n# True to have the tracking camera inherit the orientation of\n# the tracked visual.\nbool inherit_orientation\n\n# Minimum follow distance.\nfloat64 min_dist\n\n# Maximum follow distance.\nfloat64 max_dist\n\n# If set to true, the position of the camera is fixed.\nbool is_static\n\n# If set to true, the position of the camera is relative to the.\n# model reference frame.\nbool use_model_frame\n\n# Position of the camera.\ngeometry_msgs/Vector3 xyz\n\n# If set to true, the camera inherits the yaw rotation of the model.\nbool inherit_yaw\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "inherit_orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_dist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_dist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_static",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_model_frame",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "xyz",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "inherit_yaw",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VideoRecord": {
+      "description": "A message that allows for control of video recording functions.",
+      "raw": "# A message that allows for control of video recording functions.\n\n# Optional header data.\nstd_msgs/Header header\n\n# True to start video recording.\nbool start\n\n# True to stop video recording.\nbool stop\n\n# Video encoding format, e.g. \"mp4\", \"ogv\".\nstring format\n\n# filename of the recorded video.\nstring save_filename\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "stop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "format",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "save_filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WorldControl": {
+      "description": "then pause.",
+      "raw": "bool pause                                  # Paused state.\nbool step                                   #\nuint32 multi_step 0                         # Paused after stepping multi_step.\nros_gz_interfaces/WorldReset reset         #\nuint32 seed                                 #\nbuiltin_interfaces/Time run_to_sim_time     # A simulation time in the future to run to and\n                                            # then pause.\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "pause",
+          "comment": "Paused state.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "step",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "multi_step",
+          "comment": "Paused after stepping multi_step.",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "ros_gz_interfaces/WorldReset",
+          "name": "reset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "seed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "run_to_sim_time",
+          "comment": "A simulation time in the future to run to and",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WorldReset": {
+      "description": "",
+      "raw": "bool all false            # Reset time and model\nbool time_only false      # Reset time only\nbool model_only false     # Reset model only\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "all",
+          "comment": "Reset time and model",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "time_only",
+          "comment": "Reset time only",
+          "default": "false",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "model_only",
+          "comment": "Reset model only",
+          "default": "false",
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ControlWorld": {
+      "description": "",
+      "raw": "ros_gz_interfaces/WorldControl world_control  # Message to Control world in Gazebo Sim\n---\nbool success                                   # Return true if control is successful.\n",
+      "request_fields": [
+        {
+          "type": "ros_gz_interfaces/WorldControl",
+          "name": "world_control",
+          "comment": "Message to Control world in Gazebo Sim",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Return true if control is successful.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeleteEntity": {
+      "description": "",
+      "raw": "ros_gz_interfaces/Entity entity  # Gazebo Sim entity to be deleted.\n---\nbool success                      # Return true if deletion is successful.\n",
+      "request_fields": [
+        {
+          "type": "ros_gz_interfaces/Entity",
+          "name": "entity",
+          "comment": "Gazebo Sim entity to be deleted.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Return true if deletion is successful.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetEntityPose": {
+      "description": "",
+      "raw": "ros_gz_interfaces/Entity entity    # Gazebo Sim entity.\ngeometry_msgs/Pose pose             # Pose of entity.\n---\nbool success                        # Return true if set successfully.\n",
+      "request_fields": [
+        {
+          "type": "ros_gz_interfaces/Entity",
+          "name": "entity",
+          "comment": "Gazebo Sim entity.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "Pose of entity.",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Return true if set successfully.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpawnEntity": {
+      "description": "",
+      "raw": "ros_gz_interfaces/EntityFactory entity_factory  # Message to create a new entity\n---\nbool success                                     # Return true if spawned successfully.\n",
+      "request_fields": [
+        {
+          "type": "ros_gz_interfaces/EntityFactory",
+          "name": "entity_factory",
+          "comment": "Message to create a new entity",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "Return true if spawned successfully.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

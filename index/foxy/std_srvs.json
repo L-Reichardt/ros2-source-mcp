@@ -1,0 +1,149 @@
+{
+  "name": "std_srvs",
+  "version": "2.0.5",
+  "description": "A package containing some standard service definitions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "common_interfaces",
+    "url": "https://github.com/ros2/common_interfaces.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "bosch_locator_bridge",
+      "camera_calibration",
+      "common_interfaces",
+      "depthai_ros_driver",
+      "find_object_2d",
+      "find_object_2d",
+      "gazebo_plugins",
+      "gazebo_ros",
+      "husky_base",
+      "image_view",
+      "joy_teleop",
+      "mapviz",
+      "mavros",
+      "mavros_extras",
+      "microstrain_inertial_driver",
+      "nav2_amcl",
+      "nav2_behavior_tree",
+      "nav2_behavior_tree",
+      "nav2_bt_navigator",
+      "nav2_lifecycle_manager",
+      "nav2_lifecycle_manager",
+      "nav2_util",
+      "octomap_server",
+      "openzen_driver",
+      "openzen_driver",
+      "oroca_rqt_command",
+      "phidgets_gyroscope",
+      "phidgets_spatial",
+      "raspimouse",
+      "raspimouse",
+      "raspimouse_ros2_examples",
+      "rclada",
+      "rclpy_message_converter",
+      "robot_localization",
+      "ros2_ouster",
+      "rosbridge_library",
+      "rosbridge_server",
+      "rosbridge_test_msgs",
+      "rosee_msg",
+      "rosidl_runtime_py",
+      "rplidar_ros",
+      "rplidar_ros",
+      "rt_usb_9axisimu_driver",
+      "rtabmap_msgs",
+      "rtabmap_slam",
+      "rtabmap_viz",
+      "sbg_driver",
+      "slam_toolbox",
+      "slam_toolbox",
+      "spatio_temporal_voxel_layer",
+      "swri_roscpp",
+      "tracetools_test",
+      "tracetools_test",
+      "tricycle_controller",
+      "turtlebot3_node",
+      "turtlesim",
+      "ur_robot_driver",
+      "urg_node",
+      "usb_cam",
+      "webots_ros2_tests",
+      "wiimote"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "Empty": {
+      "description": "",
+      "raw": "---\n",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "SetBool": {
+      "description": "",
+      "raw": "bool data # e.g. for hardware enabling / disabling\n---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "data",
+          "comment": "e.g. for hardware enabling / disabling",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trigger": {
+      "description": "",
+      "raw": "---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

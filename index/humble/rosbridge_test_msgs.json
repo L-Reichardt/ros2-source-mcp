@@ -1,0 +1,562 @@
+{
+  "name": "rosbridge_test_msgs",
+  "version": "2.0.6",
+  "description": "Message and service definitions used in internal tests for rosbridge packages.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/rosbridge_library",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/RobotWebTools/rosbridge_suite",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "rosbridge_suite",
+    "url": "https://github.com/RobotWebTools/rosbridge_suite.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "rosbridge_library"
+    ]
+  },
+  "messages": {
+    "Num": {
+      "description": "",
+      "raw": "int64 num\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestChar": {
+      "description": "",
+      "raw": "char[] data\n",
+      "fields": [
+        {
+          "type": "char[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestDurationArray": {
+      "description": "",
+      "raw": "builtin_interfaces/Duration[] durations\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Duration[]",
+          "name": "durations",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestFloat32Array": {
+      "description": "",
+      "raw": "float32[] data\n",
+      "fields": [
+        {
+          "type": "float32[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestFloat32BoundedArray": {
+      "description": "",
+      "raw": "float32[16] data\n",
+      "fields": [
+        {
+          "type": "float32[16]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestHeader": {
+      "description": "",
+      "raw": "std_msgs/Header header\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestHeaderArray": {
+      "description": "",
+      "raw": "std_msgs/Header[] header\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header[]",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestHeaderTwo": {
+      "description": "",
+      "raw": "std_msgs/Header header\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestNestedBoundedArray": {
+      "description": "",
+      "raw": "TestFloat32BoundedArray data\n",
+      "fields": [
+        {
+          "type": "TestFloat32BoundedArray",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestTimeArray": {
+      "description": "",
+      "raw": "builtin_interfaces/Time[] times\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time[]",
+          "name": "times",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestUInt8": {
+      "description": "",
+      "raw": "uint8[] data\n",
+      "fields": [
+        {
+          "type": "uint8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestUInt8FixedSizeArray16": {
+      "description": "",
+      "raw": "uint8[16] data\n",
+      "fields": [
+        {
+          "type": "uint8[16]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "AddTwoInts": {
+      "description": "",
+      "raw": "int64 a\nint64 b\n---\nint64 sum\n",
+      "request_fields": [
+        {
+          "type": "int64",
+          "name": "a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "sum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SendBytes": {
+      "description": "",
+      "raw": "int64 count\n---\nstring data\n",
+      "request_fields": [
+        {
+          "type": "int64",
+          "name": "count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestArrayRequest": {
+      "description": "",
+      "raw": "int32[] int_values\n---\n",
+      "request_fields": [
+        {
+          "type": "int32[]",
+          "name": "int_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "TestEmpty": {
+      "description": "",
+      "raw": "---\n",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "TestMultipleRequestFields": {
+      "description": "",
+      "raw": "int32 int_value\nfloat32 float_value\nstring string\nbool bool_value\n---\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "int_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "float_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "TestMultipleResponseFields": {
+      "description": "",
+      "raw": "---\nint32 int_value\nfloat32 float_value\nstring string\nbool bool_value\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "int_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "float_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestNestedService": {
+      "description": "request definition",
+      "raw": "#request definition\ngeometry_msgs/Pose pose\n---\n#response definition\nstd_msgs/Float64 data\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "std_msgs/Float64",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestRequestAndResponse": {
+      "description": "",
+      "raw": "int32 data\n---\nint32 data\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestRequestOnly": {
+      "description": "",
+      "raw": "int32 data\n---\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "TestResponseOnly": {
+      "description": "",
+      "raw": "---\nint32 data\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "TestEmpty": {
+      "description": "Empty goal",
+      "raw": "# Empty goal\n---\n# Empty feedback\n---\n# Empty result\n",
+      "goal_fields": [],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "TestFeedbackAndResult": {
+      "description": "Empty goal",
+      "raw": "# Empty goal\n---\n# Empty feedback\n---\n# Result\nint32 data\n",
+      "goal_fields": [],
+      "result_fields": [],
+      "feedback_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestGoalAndResult": {
+      "description": "Goal",
+      "raw": "# Goal\nint32 data\n---\n# Empty feedback\n---\n# result\nint32 data\n",
+      "goal_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestGoalFeedbackAndResult": {
+      "description": "Goal",
+      "raw": "# Goal\nint32 data\n---\n# Feedback\nint32 data\n---\n# result\nint32 data\n",
+      "goal_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TestGoalOnly": {
+      "description": "Goal",
+      "raw": "# Goal\nint32 data\n---\n# Empty feedback\n---\n# Empty result\n",
+      "goal_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "TestMultipleGoalFields": {
+      "description": "Goal",
+      "raw": "# Goal\nint32 int_value\nfloat32 float_value\nstring string\nbool bool_value\n---\n# Empty feedback\n---\n# Empty result\n",
+      "goal_fields": [
+        {
+          "type": "int32",
+          "name": "int_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "float_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "bool_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "TestResultOnly": {
+      "description": "Empty goal",
+      "raw": "# Empty goal\n---\n# Empty feedback\n---\n# Result\nint32 data\n",
+      "goal_fields": [],
+      "result_fields": [],
+      "feedback_fields": [
+        {
+          "type": "int32",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

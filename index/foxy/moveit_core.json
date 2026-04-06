@@ -1,0 +1,94 @@
+{
+  "name": "moveit_core",
+  "version": "2.2.3",
+  "description": "Core libraries used by MoveIt",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://moveit.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-planning/moveit2/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-planning/moveit2",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "moveit",
+    "url": "https://github.com/ros-planning/moveit2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "moveit_common"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "pkg-config",
+      "eigen3_cmake_module"
+    ],
+    "buildtool_export": [
+      "eigen3_cmake_module"
+    ],
+    "doc": [
+      "python3-sphinx-rtd-theme"
+    ],
+    "test": [
+      "moveit_resources_panda_moveit_config",
+      "moveit_resources_pr2_description",
+      "angles",
+      "tf2_kdl",
+      "orocos_kdl",
+      "ament_cmake_gtest",
+      "ament_index_cpp",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "angles",
+      "rclcpp",
+      "common_interfaces",
+      "assimp",
+      "boost",
+      "eigen",
+      "bullet",
+      "eigen_stl_containers",
+      "libfcl-dev",
+      "geometric_shapes",
+      "geometry_msgs",
+      "kdl_parser",
+      "urdf",
+      "urdfdom",
+      "urdfdom_headers",
+      "moveit_msgs",
+      "octomap",
+      "octomap_msgs",
+      "pluginlib",
+      "pybind11_vendor",
+      "random_numbers",
+      "sensor_msgs",
+      "shape_msgs",
+      "srdfdom",
+      "std_msgs",
+      "tf2",
+      "tf2_eigen",
+      "tf2_geometry_msgs",
+      "trajectory_msgs",
+      "visualization_msgs"
+    ],
+    "depended_on_by": [
+      "moveit",
+      "moveit_kinematics",
+      "moveit_runtime"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

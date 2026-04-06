@@ -1,0 +1,97 @@
+{
+  "name": "control_toolbox",
+  "version": "2.1.2",
+  "description": "The control toolbox contains modules that are useful across all controllers.",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/control_toolbox",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-controls/control_toolbox/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-controls/control_toolbox/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "control_toolbox",
+    "url": "https://github.com/ros-controls/control_toolbox.git",
+    "branch": "ros2-master"
+  },
+  "dependencies": {
+    "build": [
+      "control_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "control_msgs"
+    ],
+    "test": [
+      "ament_cmake_gmock",
+      "ament_cmake_gtest",
+      "rclcpp_lifecycle"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rcutils",
+      "realtime_tools"
+    ],
+    "depended_on_by": [
+      "gripper_controllers"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "SetPidGains": {
+      "description": "",
+      "raw": "float64 p\nfloat64 i\nfloat64 d\nfloat64 i_clamp\nbool antiwindup\n---\n",
+      "request_fields": [
+        {
+          "type": "float64",
+          "name": "p",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "d",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "i_clamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "antiwindup",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    }
+  },
+  "actions": {}
+}

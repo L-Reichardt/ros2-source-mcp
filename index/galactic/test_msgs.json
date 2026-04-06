@@ -1,0 +1,163 @@
+{
+  "name": "test_msgs",
+  "version": "1.0.3",
+  "description": "A package containing message definitions and fixtures used exclusively for testing purposes.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "test_interface_files"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "action_msgs"
+    ],
+    "depended_on_by": [
+      "domain_bridge",
+      "joy_teleop",
+      "nav2_behavior_tree",
+      "nav2_util",
+      "nodl_to_policy",
+      "plansys2_bt_actions",
+      "rcl",
+      "rcl_action",
+      "rclc",
+      "rclcpp",
+      "rclcpp_action",
+      "rclcpp_lifecycle",
+      "rclpy",
+      "realtime_tools",
+      "rmw_fastrtps_cpp",
+      "rmw_fastrtps_dynamic_cpp",
+      "ros2action",
+      "ros2cli",
+      "ros2interface",
+      "ros2node",
+      "ros2service",
+      "ros2topic",
+      "rosbag2_cpp",
+      "rosbag2_tests",
+      "rosbag2_transport",
+      "rosidl_runtime_py",
+      "sros2"
+    ]
+  },
+  "messages": {
+    "Builtins": {
+      "description": "",
+      "raw": "builtin_interfaces/Duration duration_value\nbuiltin_interfaces/Time time_value\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "duration_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "time_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {
+    "NestedMessage": {
+      "description": "goal definition",
+      "raw": "# goal definition\nBuiltins nested_field_no_pkg\ntest_msgs/BasicTypes nested_field\nbuiltin_interfaces/Time nested_different_pkg\n---\n# result definition\nBuiltins nested_field_no_pkg\ntest_msgs/BasicTypes nested_field\nbuiltin_interfaces/Time nested_different_pkg\n---\n# feedback\nBuiltins nested_field_no_pkg\ntest_msgs/BasicTypes nested_field\nbuiltin_interfaces/Time nested_different_pkg\n",
+      "goal_fields": [
+        {
+          "type": "Builtins",
+          "name": "nested_field_no_pkg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "test_msgs/BasicTypes",
+          "name": "nested_field",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "nested_different_pkg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "Builtins",
+          "name": "nested_field_no_pkg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "test_msgs/BasicTypes",
+          "name": "nested_field",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "nested_different_pkg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "Builtins",
+          "name": "nested_field_no_pkg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "test_msgs/BasicTypes",
+          "name": "nested_field",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "nested_different_pkg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

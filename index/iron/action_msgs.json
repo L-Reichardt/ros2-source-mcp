@@ -1,0 +1,234 @@
+{
+  "name": "action_msgs",
+  "version": "1.6.0",
+  "description": "Messages and service definitions common among all ROS actions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rcl_interfaces",
+    "url": "https://github.com/ros2/rcl_interfaces.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_core_generators"
+    ],
+    "runtime": [
+      "rosidl_core_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "service_msgs",
+      "unique_identifier_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_auto_msgs",
+      "control_msgs",
+      "flexbe_msgs",
+      "grbl_msgs",
+      "irobot_create_msgs",
+      "irobot_create_msgs",
+      "kobuki_ros_interfaces",
+      "mola_msgs",
+      "moveit_msgs",
+      "mrpt_nav_interfaces",
+      "naoqi_bridge_msgs",
+      "naoqi_driver",
+      "nav2_msgs",
+      "nav2_simple_commander",
+      "nav2_util",
+      "nav2_util",
+      "object_recognition_msgs",
+      "object_recognition_msgs",
+      "plansys2_bt_actions",
+      "plansys2_msgs",
+      "py_trees_ros_interfaces",
+      "rcl_action",
+      "rclcpp_action",
+      "rclpy",
+      "robot_calibration_msgs",
+      "ros2action",
+      "rosbridge_library",
+      "rosbridge_test_msgs",
+      "rosidl_default_generators",
+      "rosidl_default_runtime",
+      "simple_actions",
+      "smacc2_msgs",
+      "teleop_tools_msgs",
+      "turtlebot3_msgs",
+      "twist_mux_msgs",
+      "ur_dashboard_msgs"
+    ]
+  },
+  "messages": {
+    "GoalInfo": {
+      "description": "Goal ID",
+      "raw": "# Goal ID\nunique_identifier_msgs/UUID goal_id\n\n# Time when the goal was accepted\nbuiltin_interfaces/Time stamp\n",
+      "fields": [
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "goal_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GoalStatus": {
+      "description": "An action goal can be in one of these states after it is accepted by an action",
+      "raw": "# An action goal can be in one of these states after it is accepted by an action\n# server.\n#\n# For more information, see http://design.ros2.org/articles/actions.html\n\n# Indicates status has not been properly set.\nint8 STATUS_UNKNOWN   = 0\n\n# The goal has been accepted and is awaiting execution.\nint8 STATUS_ACCEPTED  = 1\n\n# The goal is currently being executed by the action server.\nint8 STATUS_EXECUTING = 2\n\n# The client has requested that the goal be canceled and the action server has\n# accepted the cancel request.\nint8 STATUS_CANCELING = 3\n\n# The goal was achieved successfully by the action server.\nint8 STATUS_SUCCEEDED = 4\n\n# The goal was canceled after an external request from an action client.\nint8 STATUS_CANCELED  = 5\n\n# The goal was terminated by the action server without an external request.\nint8 STATUS_ABORTED   = 6\n\n# Goal info (contains ID and timestamp).\nGoalInfo goal_info\n\n# Action goal state-machine status.\nint8 status\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "STATUS_UNKNOWN",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_ACCEPTED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_EXECUTING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_CANCELING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_SUCCEEDED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_CANCELED",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STATUS_ABORTED",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "GoalInfo",
+          "name": "goal_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GoalStatusArray": {
+      "description": "An array of goal statuses.",
+      "raw": "# An array of goal statuses.\nGoalStatus[] status_list\n",
+      "fields": [
+        {
+          "type": "GoalStatus[]",
+          "name": "status_list",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "CancelGoal": {
+      "description": "Cancel one or more goals with the following policy:",
+      "raw": "# Cancel one or more goals with the following policy:\n#\n# - If the goal ID is zero and timestamp is zero, cancel all goals.\n# - If the goal ID is zero and timestamp is not zero, cancel all goals accepted\n#   at or before the timestamp.\n# - If the goal ID is not zero and timestamp is zero, cancel the goal with the\n#   given ID regardless of the time it was accepted.\n# - If the goal ID is not zero and timestamp is not zero, cancel the goal with\n#   the given ID and all goals accepted at or before the timestamp.\n\n# Goal info describing the goals to cancel, see above.\nGoalInfo goal_info\n---\n##\n## Return codes.\n##\n\n# Indicates the request was accepted without any errors.\n#\n# One or more goals have transitioned to the CANCELING state. The\n# goals_canceling list is not empty.\nint8 ERROR_NONE=0\n\n# Indicates the request was rejected.\n#\n# No goals have transitioned to the CANCELING state. The goals_canceling list is\n# empty.\nint8 ERROR_REJECTED=1\n\n# Indicates the requested goal ID does not exist.\n#\n# No goals have transitioned to the CANCELING state. The goals_canceling list is\n# empty.\nint8 ERROR_UNKNOWN_GOAL_ID=2\n\n# Indicates the goal is not cancelable because it is already in a terminal state.\n#\n# No goals have transitioned to the CANCELING state. The goals_canceling list is\n# empty.\nint8 ERROR_GOAL_TERMINATED=3\n\n# Return code, see above definitions.\nint8 return_code\n\n# Goals that accepted the cancel request.\nGoalInfo[] goals_canceling\n",
+      "request_fields": [
+        {
+          "type": "GoalInfo",
+          "name": "goal_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int8",
+          "name": "ERROR_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ERROR_REJECTED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ERROR_UNKNOWN_GOAL_ID",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ERROR_GOAL_TERMINATED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "return_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GoalInfo[]",
+          "name": "goals_canceling",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

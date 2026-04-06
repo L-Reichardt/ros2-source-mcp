@@ -1,0 +1,118 @@
+{
+  "name": "phidgets_msgs",
+  "version": "2.3.3",
+  "description": "Custom ROS messages for Phidgets drivers",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "phidgets_drivers",
+    "url": "https://github.com/ros-drivers/phidgets_drivers.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "phidgets_analog_outputs",
+      "phidgets_digital_outputs",
+      "phidgets_drivers",
+      "phidgets_high_speed_encoder",
+      "phidgets_motors"
+    ]
+  },
+  "messages": {
+    "EncoderDecimatedSpeed": {
+      "description": "Encoder averaged speed for a channel in a Phidgets High-Speed Encoder board",
+      "raw": "# Encoder averaged speed for a channel in a Phidgets High-Speed Encoder board\nstd_msgs/Header header\n# Averaged (sliding window) speed estimation [rad/s]\nfloat64 avr_speed\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "avr_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetAnalogOutput": {
+      "description": "Sets the state of an analog output.",
+      "raw": "# Sets the state of an analog output.\n\nuint16 index   # index of the output to be set\nfloat64 voltage\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "index of the output to be set",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetDigitalOutput": {
+      "description": "Sets the state of a digital output.",
+      "raw": "# Sets the state of a digital output.\n\nuint16 index   # index of the output to be set\nbool state\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "index of the output to be set",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

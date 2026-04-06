@@ -1,0 +1,128 @@
+{
+  "name": "marine_sensor_msgs",
+  "version": "2.1.0",
+  "description": "The marine_sensor_msgs package, meant to contain messages for common\n  underwater sensors (e.g., conductivity, turbidity, dissolved oxygen)",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "marine_msgs",
+    "url": "https://github.com/apl-ocean-engineering/marine_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "RadarEcho": {
+      "description": "This message is a submessage of RadarSector and is not intended",
+      "raw": "# This message is a submessage of RadarSector and is not intended\n# to be used separately. It represents intensities from a\n# single ray.\n\n# Series of intensities from closest to farthest\n# along a given angle increment. [device-specific units]\nfloat32[] echoes\n",
+      "fields": [
+        {
+          "type": "float32[]",
+          "name": "echoes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RadarSector": {
+      "description": "A collection of marine radar rays, typically covering a contiguous",
+      "raw": "# A collection of marine radar rays, typically covering a contiguous\n# arc of a full circle.\n\n# timestamp in the header is the acquisition time of\n# the first ray in the sector.\n#\n# In frame frame_id, angles are measured around\n# the positive Z axis (counterclockwise, if Z is up)\n# with zero angle being forward along the X axis\nstd_msgs/Header header\n\n# start angle of this sector [rad]\nfloat32 angle_start\n\n# angular distance between rays [rad]\nfloat32 angle_increment\n\n# time between rays [seconds] - if your scanner\n# is moving, this can be used in interpolating\n# position of 3d points\nbuiltin_interfaces/Duration time_increment\n\n# time between two consecutive complete scans\n# or revolutions [seconds]\n# Warning: On hardware that doesn't provide a timestamp,\n# time-related fields may be estimated and vary\n# from sector to sector as estimates are updated\nbuiltin_interfaces/Duration scan_time\n\n# range of the first sample in each ray [m]\nfloat32 range_min\n\n# range of the last sample in each ray [m]\nfloat32 range_max\n\n# intensity data [device-specific units].\nRadarEcho[] intensities\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle_increment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_increment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "scan_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "range_min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "range_max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RadarEcho[]",
+          "name": "intensities",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TurbidityNTU": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32 ntu\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "ntu",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

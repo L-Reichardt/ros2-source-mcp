@@ -1,0 +1,110 @@
+{
+  "name": "data_tamer_msgs",
+  "version": "1.0.3",
+  "description": "Interfaces for data_tamer",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "data_tamer",
+    "url": "https://github.com/PickNikRobotics/data_tamer.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "data_tamer_cpp"
+    ]
+  },
+  "messages": {
+    "Schema": {
+      "description": "",
+      "raw": "uint64 hash\nstring channel_name\nstring schema_text\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "hash",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "channel_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "schema_text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Schemas": {
+      "description": "",
+      "raw": "Schema[] schemas\n",
+      "fields": [
+        {
+          "type": "Schema[]",
+          "name": "schemas",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Snapshot": {
+      "description": "",
+      "raw": "uint64 timestamp_nsec\nuint64 schema_hash\nuint8[] active_mask\nuint8[] payload\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "timestamp_nsec",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "schema_hash",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "active_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "payload",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

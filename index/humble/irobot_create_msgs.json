@@ -1,0 +1,1181 @@
+{
+  "name": "irobot_create_msgs",
+  "version": "2.1.0",
+  "description": "Package containing action, message, and service definitions used by the iRobot(R) Create(R) platform",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "irobot_create_msgs",
+    "url": "https://github.com/iRobotEducation/irobot_create_msgs.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "action_msgs",
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "action_msgs",
+      "builtin_interfaces",
+      "geometry_msgs",
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "create3_coverage",
+      "create3_examples_py",
+      "create3_lidar_slam",
+      "create3_republisher",
+      "turtlebot4_base",
+      "turtlebot4_cpp_tutorials",
+      "turtlebot4_diagnostics",
+      "turtlebot4_ignition_bringup",
+      "turtlebot4_node",
+      "turtlebot4_python_tutorials",
+      "turtlebot4_tests"
+    ]
+  },
+  "messages": {
+    "AudioNote": {
+      "description": "Play a note (frequency) for a specific duration",
+      "raw": "# Play a note (frequency) for a specific duration\nuint16 frequency    # Frequency of note in Hz.\nbuiltin_interfaces/Duration max_runtime # Time note should play for.\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "frequency",
+          "comment": "Frequency of note in Hz.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "max_runtime",
+          "comment": "Time note should play for.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AudioNoteVector": {
+      "description": "Play a sequence of audio notes.",
+      "raw": "# Play a sequence of audio notes.\nstd_msgs/Header header\nirobot_create_msgs/AudioNote[] notes\n# If the notes should be appended or overwrite the currently playing notes.\nbool append\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/AudioNote[]",
+          "name": "notes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "append",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Button": {
+      "description": "This message gives the status for a button",
+      "raw": "# This message gives the status for a button\n\nstd_msgs/Header header                            # Header stamp is time and frame at which information was collected\nbool is_pressed                                   # Whether or not button is depressed\nbuiltin_interfaces/Time last_start_pressed_time   # The last time a button press was initiated\nbuiltin_interfaces/Duration last_pressed_duration # The duration that the button was depressed\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header stamp is time and frame at which information was collected",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_pressed",
+          "comment": "Whether or not button is depressed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "last_start_pressed_time",
+          "comment": "The last time a button press was initiated",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "last_pressed_duration",
+          "comment": "The duration that the button was depressed",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DockStatus": {
+      "description": "This message contains information about whether the robot is docked or sees the dock in its sensors.",
+      "raw": "# This message contains information about whether the robot is docked or sees the dock in its sensors.\n\nstd_msgs/Header header  # Header stamp is when dock info was queried.\nbool dock_visible       # Whether robot sees dock in its sensors used for docking\nbool is_docked          # Whether the robot is docked\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header stamp is when dock info was queried.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "dock_visible",
+          "comment": "Whether robot sees dock in its sensors used for docking",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_docked",
+          "comment": "Whether the robot is docked",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HazardDetection": {
+      "description": "This message describes a detected hazard.",
+      "raw": "# This message describes a detected hazard.\n# The frame ID allows to retrieve the location of the sensor that made the detection.\n\n# The robot has reached its backup limit. It will not drive further backward for safety reasons.\n# You can disable this limit through the Create3 \"safety_override\" parameter by setting it \n# to \"backup_only\" or \"full\".\n# The Create3 webserver can be used to set a default value for the parameter.\nuint8 BACKUP_LIMIT=0\n# The robot has bumped against an obstacle\nuint8 BUMP=1\n# The robot detected a cliff\nuint8 CLIFF=2\n# The wheels of the robot are stalled against an obstacle\nuint8 STALL=3\n# The wheels of the robot are fully dropped\nuint8 WHEEL_DROP=4\n# The robot detects an obstacle in close proximity\nuint8 OBJECT_PROXIMITY=5\n\nstd_msgs/Header header\nuint8 type\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "BACKUP_LIMIT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "BUMP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CLIFF",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STALL",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WHEEL_DROP",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OBJECT_PROXIMITY",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HazardDetectionVector": {
+      "description": "This message contains a vector of detected hazards.",
+      "raw": "# This message contains a vector of detected hazards.\n\nstd_msgs/Header header\nirobot_create_msgs/HazardDetection[] detections\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/HazardDetection[]",
+          "name": "detections",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "InterfaceButtons": {
+      "description": "This message is the status of the 3 interface buttons on the Create faceplate",
+      "raw": "# This message is the status of the 3 interface buttons on the Create faceplate\nstd_msgs/Header header # Header stamp is time at which information was collected\nirobot_create_msgs/Button button_1     # Left button on faceplate marked with 1 dot\nirobot_create_msgs/Button button_power # Center Power button on faceplate\nirobot_create_msgs/Button button_2     # Right button on faceplate marked with 2 dots\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header stamp is time at which information was collected",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/Button",
+          "name": "button_1",
+          "comment": "Left button on faceplate marked with 1 dot",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/Button",
+          "name": "button_power",
+          "comment": "Center Power button on faceplate",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/Button",
+          "name": "button_2",
+          "comment": "Right button on faceplate marked with 2 dots",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IrIntensity": {
+      "description": "This message provides the ir intensity readings",
+      "raw": "# This message provides the ir intensity readings\n\nstd_msgs/Header header\nint16 value\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IrIntensityVector": {
+      "description": "This message provides the ir intensity readings",
+      "raw": "# This message provides the ir intensity readings\n\nstd_msgs/Header header\nirobot_create_msgs/IrIntensity[] readings\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/IrIntensity[]",
+          "name": "readings",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IrOpcode": {
+      "description": "This message describes a detected ir opcode.",
+      "raw": "# This message describes a detected ir opcode.\n\nuint8 CODE_IR_FORCE_FIELD=161\nuint8 CODE_IR_VIRTUAL_WALL=162\nuint8 CODE_IR_BUOY_GREEN=164\nuint8 CODE_IR_BUOY_RED=168\nuint8 CODE_IR_BUOY_BOTH=172\nuint8 CODE_IR_EVAC_GREEN_FIELD=244\nuint8 CODE_IR_EVAC_RED_FIELD=248\nuint8 CODE_IR_EVAC_BOTH_FIELD=252\n\nuint8 SENSOR_OMNI=0\nuint8 SENSOR_DIRECTIONAL_FRONT=1\n\nstd_msgs/Header header      # time when we saw the opcode\nuint8 opcode                # opcode\nuint8 sensor                # the sensor which saw the opcode\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CODE_IR_FORCE_FIELD",
+          "comment": "",
+          "default": "161",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CODE_IR_VIRTUAL_WALL",
+          "comment": "",
+          "default": "162",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CODE_IR_BUOY_GREEN",
+          "comment": "",
+          "default": "164",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CODE_IR_BUOY_RED",
+          "comment": "",
+          "default": "168",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CODE_IR_BUOY_BOTH",
+          "comment": "",
+          "default": "172",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CODE_IR_EVAC_GREEN_FIELD",
+          "comment": "",
+          "default": "244",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CODE_IR_EVAC_RED_FIELD",
+          "comment": "",
+          "default": "248",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CODE_IR_EVAC_BOTH_FIELD",
+          "comment": "",
+          "default": "252",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SENSOR_OMNI",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SENSOR_DIRECTIONAL_FRONT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "time when we saw the opcode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "opcode",
+          "comment": "opcode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sensor",
+          "comment": "the sensor which saw the opcode",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "KidnapStatus": {
+      "description": "This message provides the robot kidnap status",
+      "raw": "# This message provides the robot kidnap status\n\nstd_msgs/Header header\nbool is_kidnapped\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_kidnapped",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LedColor": {
+      "description": "This message is to set RGB values (0-255) for an LED",
+      "raw": "# This message is to set RGB values (0-255) for an LED\nuint8 red\nuint8 green\nuint8 blue\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "red",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "green",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "blue",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LightringLeds": {
+      "description": "This message sets the RGB values of the lightright LEDs",
+      "raw": "# This message sets the RGB values of the lightright LEDs\nstd_msgs/Header header\n# If you look at the lightring as an analog clock with 12 at the front\n# of the robot\n# led index 0 is 4 o'clock,\n# led index 1 is 2 o'clock,\n# led index 2 is 12 o'clock,\n# led index 3 is 10 o'clock,\n# led index 4 is 8 o'clock,\n# led index 5 is 6 o'clock\nirobot_create_msgs/LedColor[6] leds\n# Whether to override system's default light patterns with given command\n# Set to false to return control of lights to system\nbool override_system\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/LedColor[6]",
+          "name": "leds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "override_system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Mouse": {
+      "description": "This message contains a mouse raw measurement.",
+      "raw": "# This message contains a mouse raw measurement.\n\nstd_msgs/Header header    # Header stamp should be acquisition time of mouse measure.\nfloat32 integrated_x      # Motions in the X dimension in meters.\nfloat32 integrated_y      # Motions in the Y dimension in meters.\nuint32 frame_id           # Value incremented every time mouse stops tracking\nuint8 last_squal          # Surface quality level. It's proportional to the number of valid features visible by the sensor.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header stamp should be acquisition time of mouse measure.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "integrated_x",
+          "comment": "Motions in the X dimension in meters.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "integrated_y",
+          "comment": "Motions in the Y dimension in meters.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "frame_id",
+          "comment": "Value incremented every time mouse stops tracking",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "last_squal",
+          "comment": "Surface quality level. It's proportional to the number of valid features visible by the sensor.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SlipStatus": {
+      "description": "This message provides the robot slip status",
+      "raw": "# This message provides the robot slip status\n\nstd_msgs/Header header\nbool is_slipping\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_slipping",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StopStatus": {
+      "description": "This message provides the robot stopped status",
+      "raw": "# This message provides the robot stopped status\n\nstd_msgs/Header header\nbool is_stopped\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_stopped",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelStatus": {
+      "description": "This message contains status on the wheels",
+      "raw": "# This message contains status on the wheels\n\nstd_msgs/Header header              # Header stamp should be acquisition time of measure.\nint16 current_ma_left               # Current measurement for left wheel in milliamps \nint16 current_ma_right              # Current measurement for right wheel in milliamps\nint16 pwm_left                      # PWM % duty cycle measurement (where int16::max is +100%) for left wheel \nint16 pwm_right                     # PWM % duty cycle measurement (where int16::max is +100%) for right wheel\nbool wheels_enabled                 # Whether wheels are enabled or disabled (disabled when E-Stopped)\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header stamp should be acquisition time of measure.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "current_ma_left",
+          "comment": "Current measurement for left wheel in milliamps",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "current_ma_right",
+          "comment": "Current measurement for right wheel in milliamps",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "pwm_left",
+          "comment": "PWM % duty cycle measurement (where int16::max is +100%) for left wheel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "pwm_right",
+          "comment": "PWM % duty cycle measurement (where int16::max is +100%) for right wheel",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "wheels_enabled",
+          "comment": "Whether wheels are enabled or disabled (disabled when E-Stopped)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelTicks": {
+      "description": "This message contains wheel ticks raw measurements.",
+      "raw": "# This message contains wheel ticks raw measurements.\n# It can be used both for publishing integrated as well as absolute encoder readings.\n\nstd_msgs/Header header      # Header stamp should be acquisition time of measure.\nint32 ticks_left            # Count of encoder ticks for left wheel.\nint32 ticks_right           # Count of encoder ticks for right wheel.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header stamp should be acquisition time of measure.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ticks_left",
+          "comment": "Count of encoder ticks for left wheel.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "ticks_right",
+          "comment": "Count of encoder ticks for right wheel.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WheelVels": {
+      "description": "This message contains wheel velocity measurements.",
+      "raw": "# This message contains wheel velocity measurements.\n\nstd_msgs/Header header              # Header stamp should be acquisition time of measure.\nfloat32 velocity_left               # Velocity measure for left wheel in rad/sec.\nfloat32 velocity_right              # Velocity measure for right wheel in rad/sec.\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header stamp should be acquisition time of measure.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity_left",
+          "comment": "Velocity measure for left wheel in rad/sec.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity_right",
+          "comment": "Velocity measure for right wheel in rad/sec.",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "EStop": {
+      "description": "",
+      "raw": "bool e_stop_on # true enables e-stop disabling drive motor power, false disables e-stop re-enabling motor power\n---\nbool success   # indicate successful application of command\nstring message # informational for result\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "e_stop_on",
+          "comment": "true enables e-stop disabling drive motor power, false disables e-stop re-enabling motor power",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful application of command",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational for result",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ResetPose": {
+      "description": "This service reset the robot pose estimate to the provided one",
+      "raw": "# This service reset the robot pose estimate to the provided one\n\ngeometry_msgs/Pose pose\n---\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": []
+    },
+    "RobotPower": {
+      "description": "This service cuts power from the battery to the system, powering off robot and all accessories",
+      "raw": "# This service cuts power from the battery to the system, powering off robot and all accessories\n\n---\nbool success   # indicate successful application of command, robot may power down before response is transmitted\nstring message # informational for result, robot may power down before response is transmitted\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful application of command, robot may power down before response is transmitted",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational for result, robot may power down before response is transmitted",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "AudioNoteSequence": {
+      "description": "Request",
+      "raw": "# Request\n# Special number of iterations to signify play sequence until canceled\nint32 INFINITE = -1\n\n# Number of note_sequence iterations to play, defaults to 1\nint32 iterations 1\n# Sequence of notes to play per iteration\nirobot_create_msgs/AudioNoteVector note_sequence\n---\n# Result\n# Whether sequence played all requested iterations\nbool complete\n# Number of iterations of note sequence that were played\nint32 iterations_played\n# Runtime of audio playback\nbuiltin_interfaces/Duration runtime\n---\n# Feedback\n# Number of iterations of note sequence that have been played\nint32 iterations_played\n# Runtime of audio playback so far\nbuiltin_interfaces/Duration current_runtime\n",
+      "goal_fields": [
+        {
+          "type": "int32",
+          "name": "INFINITE",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "iterations",
+          "comment": "",
+          "default": "1",
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/AudioNoteVector",
+          "name": "note_sequence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "complete",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "iterations_played",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "runtime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "int32",
+          "name": "iterations_played",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "current_runtime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Dock": {
+      "description": "Request",
+      "raw": "# Request\n---\n# Result\nbool is_docked\n---\n# Feedback\nbool sees_dock\n",
+      "goal_fields": [],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "is_docked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "bool",
+          "name": "sees_dock",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriveArc": {
+      "description": "Request",
+      "raw": "# Request\nint8 TRANSLATE_FORWARD = 1\nint8 TRANSLATE_BACKWARD = -1\n\n# Whether to arc forward or backward from robot's current position\nint8 translate_direction\n# Relative angle (radians) for robot to rotate along arc from current heading.  Angles greater than 2 PI will cause the robot to rotate in multiple circles\nfloat32 angle\n# Radius of arc (meters) for robot to drive along\nfloat32 radius\n# Max translation speed (positive m/s), will cap negative distance to negative speed\nfloat32 max_translation_speed 0.3\n---\n# Result\n# Pose where robot finished\ngeometry_msgs/PoseStamped pose\n---\n# Feedback\n# Remaining radians to rotate\nfloat32 remaining_angle_travel\n",
+      "goal_fields": [
+        {
+          "type": "int8",
+          "name": "TRANSLATE_FORWARD",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "TRANSLATE_BACKWARD",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "translate_direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_translation_speed",
+          "comment": "",
+          "default": "0.3",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "remaining_angle_travel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DriveDistance": {
+      "description": "Request",
+      "raw": "# Request\n\n# Drive a distance (meters) in a straight line\nfloat32 distance\n# Max translation speed (positive m/s), will cap negative distance to negative speed\nfloat32 max_translation_speed 0.3\n---\n# Result\n# Pose where robot finished\ngeometry_msgs/PoseStamped pose\n---\n# Feedback\n# How much distance is left to travel\nfloat32 remaining_travel_distance\n",
+      "goal_fields": [
+        {
+          "type": "float32",
+          "name": "distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_translation_speed",
+          "comment": "",
+          "default": "0.3",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "remaining_travel_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LedAnimation": {
+      "description": "Request",
+      "raw": "# Request\n# Supported Animation types\nint8 BLINK_LIGHTS = 1\nint8 SPIN_LIGHTS = 2\n\n# Animation to apply\nint8 animation_type\n# LED values to apply to animation\nirobot_create_msgs/LightringLeds lightring\n# Time to apply animation\nbuiltin_interfaces/Duration max_runtime\n---\n# Result\nbuiltin_interfaces/Duration runtime\n---\n# Feedback\n# Time the animation has left to run\nbuiltin_interfaces/Duration remaining_runtime\n",
+      "goal_fields": [
+        {
+          "type": "int8",
+          "name": "BLINK_LIGHTS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SPIN_LIGHTS",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "animation_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "irobot_create_msgs/LightringLeds",
+          "name": "lightring",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "max_runtime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "runtime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "remaining_runtime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NavigateToPosition": {
+      "description": "Request",
+      "raw": "# Request\n\n# Drive to goal position in odometry frame using simple rotate/translate/rotate approach\ngeometry_msgs/PoseStamped goal_pose\n# Whether to achieve goal heading for final orientation or just use position\nbool achieve_goal_heading\n# Max translation speed (positive m/s), will cap negative distance to negative speed\nfloat32 max_translation_speed 0.3\n# Max rotation speed (positive rad/s), will cap negative angle to negative speed\nfloat32 max_rotation_speed 1.9\n---\n# Result\n# Pose where robot finished\ngeometry_msgs/PoseStamped pose\n---\n# Feedback\n# Whether robot is in first phase rotating to face travel direction to goal position\nint8 ROTATING_TO_GOAL_POSITION = 1\n# Whether robot is in second phase translating to to goal position\nint8 DRIVING_TO_GOAL_POSITION = 2\n# Whether robot is in third phase rotating to face goal orientation\nint8 ROTATING_TO_GOAL_ORIENTATION = 3\n# Which of the 3 phases above that robot is currently in\nint8 navigate_state\n# Remaining radians to rotate when robot is ROTATING_TO_GOAL_POSITION or ROTATING_TO_GOAL_ORIENTATION\nfloat32 remaining_angle_travel\n# How much distance is left to travel when robot is DRIVING_TO_GOAL_POSITION\nfloat32 remaining_travel_distance\n\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "goal_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "achieve_goal_heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_translation_speed",
+          "comment": "",
+          "default": "0.3",
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_rotation_speed",
+          "comment": "",
+          "default": "1.9",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "int8",
+          "name": "ROTATING_TO_GOAL_POSITION",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "DRIVING_TO_GOAL_POSITION",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "ROTATING_TO_GOAL_ORIENTATION",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "navigate_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "remaining_angle_travel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "remaining_travel_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RotateAngle": {
+      "description": "Request",
+      "raw": "# Request\n\n# Rotate for relative angle (radians) from current robot position.  Angles greater than 2 PI will cause the robot to rotate in multiple circles\nfloat32 angle\n# Max rotation speed (positive rad/s), will cap negative angle to negative speed\nfloat32 max_rotation_speed 1.9\n---\n# Result\n# Pose where robot finished\ngeometry_msgs/PoseStamped pose\n---\n# Feedback\n# Remaining radians to rotate\nfloat32 remaining_angle_travel\n",
+      "goal_fields": [
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_rotation_speed",
+          "comment": "",
+          "default": "1.9",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float32",
+          "name": "remaining_angle_travel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Undock": {
+      "description": "Request",
+      "raw": "# Request\n---\n# Result\nbool is_docked\n---\n# Feedback\n",
+      "goal_fields": [],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "is_docked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "WallFollow": {
+      "description": "Request",
+      "raw": "# Request\nint8 FOLLOW_RIGHT = -1\nint8 FOLLOW_LEFT = 1\n\nint8 follow_side\nbuiltin_interfaces/Duration max_runtime\n---\n# Result\nbuiltin_interfaces/Duration runtime\n---\n# Feedback\nbool engaged\n",
+      "goal_fields": [
+        {
+          "type": "int8",
+          "name": "FOLLOW_RIGHT",
+          "comment": "",
+          "default": "-1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FOLLOW_LEFT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "follow_side",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "max_runtime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "runtime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "bool",
+          "name": "engaged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

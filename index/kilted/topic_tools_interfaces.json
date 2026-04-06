@@ -1,0 +1,213 @@
+{
+  "name": "topic_tools_interfaces",
+  "version": "1.4.2",
+  "description": "topic_tools_interfaces contains messages and services for topic_tools",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "topic_tools",
+    "url": "https://github.com/ros-tooling/topic_tools.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "topic_tools"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "DemuxAdd": {
+      "description": "",
+      "raw": "string topic\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DemuxDelete": {
+      "description": "",
+      "raw": "string topic\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DemuxList": {
+      "description": "",
+      "raw": "---\nstring[] topics\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "topics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DemuxSelect": {
+      "description": "",
+      "raw": "string topic\n---\nstring prev_topic\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "prev_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MuxAdd": {
+      "description": "",
+      "raw": "string topic\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MuxDelete": {
+      "description": "",
+      "raw": "string topic\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MuxList": {
+      "description": "",
+      "raw": "---\nstring[] topics\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "topics",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MuxSelect": {
+      "description": "",
+      "raw": "string topic\n---\nstring prev_topic\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "prev_topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

@@ -1,0 +1,60 @@
+{
+  "name": "moveit_setup_assistant",
+  "version": "2.3.4",
+  "description": "Generates a configuration package that makes it easy to use MoveIt",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://moveit.ros.org",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-planning/moveit2/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros-planning/moveit2",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "moveit",
+    "url": "https://github.com/ros-planning/moveit2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "moveit_common",
+      "libogre-dev",
+      "ompl"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "xacro"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "moveit_resources_panda_moveit_config",
+      "ament_cmake_gtest"
+    ],
+    "build_and_runtime": [
+      "ament_index_cpp",
+      "moveit_core",
+      "moveit_ros_planning",
+      "moveit_ros_visualization",
+      "rclcpp",
+      "urdf",
+      "yaml-cpp",
+      "srdfdom"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

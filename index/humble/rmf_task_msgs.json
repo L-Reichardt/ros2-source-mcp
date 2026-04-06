@@ -1,0 +1,1088 @@
+{
+  "name": "rmf_task_msgs",
+  "version": "3.0.4",
+  "description": "A package containing messages used to specify tasks",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rmf_internal_msgs",
+    "url": "https://github.com/open-rmf/rmf_internal_msgs.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "rmf_dispenser_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rmf_dispenser_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "rmf_dev",
+      "rmf_fleet_adapter",
+      "rmf_task_ros2"
+    ]
+  },
+  "messages": {
+    "ApiRequest": {
+      "description": "The JSON message that represents the request",
+      "raw": "\n# The JSON message that represents the request\nstring json_msg\n\n# The unique ID assigned to this request\nstring request_id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "json_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "request_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ApiResponse": {
+      "description": "This response type means the message was not initialized correctly and will",
+      "raw": "\n# This response type means the message was not initialized correctly and will\n# result in an error\nuint8 TYPE_UNINITIALIZED = 0\n\n# This response type means the request is being acknowledged which will grant it\n# some extra time before the API Node has its response timeout. This can be used\n# to extend the lifetime of a request which may take a long time to complete.\n# Each time an acknowledgment is sent the lifetime will be extended.\nuint8 TYPE_ACKNOWLEDGE = 1\n\n# This response type means this message is responding to the request and\n# therefore fulfilling the request.\nuint8 TYPE_RESPONDING = 2\n\n# The type of response this is: Acknowledging or Responding\n# (Uninitialized will result in the API Node issuing an error response)\nuint8 type\n\n# The JSON message that represents the response\nstring json_msg\n\n# The unique ID of the request that this response is targeted at\nstring request_id\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "TYPE_UNINITIALIZED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_ACKNOWLEDGE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_RESPONDING",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "json_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "request_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Assignment": {
+      "description": "",
+      "raw": "bool is_assigned\nstring fleet_name\nstring expected_robot_name\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "is_assigned",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "expected_robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Behavior": {
+      "description": "",
+      "raw": "string name\nBehaviorParameter[] parameters\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BehaviorParameter[]",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorParameter": {
+      "description": "",
+      "raw": "string name\nstring value\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BidNotice": {
+      "description": "This message is published by the Task Dispatcher node to notify all",
+      "raw": "# This message is published by the Task Dispatcher node to notify all\n# Fleet Adapters to participate in a bidding process for a new task.\n# Fleet Adapters may then submit a BidProposal message with their best proposal\n# to accommodate the new task.\n\n# Details of the task request\nstring request\n\n# The ID for this request\nstring task_id\n\n# Duration for which the bidding is open\nbuiltin_interfaces/Duration time_window\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_window",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BidProposal": {
+      "description": "This message is published by a Fleet Adapter in response to a BidNotice",
+      "raw": "# This message is published by a Fleet Adapter in response to a BidNotice\n# message.\n\n# The name of the Fleet Adapter publishing this message\nstring fleet_name\n\n# The name of the robot in the fleet which will potentially execute the task\nstring expected_robot_name\n\n# The overall cost of task assignments prior to accommodating the new task\nfloat64 prev_cost\n\n# The overall cost of task assignments after accommodating the new task\nfloat64 new_cost\n\n# The estimated finish time of the new task\nbuiltin_interfaces/Time finish_time\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "expected_robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "prev_cost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "new_cost",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "finish_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BidResponse": {
+      "description": "ID of the task that is being bid on",
+      "raw": "# ID of the task that is being bid on\nstring task_id\n\n# True if this response contains a proposal\nbool has_proposal\n\n# The proposal of this response, if has_proposal is true\nBidProposal proposal\n\n# Any errors related to this bid\nstring[] errors\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "has_proposal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BidProposal",
+          "name": "proposal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "errors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Clean": {
+      "description": "The name of the waypoint where the robot should begin its pre-configured",
+      "raw": "# The name of the waypoint where the robot should begin its pre-configured\n# cleaning job.\nstring start_waypoint\n\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "start_waypoint",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Delivery": {
+      "description": "task_id is intended to be a pseudo-random string generated",
+      "raw": "# task_id is intended to be a pseudo-random string generated\n# by the caller which can be used to identify this task as it\n# moves between the queues to completion (or failure).\nstring task_id\n\nrmf_dispenser_msgs/DispenserRequestItem[] items\n\nstring pickup_place_name\nstring pickup_dispenser\nBehavior pickup_behavior\n\nstring dropoff_place_name\nstring dropoff_ingestor\nBehavior dropoff_behavior\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "rmf_dispenser_msgs/DispenserRequestItem[]",
+          "name": "items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pickup_place_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pickup_dispenser",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Behavior",
+          "name": "pickup_behavior",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "dropoff_place_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "dropoff_ingestor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Behavior",
+          "name": "dropoff_behavior",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DispatchAck": {
+      "description": "This message is published by the fleet adapter in response to a",
+      "raw": "# This message is published by the fleet adapter in response to a\n# DispatchRequest message. It indicates whether the requested task addition or\n# cancellation was successful.\n\n# The ID of the DispatchRequest that is being responded to\nuint64 dispatch_id\n\n# True if the addition or cancellation operation was successful\nbool success\n\nstring[] errors\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "dispatch_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "errors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DispatchCommand": {
+      "description": "This message is published by Task Dispatcher Node to either award or cancel a",
+      "raw": "# This message is published by Task Dispatcher Node to either award or cancel a\n# task for a Fleet Adapter\n\n# The selected Fleet Adapter to award/cancel the task\nstring fleet_name\n\n# The task_id of the task that\nstring task_id\n\n# Unique ID of this request message\nuint64 dispatch_id\n\n# The time that this dispatch request was originally made. Dispatch requests may\n# expire with an error if they get no response after an extended period of time.\nbuiltin_interfaces/Time timestamp\n\n# Add or Cancel a task\nuint8 type\nuint8 TYPE_AWARD=1   # to award a task to a fleet\nuint8 TYPE_REMOVE=2  # to remove a task from a fleet\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint64",
+          "name": "dispatch_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_AWARD",
+          "comment": "to award a task to a fleet",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_REMOVE",
+          "comment": "to remove a task from a fleet",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "DispatchState": {
+      "description": "",
+      "raw": "\nuint8 STATUS_UNINITIALIZED = 0\nuint8 STATUS_QUEUED = 1\nuint8 STATUS_SELECTED = 2\nuint8 STATUS_DISPATCHED = 3\nuint8 STATUS_FAILED_TO_ASSIGN = 4\nuint8 STATUS_CANCELED_IN_FLIGHT = 5\n\nstring task_id\nint8 status\nAssignment assignment\nstring[] errors\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "STATUS_UNINITIALIZED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_QUEUED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_SELECTED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_DISPATCHED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_FAILED_TO_ASSIGN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "STATUS_CANCELED_IN_FLIGHT",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Assignment",
+          "name": "assignment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "errors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DispatchStates": {
+      "description": "States of tasks that are currently in the process of being dispatched",
+      "raw": "# States of tasks that are currently in the process of being dispatched\nDispatchState[] active\n\n# States of tasks that have recently finished being dispatched. This may mean\n# the task was assigned or it may mean it failed to be dispatched or was\n# canceled before the dispatch took place.\nDispatchState[] finished\n",
+      "fields": [
+        {
+          "type": "DispatchState[]",
+          "name": "active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DispatchState[]",
+          "name": "finished",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Loop": {
+      "description": "task_id is intended to be a pseudo-random string generated",
+      "raw": "# task_id is intended to be a pseudo-random string generated\n# by the caller which can be used to identify this task as it\n# moves between the queues to completion (or failure).\nstring task_id\n\n# robot_type can be used to specify a particular robot fleet\n# for this request\nstring robot_type\n\n# The number of times the robot should loop between the specified points.\nuint32 num_loops\n\n# The name of the waypoint where the robot should begin its loop. If the robot\n# is not already at this point, it will begin the task by moving there.\nstring start_name\n\n# The name of the waypoint where the robot should end its looping. The robot\n# will visit this waypoint num_loops times and then stop here on the last\n# visit.\nstring finish_name\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_loops",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "start_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "finish_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Priority": {
+      "description": "",
+      "raw": "uint64 value 0",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "value",
+          "comment": "",
+          "default": "0",
+          "is_constant": false
+        }
+      ]
+    },
+    "Station": {
+      "description": "task_id is intended to be a pseudo-random string generated",
+      "raw": "# task_id is intended to be a pseudo-random string generated\n# by the caller which can be used to identify this task as it\n# moves between the queues to completion (or failure).\nstring task_id\n\n# robot_type can be used to specify a particular robot fleet\n# for this request\nstring robot_type\n\n# the place name where the robot is requested to station (park)\nstring place_name\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "place_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TaskDescription": {
+      "description": "Desired start time of a task",
+      "raw": "# Desired start time of a task\nbuiltin_interfaces/Time start_time\n\n# Priority of the task\nPriority priority\n\n# Task type\nTaskType task_type\n\n# The corresponding field for the above TaskType should be populated\nStation station\nLoop loop\nDelivery delivery\nClean clean\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Priority",
+          "name": "priority",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TaskType",
+          "name": "task_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Station",
+          "name": "station",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Loop",
+          "name": "loop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Delivery",
+          "name": "delivery",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Clean",
+          "name": "clean",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TaskProfile": {
+      "description": "Unique ID assigned to this task",
+      "raw": "# Unique ID assigned to this task\nstring task_id\n\n# Task submission time\nbuiltin_interfaces/Time submission_time\n\n# Details of the task\nTaskDescription description\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "submission_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TaskDescription",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TaskSummary": {
+      "description": "Publish by Fleet Adapter (aka DispatchStatus)",
+      "raw": "# Publish by Fleet Adapter (aka DispatchStatus)\n\n# Fleet Adapter name\nstring fleet_name\n\n# *optional and duplicated in TaskProfile\nstring task_id \n\nTaskProfile task_profile\n\nuint32 state\nuint32 STATE_QUEUED=0\nuint32 STATE_ACTIVE=1\nuint32 STATE_COMPLETED=2  # hooray\nuint32 STATE_FAILED=3     # oh no\nuint32 STATE_CANCELED=4\nuint32 STATE_PENDING=5\n\n# a brief summary of the current status of the task, for UI's\n# *optional\nstring status\n\n# submission_time is when the task was submitted to rmf_core\n# *optional and duplicated in TaskProfile\nbuiltin_interfaces/Time submission_time   \n\n# when rmf_core actually began processing the task\nbuiltin_interfaces/Time start_time\n\n# When this message is a summary of an in-process task, the end_time field is\n# an estimate. When this message is a summary of a completed or failed task,\n# end_time is the actual time.\nbuiltin_interfaces/Time end_time\n\n# Allocated robot name\n# *optional\nstring robot_name\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "fleet_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TaskProfile",
+          "name": "task_profile",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "STATE_QUEUED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "STATE_ACTIVE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "STATE_COMPLETED",
+          "comment": "hooray",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "STATE_FAILED",
+          "comment": "oh no",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "STATE_CANCELED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "STATE_PENDING",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "submission_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "start_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "end_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "robot_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TaskType": {
+      "description": "",
+      "raw": "uint32 type\nuint32 TYPE_STATION=0\nuint32 TYPE_LOOP=1\nuint32 TYPE_DELIVERY=2\nuint32 TYPE_CHARGE_BATTERY=3\nuint32 TYPE_CLEAN=4\nuint32 TYPE_PATROL=5\n\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_STATION",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_LOOP",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_DELIVERY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_CHARGE_BATTERY",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_CLEAN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_PATROL",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        }
+      ]
+    },
+    "Tasks": {
+      "description": "",
+      "raw": "TaskSummary[] tasks\n",
+      "fields": [
+        {
+          "type": "TaskSummary[]",
+          "name": "tasks",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Tow": {
+      "description": "task_id is intended to be a pseudo-random string generated",
+      "raw": "# task_id is intended to be a pseudo-random string generated\n# by the caller which can be used to identify this task as it\n# moves between the queues to completion (or failure).\nstring task_id\n\nstring object_type\n\nbool is_object_id_known\nstring object_id\n\nstring pickup_place_name\n\nbool is_dropoff_place_known\nstring dropoff_place_name\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "object_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_object_id_known",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "object_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "pickup_place_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_dropoff_place_known",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "dropoff_place_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ApiService": {
+      "description": "The JSON message that represents the request",
+      "raw": "\n# The JSON message that represents the request\nstring json_msg\n\n---\n\n# The JSON message that represents the response\nstring json_msg\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "json_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "json_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CancelTask": {
+      "description": "Cancel Task | \"Delete\" service call",
+      "raw": "# Cancel Task | \"Delete\" service call\n\n# Identifier for who is requesting the service\nstring requester\n\n# generated task ID by dispatcher node\nstring task_id\n\n---\n\n# Confirmation that this service call is processed\nbool success\n\n# This will provide a verbose message regarding task cancellation\nstring message\n\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "requester",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetDispatchStates": {
+      "description": "Query list of submitted tasks | Get service call",
+      "raw": "# Query list of submitted tasks | Get service call\n\n# Input the generated task ID during submission\n# if empty, provide all Submitted Tasks\nstring[] task_ids\n\n---\n\nbool success\n\nDispatchStates states\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "task_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DispatchStates",
+          "name": "states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReviveTask": {
+      "description": "Revive a previously cancelled or failed task. This will reinitiate",
+      "raw": "# Revive a previously cancelled or failed task. This will reinitiate\n# a bidding sequence to reassign this task.\n\n# Identifier for who is requesting the service\nstring requester\n\n# task that was previously cancelled or failed\nstring task_id\n\n---\n\n# Confirmation that this service call is processed\nbool success\n\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "requester",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SubmitTask": {
+      "description": "Submit Task | POST service call",
+      "raw": "# Submit Task | POST service call\n\n# Identifier for who is requesting the service\nstring requester\n\n# desciption of task\nTaskDescription description\n\n---\n\n# Confirmation that this service call is processed\nbool success\n\n# generated task ID by dispatcher node\nstring task_id\n\n# This will provide a verbose message regarding task submission\nstring message\n\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "requester",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TaskDescription",
+          "name": "description",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "task_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

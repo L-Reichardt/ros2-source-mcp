@@ -1,0 +1,55 @@
+{
+  "name": "pmb2_description",
+  "version": "5.11.2",
+  "description": "Mechanical, kinematic, visual, etc. description of the PMB2 robot.\n      The files in this package are parsed and used by\n      a variety of other components.  Most users will not interact directly\n      with this package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/pal-robotics/pmb2_simulation",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "pmb2_robot",
+    "url": "https://github.com/pal-robotics/pmb2_robot.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto",
+      "ament_cmake_python"
+    ],
+    "runtime": [
+      "xacro",
+      "launch",
+      "launch_ros",
+      "launch_pal",
+      "rviz2",
+      "joint_state_publisher_gui",
+      "launch_param_builder",
+      "pal_urdf_utils",
+      "realsense2_description"
+    ],
+    "test": [
+      "ament_cmake_pytest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "launch_testing_ament_cmake",
+      "urdf_test"
+    ],
+    "depended_on_by": [
+      "pmb2_bringup",
+      "pmb2_gazebo",
+      "pmb2_robot",
+      "tiago_description"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

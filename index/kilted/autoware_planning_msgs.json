@@ -1,0 +1,318 @@
+{
+  "name": "autoware_planning_msgs",
+  "version": "1.7.0",
+  "description": "Autoware planning messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "nav_msgs",
+      "std_msgs",
+      "unique_identifier_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_internal_planning_msgs",
+      "autoware_lanelet2_extension",
+      "autoware_msgs",
+      "autoware_vehicle_msgs"
+    ]
+  },
+  "messages": {
+    "LaneletPrimitive": {
+      "description": "",
+      "raw": "int64 id\nstring primitive_type\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "primitive_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneletRoute": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Pose start_pose\ngeometry_msgs/Pose goal_pose\nautoware_planning_msgs/LaneletSegment[] segments\nunique_identifier_msgs/UUID uuid\nbool allow_modification\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "start_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "goal_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_planning_msgs/LaneletSegment[]",
+          "name": "segments",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "allow_modification",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneletSegment": {
+      "description": "",
+      "raw": "autoware_planning_msgs/LaneletPrimitive preferred_primitive\nautoware_planning_msgs/LaneletPrimitive[] primitives\n",
+      "fields": [
+        {
+          "type": "autoware_planning_msgs/LaneletPrimitive",
+          "name": "preferred_primitive",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_planning_msgs/LaneletPrimitive[]",
+          "name": "primitives",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Path": {
+      "description": "",
+      "raw": "std_msgs/Header header\nautoware_planning_msgs/PathPoint[] points\ngeometry_msgs/Point[] left_bound\ngeometry_msgs/Point[] right_bound\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_planning_msgs/PathPoint[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "left_bound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "right_bound",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PathPoint": {
+      "description": "",
+      "raw": "geometry_msgs/Pose pose\nfloat32 longitudinal_velocity_mps\nfloat32 lateral_velocity_mps\nfloat32 heading_rate_rps\nbool is_final\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitudinal_velocity_mps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lateral_velocity_mps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_rate_rps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_final",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PoseWithUuidStamped": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Pose pose\nunique_identifier_msgs/UUID uuid\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "unique_identifier_msgs/UUID",
+          "name": "uuid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trajectory": {
+      "description": "",
+      "raw": "std_msgs/Header header\nautoware_planning_msgs/TrajectoryPoint[] points\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_planning_msgs/TrajectoryPoint[]",
+          "name": "points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajectoryPoint": {
+      "description": "acceleration_mps2 increases/decreases based on absolute vehicle motion and does not consider vehicle direction (forwa...",
+      "raw": "builtin_interfaces/Duration time_from_start\ngeometry_msgs/Pose pose\nfloat32 longitudinal_velocity_mps\nfloat32 lateral_velocity_mps\n# acceleration_mps2 increases/decreases based on absolute vehicle motion and does not consider vehicle direction (forward/backward)\nfloat32 acceleration_mps2\nfloat32 heading_rate_rps\nfloat32 front_wheel_angle_rad\nfloat32 rear_wheel_angle_rad\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "time_from_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitudinal_velocity_mps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lateral_velocity_mps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "acceleration_mps2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_rate_rps",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "front_wheel_angle_rad",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "rear_wheel_angle_rad",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

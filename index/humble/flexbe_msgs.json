@@ -1,0 +1,1001 @@
+{
+  "name": "flexbe_msgs",
+  "version": "2.3.5",
+  "description": "flexbe_msgs provides the messages used by FlexBE.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/flexbe_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/FlexBE/flexbe_behavior_engine/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "flexbe_behavior_engine",
+    "url": "https://github.com/flexbe/flexbe_behavior_engine.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "std_msgs",
+      "builtin_interfaces",
+      "rosidl_default_generators",
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "flexbe_app",
+      "flexbe_behavior_engine",
+      "flexbe_core",
+      "flexbe_input",
+      "flexbe_mirror",
+      "flexbe_onboard",
+      "flexbe_states",
+      "flexbe_testing",
+      "flexbe_widget"
+    ]
+  },
+  "messages": {
+    "BEStatus": {
+      "description": "Behavior Status",
+      "raw": "# Behavior Status\nuint8 STARTED = 0\nuint8 FINISHED = 1\nuint8 FAILED = 2\n\nuint8 LOCKED = 4\nuint8 WAITING = 5\nuint8 SWITCHING = 6\n\n# General problems\nuint8 WARNING = 10\nuint8 ERROR = 11\n\n# Engine Status\nuint8 READY = 20\nuint8 RUNNING = 30\n\nbuiltin_interfaces/Time stamp\nint32 behavior_id  # id (checksum) of particular behavior encoding\nuint8 code\n\nstring[] args\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "STARTED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FINISHED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FAILED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LOCKED",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WAITING",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SWITCHING",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WARNING",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR",
+          "comment": "",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "READY",
+          "comment": "",
+          "default": "20",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RUNNING",
+          "comment": "",
+          "default": "30",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "behavior_id",
+          "comment": "id (checksum) of particular behavior encoding",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "args",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorLog": {
+      "description": "",
+      "raw": "string text\n\nuint8 INFO \t\t= 0\nuint8 WARN  \t= 1\nuint8 HINT  \t= 2\nuint8 ERROR \t= 3\nuint8 DEBUG \t= 10\n\nuint8 status_code",
+      "fields": [
+        {
+          "type": "string",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "INFO",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "WARN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "HINT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "ERROR",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "DEBUG",
+          "comment": "",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "status_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorModification": {
+      "description": "",
+      "raw": "int32 index_begin\nint32 index_end\nstring new_content",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "index_begin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "index_end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "new_content",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorRequest": {
+      "description": "",
+      "raw": "string behavior_name\n\nuint8 autonomy_level\nstring[] arg_keys\nstring[] arg_values\n\nContainer[] structure",
+      "fields": [
+        {
+          "type": "string",
+          "name": "behavior_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "autonomy_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "arg_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "arg_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Container[]",
+          "name": "structure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorSelection": {
+      "description": "",
+      "raw": "int32 behavior_key  # This is id key in behavior library\nint32 behavior_id   # checksum id of particular behavior encoding\n\nuint8 autonomy_level\nstring[] arg_keys\nstring[] arg_values\n\nstring[] input_keys\nstring[] input_values\n\nflexbe_msgs/BehaviorModification[] modifications",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "behavior_key",
+          "comment": "This is id key in behavior library",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "behavior_id",
+          "comment": "checksum id of particular behavior encoding",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "autonomy_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "arg_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "arg_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "input_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "input_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "flexbe_msgs/BehaviorModification[]",
+          "name": "modifications",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorSync": {
+      "description": "",
+      "raw": "int32 INVALID = 0  # denotes unset id or checksum\n\nint32 behavior_id  # id (checksum) of particular behavior encoding\n\nint32 current_state_checksum",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "INVALID",
+          "comment": "denotes unset id or checksum",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "behavior_id",
+          "comment": "id (checksum) of particular behavior encoding",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "current_state_checksum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CommandFeedback": {
+      "description": "",
+      "raw": "string command\nstring[] args",
+      "fields": [
+        {
+          "type": "string",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "args",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Container": {
+      "description": "",
+      "raw": "string path\nstring[] children\nstring[] outcomes\nstring[] transitions\nint8[] autonomy\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "children",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "outcomes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "transitions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "autonomy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ContainerStructure": {
+      "description": "",
+      "raw": "int32 behavior_id       # id (checksum) of particular behavior encoding\nContainer[] containers",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "behavior_id",
+          "comment": "id (checksum) of particular behavior encoding",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Container[]",
+          "name": "containers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OutcomeCondition": {
+      "description": "Defines a conjunction of required state outcomes in order to return a concurrency outcome",
+      "raw": "# Defines a conjunction of required state outcomes in order to return a concurrency outcome\nstring[] state_name\nstring[] state_outcome",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "state_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "state_outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OutcomeRequest": {
+      "description": "",
+      "raw": "uint8 outcome\nstring target",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StateInstantiation": {
+      "description": "Describes a single instantiation of a state",
+      "raw": "# Describes a single instantiation of a state\n\n# Path of this state inside the behavior\n# Last segment of the path is the name of this state\n# e.g. \"/Inner_Statemachine/This_State\"\nstring state_path\n\n# Specifies the class implementing this state\n# Use one of the provided CLASS constants if this is not a primitive state\n# e.g. \"CalculationState\"\nstring CLASS_STATEMACHINE \t= :STATEMACHINE\nstring CLASS_CONCURRENCY \t= :CONCURRENCY\nstring CLASS_PRIORITY \t\t= :PRIORITY\nstring CLASS_BEHAVIOR \t\t= :BEHAVIOR\nstring state_class\n\n\n\n# Only relevant for state machine, priority, and concurrency\n# Name of the initial state / state to be monitored\nstring initial_state_name\n# Input and output keys (can be remapped below)\nstring[] input_keys\nstring[] output_keys\n\n# Only relevant for concurrency\n# Outcome conditions\nstring[] cond_outcome\nOutcomeCondition[] cond_transition\n\n# Only relevant for behavior\n# Name of the class implementing this state\nstring behavior_class\n\n# Only relevant for primitive state\n# List of parameter names and values of this state\n# Order of names and values has to match\nstring[] parameter_names\nstring[] parameter_values\n\n\n\n# Position of this state in the editor [x,y]\nfloat32[2] position\n\n# Outcomes of this state\n# Defines the order of the lists: transitions, autonomy\nstring[] outcomes\n# Transition targets (state names or container outcomes) of the outcomes\nstring[] transitions\n# Required autonomy level of the outcomes\nint8[] autonomy\n\n# Userdata of this state\n# Merges own input_keys and output_keys, no duplicates\nstring[] userdata_keys\n# Remapping of the corresponding own key (= key used by container)\nstring[] userdata_remapping",
+      "fields": [
+        {
+          "type": "string",
+          "name": "state_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "CLASS_STATEMACHINE",
+          "comment": "",
+          "default": ":STATEMACHINE",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CLASS_CONCURRENCY",
+          "comment": "",
+          "default": ":CONCURRENCY",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CLASS_PRIORITY",
+          "comment": "",
+          "default": ":PRIORITY",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "CLASS_BEHAVIOR",
+          "comment": "",
+          "default": ":BEHAVIOR",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "state_class",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "initial_state_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "input_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "output_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "cond_outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "OutcomeCondition[]",
+          "name": "cond_transition",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "behavior_class",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "parameter_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "parameter_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[2]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "outcomes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "transitions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "autonomy",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "userdata_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "userdata_remapping",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SynthesisErrorCodes": {
+      "description": "success",
+      "raw": "int32 value\n\n# success\nint32 SUCCESS = 1\n\n# all other values will be considered as any sort of error",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "SUCCESS",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        }
+      ]
+    },
+    "SynthesisRequest": {
+      "description": "Minimal template for the request data provided by the FlexBE synthesis interface.",
+      "raw": "# Minimal template for the request data provided by the FlexBE synthesis interface.\n# Either refer this message as 'request' in the goal part of your synthesis action\n# or implement your own by at least supporting the fields listed below.\n\n# Identifier of this synthesis query, can for example be used to set the name of the resulting state machine\nstring name\n\n# Identifier of the system (i.e., configuration data set) to be used by the synthesis tool\nstring system\n\n# Goal to be achieved by the synthesized behavior\nstring goal\n\n# Initial conditions from which the synthesized behavior will start\nstring initial_condition\n\n# Available outcomes of the generated state machine,\n# i.e., possible results of the synthesized behavior\nstring[] sm_outcomes",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "initial_condition",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "sm_outcomes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UICommand": {
+      "description": "Sends a command to the command interface of the FlexBE UI.",
+      "raw": "# Sends a command to the command interface of the FlexBE UI.\n# In order to be successfully executed, the user needs to have ROS commands enabled and the keys have to match.\n\n# Command to be executed as it would be entered in the command interface\nstring command\n\n# Security key, needs to match the key set in the UI\nstring key\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UserdataInfo": {
+      "description": "",
+      "raw": "string state\nstring key\nstring type\nstring data\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetUserdata": {
+      "description": "specify key to filter userdata, leave empty to get all userdata",
+      "raw": "# specify key to filter userdata, leave empty to get all userdata\nstring userdata_key\n---\nbool success\nstring message\nflexbe_msgs/UserdataInfo[] userdata",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "userdata_key",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "flexbe_msgs/UserdataInfo[]",
+          "name": "userdata",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "BehaviorExecution": {
+      "description": "Commands the execution of any behavior.",
+      "raw": "# Commands the execution of any behavior.\n\n# name of the behavior to be executed\nstring behavior_name\n\n# optional list of behavior parameters\nstring[] arg_keys\nstring[] arg_values\n\n# optional list of initial userdata\nstring[] input_keys\nstring[] input_values\n\n---\n\n# result of the executed behavior\nstring outcome\n\n---\n\n# path of the current state\nstring current_state\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "behavior_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "arg_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "arg_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "input_keys",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "input_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "string",
+          "name": "outcome",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "current_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BehaviorInput": {
+      "description": "If desired, custom request types can be defined and choosen here",
+      "raw": "# If desired, custom request types can be defined and choosen here\nuint8 request_type\n\n# Basic types (used by input_action_server, but otherwise optional)\nuint8 REQUEST_INT          = 0  # Single integer value\nuint8 REQUEST_FLOAT        = 1  # Float\nuint8 REQUEST_2D           = 2  # List of 2 floats\nuint8 REQUEST_3D           = 3  # List of 3 floats\nuint8 REQUEST_4D           = 4  # List of 4 floats (e.g. quaternion)\nuint8 REQUEST_POSE         = 10 # Geometry message pose\nuint8 REQUEST_POSE_STAMPED = 11 # Geometry message pose stamped\n\n\n# Request message displayed to the operator\n# Provide context information, i.e. for which purpose the data is required.\nstring msg\n\n---\n\nuint8 RESULT_OK         = 0\nuint8 RESULT_FAILED     = 1\nuint8 RESULT_ABORTED    = 2\n\n# Indicates if the request has been successful\nuint8 result_code\n\n# Serialized data which was requested\n# In case of result_code != RESULT_OK, this field will contain unserialized data regarding the reason of failure instead.\nstring data\n\n---\n\n\n",
+      "goal_fields": [
+        {
+          "type": "uint8",
+          "name": "request_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_INT",
+          "comment": "Single integer value",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_FLOAT",
+          "comment": "Float",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_2D",
+          "comment": "List of 2 floats",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_3D",
+          "comment": "List of 3 floats",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_4D",
+          "comment": "List of 4 floats (e.g. quaternion)",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_POSE",
+          "comment": "Geometry message pose",
+          "default": "10",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "REQUEST_POSE_STAMPED",
+          "comment": "Geometry message pose stamped",
+          "default": "11",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint8",
+          "name": "RESULT_OK",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_FAILED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RESULT_ABORTED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "result_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    },
+    "BehaviorSynthesis": {
+      "description": "Minimal template for a behavior synthesis action.",
+      "raw": "# Minimal template for a behavior synthesis action.\n# As long as your action type supports at least the fields listed below, you can also use a custom one.\n\n# Request message as set in the FlexBE UI\nSynthesisRequest request\n\n---\n\n# Provides feedback regarding possibly occured errors\nSynthesisErrorCodes error_code\n\n# Result of behavior synthesis as a list of state instantiations\nStateInstantiation[] states\n\n---\n\n# Any custom feedback message regarding the status\nstring status\n\n# Progress indication from 0 (started) to 1 (completed)\nfloat32 progress\n",
+      "goal_fields": [
+        {
+          "type": "SynthesisRequest",
+          "name": "request",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "SynthesisErrorCodes",
+          "name": "error_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "StateInstantiation[]",
+          "name": "states",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "progress",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

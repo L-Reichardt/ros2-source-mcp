@@ -1,0 +1,2796 @@
+{
+  "name": "novatel_gps_msgs",
+  "version": "4.2.0",
+  "description": "Messages for proprietary (non-NMEA) sentences from Novatel GPS receivers.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/novatel_gps_driver",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "novatel_gps_driver",
+    "url": "https://github.com/swri-robotics/novatel_gps_driver.git",
+    "branch": "ros2-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "novatel_gps_driver"
+    ]
+  },
+  "messages": {
+    "ClockSteering": {
+      "description": "The CLOCKSTEERING log is used to monitor the current state of the clock steering process.",
+      "raw": "# The CLOCKSTEERING log is used to monitor the current state of the clock steering process.\n\nint8 INTERNAL_SOURCE=0\nint8 EXTERNAL_SOURCE=1\n\nint8 FIRST_ORDER_STEERING_STATE=0\nint8 SECOND_ORDER_STEERING_STATE=1\nint8 CALIBRATE_HIGH_STEERING_STATE=2\nint8 CALIBRATE_LOW_STEERING_STATE=3\nint8 CALIBRATE_CENTER_STEERING_STATE=4\n\n# Clock source\nstring source\n\n# Steering state\nstring steering_state\n\n# Period of the FREQUENCYOUT signal used to control the oscillator\nuint32 period\n\n# Current pulse width of the FREQUENCYOUT signal. \nfloat64 pulse_width\n\n# The current band width of the clock steering tracking loop in Hz.\nfloat64 bandwidth\n\n# The current clock drift change in m/s/bit for a 1 LSB pulse width. \nfloat32 slope\n\n# The last valid receiver clock offset computed (m).\nfloat64 offset\n\n# The last valid receiver clock drift rate received (m/s).\nfloat64 drift_rate\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "INTERNAL_SOURCE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "EXTERNAL_SOURCE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "FIRST_ORDER_STEERING_STATE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "SECOND_ORDER_STEERING_STATE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CALIBRATE_HIGH_STEERING_STATE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CALIBRATE_LOW_STEERING_STATE",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "CALIBRATE_CENTER_STEERING_STATE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "steering_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "period",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pulse_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "bandwidth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "slope",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "drift_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gpgga": {
+      "description": "Message from GPGGA NMEA String",
+      "raw": "# Message from GPGGA NMEA String\n# Based on https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm\nstd_msgs/Header header\n\nstring message_id\n\n# UTC seconds from midnight\nfloat64 utc_seconds\n\nfloat64 lat\nfloat64 lon\n\nstring lat_dir\nstring lon_dir\n\nuint32 GPS_QUAL_INVALID=0\nuint32 GPS_QUAL_SINGLE_POINT=1\nuint32 GPS_QUAL_PSEUDORANGE_DIFFERENTIAL=2\nuint32 GPS_QUAL_RTK_FIXED_AMBIGUITY_SOLUTION=4\nuint32 GPS_QUAL_RTK_FLOATING_AMBIGUITY_SOLUTION=5\nuint32 GPS_QUAL_DEAD_RECKONING_MODE=6\nuint32 GPS_QUAL_MANUAL_INPUT_MODE=7\nuint32 GPS_QUAL_SIMULATION_MODE=8\nuint32 GPS_QUAL_WASS=9\nuint32 gps_qual\n\nuint32 num_sats\nfloat32 hdop \nfloat32 alt\nstring altitude_units\n\nfloat32 undulation\nstring undulation_units\nuint32 diff_age\nstring station_id\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "utc_seconds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lat_dir",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lon_dir",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_INVALID",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_SINGLE_POINT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_PSEUDORANGE_DIFFERENTIAL",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_RTK_FIXED_AMBIGUITY_SOLUTION",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_RTK_FLOATING_AMBIGUITY_SOLUTION",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_DEAD_RECKONING_MODE",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_MANUAL_INPUT_MODE",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_SIMULATION_MODE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "GPS_QUAL_WASS",
+          "comment": "",
+          "default": "9",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "gps_qual",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "num_sats",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "hdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "alt",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "altitude_units",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "undulation_units",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "diff_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gpgsa": {
+      "description": "Message from GPGSA NMEA String",
+      "raw": "# Message from GPGSA NMEA String\nstd_msgs/Header header\n\nstring message_id\n\nstring auto_manual_mode\nuint8 fix_mode\n\nuint8[] sv_ids\n\nfloat32 pdop\nfloat32 hdop\nfloat32 vdop",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "auto_manual_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "fix_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "sv_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "hdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gpgsv": {
+      "description": "Total number of satellites in view and data about satellites",
+      "raw": "# Total number of satellites in view and data about satellites\n# Because the NMEA sentence is limited to 4 satellites per message, several\n# of these messages may need to be synthesized to get data about all visible\n# satellites.\n\nstd_msgs/Header header\n\nstring message_id\n\n# Number of messages in this sequence\nuint8 n_msgs\n# This messages number in its sequence. The first message is number 1.\nuint8 msg_number\n\n# Number of satellites currently visible\nuint8 n_satellites\n\n# Up to 4 satellites are described in each message\nSatellite[] satellites",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n_msgs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "msg_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "n_satellites",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Satellite[]",
+          "name": "satellites",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gphdt": {
+      "description": "Message from GPHDT NMEA String",
+      "raw": "# Message from GPHDT NMEA String\nstd_msgs/Header header\n\nstring message_id\n\n# Heading in degrees (clockwise)\nfloat64 heading\n\n# T: Indicates heading relative to True North\nstring t",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "t",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Gprmc": {
+      "description": "Message from GPRMC NMEA String",
+      "raw": "# Message from GPRMC NMEA String\nstd_msgs/Header header\n\nstring message_id\n\nfloat64 utc_seconds\nstring position_status\n\nfloat64 lat\nfloat64 lon\n\nstring lat_dir\nstring lon_dir\n\nfloat32 speed\nfloat32 track\nstring date\nfloat32 mag_var\nstring mag_var_direction\nstring mode_indicator",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "utc_seconds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lat_dir",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lon_dir",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "track",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "date",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "mag_var",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mag_var_direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "mode_indicator",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Inscov": {
+      "description": "INS Covariance Matrices",
+      "raw": "# INS Covariance Matrices\n\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\nuint32 week\nfloat64 seconds\nfloat64[9] position_covariance\nfloat64[9] attitude_covariance\nfloat64[9] velocity_covariance\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "week",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "seconds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "position_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "attitude_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "velocity_covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Inspva": {
+      "description": "INS Position, Velocity, and Attitude",
+      "raw": "# INS Position, Velocity, and Attitude\n\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\nuint32 week\nfloat64 seconds\nfloat64 latitude\nfloat64 longitude\nfloat64 height\nfloat64 north_velocity\nfloat64 east_velocity\nfloat64 up_velocity\nfloat64 roll\nfloat64 pitch\nfloat64 azimuth\nstring status\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "week",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "seconds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "north_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "east_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "up_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Inspvax": {
+      "description": "message 1465",
+      "raw": "# message 1465\n\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\n# Table 29 in the SPAN on OEM6 manual:\n# See: http://www.novatel.com/assets/Documents/Manuals/OM-20000144UM.pdf#page=121\nstring ins_status\n\n\n# Table 30 in the SPAN on OEM6 manual:\n# See: http://www.novatel.com/assets/Documents/Manuals/OM-20000144UM.pdf#page=124\nstring position_type\n\n\nfloat64 latitude\nfloat64 longitude\nfloat64 altitude\n\nfloat32 undulation\n\nfloat64 north_velocity\nfloat64 east_velocity\nfloat64 up_velocity\n\nfloat64 roll\nfloat64 pitch\nfloat64 azimuth\n\nfloat32 latitude_std\nfloat32 longitude_std\nfloat32 altitude_std\n\nfloat32 north_velocity_std\nfloat32 east_velocity_std\nfloat32 up_velocity_std\n\nfloat32 roll_std\nfloat32 pitch_std\nfloat32 azimuth_std\n\nNovatelExtendedSolutionStatus extended_status\n\nuint16 seconds_since_update\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ins_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "north_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "east_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "up_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "latitude_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitude_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "altitude_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "north_velocity_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "east_velocity_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "up_velocity_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "azimuth_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelExtendedSolutionStatus",
+          "name": "extended_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "seconds_since_update",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Insstdev": {
+      "description": "INS PVA standard deviations",
+      "raw": "# INS PVA standard deviations\n\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\nfloat32 latitude_dev\nfloat32 longitude_dev\nfloat32 height_dev\nfloat32 north_velocity_dev\nfloat32 east_velocity_dev\nfloat32 up_velocity_dev\nfloat32 roll_dev\nfloat32 pitch_dev\nfloat32 azimuth_dev\nNovatelExtendedSolutionStatus extended_solution_status\nuint16 time_since_update\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "latitude_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "longitude_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "north_velocity_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "east_velocity_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "up_velocity_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "roll_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "azimuth_dev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelExtendedSolutionStatus",
+          "name": "extended_solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "time_since_update",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelCorrectedImuData": {
+      "description": "Parsed corrected IMU data from Novatel OEM6 receiver",
+      "raw": "# Parsed corrected IMU data from Novatel OEM6 receiver\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\nuint32 gps_week_num\nfloat64 gps_seconds\n\n# All measurements in this message are instantaneous values;\n# attitude rate is in radians\nfloat64 pitch_rate\nfloat64 roll_rate\nfloat64 yaw_rate\n\n# accelerations are in m/s\nfloat64 lateral_acceleration\nfloat64 longitudinal_acceleration\nfloat64 vertical_acceleration\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gps_week_num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gps_seconds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pitch_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "roll_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "yaw_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lateral_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitudinal_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "vertical_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelDualAntennaHeading": {
+      "description": "Parsed Heading East of North from Novatel receiver. Only ALIGN capable recievers can publish this",
+      "raw": "# Parsed Heading East of North from Novatel receiver. Only ALIGN capable recievers can publish this\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\n# Solution Status\nstring solution_status\nstring position_type\n\n# Baseline length (m)\nfloat32 baseline_length\n\n# Heading in degrees [0,360)\nfloat32 heading\n\n# Pitch in degrees +- 90\nfloat32 pitch\n\n# Orientation Standard Deviations (deg)\nfloat32 heading_sigma\nfloat32 pitch_sigma\n\n# Station ids\nstring station_id\n\n# Satellite Usage\nuint8 num_satellites_tracked\nuint8 num_satellites_used_in_solution\nuint8 num_satellites_above_elevation_mask_angle\nuint8 num_satellites_above_elevation_mask_angle_l2\n\n# Enum for solution source\nuint8 solution_source\n\nuint8 SOURCE_PRIMARY_ANTENNA=0\nuint8 SOURCE_SECONDARY_ANTENNA=1\n\n# Extended Solution Status\nNovatelExtendedSolutionStatus extended_solution_status\n\n# Signal Masks\nNovatelSignalMask signal_mask",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "baseline_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_tracked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_above_elevation_mask_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_above_elevation_mask_angle_l2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "solution_source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "SOURCE_PRIMARY_ANTENNA",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOURCE_SECONDARY_ANTENNA",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "NovatelExtendedSolutionStatus",
+          "name": "extended_solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelSignalMask",
+          "name": "signal_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelExtendedSolutionStatus": {
+      "description": "Bit    Mask      Description",
+      "raw": "# Bit    Mask      Description\n#  0     0x01      Advance RTK verified (0 = not verified, 1 = verified)\n# 1-3    0x0E      Pseudorange Ionosphere Correction\n#                    0 = unknown\n#                    1 = Klobuchar Broadcast\n#                    2 = SBAS Broadcast\n#                    3 = Multi-frequency Computed\n#                    4 = PSRDiff Correction\n#                    5 = NovaTel Blended Ionosphere Value\n# 4-7  0xF0        <Reserved>\nuint32 original_mask\nbool advance_rtk_verified\nstring psuedorange_iono_correction\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "original_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "advance_rtk_verified",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "psuedorange_iono_correction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelHeading2": {
+      "description": "Parsed Heading East of North from Novatel receiver. Only ALIGN capable recievers can publish this",
+      "raw": "# Parsed Heading East of North from Novatel receiver. Only ALIGN capable recievers can publish this\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\n# Solution Status\nstring solution_status\nstring position_type\n\n# Baseline length (m)\nfloat32 baseline_length\n\n# Heading in degrees [0,360)\nfloat32 heading\n\n# Pitch in degrees +- 90\nfloat32 pitch\n\n# Orientation Standard Deviations (deg)\nfloat32 heading_sigma\nfloat32 pitch_sigma\n\n# Station ids\nstring rover_station_id\nstring master_station_id\n\n# Satellite Usage\nuint8 num_satellites_tracked\nuint8 num_satellites_used_in_solution\nuint8 num_satellites_above_elevation_mask_angle\nuint8 num_satellites_above_elevation_mask_angle_l2\n\n# Enum for solution source\nuint8 solution_source\n\nuint8 SOURCE_PRIMARY_ANTENNA=0\nuint8 SOURCE_SECONDARY_ANTENNA=1\n\n# Extended Solution Status\nNovatelExtendedSolutionStatus extended_solution_status\n\n# Signal Masks\nNovatelSignalMask signal_mask",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "baseline_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pitch_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "rover_station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "master_station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_tracked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_above_elevation_mask_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_above_elevation_mask_angle_l2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "solution_source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "SOURCE_PRIMARY_ANTENNA",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "SOURCE_SECONDARY_ANTENNA",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "NovatelExtendedSolutionStatus",
+          "name": "extended_solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelSignalMask",
+          "name": "signal_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelMessageHeader": {
+      "description": "Novatel Message Header",
+      "raw": "# Novatel Message Header\n\nstring message_name\nstring port\nuint32 sequence_num\nfloat32 percent_idle_time\nstring gps_time_status\nuint32 gps_week_num\nfloat64 gps_seconds\n\n# Bit       Mask      Description\n#  0     0x00000001   Error flag (Bit = 0: No Error, Bit = 1: Error)\n#  1     0x00000002   Temperature Status (0: Within Spec, 1: Warning)\n#  2     0x00000004   Voltage Supply Status (0: OK, 1: Warning)\n#  3     0x00000008   Antenna Power Status (0: Powered, 1: Not Powered)\n#  4     0x00000010   <Reserved>\n#  5     0x00000020   Antenna open flag (0: OK, 1: Open)\n#  6     0x00000040   Antenna shorted flag (0: OK, 1: Shorted)\n#  7     0x00000080   CPU overload flag\n#  8     0x00000100   COM1 buffer overrun flag (0: No overrun, 1: Overrun)\n#  9     0x00000200   COM2 buffer overrun flag (0: No overrun, 1: Overrun)\n#  10    0x00000400   COM3 buffer overrun flag (0: No overrun, 1: Overrun)\n#  11    0x00000800   USB buffer overrun flag (0: No overrun, 1: Overrun)\n#  12    0x00001000   <Reserved>\n#  13    0x00002000   <Reserved>\n#  14    0x00004000   <Reserved>\n#  15    0x00008000   RF1 AGC Status (0: OK, 1: Bad)\n#  16    0x00010000   <Reserverd>\n#  17    0x00020000   RF2 AGC status (0: OK, 1: Bad)\n#  18    0x00040000   Almanac flag/UTC known (0: Valid, 1: Invalid)\n#  19    0x00080000   Position solution flag (0: Valid, 1: Invalid)\n#  20    0x00100000   Position fixed flag (0: Not fixed, 1: Fixed)\n#  21    0x00200000   Clock steering status (0: Enabled, 1: Disabled)\n#  22    0x00400000   Clock model flag (0: Valid, 1: Invalid)\n#  23    0x00800000   OEMV external oscillator flag (0: Disabled, 1: Enabled)\n#  24    0x01000000   Software resource (0: OK, 1: Warning)\n#  25    0x02000000   <Reserved>\n#  26    0x04000000   <Reserved>\n#  27    0x08000000   <Reserved>\n#  28    0x10000000   <Reserved>\n#  29    0x20000000   Auxiliary 3 status event flag (0: No event, 1: Event)\n#  30    0x40000000   Auxiliary 2 status event flag (0: No event, 1: Event)\n#  31    0x80000000   Auxiliary 1 status event flag (0: No event, 1: Event)\nNovatelReceiverStatus receiver_status\n\n# Receiver build number (0-65535)\nuint32 receiver_software_version",
+      "fields": [
+        {
+          "type": "string",
+          "name": "message_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sequence_num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "percent_idle_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "gps_time_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "gps_week_num",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "gps_seconds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelReceiverStatus",
+          "name": "receiver_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "receiver_software_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelPosition": {
+      "description": "Parsed Best Position or Omnistar XP or HP pos data from Novatel OEM6 receiver",
+      "raw": "# Parsed Best Position or Omnistar XP or HP pos data from Novatel OEM6 receiver\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\nstring solution_status\nstring position_type\n\n# Position Data\nfloat64 lat\nfloat64 lon\nfloat64 height\n\nfloat32 undulation\nstring datum_id\n\n# Accuracy Statistics (units?)\nfloat32 lat_sigma\nfloat32 lon_sigma\nfloat32 height_sigma\nstring base_station_id\nfloat32 diff_age\nfloat32 solution_age\nuint8 num_satellites_tracked\nuint8 num_satellites_used_in_solution\nuint8 num_gps_and_glonass_l1_used_in_solution\nuint8 num_gps_and_glonass_l1_and_l2_used_in_solution\n\nNovatelExtendedSolutionStatus extended_solution_status\n\nNovatelSignalMask signal_mask",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "lon",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "datum_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lat_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "lon_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "base_station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "diff_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "solution_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_tracked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_gps_and_glonass_l1_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_gps_and_glonass_l1_and_l2_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelExtendedSolutionStatus",
+          "name": "extended_solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelSignalMask",
+          "name": "signal_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelPsrdop2": {
+      "description": "PSR Dilution of Precision (DOP) values",
+      "raw": "# PSR Dilution of Precision (DOP) values\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\n# Geometry dilution of precision\nfloat32 gdop\n# Position dilution of precision\nfloat32 pdop\n# Horizontal dilution of precision\nfloat32 hdop\n# Vertical dilution of precision\nfloat32 vdop\n\n# Time dilution of precision for each GNSS system\nNovatelPsrdop2System[] systems\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "pdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "hdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "vdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelPsrdop2System[]",
+          "name": "systems",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelPsrdop2System": {
+      "description": "GNSS System information provided by PSRDOP2 logs",
+      "raw": "# GNSS System information provided by PSRDOP2 logs\nstring system\nfloat32 tdop\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "system",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tdop",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelReceiverStatus": {
+      "description": "From the original Novatel receiver status message bitfield",
+      "raw": "# From the original Novatel receiver status message bitfield\n#  0     0x00000001   Error flag (Bit = 0: No Error, Bit = 1: Error)\n#  1     0x00000002   Temperature Status (0: Within Spec, 1: Warning)\n#  2     0x00000004   Voltage Supply Status (0: OK, 1: Warning)\n#  3     0x00000008   Antenna Power Status (0: Powered, 1: Not Powered)\n#  4     0x00000010   <Reserved>\n#  5     0x00000020   Antenna open flag (0: OK, 1: Open)\n#  6     0x00000040   Antenna shorted flag (0: OK, 1: Shorted)\n#  7     0x00000080   CPU overload flag\n#  8     0x00000100   COM1 buffer overrun flag (0: No overrun, 1: Overrun)\n#  9     0x00000200   COM2 buffer overrun flag (0: No overrun, 1: Overrun)\n#  10    0x00000400   COM3 buffer overrun flag (0: No overrun, 1: Overrun)\n#  11    0x00000800   USB buffer overrun flag (0: No overrun, 1: Overrun)\n#  12    0x00001000   <Reserved>\n#  13    0x00002000   <Reserved>\n#  14    0x00004000   <Reserved>\n#  15    0x00008000   RF1 AGC Status (0: OK, 1: Bad)\n#  16    0x00010000   <Reserverd>\n#  17    0x00020000   RF2 AGC status (0: OK, 1: Bad)\n#  18    0x00040000   Almanac flag/UTC known (0: Valid, 1: Invalid)\n#  19    0x00080000   Position solution flag (0: Valid, 1: Invalid)\n#  20    0x00100000   Position fixed flag (0: Not fixed, 1: Fixed)\n#  21    0x00200000   Clock steering status (0: Enabled, 1: Disabled)\n#  22    0x00400000   Clock model flag (0: Valid, 1: Invalid)\n#  23    0x00800000   OEMV external oscillator flag (0: Disabled, 1: Enabled)\n#  24    0x01000000   Software resource (0: OK, 1: Warning)\n#  25    0x02000000   <Reserved>\n#  26    0x04000000   <Reserved>\n#  27    0x08000000   <Reserved>\n#  28    0x10000000   <Reserved>\n#  29    0x20000000   Auxiliary 3 status event flag (0: No event, 1: Event)\n#  30    0x40000000   Auxiliary 2 status event flag (0: No event, 1: Event)\n#  31    0x80000000   Auxiliary 1 status event flag (0: No event, 1: Event)\nuint32 original_status_code\nbool error_flag\nbool temperature_flag\nbool voltage_supply_flag\nbool antenna_powered\nbool antenna_is_open\nbool antenna_is_shorted\nbool cpu_overload_flag\nbool com1_buffer_overrun\nbool com2_buffer_overrun\nbool com3_buffer_overrun\nbool usb_buffer_overrun\nbool rf1_agc_flag\nbool rf2_agc_flag\nbool almanac_flag\nbool position_solution_flag\nbool position_fixed_flag\nbool clock_steering_status_enabled\nbool clock_model_flag\nbool oemv_external_oscillator_flag\nbool software_resource_flag\nbool aux1_status_event_flag\nbool aux2_status_event_flag\nbool aux3_status_event_flag\n\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "original_status_code",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "temperature_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "voltage_supply_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "antenna_powered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "antenna_is_open",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "antenna_is_shorted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "cpu_overload_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "com1_buffer_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "com2_buffer_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "com3_buffer_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "usb_buffer_overrun",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rf1_agc_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "rf2_agc_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "almanac_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "position_solution_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "position_fixed_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clock_steering_status_enabled",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clock_model_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "oemv_external_oscillator_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "software_resource_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "aux1_status_event_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "aux2_status_event_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "aux3_status_event_flag",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelRxStatus": {
+      "description": "Based on https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm",
+      "raw": "# Based on https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\n# for the bit table of the following values see https://docs.novatel.com/OEM7/Content/Logs/RXSTATUS.htm\nuint32 error\n\nuint32 rxstat\n\nuint32 aux1stat\n\nuint32 aux2stat\n\nuint32 aux3stat\n\nuint32 aux4stat\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "rxstat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "aux1stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "aux2stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "aux3stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "aux4stat",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelSignalMask": {
+      "description": "Bit    Mask      Description",
+      "raw": "# Bit    Mask      Description\n#  0     0x01      GPS L1 used in Solution\n#  1     0x02      GPS L2 used in Solution\n#  2     0x04      GPS L5 used in Solution\n#  3     0x08      <Reserved>\n#  4     0x10      GLONASS L1 used in Solution\n#  5     0x20      GLONASS L2 used in Solution\n# 6-7  0x40-0x80   <Reserved>\nuint32 original_mask\nbool gps_l1_used_in_solution\nbool gps_l2_used_in_solution\nbool gps_l3_used_in_solution\nbool glonass_l1_used_in_solution\nbool glonass_l2_used_in_solution\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "original_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps_l1_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps_l2_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "gps_l3_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "glonass_l1_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "glonass_l2_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelUtmPosition": {
+      "description": "Parsed Best UTM data from Novatel OEM6 receiver",
+      "raw": "# Parsed Best UTM data from Novatel OEM6 receiver\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\nstring solution_status\nstring position_type\n\n# Position Data\nuint32 lon_zone_number\nstring lat_zone_letter\nfloat64 northing\nfloat64 easting\nfloat64 height\n\nfloat32 undulation\nstring datum_id\n\n# Accuracy Statistics (units?)\nfloat32 northing_sigma\nfloat32 easting_sigma\nfloat32 height_sigma\nstring base_station_id\nfloat32 diff_age\nfloat32 solution_age\nuint8 num_satellites_tracked\nuint8 num_satellites_used_in_solution\nuint8 num_gps_and_glonass_l1_used_in_solution\nuint8 num_gps_and_glonass_l1_and_l2_used_in_solution\n\nNovatelExtendedSolutionStatus extended_solution_status\n\nNovatelSignalMask signal_mask",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "lon_zone_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lat_zone_letter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "northing",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "easting",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "undulation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "datum_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "northing_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "easting_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "height_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "base_station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "diff_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "solution_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_tracked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_gps_and_glonass_l1_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_gps_and_glonass_l1_and_l2_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelExtendedSolutionStatus",
+          "name": "extended_solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelSignalMask",
+          "name": "signal_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelVelocity": {
+      "description": "Parsed Best Position or Omnistar XP or HP pos data from Novatel OEM6 receiver",
+      "raw": "# Parsed Best Position or Omnistar XP or HP pos data from Novatel OEM6 receiver\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\nstring solution_status\nstring velocity_type\n\n# A measure of the latency in the velocity time tag in seconds.\nfloat32 latency\n\n# Differential age in seconds\nfloat32 age\n\n# Horizontal speed over ground, meters/second\nfloat64 horizontal_speed\n\n# Direction of motion over ground with respect to true North, degrees\nfloat64 track_ground\n\n# Vertical speed, where positive values correspond to increasing altitude, meters/second\nfloat64 vertical_speed",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "velocity_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "latency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "horizontal_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "track_ground",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "vertical_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NovatelXYZ": {
+      "description": "Parsed Best Position in the WGS-84 ECEF frame from Novatel receiver",
+      "raw": "# Parsed Best Position in the WGS-84 ECEF frame from Novatel receiver\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\n# Position Data (m)\nstring solution_status\nstring position_type\n\nfloat64 x\nfloat64 y\nfloat64 z\n\n# Position Standard Deviation (m)\nfloat32 x_sigma\nfloat32 y_sigma\nfloat32 z_sigma\n\n# Velocity Data\nstring velocity_solution_status\nstring velocity_type\n\nfloat64 x_vel\nfloat64 y_vel\nfloat64 z_vel\n\n# Velocity Standard Deviation (m/s)\nfloat32 x_vel_sigma\nfloat32 y_vel_sigma\nfloat32 z_vel_sigma\n\nstring base_station_id\nfloat32 velocity_latency\n\n# Data Ages (sec)\nfloat32 diff_age\nfloat32 solution_age\n\n# Satellite Usage\nuint8 num_satellites_tracked\nuint8 num_satellites_used_in_solution\nuint8 num_gps_and_glonass_l1_used_in_solution\nuint8 num_gps_and_glonass_l1_and_l2_used_in_solution\n\n# Extended Solution Status\nNovatelExtendedSolutionStatus extended_solution_status\n\n# Signal Masks\nNovatelSignalMask signal_mask",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "velocity_solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "velocity_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "x_vel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y_vel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z_vel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x_vel_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y_vel_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "z_vel_sigma",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "base_station_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity_latency",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "diff_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "solution_age",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_tracked",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_satellites_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_gps_and_glonass_l1_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "num_gps_and_glonass_l1_and_l2_used_in_solution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelExtendedSolutionStatus",
+          "name": "extended_solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelSignalMask",
+          "name": "signal_mask",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Range": {
+      "description": "Satellite Range information from Novatel OEM6 receiver",
+      "raw": "#Satellite Range information from Novatel OEM6 receiver\n\nstd_msgs/Header header\n\nNovatelMessageHeader novatel_msg_header\n\n#number of observations\nint32 numb_of_observ\n\n#range information for the observed \nRangeInformation[] info\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NovatelMessageHeader",
+          "name": "novatel_msg_header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "numb_of_observ",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RangeInformation[]",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RangeInformation": {
+      "description": "Satellite Range information structure used in range messages",
+      "raw": "#Satellite Range information structure used in range messages\n\n#Satelite PRN number of range measurement\nuint16 prn_number\n\n#GLONASS Frequency\nuint16 glofreq\n\n#Pseudorange measurement(m)\nfloat64 psr\n\n#Pseudorange measurement standard deviation(m)\nfloat32 psr_std\n\n#Carrier phase, in cycles\nfloat64 adr\n\n#Estimated carrier phase standard deviation(cycles)\nfloat32 adr_std\n\n#Instantaneous carrier Doppler frequency(Hz)\nfloat32 dopp\n\n#Carrier to noise density ratio\nfloat32 noise_density_ratio\n\n## of seconds of continous tracking\nfloat32 locktime\n\n#Tracking status\nuint32 tracking_status\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "prn_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "glofreq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "psr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "psr_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "adr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "adr_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "dopp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "noise_density_ratio",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "locktime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "tracking_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Satellite": {
+      "description": "Satellite data structure used in GPGSV messages",
+      "raw": "# Satellite data structure used in GPGSV messages\n\n# PRN number of the satellite\n# GPS = 1..32\n# SBAS = 33..64\n# GLO = 65..96\nuint8 prn\n\n# Elevation, degrees. Maximum 90\nuint8 elevation\n\n# Azimuth, True North degrees. [0, 359]\nuint16 azimuth\n\n# Signal to noise ratio, 0-99 dB. -1 when null in NMEA sentence (not tracking)\nint8 snr",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "prn",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "elevation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "azimuth",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "snr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Time": {
+      "description": "Parsed Best Position or Omnistar XP or HP pos data from Novatel OEM6 receiver",
+      "raw": "# Parsed Best Position or Omnistar XP or HP pos data from Novatel OEM6 receiver\nstd_msgs/Header header\n\n# Clock model status\n# see Table 65 on pg 322 of the OEM6 Family Firmware Reference Manual, Rev3\nstring clock_status\n\n# Receiver clock offset, in seconds, from GPS reference time. A positive offset\n# implies that the receiver clock is ahead of GPS reference time. To derive\n# GPS reference time, use the following formula:\n# GPS reference time = receiver time - offset\nfloat64 offset\n\n# Standard deviation of the offset\nfloat64 offset_std\n\n# The offset of the GPS reference time from UTC time, computed using almanac\n# parameters. UTC time is GPS reference time plus the current UTC offset plus\n# the receiver clock offset:\n# UTC time = GPS reference time + offset + UTC offset\nfloat64 utc_offset\n\nuint32 utc_year\nuint8 utc_month\nuint8 utc_day\nuint8 utc_hour\nuint8 utc_minute\nuint32 utc_millisecond\n\nstring utc_status",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "clock_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "offset_std",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "utc_offset",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "utc_year",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "utc_month",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "utc_day",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "utc_hour",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "utc_minute",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "utc_millisecond",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "utc_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trackstat": {
+      "description": "Channel tracking status information for each of the receiver parallel channels",
+      "raw": "# Channel tracking status information for each of the receiver parallel channels\n\nstd_msgs/Header header\n\nstring solution_status\nstring position_type\n\n# Tracking elevation cutff-off angle\nfloat32 cutoff\n\nTrackstatChannel[] channels",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "solution_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "position_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cutoff",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "TrackstatChannel[]",
+          "name": "channels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrackstatChannel": {
+      "description": "A submessage of Trackstat that contains all of the data about a single hardware channel",
+      "raw": "# A submessage of Trackstat that contains all of the data about a single hardware channel\n\n# Satellite PRN number\nint16 prn\n\n# GLONASS Frequency +7\nint16 glofreq\n\n# Channel tracking status\nuint32 ch_tr_status\n\n# Pseudorange (m)\nfloat64 psr\n\n# Doppler frequency (Hz)\nfloat32 doppler\n\n# Carrier to noise density ratio (dB-Hz)\nfloat32 c_no\n\n# Number of seconds of continuous tracking (no cycle slips)\nfloat32 locktime\n\n# Pseudorange residual from pseudorange filter (m)\nfloat32 psr_res\n\n# Range reject code from pseudorange filter\nstring reject\n\n# Pseudorange filter weighting\nfloat32 psr_weight",
+      "fields": [
+        {
+          "type": "int16",
+          "name": "prn",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "glofreq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "ch_tr_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "psr",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "doppler",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "c_no",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "locktime",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "psr_res",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "reject",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "psr_weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "NovatelFRESET": {
+      "description": "Request to send a FRESET command to the Novatel unit",
+      "raw": "# Request to send a FRESET command to the Novatel unit\n#Request\n\nstring target\n\n---\n\n#Response\nbool success\n\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

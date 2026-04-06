@@ -1,0 +1,327 @@
+{
+  "name": "phidgets_msgs",
+  "version": "2.3.4",
+  "description": "Custom ROS messages for Phidgets drivers",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "phidgets_drivers",
+    "url": "https://github.com/ros-drivers/phidgets_drivers.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "phidgets_analog_outputs",
+      "phidgets_digital_outputs",
+      "phidgets_drivers",
+      "phidgets_high_speed_encoder",
+      "phidgets_motors",
+      "phidgets_stepper"
+    ]
+  },
+  "messages": {
+    "EncoderDecimatedSpeed": {
+      "description": "Encoder averaged speed for a channel in a Phidgets High-Speed Encoder board",
+      "raw": "# Encoder averaged speed for a channel in a Phidgets High-Speed Encoder board\nstd_msgs/Header header\n# Averaged (sliding window) speed estimation [rad/s]\nfloat64 avr_speed\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "avr_speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StepperCommand": {
+      "description": "",
+      "raw": "uint8 CONTROL_MODE_DISENGAGED=255\nuint8 CONTROL_MODE_STEP=0\nuint8 CONTROL_MODE_RUN=1\nuint8 CONTROL_MODE_STOP=2\n\nuint8 mode\nfloat64 target\nfloat64 velocity\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "CONTROL_MODE_DISENGAGED",
+          "comment": "",
+          "default": "255",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONTROL_MODE_STEP",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONTROL_MODE_RUN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "CONTROL_MODE_STOP",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StepperConfig": {
+      "description": "",
+      "raw": "int32 min_failsafe_time\nint32 max_failsafe_time\n\nfloat64 min_position\nfloat64 max_position\n\nfloat64 min_acceleration\nfloat64 max_acceleration\n\nfloat64 min_velocity_limit\nfloat64 max_velocity_limit\n\nfloat64 min_current_limit\nfloat64 max_current_limit\n\nint32 min_data_interval\nint32 max_data_interval\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "min_failsafe_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_failsafe_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_velocity_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_velocity_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "min_current_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_current_limit",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "min_data_interval",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "max_data_interval",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StepperState": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nbool is_moving\nbool is_engaged\nfloat64 target_position\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_moving",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_engaged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "target_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "SetAnalogOutput": {
+      "description": "Sets the state of an analog output.",
+      "raw": "# Sets the state of an analog output.\n\nuint16 index   # index of the output to be set\nfloat64 voltage\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "index of the output to be set",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "voltage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetDigitalOutput": {
+      "description": "Sets the state of a digital output.",
+      "raw": "# Sets the state of a digital output.\n\nuint16 index   # index of the output to be set\nbool state\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "index",
+          "comment": "index of the output to be set",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Trigger": {
+      "description": "",
+      "raw": "uint16 channel\n---\nbool success   # indicate successful run of triggered service\nstring message # informational, e.g. for error messages\n",
+      "request_fields": [
+        {
+          "type": "uint16",
+          "name": "channel",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "indicate successful run of triggered service",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "informational, e.g. for error messages",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

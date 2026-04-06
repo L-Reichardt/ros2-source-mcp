@@ -1,0 +1,157 @@
+{
+  "name": "vda5050_connector",
+  "version": "1.1.1",
+  "description": "ROS2 to VDA5050 / VDA5050 to ROS2 connector",
+  "license": "BSD Clause 3",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros_amr_interop",
+    "url": "https://github.com/inorbit-ai/ros_amr_interop.git",
+    "branch": "galactic-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_ros",
+      "ament_cmake_python",
+      "rosidl_default_generators"
+    ],
+    "test": [
+      "ament_cmake_clang_format",
+      "ament_cmake_copyright",
+      "ament_cmake_cppcheck",
+      "ament_cmake_cpplint",
+      "ament_cmake_flake8",
+      "ament_cmake_gtest",
+      "ament_cmake_pep257",
+      "ament_cmake_uncrustify",
+      "ament_copyright",
+      "ament_flake8",
+      "ament_pep257",
+      "python3-pytest"
+    ],
+    "build_and_runtime": [
+      "pluginlib",
+      "rclcpp",
+      "rclcpp_action",
+      "rclpy",
+      "tf2",
+      "python3-paho-mqtt",
+      "rosidl_runtime_py",
+      "geometry_msgs",
+      "vda5050_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {
+    "GetState": {
+      "description": "",
+      "raw": "---\nvda5050_msgs/OrderState state\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "vda5050_msgs/OrderState",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SupportedActions": {
+      "description": "",
+      "raw": "---\nvda5050_msgs/AGVAction[] agv_actions\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "vda5050_msgs/AGVAction[]",
+          "name": "agv_actions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "NavigateToNode": {
+      "description": "Goal",
+      "raw": "# Goal\nvda5050_msgs/Edge edge\nvda5050_msgs/Node node\n---\n# Result\nstd_msgs/Empty result\n---\n# Feedback\nvda5050_msgs/AGVPosition position\nvda5050_msgs/Velocity velocity\n",
+      "goal_fields": [
+        {
+          "type": "vda5050_msgs/Edge",
+          "name": "edge",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Node",
+          "name": "node",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "std_msgs/Empty",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "vda5050_msgs/AGVPosition",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "vda5050_msgs/Velocity",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ProcessVDAAction": {
+      "description": "Goal",
+      "raw": "# Goal\nvda5050_msgs/Action action\n---\n# Result\nvda5050_msgs/CurrentAction result\n---\n# Feedback\nvda5050_msgs/CurrentAction current_action\n",
+      "goal_fields": [
+        {
+          "type": "vda5050_msgs/Action",
+          "name": "action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "vda5050_msgs/CurrentAction",
+          "name": "result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "vda5050_msgs/CurrentAction",
+          "name": "current_action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

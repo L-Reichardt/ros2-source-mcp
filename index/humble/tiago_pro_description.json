@@ -1,0 +1,48 @@
+{
+  "name": "tiago_pro_description",
+  "version": "1.35.4",
+  "description": "The tiago_pro_description package",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tiago_pro_robot",
+    "url": "https://github.com/pal-robotics/tiago_pro_robot.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "build": [
+      "pal_module_cmake"
+    ],
+    "buildtool": [
+      "ament_cmake_auto",
+      "ament_cmake_python"
+    ],
+    "runtime": [
+      "robot_state_publisher",
+      "omni_base_description",
+      "tiago_pro_head_description",
+      "pal_sea_arm_description",
+      "allegro_hand_description",
+      "pal_urdf_utils",
+      "xacro",
+      "hector_gazebo_plugins"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_pytest",
+      "launch_testing_ament_cmake",
+      "urdf_test"
+    ],
+    "depended_on_by": [
+      "tiago_pro_gazebo",
+      "tiago_pro_moveit_config",
+      "tiago_pro_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

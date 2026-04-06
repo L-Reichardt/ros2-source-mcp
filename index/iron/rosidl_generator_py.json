@@ -1,0 +1,174 @@
+{
+  "name": "rosidl_generator_py",
+  "version": "0.18.0",
+  "description": "Generate the ROS interfaces in Python.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rosidl_python",
+    "url": "https://github.com/ros2/rosidl_python.git",
+    "branch": "iron"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_runtime_c"
+    ],
+    "build_export": [
+      "rmw"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "buildtool_export": [
+      "ament_cmake",
+      "ament_index_python",
+      "python_cmake_module",
+      "rosidl_generator_c",
+      "rosidl_pycommon",
+      "rosidl_typesupport_c",
+      "rosidl_typesupport_interface"
+    ],
+    "runtime": [
+      "ament_index_python",
+      "python3-numpy",
+      "rosidl_cli",
+      "rosidl_generator_c",
+      "rosidl_parser",
+      "rosidl_runtime_c",
+      "rpyutils"
+    ],
+    "test": [
+      "ament_cmake_pytest",
+      "ament_index_python",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "python3-numpy",
+      "python3-pytest",
+      "python_cmake_module",
+      "rmw",
+      "rosidl_cmake",
+      "rosidl_typesupport_introspection_c",
+      "rosidl_typesupport_fastrtps_c",
+      "rosidl_generator_c",
+      "rosidl_generator_cpp",
+      "rosidl_parser",
+      "rosidl_typesupport_c",
+      "rpyutils",
+      "test_interface_files"
+    ],
+    "depended_on_by": [
+      "rclpy",
+      "rosidl_core_generators",
+      "rosidl_core_runtime"
+    ]
+  },
+  "messages": {
+    "Property": {
+      "description": "",
+      "raw": "string property\nstring anything\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "property",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "anything",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "StringArrays": {
+      "description": "",
+      "raw": "string<=5[3] ub_string_static_array_value\nstring<=5[<=10] ub_string_ub_array_value\nstring<=5[] ub_string_dynamic_array_value\nstring[] string_dynamic_array_value\nstring[3] string_static_array_value\nstring[<=10] string_bounded_array_value\nstring[] def_string_dynamic_array_value [\"What\", \"a\", \"wonderful\", \"world\", \"!\"]\nstring[3] def_string_static_array_value [\"Hello\", \"World\", \"!\"]\nstring[<=10] def_string_bounded_array_value ['Hello', 'World', \"!\"]\nstring[] def_various_quotes [\"H\\\"el'lo\", 'Wo\\'r\"ld']\nstring[] def_various_commas [\"Hel,lo\", ',World', abcd , \"!,\",]\n",
+      "fields": [
+        {
+          "type": "string<=5[3]",
+          "name": "ub_string_static_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=5[<=10]",
+          "name": "ub_string_ub_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string<=5[]",
+          "name": "ub_string_dynamic_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "string_dynamic_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[3]",
+          "name": "string_static_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[<=10]",
+          "name": "string_bounded_array_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "def_string_dynamic_array_value",
+          "comment": "",
+          "default": "[\"What\", \"a\", \"wonderful\", \"world\", \"!\"]",
+          "is_constant": false
+        },
+        {
+          "type": "string[3]",
+          "name": "def_string_static_array_value",
+          "comment": "",
+          "default": "[\"Hello\", \"World\", \"!\"]",
+          "is_constant": false
+        },
+        {
+          "type": "string[<=10]",
+          "name": "def_string_bounded_array_value",
+          "comment": "",
+          "default": "['Hello', 'World', \"!\"]",
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "def_various_quotes",
+          "comment": "",
+          "default": "[\"H\\\"el'lo\", 'Wo\\'r\"ld']",
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "def_various_commas",
+          "comment": "",
+          "default": "[\"Hel,lo\", ',World', abcd , \"!,\",]",
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

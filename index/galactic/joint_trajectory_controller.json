@@ -1,0 +1,53 @@
+{
+  "name": "joint_trajectory_controller",
+  "version": "1.5.1",
+  "description": "Controller for executing joint-space trajectories on a group of joints",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_controllers",
+    "url": "https://github.com/ros-controls/ros2_controllers.git",
+    "branch": "galactic"
+  },
+  "dependencies": {
+    "build": [
+      "angles",
+      "pluginlib",
+      "realtime_tools"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "angles",
+      "pluginlib",
+      "realtime_tools"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "controller_manager",
+      "ros2_control_test_assets"
+    ],
+    "build_and_runtime": [
+      "controller_interface",
+      "control_msgs",
+      "hardware_interface",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "trajectory_msgs"
+    ],
+    "depended_on_by": [
+      "gazebo_ros2_control_demos",
+      "ign_ros2_control_demos",
+      "ros2_controllers",
+      "ur_bringup",
+      "ur_controllers",
+      "webots_ros2_universal_robot"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

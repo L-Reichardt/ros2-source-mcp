@@ -1,0 +1,1170 @@
+{
+  "name": "rosee_msg",
+  "version": "0.0.2",
+  "description": "The rosee_msg package for ros2 version",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://advrhumanoids.github.io/ROSEndEffectorDocs/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ADVRHumanoids/rosee_msg/tree/ros2",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ADVRHumanoids/rosee_msg/issues/",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "rosee_msg",
+    "url": "https://github.com/ADVRHumanoids/rosee_msg.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "example_interfaces",
+      "std_srvs",
+      "action_msgs",
+      "geometry_msgs",
+      "actionlib_msgs"
+    ],
+    "depended_on_by": [
+      "end_effector"
+    ]
+  },
+  "messages": {
+    "EEGraspControl": {
+      "description": "Standard metadata for higher-level stamped data types.",
+      "raw": "# Standard metadata for higher-level stamped data types.\n# This is generally used to communicate timestamped data \n# in a particular coordinate frame.\n# \n# sequence ID: consecutively increasing ID \nuint32 seq\n\n#Two-integer timestamp that is expressed as:\n# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n# time-handling sugar is provided by the client library\nbuiltin_interfaces/Time stamp\n\n# grasp percentage from 0.0 to 1.0\nfloat64 percentage\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "percentage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EEPinchControl": {
+      "description": "Standard metadata for higher-level stamped data types.",
+      "raw": "# Standard metadata for higher-level stamped data types.\n# This is generally used to communicate timestamped data \n# in a particular coordinate frame.\n# \n# sequence ID: consecutively increasing ID \nuint32 seq\n\n#Two-integer timestamp that is expressed as:\n# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n# time-handling sugar is provided by the client library\nbuiltin_interfaces/Time stamp\n\n# first finger to use to pinch\nstring finger_pinch_1\n\n# second finger to use to pinch\nstring finger_pinch_2\n\n# grasp percentage from 0.0 to 1.0\nfloat64 percentage\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "finger_pinch_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "finger_pinch_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "percentage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EETriggerControl": {
+      "description": "Standard metadata for higher-level stamped data types.",
+      "raw": "# Standard metadata for higher-level stamped data types.\n# This is generally used to communicate timestamped data \n# in a particular coordinate frame.\n# \n# sequence ID: consecutively increasing ID \nuint32 seq\n\n#Two-integer timestamp that is expressed as:\n# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n# time-handling sugar is provided by the client library\nbuiltin_interfaces/Time stamp\n\n# finger to use to trigger\nstring finger_trigger\n\n# grasp percentage from 0.0 to 1.0\nfloat64 percentage\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "finger_trigger",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "percentage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GraspingAction": {
+      "description": "Info message, used by GraspingActionsAvailable service, which store the infos about a specific action",
+      "raw": "## Info message, used by GraspingActionsAvailable service, which store the infos about a specific action\n\n# action type, that is an enum and with msg we can only define it like this\n# remember to add here if we add new type in Action.h and ActionPrimitive.h ..\n\nuint8 PRIMITIVE = 0\nuint8 GENERIC = 1\nuint8 COMPOSED  = 2\nuint8 TIMED = 3\nuint8 NONE = 4\nuint8 action_type\n\n# subtype for primitive, no meaning if action_type is not 1\nuint8 PRIMITIVE_PINCHTIGHT = 0\nuint8 PRIMITIVE_PINCHLOOSE = 1\nuint8 PRIMITIVE_MULTIPLEPINCHTIGHT = 2\nuint8 PRIMITIVE_TRIG = 3\nuint8 PRIMITIVE_TIPFLEX = 4\nuint8 PRIMITIVE_FINGFLEX = 5\nuint8 PRIMITIVE_SINGLEJOINTMULTIPLETIPS = 6\nuint8 PRIMITIVE_NONE = 7\nuint8 primitive_type\n\n# name of the action\nstring action_name\n\n# names of the selectable fingers/joints (eg 2 finger for pinch) if any\nstring[] elements_involved\n\n# The mask which says if the motor is used by the action (count > 0) or not (count = 0). \n# It is unique for each action (differently from action_motor_positions which is a vector) \nJointsInvolvedCount action_motor_count\n\n# actuator position associated with the action. Can be more than one for some action (like pinches and PRIMITIVE_SINGLEJOINTMULTIPLETIPS)\nMotorPosition[] action_motor_positions\n\n#used only for timed and composed\nstring[] inner_actions\n\n## used only for timed.. better to make a new msg?\nfloat64[] before_time_margins\nfloat64[] after_time_margins\n\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GENERIC",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPOSED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TIMED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "action_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHTIGHT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHLOOSE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_MULTIPLEPINCHTIGHT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TRIG",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TIPFLEX",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_FINGFLEX",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_SINGLEJOINTMULTIPLETIPS",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_NONE",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "primitive_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "elements_involved",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointsInvolvedCount",
+          "name": "action_motor_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MotorPosition[]",
+          "name": "action_motor_positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "inner_actions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "before_time_margins",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "after_time_margins",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GraspingPrimitiveAggregated": {
+      "description": "Info about aggregated primitive (for all trig there is only a single message)",
+      "raw": "## Info about aggregated primitive (for all trig there is only a single message)\n## used only by GUI for now\n\n# name of the action\nstring action_name\n\nuint8 PRIMITIVE_PINCHSTRONG = 0\nuint8 PRIMITIVE_PINCHWEAK = 1\nuint8 PRIMITIVE_MULTIPLEPINCHSTRONG = 2\nuint8 PRIMITIVE_TRIG = 3\nuint8 PRIMITIVE_TIPFLEX = 4\nuint8 PRIMITIVE_FINGFLEX = 5\nuint8 PRIMITIVE_SINGLEJOINTMULTIPLETIPS = 6\nuint8 PRIMITIVE_NONE = 7\nuint8 primitive_type\n\n# names of the selectable fingers/joints ALL aggregated. This means that\n# for example, a trig primitive will have in this field all the fingers that can be used\n# for a trig; also the pinch, and the \"pairing\" info here is lost (can be retrieved \n# by the other service SelectablePairInfo\nstring[] selectable_names\n\n# number of necessary selectable_names to select before sending message\n# (eg 1 for trig, 2 for pinch, 1 for moreTips)\nuint8 max_selectable\n\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "action_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHSTRONG",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHWEAK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_MULTIPLEPINCHSTRONG",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TRIG",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TIPFLEX",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_FINGFLEX",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_SINGLEJOINTMULTIPLETIPS",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_NONE",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "primitive_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "selectable_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "max_selectable",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JointsInvolvedCount": {
+      "description": "This is the msg for the type",
+      "raw": "# This is the msg for the type \n#    \"typedef std::map <std::string, unsigned int> JointsInvolvedCount\"\n\n\n# All arrays in this message should have the same size, or be empty.\n# This is the only way to uniquely associate the joint name with the correct\n# states. \n\nstring[] name\nuint8[] count\n\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8[]",
+          "name": "count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotorPhalangePressure": {
+      "description": "",
+      "raw": "\n\nstring[] name\nfloat64[] pressure_finger1\nfloat64[] pressure_finger2\nfloat64[] pressure_finger3\nfloat64[] pressure_thumb\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "pressure_finger1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "pressure_finger2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "pressure_finger3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "pressure_thumb",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MotorPosition": {
+      "description": "I do not want to use standard joint state because also velocity and effort are present, which are not used by an action",
+      "raw": "# I do not want to use standard joint state because also velocity and effort are present, which are not used by an action\n\n# All arrays in this message should have the same size, or be empty.\n# This is the only way to uniquely associate the joint name with the correct\n# states.\n\nstring[] name\nfloat64[] position\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NewGenericGraspingAction": {
+      "description": "Message which include all the infos necessary to insert a new action in the system",
+      "raw": "# Message which include all the infos necessary to insert a new action in the system \n# (https://github.com/ADVRHumanoids/ROSEndEffector/issues/71)\n\n# name of the action\nstring action_name\n\n# Motor Position\nMotorPosition action_motor_position\n\n# OPTIONAL The mask which says if the motor is used by the action (count > 0) or not (count = 0).\n# take care that if it is not included, the not used joint will be considered the ones with 0 position\nJointsInvolvedCount action_motor_count\n                                  \n# OPTIONAL field to indicate which hand element will be moved by the action\nstring[] elements_involved\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "action_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MotorPosition",
+          "name": "action_motor_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JointsInvolvedCount",
+          "name": "action_motor_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "elements_involved",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ObjectModelMsg": {
+      "description": "",
+      "raw": "float64[] position\nfloat64[] orientation\nfloat64[] superquadric_parameters\nfloat64 weight",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "superquadric_parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROSEEActionControl": {
+      "description": "Standard metadata for higher-level stamped data types.",
+      "raw": "# Standard metadata for higher-level stamped data types.\n# This is generally used to communicate timestamped data \n# in a particular coordinate frame.\n# \n# sequence ID: consecutively increasing ID \nuint32 seq\n\n#Two-integer timestamp that is expressed as:\n# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n# time-handling sugar is provided by the client library\nbuiltin_interfaces/Time stamp\n\n# first finger to use to pinch\nstring action_name\n\n# action type, that is an enum and with msg we can only define it like this\n# remember to add here if we add new type in Action.h and ActionPrimitive.h ..\nuint8 PRIMITIVE = 0\nuint8 GENERIC = 1 \nuint8 COMPOSED = 2 \nuint8 TIMED = 3\nuint8 NONE = 4\nuint8 action_type\n\nuint8 PRIMITIVE_PINCHSTRONG = 0\nuint8 PRIMITIVE_PINCHWEAK = 1\nuint8 PRIMITIVE_MULTIPLEPINCHSTRONG = 2\nuint8 PRIMITIVE_TRIG = 3\nuint8 PRIMITIVE_TIPFLEX = 4\nuint8 PRIMITIVE_FINGFLEX = 5\nuint8 PRIMITIVE_SINGLEJOINTMULTIPLETIPS = 6\nuint8 PRIMITIVE_NONE = 7\nuint8 action_primitive_type\n\n# array for additional items (like 2 finger for pinch). It can be also empty \nstring[] selectable_items\n\n# grasp percentage from 0.0 to 1.0\nfloat64 percentage\n\n# wanted maximum error norm for joints positions error (if not set, ie it is 0, default one will be used)\n# the action will not be considered completed until the norm error of joint pos is below this value\nfloat64 error_norm\n\n#Optional fields, since now we use them to send also a current/torque to heri ii\nstring[] optional_motors_names\nfloat64[] optional_motors_commands\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "seq",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GENERIC",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COMPOSED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TIMED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "NONE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "action_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHSTRONG",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHWEAK",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_MULTIPLEPINCHSTRONG",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TRIG",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TIPFLEX",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_FINGFLEX",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_SINGLEJOINTMULTIPLETIPS",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_NONE",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "action_primitive_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "selectable_items",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "percentage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "error_norm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "optional_motors_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "optional_motors_commands",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GraspingActionsAvailable": {
+      "description": "With this service info about a bunch primitive is shared (name, keys, motor position and so on)",
+      "raw": "# With this service info about a bunch primitive is shared (name, keys, motor position and so on)\n# Specifing the request, only a subset (even one) of primitives can be given\n# All the request field are optional (if no request at all, alla actions are given), more than one field\n# can be combined (eg I want a action_name=Trig done with finger index (elements_involved = finger)\n\n# NOTE Message fields should be lowercase with underscore separation. e.g. range_min\n\n\n# action type, that is an enum and with msg we can only define it like this\n# remember to add here if we add new type in Action.h and ActionPrimitive.h\n# if some caller is asking for only a type, otherwise 0 is the default then all action are sent\n\nuint8 PRIMITIVE=0\nuint8 GENERIC_AND_COMPOSED=1 \nuint8 TIMED=2\n\nuint8 action_type\n\n# subtype for primitive, no meaning if action_type is not primitive\nuint8 PRIMITIVE_ALL=0\nuint8 PRIMITIVE_PINCHSTRONG=1\nuint8 PRIMITIVE_PINCHWEAK=2\nuint8 PRIMITIVE_MULTIPLEPINCHSTRONG=3\nuint8 PRIMITIVE_TRIG=4\nuint8 PRIMITIVE_TIPFLEX=5\nuint8 PRIMITIVE_FINGFLEX=6\nuint8 PRIMITIVE_SINGLEJOINTMULTIPLETIPS =7\nuint8 PRIMITIVE_NONE=8\n\nuint8 primitive_type\n\n# this field can be used to take only an action by name. (action_type field = 0 is then overriden, but error is given if we are\n# asking for a specific type (action_type != 0) but the name refer to an action of another type)\nstring action_name\n\n# this field can be used to take only a primitive done with this element \n# (so useless field if action_name is empty or action is not a primitive)\n# a vector that can also contain only a element\nstring[] elements_involved\n---\nGraspingAction[] grasping_actions\n\n\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GENERIC_AND_COMPOSED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TIMED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "action_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_ALL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHSTRONG",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHWEAK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_MULTIPLEPINCHSTRONG",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TRIG",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TIPFLEX",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_FINGFLEX",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_SINGLEJOINTMULTIPLETIPS",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_NONE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "primitive_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "elements_involved",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "GraspingAction[]",
+          "name": "grasping_actions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GraspingPrimitiveAggregatedAvailable": {
+      "description": "Info service to pass info to gui (only used by gui for now)",
+      "raw": "## Info service to pass info to gui (only used by gui for now)\n\n# subtype for primitive, no meaning if action_type is not primitive\nuint8 PRIMITIVE_ALL=0\nuint8 PRIMITIVE_PINCHSTRONG=1\nuint8 PRIMITIVE_PINCHWEAK=2\nuint8 PRIMITIVE_MULTIPLEPINCHSTRONG =3\nuint8 PRIMITIVE_TRIG=4\nuint8 PRIMITIVE_TIPFLEX=5\nuint8 PRIMITIVE_FINGFLEX=6\nuint8 PRIMITIVE_SINGLEJOINTMULTIPLETIPS =7\nuint8 PRIMITIVE_NONE=8\n\nuint8 primitive_type\n\n# this field can be used to take only an action by name. If both primitive_type and action_name are \n# used, the action_name is not considered\nstring action_name\n\n# this field can be used to take only a primitive done with this element (or these elements)\n# a vector that can also contain only a element\nstring[] elements_involved\n---\nGraspingPrimitiveAggregated[] primitives_aggregated\n",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_ALL",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHSTRONG",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_PINCHWEAK",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_MULTIPLEPINCHSTRONG",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TRIG",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_TIPFLEX",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_FINGFLEX",
+          "comment": "",
+          "default": "6",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_SINGLEJOINTMULTIPLETIPS",
+          "comment": "",
+          "default": "7",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "PRIMITIVE_NONE",
+          "comment": "",
+          "default": "8",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "primitive_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "elements_involved",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "GraspingPrimitiveAggregated[]",
+          "name": "primitives_aggregated",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HandInfo": {
+      "description": "Service msg for all the info needed by ROSEE Grasp Planner",
+      "raw": "## Service msg for all the info needed by ROSEE Grasp Planner\n\n# Providing this info is necessary for heri Hal so it knows for which pose it should compute the reqeusted matrices\n\nfloat32[] motor_positions\nfloat32[] motor_positions_reference\nexample_interfaces/Float32MultiArray finger_joint_positions #in a finger, the phalange joints order must be from the base finger to the tip\n\n---\n\n#all the subsequent info will follow the order specified in motors_names and fingertips_names\nstring[] fingers_names\nstring[] motors_names\n\nexample_interfaces/Float32MultiArray transmission_matrix\n\nexample_interfaces/Float32MultiArray[] transmission_square_matrices\n\n# The matrices introduces because motor is not the first finger joint,\n# computed as transmission_square_matrice ^-T * T*\nexample_interfaces/Float32MultiArray[] transmission_augmented_matrices\n\n\nexample_interfaces/Float32MultiArray[] tips_jacobians_normal \nexample_interfaces/Float32MultiArray[] tips_jacobians_friction\n#note: third componet of force is trascurable\n\nfloat32[] tips_forces_normal\nfloat32[] tips_forces_friction\n#note: third componet of force is trascurable\n\nfloat32[] motors_stiffness\nfloat32[] tips_frictions\nfloat32[] motors_torque_limits\n",
+      "request_fields": [
+        {
+          "type": "float32[]",
+          "name": "motor_positions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "motor_positions_reference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "example_interfaces/Float32MultiArray",
+          "name": "finger_joint_positions",
+          "comment": "in a finger, the phalange joints order must be from the base finger to the tip",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "fingers_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "motors_names",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "example_interfaces/Float32MultiArray",
+          "name": "transmission_matrix",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "example_interfaces/Float32MultiArray[]",
+          "name": "transmission_square_matrices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "example_interfaces/Float32MultiArray[]",
+          "name": "transmission_augmented_matrices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "example_interfaces/Float32MultiArray[]",
+          "name": "tips_jacobians_normal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "example_interfaces/Float32MultiArray[]",
+          "name": "tips_jacobians_friction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "tips_forces_normal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "tips_forces_friction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "motors_stiffness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "tips_frictions",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "motors_torque_limits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NewGenericGraspingActionSrv": {
+      "description": "Service associated with GenericGraspingAction message",
+      "raw": "## Service associated with GenericGraspingAction message\n\nNewGenericGraspingAction new_action\n\n# user can also request to store the action in a yaml file, togheter with the others\nbool emit_yaml\n\n---\n\n# the service will give true if action is good and it is inserted in the structure\nbool accepted\n\n# true false depending if emission on yaml file is successful\nbool emitted\n\n# string containing useful info about a possible not acceptance\nstring error_msg\n",
+      "request_fields": [
+        {
+          "type": "NewGenericGraspingAction",
+          "name": "new_action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "emit_yaml",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "accepted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "emitted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_msg",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SelectablePairInfo": {
+      "description": "Info service to pass info to gui",
+      "raw": "## Info service to pass info to gui\n## E.G, for pinch we have two finger to select, but in future we can have others kind\n## of element that make a pair and are used to send some particular action\n\nstring action_name #the name of the action of which we want infos\nstring element_name #the name of the selectable item to look for \"companions\"\n---\nstring[] pair_elements #all the selectable items that make a pair with this\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "action_name",
+          "comment": "the name of the action of which we want infos",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "element_name",
+          "comment": "the name of the selectable item to look for \"companions\"",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "pair_elements",
+          "comment": "all the selectable items that make a pair with this",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ROSEECommand": {
+      "description": "goal definition",
+      "raw": "#goal definition\nROSEEActionControl goal_action\n---\n#result definition\nROSEEActionControl completed_action\n---\n#feedback (how much the action is completed)\nfloat64 completation_percentage\nstring action_name_current #the name of the action that is being done... it is useful only for\n                            #timed that has different action inside\n",
+      "goal_fields": [
+        {
+          "type": "ROSEEActionControl",
+          "name": "goal_action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "ROSEEActionControl",
+          "name": "completed_action",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "float64",
+          "name": "completation_percentage",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "action_name_current",
+          "comment": "the name of the action that is being done... it is useful only for",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

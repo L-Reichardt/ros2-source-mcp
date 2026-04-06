@@ -1,0 +1,72 @@
+{
+  "name": "realsense_msgs",
+  "version": "2.0.8",
+  "description": "Message Definition for ROS2 RealSense Package",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_intel_realsense",
+    "url": "https://github.com/intel/ros2_intel_realsense.git",
+    "branch": "refactor"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "realsense_examples",
+      "realsense_node",
+      "realsense_ros"
+    ]
+  },
+  "messages": {
+    "IMUInfo": {
+      "description": "header.frame_id is either set to \"imu_accel\" or \"imu_gyro\"",
+      "raw": "# header.frame_id is either set to \"imu_accel\" or \"imu_gyro\"\n# to distinguish between \"accel\" and \"gyro\" info.\nstd_msgs/Header header\nfloat64[12] data\nfloat64[3] noise_variances\nfloat64[3] bias_variances\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[12]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "noise_variances",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "bias_variances",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

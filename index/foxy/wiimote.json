@@ -1,0 +1,58 @@
+{
+  "name": "wiimote",
+  "version": "3.0.1",
+  "description": "The wiimote package allows ROS nodes to communicate with a Nintendo Wiimote\n    and its related peripherals, including the Nunchuk, Motion Plus, and\n    (experimentally) the Classic. The package implements a ROS node that uses\n    Bluetooth to communicate with the Wiimote device, obtaining accelerometer\n    and gyro data, the state of LEDs, the IR camera, rumble (vibrator),\n    buttons, joystick, and battery state. The node additionally enables ROS\n    nodes to control the Wiimote's LEDs and vibration for feedback to the human\n    Wiimote operator. LEDs and vibration may be switched on and off, or made to\n    operate according to a timed pattern.",
+  "license": "GPL",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/wiimote",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/joystick_drivers",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/joystick_drivers/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "joystick_drivers",
+    "url": "https://github.com/ros-drivers/joystick_drivers.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "libbluetooth-dev",
+      "cwiid-dev"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "libbluetooth",
+      "cwiid"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_components",
+      "rclcpp_lifecycle",
+      "sensor_msgs",
+      "std_srvs",
+      "wiimote_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

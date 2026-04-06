@@ -1,0 +1,143 @@
+{
+  "name": "system_modes_msgs",
+  "version": "0.9.0",
+  "description": "Interface package, containing message definitions and service definitions\n    for the system modes package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://micro.ros.org/docs/concepts/client_library/lifecycle_and_system_modes/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/micro-ROS/system_modes",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/micro-ROS/system_modes/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "system_modes",
+    "url": "https://github.com/micro-ROS/system_modes.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_cppcheck",
+      "ament_cmake_cpplint"
+    ],
+    "depended_on_by": [
+      "launch_system_modes",
+      "system_modes",
+      "system_modes_examples",
+      "test_launch_system_modes"
+    ]
+  },
+  "messages": {
+    "Mode": {
+      "description": "",
+      "raw": "string label",
+      "fields": [
+        {
+          "type": "string",
+          "name": "label",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ModeEvent": {
+      "description": "The time point at which this event occurred.",
+      "raw": "# The time point at which this event occurred.\nuint64 timestamp\n\n# The starting mode from which this event transitioned.\nMode start_mode\n\n# The end mode of this transition event.\nMode goal_mode\n",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "timestamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Mode",
+          "name": "start_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Mode",
+          "name": "goal_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ChangeMode": {
+      "description": "",
+      "raw": "string mode_name\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "mode_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetAvailableModes": {
+      "description": "",
+      "raw": "---\nstring[] available_modes\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "available_modes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetMode": {
+      "description": "",
+      "raw": "---\nstring current_mode\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "current_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

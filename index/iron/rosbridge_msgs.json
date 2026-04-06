@@ -1,0 +1,66 @@
+{
+  "name": "rosbridge_msgs",
+  "version": "2.1.0",
+  "description": "Package containing message files",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "rosbridge_suite",
+    "url": "https://github.com/RobotWebTools/rosbridge_suite.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake_ros",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "rosbridge_server"
+    ]
+  },
+  "messages": {
+    "ConnectedClient": {
+      "description": "",
+      "raw": "string ip_address\nbuiltin_interfaces/Time connection_time\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "ip_address",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "connection_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConnectedClients": {
+      "description": "",
+      "raw": "ConnectedClient[] clients\n",
+      "fields": [
+        {
+          "type": "ConnectedClient[]",
+          "name": "clients",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

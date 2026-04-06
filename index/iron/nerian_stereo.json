@@ -1,0 +1,95 @@
+{
+  "name": "nerian_stereo",
+  "version": "1.2.1",
+  "description": "Driver node for ROS 2 for Scarlet, SceneScan and SP1 stereo vision sensors by Nerian Vision GmbH",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/nerian_stereo",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "nerian_stereo_ros2",
+    "url": "https://github.com/nerian-vision/nerian_stereo_ros2.git",
+    "branch": "default"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "sensor_msgs",
+      "stereo_msgs",
+      "cv_bridge",
+      "tf2",
+      "tf2_ros",
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "StereoCameraInfo": {
+      "description": "Camera information for the left camera",
+      "raw": "std_msgs/Header header\n\n# Camera information for the left camera\nsensor_msgs/CameraInfo left_info\n\n# Camera information for the right camera\nsensor_msgs/CameraInfo right_info\n\n# Disparity-to-depth mapping matrix in 4x4 row-major format. Use this\n# matrix together with the  Reconstruct3D class from libvisiontransfer\n# to transform a disparity map to 3D points.\nfloat64[16] q\n\n# Translation vector between the coordinate systems of the left and\n# right camera.\nfloat64[3] t_left_right\n\n# Rotation matrix between the coordinate systems of the left and right\n# camera in 3x3 row-major format.\nfloat64[9] r_left_right\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "left_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/CameraInfo",
+          "name": "right_info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[16]",
+          "name": "q",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "t_left_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[9]",
+          "name": "r_left_right",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,218 @@
+{
+  "name": "soccer_object_msgs",
+  "version": "1.0.1",
+  "description": "Package providing interfaces for objects in a soccer domain.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "soccer_object_msgs",
+    "url": "https://github.com/ijnek/soccer_object_msgs.git",
+    "branch": "rolling"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "Ball": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Point center",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldLine": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Point start\ngeometry_msgs/Point end\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldLineArray": {
+      "description": "",
+      "raw": "FieldLine[]  lines",
+      "fields": [
+        {
+          "type": "FieldLine[]",
+          "name": "lines",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Flag": {
+      "description": "",
+      "raw": "std_msgs/Header header\ngeometry_msgs/Point base",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "base",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FlagArray": {
+      "description": "",
+      "raw": "Flag[]  flags",
+      "fields": [
+        {
+          "type": "Flag[]",
+          "name": "flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Goalpost": {
+      "description": "Contains information about an observed goalpost.",
+      "raw": "# Contains information about an observed goalpost.\n# NOTE: There are two options for populating this message\n#\n# Either:\n#   If the top point of the post was detected, set \"observed_top\" to true and populate \"top\".\n#      This is needed because rcssserver3d reports to the top of the goal post to the agents.\n#   If the bottom of a post was detected ,set \"observed_top\" to false and populate \"bot\".\n#      This can be used as a replacement for physical robots that might detect the bottom\n#      of the post, rather than the top\n#\n# Any node that listens to this message MUST consider both cases.\n\nstd_msgs/Header header\nbool observed_top\ngeometry_msgs/Point point",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "observed_top",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GoalpostArray": {
+      "description": "",
+      "raw": "Goalpost[]  posts",
+      "fields": [
+        {
+          "type": "Goalpost[]",
+          "name": "posts",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Robot": {
+      "description": "Data type for robot observation in vision.",
+      "raw": "# Data type for robot observation in vision.\n# Due to how robot observations are sent in SimSpark, this data message uses the \"head\" point\n# of the robot.\n\nstd_msgs/Header header\ngeometry_msgs/Point head\nstring team  # (Optional) Team Name, empty string indicated \"unknown\"\nint32 id  # (Optional) Player Id, 0 indicates \"unknown\"",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "head",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "team",
+          "comment": "(Optional) Team Name, empty string indicated \"unknown\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "(Optional) Player Id, 0 indicates \"unknown\"",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RobotArray": {
+      "description": "",
+      "raw": "Robot[]  robots",
+      "fields": [
+        {
+          "type": "Robot[]",
+          "name": "robots",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

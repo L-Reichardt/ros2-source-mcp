@@ -1,0 +1,100 @@
+{
+  "name": "ackermann_msgs",
+  "version": "2.0.2",
+  "description": "ROS2 messages for robots using Ackermann steering.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ackermann_msgs",
+    "url": "https://github.com/ros-drivers/ackermann_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "tricycle_controller",
+      "vesc_ackermann",
+      "webots_ros2_tesla"
+    ]
+  },
+  "messages": {
+    "AckermannDrive": {
+      "description": "Driving command for a car-like vehicle using Ackermann steering.",
+      "raw": "## Driving command for a car-like vehicle using Ackermann steering.\n#  $Id$\n\n# Assumes Ackermann front-wheel steering. The left and right front\n# wheels are generally at different angles. To simplify, the commanded\n# angle corresponds to the yaw of a virtual wheel located at the\n# center of the front axle, like on a tricycle.  Positive yaw is to\n# the left. (This is *not* the angle of the steering wheel inside the\n# passenger compartment.)\n#\n# Zero steering angle velocity means change the steering angle as\n# quickly as possible. Positive velocity indicates a desired absolute\n# rate of change either left or right. The controller tries not to\n# exceed this limit in either direction, but sometimes it might.\n#\nfloat32 steering_angle          # desired virtual angle (radians)\nfloat32 steering_angle_velocity # desired rate of change (radians/s)\n\n# Drive at requested speed, acceleration and jerk (the 1st, 2nd and\n# 3rd derivatives of position). All are measured at the vehicle's\n# center of rotation, typically the center of the rear axle. The\n# controller tries not to exceed these limits in either direction, but\n# sometimes it might.\n#\n# Speed is the desired scalar magnitude of the velocity vector.\n# Direction is forward unless the sign is negative, indicating reverse.\n#\n# Zero acceleration means change speed as quickly as\n# possible. Positive acceleration indicates a desired absolute\n# magnitude; that includes deceleration.\n#\n# Zero jerk means change acceleration as quickly as possible. Positive\n# jerk indicates a desired absolute rate of acceleration change in\n# either direction (increasing or decreasing).\n#\nfloat32 speed                   # desired forward speed (m/s)\nfloat32 acceleration            # desired acceleration (m/s^2)\nfloat32 jerk                    # desired jerk (m/s^3)\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "steering_angle",
+          "comment": "desired virtual angle (radians)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steering_angle_velocity",
+          "comment": "desired rate of change (radians/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "desired forward speed (m/s)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "acceleration",
+          "comment": "desired acceleration (m/s^2)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "jerk",
+          "comment": "desired jerk (m/s^3)",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "AckermannDriveStamped": {
+      "description": "Time stamped drive command for robots with Ackermann steering.",
+      "raw": "## Time stamped drive command for robots with Ackermann steering.\n#  $Id$\n\nstd_msgs/Header header\nAckermannDrive  drive\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "AckermannDrive",
+          "name": "drive",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

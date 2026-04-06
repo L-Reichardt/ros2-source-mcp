@@ -1,0 +1,197 @@
+{
+  "name": "actuator_msgs",
+  "version": "0.0.1",
+  "description": "ROS 2 message interface for Actuators.",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "actuator_msgs",
+    "url": "https://github.com/rudislabs/actuator_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "ros_gz_bridge"
+    ]
+  },
+  "messages": {
+    "Actuators": {
+      "description": "This message defines lowest level commands to be sent to the actuator(s).",
+      "raw": "std_msgs/Header header\n\n# This message defines lowest level commands to be sent to the actuator(s).\n\nfloat64[] position\t\t# Position of the actuators in [rad] for angular actuators\n\t\t\t\t\t\t# and [m] for linear actuators.\n\nfloat64[] velocity\t\t# Velocities of the actuators in [rad/s] for angular actuators\n\t\t\t\t\t\t# and [m/s] for linear actuators.\n\nfloat64[] normalized\t# Everything that does not fit the above,\n\t\t\t\t\t\t# normalized between [-1 ... 1].\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "position",
+          "comment": "Position of the actuators in [rad] for angular actuators",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "velocity",
+          "comment": "Velocities of the actuators in [rad/s] for angular actuators",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "normalized",
+          "comment": "Everything that does not fit the above,",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActuatorsAngularPosition": {
+      "description": "This message defines lowest level commands to be sent",
+      "raw": "# This message defines lowest level commands to be sent\n# to the actuator(s) for angular position.\n\nfloat64[] position\t\t# Position of the actuators in [rad]\n",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "position",
+          "comment": "Position of the actuators in [rad]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActuatorsAngularVelocity": {
+      "description": "This message defines lowest level commands to be sent",
+      "raw": "# This message defines lowest level commands to be sent\n# to the actuator(s) for angular velocity.\n\nfloat64[] velocity\t\t# Velocity of the actuators in [rad/s]\n",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "velocity",
+          "comment": "Velocity of the actuators in [rad/s]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActuatorsLinearPosition": {
+      "description": "This message defines lowest level commands to be sent",
+      "raw": "# This message defines lowest level commands to be sent\n# to the actuator(s) for linear position.\n\nfloat64[] position\t\t# Position of the actuators in [m]\n",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "position",
+          "comment": "Position of the actuators in [m]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActuatorsLinearVelocity": {
+      "description": "This message defines lowest level commands to be sent",
+      "raw": "# This message defines lowest level commands to be sent\n# to the actuator(s) for linear velocity.\n\nfloat64[] velocity\t\t# Velocity of the actuators in [m/s]\n",
+      "fields": [
+        {
+          "type": "float64[]",
+          "name": "velocity",
+          "comment": "Velocity of the actuators in [m/s]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActuatorsNormalized": {
+      "description": "This message defines lowest level commands to be sent",
+      "raw": "std_msgs/Header header\n\n# This message defines lowest level commands to be sent\n# to the actuator(s) for normalized outputs.\n\nfloat64[] normalized\t# Normalized between [-1 ... 1].\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "normalized",
+          "comment": "Normalized between [-1 ... 1].",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActuatorsPosition": {
+      "description": "This message defines lowest level commands to be sent",
+      "raw": "std_msgs/Header header\n\n# This message defines lowest level commands to be sent\n# to the actuator(s) for position.\n\nActuatorsAngularPosition angular\t# Position of the actuators in [rad]\n\nActuatorsLinearPosition linear\t\t# Position of the actuators in [m]\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorsAngularPosition",
+          "name": "angular",
+          "comment": "Position of the actuators in [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorsLinearPosition",
+          "name": "linear",
+          "comment": "Position of the actuators in [m]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ActuatorsVelocity": {
+      "description": "This message defines lowest level commands to be sent",
+      "raw": "std_msgs/Header header\n\n# This message defines lowest level commands to be sent\n# to the actuator(s) for velocity.\n\nActuatorsAngularVelocity angular\t# Velocity of the actuators in [rad/s]\n\nActuatorsLinearVelocity linear\t\t# Velocity of the actuators in [m/s]\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorsAngularVelocity",
+          "name": "angular",
+          "comment": "Velocity of the actuators in [rad/s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActuatorsLinearVelocity",
+          "name": "linear",
+          "comment": "Velocity of the actuators in [m/s]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

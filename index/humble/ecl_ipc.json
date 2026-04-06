@@ -1,0 +1,65 @@
+{
+  "name": "ecl_ipc",
+  "version": "1.2.1",
+  "description": "Interprocess mechanisms vary greatly across platforms - sysv, posix, win32, there\n  are more than a few. This package provides an infrastructure to allow for developing\n  cross platform c++ wrappers around the lower level c api's that handle these\n  mechanisms. These make it not only easier to utilise such mechanisms, but allow it\n  to be done consistently across platforms.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/ecl_ipc",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/stonier/ecl_core",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/stonier/ecl_core/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "ecl_core",
+    "url": "https://github.com/stonier/ecl_core.git",
+    "branch": "release/1.2.x"
+  },
+  "dependencies": {
+    "build": [
+      "ecl_license",
+      "ecl_build",
+      "ecl_config",
+      "ecl_errors",
+      "ecl_exceptions",
+      "ecl_threads",
+      "ecl_time_lite",
+      "ecl_time"
+    ],
+    "buildtool": [
+      "ament_cmake_ros"
+    ],
+    "runtime": [
+      "ecl_license",
+      "ecl_build",
+      "ecl_config",
+      "ecl_errors",
+      "ecl_exceptions",
+      "ecl_threads",
+      "ecl_time_lite",
+      "ecl_time"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "ecl_core",
+      "ecl_core_apps",
+      "ecl_core_apps"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

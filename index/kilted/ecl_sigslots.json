@@ -1,0 +1,58 @@
+{
+  "name": "ecl_sigslots",
+  "version": "1.2.1",
+  "description": "Provides a signal/slot mechanism (in the same vein as qt sigslots,\n     boost::signals etc for intra-process communication. These include\n     some improvements - they do not need a preprocessor, are fully type safe,\n     allow for simple connections via a posix style string identifier\n     and are multithread-safe.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/ecl_sigslots",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/stonier/ecl_core",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/stonier/ecl_core/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "ecl_core",
+    "url": "https://github.com/stonier/ecl_core.git",
+    "branch": "release/1.2.x"
+  },
+  "dependencies": {
+    "build": [
+      "ecl_license",
+      "ecl_build",
+      "ecl_config",
+      "ecl_threads"
+    ],
+    "buildtool": [
+      "ament_cmake_ros"
+    ],
+    "runtime": [
+      "ecl_license",
+      "ecl_config",
+      "ecl_threads"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "ecl_core",
+      "ecl_core_apps",
+      "ecl_core_apps",
+      "kobuki_core",
+      "kobuki_core"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,94 @@
+{
+  "name": "dynamixel_sdk_custom_interfaces",
+  "version": "3.7.40",
+  "description": "ROS2 custom interface examples using ROBOTIS DYNAMIXEL SDK",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/dynamixel_sdk",
+      "type": "website"
+    },
+    {
+      "uri": "http://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/",
+      "type": "emanual"
+    },
+    {
+      "uri": "https://github.com/ROBOTIS-GIT/DynamixelSDK",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ROBOTIS-GIT/DynamixelSDK/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dynamixel_sdk",
+    "url": "https://github.com/ROBOTIS-GIT/DynamixelSDK.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "dynamixel_sdk_examples"
+    ]
+  },
+  "messages": {
+    "SetPosition": {
+      "description": "Messages",
+      "raw": "# Messages\nuint8 id\nint32 position",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetPosition": {
+      "description": "Constants",
+      "raw": "# Constants\n# Request\nuint8 id\n---\n# Response\nint32 position",
+      "request_fields": [
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

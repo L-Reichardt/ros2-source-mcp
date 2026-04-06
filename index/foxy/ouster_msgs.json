@@ -1,0 +1,133 @@
+{
+  "name": "ouster_msgs",
+  "version": "0.2.0",
+  "description": "ROS2 messages for ouster lidar driver",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ros2_ouster_drivers",
+    "url": "https://github.com/SteveMacenski/ros2_ouster_drivers.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_common",
+      "ament_lint_auto"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "rosidl_default_generators",
+      "builtin_interfaces"
+    ],
+    "depended_on_by": [
+      "ros2_ouster"
+    ]
+  },
+  "messages": {
+    "Metadata": {
+      "description": "",
+      "raw": "string hostname\nstring lidar_mode\nstring timestamp_mode\nfloat64[] beam_azimuth_angles\nfloat64[] beam_altitude_angles\nfloat64[] imu_to_sensor_transform\nfloat64[] lidar_to_sensor_transform\nstring serial_no\nstring firmware_rev\nint8 imu_port\nint8 lidar_port\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "hostname",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "lidar_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "timestamp_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "beam_azimuth_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "beam_altitude_angles",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "imu_to_sensor_transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "lidar_to_sensor_transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_no",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_rev",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "imu_port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8",
+          "name": "lidar_port",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetMetadata": {
+      "description": "",
+      "raw": "\n---\nouster_msgs/Metadata metadata\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "ouster_msgs/Metadata",
+          "name": "metadata",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

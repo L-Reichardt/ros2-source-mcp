@@ -1,0 +1,156 @@
+{
+  "name": "pcl_msgs",
+  "version": "1.0.0",
+  "description": "Package containing PCL (Point Cloud Library)-related ROS messages.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://wiki.ros.org/pcl_msgs",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-perception/pcl_msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-perception/pcl_msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "pcl_msgs",
+    "url": "https://github.com/ros-perception/pcl_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "build": [
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "sensor_msgs",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "pcl_conversions",
+      "perception_pcl"
+    ]
+  },
+  "messages": {
+    "ModelCoefficients": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32[] values\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[]",
+          "name": "values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PointIndices": {
+      "description": "",
+      "raw": "std_msgs/Header header\nint32[] indices\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "indices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "PolygonMesh": {
+      "description": "Separate header for the polygonal surface",
+      "raw": "# Separate header for the polygonal surface\nstd_msgs/Header header\n# Vertices of the mesh as a point cloud\nsensor_msgs/PointCloud2 cloud\n# List of polygons\nVertices[] polygons\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sensor_msgs/PointCloud2",
+          "name": "cloud",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Vertices[]",
+          "name": "polygons",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Vertices": {
+      "description": "List of point indices",
+      "raw": "# List of point indices\nuint32[] vertices\n",
+      "fields": [
+        {
+          "type": "uint32[]",
+          "name": "vertices",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "UpdateFilename": {
+      "description": "",
+      "raw": "string filename\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

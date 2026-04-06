@@ -1,0 +1,355 @@
+{
+  "name": "nav_msgs",
+  "version": "2.0.5",
+  "description": "A package containing some navigation related message and service definitions.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "common_interfaces",
+    "url": "https://github.com/ros2/common_interfaces.git",
+    "branch": "foxy"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "bosch_locator_bridge",
+      "cartographer_ros",
+      "clober_serial",
+      "clober_simulation",
+      "common_interfaces",
+      "create_driver",
+      "diff_drive_controller",
+      "gazebo_plugins",
+      "gps_tools",
+      "husky_base",
+      "imu_filter_madgwick",
+      "kobuki_velocity_smoother",
+      "kobuki_velocity_smoother",
+      "lgsvl_bridge",
+      "map_msgs",
+      "map_msgs",
+      "mapviz_plugins",
+      "mavros",
+      "mavros_extras",
+      "microstrain_inertial_driver",
+      "microstrain_inertial_rqt",
+      "mrpt2",
+      "mvsim",
+      "naoqi_bridge_msgs",
+      "nav2_amcl",
+      "nav2_behavior_tree",
+      "nav2_behavior_tree",
+      "nav2_bt_navigator",
+      "nav2_bt_navigator",
+      "nav2_core",
+      "nav2_costmap_2d",
+      "nav2_map_server",
+      "nav2_msgs",
+      "nav2_navfn_planner",
+      "nav2_planner",
+      "nav2_recoveries",
+      "nav2_recoveries",
+      "nav2_rviz_plugins",
+      "nav2_system_tests",
+      "nav2_system_tests",
+      "nav2_util",
+      "nav2_waypoint_follower",
+      "nonpersistent_voxel_layer",
+      "novatel_gps_driver",
+      "octomap_server",
+      "odom_to_tf_ros2",
+      "plotjuggler_ros",
+      "raspimouse",
+      "raspimouse",
+      "realsense2_camera",
+      "realsense_hardware_interface",
+      "realsense_node",
+      "realsense_ros",
+      "rmf_visualization_schedule",
+      "robot_localization",
+      "ros_ign_bridge",
+      "rosbridge_library",
+      "rosbridge_test_msgs",
+      "rtabmap_odom",
+      "rtabmap_slam",
+      "rtabmap_sync",
+      "rtabmap_util",
+      "rtabmap_viz",
+      "rviz_default_plugins",
+      "septentrio_gnss_driver",
+      "slam_toolbox",
+      "slam_toolbox",
+      "smac_planner",
+      "swri_image_util",
+      "swri_roscpp",
+      "tricycle_controller",
+      "turtlebot3_example",
+      "turtlebot3_fake_node",
+      "turtlebot3_gazebo",
+      "turtlebot3_manipulation_teleop",
+      "turtlebot3_node",
+      "tuw_nav_msgs",
+      "vesc_ackermann",
+      "webots_ros2_epuck"
+    ]
+  },
+  "messages": {
+    "GridCells": {
+      "description": "An array of cells in a 2D grid",
+      "raw": "# An array of cells in a 2D grid\n\nstd_msgs/Header header\n\n# Width of each cell\nfloat32 cell_width\n\n# Height of each cell\nfloat32 cell_height\n\n# Each cell is represented by the Point at the center of the cell\ngeometry_msgs/Point[] cells\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cell_width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "cell_height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "cells",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MapMetaData": {
+      "description": "This hold basic information about the characteristics of the OccupancyGrid",
+      "raw": "# This hold basic information about the characteristics of the OccupancyGrid\n\n# The time at which the map was loaded\nbuiltin_interfaces/Time map_load_time\n\n# The map resolution [m/cell]\nfloat32 resolution\n\n# Map width [cells]\nuint32 width\n\n# Map height [cells]\nuint32 height\n\n# The origin of the map [m, m, rad].  This is the real-world pose of the\n# bottom left corner of cell (0,0) in the map.\ngeometry_msgs/Pose origin\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "map_load_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "width",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "height",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "origin",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OccupancyGrid": {
+      "description": "This represents a 2-D grid map",
+      "raw": "# This represents a 2-D grid map\nstd_msgs/Header header\n\n# MetaData for the map\nMapMetaData info\n\n# The map data, in row-major order, starting with (0,0). \n# Cell (1, 0) will be listed second, representing the next cell in the x direction. \n# Cell (0, 1) will be at the index equal to info.width, followed by (1, 1).\n# The values inside are application dependent, but frequently, \n# 0 represents unoccupied, 1 represents definitely occupied, and\n# -1 represents unknown. \nint8[] data\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MapMetaData",
+          "name": "info",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int8[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Odometry": {
+      "description": "This represents an estimate of a position and velocity in free space.",
+      "raw": "# This represents an estimate of a position and velocity in free space.\n# The pose in this message should be specified in the coordinate frame given by header.frame_id\n# The twist in this message should be specified in the coordinate frame given by the child_frame_id\n\n# Includes the frame id of the pose parent.\nstd_msgs/Header header\n\n# Frame id the pose points to. The twist is in this coordinate frame.\nstring child_frame_id\n\n# Estimated pose that is typically relative to a fixed world frame.\ngeometry_msgs/PoseWithCovariance pose\n\n# Estimated linear and angular velocity relative to child_frame_id.\ngeometry_msgs/TwistWithCovariance twist\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "child_frame_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovariance",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/TwistWithCovariance",
+          "name": "twist",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Path": {
+      "description": "An array of poses that represents a Path for a robot to follow.",
+      "raw": "# An array of poses that represents a Path for a robot to follow.\n\n# Indicates the frame_id of the path.\nstd_msgs/Header header\n\n# Array of poses to follow.\ngeometry_msgs/PoseStamped[] poses\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetMap": {
+      "description": "Get the map as a nav_msgs/OccupancyGrid",
+      "raw": "# Get the map as a nav_msgs/OccupancyGrid\n---\n# The current map hosted by this map service.\nOccupancyGrid map\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "OccupancyGrid",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetPlan": {
+      "description": "Get a plan from the current position to the goal Pose",
+      "raw": "# Get a plan from the current position to the goal Pose\n\n# The start pose for the plan\ngeometry_msgs/PoseStamped start\n\n# The final pose of the goal position\ngeometry_msgs/PoseStamped goal\n\n# If the goal is obstructed, how many meters the planner can\n# relax the constraint in x and y before failing.\nfloat32 tolerance\n---\n# Array of poses from start to goal if one was successfully found.\nPath plan\n",
+      "request_fields": [
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Path",
+          "name": "plan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetMap": {
+      "description": "Set a new map together with an initial pose",
+      "raw": "# Set a new map together with an initial pose\n\n# Requested 2D map to be set.\nnav_msgs/OccupancyGrid map\n\n# Estimated initial pose when setting new map.\ngeometry_msgs/PoseWithCovarianceStamped initial_pose\n---\n\n# True if the map was successfully set, false otherwise.\nbool success\n",
+      "request_fields": [
+        {
+          "type": "nav_msgs/OccupancyGrid",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseWithCovarianceStamped",
+          "name": "initial_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

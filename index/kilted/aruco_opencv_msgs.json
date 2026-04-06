@@ -1,0 +1,107 @@
+{
+  "name": "aruco_opencv_msgs",
+  "version": "6.1.1",
+  "description": "Message definitions for aruco_opencv package.",
+  "license": "MIT",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "aruco_opencv",
+    "url": "https://github.com/fictionlab/ros_aruco_opencv.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_cmake_lint_cmake"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "aruco_opencv",
+      "aruco_opencv",
+      "rtabmap_slam"
+    ]
+  },
+  "messages": {
+    "ArucoDetection": {
+      "description": "",
+      "raw": "std_msgs/Header header\naruco_opencv_msgs/MarkerPose[] markers\naruco_opencv_msgs/BoardPose[] boards\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "aruco_opencv_msgs/MarkerPose[]",
+          "name": "markers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "aruco_opencv_msgs/BoardPose[]",
+          "name": "boards",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BoardPose": {
+      "description": "",
+      "raw": "string board_name\ngeometry_msgs/Pose pose\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "board_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MarkerPose": {
+      "description": "",
+      "raw": "uint16 marker_id\ngeometry_msgs/Pose pose\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "marker_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

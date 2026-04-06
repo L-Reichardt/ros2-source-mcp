@@ -1,0 +1,990 @@
+{
+  "name": "maliput_ros_interfaces",
+  "version": "0.1.1",
+  "description": "Interface definitions for ROS2 maliput",
+  "license": "BSD-3-Clause",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "maliput_ros",
+    "url": "https://github.com/maliput/maliput_ros.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "geometry_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "geometry_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "maliput_ros",
+      "maliput_ros_translation",
+      "maliput_ros_translation"
+    ]
+  },
+  "messages": {
+    "BranchPoint": {
+      "description": "Equivalent to make maliput::api::BranchPoint::id().",
+      "raw": "# Equivalent to make maliput::api::BranchPoint::id().\nBranchPointId id\n# Equivalent to make maliput::api::BranchPoint::road_geometry()->id().\nRoadGeometryId road_geometry_id\n# Equivalent to make maliput::api::BranchPoint::GetASide().\nLaneEndSet a_side\n# Equivalent to make maliput::api::BranchPoint::GetBSide().\nLaneEndSet b_side\n",
+      "fields": [
+        {
+          "type": "BranchPointId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RoadGeometryId",
+          "name": "road_geometry_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaneEndSet",
+          "name": "a_side",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaneEndSet",
+          "name": "b_side",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "BranchPointId": {
+      "description": "Represents a maliput::api::BranchPointId.",
+      "raw": "# Represents a maliput::api::BranchPointId.\nstring id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HBounds": {
+      "description": "Represents a maliput::api::HBounds.",
+      "raw": "# Represents a maliput::api::HBounds.\nfloat64 min\nfloat64 max\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "InertialPosition": {
+      "description": "",
+      "raw": "float64 x\nfloat64 y\nfloat64 z\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IsoLaneVelocity": {
+      "description": "Represents a maliput::api::IsoLaneVelocity.",
+      "raw": "# Represents a maliput::api::IsoLaneVelocity.\nfloat64 sigma_v\nfloat64 rho_v\nfloat64 eta_v\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "sigma_v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "rho_v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "eta_v",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Junction": {
+      "description": "Equivalent to make maliput:api::Junction::id().",
+      "raw": "# Equivalent to make maliput:api::Junction::id().\nJunctionId id\n# Equivalent to make maliput::api::Junction::road_geometry()->id().\nRoadGeometryId road_geometry_id\n# Equivalent to iterate over all Junction' Segments and retrieve their IDs.\nSegmentId[] segment_ids\n",
+      "fields": [
+        {
+          "type": "JunctionId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RoadGeometryId",
+          "name": "road_geometry_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SegmentId[]",
+          "name": "segment_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "JunctionId": {
+      "description": "Represents a maliput::api::JunctionId.",
+      "raw": "# Represents a maliput::api::JunctionId.\nstring id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Lane": {
+      "description": "Equivalent to make maliput::api::Lane::id().",
+      "raw": "# Equivalent to make maliput::api::Lane::id().\nLaneId id\n# Equivalent to make maliput::api::Lane::segment()->id().\nSegmentId segment_id\n# Equivalent to make maliput::api::Lane::index().\nint32 index\n# Equivalent to make maliput::api::Lane::to_left().\nLaneId left_lane\n# Equivalent to make maliput::api::Lane::to_right().\nLaneId right_lane\n# Equivalent to make maliput::api::Lane::length().\nfloat64 length\n# Equivalent to make maliput::api::Lane::GetBranchPoint(maliput::api::LaneEnd::Which::kStart)->id()\nBranchPointId start_branch_point_id\n# Equivalent to make maliput::api::Lane::GetBranchPoint(maliput::api::LaneEnd::Which::kFinish)->id()\nBranchPointId finish_branch_point_id\n# Equivalent to make maliput::api::Lane::GetDefaultBranch(maliput::api::LaneEnd::Which::kStart).\nLaneEnd default_start_branch\n# Equivalent to make maliput::api::Lane::GetDefaultBranch(maliput::api::LaneEnd::Which::kFinish).\nLaneEnd default_finish_branch\n",
+      "fields": [
+        {
+          "type": "LaneId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SegmentId",
+          "name": "segment_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaneId",
+          "name": "left_lane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaneId",
+          "name": "right_lane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BranchPointId",
+          "name": "start_branch_point_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BranchPointId",
+          "name": "finish_branch_point_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaneEnd",
+          "name": "default_start_branch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaneEnd",
+          "name": "default_finish_branch",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneEnd": {
+      "description": "Equivalent to maliput::api::LaneEnd::Which::kStart.",
+      "raw": "# Equivalent to maliput::api::LaneEnd::Which::kStart.\nint32 WHICHSTART=0\n# Equivalent to maliput::api::LaneEnd::Which::kFinish.\nint32 WHICHFINISH=1\n\nLaneId lane_id\n# It must be one of the above WHICH* constants to represent maliput::api::LaneEnd::Which.\nint32 end\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "WHICHSTART",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "WHICHFINISH",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "LaneId",
+          "name": "lane_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneEndSet": {
+      "description": "Equivalent to retrieve all LaneEnds.",
+      "raw": "# Equivalent to retrieve all LaneEnds.\nLaneEnd[] lane_ends\n",
+      "fields": [
+        {
+          "type": "LaneEnd[]",
+          "name": "lane_ends",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneId": {
+      "description": "Represents a maliput::api::LaneId.",
+      "raw": "# Represents a maliput::api::LaneId.\nstring id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LanePosition": {
+      "description": "",
+      "raw": "float64 s\nfloat64 r\nfloat64 h\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "s",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "r",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "h",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneSRange": {
+      "description": "Represents a maliput::api::LaneSRange.",
+      "raw": "# Represents a maliput::api::LaneSRange.\nLaneId lane_id\nSRange s_range\n",
+      "fields": [
+        {
+          "type": "LaneId",
+          "name": "lane_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "SRange",
+          "name": "s_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneSRoute": {
+      "description": "Represents a maliput::api::LaneSRoute.",
+      "raw": "# Represents a maliput::api::LaneSRoute.\nLaneSRange[] ranges\nfloat64 length\n",
+      "fields": [
+        {
+          "type": "LaneSRange[]",
+          "name": "ranges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RBounds": {
+      "description": "Represents a maliput::api::RBounds.",
+      "raw": "# Represents a maliput::api::RBounds.\nfloat64 min\nfloat64 max\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "min",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoadGeometry": {
+      "description": "Equivalent to make maliput:api::RoadGeometry::id().",
+      "raw": "# Equivalent to make maliput:api::RoadGeometry::id().\nRoadGeometryId id\n# Equivalent to iterate over all Junctions and retrieve their IDs.\nJunctionId[] junction_ids\n# Equivalent to iterate over all BranchPoints and retrieve their IDs.\nBranchPointId[] branch_point_ids\n# Equivalent to make maliput::api::RoadGeometry::linear_tolerance().\nfloat64 linear_tolerance\n# Equivalent to make maliput::api::RoadGeometry::angular_tolerance().\nfloat64 angular_tolerance\n# Equivalent to make maliput::api::RoadGeometry::scale_length().\nfloat64 scale_length\n# Equivalent to make maliput::api::RoadGeometry::inertial_to_backend_frame_translation().\ngeometry_msgs/Vector3 inertial_to_backend_frame_translation\n",
+      "fields": [
+        {
+          "type": "RoadGeometryId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JunctionId[]",
+          "name": "junction_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "BranchPointId[]",
+          "name": "branch_point_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "linear_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "angular_tolerance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "scale_length",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "inertial_to_backend_frame_translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoadGeometryId": {
+      "description": "Represents a maliput::api::RoadGeometryId.",
+      "raw": "# Represents a maliput::api::RoadGeometryId.\nstring id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoadPosition": {
+      "description": "",
+      "raw": "LaneId lane_id\nLanePosition pos\n",
+      "fields": [
+        {
+          "type": "LaneId",
+          "name": "lane_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LanePosition",
+          "name": "pos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoadPositionResult": {
+      "description": "",
+      "raw": "RoadPosition road_position\nInertialPosition nearest_position\nfloat64 distance\n",
+      "fields": [
+        {
+          "type": "RoadPosition",
+          "name": "road_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "InertialPosition",
+          "name": "nearest_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Rotation": {
+      "description": "Represents the maliput::api::Rotation as a maliput::math::Quaternion.",
+      "raw": "# Represents the maliput::api::Rotation as a maliput::math::Quaternion.\nfloat64 x\nfloat64 y\nfloat64 z\nfloat64 w\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "z",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "w",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SRange": {
+      "description": "Represents a maliput::api::SRange.",
+      "raw": "# Represents a maliput::api::SRange.\nfloat64 s0\nfloat64 s1\nfloat64 size\nbool with_s\n",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "s0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "s1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "with_s",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Segment": {
+      "description": "Equivalent to make maliput:api::Segment::id()",
+      "raw": "# Equivalent to make maliput:api::Segment::id()\nSegmentId id\n# Equivalent to make maliput::api::Segment::junction()->id()\nJunctionId junction_id\n# Equivalent to iterate over all Lanes and retrieve their IDs.\nLaneId[] lane_ids\n",
+      "fields": [
+        {
+          "type": "SegmentId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "JunctionId",
+          "name": "junction_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LaneId[]",
+          "name": "lane_ids",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SegmentId": {
+      "description": "Represents a maliput::api::SegmentId.",
+      "raw": "# Represents a maliput::api::SegmentId.\nstring id\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "BranchPoint": {
+      "description": "Equivalent to make maliput::api::RoadGeometry::ById()::GetBranchPoint(id) and obtain the BranchPoint information.",
+      "raw": "# Equivalent to make maliput::api::RoadGeometry::ById()::GetBranchPoint(id) and obtain the BranchPoint information.\nBranchPointId id\n---\nBranchPoint branch_point\n",
+      "request_fields": [
+        {
+          "type": "BranchPointId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "BranchPoint",
+          "name": "branch_point",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeriveLaneSRoutes": {
+      "description": "Equivalent to make maliput::routing::DeriveLaneSRoutes(start, end, max_length_m).",
+      "raw": "# Equivalent to make maliput::routing::DeriveLaneSRoutes(start, end, max_length_m).\nRoadPosition start\nRoadPosition end\nfloat64 max_length_m\n---\nLaneSRoute[] lane_s_routes\n",
+      "request_fields": [
+        {
+          "type": "RoadPosition",
+          "name": "start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RoadPosition",
+          "name": "end",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "max_length_m",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "LaneSRoute[]",
+          "name": "lane_s_routes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "EvalMotionDerivatives": {
+      "description": "Equivalent to finding the maliput::api::Lane via the road_position.lane_id and then",
+      "raw": "# Equivalent to finding the maliput::api::Lane via the road_position.lane_id and then\n# querying the lane->EvalMotionDerivatives(road_position.pos, velocity).\nRoadPosition road_position\nIsoLaneVelocity velocity\n---\nLanePosition lane_derivatives\n",
+      "request_fields": [
+        {
+          "type": "RoadPosition",
+          "name": "road_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IsoLaneVelocity",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "LanePosition",
+          "name": "lane_derivatives",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FindRoadPositions": {
+      "description": "Equivalent to make maliput::api::RoadNetwork::road_geometry()->FindRoadPositions(inertial_position, radius).",
+      "raw": "# Equivalent to make maliput::api::RoadNetwork::road_geometry()->FindRoadPositions(inertial_position, radius).\nInertialPosition inertial_position\nfloat64 radius\n---\nRoadPositionResult[] road_position_results\n",
+      "request_fields": [
+        {
+          "type": "InertialPosition",
+          "name": "inertial_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "RoadPositionResult[]",
+          "name": "road_position_results",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetJunctionByIndex": {
+      "description": "Equivalent to make maliput::api::RoadGeometry::junction(junction_index).",
+      "raw": "# Equivalent to make maliput::api::RoadGeometry::junction(junction_index).\nint32 junction_index\n---\nJunction junction\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "junction_index",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Junction",
+          "name": "junction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetSegmentByIndex": {
+      "description": "",
+      "raw": "",
+      "request_fields": [],
+      "response_fields": []
+    },
+    "Junction": {
+      "description": "Equivalent to make maliput::api::RoadGeometry::ById()::GetJunction(id) and obtain the Junction information.",
+      "raw": "# Equivalent to make maliput::api::RoadGeometry::ById()::GetJunction(id) and obtain the Junction information.\nJunctionId id\n---\nJunction junction\n",
+      "request_fields": [
+        {
+          "type": "JunctionId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Junction",
+          "name": "junction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Lane": {
+      "description": "Equivalent to make maliput::api::RoadGeometry::ById()::GetLane(id) and obtain the Lane information.",
+      "raw": "# Equivalent to make maliput::api::RoadGeometry::ById()::GetLane(id) and obtain the Lane information.\nLaneId id\n---\nLane lane\n",
+      "request_fields": [
+        {
+          "type": "LaneId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Lane",
+          "name": "lane",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LaneBoundaries": {
+      "description": "Equivalent to finding the maliput::api::Lane via the road_position.lane_id and then",
+      "raw": "# Equivalent to finding the maliput::api::Lane via the road_position.lane_id and then\n# querying the lane->lane_bounds(road_position.pos.s), lane->segment_bounds(road_position.pos.s),\n# and lane->elevation_bounds(road_position.pos.s, road_position.pos.r).\nRoadPosition road_position\n---\nRBounds lane_bounds\nRBounds segment_bounds\nHBounds elevation_bounds\n",
+      "request_fields": [
+        {
+          "type": "RoadPosition",
+          "name": "road_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "RBounds",
+          "name": "lane_bounds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "RBounds",
+          "name": "segment_bounds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HBounds",
+          "name": "elevation_bounds",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RoadGeometry": {
+      "description": "Equivalent to make maliput::api::RoadNetwork::road_geometry() and obtain the RoadGeometry information.",
+      "raw": "# Equivalent to make maliput::api::RoadNetwork::road_geometry() and obtain the RoadGeometry information.\n---\nRoadGeometry road_geometry\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "RoadGeometry",
+          "name": "road_geometry",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SampleLaneSRoute": {
+      "description": "Equivalent to call maliput::api::RoadNetwork::road_geometry()->SampleAheadWaypoints(lane_s_route, path_length_samplin...",
+      "raw": "# Equivalent to call maliput::api::RoadNetwork::road_geometry()->SampleAheadWaypoints(lane_s_route, path_length_sampling_rate)\n# and return the vector of maliput::api::InertialPositions.\nLaneSRoute lane_s_route\nfloat64 path_length_sampling_rate\n---\nInertialPosition[] waypoints\n",
+      "request_fields": [
+        {
+          "type": "LaneSRoute",
+          "name": "lane_s_route",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "path_length_sampling_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "InertialPosition[]",
+          "name": "waypoints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Segment": {
+      "description": "Equivalent to make maliput::api::RoadGeometry::ById()::GetSegment(id) and obtain the Segment information.",
+      "raw": "# Equivalent to make maliput::api::RoadGeometry::ById()::GetSegment(id) and obtain the Segment information.\nSegmentId id\n---\nSegment segment\n",
+      "request_fields": [
+        {
+          "type": "SegmentId",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "Segment",
+          "name": "segment",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToInertialPose": {
+      "description": "Equivalent to finding the maliput::api::Lane via the road_position.lane_id and then",
+      "raw": "# Equivalent to finding the maliput::api::Lane via the road_position.lane_id and then\n# querying the lane->ToInertialPosition(road_position.pos) and lane->GetOrientation(road_position.pos).\nRoadPosition road_position\n---\nInertialPosition position\nRotation orientation\n",
+      "request_fields": [
+        {
+          "type": "RoadPosition",
+          "name": "road_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "InertialPosition",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Rotation",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ToRoadPosition": {
+      "description": "Equivalent to make maliput::api::RoadNetwork::road_geometry()->ToRoadPosition(inertial_position, {}).",
+      "raw": "# Equivalent to make maliput::api::RoadNetwork::road_geometry()->ToRoadPosition(inertial_position, {}).\nInertialPosition inertial_position\n---\nRoadPositionResult road_position_result\n",
+      "request_fields": [
+        {
+          "type": "InertialPosition",
+          "name": "inertial_position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "RoadPositionResult",
+          "name": "road_position_result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

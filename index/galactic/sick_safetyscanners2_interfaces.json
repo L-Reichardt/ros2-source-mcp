@@ -1,0 +1,872 @@
+{
+  "name": "sick_safetyscanners2_interfaces",
+  "version": "1.0.0",
+  "description": "Interfaces for the sick_safetyscanners ros2 driver",
+  "license": "ALv2",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "sick_safetyscanners2_interfaces",
+    "url": "https://github.com/SICKAG/sick_safetyscanners2_interfaces.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "sick_safetyscanners2"
+    ]
+  },
+  "messages": {
+    "ApplicationData": {
+      "description": "",
+      "raw": "ApplicationInputs inputs\nApplicationOutputs outputs\n",
+      "fields": [
+        {
+          "type": "ApplicationInputs",
+          "name": "inputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ApplicationOutputs",
+          "name": "outputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ApplicationInputs": {
+      "description": "",
+      "raw": "bool[] unsafe_inputs_input_sources\nbool[] unsafe_inputs_flags\n\nuint16[] monitoring_case_number_inputs\nbool[] monitoring_case_number_inputs_flags\n\nint16 linear_velocity_inputs_velocity_0\nbool linear_velocity_inputs_velocity_0_valid\nbool linear_velocity_inputs_velocity_0_transmitted_safely\n\nint16 linear_velocity_inputs_velocity_1\nbool linear_velocity_inputs_velocity_1_valid\nbool linear_velocity_inputs_velocity_1_transmitted_safely\n\nuint8 sleep_mode_input\n\n",
+      "fields": [
+        {
+          "type": "bool[]",
+          "name": "unsafe_inputs_input_sources",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "unsafe_inputs_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "monitoring_case_number_inputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "monitoring_case_number_inputs_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "linear_velocity_inputs_velocity_0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "linear_velocity_inputs_velocity_0_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "linear_velocity_inputs_velocity_0_transmitted_safely",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "linear_velocity_inputs_velocity_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "linear_velocity_inputs_velocity_1_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "linear_velocity_inputs_velocity_1_transmitted_safely",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sleep_mode_input",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ApplicationOutputs": {
+      "description": "",
+      "raw": "bool[] evaluation_path_outputs_eval_out\nbool[] evaluation_path_outputs_is_safe\nbool[] evaluation_path_outputs_is_valid\n\nuint16[] monitoring_case_number_outputs \nbool[] monitoring_case_number_outputs_flags\n\nuint8 sleep_mode_output\nbool sleep_mode_output_valid\n\nbool error_flag_contamination_warning\nbool error_flag_contamination_error\nbool error_flag_manipulation_error\nbool error_flag_glare\nbool error_flag_reference_contour_intruded\nbool error_flag_critical_error\nbool error_flags_are_valid\n\n\nint16 linear_velocity_outputs_velocity_0\nbool linear_velocity_outputs_velocity_0_valid\nbool linear_velocity_outputs_velocity_0_transmitted_safely\n\nint16 linear_velocity_outputs_velocity_1\nbool linear_velocity_outputs_velocity_1_valid\nbool linear_velocity_outputs_velocity_1_transmitted_safely\n\nint16[] resulting_velocity\nbool[] resulting_velocity_flags\n\n \n",
+      "fields": [
+        {
+          "type": "bool[]",
+          "name": "evaluation_path_outputs_eval_out",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "evaluation_path_outputs_is_safe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "evaluation_path_outputs_is_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16[]",
+          "name": "monitoring_case_number_outputs",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "monitoring_case_number_outputs_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sleep_mode_output",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "sleep_mode_output_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_flag_contamination_warning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_flag_contamination_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_flag_manipulation_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_flag_glare",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_flag_reference_contour_intruded",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_flag_critical_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "error_flags_are_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "linear_velocity_outputs_velocity_0",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "linear_velocity_outputs_velocity_0_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "linear_velocity_outputs_velocity_0_transmitted_safely",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16",
+          "name": "linear_velocity_outputs_velocity_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "linear_velocity_outputs_velocity_1_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "linear_velocity_outputs_velocity_1_transmitted_safely",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int16[]",
+          "name": "resulting_velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "resulting_velocity_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DataHeader": {
+      "description": "",
+      "raw": "uint8 version_version\nuint8 version_major_version\nuint8 version_minor_version\nuint8 version_release\n\nuint32 serial_number_of_device\nuint32 serial_number_of_channel_plug\nuint8 channel_number\n\nuint32 sequence_number\nuint32 scan_number\n\nuint16 timestamp_date\nuint32 timestamp_time\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "version_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version_major_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version_minor_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "version_release",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "serial_number_of_device",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "serial_number_of_channel_plug",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "channel_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "sequence_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "scan_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "timestamp_date",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "timestamp_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DerivedValues": {
+      "description": "",
+      "raw": "uint16 multiplication_factor\nuint16 number_of_beams\nuint16 scan_time\nfloat32 start_angle\nfloat32 angular_beam_resolution\nuint32 interbeam_period\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "multiplication_factor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "number_of_beams",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "scan_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "start_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angular_beam_resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "interbeam_period",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ExtendedLaserScan": {
+      "description": "",
+      "raw": "sensor_msgs/LaserScan laser_scan\nbool[] reflektor_status\nbool[] reflektor_median\nbool[] intrusion\n",
+      "fields": [
+        {
+          "type": "sensor_msgs/LaserScan",
+          "name": "laser_scan",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "reflektor_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "reflektor_median",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "intrusion",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Field": {
+      "description": "",
+      "raw": "float32[] ranges\nfloat32 start_angle\nfloat32 angular_resolution\nbool protective_field\n",
+      "fields": [
+        {
+          "type": "float32[]",
+          "name": "ranges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "start_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "angular_resolution",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "protective_field",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeneralSystemState": {
+      "description": "",
+      "raw": "bool run_mode_active\nbool standby_mode_active\nbool contamination_warning\nbool contamination_error\nbool reference_contour_status\nbool manipulation_status\n\nbool[] safe_cut_off_path\nbool[] non_safe_cut_off_path\nbool[] reset_required_cut_off_path\n\nuint8 current_monitoring_case_no_table_1\nuint8 current_monitoring_case_no_table_2\nuint8 current_monitoring_case_no_table_3\nuint8 current_monitoring_case_no_table_4\n\nbool application_error\nbool device_error\n",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "run_mode_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "standby_mode_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "contamination_warning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "contamination_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reference_contour_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "manipulation_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "safe_cut_off_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "non_safe_cut_off_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "reset_required_cut_off_path",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "current_monitoring_case_no_table_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "current_monitoring_case_no_table_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "current_monitoring_case_no_table_3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "current_monitoring_case_no_table_4",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "application_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "device_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IntrusionData": {
+      "description": "",
+      "raw": "IntrusionDatum[] data\n",
+      "fields": [
+        {
+          "type": "IntrusionDatum[]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IntrusionDatum": {
+      "description": "",
+      "raw": "uint32 size\nbool[] flags\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MeasurementData": {
+      "description": "",
+      "raw": "uint32 number_of_beams\nScanPoint[] scan_points\n\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "number_of_beams",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ScanPoint[]",
+          "name": "scan_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MonitoringCase": {
+      "description": "",
+      "raw": "int32 monitoring_case_number\nint32[] fields\nbool[] fields_valid\n",
+      "fields": [
+        {
+          "type": "int32",
+          "name": "monitoring_case_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "fields",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "fields_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "OutputPaths": {
+      "description": "",
+      "raw": "bool[] status\nbool[] is_safe\nbool[] is_valid\nint32 active_monitoring_case\n",
+      "fields": [
+        {
+          "type": "bool[]",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "is_safe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool[]",
+          "name": "is_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "active_monitoring_case",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "RawMicroScanData": {
+      "description": "",
+      "raw": "DataHeader header\nDerivedValues derived_values\nGeneralSystemState general_system_state\nMeasurementData measurement_data\nIntrusionData intrusion_data\nApplicationData application_data\n",
+      "fields": [
+        {
+          "type": "DataHeader",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "DerivedValues",
+          "name": "derived_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeneralSystemState",
+          "name": "general_system_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "MeasurementData",
+          "name": "measurement_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IntrusionData",
+          "name": "intrusion_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ApplicationData",
+          "name": "application_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ScanPoint": {
+      "description": "",
+      "raw": "float32 angle\nuint16 distance\nuint8 reflectivity\nbool valid\nbool infinite\nbool glare\nbool reflector\nbool contamination\nbool contamination_warning\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "reflectivity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "infinite",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "glare",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reflector",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "contamination",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "contamination_warning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "FieldData": {
+      "description": "",
+      "raw": "\n---\n\nsick_safetyscanners2_interfaces/Field[] fields\nstring device_name\nsick_safetyscanners2_interfaces/MonitoringCase[] monitoring_cases\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "sick_safetyscanners2_interfaces/Field[]",
+          "name": "fields",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "device_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "sick_safetyscanners2_interfaces/MonitoringCase[]",
+          "name": "monitoring_cases",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

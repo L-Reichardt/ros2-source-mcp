@@ -1,0 +1,173 @@
+{
+  "name": "realsense2_camera_msgs",
+  "version": "4.51.1",
+  "description": "RealSense camera_msgs package containing realsense camera messages definitions",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/RealSense",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/intel-ros/realsense/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "realsense2_camera",
+    "url": "https://github.com/IntelRealSense/realsense-ros.git",
+    "branch": "ros2-beta"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime",
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "realsense2_camera",
+      "realsense2_description"
+    ]
+  },
+  "messages": {
+    "Extrinsics": {
+      "description": "",
+      "raw": "float64[9] rotation\nfloat64[3] translation\n",
+      "fields": [
+        {
+          "type": "float64[9]",
+          "name": "rotation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "translation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IMUInfo": {
+      "description": "header.frame_id is either set to \"imu_accel\" or \"imu_gyro\"",
+      "raw": "# header.frame_id is either set to \"imu_accel\" or \"imu_gyro\"\n# to distinguish between \"accel\" and \"gyro\" info.\nstd_msgs/Header header\nfloat64[12] data\nfloat64[3] noise_variances\nfloat64[3] bias_variances\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[12]",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "noise_variances",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[3]",
+          "name": "bias_variances",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Metadata": {
+      "description": "",
+      "raw": "std_msgs/Header header\nstring json_data",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "json_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "DeviceInfo": {
+      "description": "",
+      "raw": "---\nstring device_name\nstring serial_number\nstring firmware_version\nstring usb_type_descriptor\nstring firmware_update_id\nstring sensors\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string",
+          "name": "device_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "serial_number",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_version",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "usb_type_descriptor",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "firmware_update_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "sensors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

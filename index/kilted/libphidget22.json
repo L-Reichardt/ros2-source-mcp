@@ -1,0 +1,46 @@
+{
+  "name": "libphidget22",
+  "version": "2.4.0",
+  "description": "This package wraps the libphidget22 to use it as a ROS dependency",
+  "license": "LGPL",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/libphidget22",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/phidgets_drivers.git",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros-drivers/phidgets_drivers/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "phidgets_drivers",
+    "url": "https://github.com/ros-drivers/phidgets_drivers.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "file",
+      "libusb-1.0-dev"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "libusb-1.0"
+    ],
+    "depended_on_by": [
+      "phidgets_api",
+      "phidgets_drivers"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

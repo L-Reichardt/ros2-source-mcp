@@ -1,0 +1,50 @@
+{
+  "name": "dbw_fca_joystick_demo",
+  "version": "2.1.16",
+  "description": "Demonstration of drive-by-wire with joystick",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://dataspeedinc.com",
+      "type": "website"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_fca_ros",
+      "type": "repository"
+    },
+    {
+      "uri": "https://bitbucket.org/dataspeedinc/dbw_fca_ros/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "dbw_ros",
+    "url": "https://bitbucket.org/dataspeedinc/dbw_ros.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "joy",
+      "dbw_fca_can"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_components",
+      "dataspeed_dbw_common",
+      "std_msgs",
+      "sensor_msgs",
+      "dbw_fca_msgs"
+    ],
+    "depended_on_by": [
+      "dbw_fca"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

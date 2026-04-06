@@ -1,0 +1,197 @@
+{
+  "name": "autoware_v2x_msgs",
+  "version": "1.7.0",
+  "description": "Autoware v2x messages package.",
+  "license": "Apache License 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "autoware_msgs",
+    "url": "https://github.com/autowarefoundation/autoware_msgs.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake_auto"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "autoware_msgs"
+    ]
+  },
+  "messages": {
+    "VirtualGateAreaCommand": {
+      "description": "constants for command",
+      "raw": "# constants for command\nuint16 ACQUIRE = 1\nuint16 RELEASE = 2\n\n# variables for lock\nuint16   command\nuint16   sequence_id  # Used to check correspondence with status messages.\nstring   area_id      # Target area ID.\nstring[] gate_ids     # Entry and exit gate ID.\n\n# variables for scheduling\nbuiltin_interfaces/Time[<=1] expected_time_arrival\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "ACQUIRE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "RELEASE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sequence_id",
+          "comment": "Used to check correspondence with status messages.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "area_id",
+          "comment": "Target area ID.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "gate_ids",
+          "comment": "Entry and exit gate ID.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time[<=1]",
+          "name": "expected_time_arrival",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VirtualGateAreaStatus": {
+      "description": "constants for status",
+      "raw": "# constants for status\nuint16 RESERVED = 1\nuint16 ACQUIRED = 2\nuint16 RELEASED = 3\n\n# variables for lock\nbuiltin_interfaces/Time stamp\nuint16   status\nuint16   sequence_id  # Used to check correspondence with commands.\nstring   area_id      # Target area ID.\nstring[] gate_ids     # Entry and exit gate ID.\n\n# variables for scheduling\nbuiltin_interfaces/Time[<=1] expected_time_arrival\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "RESERVED",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "ACQUIRED",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "RELEASED",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sequence_id",
+          "comment": "Used to check correspondence with commands.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "area_id",
+          "comment": "Target area ID.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "gate_ids",
+          "comment": "Entry and exit gate ID.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Time[<=1]",
+          "name": "expected_time_arrival",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VirtualGateCommand": {
+      "description": "",
+      "raw": "builtin_interfaces/Time stamp\nautoware_v2x_msgs/VirtualGateAreaCommand[] areas\n",
+      "fields": [
+        {
+          "type": "builtin_interfaces/Time",
+          "name": "stamp",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "autoware_v2x_msgs/VirtualGateAreaCommand[]",
+          "name": "areas",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "VirtualGateStatus": {
+      "description": "",
+      "raw": "autoware_v2x_msgs/VirtualGateAreaStatus[] areas\n",
+      "fields": [
+        {
+          "type": "autoware_v2x_msgs/VirtualGateAreaStatus[]",
+          "name": "areas",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

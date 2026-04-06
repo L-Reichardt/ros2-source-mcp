@@ -1,0 +1,44 @@
+{
+  "name": "mola_gtsam_factors",
+  "version": "2.2.0",
+  "description": "C++ library with reusable GTSAM Factors useful in georeferencing and state-estimation MOLA modules",
+  "license": "GPLv3",
+  "build_type": "cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://docs.mola-slam.org/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/MOLAorg/mola_state_estimation/",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "mola_state_estimation",
+    "url": "https://github.com/MOLAorg/mola_state_estimation.git",
+    "branch": "develop"
+  },
+  "dependencies": {
+    "buildtool": [
+      "cmake"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "build_and_runtime": [
+      "mola_common",
+      "gtsam",
+      "mrpt_libposes"
+    ],
+    "depended_on_by": [
+      "mola_georeferencing",
+      "mola_sm_loop_closure",
+      "mola_state_estimation_smoother"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

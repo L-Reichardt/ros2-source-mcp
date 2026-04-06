@@ -1,0 +1,611 @@
+{
+  "name": "controller_manager_msgs",
+  "version": "5.13.0",
+  "description": "Messages and services for the controller manager.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://ros.org/wiki/controller_manager_msgs",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "ros2_control",
+    "url": "https://github.com/ros-controls/ros2_control.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "lifecycle_msgs",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "lifecycle_msgs",
+      "std_msgs",
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "controller_manager",
+      "play_motion2",
+      "ros2_control",
+      "ros2controlcli",
+      "rqt_controller_manager",
+      "rqt_joint_trajectory_controller",
+      "ur_robot_driver"
+    ]
+  },
+  "messages": {
+    "ChainConnection": {
+      "description": "",
+      "raw": "string name        # name of controller exporting reference_interfaces\nstring[] reference_interfaces        # list of reference exported by controller\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "name of controller exporting reference_interfaces",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "reference_interfaces",
+          "comment": "list of reference exported by controller",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControllerManagerActivity": {
+      "description": "This message is used to provide the activity within the controller manager regarding the change in state of controlle...",
+      "raw": "# This message is used to provide the activity within the controller manager regarding the change in state of controllers and hardware interfaces\n\n# The header is used to provide timestamp information\nstd_msgs/Header header\n\n# The current state of the controllers\nNamedLifecycleState[] controllers\n\n# The current state of the hardware components\nNamedLifecycleState[] hardware_components\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NamedLifecycleState[]",
+          "name": "controllers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "NamedLifecycleState[]",
+          "name": "hardware_components",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ControllerState": {
+      "description": "",
+      "raw": "string name        # controller name\nstring state        # controller state: unconfigured, inactive, active, or finalized\nstring type        # the controller class name, e.g. joint_trajectory_controller/JointTrajectoryController\nbool is_async       # true, if controller runs asynchronously. false, if controller runs synchronously\nuint16 update_rate        # update rate of the controller in Hz\nstring[] claimed_interfaces        # command interfaces currently owned by controller\nstring[] required_command_interfaces        # command interfaces required by controller\nstring[] required_state_interfaces        # state interfaces required by controller\nbool is_chainable        # specifies whether or not controller can export references for a controller chain\nbool is_chained        # specifies whether or not controller's exported references are claimed by another controller\nstring[] exported_state_interfaces        # state interfaces to be exported (only applicable if is_chainable is true)\nstring[] reference_interfaces        # references to be exported (only applicable if is_chainable is true)\nChainConnection[] chain_connections        # specifies list of controllers and their exported references that the controller is chained to\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "controller name",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "state",
+          "comment": "controller state: unconfigured, inactive, active, or finalized",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "the controller class name, e.g. joint_trajectory_controller/JointTrajectoryController",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_async",
+          "comment": "true, if controller runs asynchronously. false, if controller runs synchronously",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "update_rate",
+          "comment": "update rate of the controller in Hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "claimed_interfaces",
+          "comment": "command interfaces currently owned by controller",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "required_command_interfaces",
+          "comment": "command interfaces required by controller",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "required_state_interfaces",
+          "comment": "state interfaces required by controller",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_chainable",
+          "comment": "specifies whether or not controller can export references for a controller chain",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_chained",
+          "comment": "specifies whether or not controller's exported references are claimed by another controller",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "exported_state_interfaces",
+          "comment": "state interfaces to be exported (only applicable if is_chainable is true)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "reference_interfaces",
+          "comment": "references to be exported (only applicable if is_chainable is true)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ChainConnection[]",
+          "name": "chain_connections",
+          "comment": "specifies list of controllers and their exported references that the controller is chained to",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HardwareComponentState": {
+      "description": "",
+      "raw": "string name # Name of the hardware component\nstring type # Type of the hardware component\nbool is_async # If the hardware component is running asynchronously\nuint16 rw_rate # read/write rate of the hardware component in Hz\nstring plugin_name # The name of the plugin that is used to load the hardware component\nlifecycle_msgs/State state # State of the hardware component\nHardwareInterface[] command_interfaces # Command interfaces of the hardware component\nHardwareInterface[] state_interfaces # State interfaces of the hardware component\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "Name of the hardware component",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "Type of the hardware component",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_async",
+          "comment": "If the hardware component is running asynchronously",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "rw_rate",
+          "comment": "read/write rate of the hardware component in Hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "plugin_name",
+          "comment": "The name of the plugin that is used to load the hardware component",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "lifecycle_msgs/State",
+          "name": "state",
+          "comment": "State of the hardware component",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HardwareInterface[]",
+          "name": "command_interfaces",
+          "comment": "Command interfaces of the hardware component",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HardwareInterface[]",
+          "name": "state_interfaces",
+          "comment": "State interfaces of the hardware component",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "HardwareInterface": {
+      "description": "",
+      "raw": "string name\nstring data_type\nbool is_available\nbool is_claimed\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "data_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_available",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "is_claimed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "NamedLifecycleState": {
+      "description": "This message is used to provide information about the lifecycle state of the controller or the hardware components",
+      "raw": "# This message is used to provide information about the lifecycle state of the controller or the hardware components\n\n# The name of the controller or hardware interface\nstring name\n\n# The current lifecycle state of the controller or hardware components\nlifecycle_msgs/State state\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "lifecycle_msgs/State",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "CleanupController": {
+      "description": "The CleanupController service allows you to cleanup a single controller",
+      "raw": "# The CleanupController service allows you to cleanup a single controller\n# from controller_manager\n\n# To cleanup a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# cleaned up or not\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ConfigureController": {
+      "description": "The ConfigureController service allows you to configure a single controller",
+      "raw": "# The ConfigureController service allows you to configure a single controller\n# inside controller_manager\n\n# To configure a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# configured or not.\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListControllerTypes": {
+      "description": "The ListControllers service returns a list of controller types that are known",
+      "raw": "# The ListControllers service returns a list of controller types that are known\n# to the controller manager plugin mechanism.\n\n---\nstring[] types\nstring[] base_classes\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "types",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "base_classes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListControllers": {
+      "description": "The ListControllers service returns a list of controller names/states/types of the",
+      "raw": "# The ListControllers service returns a list of controller names/states/types of the\n# controllers that are loaded inside the controller_manager.\n\n---\ncontroller_manager_msgs/ControllerState[] controller\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "controller_manager_msgs/ControllerState[]",
+          "name": "controller",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListHardwareComponents": {
+      "description": "The ListHardwareComponents service returns a list of hardware HardwareComponentsState.",
+      "raw": "# The ListHardwareComponents service returns a list of hardware HardwareComponentsState.\n# This will convey name, component_type, state and type of the components\n# that are loaded inside the resource_manager.\n\n---\nHardwareComponentState[] component\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "HardwareComponentState[]",
+          "name": "component",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ListHardwareInterfaces": {
+      "description": "",
+      "raw": "\n---\nHardwareInterface[] command_interfaces\nHardwareInterface[] state_interfaces\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "HardwareInterface[]",
+          "name": "command_interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "HardwareInterface[]",
+          "name": "state_interfaces",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LoadController": {
+      "description": "The LoadController service allows you to load a single controller",
+      "raw": "# The LoadController service allows you to load a single controller\n# inside controller_manager\n\n# To load a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# constructed and initialized or not.\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ReloadControllerLibraries": {
+      "description": "The ReloadControllerLibraries service will reload all controllers that are available in",
+      "raw": "# The ReloadControllerLibraries service will reload all controllers that are available in\n# the system as plugins\n\n# Reloading libraries only works if there are no controllers loaded. If there\n# are still some controllers loaded, the reloading will fail.\n# If this bool is set to true, all loaded controllers will get\n# killed automatically, and the reloading can succeed.\nbool force_kill\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "bool",
+          "name": "force_kill",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetHardwareComponentState": {
+      "description": "The SetHardwareComponentState service allows to control life-cycle of a single hardware component.",
+      "raw": "# The SetHardwareComponentState service allows to control life-cycle of a single hardware component.\n# Supported states are defined in the design document of LifecycleNodes available at:\n# https://design.ros2.org/articles/node_lifecycle.html\n# To control life-cycle of a hardware component, specify its \"name\" and \"target_state\".\n# Target state may be defined by \"id\" using a constant from `lifecycle_msgs/msg/State` or a label\n# using definitions from `hardware_interface/types/lifecycle_state_names.hpp` file.\n# The return value \"ok\" indicates if the component has successfully changed its state to \"target_state\".\n# The return value \"state\" returns current state of the hardware component.\n\nstring name\nlifecycle_msgs/State target_state\n---\nbool ok\nlifecycle_msgs/State state\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "lifecycle_msgs/State",
+          "name": "target_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "lifecycle_msgs/State",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SwitchController": {
+      "description": "The SwitchController service allows you to deactivate a number of controllers",
+      "raw": "# The SwitchController service allows you to deactivate a number of controllers\n# and activate a number of controllers, all in one single timestep of the\n# controller manager's control loop.\n\n# To switch controllers, specify\n#  * the list of controller names to activate,\n#  * the list of controller names to deactivate, and\n#  * the strictness (STRICT, BEST_EFFORT, AUTO, or FORCE_AUTO)\n#    * STRICT means that switching will fail if anything goes wrong (an invalid\n#      controller name, a controller that failed to activate, etc.).\n#    * BEST_EFFORT:\n#      Transitions are only triggered if the controller is not yet in the target state.\n#      If it is already in the target state, no error occurs.\n#      Returns 'false' if all controllers of 'activate_controllers' or 'deactivate_controllers' are not yet loaded or configured,\n#      or the pending transitions of all existing controllers of 'activate_controllers'\n#      or 'deactivate_controllers' fail.\n#      Returns 'true' otherwise.\n#    * AUTO means that the controller manager will automatically resolve the controller\n#      chain in order to activate and/or deactivate the specified controllers.\n#      This is useful in complex systems when you want all dependent controllers to start\n#      within the same update iteration.\n#    * FORCE_AUTO means that the controller manager will take all necessary steps to activate\n#      the specified controllers without requiring you to explicitly list the controllers\n#      to be deactivated. This is useful when the controller being activated depends on\n#      another unknown controller that is currently running. The controller manager will\n#      deactivate any controllers that block the activation of the requested controller,\n#      following the mutually exclusive joint interface switching principle. For example,\n#      to activate a controller that uses a joint's position interface, the controller manager\n#      will automatically deactivate any controllers that use conflicting interfaces for\n#      the same joint.\n#  * activate the controllers as soon as their hardware dependencies are ready, will\n#    wait for all interfaces to be ready otherwise\n#  * the timeout before aborting pending controllers. Zero for infinite\n\n# The return value \"ok\" indicates if the controllers were switched\n# successfully or not. The meaning of success depends on the\n# specified strictness.\n# The return value \"message\" provides some human-readable information.\n\n\nstring[] activate_controllers\nstring[] deactivate_controllers\nint32 strictness\nint32 BEST_EFFORT=1\nint32 STRICT=2\nint32 AUTO=3\nint32 FORCE_AUTO=4\nbool activate_asap\nbuiltin_interfaces/Duration timeout\n---\nbool ok\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string[]",
+          "name": "activate_controllers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string[]",
+          "name": "deactivate_controllers",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "strictness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "BEST_EFFORT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "STRICT",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "AUTO",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "FORCE_AUTO",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "activate_asap",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "UnloadController": {
+      "description": "The UnloadController service allows you to unload a single controller",
+      "raw": "# The UnloadController service allows you to unload a single controller\n# from controller_manager\n\n# To unload a controller, specify the \"name\" of the controller.\n# The return value \"ok\" indicates if the controller was successfully\n# unloaded or not\n\nstring name\n---\nbool ok\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "ok",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

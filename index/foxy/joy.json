@@ -1,0 +1,55 @@
+{
+  "name": "joy",
+  "version": "3.0.1",
+  "description": "The joy package contains joy_node, a node that interfaces a\n    generic joystick to ROS 2. This node publishes a \"Joy\"\n    message, which contains the current state of each one of the\n    joystick's buttons and axes.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/ros2/joystick_drivers",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/ros2/joystick_drivers/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "joystick_drivers",
+    "url": "https://github.com/ros-drivers/joystick_drivers.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake_ros"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_components",
+      "sdl2_vendor",
+      "sensor_msgs"
+    ],
+    "depended_on_by": [
+      "create_bringup",
+      "dbw_fca_joystick_demo",
+      "dbw_ford_joystick_demo",
+      "dbw_polaris_joystick_demo",
+      "desktop",
+      "husky_control",
+      "jackal_control",
+      "leo_teleop",
+      "pmb2_bringup",
+      "raptor_dbw_joystick",
+      "rmf_demos_gz",
+      "teleop_twist_joy"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

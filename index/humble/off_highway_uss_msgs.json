@@ -1,0 +1,354 @@
+{
+  "name": "off_highway_uss_msgs",
+  "version": "0.12.0",
+  "description": "The off_highway_uss_msgs package",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "off_highway_sensor_drivers",
+    "url": "https://github.com/bosch-engineering/off_highway_sensor_drivers.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "off_highway_sensor_drivers",
+      "off_highway_uss"
+    ]
+  },
+  "messages": {
+    "DirectEcho": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 id\n\noff_highway_uss_msgs/Echo first\noff_highway_uss_msgs/Echo first_filtered\noff_highway_uss_msgs/Echo second\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "off_highway_uss_msgs/Echo",
+          "name": "first",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "off_highway_uss_msgs/Echo",
+          "name": "first_filtered",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "off_highway_uss_msgs/Echo",
+          "name": "second",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DirectEchos": {
+      "description": "",
+      "raw": "std_msgs/Header header\noff_highway_uss_msgs/DirectEcho[] direct_echos\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "off_highway_uss_msgs/DirectEcho[]",
+          "name": "direct_echos",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Echo": {
+      "description": "",
+      "raw": "uint8 AMPLITUDE_NO_OBJECT = 63\nuint8 AMPLITUDE_SNA = 64\nuint8 amplitude\n\nuint16 DISTANCE_SNA = 1023\nuint16 DISTANCE_SENSOR_FAULTED = 1022\nuint16 DISTANCE_SENSOR_BLIND = 1021\nuint16 DISTANCE_PRESENCE_DETECTION = 1002\nuint16 DISTANCE_NO_OBJECT = 1003\nuint16 distance # [cm]\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "AMPLITUDE_NO_OBJECT",
+          "comment": "",
+          "default": "63",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "AMPLITUDE_SNA",
+          "comment": "",
+          "default": "64",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "amplitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "DISTANCE_SNA",
+          "comment": "",
+          "default": "1023",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISTANCE_SENSOR_FAULTED",
+          "comment": "",
+          "default": "1022",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISTANCE_SENSOR_BLIND",
+          "comment": "",
+          "default": "1021",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISTANCE_PRESENCE_DETECTION",
+          "comment": "",
+          "default": "1002",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DISTANCE_NO_OBJECT",
+          "comment": "",
+          "default": "1003",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "distance",
+          "comment": "[cm]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Information": {
+      "description": "",
+      "raw": "std_msgs/Header header\nuint8 number_sensors\nuint8 sending_pattern\nuint8 operating_mode\nfloat64 outside_temperature\nuint16 sensor_blindness\nuint8 sensitivity\nuint16 sensor_faulted\nbool failure_status\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "number_sensors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sending_pattern",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "operating_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "outside_temperature",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sensor_blindness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sensitivity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "sensor_faulted",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "failure_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "MaxDetectionRange": {
+      "description": "",
+      "raw": "std_msgs/Header header\nfloat32[12] max_detection_ranges\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32[12]",
+          "name": "max_detection_ranges",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Object": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nuint8 id\n\ngeometry_msgs/Point position_first\nfloat64 exist_probability\ngeometry_msgs/Point position_second\n\nuint8 TYPE_NONE = 0\nuint8 TYPE_POINT = 1\nuint8 TYPE_LINE = 2\nuint8 TYPE_SNA = 3\nuint8 object_type\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position_first",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "exist_probability",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "position_second",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_POINT",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_LINE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "TYPE_SNA",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "object_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Objects": {
+      "description": "",
+      "raw": "std_msgs/Header header\noff_highway_uss_msgs/Object[] objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "off_highway_uss_msgs/Object[]",
+          "name": "objects",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

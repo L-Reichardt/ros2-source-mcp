@@ -1,0 +1,136 @@
+{
+  "name": "tuw_geometry_msgs",
+  "version": "0.2.6",
+  "description": "The tuw_geometry_msgs package",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs"
+    ],
+    "depended_on_by": [
+      "tuw_msgs",
+      "tuw_object_msgs"
+    ]
+  },
+  "messages": {
+    "LineSegment": {
+      "description": "",
+      "raw": "uint32 id                     # Segment id\n\ngeometry_msgs/Point p0        # linesegment endpoint 0\ngeometry_msgs/Point p1        # linesegment endpoint 1",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "Segment id",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "p0",
+          "comment": "linesegment endpoint 0",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point",
+          "name": "p1",
+          "comment": "linesegment endpoint 1",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LineSegments": {
+      "description": "",
+      "raw": "std_msgs/Header header                      # timestamp in the header is the acquisition time and frame\n\nLineSegment[] segments             # detected lines",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "timestamp in the header is the acquisition time and frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "LineSegment[]",
+          "name": "segments",
+          "comment": "detected lines",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WeightedPoseWithCovariance": {
+      "description": "This represents a pose in free space with uncertainty and a scoring weight.",
+      "raw": "# This represents a pose in free space with uncertainty and a scoring weight.\n\ngeometry_msgs/Pose pose\n\n# Row-major representation of the 6x6 covariance matrix\n# The orientation parameters use a fixed-axis representation.\n# In order, the parameters are:\n# (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)\nfloat64[36] covariance\n\n# [0, 1] weight of the pose, used for scoring a pose particle\nfloat64 weight\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[36]",
+          "name": "covariance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "weight",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "WeightedPoseWithCovarianceArray": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nWeightedPoseWithCovariance[] poses",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "WeightedPoseWithCovariance[]",
+          "name": "poses",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

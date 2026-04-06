@@ -1,0 +1,46 @@
+{
+  "name": "franka_hardware",
+  "version": "1.0.0",
+  "description": "franka_hardware provides hardware interfaces for using Franka Robotics research robots with ros2_control",
+  "license": "Apache 2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "franka_ros2",
+    "url": "https://github.com/frankaemika/franka_ros2.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_cmake_clang_format",
+      "ament_cmake_copyright",
+      "ament_cmake_cppcheck",
+      "ament_cmake_flake8",
+      "ament_cmake_lint_cmake",
+      "ament_cmake_pep257",
+      "ament_cmake_xmllint",
+      "ament_cmake_gmock",
+      "ament_cmake_clang_tidy"
+    ],
+    "build_and_runtime": [
+      "libfranka",
+      "rclcpp",
+      "franka_msgs",
+      "hardware_interface",
+      "pluginlib"
+    ],
+    "depended_on_by": [
+      "franka_bringup",
+      "franka_fr3_moveit_config",
+      "franka_ros2",
+      "franka_semantic_components"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

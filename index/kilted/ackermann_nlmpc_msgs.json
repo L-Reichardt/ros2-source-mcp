@@ -1,0 +1,164 @@
+{
+  "name": "ackermann_nlmpc_msgs",
+  "version": "1.0.3",
+  "description": "Message definitions for ackermann_nlmpc",
+  "license": "GPL-3.0-only",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "ackermann_nlmpc",
+    "url": "https://git.ime.uni-luebeck.de/public-projects/asl/ackermann_nlmpc.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "ackermann_nlmpc"
+    ]
+  },
+  "messages": {
+    "Trajectory": {
+      "description": "A reference trajectory for the ackermann_nlmpc_node in the form of a piecewise linear path with optional",
+      "raw": "# A reference trajectory for the ackermann_nlmpc_node in the form of a piecewise linear path with optional\n# desired velocity and acceleration profile.\n# The pose described in this message (x0, y0, heading0) is the origin of the trajectory. The nodes in the\n# nodes[] list describe the path. Both origin and nodes may be provided in any coordinate frame, as long\n# as a transformation to the odom frame is available via tf.\n\nstd_msgs/Header header  # Time and coordinate frame information for trajectory origin.\n                        # Set header.stamp to current ROS time to start trajectory execution immediately.\n                        # Set header.stamp > current ROS time for delayed start of trajectory execution.\nfloat32 x0              # Trajectory origin x coordinate [m] in the frame set by header.frame_id.\nfloat32 y0              # Trajectory origin y coordinate [m] in the frame set by header.frame_id.\nfloat32 heading0        # Trajectory origin heading [rad] in the frame set by header.frame_id.\nuint8 type              # Trajectory type:\n                        # 0: \"trajectory\": Follow the provided trajectory, including time based\n                        #                  longitudinal adjustment, i.e. if vehicle is lagging\n                        #                  behind according to node timestamps, exceed reference\n                        #                  velocity to try and catch up.\n                        # 1: \"path\": Follow the provided trajectory, without time based longitudinal\n                        #            adjustment.\n                        # 2: \"circular path\": Same as path, but when reaching the end of the\n                        #                     trajectory, start again from the beginning.\nackermann_nlmpc_msgs/TrajectoryNode[] nodes # trajectory nodes",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Time and coordinate frame information for trajectory origin.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "x0",
+          "comment": "Trajectory origin x coordinate [m] in the frame set by header.frame_id.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "y0",
+          "comment": "Trajectory origin y coordinate [m] in the frame set by header.frame_id.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heading0",
+          "comment": "Trajectory origin heading [rad] in the frame set by header.frame_id.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "type",
+          "comment": "Trajectory type:",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ackermann_nlmpc_msgs/TrajectoryNode[]",
+          "name": "nodes",
+          "comment": "trajectory nodes",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "TrajectoryNode": {
+      "description": "Desired vehicle state at one point on the trajectory.",
+      "raw": "# Desired vehicle state at one point on the trajectory.\n# When making a direction change (mode 1->2 or 2->1) it is advisable to add at least one node\n# with standstill mode (0) in between.\n# Use the path width constraints for obstacle avoidance, e.g. for 1 m wide obstacle centered\n# on the trajectory, set pw_l = -0.5 and pw_r = 1.5 to go around on the right side.\n\nstd_msgs/Header header  # Node header containing:\n                        # - timestamp [s] at which the vehicle should reach this node,\n                        # - coordinate frame id in which the coordinates are provided.\nfloat64 x               # x coordinate of the node [m]\nfloat64 y               # y coordinate of the node [m]\nfloat64 heading         # yaw angle of the node [rad]\nfloat64 v               # desired velocity at this node [m/s]\nfloat64 a               # desired acceleration at this node [m/s^2]\nfloat64 delta           # desired steering angle at this node [rad]\nfloat64 beta            # desired side slip angle at this node [rad]\nuint8 mode              # driving mode (0: standstill, 1: forward, 2: backward)\nfloat64 pw_l            # path width left (state constraint) [m]\nfloat64 pw_r            # path width right (state constraint) [m]",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Node header containing:",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "x",
+          "comment": "x coordinate of the node [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "y",
+          "comment": "y coordinate of the node [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "heading",
+          "comment": "yaw angle of the node [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "v",
+          "comment": "desired velocity at this node [m/s]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "a",
+          "comment": "desired acceleration at this node [m/s^2]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "delta",
+          "comment": "desired steering angle at this node [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "beta",
+          "comment": "desired side slip angle at this node [rad]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "mode",
+          "comment": "driving mode (0: standstill, 1: forward, 2: backward)",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pw_l",
+          "comment": "path width left (state constraint) [m]",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "pw_r",
+          "comment": "path width right (state constraint) [m]",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

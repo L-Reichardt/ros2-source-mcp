@@ -1,0 +1,563 @@
+{
+  "name": "hri_actions_msgs",
+  "version": "2.5.0",
+  "description": "Action definitions useful for Human-Robot Interaction",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "hri_actions_msgs",
+    "url": "https://github.com/ros4hri/hri_actions_msgs.git",
+    "branch": "humble-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "action_msgs",
+      "builtin_interfaces",
+      "geometry_msgs",
+      "std_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "ActivityList": {
+      "description": "List of activity names.",
+      "raw": "# List of activity names. \n# An activity name corresponds to an activity that can be triggered \n# by the START_ACTIVITY / STOP_ACTIVITY  intents.\n\nstring[] activities_array\n",
+      "fields": [
+        {
+          "type": "string[]",
+          "name": "activities_array",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ClosedCaption": {
+      "description": "The ID of the speaker who is uttering the text.",
+      "raw": "# The ID of the speaker who is uttering the text.\n# If the speaker is the system, the ID is SPEAKER_ID_SYSTEM.\n# An empty speaker_id is equivalent to setting it to SPEAKER_ID_UNKNOWN\nstring speaker_id\n\nstring SPEAKER_ID_SYSTEM = \"__system__\"\nstring SPEAKER_ID_UNKNOWN = \"__unknown__\"\n\n# The text which is being spoken.\nstring text\n\n# The localei of the caption, using following format:\n# the [ISO 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), \n# lower case, followed by an underscore, \n# followed by the [ISO 3166-1 alpha-2 region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), \n# upper case.\n#\n# For example, 'en_GB' specifies British English.\nstring locale\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "speaker_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "SPEAKER_ID_SYSTEM",
+          "comment": "",
+          "default": "\"__system__\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SPEAKER_ID_UNKNOWN",
+          "comment": "",
+          "default": "\"__unknown__\"",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "text",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "locale",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Intent": {
+      "description": "An intent is an abstract description of an operation to be performed by the",
+      "raw": "# An intent is an abstract description of an operation to be performed by the\n# robot.\n#\n# While inspired by the Android intents\n# (https://developer.android.com/reference/android/content/Intent), ROS intents\n# are primarily designed to capture user-initiated intents. For instance, a\n# button click on a touchscreen, the result of a chatbot-based verbal\n# interaction, a command started by a remote user interface.\n#\n# Intents comprise of two mandatory fields: the `intent`, which should be one\n# of the available predefined intents, and the `data` which must be a JSON\n# object containing the data required to fully instantiate the intent.  While\n# the exact content of the JSON object is up to the application, the following\n# standard keys can be used to specify the intent's semantic roles (also called\n# thematic roles or theta roles):\n#\n# - `agent`: the agent expected to perform the intent (if omitted, the robot\n# itself is assumed)\n# - `object` (also named *theme* or *patient* in the linguistics literature): entity\n# undergoing the effect of the intent\n# - `goal`: entity towards which the intent is directed or moves\n# - `recipient`: entity that receives the object (denoted as the `theme`)\n#\n# Examples:\n# \n# - \"I want you to go to the kitchen\":\n#   - intent: `move_to`\n#   - data: {\"goal\":\"kitchen_1\"}\n#\n# - \"Can you take the groceries to Luke in the kitchen?\"\n#   - intent: `bring`\n#   - data: {\"object\": \"groceries\",\n#            \"goal\":\"kitchen_1\",\n#            \"recipient\": \"person_luke\"}\n\n##########################################################################\n#  Intent name\n#\n# A string describing the intent.\n#\n# Where suitable, the intent SHOULD be one of the constant defined below.\n# However, we recognise that the list of intents is possibly large. Therefore,\n# custom strings are also permissible. If you believe your intent name should\n# be standardised and added to the list of pre-defined intents, fill the\n# corresponding entry in the \"thematic roles\" table below and submit a pull\n# request on this repository.\nstring intent\n\n# 'intent' constants\n# see table below for a short description of each.\n\n# this special intent represents a raw user input, without any specific intent recognised.\n# It is used as a fallback to mean that no user intent was (yet) extracted from the user input\n# It might happen when, for instance, a chatbot is unable to recognise an intent.\n# An application receiving this intent can choose to ignore it, or further process it by other \n# means.\nstring RAW_USER_INPUT = __raw_user_input__\n\nstring ENGAGE_WITH = __intent_engage_with__\nstring MOVE_TO = __intent_move_to__\nstring GUIDE = __intent_guide__\nstring GRAB_OBJECT = __intent_grab_object__\nstring BRING_OBJECT = __intent_bring_object__\nstring PLACE_OBJECT = __intent_place_object__\nstring GREET = __intent_greet__\nstring SAY = __intent_say__\nstring PRESENT_CONTENT = __intent_present_content__\nstring PERFORM_MOTION = __intent_perform_motion__\nstring START_ACTIVITY = __intent_start_activity__\nstring STOP_ACTIVITY = __intent_stop_activity__\nstring WAKEUP = __intent_wakeup__\nstring SUSPEND = __intent_suspend__\n\n\n##########################################################################\n#  Intent data\n#\n# a JSON object containing the data required to fully instantiate the intent.\n# The keys of the object should be one of the thematic role defined above, or\n# the general `other_data`.\n#\n# Each intent defines a specific set of required and optional thematic roles,\n# listed in the following table (note that the `agent` role can be optionally\n# added to all intents, and is omitted from the table for clarity):\n#\n# .. [please keep the RST table syntax below, as it is used to automatically parse the list of intents by some nodes]#\n# .. BEGIN_INTENTS_TABLE\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | **Intent**       | **Description**                                                             | **Required thematic roles**                                 | **Optional thematic roles**                                               |\n# +==================+=============================================================================+=============================================================+===========================================================================+\n# | `RAW_USER_INPUT` | the intent was not successfully extracted                                   | - `input`: the raw input received from the user             | - `locale`: the language code of the input, if available                  |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `ENGAGE_WITH`    | an agent wants to engage with another one                                   | - `recipient`                                               |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `MOVE_TO`        | navigates to a specific location                                            | - `goal`                                                    |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `GUIDE`          | guides someone somewhere                                                    | - `goal`                                                    |                                                                           |\n# |                  |                                                                             | - `recipient`                                               |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `GRAB_OBJECT`    | pick-up a specific object                                                   | - `object`                                                  |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `BRING_OBJECT`   | bring a specific object to a specific place                                 | - `object`                                                  |                                                                           |\n# |                  |                                                                             | - `recipient`                                               |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `PLACE_OBJECT`   | put an object on a support (eg a table)                                     | - `recipient`                                               | - `object` (only required if more that one object could be placed)        |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `GREET`          | greet an agent                                                              | - `recipient`                                               |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `SAY`            | says some text, optionally annotated with gestures or expressions           | - `object` (the text to say)                                | - `recipient`                                                             |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `PRESENT_CONTENT`| present (via a screen, pre-recorded text...) predefined content             | - `object` (the content identifier; special values          | - `recipient`                                                             |\n# |                  |                                                                             |   '__back__' and '__next__' mean 'go backwards/forwards')   |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `PERFORM_MOTION` | performs a motion (eg, a dance or a specific gesture like pointing, waving) | - `object` (the system-specific name of the motion/gesture) | - `recipient`                                                             |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `START_ACTIVITY` | start a scripted behaviour/activity                                         | - `object` (the name of the activity)                       | - any additional parameter required to start the activity                 |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `STOP_ACTIVITY`  | request cancelation of an activity                                          |                                                             | - `object` (the name of the activity. If unset, current main activity)    |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `WAKEUP`         | request reactivation of the system                                          |                                                             |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# | `SUSPEND`        | request suspension of the system                                            |                                                             |                                                                           |\n# +------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------+---------------------------------------------------------------------------+\n# .. END_INTENTS_TABLE\n#\nstring data\n\n##########################################################################\n#  Intent source\n#\n# a string describing the source of the intent. This is *not* the node\n# which published the intent, but instead the actual agent who expressed the\n# intent/command/desire.\n# `source` can be either one of the constant below, or the specific id of the\n# person/agent expressing the intent. In a REP-155 compliant system, this ID\n# must be the person ID of the agent.\nstring source\n\n# 'source' constants:\n\n# for intents originating from the robot itself\nstring ROBOT_ITSELF = __myself__\n# for intents originating from a external robot control system (for instance, a remote control tablet)\nstring REMOTE_SUPERVISOR = __remote_supervisor__\n# for intents coming from an agent interacting with the robot, but not uniquely\n# identified\nstring UNKNOWN_AGENT = __unknown_agent__\n# for unknown sources\nstring UNKNOWN = __unknown__\n\n\n##########################################################################\n#  Intent modality\n#\n# modality used to originally convey the intent: verbal, via the touchscreen,\n# via a gesture...\n# The special modality MODALITY_INTERNAL must be used for intents coming for the\n# robot's internal processes (eg 'battery low, I need to charge')\n# MUST be one of the MODALITY_ constant below.\nstring modality\n\n# 'modality' constants:\n\nstring MODALITY_SPEECH = __modality_speech__\n# both gestures (eg waving) and displacement (eg approaching)\nstring MODALITY_MOTION = __modality_motion__\nstring MODALITY_TOUCHSCREEN = __modality_touchscreen__\nstring MODALITY_OTHER = __modality_other__\nstring MODALITY_INTERNAL = __modality_internal__\n\n\n##########################################################################\n#  Intent priority\n#\n# the priority of this intent. This MIGHT be used as a hint by the robot's task\n# scheduler, however is scheduler is *not* forced to respect this priority\n# level. 0 is the lowest priority, 128 is the default priority, 255 is the\n# highest priority.\nuint8 priority\n\n##########################################################################\n#  Intent confidence\n#\n# a value between 0.0 (no confidence) and 1.0 (full confidence) that the intent\n# was correctly perceived and interpreted.\n#\n# For instance, a 'waving' gesture could be interpreted as an implicit request\n# from a user for the robot to greet back or engage. As this interpretation is\n# not certain, the confidence of the intent may be below 1.0.\nfloat32 confidence\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "intent",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "RAW_USER_INPUT",
+          "comment": "",
+          "default": "__raw_user_input__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "ENGAGE_WITH",
+          "comment": "",
+          "default": "__intent_engage_with__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MOVE_TO",
+          "comment": "",
+          "default": "__intent_move_to__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "GUIDE",
+          "comment": "",
+          "default": "__intent_guide__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "GRAB_OBJECT",
+          "comment": "",
+          "default": "__intent_grab_object__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "BRING_OBJECT",
+          "comment": "",
+          "default": "__intent_bring_object__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PLACE_OBJECT",
+          "comment": "",
+          "default": "__intent_place_object__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "GREET",
+          "comment": "",
+          "default": "__intent_greet__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SAY",
+          "comment": "",
+          "default": "__intent_say__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PRESENT_CONTENT",
+          "comment": "",
+          "default": "__intent_present_content__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "PERFORM_MOTION",
+          "comment": "",
+          "default": "__intent_perform_motion__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "START_ACTIVITY",
+          "comment": "",
+          "default": "__intent_start_activity__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "STOP_ACTIVITY",
+          "comment": "",
+          "default": "__intent_stop_activity__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "WAKEUP",
+          "comment": "",
+          "default": "__intent_wakeup__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "SUSPEND",
+          "comment": "",
+          "default": "__intent_suspend__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "source",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "ROBOT_ITSELF",
+          "comment": "",
+          "default": "__myself__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "REMOTE_SUPERVISOR",
+          "comment": "",
+          "default": "__remote_supervisor__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "UNKNOWN_AGENT",
+          "comment": "",
+          "default": "__unknown_agent__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "__unknown__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "modality",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "MODALITY_SPEECH",
+          "comment": "",
+          "default": "__modality_speech__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODALITY_MOTION",
+          "comment": "",
+          "default": "__modality_motion__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODALITY_TOUCHSCREEN",
+          "comment": "",
+          "default": "__modality_touchscreen__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODALITY_OTHER",
+          "comment": "",
+          "default": "__modality_other__",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "MODALITY_INTERNAL",
+          "comment": "",
+          "default": "__modality_internal__",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "priority",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "confidence",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "LookAtWithStyle": {
+      "description": "Specify the target of the robot's gaze as a 3D point. A desired 'style'",
+      "raw": "# Specify the target of the robot's gaze as a 3D point. A desired 'style'\n# policy can be specified to control how the gaze motion should be executed\n# (for instance, sudden movement, slow shift, etc.)\n\n# default policy: both eyes and head joints (eg neck) are used, the resulting\n# 'style' is a smooth combination of both\nint8 DEFAULT = 0\n\n# eyes-only policy: only the eyes (if available) should move\nint8 EYES_ONLY = 1\n\n# head-only policy: only the head joints (typically, the neck) should move\nint8 HEAD_ONLY = 2\n\nint8 style\n\ngeometry_msgs/PointStamped target\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "DEFAULT",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "EYES_ONLY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "HEAD_ONLY",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "style",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PointStamped",
+          "name": "target",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "ListActivities": {
+      "description": "",
+      "raw": "---\nActivityList activities\n",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "ActivityList",
+          "name": "activities",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "ApplicationControl": {
+      "description": "an (optional) JSON-encoded string passed to the underlying application",
+      "raw": "# an (optional) JSON-encoded string passed to the underlying application\n# controller.\nstring parameters\n---\n---\n\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "parameters",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "FaceOverlay": {
+      "description": "URL of the picture/animation to overlay on the face; currently only supports",
+      "raw": "\n\n# URL of the picture/animation to overlay on the face; currently only supports\n# absolute local path\nstring media_url\n\n# duration, in seconds, of the overlay visibility\n# - if the duration is larger than the duration of the animation, the animation\n# will loop.\n# - a duration of 0 means 'forever'. In this case, the action *will never\n# complete* on its own. Cancelling the action will remove the overlay from the\n# face.\nfloat32 duration\n\n\n###############################################\n## LAYER\n\n# display the image in the background (the eye's iris/pupil will be drawn on\n# top of the overlay\nuint8 BACKGROUND=0\n# display the image on top of the eye (the eye's iris/pupil will be occluded by\n# the image, except where transparent)\nuint8 FOREGROUND=1\n\n# one of BACKGROUND or FOREGROUND\nuint8 layer\n\n###############################################\n## LAYOUT\n\n# extend the provided image to cover both eyes.\n# Note: this typically is the only sensible option for robot with a single face panel\nuint8 EXTEND=0\n# on robots with 2 panels (one per eye), copy the provided image onto each eye\nuint8 COPY=1\n#  on robots with 2 panels (one per eye), mirror the provided image onto each eyes (symmetry over the vertical axis)\nuint8 MIRROR=2\n# on robots with 2 panels (one per eye), only display the image on the left eye\nuint8 LEFT_EYE_ONLY=3\n# on robots with 2 panels (one per eye), only display the image on the right eye\nuint8 RIGHT_EYE_ONLY=4\n\n# one of the layout constant defined above\nuint8 layout\n\n\n# scale of the image: 1.0 (default) means full width of the face/eye (depending\n# on the chosen layout); 0.1 means 10% of the width.\n# Note that any value <= 0.0 is ignored (replaced by 1.0)\nfloat32 scale\n\n# position offset, expressed as a proportion of the face or eye's width/height. Values\n# in [-1.0, 1.0] range.\n#\n# (0.0, 0.0) means that the image is centered with the face/eye\n# (-1.0, 1.0) means that the image's center would be located in the top left\n# corner of the face/eye panel.\nfloat32 offset_x\nfloat32 offset_y\n\n###############################################\n## EFFECTS\n\n# if true, the overlay will fade in/fade out\nbool fade\n\n---\n---\n\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "media_url",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "duration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "BACKGROUND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "FOREGROUND",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "layer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "EXTEND",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "COPY",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "MIRROR",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "LEFT_EYE_ONLY",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "RIGHT_EYE_ONLY",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "layout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "scale",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "offset_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "offset_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "fade",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "LookAt": {
+      "description": "",
+      "raw": "geometry_msgs/PointStamped look_goal\n---\n---\n",
+      "goal_fields": [
+        {
+          "type": "geometry_msgs/PointStamped",
+          "name": "look_goal",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "PointTrajectory": {
+      "description": "the header's frame applies to ALL points in the trajectory",
+      "raw": "# the header's frame applies to ALL points in the trajectory\nstd_msgs/Header header\ngeometry_msgs/Point[] targets\nbuiltin_interfaces/Duration[] times_from_start\n---\n---\n",
+      "goal_fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "targets",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration[]",
+          "name": "times_from_start",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "result_fields": [],
+      "feedback_fields": []
+    },
+    "SelfPresentation": {
+      "description": "Goal definition",
+      "raw": "# Goal definition\n---\n# Result definition\nbool success\n---\n# Feedback definition\nint32 current_phrase\nint32 total_phrases",
+      "goal_fields": [],
+      "result_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "int32",
+          "name": "current_phrase",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "total_phrases",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  }
+}

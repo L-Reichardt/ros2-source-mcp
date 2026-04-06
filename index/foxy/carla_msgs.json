@@ -1,0 +1,862 @@
+{
+  "name": "carla_msgs",
+  "version": "1.3.0",
+  "description": "The carla_msgs package",
+  "license": "MIT",
+  "build_type": "catkin",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://carla.org/",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/carla-simulator/ros-carla-msgs",
+      "type": "repository"
+    },
+    {
+      "uri": "https://github.com/carla-simulator/ros-carla-msgs/issues",
+      "type": "bugtracker"
+    }
+  ],
+  "repo": {
+    "name": "carla_msgs",
+    "url": "https://github.com/carla-simulator/ros-carla-msgs.git",
+    "branch": "master"
+  },
+  "dependencies": {
+    "build": [
+      "message_generation",
+      "rosidl_default_generators",
+      "ros_environment"
+    ],
+    "buildtool": [
+      "catkin",
+      "ament_cmake"
+    ],
+    "runtime": [
+      "message_runtime",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "diagnostic_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "CarlaActorInfo": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nuint32 id\nuint32 parent_id # 0 if no parent available\nstring type\nstring rolename\n\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "parent_id",
+          "comment": "0 if no parent available",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "rolename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaActorList": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nCarlaActorInfo[] actors\n\n",
+      "fields": [
+        {
+          "type": "CarlaActorInfo[]",
+          "name": "actors",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaBoundingBox": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\ngeometry_msgs/Vector3 center\n\ngeometry_msgs/Vector3 size\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "center",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "size",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaCollisionEvent": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n# A collision event\n\nstd_msgs/Header header\n\nuint32 other_actor_id\ngeometry_msgs/Vector3 normal_impulse\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "other_actor_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "normal_impulse",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaControl": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nint8 PLAY = 0\nint8 PAUSE = 1\nint8 STEP_ONCE = 2\n\nint8 command\n\n",
+      "fields": [
+        {
+          "type": "int8",
+          "name": "PLAY",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "PAUSE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "STEP_ONCE",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "int8",
+          "name": "command",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaEgoVehicleControl": {
+      "description": "Copyright (c) 2018-2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2018-2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n# This represents a vehicle control message sent to CARLA simulator\n\nstd_msgs/Header header\n\n# The CARLA vehicle control data\n\n# 0. <= throttle <= 1.\nfloat32 throttle\n\n# -1. <= steer <= 1.\nfloat32 steer\n\n# 0. <= brake <= 1.\nfloat32 brake\n\n# hand_brake 0 or 1\nbool hand_brake\n\n# reverse 0 or 1\nbool reverse\n\n# gear\nint32 gear\n\n# manual gear shift\nbool manual_gear_shift\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "throttle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "steer",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "hand_brake",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "reverse",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "gear",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "manual_gear_shift",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaEgoVehicleInfo": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nuint32 id\nstring type\nstring rolename\nCarlaEgoVehicleInfoWheel[] wheels\nfloat32 max_rpm\nfloat32 moi\nfloat32 damping_rate_full_throttle\nfloat32 damping_rate_zero_throttle_clutch_engaged\nfloat32 damping_rate_zero_throttle_clutch_disengaged\nbool use_gear_autobox\nfloat32 gear_switch_time\nfloat32 clutch_strength\nfloat32 mass\nfloat32 drag_coefficient\ngeometry_msgs/Vector3 center_of_mass\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "rolename",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CarlaEgoVehicleInfoWheel[]",
+          "name": "wheels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_rpm",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "moi",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "damping_rate_full_throttle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "damping_rate_zero_throttle_clutch_engaged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "damping_rate_zero_throttle_clutch_disengaged",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "use_gear_autobox",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "gear_switch_time",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "clutch_strength",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "mass",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "drag_coefficient",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "center_of_mass",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaEgoVehicleInfoWheel": {
+      "description": "Copyright (c) 2019-2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019-2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\nfloat32 tire_friction\nfloat32 damping_rate\nfloat32 max_steer_angle\nfloat32 radius\nfloat32 max_brake_torque\nfloat32 max_handbrake_torque\ngeometry_msgs/Vector3 position\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "tire_friction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "damping_rate",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_steer_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_brake_torque",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_handbrake_torque",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "position",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaEgoVehicleStatus": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nstd_msgs/Header header\n\nfloat32 velocity\ngeometry_msgs/Accel acceleration\ngeometry_msgs/Quaternion orientation\n\n# the current control values, as reported by Carla\nCarlaEgoVehicleControl control\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "velocity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Accel",
+          "name": "acceleration",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Quaternion",
+          "name": "orientation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CarlaEgoVehicleControl",
+          "name": "control",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaLaneInvasionEvent": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n# A lane invasion event\n\nstd_msgs/Header header\n\nint32[] crossed_lane_markings\n\nint32 LANE_MARKING_OTHER=0\nint32 LANE_MARKING_BROKEN=1\nint32 LANE_MARKING_SOLID=2\n\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32[]",
+          "name": "crossed_lane_markings",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "LANE_MARKING_OTHER",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LANE_MARKING_BROKEN",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "int32",
+          "name": "LANE_MARKING_SOLID",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        }
+      ]
+    },
+    "CarlaStatus": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nuint64 frame                  # frame number\n\nfloat32 fixed_delta_seconds   # duration of one frame\nbool synchronous_mode         # carla is in synchronous mode\nbool synchronous_mode_running # true: running, false: paused",
+      "fields": [
+        {
+          "type": "uint64",
+          "name": "frame",
+          "comment": "frame number",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fixed_delta_seconds",
+          "comment": "duration of one frame",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "synchronous_mode",
+          "comment": "carla is in synchronous mode",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "synchronous_mode_running",
+          "comment": "true: running, false: paused",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaTrafficLightInfo": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\nuint32 id\ngeometry_msgs/Pose transform\nCarlaBoundingBox trigger_volume # position is relative to transform",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "CarlaBoundingBox",
+          "name": "trigger_volume",
+          "comment": "position is relative to transform",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaTrafficLightInfoList": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\nCarlaTrafficLightInfo[] traffic_lights\n",
+      "fields": [
+        {
+          "type": "CarlaTrafficLightInfo[]",
+          "name": "traffic_lights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaTrafficLightStatus": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\nuint32 id\n\nuint8 RED=0\nuint8 YELLOW=1\nuint8 GREEN=2\nuint8 OFF=3\nuint8 UNKNOWN=4\n\nuint8 state\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "RED",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "YELLOW",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "GREEN",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "OFF",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint8",
+          "name": "state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaTrafficLightStatusList": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\nCarlaTrafficLightStatus[] traffic_lights\n",
+      "fields": [
+        {
+          "type": "CarlaTrafficLightStatus[]",
+          "name": "traffic_lights",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaWalkerControl": {
+      "description": "Copyright (c) 2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n# This represents a walker control message sent to CARLA simulator\n\ngeometry_msgs/Vector3 direction\nfloat32 speed\nbool jump\n",
+      "fields": [
+        {
+          "type": "geometry_msgs/Vector3",
+          "name": "direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "speed",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "jump",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaWeatherParameters": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nfloat32 cloudiness\nfloat32 precipitation\nfloat32 precipitation_deposits\nfloat32 wind_intensity\nfloat32 fog_density\nfloat32 fog_distance\nfloat32 wetness\nfloat32 sun_azimuth_angle\nfloat32 sun_altitude_angle\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "cloudiness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "precipitation",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "precipitation_deposits",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "wind_intensity",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fog_density",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "fog_distance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "wetness",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sun_azimuth_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "sun_altitude_angle",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CarlaWorldInfo": {
+      "description": "Copyright (c) 2018-2019 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2018-2019 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nstring map_name\nstring opendrive\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "map_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "opendrive",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "DestroyObject": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nint32 id\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GetBlueprints": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\nstring filter\n---\nstring[] blueprints\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filter",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "string[]",
+          "name": "blueprints",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SpawnObject": {
+      "description": "Copyright (c) 2020 Intel Corporation.",
+      "raw": "#\n# Copyright (c) 2020 Intel Corporation.\n#\n# This work is licensed under the terms of the MIT license.\n# For a copy, see <https://opensource.org/licenses/MIT>.\n#\n\nstring type\nstring id\ndiagnostic_msgs/KeyValue[] attributes\ngeometry_msgs/Pose transform\nuint32 attach_to\nbool random_pose\n---\nint32 id\nstring error_string\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "diagnostic_msgs/KeyValue[]",
+          "name": "attributes",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Pose",
+          "name": "transform",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "attach_to",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "random_pose",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "error_string",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

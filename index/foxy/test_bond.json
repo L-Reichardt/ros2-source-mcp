@@ -1,0 +1,132 @@
+{
+  "name": "test_bond",
+  "version": "2.1.0",
+  "description": "Contains tests for [[bond]], including tests for [[bondcpp]].",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/test_bond",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros/bond_core/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros/bond_core",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "bond_core",
+    "url": "https://github.com/ros/bond_core.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "ament_cmake",
+      "builtin_interfaces",
+      "std_msgs",
+      "rclcpp_lifecycle"
+    ],
+    "buildtool": [
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_cmake_gtest",
+      "ament_lint_auto",
+      "ament_lint_common",
+      "bond",
+      "bondcpp",
+      "pkg-config",
+      "rclcpp",
+      "rclcpp_lifecycle",
+      "uuid"
+    ],
+    "depended_on_by": [
+      "bond_core"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "TestBond": {
+      "description": "",
+      "raw": "string topic\nstring id\nuint32 delay_connect\nuint32 delay_death\nbool inhibit_death\nbool inhibit_death_message\nint64 a\nint64 b\n---\nint64 sum\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "delay_connect",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "delay_death",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "inhibit_death",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "inhibit_death_message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int64",
+          "name": "b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "int64",
+          "name": "sum",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

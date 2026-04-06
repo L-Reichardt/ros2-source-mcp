@@ -1,0 +1,125 @@
+{
+  "name": "greenwave_monitor_interfaces",
+  "version": "1.0.0",
+  "description": "Interfaces for the greenwave_monitor package",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "greenwave_monitor",
+    "url": "https://github.com/NVIDIA-ISAAC-ROS/greenwave_monitor.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "build": [
+      "rosidl_default_generators"
+    ],
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "depended_on_by": [
+      "greenwave_monitor"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "ManageTopic": {
+      "description": "SPDX-FileCopyrightText: NVIDIA CORPORATION & AFFILIATES",
+      "raw": "# SPDX-FileCopyrightText: NVIDIA CORPORATION & AFFILIATES\n# Copyright (c) 2025-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n# http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n# SPDX-License-Identifier: Apache-2.0\n\n# Request\nstring topic_name\nbool add_topic  # true to add, false to remove\n---\n# Response\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "add_topic",
+          "comment": "true to add, false to remove",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "SetExpectedFrequency": {
+      "description": "SPDX-FileCopyrightText: NVIDIA CORPORATION & AFFILIATES",
+      "raw": "# SPDX-FileCopyrightText: NVIDIA CORPORATION & AFFILIATES\n# Copyright (c) 2025-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n# http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n# SPDX-License-Identifier: Apache-2.0\n\n# Request\nstring topic_name\nfloat64 expected_hz\nfloat64 tolerance_percent  # i.e. 5 = 5% of expected_hz\nbool clear_expected\nbool add_topic_if_missing  # add topic to monitoring if not already\n---\n# Response\nbool success\nstring message\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "topic_name",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "expected_hz",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "tolerance_percent",
+          "comment": "i.e. 5 = 5% of expected_hz",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "clear_expected",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "add_topic_if_missing",
+          "comment": "add topic to monitoring if not already",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

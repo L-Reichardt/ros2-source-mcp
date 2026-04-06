@@ -1,0 +1,78 @@
+{
+  "name": "marti_perception_msgs",
+  "version": "1.3.0",
+  "description": "marti_perception_msgs",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/swri-robotics/marti_messages",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "marti_messages",
+    "url": "https://github.com/swri-robotics/marti_messages.git",
+    "branch": "dashing-devel"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "build_and_runtime": [
+      "std_msgs",
+      "sensor_msgs"
+    ],
+    "depended_on_by": []
+  },
+  "messages": {
+    "PedestrianImageID": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nint32 pixel_x\nint32 pixel_y\nint32 image_width\t  # in pixels\nint32 image_height\t# in pixels\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "pixel_x",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "pixel_y",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "image_width",
+          "comment": "in pixels",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "int32",
+          "name": "image_height",
+          "comment": "in pixels",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

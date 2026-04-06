@@ -1,0 +1,46 @@
+{
+  "name": "mola_relocalization",
+  "version": "2.6.1",
+  "description": "C++ library with algorithms for relocalization, global localization, or pose estimation given a large initial uncertainty",
+  "license": "GPLv3",
+  "build_type": "cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://github.com/MOLAorg/mola/tree/develop/mola_relocalization",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "mola",
+    "url": "https://github.com/MOLAorg/mola.git",
+    "branch": "develop"
+  },
+  "dependencies": {
+    "buildtool": [
+      "cmake"
+    ],
+    "doc": [
+      "doxygen"
+    ],
+    "test": [
+      "mola_test_datasets"
+    ],
+    "build_and_runtime": [
+      "mola_common",
+      "mp2p_icp",
+      "mola_pose_list",
+      "mrpt_libobs",
+      "mrpt_libslam",
+      "mrpt_libmaps"
+    ],
+    "depended_on_by": [
+      "mola",
+      "mola_sm_loop_closure",
+      "mrpt_pf_localization"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,152 @@
+{
+  "name": "bond",
+  "version": "2.1.0",
+  "description": "A bond allows two processes, A and B, to know when the other has\n    terminated, either cleanly or by crashing.  The bond remains\n    connected until it is either broken explicitly or until a\n    heartbeat times out.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://www.ros.org/wiki/bond",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/ros/bond_core/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/ros/bond_core",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "bond_core",
+    "url": "https://github.com/ros/bond_core.git",
+    "branch": "foxy-devel"
+  },
+  "dependencies": {
+    "build": [
+      "builtin_interfaces",
+      "std_msgs"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "builtin_interfaces",
+      "rosidl_default_runtime",
+      "std_msgs"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "depended_on_by": [
+      "bond_core",
+      "bondcpp",
+      "bondcpp",
+      "test_bond"
+    ]
+  },
+  "messages": {
+    "Constants": {
+      "description": "",
+      "raw": "float32 DEAD_PUBLISH_PERIOD = 0.05\nfloat32 DEFAULT_CONNECT_TIMEOUT = 10.0\nfloat32 DEFAULT_HEARTBEAT_TIMEOUT = 4.0\nfloat32 DEFAULT_DISCONNECT_TIMEOUT = 2.0\nfloat32 DEFAULT_HEARTBEAT_PERIOD = 1.0\n\nstring DISABLE_HEARTBEAT_TIMEOUT_PARAM=/bond_disable_heartbeat_timeout\n",
+      "fields": [
+        {
+          "type": "float32",
+          "name": "DEAD_PUBLISH_PERIOD",
+          "comment": "",
+          "default": "0.05",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "DEFAULT_CONNECT_TIMEOUT",
+          "comment": "",
+          "default": "10.0",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "DEFAULT_HEARTBEAT_TIMEOUT",
+          "comment": "",
+          "default": "4.0",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "DEFAULT_DISCONNECT_TIMEOUT",
+          "comment": "",
+          "default": "2.0",
+          "is_constant": true
+        },
+        {
+          "type": "float32",
+          "name": "DEFAULT_HEARTBEAT_PERIOD",
+          "comment": "",
+          "default": "1.0",
+          "is_constant": true
+        },
+        {
+          "type": "string",
+          "name": "DISABLE_HEARTBEAT_TIMEOUT_PARAM",
+          "comment": "",
+          "default": "/bond_disable_heartbeat_timeout",
+          "is_constant": true
+        }
+      ]
+    },
+    "Status": {
+      "description": "Including the timeouts for the bond makes it easier to debug mis-matches",
+      "raw": "std_msgs/Header header\nstring id  # ID of the bond\nstring instance_id  # Unique ID for an individual in a bond\nbool active\n\n# Including the timeouts for the bond makes it easier to debug mis-matches\n# between the two sides.\nfloat32 heartbeat_timeout\nfloat32 heartbeat_period\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "id",
+          "comment": "ID of the bond",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "instance_id",
+          "comment": "Unique ID for an individual in a bond",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heartbeat_timeout",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "heartbeat_period",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,337 @@
+{
+  "name": "tuw_object_map_msgs",
+  "version": "0.2.5",
+  "description": "The tuw_object_map_msgs package",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "tuw_msgs",
+    "url": "https://github.com/tuw-robotics/tuw_msgs.git",
+    "branch": "ros2"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_cppcheck"
+    ],
+    "build_and_runtime": [
+      "builtin_interfaces",
+      "std_msgs",
+      "geometry_msgs",
+      "geographic_msgs"
+    ],
+    "depended_on_by": [
+      "tuw_msgs"
+    ]
+  },
+  "messages": {
+    "GeoJSON": {
+      "description": "",
+      "raw": "std_msgs/Header header\n\nstring type                     # \"FeatureCollection\"\nGeoJSONFeature[] features       # Features in the collection\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "\"FeatureCollection\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoJSONFeature[]",
+          "name": "features",
+          "comment": "Features in the collection",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoJSONFeature": {
+      "description": "",
+      "raw": "string type                     # \"Feature\"\nGeoJSONGeometry geometry\n\n",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "\"Feature\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoJSONGeometry",
+          "name": "geometry",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoJSONGeometry": {
+      "description": "",
+      "raw": "string type                     # \"Point\", \"LineString\"\nGeoPoint[] coordinates\nGeoJSONProperties properties",
+      "fields": [
+        {
+          "type": "string",
+          "name": "type",
+          "comment": "\"Point\", \"LineString\"",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoPoint[]",
+          "name": "coordinates",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeoJSONProperties",
+          "name": "properties",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoJSONProperties": {
+      "description": "",
+      "raw": "uint32 id\nuint32 type\nfloat64[] enflation_radius\nfloat64[] bondary_radius\n",
+      "fields": [
+        {
+          "type": "uint32",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "enflation_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "bondary_radius",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeoPoint": {
+      "description": "Geographic point, using the WGS 84 reference ellipsoid.",
+      "raw": "# Geographic point, using the WGS 84 reference ellipsoid.\n\n# Latitude [degrees]. Positive is north of equator; negative is south\n# (-90 <= latitude <= +90).\nfloat64 latitude\n\n# Longitude [degrees]. Positive is east of prime meridian; negative is\n# west (-180 <= longitude <= +180). At the poles, latitude is -90 or\n# +90, and longitude is irrelevant, but must be in range.\nfloat64 longitude\n\n# Altitude [m]. Positive is above the WGS 84 ellipsoid (NaN if unspecified).\nfloat64 altitude",
+      "fields": [
+        {
+          "type": "float64",
+          "name": "latitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "longitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64",
+          "name": "altitude",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "Object": {
+      "description": "",
+      "raw": "\nint64 id                                    # ID\nuint32 type                                 # Type\ntuw_object_map_msgs/GeoPoint[] geo_points   # \ngeometry_msgs/Point[] map_points            # \nfloat64[] enflation_radius                  # usage based on type\nfloat64[] bondary_radius                    # usage based on type\n\n\n\nuint32 TYPE_NA = 0\n\nuint32 TYPE_FRAME_ORIGIN = 100   # frame origin\nuint32 TYPE_FRAME_WINDOW = 101   # frame window size, two points top left bottom right\n\nuint32 TYPE_PLANT = 200\nuint32 TYPE_PLANT_WINE_ROW = 201\n\nuint32 TYPE_OBSTACLE = 300\nuint32 TYPE_OBSTACLE_HOUSE = 301\nuint32 TYPE_OBSTACLE_TREE = 302\n\nuint32 TYPE_TRANSIT = 400\nuint32 TYPE_TRANSIT_STREET = 401\nuint32 TYPE_TRANSIT_GRAVEL = 402\n",
+      "fields": [
+        {
+          "type": "int64",
+          "name": "id",
+          "comment": "ID",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "type",
+          "comment": "Type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "tuw_object_map_msgs/GeoPoint[]",
+          "name": "geo_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/Point[]",
+          "name": "map_points",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "enflation_radius",
+          "comment": "usage based on type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float64[]",
+          "name": "bondary_radius",
+          "comment": "usage based on type",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_NA",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_FRAME_ORIGIN",
+          "comment": "frame origin",
+          "default": "100",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_FRAME_WINDOW",
+          "comment": "frame window size, two points top left bottom right",
+          "default": "101",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_PLANT",
+          "comment": "",
+          "default": "200",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_PLANT_WINE_ROW",
+          "comment": "",
+          "default": "201",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_OBSTACLE",
+          "comment": "",
+          "default": "300",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_OBSTACLE_HOUSE",
+          "comment": "",
+          "default": "301",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_OBSTACLE_TREE",
+          "comment": "",
+          "default": "302",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_TRANSIT",
+          "comment": "",
+          "default": "400",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_TRANSIT_STREET",
+          "comment": "",
+          "default": "401",
+          "is_constant": true
+        },
+        {
+          "type": "uint32",
+          "name": "TYPE_TRANSIT_GRAVEL",
+          "comment": "",
+          "default": "402",
+          "is_constant": true
+        }
+      ]
+    },
+    "Objects": {
+      "description": "",
+      "raw": "std_msgs/Header header      # Header for Timestamp\nObject[] objects            # Map Objects\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "Header for Timestamp",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "Object[]",
+          "name": "objects",
+          "comment": "Map Objects",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {
+    "GetObjects": {
+      "description": "Get the map as a tuw_object_map_msgs/Objects",
+      "raw": "# Get the map as a tuw_object_map_msgs/Objects\n---\ntuw_object_map_msgs/Objects map",
+      "request_fields": [],
+      "response_fields": [
+        {
+          "type": "tuw_object_map_msgs/Objects",
+          "name": "map",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {}
+}

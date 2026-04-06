@@ -1,0 +1,67 @@
+{
+  "name": "laser_geometry",
+  "version": "2.10.2",
+  "description": "This package contains a class for converting from a 2D laser scan as defined by\n    sensor_msgs/LaserScan into a point cloud as defined by sensor_msgs/PointCloud\n    or sensor_msgs/PointCloud2. In particular, it contains functionality to account\n    for the skew resulting from moving robots or tilting laser scanners.",
+  "license": "BSD",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "http://github.com/ros-perception/laser_geometry",
+      "type": "website"
+    }
+  ],
+  "repo": {
+    "name": "laser_geometry",
+    "url": "https://github.com/ros-perception/laser_geometry.git",
+    "branch": "kilted"
+  },
+  "dependencies": {
+    "build": [
+      "eigen",
+      "rclcpp",
+      "sensor_msgs",
+      "tf2"
+    ],
+    "build_export": [
+      "eigen"
+    ],
+    "buildtool": [
+      "ament_cmake",
+      "ament_cmake_python",
+      "eigen3_cmake_module"
+    ],
+    "buildtool_export": [
+      "eigen3_cmake_module"
+    ],
+    "runtime": [
+      "python3-numpy",
+      "rclcpp",
+      "rclpy",
+      "sensor_msgs",
+      "sensor_msgs_py",
+      "tf2"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common",
+      "ament_cmake_gtest",
+      "ament_cmake_pytest"
+    ],
+    "depended_on_by": [
+      "dual_laser_merger",
+      "laser_filters",
+      "nav2_costmap_2d",
+      "nonpersistent_voxel_layer",
+      "perception",
+      "pointcloud_to_laserscan",
+      "rtabmap_conversions",
+      "rtabmap_odom",
+      "rtabmap_util",
+      "rviz_default_plugins"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

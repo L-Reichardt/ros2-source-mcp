@@ -1,0 +1,58 @@
+{
+  "name": "cyclonedds",
+  "version": "0.8.0",
+  "description": "Eclipse Cyclone DDS is a very performant and robust open-source DDS implementation. Cyclone DDS is developed completely in the open as an Eclipse IoT project.",
+  "license": "Eclipse Public License 2.0",
+  "build_type": "cmake",
+  "deprecated": null,
+  "urls": [
+    {
+      "uri": "https://projects.eclipse.org/projects/iot.cyclonedds",
+      "type": "website"
+    },
+    {
+      "uri": "https://github.com/eclipse-cyclonedds/cyclonedds/issues",
+      "type": "bugtracker"
+    },
+    {
+      "uri": "https://github.com/eclipse-cyclonedds/cyclonedds",
+      "type": "repository"
+    }
+  ],
+  "repo": {
+    "name": "cyclonedds",
+    "url": "https://github.com/eclipse-cyclonedds/cyclonedds.git",
+    "branch": "releases/0.8.x"
+  },
+  "dependencies": {
+    "build": [
+      "libssl-dev",
+      "bison"
+    ],
+    "buildtool": [
+      "cmake"
+    ],
+    "runtime": [
+      "openssl"
+    ],
+    "doc": [
+      "doxygen",
+      "python3-breathe",
+      "python3-sphinx"
+    ],
+    "test": [
+      "libcunit-dev"
+    ],
+    "build_and_runtime": [
+      "iceoryx_binding_c",
+      "iceoryx_posh",
+      "iceoryx_utils"
+    ],
+    "depended_on_by": [
+      "rmw_cyclonedds_cpp"
+    ]
+  },
+  "messages": {},
+  "services": {},
+  "actions": {}
+}

@@ -1,0 +1,324 @@
+{
+  "name": "opennav_docking_msgs",
+  "version": "0.0.2",
+  "description": "A set of ROS interfaces for docking and undocking",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "opennav_docking",
+    "url": "https://github.com/open-navigation/opennav_docking.git",
+    "branch": "humble"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake"
+    ],
+    "test": [
+      "ament_lint_common",
+      "ament_lint_auto"
+    ],
+    "build_and_runtime": [
+      "rclcpp",
+      "rclcpp_action",
+      "rclcpp_lifecycle",
+      "nav2_util",
+      "nav2_msgs",
+      "nav_msgs",
+      "geometry_msgs",
+      "builtin_interfaces",
+      "tf2_ros",
+      "rosidl_default_generators"
+    ],
+    "depended_on_by": [
+      "opennav_docking",
+      "opennav_docking_bt",
+      "opennav_docking_core"
+    ]
+  },
+  "messages": {},
+  "services": {
+    "ReloadDatabase": {
+      "description": "Reloads the dock's database with a new filepath",
+      "raw": "# Reloads the dock's database with a new filepath\n\nstring filepath\n---\nbool success\n",
+      "request_fields": [
+        {
+          "type": "string",
+          "name": "filepath",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ],
+      "response_fields": [
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "actions": {
+    "DockRobot": {
+      "description": "goal definition",
+      "raw": "#goal definition\n\nbool use_dock_id True  # Whether to use the dock_id or dock_pose fields\nstring dock_id  # Dock name or ID to dock at, from given dock database\n\ngeometry_msgs/PoseStamped dock_pose  # Dock pose\nstring dock_type  # If using dock_pose, what type of dock it is. Not necessary if only using one type of dock.\n\nfloat32 max_staging_time 1000.0  # Maximum time for navigation to get to the dock's staging pose.\nbool navigate_to_staging_pose True  # Whether or not to navigate to staging pose or assume robot is already at staging pose within tolerance to execute behavior\n\n---\n#result definition\n\n# Error codes\n# Note: The expected priority order of the errors should match the message order\nuint16 NONE=0\nuint16 DOCK_NOT_IN_DB=901\nuint16 DOCK_NOT_VALID=902\nuint16 FAILED_TO_STAGE=903\nuint16 FAILED_TO_DETECT_DOCK=904\nuint16 FAILED_TO_CONTROL=905\nuint16 FAILED_TO_CHARGE=906\nuint16 UNKNOWN=999\n\nbool success True  # docking success status\nuint16 error_code 0  # Contextual error code, if any\nuint16 num_retries 0  # Number of retries attempted\n\n---\n#feedback definition\n\nuint16 NONE=0\nuint16 NAV_TO_STAGING_POSE=1\nuint16 INITIAL_PERCEPTION=2\nuint16 CONTROLLING=3\nuint16 WAIT_FOR_CHARGE=4\nuint16 RETRY=5\n\nuint16 state  # Current docking state\nbuiltin_interfaces/Duration docking_time  # Docking time elapsed\nuint16 num_retries 0  # Number of retries attempted\n",
+      "goal_fields": [
+        {
+          "type": "bool",
+          "name": "use_dock_id",
+          "comment": "Whether to use the dock_id or dock_pose fields",
+          "default": "True",
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "dock_id",
+          "comment": "Dock name or ID to dock at, from given dock database",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "geometry_msgs/PoseStamped",
+          "name": "dock_pose",
+          "comment": "Dock pose",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "string",
+          "name": "dock_type",
+          "comment": "If using dock_pose, what type of dock it is. Not necessary if only using one type of dock.",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_staging_time",
+          "comment": "Maximum time for navigation to get to the dock's staging pose.",
+          "default": "1000.0",
+          "is_constant": false
+        },
+        {
+          "type": "bool",
+          "name": "navigate_to_staging_pose",
+          "comment": "Whether or not to navigate to staging pose or assume robot is already at staging pose within tolerance to execute behavior",
+          "default": "True",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint16",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DOCK_NOT_IN_DB",
+          "comment": "",
+          "default": "901",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DOCK_NOT_VALID",
+          "comment": "",
+          "default": "902",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "FAILED_TO_STAGE",
+          "comment": "",
+          "default": "903",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "FAILED_TO_DETECT_DOCK",
+          "comment": "",
+          "default": "904",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "FAILED_TO_CONTROL",
+          "comment": "",
+          "default": "905",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "FAILED_TO_CHARGE",
+          "comment": "",
+          "default": "906",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "999",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "docking success status",
+          "default": "True",
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "error_code",
+          "comment": "Contextual error code, if any",
+          "default": "0",
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_retries",
+          "comment": "Number of retries attempted",
+          "default": "0",
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": [
+        {
+          "type": "uint16",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "NAV_TO_STAGING_POSE",
+          "comment": "",
+          "default": "1",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "INITIAL_PERCEPTION",
+          "comment": "",
+          "default": "2",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "CONTROLLING",
+          "comment": "",
+          "default": "3",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "WAIT_FOR_CHARGE",
+          "comment": "",
+          "default": "4",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "RETRY",
+          "comment": "",
+          "default": "5",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "state",
+          "comment": "Current docking state",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "builtin_interfaces/Duration",
+          "name": "docking_time",
+          "comment": "Docking time elapsed",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "num_retries",
+          "comment": "Number of retries attempted",
+          "default": "0",
+          "is_constant": false
+        }
+      ]
+    },
+    "UndockRobot": {
+      "description": "goal definition",
+      "raw": "#goal definition\n\n# If initialized on a dock so the server doesn't know what type of dock its on,\n# you must specify what dock it is to know where to stage for undocking.\n# If only one type of dock plugin is present, it is not necessary to set.\n# If not set & server instance was used to dock, server will use current dock information from last docking request.\nstring dock_type\n\nfloat32 max_undocking_time 30.0 # Maximum time to undock\n\n---\n#result definition\n\n# Error codes\n# Note: The expected priority order of the errors should match the message order\nuint16 NONE=0\nuint16 DOCK_NOT_VALID=902\nuint16 FAILED_TO_CONTROL=905\nuint16 UNKNOWN=999\n\nbool success True  # docking success status\nuint16 error_code 0  # Contextual error code, if any\n\n---\n#feedback definition\n",
+      "goal_fields": [
+        {
+          "type": "string",
+          "name": "dock_type",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "float32",
+          "name": "max_undocking_time",
+          "comment": "Maximum time to undock",
+          "default": "30.0",
+          "is_constant": false
+        }
+      ],
+      "result_fields": [
+        {
+          "type": "uint16",
+          "name": "NONE",
+          "comment": "",
+          "default": "0",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "DOCK_NOT_VALID",
+          "comment": "",
+          "default": "902",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "FAILED_TO_CONTROL",
+          "comment": "",
+          "default": "905",
+          "is_constant": true
+        },
+        {
+          "type": "uint16",
+          "name": "UNKNOWN",
+          "comment": "",
+          "default": "999",
+          "is_constant": true
+        },
+        {
+          "type": "bool",
+          "name": "success",
+          "comment": "docking success status",
+          "default": "True",
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "error_code",
+          "comment": "Contextual error code, if any",
+          "default": "0",
+          "is_constant": false
+        }
+      ],
+      "feedback_fields": []
+    }
+  }
+}

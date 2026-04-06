@@ -1,0 +1,701 @@
+{
+  "name": "sick_safevisionary_interfaces",
+  "version": "1.0.3",
+  "description": "Provides interface descriptions to communicate with a SICK Safevisionary Sensor over ROS 2",
+  "license": "Apache-2.0",
+  "build_type": "ament_cmake",
+  "deprecated": null,
+  "urls": [],
+  "repo": {
+    "name": "sick_safevisionary_ros2",
+    "url": "https://github.com/SICKAG/sick_safevisionary_ros2.git",
+    "branch": "main"
+  },
+  "dependencies": {
+    "buildtool": [
+      "ament_cmake",
+      "rosidl_default_generators"
+    ],
+    "runtime": [
+      "rosidl_default_runtime"
+    ],
+    "test": [
+      "ament_lint_auto",
+      "ament_lint_common"
+    ],
+    "build_and_runtime": [
+      "std_msgs"
+    ],
+    "depended_on_by": [
+      "sick_safevisionary_driver"
+    ]
+  },
+  "messages": {
+    "ActiveMonitoringCase": {
+      "description": "ROS msg definition for internal  DEVICESTATUS_DATA_ACTIVE_MONITORING_CASE struct",
+      "raw": "# ROS msg definition for internal  DEVICESTATUS_DATA_ACTIVE_MONITORING_CASE struct\nuint8 monitoring_case_1\nuint8 monitoring_case_2\nuint8 monitoring_case_3\nuint8 monitoring_case_4\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "monitoring_case_1",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "monitoring_case_2",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "monitoring_case_3",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "monitoring_case_4",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "CameraIO": {
+      "description": "ROS msg definition for internal  LOCALIOS_ELEMENT struct",
+      "raw": "# ROS msg definition for internal  LOCALIOS_ELEMENT struct\nstd_msgs/Header header\nIOConfigured configured\nIODirection direction\nIOInputValues input_values\nIOOutputValues output_values\nIOOSSDSState ossds_state\nuint8 ossds_dyn_count\nuint8 ossds_crc\nuint8 ossds_io_status\nuint16 dynamic_speed_a\nuint16 dynamic_speed_b\nuint16 dynamic_valid_flags\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IOConfigured",
+          "name": "configured",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IODirection",
+          "name": "direction",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IOInputValues",
+          "name": "input_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IOOutputValues",
+          "name": "output_values",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "IOOSSDSState",
+          "name": "ossds_state",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ossds_dyn_count",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ossds_crc",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ossds_io_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "dynamic_speed_a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "dynamic_speed_b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "dynamic_valid_flags",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "DeviceStatus": {
+      "description": "ROS msg definition for internal DEVICE_STATUS struct",
+      "raw": "# ROS msg definition for internal DEVICE_STATUS struct\nstd_msgs/Header header\nuint8 status\nGeneralStatus general_status\nuint32 cop_safety_related\nuint32 cop_non_safety_related\nuint32 cop_reset_required\nActiveMonitoringCase active_monitoring_case\nuint8 contamination_level\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "GeneralStatus",
+          "name": "general_status",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cop_safety_related",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cop_non_safety_related",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint32",
+          "name": "cop_reset_required",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ActiveMonitoringCase",
+          "name": "active_monitoring_case",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "contamination_level",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldInformation": {
+      "description": "ROS msg definition for internal  FIELDINFORMATION_ELEMENT struct",
+      "raw": "# ROS msg definition for internal  FIELDINFORMATION_ELEMENT struct\nuint8 field_id\nuint8 field_set_id\nuint8 field_result\nuint8 eval_method\nuint8 field_active\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "field_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "field_set_id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "field_result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "eval_method",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "field_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "FieldInformationArray": {
+      "description": "ROS msg definition for internal  FIELDINFORMATION_DATA struct",
+      "raw": "# ROS msg definition for internal  FIELDINFORMATION_DATA struct\nstd_msgs/Header header\nFieldInformation[] fields\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "FieldInformation[]",
+          "name": "fields",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "GeneralStatus": {
+      "description": "ROS msg definition for internal DEVICESTATUS_DATA_GENERALSTATUS struct",
+      "raw": "# ROS msg definition for internal DEVICESTATUS_DATA_GENERALSTATUS struct\nuint8 run_mode_active\nuint8 device_error\nuint8 application_error\nuint8 sleep_mode\nuint8 wait_for_input\nuint8 wait_for_cluster\nuint8 contamination_warning\nuint8 contamination_error\nuint8 dead_zone_detection\nuint8 temperature_warning\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "run_mode_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "device_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "application_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "sleep_mode",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "wait_for_input",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "wait_for_cluster",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "contamination_warning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "contamination_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "dead_zone_detection",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "temperature_warning",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IOConfigured": {
+      "description": "ROS msg definition for internal  LOCALIOS_UNIVERSALIO_CONFIGURED struct",
+      "raw": "# ROS msg definition for internal  LOCALIOS_UNIVERSALIO_CONFIGURED struct\nuint16 pin_5\nuint16 pin_6\nuint16 pin_7\nuint16 pin_8\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "pin_5",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_6",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_7",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IODirection": {
+      "description": "ROS msg definition for internal  LOCALIOS_UNIVERSALIO_DIRECTION struct",
+      "raw": "# ROS msg definition for internal  LOCALIOS_UNIVERSALIO_DIRECTION struct\nuint16 pin_5\nuint16 pin_6\nuint16 pin_7\nuint16 pin_8\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "pin_5",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_6",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_7",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IOInputValues": {
+      "description": "ROS msg definition for internal  LOCALIOS_UNIVERSALIO_INPUTVALUES struct",
+      "raw": "# ROS msg definition for internal  LOCALIOS_UNIVERSALIO_INPUTVALUES struct\nuint16 pin_5\nuint16 pin_6\nuint16 pin_7\nuint16 pin_8\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "pin_5",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_6",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_7",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IOOSSDSState": {
+      "description": "ROS msg definition for internal  LOCALIOS_OSSDS_STATE struct",
+      "raw": "# ROS msg definition for internal  LOCALIOS_OSSDS_STATE struct\nuint8 ossd1a\nuint8 ossd1b\nuint8 ossd2a\nuint8 ossd2b\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "ossd1a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ossd1b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ossd2a",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "ossd2b",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "IOOutputValues": {
+      "description": "ROS msg definition for internal  LOCALIOS_UNIVERSALIO_OutputVALUES struct",
+      "raw": "# ROS msg definition for internal  LOCALIOS_UNIVERSALIO_OutputVALUES struct\nuint16 pin_5\nuint16 pin_6\nuint16 pin_7\nuint16 pin_8\n",
+      "fields": [
+        {
+          "type": "uint16",
+          "name": "pin_5",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_6",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_7",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "pin_8",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROI": {
+      "description": "ROS msg definition for internal ROI struct",
+      "raw": "# ROS msg definition for internal ROI struct\nuint8 id\nROIObservationResultData result_data\nROIObservationSafetyData safety_data\nuint16 distance_value\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "id",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ROIObservationResultData",
+          "name": "result_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ROIObservationSafetyData",
+          "name": "safety_data",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint16",
+          "name": "distance_value",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROIArray": {
+      "description": "ROS msg definition for internal ROI_DATA struct",
+      "raw": "# ROS msg definition for internal ROI_DATA struct\nstd_msgs/Header header\nROI[] rois\n",
+      "fields": [
+        {
+          "type": "std_msgs/Header",
+          "name": "header",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "ROI[]",
+          "name": "rois",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROIObservationResultData": {
+      "description": "ROS msg definition for internal  ROI_DATA_RESULT struct",
+      "raw": "# ROS msg definition for internal  ROI_DATA_RESULT struct\nuint8 task_result\nuint8 result_safe\nuint8 result_valid\nuint8 distance_valid\nuint8 distance_safe\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "task_result",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "result_safe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "result_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "distance_valid",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "distance_safe",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    },
+    "ROIObservationSafetyData": {
+      "description": "ROS msg definition for internal  ROI_DATA_SAFETY_DATA struct",
+      "raw": "# ROS msg definition for internal  ROI_DATA_SAFETY_DATA struct\nuint8 invalid_due_to_invalid_pixels\nuint8 invalid_due_to_variance\nuint8 invalid_due_to_overexposure\nuint8 invalid_due_to_underexposure\nuint8 invalid_due_to_temporal_variance\nuint8 invalid_due_to_outside_of_measurement_range\nuint8 invalid_due_to_retro_reflector_interference\nuint8 contamination_error\nuint8 quality_class\nuint8 slot_active\n",
+      "fields": [
+        {
+          "type": "uint8",
+          "name": "invalid_due_to_invalid_pixels",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "invalid_due_to_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "invalid_due_to_overexposure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "invalid_due_to_underexposure",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "invalid_due_to_temporal_variance",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "invalid_due_to_outside_of_measurement_range",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "invalid_due_to_retro_reflector_interference",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "contamination_error",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "quality_class",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        },
+        {
+          "type": "uint8",
+          "name": "slot_active",
+          "comment": "",
+          "default": null,
+          "is_constant": false
+        }
+      ]
+    }
+  },
+  "services": {},
+  "actions": {}
+}
