@@ -1,7 +1,7 @@
 <img src="ros2_parser/assets/logo.png" alt="ROS2 SOURCE MCP">
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![GitHub Pages](https://img.shields.io/badge/Index-GitHub%20Pages-brightgreen)](https://l-reichardt.github.io/ros2-source-mcp/index/)
+[![GitHub Pages](https://img.shields.io/badge/Index-GitHub%20Pages-brightgreen)](https://github.com/L-Reichardt/ros2-source-mcp/tree/gh-pages)
 
 **What**
 
